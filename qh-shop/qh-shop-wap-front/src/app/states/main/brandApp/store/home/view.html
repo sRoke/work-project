@@ -1,0 +1,299 @@
+<div flex="100" layout="column" class="ks-home" ng-show="viewShow">
+    <md-content flex style="background: #f5f5f5;">
+        <div class="expireDate" ng-if="time1 && !time2">
+            <div class="expire" layout="row" layout-align="center center">
+                <div class="back-button" flex="20">
+                </div>
+                <div class="ts" flex layout="row" layout-align="center center">你的店铺即将过期，&nbsp;<span
+                        ui-sref="main.brandApp.store.shop.buyStore">请续费</span></div>
+                <div class="right" flex="20">
+                    <md-icon class="ks-icon" ng-click="closeTs()" md-font-set="ks-icon" md-font-icon="ag-closed-o"
+                             style="font-size: 12px;text-align: center"></md-icon>
+                </div>
+            </div>
+        </div>
+        <div class="expireDate" ng-if="!time1 && time2">
+            <div class="expire" layout="row" layout-align="center center">
+                <div class="back-button" flex="20">
+                </div>
+                <div class="ts" flex layout="row" layout-align="center center">你的店铺已经过期，&nbsp;<span
+                        ui-sref="main.brandApp.store.shop.buyStore">请续费</span></div>
+                <div class="right" flex="20">
+                    <md-icon class="ks-icon" ng-click="closeTs()" md-font-set="ks-icon" md-font-icon="ag-closed-o"
+                             style="font-size: 12px;text-align: center"></md-icon>
+                </div>
+            </div>
+        </div>
+        <div class="top-header" layout="column" layout-align="space-between">
+            <div class="header-dis" layout="row">
+                <div class="dis-lift" layout="row">
+                    <md-icon ng-if="!data.img" class="dis-header-icon" md-font-set="ks-icon"
+                             md-font-icon="ag-default-head" style="color: #BBBBBB"></md-icon>
+                    <img ng-src="{{data.img}}" ng-if="data.img" alt="">
+                    <div class="dis-name" layout="column">
+
+                        <span ng-if="!data.name">店铺名称</span>
+                        <span ng-if="data.name">{{data.name}}</span>
+                        <span ng-if="data.phone && !data.expireDate">{{data.phone}}</span>
+                        <span ng-if="data.expireDate">有效期至:{{data.expireDate|date:'yyyy-MM-dd'}}</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="dis-creat">
+                <!--<span ng-if="!data">创建店铺</span>-->
+                <span ui-sref="main.brandApp.store.shop.shopManage">店铺管理</span>
+            </div>
+            <div class="bottom-header">
+                <div class="count-detail" layout="row" layout-align="center center">
+                    <div flex class="det" layout="column">
+                        <div class="det-top">{{data.todayOrder}}</div>
+                        <div class="det-bottom">今日订单</div>
+                    </div>
+                    <div flex class="det" layout="column">
+                        <div class="det-top">{{data.monthlyIncome/100|num:2}}</div>
+                        <div class="det-bottom">本月销售</div>
+                    </div>
+                    <div flex class="det" layout="column" ui-sref="main.brandApp.store.shop.myIncome">
+                        <div class="det-top">{{data.totalIncome/100|num:2}}</div>
+                        <div class="det-bottom">累计收入</div>
+                    </div>
+                    <!--<div flex class="det" layout="column">
+                        <div class="det-top">16</div>
+                        <div class="det-bottom">粉丝人数</div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <input id="taokouling" value="qweqweqwe" type="text">
+         <button id="copyCode" class="btn" data-clipboard-target=".det-bottom" data-clipboard-action="copy">
+             复制淘口令
+         </button>
+     -->
+        <!--<div class="icon-button">-->
+        <!--<div class="btn-dis" layout="column">
+            <div class="top-detail" layout="row" layout-align="space-between center">
+                <div class="dis-name">进销存</div>
+                <md-icon class="dis-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+            <md-divider></md-divider>
+        </div>
+        <div class="btn-wrap">
+            <div class="btn-box" layout="row">
+                <div flex class="btn" layout="column" layout-align="center center"
+                     ui-sref="main.brandApp.store.itemManage.search()">
+                    <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-collect-money"></md-icon>
+                    <div class="btn-name">开单/收银</div>
+                </div>
+                <div class="btn-line"></div>
+                <div flex class="btn" layout="column" layout-align="center center"
+                     ui-sref="main.brandApp.store.itemManage.itemMan()">
+                    <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-grid-system"></md-icon>
+                    <div class="btn-name">商品管理</div>
+                </div>
+                <div class="btn-line"></div>
+                <div flex class="btn" layout="column" layout-align="center center"
+                     ui-sref="main.brandApp.store.itemManage.itemStock()">
+                    <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-manage-ck"></md-icon>
+                    <div class="btn-name">商品库存</div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="btn-box" layout="row">
+                <div flex class="btn" layout="column" layout-align="center center">
+                    <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-inventory"></md-icon>
+                    <div class="btn-name">库存盘点</div>
+                </div>
+                <div class="btn-line"></div>
+                <div flex class="btn" layout="column" layout-align="center center"
+                     ui-sref="main.brandApp.store.inventoryRecord.inInventoryRegister">
+                    <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-rukudengji"></md-icon>
+                    <div class="btn-name">入库登记</div>
+                </div>
+                <div class="btn-line"></div>
+                <div flex class="btn" layout="column" layout-align="center center"
+                     ui-sref="main.brandApp.store.inventoryRecord.inInventory({type:'in'})">
+                    <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-rukujilu"></md-icon>
+                    <div class="btn-name">入库记录</div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="btn-box" layout="row">
+                <div flex class="btn" layout="column" layout-align="center center"
+                     ui-sref="main.brandApp.store.inventoryRecord.outInventoryRegister">
+                    <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-chukudengji"></md-icon>
+                    <div class="btn-name">出库登记</div>
+                </div>
+                <div class="btn-line"></div>
+                <div flex class="btn" layout="column" layout-align="center center"
+                     ui-sref="main.brandApp.store.inventoryRecord.inInventory({type:'out'})">
+                    <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-chukujilu"></md-icon>
+                    <div class="btn-name">出库记录</div>
+                </div>
+                <div class="btn-line"></div>
+                <div flex class="btn" layout="column" layout-align="center center">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="line-blank"></div>-->
+
+        <div class="icon-button">
+            <div class="btn-dis" layout="column">
+                <div class="top-detail" layout="row" layout-align="space-between center">
+                    <div class="dis-name">店铺订单</div>
+                    <div ui-sref="main.brandApp.store.order.orderCenter">
+                        <span>全部订单 </span>
+                        <md-icon class="dis-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="btn-wrap">
+                <div class="btn-box" layout="row">
+                    <div flex class="btn" layout="column" layout-align="center center"
+                         ui-sref="main.brandApp.store.order.orderCenter({status:'UNPAYED'})">
+                        <md-icon class="btn-icon" style="color: #E53467;" md-font-set="ks-icon"
+                                 md-font-icon="ag-obligation"></md-icon>
+                        <div class="btn-name">待付款</div>
+                        <i ng-if="numData.UNPAYED>0">{{numData.UNPAYED}}</i>
+                    </div>
+                    <div class="btn-line"></div>
+                    <div flex class="btn" layout="column" layout-align="center center"
+                         ui-sref="main.brandApp.store.order.orderCenter({status:'UNSHIPPED'})">
+                        <md-icon class="btn-icon" style="color: #E53467;" md-font-set="ks-icon"
+                                 md-font-icon="ag-receiving-w"></md-icon>
+                        <div class="btn-name">待发货</div>
+                        <i ng-if="(numData.UNSHIPPED + numData.UNCONFIRMED)>0">
+                            {{numData.UNSHIPPED + numData.UNCONFIRMED}}</i>
+                    </div>
+                    <div class="btn-line"></div>
+                    <div flex class="btn" layout="column" layout-align="center center"
+                         ui-sref="main.brandApp.store.refund.refundList">
+                        <md-icon class="btn-icon" style="color: #E53467;" md-font-set="ks-icon"
+                                 md-font-icon="ag-sales-return"></md-icon>
+                        <div class="btn-name">退款/售后</div>
+                        <i ng-if="numData.REFUNDING>0">{{numData.REFUNDING}}</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="line-blank"></div>
+
+        <div class="icon-button">
+            <div class="btn-dis" layout="column">
+                <div class="top-detail" layout="row" layout-align="space-between center">
+                    <div class="dis-name">店铺运营</div>
+                    <!--<md-icon class="dis-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="btn-wrap">
+
+                <div class="btn-box" layout="row">
+                    <div flex class="btn" layout="column" layout-align="center center"
+                         ui-sref="main.brandApp.store.itemManage.itemMan()">
+                        <md-icon class="btn-icon" style="color:#00D39F;" md-font-set="ks-icon"
+                                 md-font-icon="ag-grid-system"></md-icon>
+                        <div class="btn-name">商品管理</div>
+                    </div>
+                    <div class="btn-line"></div>
+                    <div flex class="btn" layout="column" layout-align="center center"
+                         ui-sref="main.brandApp.store.sellers.sellersList">
+                        <md-icon class="btn-icon" style="color: #FF6440;" md-font-set="ks-icon"
+                                 md-font-icon="ag-cart-line"></md-icon>
+                        <div class="btn-name">分享商品</div>
+                    </div>
+                    <div class="btn-line"></div>
+                    <div flex class="btn" layout="column" layout-align="center center"
+                         ui-sref="main.brandApp.store.shareShop">
+                        <md-icon class="btn-icon" style="color:#4CCCFF;" md-font-set="ks-icon"
+                                 md-font-icon="ag-share-o"></md-icon>
+                        <div class="btn-name">分享店铺</div>
+                    </div>
+                </div>
+
+                <md-divider></md-divider>
+                <div class="btn-box" layout="row">
+                    <div flex class="btn" layout="column" layout-align="center center" style="padding-top: 12px"
+                         ui-sref="main.brandApp.store.memberList">
+                        <md-icon class="btn-icon" style="color:#FF6440;" md-font-set="ks-icon"
+                                 md-font-icon="ag-my-fans"></md-icon>
+                        <div class="btn-name">会员信息</div>
+                    </div>
+                    <div class="btn-line"></div>
+                    <div flex class="btn" layout="column" layout-align="center center" style="padding-top: 12px"
+                         ui-sref="main.brandApp.store.marketing">
+                        <md-icon class="btn-icon" style="color: #00D39F;" md-font-set="ks-icon"
+                                 md-font-icon="ag-misson-yeji"></md-icon>
+                        <div class="btn-name">营销管理</div>
+                    </div>
+                    <div class="btn-line"></div>
+
+
+                    <div flex class="btn" layout="column" layout-align="center center" style="padding-top: 12px">
+                        <!--<md-icon class="btn-icon" style="color:#4CCCFF;" md-font-set="ks-icon"-->
+                        <!--md-font-icon="ag-share-o"></md-icon>-->
+                        <!--<div class="btn-name">浏览轨迹</div>-->
+                    </div>
+                </div>
+
+
+                <!--<div class="btn-box" layout="row">
+                    <div flex class="btn" layout="column" layout-align="center center">
+                        <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-cart-line"></md-icon>
+                        <div class="btn-name">我要卖货</div>
+                    </div>
+                    <div class="btn-line"></div>
+                    <div flex class="btn" layout="column" layout-align="center center">
+                        <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-add-fans"></md-icon>
+                        <div class="btn-name">我要拉粉</div>
+                    </div>
+                    <div class="btn-line"></div>
+                    <div flex class="btn" layout="column" layout-align="center center">
+                        <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-my-fans"></md-icon>
+                        <div class="btn-name">我的粉丝</div>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+                <div class="btn-box" layout="row">
+                    <div flex class="btn" layout="column" layout-align="center center">
+                        <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-yeji"></md-icon>
+                        <div class="btn-name">我的业绩</div>
+                    </div>
+                    <div class="btn-line"></div>
+                    <div flex class="btn" layout="column" layout-align="center center">
+                        <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-my-partner"></md-icon>
+                        <div class="btn-name">我的合伙人</div>
+                    </div>
+                    <div class="btn-line"></div>
+                    <div flex class="btn" layout="column" layout-align="center center">
+                        <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-fans-foot"></md-icon>
+                        <div class="btn-name">粉丝足记</div>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+                <div class="btn-box" layout="row">
+                    <div flex class="btn" layout="column" layout-align="center center">
+                        <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-fans-mission"></md-icon>
+                        <div class="btn-name">粉丝任务</div>
+                    </div>
+                    <div class="btn-line"></div>
+                    <div flex class="btn" layout="column" layout-align="center center">
+                        <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-misson-yeji"></md-icon>
+                        <div class="btn-name">业绩任务</div>
+                    </div>
+                    <div class="btn-line"></div>
+                    <div flex class="btn" layout="column" layout-align="center center">
+                        <md-icon class="btn-icon" md-font-set="ks-icon" md-font-icon="ag-billboard"></md-icon>
+                        <div class="btn-name">风云榜</div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+        <div class="line-blank"></div>
+        <!--</div>-->
+    </md-content>
+</div>

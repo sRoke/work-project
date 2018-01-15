@@ -1,0 +1,164 @@
+<!--rmy 重新排版-->
+<div class="ks-orders">
+    <div class="ks-itemOrderList-timeBox" layout="row" layout-align="start center">
+        <div flex layout="row" layout-align="start center" class="ks-itemOrderList-timeBox-topTime">
+            <label style="padding:0 10px 0 0px;">创建时间:</label>
+            <div>
+                <input type="text" class="layui-input phone" id="test1" ng-model="search.startDate" placeholder="开始时间">
+                <!--<md-datepicker ng-model="search.startDate" md-placeholder="Enter date" md-open-on-focus-->
+                               <!--md-date-locale="s"  md-date-locale="dateF"></md-datepicker>-->
+            </div>
+            <span>一</span>
+            <div >
+                <input type="text" class="layui-input phone" id="test2" ng-model="search.endDate" placeholder="结束时间">
+                <!--<md-datepicker ng-model="search.endDate" md-placeholder="Enter date" md-open-on-focus-->
+                               <!--md-date-locale="s" ></md-datepicker>-->
+            </div>
+            <label >请输入:</label>
+            <div >
+                <input type="text" class="phone" ng-model="search.keyword"  placeholder="订单号,手机号">
+            </div>
+            <label >状态:</label>
+            <div>
+                <select ng-model="search.status">
+                    <option value="all">全部</option>
+                    <option value="UNPAYED">待付款</option>
+                    <option value="UNCONFIRMED">待确认</option>
+                    <option value="UNSHIPPED">待发货</option>
+                    <option value="UNRECEIVED">待收货</option>
+                    <option value="FINISHED">已完成</option>
+                </select>
+            </div>
+            <!--<span>-->
+                <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-search"-->
+                  <!--alt="查询" style="color: #999;font-size:20px;text-align: center;cursor: pointer;outline: none;" ng-click="pageChanged('0')"></md-icon>-->
+            <!--</span>-->
+            <button class="inquire"  ng-click="pageChanged('0')">
+                搜索
+            </button>
+        </div>
+    </div>
+
+    <!--div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <ul class="tableStatus" layout="row">
+            <!--<li ng-repeat="btn in btnData track by $index"-->
+                <!--ng-class="{select:btn.check}"-->
+                <!--ng-click="btnClick(btn)"-->
+            <!--&gt;{{btn.name}}({{btn.num}})</li>-->
+            <li ng-class="{select:activeNum == 'all'}" ng-click="btnClick('all')" >全部({{statusNum.allCount}})</li>
+            <li ng-class="{select:activeNum == 'UNPAYED'}" ng-click="btnClick('UNPAYED')">待付款({{statusNum.UNPAYEDCount}})</li>
+            <li ng-class="{select:activeNum == 'UNCONFIRMED'}" ng-click="btnClick('UNCONFIRMED')">待确认({{statusNum.UNCONFIRMEDCount}})</li>
+            <li ng-class="{select:activeNum == 'UNSHIPPED'}" ng-click="btnClick('UNSHIPPED')">待发货({{statusNum.UNSHIPPEDCount}})</li>
+            <li ng-class="{select:activeNum == 'UNRECEIVED'}" ng-click="btnClick('UNRECEIVED')" >待收货({{statusNum.UNRECEIVEDCount}})</li>
+            <li ng-class="{select:activeNum == 'FINISHED'}" ng-click="btnClick('FINISHED')">已完成({{statusNum.FINISHEDCount}})</li>
+            <li flex></li>
+        </ul>
+        <div class="tableTit" layout="row">
+            <div class="tableTd" flex="30">
+                <span>订单信息</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>单价</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>数量</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>售后</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>买家</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>交易状态</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>实收款</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>操作</span>
+            </div>
+        </div>
+        <!--n个发货订单-->
+        <div class="tableCon">
+            <!--一个订单编号-->
+            <div class="orderNumber" ng-repeat="item in items">
+                <!--订单头部-->
+                <div class="ordTitle" layout="row">
+                    <div flex="15" class="tit" style="min-width: 220px;">
+                        <span >订单号：{{item.seq}}</span>
+                    </div>
+                    <div flex="15" class="tit" style="min-width: 220px;">
+                        <span>成交时间：{{item.dateCreated | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                    </div>
+                </div>
+                <!--订单信息-->
+                <div class="ordDetail" layout="row">
+                    <div flex="50" class="orderXq" layout="column">
+                        <!--当订单为一个或多个-->
+                        <!--<div layout="row" class="xqNum" ng-repeat="goods in item.orderItems">-->
+                            <!--<div flex="60" layout="row">-->
+                                <!--<div class="pic">-->
+                                    <!--<img ng-src='{{goods.skuImg}}'>-->
+                                <!--</div>-->
+                                <!--<div layout="column" class="goodsDetail">-->
+                                    <!--<span>{{goods.itemTitle}}</span>-->
+                                    <!--<span ng-repeat="sk in goods.specInfos">{{sk.propValue}}</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div flex="20"><span>￥{{goods.skuPrice/100 | num:2}}</span></div>-->
+                            <!--<div flex="20"><span>x{{goods.num}}</span></div>-->
+                        <!--</div>-->
+                        <!--8-29 调整只显示一个商品信息-->
+                        <div layout="row" class="xqNum">
+                            <div flex="60" layout="row">
+                                <div class="pic">
+                                    <img ng-src='{{item.orderItems[0].skuImg}}'>
+                                </div>
+                                <div layout="column" class="goodsDetail">
+                                    <span>{{item.orderItems[0].itemTitle}}</span>
+                                    <span ng-repeat="sk in item.orderItems[0].specInfos">{{sk.propValue}}</span>
+                                </div>
+                            </div>
+                            <div flex="20"><span>￥{{item.orderItems[0].skuPrice/100 | num:2}}</span></div>
+                            <div flex="20"><span>{{item.total}}</span></div>
+                        </div>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <a class="midd" ui-sref="main.brandApp.refDetail({id:123})"></a>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span>{{item.realName}}</span>
+                    </div>
+                    <div flex="10" class="orderXq" layout="column">
+                        <span>{{item.statusDesp}}</span>
+                        <a ui-sref="main.brandApp.ordDetail({id:item.id})" style="cursor: pointer;" ng-if="ORDER_R">详情</a>
+                    </div>
+                    <div flex="10" class="orderXq" layout="column">
+                        <span>￥{{item.paymentPrice/100 | num:2}}</span>
+                        <span>含运费</span>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <a class="midd" ng-if="ORDER_E">导出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--rmy 分页-->
+    <div style="width: 99%; margin: 10px auto 0">
+        <div uib-pagination total-items="page.totalElements" ng-model="curPage" ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="8" rotate="rotate"
+             items-per-page="page.size" previous-text="<" next-text=">" first-text="|<" last-text=">|" style="margin:10px;">
+        </div>
+        <div style="float: right"  class="pageSubnav">
+            <span>共{{page.totalElements}}条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button ng-click="pageChanged()">确定</md-button>
+        </div>
+    </div>
+
+</div>

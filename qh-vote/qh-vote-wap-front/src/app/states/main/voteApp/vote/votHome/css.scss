@@ -1,0 +1,288 @@
+@import "../../../../../scss/index.scss";
+
+.ks-votHome {
+  background: $vote-bg-white;
+  .content-top-img {
+    img {
+      //vertical-align: top;
+      display: block;
+    }
+  }
+  .content-time {
+    width: 100%;
+    height: 65px;
+    color: #666666;
+    background: #ffffff;
+    //.content-time-1 {
+    //  height: 14px;
+    //  font-size: 14px;
+    //  line-height: 14px;
+    //  margin: 15px 0 11px;
+    //}
+    .content-time-1 {
+      height: 13px;
+      font-size: 13px;
+      line-height: 13px;
+      margin: 15px 0 11px;
+    }
+    .content-time-2 {
+      height: 13px;
+      font-size: 13px;
+      line-height: 13px;
+      margin-bottom: 15px;
+    }
+  }
+  .content-tab {
+    background: #ffefa5;
+    .content-tab-search {
+      background: #ffffff;
+      width: 223px;
+      height: 36px;
+      margin: 15px 0;
+      border: 1px solid #d5d5d5;
+      border-radius: 5px;
+      overflow: hidden;
+      input {
+        height: 100%;
+        border: none;
+        width: 158px;
+        outline: none;
+        margin-left: 5px;
+        font-size: 14px;
+        line-height: 36px;
+      }
+      .line { //竖线
+        width: 1px;
+        height: 100%;
+        background: #d5d5d5;
+        -webkit-transform: scaleX(0.5);
+        -webkit-transform-origin: 0 0;
+        //overflow: hidden;
+      }
+      .search {
+        width: 57px;
+        height: 100%;
+        outline: none;
+        font-size: 14px;
+        color: #333333;
+      }
+    }
+    .tab-check {
+      width: 100%;
+      height: 36px;
+      font-size: 14px;
+      color: #222222;
+      text-align: center;
+      line-height: 36px;
+      margin-bottom: 5px;
+      .tabs {
+        //width: 106px;
+        height: 100%;
+        outline: none;
+      }
+      .line {
+        width: 1px;
+        height: 100%;
+        border-top: 1px solid #d5d5d5;
+        border-bottom: 1px solid #d5d5d5;
+      }
+      .activeLine {
+        background: #d5d5d5;
+      }
+      .inactiveLine {
+        background: transparent;
+      }
+      .active {
+        background: url("bg.png") no-repeat;
+        background-size: 100% 100%;
+      }
+      .inactive {
+        border: 1px solid #d5d5d5;
+      }
+      .tabs.tab2 {
+        border-left: 0;
+        border-right: 0;
+
+      }
+      .tabs.tab1 {
+        border-right: 0;
+        margin-left: 30px;
+      }
+      .tabs.tab3 {
+        border-left: 0;
+        margin-right: 30px;
+      }
+    }
+    .tab-list {
+      width: 100%;
+      margin-bottom: 12px;
+      .tab-box {
+        width: 50%;
+        float: left;
+        .tab-box-con {
+          background: #ffffff;
+          width: 100%;
+          position: relative;
+          border-radius: 4px;
+          .tab-box-index {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url("top-index.png") no-repeat;
+            background-size: 50px 20px;
+            font-size: 12px;
+            color: #ffffff;
+            min-width: 50px;
+            min-height: 20px;
+          }
+
+          .tab-box-img {
+            margin: 10px 10px 5px;
+            overflow: hidden;
+            .tab-box-img-con {
+              width: 100%;
+              position: relative;
+              //padding-bottom: 100%;
+              overflow: hidden;
+              &:before {
+                content: "";
+                display: block; // 如果用火狐浏览器,会出现bug,无法撑起高度  display: inline-table;可以
+                //display: inline-table; //作为内联表格来显示
+                padding-top: 100%;
+              }
+              img {
+                position: absolute;
+                top: 0;
+                padding: 0;
+                width: 100%;
+                //height: 100%;
+              }
+            }
+            //img{
+            //  display: block;
+            //  width: 100%;
+            //  float: left;
+            //}
+          }
+
+          //.tab-box-img::before {
+          //  content: "";
+          //  display: inline-block;
+          //  /*这里的padding =  height / width*/
+          //  padding-top:100%;
+          //}
+
+          .tab-box-title {
+            margin: 0 10px;
+            font-size: 12px;
+            line-height: 12px;
+            height: 12px;
+            color: #222222;
+          }
+          .tab-box-btn {
+            margin: 0 10px;
+            background: url("box-btn.png") no-repeat center center;
+            background-size: 100%;
+            font-size: 14px;
+            color: #ffffff;
+            text-align: center;
+            //.tab-box-btn-font{
+            //  margin-bottom: 5px;
+            //  width: 100% ;
+            //  text-align: center;
+            //  font-size: 14px;
+            //  white-space: nowrap;
+            //}
+          }
+          .tab-box-btn::after {
+            content: "";
+            display: inline-block;
+            /*这里的padding =  height / width*/
+            padding: 20%;
+          }
+          //.tab-box-btn::before {
+          //  content: "";
+          //  display: inline-block;
+          //  /*这里的padding =  height / width*/
+          //  padding:20%;
+          //}
+        }
+      }
+
+      .tab-box:nth-child(odd) {
+        .tab-box-con {
+          margin: 10px 10px 0 15px;
+        }
+      }
+      .tab-box:nth-child(even) {
+        .tab-box-con {
+          margin: 10px 15px 0 10px;
+        }
+      }
+
+
+      .tab-list-tpl{
+        img {
+          display: block;
+          max-width: 100%;
+        }
+      }
+    }
+    .page-pagination {
+      width: 100%;
+      margin-bottom: 25px;
+      .pagination {
+        margin: 0;
+        li {
+          a {
+            padding: 0 5px;
+            border: none;
+            background: #ffefa5;
+            color: #666666;
+          }
+        }
+      }
+      .pagination > .active > a {
+        color: #5BD6FF;
+      }
+      .pagination > .active > span {
+        color: #5BD6FF;
+      }
+    }
+  }
+
+  .content-tpl {
+    width: 100%;
+    background: #ffefa5;
+    padding-bottom: 100px;
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+
+  .bottom-btn {
+    position: fixed;
+    bottom: 0;
+    height: 100px;
+    width: 90px;
+    background: url("play-btn.png") no-repeat;
+    background-size: 100%;
+    left: 50%;
+    margin-left: -45px;
+    z-index: 100;
+    outline: none;
+  }
+  .bottom-btn2 {
+    position: fixed;
+    bottom: 0;
+    height: 100px;
+    width: 90px;
+    background: url("play-btn2.png") no-repeat;
+    background-size: 100%;
+    left: 50%;
+    margin-left: -45px;
+    z-index: 100;
+    outline: none;
+  }
+}

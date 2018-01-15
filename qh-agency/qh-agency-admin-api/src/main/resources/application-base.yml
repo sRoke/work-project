@@ -1,0 +1,80 @@
+# ServerProperties
+server:
+  port: 10070
+  context-path: /admin/rs                            # todo 其它环境修改该行
+#  context-path: /                  # todo 其它环境修改该行
+  error.include-stacktrace: on_trace_param
+
+# SecurityProperties
+security:
+  basic.enabled: false
+
+# LOGGING
+logging:
+  path: /var/log
+  file: wap.log
+  level:
+    root: INFO
+
+# JacksonProperties
+spring.jackson:
+  default-property-inclusion: non_null
+
+qh:
+  qiniu:
+          prefix : "https://img.kingsilk.net/"
+          accessKey : 'aLIjaY2adjM5HC5sDCPVLJYam74lLKgJ1HM-oehT'
+          secretKey : 'In0fWPyrtAoXplKHpO1GA_KMzFmEW2jypHTBtWR8'
+          defaultBucket : "kingsilk"
+  url: "https://kingsilk.net"
+
+# QhAgencyProperties
+net.kingsilk.qh.agency:
+  # http代理设置
+  http:
+    proxy:
+      enabled:      true
+      host:         prod11.kingsilk.net
+      port:         9999
+  jwt:
+    verifierKey: "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxj5GGRjurkM30lTQvrJGnjoIA2QWewPRGrPqtEBB7SWTbdgWIvxuapwPWRAif19iL4LSMxUKBxM68QNkboZ63VWtW6GcZltpH1cO0p1jMzuWo6YPQiV0JT+zF6RmbFJd2uCLRAVjIDwdhyMGrgFmBSV191pSISk3NEVoJpMb3mRxjnLyZXY0cyyIxUC5Nw9Fn62ce5Xe0UdCrwzhMnQ3dXSZK4d1Xw+jOT/vsTKPUutqVWuFbAtu1N3w5UxQmu8JoPHlQvQtfwIVE8UYUDT/a1jtLjFASgDOUSD+gAkgxvjnR2lFC5yNrNKoZhDY9wX+z+mc8z4ynpX9qdHruj/lpwIDAQAB\n-----END PUBLIC KEY-----"
+  qhOAuth:
+    wap:
+      url:                      'https://kingsilk.net/oauth/rs'           # todo 其它环境修改该行
+      accessTokenUri:           '${net.kingsilk.qh.net.kingsilk.qh.agency.qhOAuth.wap.url}/oauth/token'
+      userAuthorizationUri:     '${net.kingsilk.qh.net.kingsilk.qh.agency.qhOAuth.wap.url}/oauth/authorize'
+      checkTokenUri:            '${net.kingsilk.qh.net.kingsilk.qh.agency.qhOAuth.wap.url}/oauth/check_token'
+      userinfoApi:              '${net.kingsilk.qh.net.kingsilk.qh.agency.qhOAuth.wap.url}/api/user/info'
+  qhAgency:
+        admin:
+          clientId:                 'CLIENT_ID_qh-agency-admin'
+          url:                      'https://agency.kingsilk.net/admin/rs'
+          clientSecret:             'CLIENT_PWD_qh-agency-admin_123456'
+          #refundNotifyUrl:          'https://agency.kingsilk.net/local/${devPort}/rs/api/notify/qhPay'   //FIXME 不需要，和支付时同一个回调地址
+          scopes:
+            - LOGIN
+  qhPay:
+    wap:
+      url:                      'https://pay.kingsilk.net/qh/pay/rs'       # todo 其它环境修改该行
+      resourceId:               'RSC_ID_qh-pay-wap'
+      api:
+        pay_refund:             '${net.kingsilk.qh.net.kingsilk.qh.agency.qhPay.wap.url}/api/pay/refund'
+
+
+
+# JerseyProperties
+# http://docs.spring.io/spring-boot/docs/1.5.1.RELEASE/reference/htmlsingle/#boot-features-jersey
+# https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-Jersey-2.X-Project-Setup-1.5#adding-the-dependencies-to-your-application
+spring.jersey:
+  application-path: /api
+  type: servlet
+  servlet.load-on-startup: 0
+#  init:
+#    "jersey.config.server.provider.packages": |
+#      io.swagger.jaxrs.listing,
+#      net.kingsilk.qh.net.kingsilk.qh.agency.net.kingsilk.qh.net.kingsilk.qh.agency.net.kingsilk.qh.net.kingsilk.qh.agency.wap.resource
+#      net.kingsilk.qh.net.kingsilk.qh.agency.net.kingsilk.qh.net.kingsilk.qh.agency.net.kingsilk.qh.net.kingsilk.qh.agency.wap.controller,
+    # "jersey.config.server.provider.classnames": |
+    #  io.swagger.jaxrs.listing.ApiListingResource,
+    #  io.swagger.jaxrs.listing.SwaggerSerializers,
+    #  {your.application.classes}

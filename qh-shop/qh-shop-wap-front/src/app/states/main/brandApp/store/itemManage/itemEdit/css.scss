@@ -1,0 +1,313 @@
+.ks-itemEdit {
+  .add-wrap {
+    padding: 0 15px;
+    background: #fff;
+    .add-box {
+      height: 58px;
+      .add-name {
+        font-size: 16px;
+        color: #333;
+      }
+      .add-input {
+        margin-left: 24px;
+        height: 30px;
+
+        > span {
+          width: 100%;
+          display: inline-block;
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          line-height: 30px;
+        }
+        input {
+          border: none;
+          background: transparent;
+          height: 100%;
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers */
+          font-size: 16px;
+          color: #999;
+        }
+
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-size: 16px;
+          color: #999;
+        }
+
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-size: 16px;
+          color: #999;
+        }
+      }
+    }
+
+    .mainImg {
+      //margin-top: 10px;
+      .imgList {
+        position: relative;
+        width: 68px;
+        height: 68px;
+        background: #E6E6E6;
+        margin-right: 10px;
+        margin-top: 10px;
+
+        #file {
+          width: 68px;
+          height: 68px;
+          position: absolute;
+          //font-size: 100px;
+          right: 0;
+          top: 0;
+          opacity: 0;
+          filter: alpha(opacity=0);
+          cursor: pointer
+        }
+
+        .img-icon {
+          font-size: 18px;
+          min-width: 18px;
+          min-height: 18px;
+          line-height: 18px;
+          margin: 0;
+          padding: 0;
+        }
+        div {
+          font-size: 12px;
+          color: #000000;
+        }
+        .imgWrap {
+          margin: 0;
+          width: 68px;
+          position: relative;
+          overflow: hidden;
+          &:before {
+            content: "";
+            display: block;
+            padding-top: 100%;
+          }
+          img {
+            position: absolute;
+            top: 0;
+            padding: 0;
+            width: 100%;
+          }
+        }
+        .file-panel {
+          height: 20px;
+          position: absolute;
+          background: #d5d5d5;
+          top: 0;
+          right: 0;
+          padding: 0;
+          opacity: .8;
+          width: 18px;
+          .cancel {
+            //overflow: hidden;
+            > .ks-icon {
+              font-size: 18px;
+              width: 18px;
+              min-width: 18px;
+              height: 18px;
+              min-height: 18px;
+              line-height: 18px;
+            }
+          }
+        }
+      }
+    }
+    .erro {
+      color: #999;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+
+    .add-sku-wrap {
+      //padding: 0px 15px;
+      border: 1px solid #d5d5d5;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      .skuNum {
+        height: 44px;
+        margin: 0 15px;
+        .name {
+        }
+        .detail {
+
+        }
+        .ks-icon {
+          margin: 0;
+          font-size: 16px;
+          margin-left: 10px;
+        }
+      }
+      .sku-box {
+        margin: 0 30px;
+        position: relative;
+        .position-icon {
+          position: absolute;
+          right: -20px;
+          top: 95px;
+          > .ks-icon {
+            width: 18px;
+            height: 18px;
+            color: #E53467;
+            min-height: 18px;
+            min-width: 18px;
+
+          }
+        }
+        .add-sku-box {
+          height: 44px;
+          .sku-dis {
+            height: 44px;
+            .add-sku-name {
+              font-size: 16px;
+              color: #333;
+              width: 50px;
+              min-width: 50px;
+            }
+            .add-sku-input {
+              margin-left: 24px;
+              .img-icon {
+                margin: 0;
+              }
+              input {
+                border: none;
+                background: transparent;
+                height: 100%;
+                width: 100%;
+              }
+              input::-webkit-input-placeholder { /* WebKit browsers */
+                font-size: 16px;
+                color: #999;
+              }
+
+              input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                font-size: 16px;
+                color: #999;
+              }
+
+              input::-moz-placeholder { /* Mozilla Firefox 19+ */
+                font-size: 16px;
+                color: #999;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .add-sku-btn {
+      height: 40px;
+      border: 1px dashed #e53467;
+      border-radius: 4px;
+      margin-top: 10px;
+      > span {
+        font-size: 14px;
+        color: #e53467;
+      }
+    }
+  }
+
+  .blank-line {
+    width: 100%;
+    height: 10px;
+    min-height: 10px;
+    background: #f5f5f5;
+  }
+
+  .btn-wrap {
+    height: 49px;
+    .btn-box {
+      height: 30px;
+      text-align: center;
+      .save {
+        font-size: 18px;
+        color: #666;
+      }
+      .btn-line {
+        display: block;
+        border-left-width: 1px;
+        border-left-style: solid;
+        margin: 0;
+        border-color: #d5d5d5;
+        -webkit-transform: scaleX(.5);
+        -webkit-transform-origin: 0 0;
+        overflow: hidden;
+      }
+      .realSave {
+        color: #E53467;
+        font-size: 18px;
+      }
+    }
+
+  }
+  .delete-btn {
+    margin:20px 15px 40px 15px ;
+    width: 100%;
+    height: 44px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #ED5F5B;
+    color: #ED5F5B;
+    font-size: 18px;
+  }
+  //图片预览
+  .imgView {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(51, 51, 51, 0.5);
+  }
+  .jqPhote {
+    z-index: 20;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    //background: rgba(0,0,0,.5);
+    #clipArea {
+      width: 100%;
+      height: 300px;
+    }
+    .choosePhote-top {
+      width: 100%;
+      background: rgba(0, 0, 0, .7);
+    }
+    .choosePhote-btn {
+      background: rgba(0, 0, 0, .7);
+      width: 100%;
+      #clipBtn {
+        width: 80px;
+        height: 32px;
+        background: #e53467;
+        margin: 0 20px;
+        border-radius: 4px;
+        text-align: center;
+        line-height: 32px;
+        font-size: 17px;
+        color: #ffffff;
+      }
+      #cancel {
+        width: 80px;
+        height: 32px;
+        background: #fff;
+        margin: 0 20px;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 17px;
+        line-height: 32px;
+      }
+    }
+
+    #view {
+      margin: 0 auto;
+      width: 200px;
+      height: 200px;
+      background-color: #666;
+    }
+  }
+}

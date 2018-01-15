@@ -1,0 +1,50 @@
+<div class="ks-myIncome"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>我的收入</h1>
+        <div class="right-button" flex="20" ui-sref="main.brandApp.store.shop.discountDetail">
+            明细
+        </div>
+    </div>
+    <div class="topLine"></div>
+
+    <md-content flex style="overflow-x:hidden;">
+        <div class="main" layout="column">
+            <div class="income-top" layout="column">
+                <div class="bg1"></div>
+                <div class="bg2"></div>
+                <div layout="column"  class="money-con" flex>
+                    <div class="money">{{data.totalBalance/100 | num:2}}</div>
+                    <div class="money-type">累计收入=余额+已提现</div>
+                </div>
+            </div>
+            <!--提现记录-->
+            <div layout="column" class="withdraw">
+                <!--ng-repeat-->
+                <div layout="column">
+                    <div layout="row" layout-align="space-between center" class="withdraw-tab">
+                        <div layout="column" class="withdraw-left">
+                            <div layout="row" class="money-con"><span class="word">余额：</span><span class="money">{{data.balance/100 | num:2}}</span></div>
+                            <div class="ts-word">顾客支付成功，还未提现金额</div>
+                        </div>
+                        <button ui-sref="main.brandApp.store.shop.withdraw">提现</button>
+                    </div>
+                    <div class="line"></div>
+                </div>
+                <div layout="column">
+                    <div layout="row" layout-align="space-between center" class="withdraw-tab">
+                        <div layout="column" class="withdraw-left">
+                            <div layout="row" class="money-con"><span class="word">已提现：</span><span class="money">{{data.totalWithdraw/100 | num:2}}</span></div>
+                            <div class="ts-word">已结算并已提现的金额</div>
+                        </div>
+                        <!--<button ui-sref="main.brandApp.store.shop.withdraw">提现</button>-->
+                    </div>
+                    <div class="line"></div>
+                </div>
+                <!--<div class="ts">提示：仅支持微信到账，因微信限制每人每日可提现2万。</div>-->
+            </div>
+        </div>
+    </md-content>
+</div>

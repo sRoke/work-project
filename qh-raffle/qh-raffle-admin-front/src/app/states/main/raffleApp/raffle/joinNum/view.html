@@ -1,0 +1,147 @@
+<div flex layout="column" class="ks-joinNum">
+    <div class="ks-white-header bg-select-con" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>参与人数</h1>
+        <div class="right-button" flex="20" ng-click="maskShow()">
+            <md-icon class="ks-icon" style="color: #666;font-size: 20px;"  md-font-set="ks-icon" md-font-icon="ag-screen-0"></md-icon>
+        </div>
+        <div class="bg-select" ng-if="selectShow">
+            <div class="select-tab" style="margin-top: 10px;"  ng-click="selectStatus('all')">全部</div>
+            <md-divider></md-divider>
+            <!--<div class="select-tab">已中奖</div>-->
+            <!--<md-divider></md-divider>-->
+            <div class="select-tab" ng-click="selectStatus('HANDLING')">待处理</div>
+            <md-divider></md-divider>
+            <div class="select-tab" ng-click="selectStatus('HANDLED')">已处理</div>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="search" layout="row">
+        <div class="search-input" flex layout="row">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>
+            </div>
+            <div class="con" flex>
+                <input type="text" ng-model="keyWord" placeholder="输入手机号搜索" ng-focus="focus(true)" ng-blur="focus(false)">
+            </div>
+            <div class="right" ng-show="searchShow" ng-click="clearKeyWord()">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-closed-o"></md-icon>
+            </div>
+        </div>
+        <div class="search-btn" ng-show="searchShow" ng-click="search()">搜索</div>
+    </div>
+    <!--遮罩-->
+    <div class="mask" ng-if="maskDrop" style="position: absolute"   ng-click="maskHide()">
+    </div>
+    <md-content flex style="background: #f5f5f5">
+        <div class="con-title">当前参与人次:&nbsp;{{pageList.totalElements}}次</div>
+        <div class="raffleList" layout="row" layout-align="center center" ng-repeat="list in pageList.content" ng-click="sendLottery(list.id)"
+           >
+
+            <div flex layout="row" layout-align="center center">
+                <div class="List-img">
+                    <img ng-src="{{list.avatar}}">
+                </div>
+                <div class="List-info" layout="column" flex>
+                    <div class="name" flex>{{list.realName}}</div>
+                    <div class="phone">{{list.phone}}</div>
+                </div>
+                <div class="List-time" layout="row">
+                    <div class="price">{{list.handleStausDesp}}</div>
+                </div>
+            </div>
+            <div style="margin-right: 10px" class="icon-div">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+
+
+
+        <div flex class="empty" ng-if="pageList.content.length<=0" style="width: 100%;margin-top: 100px" layout="column" layout-align="center center">
+            <div class="empty"><img src="empty.png" width="60px"></div>
+            <div class="ts">暂无参与人</div>
+        </div>
+
+
+        <!--分页-->
+        <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;" ng-show="pageList.totalPages>1">
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-click="pageChange(currpage+1)" ng-show="pageList.number<pageList.totalPages-1">
+                点击加载更多...
+            </md-button>
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;"
+                        ng-show="pageList.number>=pageList.totalPages-1">
+                没有更多活动了
+            </md-button>
+        </div>
+    </md-content>
+</div>
+
+
+<!--        亲友团弹窗                -->
+<script type="text/ng-template" id="frends.html">
+    <md-dialog aria-label="" class="frends-list-dialog" style="overflow: hidden;">
+        <md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o"
+                 ng-click="vmd.cancel()"></md-icon>
+        <div class="dis">帮砍人</div>
+        <md-divider></md-divider>
+        <md-content style="border-radius: 8px">
+
+            <div class="address-dis" layout="column" ng-repeat="list in vmd.pageList.content">
+                <div class="dis-list" layout="row" layout-align="start center">
+                    <div layout="row" layout-align="start center" class="list-left">
+                        <img ng-src="{{list.wxImg}}" ng-if="list.wxImg">
+                        <img src="111.png" ng-if="!list.wxImg">
+                    </div>
+                    <div flex layout="column" class="listinfo">
+                        <div class="name">{{list.userName}}</div>
+                        <div class="phone">{{list.phone}}</div>
+                    </div>
+                    <div class="list-right">
+                        <div class="num" style="margin-bottom: 8px">帮砍<span style="color:#FF6F6F ">{{list.helpPrice/100 | num :2}}</span>元</div>
+                        <div class="num"></div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="more" layout="row" layout-align="center center" ng-click="vmd.getFriendList(vmd.currpage+1)"
+                 ng-if="vmd.pageList.number+1 < vmd.pageList.totalPages">
+                加载更多...
+            </div>
+
+            <div class="empty" ng-if="vmd.pageList.content.length<=0" style="width: 100%;height: 100%" layout="column" layout-align="center center">
+                <div class="empty"><img src="empty.png" width="60px"></div>
+                <div class="ts">暂无帮砍人</div>
+            </div>
+            <!--<div class="address-dis" layout="column" ng-if="vmd.friendList.content && vmd.friendList.content.length > 0">-->
+                <!--<div class="dis-list" layout="row" layout-align="start center" ng-repeat="list in vmd.friendList.content">-->
+                    <!--<div flex layout="row" layout-align="start center" class="list-left">-->
+                        <!--<img ng-src="{{list.wxHeaderImg}}" ng-if="list.wxHeaderImg">-->
+                        <!--<img src="111.png" ng-if="!list.wxHeaderImg">-->
+                        <!--<span>{{list.name}}</span>-->
+                    <!--</div>-->
+                    <!--<div class="list-right"><span style="color:#FF6F6F ">{{list.voteNum}}</span>票</div>-->
+                <!--</div>-->
+                <!--<div class="more" layout="row" layout-align="center center" ng-click="vmd.getMore()" ng-if="vmd.friendList.number+1 < vmd.friendList.totalPages">-->
+                    <!--加载更多...-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div ng-if="vmd.friendList.content.length == 0" class="noList" layout="row" layout-align="center start">-->
+                <!--<div class="noList-con" layout="column" layout-align="start center">-->
+                    <!--<div class="noList-con-icon">-->
+                        <!--<img src="noItem.png">-->
+                    <!--</div>-->
+                    <!--<div class="noList-con-font">-->
+                        <!--空空如也,快去拉票吧!-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        </md-content>
+
+    </md-dialog>
+</script>

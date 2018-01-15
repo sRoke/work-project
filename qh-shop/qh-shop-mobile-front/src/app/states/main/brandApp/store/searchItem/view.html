@@ -1,0 +1,113 @@
+<div flex="" layout="column" class="ks-main  ks-searchItem">
+
+    <div class="search" layout="row" layout-align="center center">
+        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left" style="margin:0 0 0 15px"
+                 ng-click=" fallbackPage()"></md-icon>
+        <div class="input-wrap" flex layout="row">
+            <input type="text" ng-model="keyWord" placeholder="输入商品名称" flex ui-sref="main.brandApp.store.search">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"
+                     ng-click="getList('0')"></md-icon>
+        </div>
+        <div class="right-rank" ng-click=" search(keyWord,true)" style="    margin-right: 15px;">
+            <span class="spanSearch">搜索</span>
+        </div>
+    </div>
+
+   <!-- <md-toolbar class="ks-header ks-search-header">
+        <div layout="row" class="ks-header-divWrap">
+            <div class="divTop" flex layout="row">
+                &lt;!&ndash; <md-icon  md-font-set="material-icons" class="chevron_left">chevron_left</md-icon>&ndash;&gt;
+
+                <div class="chevron_left_Wrap" ng-click=" fallbackPage()">
+                    &lt;!&ndash;<md-icon class="chevron_left_Wrap" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>&ndash;&gt;
+                    <md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"></md-icon>
+                </div>
+                <div class="searchInputWrap" flex>
+                    <input type="search" class="searchInput" ng-model="keyWord" placeholder="搜索：  商品  "/>
+                    <md-icon md-font-set="ks-icon" class="searchIcon" md-font-icon="ks-search"></md-icon>
+                </div>
+                <div class="rightDiv" ng-click=" search(keyWord,true)">
+                    <span class="spanSearch">搜索</span>
+                </div>
+
+            </div>
+        </div>
+    </md-toolbar>-->
+
+
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+        <div layout="column" flex layout-align="top center" class="noOrder" ng-if="data.content.length==0">
+            <div class="img-con" layout="row" layout-align="center center">
+                <img src="noGoods.png" class="noGoods">
+            </div>
+            <div class="noGoods-word">没有您搜索的商品~</div>
+        </div>
+       <!-- <div class="guess" ng-if="data[status].data.length>0">&lt;!&ndash;1&ndash;&gt;
+            <div class="div-wrap" layout="row" layout-wrap>&lt;!&ndash;2&ndash;&gt;
+                <div flex layout="column" class="rec-item" ng-repeat="list in data[status].data track by $index">&lt;!&ndash;3&ndash;&gt;
+                    <div flex layout="column" style="position: relative"
+                         ui-sref="main.brandApp.store.item({id:list.id})">
+                        &lt;!&ndash; 多追加一层div，方便使用  layout-wrap 和 ng-repeat 。 需要CSS特殊处理  &ndash;&gt;
+                        <div class="item-img">
+                            <img ng-src="{{list.imgs[0]}}" img-holder/>
+                        </div>
+                        <div class="dis" layout="column" layout-align="space-between center">
+                            <div class="item-title">
+                                {{list.title}}
+                            </div>
+                            <div class="dis-price" layout="row" layout-align="space-between center">
+                                <div class="price">
+                                    <span style="font-size: 14px">￥</span>
+                                    <span style="font-size: 20px">{{list.skuMinSalePrice/100 | num:2}}</span>
+                                </div>
+                                <div class="old-price"  ng-if="list.skuMinSalePrice < list.salePrice">
+                                    ￥{{list.salePrice/100|num:2}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+
+
+        <div class="guess" ng-if="data.content.length>0"><!--1-->
+            <div class="div-wrap" layout="row" layout-wrap><!--2-->
+                <div layout="column" class="rec-item" ng-repeat="list in data.content track by $index"><!--3-->
+                    <div flex layout="column" style="position: relative"
+                         ui-sref="main.brandApp.store.item({id:list.id})">
+                        <!-- 多追加一层div，方便使用  layout-wrap 和 ng-repeat 。 需要CSS特殊处理  -->
+                        <div class="item-img">
+                            <img ng-src="{{list.imgs[0]}}" img-holder/>
+                        </div>
+                        <div class="dis" layout="column" layout-align="space-between start">
+                            <div class="item-title">
+                                {{list.title}}
+                            </div>
+                            <div class="dis-price" layout="row" layout-align="space-between center">
+                                <div class="price">
+                                    <span class="priceY">￥</span>
+                                    <span class="priceX" >{{list.skuMinSalePrice/100|num:2}}</span>
+                                </div>
+                                <div class="old-price"
+                                     ng-if="list.skuMinSalePrice < list.salePrice">
+                                    ￥{{list.salePrice/100|num:2}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--分页-->
+        <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;" ng-show="data.totalPages>1">
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-click="getList(currpage+1)" ng-show="data.number<data.totalPages-1">
+                点击加载更多...
+            </md-button>
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-show="data.number>=data.totalPages-1">
+                没有更多商品了
+            </md-button>
+        </div>
+    </md-content>
+</div>

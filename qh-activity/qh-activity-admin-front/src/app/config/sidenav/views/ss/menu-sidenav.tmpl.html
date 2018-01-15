@@ -1,0 +1,17 @@
+<ul class="menu">
+    <li class="li-wrap" ng-repeat="section in menu.sections" ng-if="section.show">
+        <h2 ss-style-color="{'color': 'primary.A100'}" class="menu-heading md-subhead" ng-if="section.type === 'heading'">
+            <md-icon ng-if="section.icon"
+                     md-font-set="{{section.icon.mdFontSet}}"
+                     md-font-icon="{{section.icon.mdFontIcon}}">{{section.icon.textName}}</md-icon>{{section.name}}
+        </h2>
+        <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
+        <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
+        <ul ng-if="section.children">
+            <li ng-repeat="child in section.children" ng-if="!child.hidden">
+                <menu-link section="child" ng-if="child.type === 'link'"></menu-link>
+                <menu-toggle section="child" ng-if="child.type === 'toggle'"></menu-toggle>
+            </li>
+        </ul>
+    </li>
+</ul>

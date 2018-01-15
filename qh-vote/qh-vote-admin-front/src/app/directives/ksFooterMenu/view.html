@@ -1,0 +1,19 @@
+<div layout="column">
+    <md-divider></md-divider>
+    <md-toolbar layout="row"
+                layout-align="center stretch">
+        <div ng-repeat="menu in footerCtrl.menus"
+             flex
+             layout="column"
+             layout-align="center center"
+             md-ink-ripple
+             class="menu-item"
+             ng-class="{cur:menu.name == cur}"
+             ui-sref="{{menu.state}}">
+            <div layout="column">
+                <md-icon md-font-set="ks-icon" md-font-icon="{{menu.iconClass}}"></md-icon>
+                <div class="md-grid-text">{{menu.text}}</div>
+            </div>
+        </div>
+    </md-toolbar>
+</div>

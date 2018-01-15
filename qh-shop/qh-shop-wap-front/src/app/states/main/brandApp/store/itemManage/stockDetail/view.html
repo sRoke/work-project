@@ -1,0 +1,135 @@
+<div flex="100" layout="column" class="ks-stockDetail">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex ng-click="changeOpen()">库存详情
+        </h1>
+        <div class="right-button" flex="20">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+    </div>
+    <div class="blank-line"></div>
+
+    <div class="swiper-bg">
+        <div class="swiper-container2">
+            <div class="my-wrapper2">
+                <div class="my-slide2">
+                    <div class="img-wrap">
+                        <img src="https://img.kingsilk.net/59b9f257c9e77c00086692bd" width="100%" alt="">
+                    </div>
+                </div>
+                <div class="my-slide2">
+                    <div class="img-wrap">
+                        <img src="https://img.kingsilk.net/59b9f257c9e77c00086692bd" width="100%" alt="">
+                    </div>
+                </div>
+                <div class="my-slide2">
+                    <div class="img-wrap">
+                        <img src="https://img.kingsilk.net/59b9f257c9e77c00086692bd" width="100%" alt="">
+                    </div>
+                </div>
+                <div class="my-slide2">
+                    <div class="img-wrap">
+                        <img src="https://img.kingsilk.net/59b9f257c9e77c00086692bd" width="100%" alt="">
+                    </div>
+                </div>
+                <div class="my-slide2">
+                    <div class="img-wrap">
+                        <img src="https://img.kingsilk.net/59b9f257c9e77c00086692bd" width="100%" alt="">
+                    </div>
+                </div>
+                <div class="my-slide2">
+                    <div class="img-wrap">
+                        <img src="https://img.kingsilk.net/59b9f257c9e77c00086692bd" width="100%" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="img-title">我是新生儿内衣</div>
+    </div>
+    <div class="blank-line"></div>
+    <div class="tab" layout="row">
+        <div class="tab-btn" ng-click="clickThis(1)">
+            <span class="btn" ng-class="{active:isClick == '1'}">总库存</span>
+        </div>
+        <div class="tab-btn" ng-click="clickThis(2)">
+            <span class="btn" ng-class="{active:isClick == '2'}">入库记录</span>
+        </div>
+        <div class="tab-btn" ng-click="clickThis(3)">
+            <span class="btn" ng-class="{active:isClick == '3'}">出库记录</span>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #fff" ng-show="isClick == '1'">
+        <div class="detail-wrap" layout="row" layout-align="space-between start">
+            <div class="detail-dis" flex="50" layout="column">
+                <div class="detail-name">规格</div>
+                <div class="detail-s"> 规格1</div>
+                <div class="detail-s">规格2</div>
+            </div>
+            <div class="detail-dis" layout="column">
+                <div class="detail-name">采购单价</div>
+                <div class="detail-s center"> 600</div>
+                <div class="detail-s center">600</div>
+            </div>
+            <div class="detail-dis" layout="column">
+                <div class="detail-name right">数量</div>
+                <div class="detail-s right">60</div>
+                <div class="detail-s right">60</div>
+            </div>
+        </div>
+    </md-content>
+    <md-content flex style="overflow-x: hidden;background: #fff" ng-show="isClick == '2'">
+        <div class="detail-wrap" layout="row" layout-align="space-between start">
+            <div class="detail-dis" flex="50" layout="column">
+                <div class="detail-name">规格</div>
+                <div class="detail-s"> 规格1</div>
+                <div class="detail-s">规格2</div>
+            </div>
+            <div class="detail-dis" layout="column">
+                <div class="detail-name">数量</div>
+                <div class="detail-s center"> 600</div>
+                <div class="detail-s center">600</div>
+            </div>
+            <div class="detail-dis" layout="column">
+                <div class="detail-name right">时间</div>
+                <div class="detail-s right">2017-11-6</div>
+                <div class="detail-s right">2017-11-6</div>
+            </div>
+        </div>
+    </md-content>
+    <md-content flex style="overflow-x: hidden;background: #fff" ng-show="isClick == '3'">
+        <div class="detail-wrap" layout="row" layout-align="space-between start">
+            <div class="detail-dis" flex="50" layout="column">
+                <div class="detail-name">规格</div>
+                <div class="detail-s"> 规格1</div>
+                <div class="detail-s">规格2</div>
+            </div>
+            <div class="detail-dis" layout="column">
+                <div class="detail-name">数量</div>
+                <div class="detail-s center"> 600</div>
+                <div class="detail-s center">600</div>
+            </div>
+            <div class="detail-dis" layout="column">
+                <div class="detail-name right">时间</div>
+                <div class="detail-s right">2017-11-6</div>
+                <div class="detail-s right">2017-11-6</div>
+            </div>
+        </div>
+    </md-content>
+
+    <md-divider style="border-color:#E53467"></md-divider>
+    <div class="btn-wrap" layout="row" layout-align="center center">
+        <div class="btn-box" flex layout="row">
+            <div class="save" flex ng-click="save()">保存</div>
+            <div class="btn-line"></div>
+            <div class="save" flex ng-click="realSave()">入库</div>
+            <div class="btn-line"></div>
+            <div class="save" flex ng-click="realSave()">出库</div>
+            <div class="btn-line"></div>
+            <div class="save" flex ng-click="realSave()">开单</div>
+        </div>
+    </div>
+</div>

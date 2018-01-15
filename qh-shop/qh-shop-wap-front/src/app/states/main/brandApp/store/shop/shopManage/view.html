@@ -1,0 +1,139 @@
+<div class="ks-shop"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>{{data.name}}</h1>
+        <div class="right-button" flex="20"  style="color: #E53467;" ui-sref="main.brandApp.store.shop.changeShop">
+            切换门店
+        </div>
+    </div>
+    <div class="topLine"></div>
+
+    <md-content flex style="overflow-x:hidden;">
+        <div class="main" layout="column">
+        <div layout="column" class="center-con">
+            <div class="center-tab" layout="row" layout-align="space-between center" ui-sref="main.brandApp.store.shop.editShop">
+                <div class="tab-left">门店信息</div>
+                <md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+            <!--0.5px细线-->
+           <!-- <div class="line"></div>
+            <div class="center-tab" layout="row" layout-align="space-between center" ui-sref="main.brandApp.store.shop.shopRoles" >
+                <div class="tab-left">角色信息</div>
+                <md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>-->
+            <!--0.5px细线-->
+            <div class="line"></div>
+            <div class="center-tab" layout="row" layout-align="space-between center" ui-sref="main.brandApp.store.shop.addGoods">
+                <div class="tab-left">商品分类</div>
+                <md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+            <div class="line"></div>
+            <div class="center-tab" layout="row" layout-align="space-between center" ui-sref="main.brandApp.store.shop.viewSpec">
+                <div class="tab-left">商品规格</div>
+                <md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+            <!--<div class="line"></div>-->
+            <!--<div class="center-tab" layout="row" layout-align="space-between center" ui-sref="main.brandApp.store.shop.goodSpec">-->
+                <!--<div class="tab-left">商品规格</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+            <div class="line"></div>
+            <div class="center-tab" layout="row" layout-align="space-between center" ui-sref="main.brandApp.store.shop.buyStore" >
+                <div class="tab-left">续费</div>
+                <div layout="row" layout-align="center">
+                    <div style="color: #999;font-size: 14px;">低至{{buyPrice.mSallPrice/100|num:2}}元/月</div>
+                    <md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s" style="margin-top:19px;"></md-icon>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="center-tab center-tab-hide" layout="row" layout-align="space-between center" >
+                <div class="tab-left">店铺装修</div>
+                <div layout="row" layout-align="center">
+                    <div style="color: #999;font-size: 14px;">通用模板</div>
+                    <md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s" style="margin-top:19px;"></md-icon>
+                </div>
+            </div>
+            <div class="line"></div>
+            <!--<div class="center-tab" layout="row" layout-align="space-between center" ui-sref="main.brandApp.store.shop.salesMan">-->
+                <!--<div class="tab-left">店员信息</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+            <!--<div class="line"></div>-->
+            <!--<div class="center-tab center-tab-hide" layout="row" layout-align="space-between center" >-->
+                <!--<div class="tab-left">合伙人佣金</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+        </div>
+        <!--10px 灰色块-->
+        <!--<div class="center-line"></div>-->
+        <!--<div layout="column" class="center-con">-->
+            <!--<div class="center-tab" layout="row" layout-align="space-between center"  ui-sref="main.brandApp.shop.storeHouse">-->
+                <!--<div class="tab-left">仓库信息</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;0.5px细线&ndash;&gt;-->
+            <!--<div class="line"></div>-->
+            <!--<div class="center-tab" layout="row" layout-align="space-between center" >-->
+                <!--<div class="tab-left">供应商信息</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+            <!--<div class="line"></div>-->
+            <!--<div class="center-tab" layout="row" layout-align="space-between center" >-->
+                <!--<div class="tab-left">会员信息</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="center-line"></div>-->
+        <!--<div layout="column" class="center-con">-->
+            <!--<div class="center-tab center-tab-hide" layout="row" layout-align="space-between center" >-->
+                <!--<div class="tab-left">店铺装修</div>-->
+                <!--<div layout="row" layout-align="center">-->
+                    <!--<div style="color: #999;font-size: 14px;">通用模板</div>-->
+                    <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s" style="margin-top:19px;"></md-icon>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;0.5px细线&ndash;&gt;-->
+            <!--<div class="line"></div>-->
+            <!--<div class="center-tab" layout="row" layout-align="space-between center" ui-sref="main.brandApp.store.shop.addGoods">-->
+                <!--<div class="tab-left">商品分类</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+            <!--<div class="line"></div>-->
+            <!--<div class="center-tab" layout="row" layout-align="space-between center" ui-sref="main.brandApp.store.shop.goodSpec">-->
+                <!--<div class="tab-left">商品规格</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+            <!--<div class="line"></div>-->
+            <!--<div class="center-tab center-tab-hide" layout="row" layout-align="space-between center" >-->
+                <!--<div class="tab-left">店铺订单</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="center-line"></div>-->
+        <!--<div layout="column" class="center-con">-->
+            <!--<div class="center-tab center-tab-hide" layout="row" layout-align="space-between center" >-->
+                <!--<div class="tab-left">店员业绩</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;0.5px细线&ndash;&gt;-->
+            <!--<div class="line"></div>-->
+            <!--<div class="center-tab center-tab-hide" layout="row" layout-align="space-between center" >-->
+                <!--<div class="tab-left">店员活跃度</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+            <!--<div class="line"></div>-->
+            <!--<div class="center-tab center-tab-hide" layout="row" layout-align="space-between center" >-->
+                <!--<div class="tab-left">门店粉丝</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+            <!--<div class="line"></div>-->
+            <!--<div class="center-tab center-tab-hide" layout="row" layout-align="space-between center" >-->
+                <!--<div class="tab-left">粉丝概况</div>-->
+                <!--<md-icon class="tab-right" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    </md-content>
+</div>

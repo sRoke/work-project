@@ -1,0 +1,124 @@
+<div flex="" layout="column" class="ks-main  ks-newLogin" style="position: relative">
+    <div flex style=" position: relative;overflow: scroll" ng-show="isShowHtml">
+        <div class="img-box">
+            <img ng-src="//img.kingsilk.net/{{data.img}}" alt="{{data.name}}">
+        </div>
+        <div class="view-content">
+            <div class="blank"></div>
+            <div class="title">
+                <span ng-if="!isMine"
+                      style="max-width: 100px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><span
+                        style="color:red;">{{user.targetUserName}}</span> 喊你来助力</span>
+                <span ng-if="isMine">{{data.name}}</span>
+            </div>
+            <div class="lastTime" ng-show="activeFalse" ng-if="activeFalse && !data.isEarlier">
+                还剩
+                {{data.activityCheck.day}}天{{data.activityCheck.hour}}时{{data.activityCheck.minute}}分{{data.activityCheck.second}}秒结束
+            </div>
+            <div class="lastTime" ng-show="activeFalse" ng-if="data.isEarlier">
+                还剩
+                {{data.activityCheck.day2}}天{{data.activityCheck.hour2}}时{{data.activityCheck.minute2}}分{{data.activityCheck.second2}}秒开始
+            </div>
+            <div class="lastTime"  ng-if="!activeFalse">
+                活动已结束
+            </div>
+            <div class="times" >
+                <span class="time-ico" ng-if="activeFalse">活动时间：{{data.startTime | date:'yy.MM.dd'}} ~ {{data.endTime | date:'yy.MM.dd'}}</span>
+            </div>
+            <div class="status" ng-if="!isMine">
+                <span class="recordSize">TA的接力值: <i>{{user.recordSizeByTargetUser}}</i></span>
+                <span class="rankByTargetUser">TA的排名:
+                    <i class="cl-red">{{user.rankByTargetUser}}</i></span>
+            </div>
+            <div class="status" ng-if="isMine">
+                <span class="recordSize">我的接力值:<i>{{user.recordSizeByCurrentUser}}</i></span>
+                <span class="rankByTargetUser">我的排名:<i class="cl-red"> {{user.rankByCurrentUser}}</i></span>
+            </div>
+        </div>
+
+
+        <div class="rank-rule" layout="row" layout-align="center center">
+            <div class="btn" ng-class="{active:tab == '1'}" flex="" ng-click="tabs('1')">活动规则</div>
+            <div class="btn" ng-class="{active:tab == '2'}" flex="" ng-click="tabs('2')">活动排名</div>
+        </div>
+        <div ng-if="tab == '1'">
+            <div ng-include="tplUrl" class="include-box"></div>
+        </div>
+        <div ng-if="tab == '2'">
+
+            <div class="content">
+                <div class="top">TOP30</div>
+                <div class="cot">
+                    参与活动人数:
+                    <i class="cl-green">{{user.allSize}}</i>
+                </div>
+            </div>
+
+            <div class="container ">
+                <table class="table" border="0" width="100%">
+                    <tr>
+                        <th>排名</th>
+                        <th>姓名</th>
+                        <th>手机号</th>
+                        <th>接力值</th>
+                    </tr>
+                    <tr ng-repeat="lists in user.data">
+                        <td>{{lists.rank}}</td>
+                        <td>{{lists.userName}}</td>
+                        <td>{{lists.phone}}</td>
+                        <td>{{lists.recordSize}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="width: 100%;opacity: 0;height: 100px"></div>
+        <div layout="row" layout-align="center center"
+             ng-show="isShowBtn"
+             ng-if="activeFalse"
+             style="margin-bottom: 10px;position: fixed;bottom: 0;width: 100%;background: rgba(0,0,0,0);padding: 0 8px;max-width: 600px">
+            <div flex ng-if="isTargetUserId&&!user.haveHelp" class="fotter-btn" ng-click="helpUser('1')"
+                 layout="row"
+                 layout-align="center center">
+                <span flex>助力好友</span>
+                <!--ng-show="!isShowHelpBtn"-->
+            </div>
+
+            <div flex ng-if="user.haveHelp" class="fotter-btn" ng-click="vm.maskShow()" layout="row"
+                 layout-align="center center">
+                <span flex>找人助力</span>
+            </div>
+            <div flex ng-if="!user.recordSizeByCurrentUser && !data.isEarlier && !data.overdue" class="friend-btn" ng-click="join()" layout="row"
+                 layout-align="center center">
+                <span flex>我要参加</span>
+            </div>
+            <div flex ng-if="!user.recordSizeByCurrentUser && data.isEarlier" class="friend-btn"  layout="row"
+                 layout-align="center center" style="background: #d5d5d5">
+                <span flex>活动未开始</span>
+            </div>
+            <div flex ng-if="!user.recordSizeByCurrentUser && data.overdue && !data.isEarlier" class="friend-btn"  layout="row"
+                 layout-align="center center" style="background: #d5d5d5">
+                <span flex>活动已结束</span>
+            </div>
+            <!--ui-sref="main.mine({weHelpId:weHelpId,targetUserId:user.userId})"-->
+            <div flex ng-if="user.recordSizeByCurrentUser&&!isMine" class="friend-btn"
+                 ng-click="goMine(user.userId)"
+                 layout="row"
+                 layout-align="center center">
+                <span flex>返回我的</span>
+            </div>
+        </div>
+    </div>
+
+    <!--遮罩-->
+    <div class="back"  ng-if="vm.mask" ng-click="vm.maskHide()">
+        <div class="backScreen"></div>
+        <div class="img-wrap" layout="row" layout-align="end start">
+            <div class="androidBg"></div>
+        </div>
+    </div>
+
+</div>
+
+
+

@@ -1,0 +1,147 @@
+<!--rmy 重新排版-->
+<div class="ks-store" layout="column">
+    <div class="ks-common-list-apply">
+        <div class="common-list-center">
+            <ul layout="column">
+                <li layout="row">
+                    <label for="bhnum" style="min-width: 60px;">门店名称：</label>
+                    <input id="bhnum" type="text" class="choose " placeholder="" ng-model="keyWords">
+                    <!-- <label for="bhnum2" style="min-width: 60px;" >负责人：</label>
+                     <input id="bhnum2" type="text" class="choose " placeholder=""  ng-model="keyWordsPeople">
+
+                     <label for="applyType" style="margin-left: 5px;" >类型：</label>
+                     <select id="applyType"  ng-model="appType">
+                         <option value="">全部</option>
+                         <option value="LEAGUE">加盟商</option>
+                         <option value="REGIONAL_AGENCY">市代理</option>
+                         <option value="GENERAL_AGENCY">总代理</option>
+                     </select>
+
+                     <label >创建时间：</label>
+                     <div>
+                         &lt;!&ndash;<input type="text" class="layui-input choose" id="test1" ng-model="startDate" placeholder="开始时间">&ndash;&gt;
+                         &lt;!&ndash;<md-datepicker ng-model="startDate" md-placeholder="Enter date" md-open-on-focus&ndash;&gt;
+                         &lt;!&ndash;md-date-locale="s" md-date-locale="dateF"  ng-model="startTime"></md-datepicker>&ndash;&gt;
+                         <input type="text" class="layui-input choose" id="startTime" placeholder="开始时间"
+                                ng-model="startTime">
+
+
+                     </div>
+                     <span>一</span>
+                     <div>
+                         &lt;!&ndash;<input type="text" class="layui-input choose" id="test2" ng-model="endDate" placeholder="结束时间">&ndash;&gt;
+                         &lt;!&ndash;<md-datepicker ng-model="endDate" md-placeholder="End date" md-open-on-focus&ndash;&gt;
+                         &lt;!&ndash;md-date-locale="s" md-date-locale="dateF"  ng-model="endTime"></md-datepicker>&ndash;&gt;
+                         <input type="text" class="layui-input choose" id="endTime" placeholder="结束时间"
+                                ng-model="endTime">
+                     </div>-->
+                    <button class="inquire" ng-click="pageChanged('0')">
+                        搜索
+                    </button>
+                    <button class="inquire2" ng-click="" ui-sref="main.brandApp.addStore">
+                        新增
+                    </button>
+                </li>
+                <br style="clear: both">
+            </ul>
+        </div>
+        <!--div数据表详细信息-->
+        <div class="common-list-detail" layout="column">
+            <!--表头-->
+            <div class="common-list-detail-thead" layout="row">
+                <!--<div class="thead-show" flex="15" layout-align="center">-->
+                <!--<span>编号</span>-->
+                <!--</div>-->
+                <div class="thead-show" flex="10" layout-align="center" style="padding-left: 30px;">
+                    <span>门店名称</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center">
+                    <span>联系方式</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center">
+                    <span>负责人帐号</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center" style="overflow: hidden;">
+                    <span>类型</span>
+                </div>
+                <div class="thead-show" flex="20" layout-align="center" style="overflow: hidden;">
+                    <span>所属地区</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center">
+                    <span>状态</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center">
+                    <span>创建时间</span>
+                </div>
+                <div class="thead-show end-show" flex="20" layout-align="center">
+                    <span>操作</span>
+                </div>
+            </div>
+            <!--表格详细内容-->
+            <div class="common-list-detail-tbody" layout="column">
+                <!--定义每列数据    父级用ng-repeat循环此行-->
+                <div class="common-list-detail-row" layout="row" ng-repeat="item in items.content">
+                    <!--<div class="thead-show" flex="15" layout-align="center">-->
+                    <!--<span>{{item.seq}}</span>-->
+                    <!--</div>-->
+                    <div class="thead-show" flex="10" layout-align="center"
+                         style="padding-left: 30px;">
+                        <span>{{item.name}}</span>
+                    </div>
+                    <div class="thead-show" flex="10" layout-align="center">
+                        <span>{{item.tel}}</span>
+                    </div>
+                    <div class="thead-show" flex="10" layout-align="center">
+                        <span>{{item.phone}}</span>
+                    </div>
+                    <div class="thead-show" flex="10" layout-align="center"
+                         style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                        <span>{{item.shopType}}</span>
+                    </div>
+                    <div class="thead-show" flex="20" layout-align="center"
+                         style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                        <span>{{item.address}}</span>
+                    </div>
+                    <div class="thead-show" flex="10" layout-align="center"
+                         style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                        <span ng-if="item.status =='NORMAL'">营业中</span>
+                        <span ng-if="item.status =='DISABLE'">已关闭营业</span>
+                        <span ng-if="item.status =='EXPIRED'">店铺到期</span>
+                    </div>
+                    <div class="thead-show" flex="10" layout-align="center"
+                         style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                        <span>{{item.dateCreated | date:'yy-MM-dd HH:mm'}}</span>
+                    </div>
+                    <div class="thead-show" flex="20" layout-align="end center"
+                         style="text-align:right;padding-right: 30px;">
+                        <span ui-sref="main.brandApp.basicData({shopId:item.id})"
+                              style="color: #00aaee;cursor: pointer;">基础数据</span>
+                        <span ui-sref="main.brandApp.editStore({shopId:item.id})"
+                              style="color: #00aaee;cursor: pointer;">编辑</span>
+                        <span ng-click="changeStatus(item.id,'true')" style="color: #00aaee;cursor: pointer;"
+                              ng-if="item.status =='DISABLE'">启用</span>
+                        <span ng-click="changeStatus(item.id,'false')" style="color: #00aaee;cursor: pointer;"
+                              ng-if="item.status =='NORMAL'">关闭</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--分页-->
+
+        <div style="width: 99%; margin: 10px auto 0">
+            <div uib-pagination total-items="items.totalElements" ng-model="curPage" ng-change="pageChanged()"
+                 class="pagination-sm col-sm-9" boundary-links="true" max-size="8" rotate="rotate"
+                 items-per-page="items.size" previous-text="<" next-text=">" first-text="|<" last-text=">|"
+                 style="margin:10px;">
+            </div>
+            <div style="float: right" class="pageSubnav">
+                <span>共{{items.totalElements}}条</span>
+                <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+                到第<input type="text" ng-model="curPage">页
+                <md-button ng-click="pageChanged()">确定</md-button>
+            </div>
+        </div>
+
+
+    </div>
+</div>

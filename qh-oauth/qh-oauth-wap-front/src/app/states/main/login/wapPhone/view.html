@@ -1,0 +1,36 @@
+<div class="wapPhone" flex layout="row" layout-align="center center">
+    <div style="width: 100%">
+        <div class="pwd-content" layout="column">
+            <div class="content-top">授权登录</div>
+            <div class="content-main" flex>
+                <div class="form" layout="column">
+                    <div flex>
+                        <input type="tel" ng-model="user.phone" class="form-control-btn" placeholder="手机号">
+                    </div>
+
+                    <div class="line"></div>
+                    <div flex layout="row" layout-align="start center" class="phoneCode">
+                        <div flex class="left">
+                            <input type="tel" placeholder="验证码" ng-model="user.pwd" >
+                        </div>
+                        <div style="width: 1px;background: #d5d5d5;height: 20px"></div>
+                        <div flex class="getPwd" ng-click="getVCcode()">{{gitCodeTime}}</div>
+
+
+                        <!--<input type="password" ng-model="password" class="form-control-btn" placeholder="密码">-->
+                    </div>
+
+                </div>
+
+                <div class="login-btn" ng-click="login()">
+                    登录
+                </div>
+                <!--<div class="sign-in">-->
+                    <!--没有账号？去注册-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+
+</div>
+

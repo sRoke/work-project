@@ -1,0 +1,43 @@
+devPort: 11400
+# ServerProperties
+server:
+  port: 10220
+  context-path: /shop/rs/local/${devPort}                        # todo 其它环境修改该行
+  error.include-stacktrace: on_trace_param
+
+# SecurityProperties
+security:
+  basic.enabled: false
+
+
+
+# QhShopProperties
+net.kingsilk.qh.shop:
+  # http代理设置
+  http:
+    proxy:
+      enabled:      false
+  qhOAuth:
+    wap:
+      url:                      'https://kingsilk.net/oauth2/rs/local/${devPort}'           # todo 其它环境修改该行
+  qhPay:
+    wap:
+      url:                      'https://kingsilk.net/pay/rs/local/${devPort}'       # todo 其它环境修改该行
+      appId:                    'wxbba6def439fc0bd0'
+  qhAgency:
+    wap:
+      url:                      'https://kingsilk.net/agency/rs/local/${devPort}/api'       # TODO 其它环境修改该行
+  agencyUt:
+    basePath :                  'https://kingsilk.net/agency/rs/local/${devPort}/api'
+  qhShop:
+    url:                        'https://kingsilk.net/shop/rs/local/${devPort}/api'       # TODO 其它环境修改该行
+
+ut:
+    basePath : 'https://kingsilk.net/agency/rs/local/${devPort}/api'
+# MongoProperties
+spring.data.mongodb:
+  host: '192.168.0.12'
+  port: 27017
+  database: 'shop'
+  username: 'shop'
+  password: 'shop'

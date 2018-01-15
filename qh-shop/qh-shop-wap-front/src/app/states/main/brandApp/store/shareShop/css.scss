@@ -1,0 +1,114 @@
+.ks-shareShop {
+
+  background: #f5f5f5;
+
+  .parent {
+    width: 100%;
+    //bottom: 0;
+    z-index: -1;
+    .img-wrap {
+      position: relative;
+      background: #fff;
+      width: 337px;
+      //margin: auto;
+      height: 337px;
+      background-image: url('bg.png');
+      background-size: 75% 86%;
+      background-repeat: no-repeat;
+      background-position-x: 44px;
+      background-position-y: 3px;
+      #newImg {
+        position: fixed;
+        left: 50%;
+        top: 0;
+        background: #fff;
+        margin-left: -136px;
+        max-width: 272px;
+        max-height: 272px;
+      }
+      .img-code {
+        width: 127px;
+        position: relative;
+        overflow: hidden;
+        margin-top: 69px;
+        //&:before {
+        //  content: "";
+        //  display: block;
+        //  padding-top: 100%;
+        //}
+        img {
+          border: none;
+          display: block;
+          position: absolute;
+          top: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+        }
+        .shopImg {
+          position: absolute;
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          top: 50%;
+          margin-top: -24px;
+          left: 50%;
+          margin-left: -24px;
+        }
+      }
+
+      .div-wrap {
+        position: absolute;
+        bottom: 4px;
+        .img-title {
+          color: #E53467;
+          margin-top: 10px
+
+        }
+        .img-dis {
+
+        }
+      }
+
+      .shopName {
+        width: 190px;
+        position: absolute;
+        left: 50%;
+        margin-left: -95px;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        top: 87px;
+        font-size: 19px;
+      }
+
+    }
+  }
+
+  .parent2 {
+    width: 100%;
+    .img-wrap {
+      margin: 50px auto 0;
+      background: #fff;
+      width: 337px;
+      height: 337px;
+      .img-code {
+        width: 100%;
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .footer {
+    font-size: 12px;
+    color: #666666;
+    padding-bottom: 30px;
+    padding-top: 10px;
+    background: #ffffff;
+  }
+}

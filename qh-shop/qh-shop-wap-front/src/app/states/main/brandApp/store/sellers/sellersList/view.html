@@ -1,0 +1,196 @@
+<div flex="100" layout="column" class="ks-sellersList">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>
+            <div>我要卖货</div>
+        </h1>
+        <div class="right-button" flex="20" ng-click="wxSys()">
+            <md-icon class="ks-icon" style="font-size: 20px" md-font-set="ks-icon" md-font-icon="ag-focus-horizontal"></md-icon>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="search" layout="row">
+        <div class="search-input" flex layout="row">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>
+            </div>
+            <div class="con" flex>
+                <input type="text" ng-model="keyWord" placeholder="输入名称/货号/条码搜索" ng-focus="focus(true)" ng-blur="focus(false)">
+            </div>
+            <div class="right" ng-show="searchShow" ng-click="clearKeyWord()">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-closed-o"></md-icon>
+            </div>
+        </div>
+        <div class="search-btn" ng-show="searchShow" ng-click="search()">搜索</div>
+    </div>
+    <div id="swiper-container2" layout="row" ng-show="categoryList.length >0 ">
+        <div class="my-wrapper2" ng-class="{active:show}" layout="row">
+            <div class="my-slide2" ng-click="clickThis(0,{})" layout="column"
+                 layout-align="space-between center">
+                <div class="tab-btn">
+                    <span class="btn" ng-class="{active:isClick == '0'}">全部</span>
+                </div>
+            </div>
+
+            <div class="my-slide2" ng-click="clickThis($index+1,category)" layout="column" ng-repeat="category in categoryList track by $index"
+                 layout-align="space-between center">
+                <div class="tab-btn">
+                    <span class="btn" ng-class="{active:isClick == $index+1}">{{category.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <md-divider></md-divider>
+
+
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5"  ng-if="itemList.content.length>0">
+        <div class="itemTab" ui-sref="main.brandApp.store.sellers.sellersItem({id:item.id})"
+                ng-repeat="item in itemList.content">
+            <div class="item" layout="row">
+                <div class="item-img">
+                    <img ng-src="{{item.imgs[0]}}">
+                </div>
+                <div flex class="item-desc" layout="column" layout-align="space-between start">
+                    <div class="item-name">{{item.title}}</div>
+
+                    <!--<div class="item-sales">销量: 20</div>-->
+
+                    <div class="item-desp" layout-align="start center" layout="row">
+                        <div class="price" flex>
+                            ￥{{item.salePrice/100 | num:2}}
+                            <span style="color: #ED5F5B" ng-if="item.salePrice-item.buyPrice >0">/赚{{(item.salePrice-item.buyPrice)/100 | num:2}}</span>
+                        </div>
+                        <div class="icon" ng-click="shareDialog($even,item)">
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-share-o"></md-icon>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <md-divider></md-divider>
+        </div>
+
+
+
+
+        <!--分页-->
+        <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;" ng-show="itemList.totalPages>1">
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-click="getList(currpage+1)" ng-show="itemList.number<itemList.totalPages-1">
+                点击加载更多...
+            </md-button>
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-show="itemList.number>=itemList.totalPages-1">
+                没有更多商品了
+            </md-button>
+        </div>
+
+
+
+    </md-content>
+
+    <md-content flex layout="column" class="empty"
+                ng-if="itemList.content.length<=0"
+                style="overflow-x: hidden;    background: #f5f5f5;">
+        <!--<div class="top-line"></div>-->
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-order-manage" class="icon"></md-icon>
+            <div class="txt" style="margin-bottom: 100px">暂无商品～</div>
+        </div>
+    </md-content>
+
+
+
+
+
+    <!--ng-hide="cancassuccess"-->
+
+    <div class="canvasSimple" id="canvasSimple" style="position: fixed;top:0"  layout="column" layout-align="start center">
+        <!--style="position: fixed;height: 440px;bottom: -440px">-->
+        <div class="title">{{userInfo.shopName}}</div>
+        <div class="img">
+            <img ng-src="{{chooseItem.imgs[0]}}" id="img0001" alt="" width="100" height="440" crossorigin="anonymous" imageonload="doThis()" >
+            <!--<img src="{{testImg}}" alt="" width="100" height="100">-->
+        </div>
+        <div class="foot" layout="row" layout-align="start center" style="width: 100%">
+            <div class="foot-desc" flex layout="column">
+                <div class="name" flex>
+                    {{chooseItem.title}}
+                </div>
+                <div class="newPrice">¥{{chooseItem.salePrice/100 | num:2}}</div>
+                <div class="oldPrice" ng-if="chooseItem.salePrice < chooseItem.buyPrice" >原价¥{{chooseItem.buyPrice/100 | num:2}}</div>
+            </div>
+            <div class="vsCode" layout="column" layout-align="start center">
+                <div class="img">
+                    <qrcode data="{{qrCodeUrl}}" size="77" version="5"></qrcode>
+                    <!--<qr text="1231" type-number="0" correction-level="" size="100%" input-mode="qrCodeUrl" image="true"></qr>-->
+                </div>
+                <div class="ts">扫描或长按二维码</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mask" ng-if="mask" style="position: absolute"   ng-click="maskHide()">
+        <div class="maskButton1">
+            <!--<div class="shareKnow" md-font-icon="ks-arrow_left"></div>-->
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/ng-template" id="shareItem.html">
+    <md-dialog aria-label="" class="shareItem-dialog" >
+        <div class="closed" layout="row" layout-align="center center" >
+            <md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o" ng-click="vmd.cancel()"></md-icon>
+        </div>
+
+
+
+
+        <!--<div class="canvasSimple" id="canvasSimple" style="position: fixed;" layout="column" layout-align="start center" ng-show="!vmd.imgUrl">-->
+            <!--&lt;!&ndash;style="position: fixed;height: 440px;bottom: -440px">&ndash;&gt;-->
+            <!--<div class="title">今生宝贝</div>-->
+            <!--<div class="img">-->
+                <!--<img src="{{simpleImg}}" alt="" width="100" height="440">-->
+                <!--&lt;!&ndash;<img src="{{testImg}}" alt="" width="100" height="100">&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="foot" layout="row" layout-align="start center">-->
+                <!--<div class="foot-desc" flex>-->
+                    <!--<div class="name">-->
+                        <!--发的发生的噶是的不好看不好上岗不哈斯口感撒大声地公司的股份和-->
+                    <!--</div>-->
+                    <!--<div class="newPrice">¥399.00</div>-->
+                    <!--<div class="oldPrice">原价¥399</div>-->
+                <!--</div>-->
+                <!--<div class="vsCode" layout="column" layout-align="start center">-->
+                    <!--<div class="img">-->
+                        <!--<qrcode data="{{qrCodeUrl}}" size="77" version="5"></qrcode>-->
+                        <!--&lt;!&ndash;<qr text="1231" type-number="0" correction-level="" size="100%" input-mode="qrCodeUrl" image="true"></qr>&ndash;&gt;-->
+                    <!--</div>-->
+                    <!--<div class="ts">扫描或长按二维码</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+
+
+
+
+
+
+
+
+        <div layout="column" layout-align="center center" style="width: 300px;height: 447px">
+            <img ng-src="{{vmd.imgUrl}}" style="border-radius: 8px;width: 100%">
+        </div>
+    </md-dialog>
+</script>
+
+
+
+
+
+

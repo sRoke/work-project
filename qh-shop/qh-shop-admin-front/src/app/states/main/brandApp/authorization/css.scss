@@ -1,0 +1,144 @@
+.ks-authorization {
+  margin: 20px;
+  .author-wrap {
+    width: 560px;
+    height: 100%;
+    position: relative;
+    margin: 20px 0 0 0;
+    .name {
+      position: absolute;
+      left: 135px;
+      top: 300px;
+      width: 150px;
+      height: 30px;
+      input {
+        width: 110px;
+        height: 26px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+      }
+    }
+    .adress {
+      position: absolute;
+      left: 317px;
+      top: 300px;
+      width: 100px;
+      height: 30px;
+      input {
+        width: 65px;
+        height: 26px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+      }
+    }
+    .prox {
+      position: absolute;
+      left: 415px;
+      top: 300px;
+      width: 50px;
+      height: 30px;
+      input {
+        width: 65px;
+        height: 26px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+      }
+    }
+    .start-year {
+      position: absolute;
+      left: 155px;
+      top: 506px;
+      width: 40px;
+      height: 30px;
+      input {
+        width: 50px;
+        height: 26px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+      }
+    }
+    .start-month {
+      position: absolute;
+      left: 225px;
+      top: 506px;
+      width: 40px;
+      height: 30px;
+      input {
+        width: 30px;
+        height: 26px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+      }
+    }
+    .start-day {
+      position: absolute;
+      left: 270px;
+      top: 506px;
+      width: 40px;
+      height: 30px;
+      input {
+        width: 30px;
+        height: 26px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+      }
+    }
+
+    .end-year {
+      position: absolute;
+      left: 335px;
+      top: 506px;
+      width: 40px;
+      height: 30px;
+      input {
+        width: 35px;
+        height: 26px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+      }
+    }
+    .end-month {
+      position: absolute;
+      left: 390px;
+      top: 506px;
+      width: 40px;
+      height: 30px;
+      input {
+        width: 30px;
+        height: 26px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+      }
+    }
+    .end-day {
+      position: absolute;
+      left: 435px;
+      top: 506px;
+      width: 40px;
+      height: 30px;
+      input {
+        width: 30px;
+        height: 26px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+      }
+    }
+
+    .seq {
+      position: absolute;
+      top: 535px;
+      left: 210px;
+    }
+    .sign-day {
+      position: absolute;
+      left: 210px;
+      top: 645px;
+      input {
+        width: 150px;
+        height: 26px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+      }
+    }
+  }
+}

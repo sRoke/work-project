@@ -1,0 +1,156 @@
+
+# ServerProperties
+server:
+  port: 10270
+  context-path: /vote/rs
+  error.include-stacktrace: on_trace_param
+  session.timeout: 86400  # 24 小时
+
+# ResourceServerProperties
+security.oauth2.resource:
+  filterOrder: 90
+
+# SecurityProperties
+security:
+  basic.enabled: false
+
+# LOGGING
+logging:
+  path: /data0/store/app/qh-vote/qh-vote-server/logs/
+  level:
+    root: INFO
+
+
+# SessionProperties
+spring.session:
+  store-type: MONGO
+
+
+# DevToolsProperties
+
+# AuthorizationServerProperties
+
+# JacksonProperties
+spring.jackson:
+  default-property-inclusion: non_absent
+
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server.tomcat:
+  remote-ip-header:       X-Forwarded-For
+  protocol-header:        X-Forwarded-Proto
+  #internal-proxies:       120\\.26\\.140\\.95|\\
+  # 10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 192\\.168\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 169\\.254\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 127\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 172\\.1[6-9]{1}\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 172\\.2[0-9]{1}\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 172\\.3[0-1]{1}\\.\\d{1,3}\\.\\d{1,3}
+  uri-encoding:           UTF-8
+
+
+spring.jersey:
+  application-path: /api
+  type: servlet
+  servlet.load-on-startup: 0
+
+# QhOAuthProperties
+net.kingsilk.qh.vote:
+
+  http:
+    proxy:
+      enabled:      false
+      host:         prod11.kingsilk.net
+      port:         9999
+
+  qhOAuth:
+    wap:
+      url:                    https://kingsilk.net/oauth2/rs
+
+      # URL
+      passwordLoginUrl:       ${net.kingsilk.qh.vote.qhOAuth.wap.url}/login
+      wxLoginUrl:             ${net.kingsilk.qh.vote.qhOAuth.wap.url}/wxLogin
+      wxScanLoginUrl:         ${net.kingsilk.qh.vote.qhOAuth.wap.url}/wxScanLogin
+      wxQyhLoginUrl:          ${net.kingsilk.qh.vote.qhOAuth.wap.url}/wxQyhLogin
+      wxQyhScanLoginUrl:      ${net.kingsilk.qh.vote.qhOAuth.wap.url}/wxQyhScanLogin
+      phoneLoginUrl:          ${net.kingsilk.qh.vote.qhOAuth.wap.url}/phoneLogin
+
+      # URI
+      accessTokenUri:         ${net.kingsilk.qh.vote.qhOAuth.wap.url}/oauth/token
+      userAuthorizationUri:   ${net.kingsilk.qh.vote.qhOAuth.wap.url}/oauth/authorize
+      checkTokenUri:          ${net.kingsilk.qh.vote.qhOAuth.wap.url}/oauth/check_token
+
+      clientId:               CLIENT_ID_qh-oauth-wap
+      clientSecret:           CLIENT_PWD_qh-oauth-wap_123456
+      scopes:
+        - LOGIN
+        - SERVER
+
+  qhVote:
+    server:
+      resourceId:               'RSC_ID_qh-vote-server'
+      clientId:                 'CLIENT_ID_qh-vote-server'
+      url:                      'https://kingsilk.net/vote/rs/local/api'
+      clientSecret:             'CLIENT_PWD_qh-vote-server_123456'
+      scopes:
+        - LOGIN
+
+
+      jwt:
+        jks:
+          path: classpath:qh-oauth-wap-jwt.jks
+          storePass: (*Gs!Hhh
+          keyAlias: qh-oauth-wap-jwt
+          keyPass: (*Gs!Hhh
+      wx:
+        # 小皇叔 微信公众号
+        appId: wxbba6def439fc0bd0
+        appSecret: 2b93ea75514ab12d07085b249e167dc3
+        scopes:
+          - snsapi_login
+          - snsapi_userinfo
+          - snsapi_base
+
+      wxQyh: # qyh
+        corpId: wxd8a8a4e8d7cc21ab
+        corpSecret: JGMq35G_b1MfXBakO83nlSWjC_Vu_Q09mF15Sh6zw4xm8v8vSwDu3kugKTe2Y5oI
+        providerSecret: nL9R7blG_wFUlJTdNZ_esvznArSNa9iQTdrWyhRRvcygHhO6Q7mt788rLvDXOazQ
+  qhCommon:
+    admin:
+      resourceId:       RSC_ID_qh-common-admin
+      url:              https://common.kingsilk.net/admin/rs
+      api:
+        wx_selfAt:      ${net.kingsilk.qh.vote.qhCommon.admin.url}/api/wx/selfAt
+        wx_selfUserAt:  ${net.kingsilk.qh.vote.qhCommon.admin.url}/api/wx/selfUserAt
+  agencyUt:
+    basePath :    https://kingsilk.net/agency/rs/api
+
+
+# MongoProperties
+spring.data.mongodb:
+  host: '192.168.0.12'
+  port: 27017
+  database: 'qh-vote'
+  username: 'qh-vote'
+  password: 'qh-vote'
+
+###################################### 微信-第三方平台- 小皇叔微推广
+#appId:            wx1d226dc8f597f6c0
+#appSecret:        115c89ddf6a1851a95f1473c7f40a63e
+#token:            1RcowDNGJT2aF7TKwkhSdEKhzWVlGG
+#encodingAESKey:   Zg5LZWdfijeyW2iaUT2Qn2CSFfHB7ONQj5uE2Jmi9UN
+
+####################################### 钱皇内部测试
+#email:      wx-test1@kingsilk.net
+#appId:      wxf9f2b8b1a506c068
+#appSecret:  9c2fe3b32ceda561a63f267eb116473a
+
+####################################### 钱皇推广测试
+#email:      wx-test2@kingsilk.net
+#appId:      wx7cc0b96add4254b1
+#appSecret:  29d3e30bd48236715788d7709d9fae7b
+
+####################################### 小皇叔 微信公众号
+#email:      weixin@kingsilk.net
+#appId:      wxbba6def439fc0bd0
+#appSecret:  2b93ea75514ab12d07085b249e167dc3

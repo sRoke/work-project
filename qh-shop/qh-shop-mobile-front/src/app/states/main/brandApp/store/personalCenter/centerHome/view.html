@@ -1,0 +1,114 @@
+<div class="ks-centerHome" flex="100" layout="column">
+    <div class="top" layout="column" layout-align="top center">
+        <div class="top-img" layout="row" layout-align="center center">
+            <md-icon class="icon-person" md-font-set="ks-icon"
+                     md-font-icon="ag-default-head" ng-if="!shopData.data.memberImg"></md-icon>
+            <img ng-src="{{shopData.data.memberImg}}" class="img-con" ng-if="shopData.data.memberImg">
+        </div>
+        <div class="top-login" layout="row">
+            <div layout="row">
+                <!--<span>注册</span>-->
+                <!--<span style="margin: 0 10px;">|</span>-->
+                <span ng-if="!shopData.data.memberName" ng-click="goLogin()">登录</span>
+                <span ng-if="shopData.data.memberName">{{shopData.data.memberName}}</span>
+
+            </div>
+
+        </div>
+    </div>
+    <md-content flex style="overflow-x:hidden;background: #f5f5f5;">
+        <div class="main" layout="column">
+            <div class="center-top" layout="row">
+                <div layout="column" layout-align="center center" flex
+                     ui-sref="main.brandApp.store.personalCenter.allOrder({status:'UNPAYED'})">
+                    <md-icon class="icon-buy" md-font-set="ks-icon"
+                             md-font-icon="ag-dai-fu-kuan"></md-icon>
+                    <div class="center-top-bottom">待付款</div>
+                    <i ng-if="numData.UNPAYED>0">{{numData.UNPAYED}}</i>
+                </div>
+                <div layout="column" layout-align="center center" flex
+                     ui-sref="main.brandApp.store.personalCenter.allOrder({status:'UNSHIPPED'})">
+                    <md-icon class="icon-buy" md-font-set="ks-icon"
+                             md-font-icon="ag-dai-fa-huo"></md-icon>
+                    <div class="center-top-bottom">待发货</div>
+                    <i ng-if="numData.UNSHIPPED>0">{{numData.UNSHIPPED}}</i>
+                </div>
+                <div layout="column" layout-align="center center" flex
+                     ui-sref="main.brandApp.store.personalCenter.allOrder({status:'UNRECEIVED'})">
+                    <md-icon class="icon-buy" md-font-set="ks-icon"
+                             md-font-icon="ag-dai-shou-huo"></md-icon>
+                    <div class="center-top-bottom">待收货</div>
+                    <i ng-if="numData.UNRECEIVED>0">{{numData.UNRECEIVED}}</i>
+                </div>
+                <div layout="column" layout-align="center center" flex
+                     ui-sref="main.brandApp.store.personalCenter.refundOrder">
+                    <md-icon class="icon-buy" md-font-set="ks-icon"
+                             md-font-icon="ag-money-return"></md-icon>
+                    <div class="center-top-bottom">退款/售后</div>
+                    <i ng-if="numData.REFUNDING>0">{{numData.REFUNDING}}</i>
+                </div>
+                <!--<div layout="column" layout-align="center" flex ui-sref="main.brandApp.store.personalCenter.allOrder">-->
+                    <!--<md-icon class="icon-buy" md-font-set="ks-icon"-->
+                             <!--md-font-icon="ag-all-1"></md-icon>-->
+                    <!--<div class="center-top-bottom">全部</div>-->
+                <!--</div>-->
+
+            </div>
+            <div class="bg-line"></div>
+            <div layout="column" class="center-con">
+                <div class="center-tab" layout="row" layout-align="space-between center"
+                     ui-sref="main.brandApp.store.personalCenter.allOrder">
+                    <div class="tab-left" layout="row">
+                        <md-icon class="icon-buy" md-font-set="ks-icon" style="font-size: 20px;color: #E53467; "
+                                 md-font-icon="ag-all-1"></md-icon>
+                        <div class="tab-left-word">全部订单</div>
+                    </div>
+
+                    <md-icon class="dis-header-icon" md-font-set="ks-icon"
+                             md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+                <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center"
+                     ui-sref="main.brandApp.store.personalCenter.address">
+                    <div class="tab-left" layout="row">
+                        <md-icon class="icon-buy" md-font-set="ks-icon" style="font-size: 20px;color: #36BFFF;"
+                                 md-font-icon="ag-address-1"></md-icon>
+                        <div class="tab-left-word">收货地址</div>
+                    </div>
+                    <md-icon class="dis-header-icon" md-font-set="ks-icon"
+                             md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+
+                <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <a href="tel:{{shopData.data.shopPhone}}" flex layout="row">
+                        <div class="tab-left" flex layout="row">
+                            <md-icon class="icon-buy" md-font-set="ks-icon" style="font-size: 20px;color: #FE5A5A"
+                                     md-font-icon="ag-phone"></md-icon>
+                            <div class="tab-left-word">联系商家</div>
+                        </div>
+                        <span>{{shopData.data.shopPhone}}</span>
+                    </a>
+                </div>
+
+                <!---->
+
+               <!-- <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center"
+                     ng-click="goto('/selectStore')">
+                    <div class="tab-left" layout="row">
+                        <md-icon class="icon-buy" md-font-set="ks-icon" style="font-size: 20px;color: #ff813d;"
+                                 md-font-icon="ag-address-1"></md-icon>
+                        <div class="tab-left-word">我也要开店</div>
+                    </div>
+                    <md-icon class="dis-header-icon" md-font-set="ks-icon"
+                             md-font-icon="ag-manage-dp"></md-icon>
+                </div>-->
+
+            </div>
+        </div>
+    </md-content>
+
+    <div ks-footer-menu cur="'center'"></div>
+
+</div>

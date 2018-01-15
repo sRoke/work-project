@@ -1,0 +1,99 @@
+@import "../../../../../scss/index.scss";
+
+.ks-qrCodePay{
+  md-content{
+    .content{
+      margin: 40px 38px;
+      position: relative;
+      .top{
+        border-radius: 8px;
+        height: 104px;
+        background: #EE635F;
+        .money{
+          font-size: 30px;
+          color: #FFFFFF;
+          letter-spacing: -0.72px;
+          line-height: 26px;
+        }
+        .desc{
+          margin-top: 10px;
+          font-size: 16px;
+          color: #FFFFFF;
+          letter-spacing: -0.39px;
+          line-height: 16px;
+        }
+      }
+      .con{
+        height: 296px;
+        background: #ffffff;
+        border: 1px solid #F0F0F0;
+        border-radius: 8px;
+        .qrcode{
+          width: 180px;
+          height: 180px;
+          background: #f8ff93;
+        }
+        .desc{
+          font-size: 14px;
+          color: #999999;
+          letter-spacing: -0.34px;
+          line-height: 12px;
+          margin-top: 20px;
+        }
+
+        .con-icon{
+            md-icon{
+              background: #ffffff;
+              font-size: 60px;
+              line-height: 60px;
+              color: #53D39A;
+            }
+        }
+        .con-true{
+          font-size: 16px;
+          color: #333333;
+          letter-spacing: -0.39px;
+          line-height: 16px;
+          margin-top: 30px;
+          margin-bottom: 84px;
+        }
+        .con-odd{
+          font-size: 14px;
+          color: #999999;
+          letter-spacing: -0.34px;
+          line-height: 12px;
+        }
+
+
+      }
+      .semi-circle-left{
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        left: -8px;
+        top: 96px;
+        z-index: 2;
+      }
+      .semi-circle-right{
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        right: -8px;
+        top: 96px;
+        z-index: 2;
+      }
+    }
+  }
+  .footer{
+    background: #FFFFFF;
+    box-shadow: 0 0 0 0 #D5D5D5;
+    height: 50px;
+    font-size: 18px;
+    color: #333333;
+    letter-spacing: -0.43px;
+  }
+}

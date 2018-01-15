@@ -1,0 +1,45 @@
+<div class="ks-selectStore" flex="100" layout="column" ng-if="shopList.length>0">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20">
+        </div>
+        <h1 flex>选择门店</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <div class="topLine"></div>
+
+    <md-content flex style="overflow-x:hidden;" layout="column" layout-align="center center">
+        <div style="overflow-y: scroll; width: 100%;">
+            <div class="store-box" ng-repeat="shop in shopList"
+                 ui-sref="main.brandApp.store.home({storeId:shop.shopId})"
+            >{{shop.shopName}}
+            </div>
+        </div>
+    </md-content>
+
+</div>
+<div class="ks-selectStore" flex="100" layout="column" ng-if="shopList.length==0">
+    <!-- <div class="error-icon" layout="row" layout-align="center center">
+         <img src="error.png">
+     </div>
+     <div class="ts">还未创建门店</div>-->
+
+    <md-content flex style="overflow-x:hidden;" layout="column" layout-align="center center">
+        <div class="price-wrap">
+            <div class="word1">新零售解决方案</div>
+            <div class="word2">开一家店，卖一座城</div>
+            <div class="word3">开通仅需</div>
+            <div class="price"><span style="color: #E53467 ;">￥</span>{{buyPrice.mSallPrice/100|num:2}}<span
+                    style="color: #333;">元/月</span></div>
+
+            <div class="oldPrice"><a>原价：￥{{buyPrice.mOldPrice/100|num:2}}元/月</a></div>
+            <div class="btn-con" layout-align="center center" layout="row">
+                <button class="btn" ng-click="goBuy()">立即订购</button>
+            </div>
+            <div class="free" ng-if="free>0" ng-click="getFree()">免费试用</div>
+            <!--<div class="bottom1"><span style="color: #ff0000;">*</span>每月代扣{{buyPrice.mSallPrice/100|num:2}}元，不用可取消代扣</div>-->
+        </div>
+    </md-content>
+
+
+</div>

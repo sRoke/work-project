@@ -1,0 +1,73 @@
+<div class="ks-editItem">
+    <div class="edit">查看信息</div>
+    <div class="panel-body">
+        <form class="form-horizontal" name="itemBaseForm">
+            <div class="form-group edit1">
+                <label  class="col-xs-2 control-label">ID：
+                </label>
+                <div class="col-xs-8 ">
+                    <label  class="control-label">{{staff.id}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group edit1">
+                <label  class="col-xs-2 control-label">用户名：</label>
+                <div class="col-xs-8">
+                    <label  class="control-label">{{staff.realName}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group edit1" >
+                <label  class="col-xs-2 control-label">手机号：</label>
+                <div class="col-xs-8">
+                    <label  class="control-label">{{staff.phone}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group edit1" >
+                <label class="col-xs-2 control-label">状态：</label>
+                <div class="col-xs-8">
+                    <label  class="control-label" ng-if="staff.disabled == 'true'">禁用
+                    </label>
+                    <label  class="control-label" ng-if="staff.disabled == 'false'">正常
+                    </label>
+                </div>
+
+            </div>
+            <div class="form-group edit1" >
+                <label  class="col-xs-2 control-label">渠道编号：</label>
+                <div class="col-xs-8">
+                    <label  class="control-label">{{staff.partnerSeq}}</label>
+                </div>
+            </div>
+            <div class="form-group edit1">
+                <label  class="col-xs-2 control-label">渠道类型：
+                </label>
+                <div class="col-xs-8">
+                    <label  class="control-label" >{{staff.partnerType}}</label>
+                </div>
+            </div>
+            <div class="form-group edit1">
+                <label  class="col-xs-2 control-label">创建时间：</label>
+                <div class="col-xs-8">
+                    <label  class="control-label">{{staff.dateCreated | date :'yyyy-MM-dd HH:mm:ss'}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group edit1">
+                <label  class="col-xs-2 control-label">最后修改时间：</label>
+                <div class="col-xs-8">
+                    <label  class="control-label">{{staff.lastModifiedDate | date : 'yyyy-MM-dd HH:mm:ss'}}
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-9" >
+            <button class="btn1 " style="background：none;color：#00aaee;border: none;"
+               ng-click="fallbackPage()"
+               role="button">返回</button>
+        </div>
+    </div>
+</div>

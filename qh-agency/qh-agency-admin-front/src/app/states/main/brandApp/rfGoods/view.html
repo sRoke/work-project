@@ -1,0 +1,136 @@
+<!--rmy-->
+<div class="ks-common-list-good">
+    <!--rmy 条件检索-->
+    <div class="common-list-center">
+        <ul>
+            <li layout="row">
+                <label for="bhnum">搜索：</label>
+                <input  id="bhnum" type="text" class="choose " ng-model="reason" placeholder="退货编号"><!--、会员名、手机号-->
+                <label>时间:</label>
+                <div>
+                    <input type="text" class="layui-input choose" id="test1" ng-model="startDate" placeholder="开始时间">
+                    <!--<md-datepicker ng-model="startDate" md-placeholder="Enter date" md-open-on-focus-->
+                                   <!--md-date-locale="s"  md-date-locale="dateF"></md-datepicker>-->
+                </div>
+                <span>至</span>
+                <div>
+                    <input type="text" class="layui-input choose" id="test2" ng-model="endDate" placeholder="结束时间">
+                    <!--<md-datepicker ng-model="endDate" md-placeholder="End date" md-open-on-focus-->
+                                   <!--md-date-locale="s"  md-date-locale="dateF"></md-datepicker>-->
+                </div>
+                <label for="refundStatus">退货状态:</label>
+                <select id="refundStatus" ng-model="refundStatus">
+                    <option value="">全部</option>
+                    <option value="{{code}}" ng-repeat="(code,des) in refundStatusEnumMap">{{des}}</option>
+                </select>
+                <!--<span>-->
+                <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-search"-->
+                         <!--alt="查询" style="color: #999;font-size:20px;text-align: center;cursor: pointer;outline: none;" ng-click="pageChanged('0')"></md-icon>-->
+                <!--</span>-->
+                <button class="inquire" ng-click="pageChanged('0')">
+                    搜索
+                </button>
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+    <div class="common-list-detail" layout="column">
+        <div class="tableTit" layout="row">
+            <div class="tableTd" flex="5" layout="row" style="min-width:64px;">
+                <input type="checkbox" name="allcheck" class="all" ng-model="all" style="margin:13px 10px 0 13px">
+                <span>全选</span>
+            </div>
+            <div class="tableTd" flex="25">
+                <span>宝贝</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>交易金额</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>退货数量</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>申请时间</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>备注</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>退款总额</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>退货物流</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>退款状态</span>
+            </div>
+        </div>
+        <!--n个发货订单-->
+        <div class="tableCon">
+            <!--一个订单编号-->
+            <div class="orderNumber" ng-repeat="item in items">
+                <!--订单头部-->
+                <div class="ordTitle" layout="row">
+                    <div flex class="tit" layout="row">
+                        <input type="checkbox" class="all" ng-checked="all" style="margin:13px 10px 0 13px">
+                        <div><span>退款编号：{{item.refundSeq}}</span></div>
+                        <div><span>用户：{{item.buyerPartnerName}}&nbsp;&nbsp;{{item.buyerPartnerPhone}}</span></div>
+                    </div>
+                    <div flex="10" class="tit orderSta">
+                        <span>请审核</span>
+                    </div>
+                </div>
+                <!--订单信息-->
+                <div class="ordDetail" layout="row">
+                    <div flex="50" class="goodsXq" layout="column">
+                        <div layout="row" ng-repeat="order in item.orderItemInfos">
+                            <div layout="row" flex="60">
+                                <div class="pic">
+                                    <img ng-src="{{order.skuImg}}">
+                                </div>
+                                <div layout="column" class="goodsDetail">
+                                    <span>{{order.itemTitle}}</span>
+                                    <span ng-repeat="sk in order.specInfos">{{sk.propName}}:{{sk.propValue}}</span>
+                                </div>
+                            </div>
+                            <div flex="20"  layout="row">
+                                <span style="text-align: center;">￥{{order.skuPrice/100 | num:2}}</span>
+                            </div>
+                            <div flex="20" layout="row">
+                                <span style="text-align: center;">{{order.num}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span>{{item.dateCreated | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span>{{}}</span>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span class="refundMoney">￥{{item.refundAmount/100 | num:2}}</span>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span>-</span>
+                    </div>
+                    <div flex="10" class="orderXq">
+                        <a ui-sref="main.brandApp.refDetail({id:item.id})" ng-if="REFUND_R">{{item.statusDesp}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--rmy  分页-->
+    <div style="width: 99%; margin: 10px auto 0;height:40px;">
+        <div uib-pagination total-items="data.totalElements" ng-model="curPage" ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="8" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|" style="margin-left: 10px;">
+        </div>
+        <div style="float: right" class="pageSubnav">
+            <span>共{{data.totalElements}}条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button ng-click="pageChanged()">确定</md-button>
+        </div>
+    </div>
+</div>

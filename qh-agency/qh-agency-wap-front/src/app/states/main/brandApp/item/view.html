@@ -1,0 +1,177 @@
+<div flex="100" layout="column" class="ks-newItem2">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <div flex="" layout="row" layout-align="center center">
+            <div class="tab-wtap" layout="row" layout-align="center center">
+                <div flex="" class="item-btn" ng-class="{tabActive:activeNum == '1'}" ng-click="tabBtnClick(1)">商品</div>
+                <div flex="" class="detail-btn" ng-class="{tabActive:activeNum == '2'}" ng-click="tabBtnClick(2)">详情
+                </div>
+            </div>
+        </div>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5" ng-show="activeNum == '1'" >
+        <div class="itemWrap" layout="column" layout-align="center stretch" style="background: #FFFFFF">
+            <div class="item" layout="column">
+                <div layout="row" class="item-box">
+                    <div class="img-wrap">
+                        <!--<img ng-src="{{item.imgKey}}" alt="">-->
+                        <img src="{{data.imgs[imgActive]}}" alt="">
+                    </div>
+                    <div class="item-detail" layout="column" flex layout-align="space-between start">
+                        <div class="item-title">{{data.title}}</div>
+                        <!--<div class="item-title" style="color: #999;margin-top: 10px">{{data.desp}}</div>-->
+
+                        <div class="price">
+                            <div class="item-price" ng-if="data.partnerType == 'GENERAL_AGENCY'">
+                                <span class="specs">市代:￥{{checkedSku.regionalAgencyPrice/100|num:2}}</span>
+                            </div>
+                            <div class="item-price" ng-if="data.partnerType == 'GENERAL_AGENCY' || data.partnerType == 'REGIONAL_AGENCY'">
+                                <span class="specs">加盟商:￥{{checkedSku.leaguePrice/100|num:2}}</span>
+                            </div>
+                            <div class="item-price">
+                                <span class="specs">零售价:￥{{checkedSku.salePrice/100|num:2}}</span>
+                            </div>
+                            <div class="item-spec">
+                                <span class="specs" ng-if="data.partnerType == 'GENERAL_AGENCY'">￥{{checkedSku.generalAgencyPrice/100|num:2}}</span>
+                                <span class="specs" ng-if="data.partnerType == 'REGIONAL_AGENCY'">￥{{checkedSku.regionalAgencyPrice/100|num:2}}</span>
+                                <span class="specs" ng-if="data.partnerType == 'LEAGUE'">￥{{checkedSku.leaguePrice/100|num:2}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="item-imgList" layout="row" layout-align="space-between start">
+                    <div flex class="item-img" ng-class="{true: 'item-img-active', false: 'inactive'}[imgActive == '0']" ng-click="chooseImg('0')">
+                        <img ng-src="{{data.imgs[0]}}" ng-if="data.imgs[0]">
+                    </div>
+                    <div flex  class="item-img" ng-class="{true: 'item-img-active', false: 'inactive'}[imgActive == '1']" ng-click="chooseImg('1')">
+                        <img ng-src="{{data.imgs[1]}}" ng-if="data.imgs[1]">
+                    </div>
+                    <div flex class="item-img" ng-class="{true: 'item-img-active', false: 'inactive'}[imgActive == '2']" ng-click="chooseImg('2')">
+                        <img ng-src="{{data.imgs[2]}}" ng-if="data.imgs[2]">
+                    </div>
+                    <div flex class="item-img" ng-class="{true: 'item-img-active', false: 'inactive'}[imgActive == '3']" ng-click="chooseImg('3')">
+                        <img ng-src="{{data.imgs[3]}}" ng-if="data.imgs[3]">
+                    </div>
+                    <div flex class="item-img" ng-class="{true: 'item-img-active', false: 'inactive'}[imgActive == '4']" ng-click="chooseImg('4')">
+                        <img ng-src="{{data.imgs[4]}}" ng-if="data.imgs[4]">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div style="background: #ffffff;padding-bottom: 20px">
+            <div ng-repeat="spec in data.specs track by $index" style="background: #ffffff;padding-top: 20px">
+                <div class="weight-wrap">
+                    <div class="weight-top">{{spec.name}}</div>
+                    <div class="weight-tag-wrap">
+                        <!--| limitTo: '4'-->
+                        <div class="wight-tag"
+                             ng-repeat="btn in spec.values"
+                             ng-click="clickedSpec(spec,btn)">
+                            <div class="tag" ng-class="{wightTagActive:selectSpecs[spec.nameId] == btn.valueId}">
+                                {{btn.value}}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--<md-divider style="margin: 0 15px"></md-divider>-->
+                    <!--<div class="input-wrap" layout="row" layout-align="start center">-->
+                    <!--<input type="text" placeholder="输入定制斤数">-->
+                    <!--</div>-->
+                </div>
+                <!--<div class="info-line"></div>-->
+                <!--<md-divider></md-divider>-->
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="addNum" layout="row" layout-align="space-between center" style="padding: 0 15px;background: #ffffff">
+            <div class="addNum-title" style="font-size: 14px;color: #999;">购买数量</div>
+            <div layout="row" class="count">
+                <div ng-class="{true: 'minusActive', false: 'minus'}[skuNum == 0]"
+                     ng-mobile-click="skuNumCount(-1,checkedSku)" layout=""
+                     layout-align="center center">
+                    <md-icon class="iconBtn" md-font-set="ks-icon" md-font-icon="ag-minus"></md-icon>
+                </div>
+                <div ng-class="{true: 'inputActive', false: 'input'}[0< skuNum && skuNum < checkedSku.storage]">
+                    <!--<div style="position: absolute;width: 100%;height: 100%"></div>-->
+                    <input type="tel" ng-model="skuNum"
+                           layout="" ng-blur="skuNumBlur(skuNum,checkedSku)" layout-align="center center"/>
+                    <!-- ng-change="formatNum(skuNum)"-->
+                </div>
+                <div ng-class="{true: 'addActive', false: 'add'}[skuNum >= checkedSku.storage]"
+                     ng-mobile-click="skuNumCount(1,checkedSku)" layout=""
+                     layout-align="center center">
+                    <md-icon class="iconBtn" md-font-set="ks-icon" md-font-icon="ag-plus"></md-icon>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="weight-wrap">
+             <div class="weight-top">尺寸</div>
+             <div class="item-box">
+                 <div class="item" ng-repeat="aa in sizeDate track by $index" layout="row"
+                      layout-align="space-between center">
+                     <div class="item-left" layout="column">
+                         <div class="item-title">{{aa.value}}</div>
+                     </div>
+                     <div layout="row" class="count">
+                         <div class="minus" ng-mobile-click="skuNumCount(-1,aa)" layout="" layout-align="center center">
+                             <md-icon class="iconBtn" md-font-set="ks-icon" md-font-icon="ag-minus-circle"></md-icon>
+                         </div>
+                         <input type="text" ng-model="skuNum " layout="" layout-align="center center"/>
+                         <div class="add" ng-mobile-click="skuNumCount(1,aa)" layout="" layout-align="center center">
+                             <md-icon class="iconBtn" md-font-set="ks-icon" md-font-icon="ag-plus-circle"></md-icon>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <md-divider style="margin: 0 15px"></md-divider>
+             <div class="input-wrap" layout="row" layout-align="start center">
+                 <input type="text" placeholder="输入定制尺寸">
+             </div>
+         </div>-->
+    </md-content>
+
+
+
+
+
+
+
+
+
+    <md-content flex ng-show="activeNum == '2'">
+        <div class="ks-item-desp" ng-include="tplUrl">
+        </div>
+    </md-content>
+    <md-divider style="z-index: -1;"></md-divider>
+    <div class="footBtn" layout="row">
+        <div flex class="left-wrap" layout="row">
+            <div class="cart-wrap" layout="column" layout-align="center center" ng-click="openDialog()">
+                <div class="icon-wrap" layout="column" layout-align="center center">
+                    <md-icon class="icon" md-font-set="ks-icon" md-font-icon="ag-cart-line"></md-icon>
+                    <i ng-class="{'warm-i':warmchange}" ng-if="totlePrice>0"></i>
+                </div>
+                <div class="cart-dis">购物车</div>
+            </div>
+            <div class="pay-price" flex>
+                合计:￥{{totlePrice/100|num:2}}
+            </div>
+        </div>
+        <div class="goPay" ng-if="totlePrice >0 " ng-clicK="orderCreate()">
+            <span>去结算</span>
+            <!--<span>加入购物车</span>-->
+        </div>
+        <div class="noPay" ng-if="totlePrice <=0 ">
+            <span>去结算</span>
+            <!--<span>加入购物车</span>-->
+        </div>
+    </div>
+</div>

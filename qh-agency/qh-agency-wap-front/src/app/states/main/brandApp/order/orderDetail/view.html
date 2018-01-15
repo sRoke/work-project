@@ -1,0 +1,445 @@
+<div flex="100" layout="column" class="ks-orderDetail">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="vm.fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>采购详情</h1>
+        <div class="right-button" flex="20">
+
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="background: #f5f5f5;">
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row">
+                单据信息
+            </div>
+            <md-divider></md-divider>
+            <div class="center-bottom" layout="column" layout-align="space-between start">
+                <div flex layout="row" layout-align="center start">
+                    <div class="center-left">
+                        单据编号
+                    </div>
+                    <div flex class="center-detail">
+                        {{info.seq}}
+                    </div>
+                </div>
+                <div flex layout="row" layout-align="center start">
+                    <div class="center-left">
+                        单据日期
+                    </div>
+                    <div flex class="center-detail">
+                        {{info.createDate|date:'yyyy-MM-dd HH:mm:ss'}}
+                    </div>
+                </div>
+                <div flex layout="row" layout-align="center start">
+                    <div class="center-left">
+                        单据状态
+                    </div>
+                    <div flex class="center-detail">
+                        <span ng-if="info.status === 'UNCOMMITED'">未提交</span>
+                        <span ng-if="info.status === 'UNPAYED'">待付款</span>
+                        <span ng-if="info.status === 'UNCONFIRMED'">待确认接单</span>
+                        <span ng-if="info.status === 'REJECTED'">卖家拒绝接单</span>
+                        <span ng-if="info.status === 'CANCELING'">申请取消中</span>
+                        <span ng-if="info.status === 'CANCELED'">已取消</span>
+                        <span ng-if="info.status === 'UNSHIPPED'">待发货</span>
+                        <span ng-if="info.status === 'UNRECEIVED'">待收货</span>
+                        <span ng-if="info.status === 'FINISHED'">已完成</span>
+                        <span ng-if="info.status === 'CLOSED'">已关闭</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row">
+                配送信息
+            </div>
+            <md-divider></md-divider>
+            <!--显示物流-->
+            <div class="center-bottom-logistics" ng-if="info.logisticsInfo[0].company">
+                <div flex layout="row"  class="logistics-all">
+                    <div class="all-left">
+                        物流信息
+                    </div>
+                    <div class="all-right" layout-align="center start">
+                        {{info.logisticsInfo[0].company}}  {{info.logisticsInfo[0].expressNo}}
+                    </div>
+                </div>
+            </div>
+            <div class="center-bottom" layout="row" layout-align="space-between start">
+                <div class="center-left" style="line-height: 16px;">
+                    收货地址
+                </div>
+                <div flex class="center-address" layout="column" layout-align="center start">
+                    <div>
+                        <div class="commit">
+                            <span>{{info.address.receiver}}</span>
+                            <span style="margin-left: 10px;">{{info.address.phone}}</span>
+                        </div>
+                        <div class="address-detail" layout="column">
+                            <span>{{info.address.province}}{{info.address.city}}{{info.address.county}}</span>
+                            <span>{{info.address.street}}</span>
+                        </div>
+                    </div>
+                </div>
+                <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row">
+                商品信息
+            </div>
+            <md-divider></md-divider>
+            <div class="itemWrap" layout="column" layout-align="center stretch">
+                <div class="item" layout="column" ng-repeat="item in info.items track by $index">
+                    <div layout="row" class="item-box">
+                        <div class="img-wrap">
+                            <img img-holder ng-src="{{item.skuInfo.imgs[0]}}"/>
+                        </div>
+                        <!--<div class="item-title"> {{item.skuInfo.title}}</div>-->
+                        <!-- <div class="item-num-wrap" layout="row" layout-align="space-between center">
+                             <div class="item=num">数量 {{item.num}}</div>
+                             <div class="num-price">单价 ￥{{item.skuPrice/100|num:2 }}</div>
+                         </div>-->
+
+                        <div class="item-detail" layout="column" flex layout-align="space-between start">
+                            <!--<div class="item-title"> {{item.skuInfo.title}}</div>
+                            <div class="item-num-wrap" layout="row" layout-align="space-between center">
+                                <div class="item=num">数量 {{item.num}}</div>
+                                <div class="num-price">单价 ￥{{item.skuPrice }}</div>
+                            </div>-->
+
+
+                            <div style="width: 100%" class="item-title" layout="row"
+                                 layout-align="space-between center">
+                                <div class="title-dis">{{item.skuInfo.title}}</div>
+                                <div class="price-dis">￥{{item.skuPrice/100|num:2}}</div>
+                            </div>
+                            <div style="width: 100%" class="item-des" layout="row" layout-align="space-between center">
+                                <div layout="row" layout-align="space-between center">
+                                    <div class="item-dis" ng-repeat="spec in item.skuInfo.specs"
+                                         style="margin-right:15px;color: #999">
+                                        {{spec.value}}
+                                    </div>
+                                </div>
+                                <div class="price" style="color:#999">x    {{item.num}}</div>
+                            </div>
+                            <md-divider class="dashed" ng-if="!$last"></md-divider>
+                        </div>
+                    </div>
+                    <md-divider class="dashed" ng-if="!$last"></md-divider>
+                </div>
+            </div>
+        </div>
+        <md-divider class="solid"></md-divider>
+        <!--余额付款-->
+        <div class="center-box-yu">
+            <div flex layout="row" layout-align="space-between center" class="yu-all">
+                <div class="all-left">
+                    合计
+                </div>
+                <div class="all-right">
+                    ￥ {{info.orderPrice/100|num:2 }}
+                </div>
+            </div>
+            <div flex layout="row" layout-align="space-between center" class="huo-all">
+                <div class="all-left">
+                    货款抵扣
+                </div>
+                <div class="all-right">
+                    - ￥ {{info.noCashBalancePrice/100 |num:2}}
+                </div>
+            </div>
+            <div flex layout="row" layout-align="space-between center" class="huo-all">
+                <div class="all-left">
+                    帐户余额抵扣
+                </div>
+                <div class="all-right">
+                    - ￥ {{info.balancePrice/100 |num:2}}
+                </div>
+            </div>
+            <div flex layout="row" layout-align="space-between center" class="huo-all">
+                <div class="all-left" style="font-size:16px;color: #333;">
+                    实付金额
+                </div>
+                <div class="all-right" style="color: #ED5F5B;font-size: 16px;">
+                    ￥ {{info.paymentPrice/100|num:2 }}
+                </div>
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="center-box" layout="column" ng-if="info.memo">
+            <div class="center-top" layout="row" layout-align="space-between center">
+                <div class="center-left" style="min-width: 100px;">
+                    备注描述
+                </div>
+                <div class="center-right">{{info.memo}}</div>
+            </div>
+            <!--<div class="textarea-wrap" layout="row" style="margin-bottom: 18px">-->
+                <!--<div>{{info.memo}}<span ng-if="!info.memo">无</span></div>-->
+                <!--&lt;!&ndash;<textarea flex placeholder="输入描述..."></textarea>&ndash;&gt;-->
+            <!--</div>-->
+        </div>
+        <div class="total-price" layout="row" layout-align="center start">
+            <!--<span>合计: ￥{{info.paymentPrice/100|num:2 }}</span>-->
+        </div>
+        <!-- <div class="parent-warp" layout="column">
+             <div class="top-wrap" layout="row">
+                 &lt;!&ndash;待付款 UNPAYED&ndash;&gt;
+                 <md-icon md-font-set="ks-icon" md-font-icon="ag-card" ng-if="info.status==='UNPAYED'"></md-icon>
+                 &lt;!&ndash;调拨中 ALLOCATION&ndash;&gt;
+                 <md-icon md-font-set="ks-icon" md-font-icon="ag-carton-sort"
+                          ng-if="info.status ==='ALLOCATION'"></md-icon>
+                 &lt;!&ndash;待发货 CANCELING PAYED UNSHIPPED&ndash;&gt;
+                 <md-icon md-font-set="ks-icon" md-font-icon="ag-drawer-arrow-up"
+                          ng-if="info.status ==='CANCELING' || info.status ==='PAYED' ||info.status ==='UNSHIPPED'"></md-icon>
+                 &lt;!&ndash;待收货 UNRECEIVED&ndash;&gt;
+                 <md-icon md-font-set="ks-icon" md-font-icon="ag-delivery"
+                          ng-if="info.status ==='UNRECEIVED'"></md-icon>
+                 &lt;!&ndash;已完成 UNCOMMENTED FINISHED&ndash;&gt;
+                 <md-icon md-font-set="ks-icon" md-font-icon="ag-done"
+                          ng-if="info.status == 'UNCOMMENTED'||info.status == 'FINISHED' "></md-icon>
+                 &lt;!&ndash;已关闭 CLOSED&ndash;&gt;
+                 <md-icon md-font-set="ks-icon" md-font-icon="ag-order-close"
+                          ng-if=" info.status =='CLOSED'"></md-icon>
+                 &lt;!&ndash;退款中&ndash;&gt;
+                 <md-icon md-font-set="ks-icon" md-font-icon="ag-rmb-square"
+                          ng-if="info.status==='REFUND'"></md-icon>
+
+                 &lt;!&ndash;<md-icon md-font-set="ks-icon" md-font-icon="ag-carton-sort"></md-icon>&ndash;&gt;
+                 &lt;!&ndash;文字切换&ndash;&gt;
+                 <div flex class="top-txt">
+                     <span ng-if="info.status === 'UNCOMMITED'">未提交</span>
+                     <span ng-if="info.status === 'UNPAYED'">待付款</span>
+                     <span ng-if="info.status === 'UNCONFIRMED'">待确认接单</span>
+                     <span ng-if="info.status === 'REJECTED'">卖家拒绝接单</span>
+                     <span ng-if="info.status === 'CANCELING'">申请取消中</span>
+                     <span ng-if="info.status === 'CANCELED'">已取消</span>
+                     <span ng-if="info.status === 'UNSHIPPED'">待发货</span>
+                     <span ng-if="info.status === 'UNRECEIVED'">待收货</span>
+                     <span ng-if="info.status === 'FINISHED'">已完成</span>
+                     <span ng-if="info.status === 'CLOSED'">已关闭</span>
+                 </div>
+             </div>
+             <md-divider></md-divider>
+             <div class="circle-msg-wrap" layout="column" layout-align="center center">
+                 <div class="circle-wrap" layout="row" layout-align="space-between center">
+                     &lt;!&ndash;第一条线对应第二个圆。以此类推&ndash;&gt;
+                     &lt;!&ndash;判断active位置&ndash;&gt;
+                     &lt;!&ndash;第一个圆，一直显示&ndash;&gt;
+                     <div class="circle"
+                          ng-class="{active:info.status == 'UNPAYED' || info.status != 'CLOSED' && info.status != 'CANCELED' }"></div>
+                     &lt;!&ndash;第一条线&ndash;&gt;
+                     <div flex class="line"
+                          ng-class="{lineActive:info.status != 'UNPAYED'  && info.status != 'CLOSED' && info.status != 'CANCELED' }"
+                     ></div>
+                     &lt;!&ndash;第二个圆&ndash;&gt;
+                     <div class="circle"
+                          ng-class="{active:info.status != 'UNPAYED' && info.status != 'CLOSED' && info.status != 'CANCELED' }"
+                     ></div>
+
+                     &lt;!&ndash;第二个线&ndash;&gt;
+                     <div flex class="line"
+                          ng-class="{lineActive:info.status == 'UNRECEIVED'||info.status == 'UNCOMMENTED'||info.status == 'FINISHED'}"
+                     ></div>
+                     &lt;!&ndash;第三个圆&ndash;&gt;
+                     <div class="circle"
+                          ng-class="{active:info.status == 'UNRECEIVED'||info.status == 'UNCOMMENTED'||info.status == 'FINISHED'}"
+                     ></div>
+
+                     &lt;!&ndash;第三个线&ndash;&gt;
+                     <div flex class="line"
+                          ng-class="{lineActive:info.status == 'UNCOMMENTED'||info.status == 'FINISHED'}"
+                     ></div>
+                     &lt;!&ndash;第四个圆&ndash;&gt;
+                     <div class="circle" ng-class="{active:info.status == 'UNCOMMENTED'||info.status == 'FINISHED'}"
+                     ></div>
+                 </div>
+                 <div class="txt-wrap" layout="row" layout-align="space-between center">
+                     <div class="msg-txt "
+                          ng-class="{active:info.status == 'UNPAYED' || info.status != 'CLOSED' && info.status != 'CANCELED' }">
+                         提交订单
+                     </div>
+                     &lt;!&ndash;ng-class="{active:info.status != 'UNPAYED'}"&ndash;&gt;
+                     <div class="msg-txt"
+                          ng-class="{active:info.status != 'UNPAYED' && info.status != 'CLOSED' && info.status != 'CANCELED'}"
+                          style="margin-left: -7px"
+                     >
+                         已支付
+                     </div>
+                     &lt;!&ndash;ng-class="{active:info.status == 'UNRECEIVED'||info.status == 'UNCOMMENTED'||info.status == 'FINISHED'}"&ndash;&gt;
+                     <div class="msg-txt"
+                          ng-class="{active:info.status == 'UNRECEIVED'||info.status == 'UNCOMMENTED'||info.status == 'FINISHED'}">
+                         已发货
+                     </div>
+                     &lt;!&ndash;  ng-class="{active:info.status == 'UNCOMMENTED'||info.status == 'FINISHED' }"&ndash;&gt;
+                     <div class="msg-txt" ng-class="{active:info.status == 'UNCOMMENTED'||info.status == 'FINISHED' }"
+                     >
+                         已完成
+                     </div>
+                 </div>
+             </div>
+         </div>
+         &lt;!&ndash;粗线背景，不要动&ndash;&gt;
+         <div class="gray-bg"></div>
+         &lt;!&ndash;中间详细内容&ndash;&gt;
+         <div class="center-wrap">
+             &lt;!&ndash;配送内容&ndash;&gt;
+             <div class="transport" layout="column">
+                 <div class="title" layout="row" layout-align="start center">
+                     <div class="block"></div>
+                     <span class="discr-txt">配送</span>
+                 </div>
+                 <md-divider class="dashed"></md-divider>
+                 <div class="order-detail" layout="row">
+                     <div class="txt-wrap">
+                         <span class="txt-left">配送方式：</span>
+                         <span>快递</span>
+                     </div>
+                 </div>
+                 <md-divider class="dashed"></md-divider>
+                 <div class="address" layout="column">
+                     <div class="commit">
+                         <span>{{info.address.receiver}}</span>
+                         <span>{{info.address.phone}}</span>
+                     </div>
+                     <div class="address-detail">
+                         <span>{{info.address.province}}{{info.address.city}}{{info.address.area}}{{info.address.street}}</span>
+                     </div>
+                 </div>
+             </div>
+             <md-divider></md-divider>
+             &lt;!&ndash;带图片的样式&ndash;&gt;
+             <div class="item-list">
+                 &lt;!&ndash;&ndash;&gt;
+                 <div class="title" layout="row" layout-align="start center">
+                     <div class="block"></div>
+                     <span class="discr-txt">商品清单</span>
+                 </div>
+                 &lt;!&ndash;多个商品可以repeat这个div&ndash;&gt;
+                 <div class="item-detail" ng-repeat="item in info.items track by $index">
+                     <md-divider class="dashed"></md-divider>
+                     &lt;!&ndash;多加一层方便布局&ndash;&gt;
+                     <div class="cen-msg" layout="row">
+                         <div class="cen-img-wrap">
+                             &lt;!&ndash;图片直接在这里变，外层不要删&ndash;&gt;
+                             &lt;!&ndash;<img ng-src="{{vm.imgUrl}}{{order.img}}?imageView2/1/w/92/h/92"/>&ndash;&gt;
+                             <img img-holder
+                                  src="{{item.skuInfo.imgs[0]}}"
+                                  width="92px" height="92px"/>
+                         </div>
+                         &lt;!&ndash;右边sku部分样式&ndash;&gt;
+                         <div class="cen-right" flex layout="column" layout-align="space-between start">
+                             <div class="cen-title">
+                                 {{item.skuInfo.title}}
+                             </div>
+                             <div class="cen-sku">
+                                 &lt;!&ndash; span用于ng-repeat&ndash;&gt;
+                                 <span ng-repeat="sku in item.skuInfo.specs track by $index">
+                                    {{sku.name}} : {{sku.value}}
+                                 </span>
+                             </div>
+                             <div class="cen-bottom" layout="row" layout-align="space-between center">
+                                 <div calss="num">{{item.skuPrice }}</div>
+                                 <div calss="num">X{{item.num}}</div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="bottom-btn-wrap" layout="row" layout-align="end center">
+                         &lt;!&ndash;TODO 这里还需判断&ndash;&gt;
+
+                         <div class="item-btn"
+                              ng-if="item.refund.status!='REJECTED'&&item.refund.status !='WAIT_SENDING'&& item.refund.status !='CLOSED' "
+                              style="color: red;border: none">
+                             {{item.refund.statusDesp}}
+                         </div>
+                         <div class="item-btn"
+                              ui-sref="main.brandApp.order.deliver({id:info.id,skuId:item.skuInfo.skuId})"
+                              ng-if="item.refund.status!='REJECTED'&&item.refund.status =='WAIT_SENDING'&& item.refund.status !='CLOSED'">
+                             {{item.refund.statusDesp}}
+                         </div>
+                         &lt;!&ndash;ng-if="info.status != 'CANCELED' &&info.status != 'UNPAYED'  && item.refund.status=='REJECTED' && item.refund.status!='UNCHECKED'||info.status == 'UNSHIPPED'||info.status == 'UNRECEIVED'||info.status == 'FINISHED'"&ndash;&gt;
+                         <div class="item-btn"
+                              ui-sref="main.brandApp.order.refund({id:info.id,skuId:item.skuInfo.skuId,amount:item.realTotalPrice,status:info.status})"
+                              ng-if="(info.status === 'FINISHED'|| info.status === 'UNSHIPPED' || info.status === 'UNRECEIVED' || item.refund.status=='REJECTED')&& item.refund.status!='UNCHECKED'&&item.refund.status !='WAIT_SENDING' "
+                         >
+                             退款
+                         </div>
+
+                     </div>
+                 </div>
+             </div>
+             <md-divider></md-divider>
+             <div class="item-price">
+                 <span>订单金额：</span>
+                 &lt;!&ndash;{{info.paymentAmount  | num:1}}&ndash;&gt;
+                 <span>￥{{info.paymentPrice }}</span>
+             </div>
+         </div>-->
+    </md-content>
+    <md-divider class="bg-red" ng-if="info.status === 'UNCONFIRMED'"></md-divider>
+    <md-divider class="bg-green" ng-if="info.status != 'UNCONFIRMED'"></md-divider>
+    <!--<div class="bottom-btn" ng-click="pay(info.id)" ng-if="info.status == 'UNPAYED'">-->
+        <!--<span class="btn-txt">付款</span>-->
+    <!--</div>-->
+    <!--待支付-->
+    <div class="bottom-btn" layout="row" layout="center center"
+         ng-if="info.status == 'UNPAYED'">
+        <div class="btn-txt" flex ng-click="canclOrder(info.id)" style="color: #ed5f5b;">取消订单</div>
+        <div class="line-bottom"></div>
+        <div class="btn-txt" flex ng-click="pay(info.id,info.paymentPrice/100)">去支付</div>
+    </div>
+
+    <div class="bottom-btn" layout="row" layout="center center"
+         ng-if="info.status == 'UNRECEIVED'">
+        <div class="btn-txt" flex ng-click="receive(info.id)">确认收货</div>
+    </div>
+<!--待确认   待发货qudiao-->
+    <div class="bottom-btn" layout="row" layout="center center"
+         ng-if="info.status === 'UNCONFIRMED' ">
+        <!--|| info.status === 'UNSHIPPED'-->
+        <div class="btn-txt" flex ng-click="canclOrder(info.id)" style="color: #ed5f5b;">取消订单</div>
+    </div>
+
+
+
+
+    <!--<div class="bottom-btn" layout="row" layout="center center"-->
+    <!--ng-if="deliver=='WAIT_SENDING'">-->
+    <!--<div class="btn-txt" flex style="background: #333333" ui-sref="main.brandApp.order.deliver({id:info.id})">填写物流-->
+    <!--</div>-->
+    <!--</div>-->
+</div>
+<!--弹窗 验证码-->
+<script type="text/ng-template" id="messageCode.html">
+    <div class="md-dialog-container ">
+        <md-dialog aria-label="" class="messageCode" style="overflow: initial;">
+            <!--<md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o" ng-click="vmd.cance()"></md-icon>-->
+            <div class="dis">验证信息</div>
+            <md-divider></md-divider>
+            <div class="address-dis">
+                <div class="dis-name">
+                    <span style="color: #999;">{{vmd.getCodeCon}}</span>
+                </div>
+                <div class="dis-code" layout="row" flex>
+                    <input type="tel" placeholder="请输入验证码" flex ng-model="vmd.code">
+                    <button ng-click="vmd.getVCcode()">{{vmd.gitCodeTime}}</button>
+                </div>
+                <div class="dis-code" layout="row" flex
+                     style="height: 16px;margin-top: 10px;font-size: 14px;color: #e84e40;"
+                     ng-if="vmd.codeShow">
+                    请输入正确的验证码！
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div layout="row" layout-align="center center">
+                <div flex style="font-size: 18px;text-align: center"  ng-click="vmd.cance()">取消</div>
+                <div class="line"></div>
+                <div flex style="font-size: 18px;text-align: center;color: #53D39A;" ng-click="vmd.confirm()">确认</div>
+            </div>
+        </md-dialog>
+    </div>
+</script>

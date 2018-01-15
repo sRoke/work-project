@@ -1,0 +1,224 @@
+<div class="ks-item">
+    <div class="panel-body">
+        <form class="form-horizontal" name="itemBaseForm" ng-submit="itemBaseSubmit()" novalidate>
+            <!--ng-show="isEditBase"-->
+            <div class="form-group">
+                <div class="col-xs-1" layout="row" ng-if="source == 'new'">
+                    <span flex>新增角色</span>
+                </div>
+                <div class="col-xs-1" layout="row" ng-if="source == 'edit'">
+                    <span flex>编辑角色</span>
+                </div>
+                <div class="col-xs-1" layout="row" ng-if="source == 'view'">
+                    <span flex>查看角色</span>
+                </div>
+            </div>
+
+
+          <div ng-if="source == 'view'" class="form-group">
+              <label for="title" class="col-xs-2 control-label">名称:
+                  <span style="color:red">*</span>
+              </label>
+
+              <div class="col-xs-8">
+                  <label for="title" class="control-label">{{currentStaffGroup.name}}
+                  </label>
+              </div>
+          </div>
+
+
+                <div class="form-group" ng-show="currentStaffGroup.staffs.length > 0" ng-if="source == 'view'">
+                    <label  class="col-xs-2 control-label">角色员工
+                    </label>
+                    <div class="col-xs-8">
+                        <h4><label class='label label-default' ng-repeat="staff in currentStaffGroup.staffs"
+                                   style="width: auto;display:inline;margin-right: 1em">{{staff.realName}}
+                        </label></h4>
+                    </div>
+                </div>
+            <div class="form-group" ng-if="source == 'view'">
+                <label for="status" class="col-xs-2 control-label">状态<span style="color:red">*</span></label>
+                <div class="col-xs-8">
+                    <label  class="control-label" ng-if="currentStaffGroup.status == 'true'">正常
+                    </label>
+                    <label  class="control-label" ng-if="currentStaffGroup.status == 'false'">禁用
+                    </label>
+                </div>
+            </div>
+            <div class="form-group" ng-if="source == 'view'">
+                <label for="status" class="col-xs-2 control-label">说明:</label>
+                <div class="col-xs-8">
+                    <label  class="control-label">{{currentStaffGroup.desp}}
+                    </label>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+            <div class="form-group" ng-if="source != 'view'" >
+                <label for="title" class="col-xs-2 control-label">名称:
+                    <span style="color:red">*</span>
+                </label>
+
+                <div class="col-xs-8">
+                    <input type="text" name="name" class="form-control input-sm" id="title" ng-model="currentStaffGroup.name"
+                           ng-disabled="views.disabledTitle"
+                           ng-maxlength="30"  required>
+                    <input hidden ng-model="$scope.currentStaffGroup.id">
+                </div>
+            </div>
+
+
+            <div class="form-group"  ng-if="source != 'view'">
+                <label  class="col-xs-2 control-label">角色员工
+                </label>
+
+                <div class="col-xs-8">
+                    <div class="input-group" uib-dropdown>
+                        <input type="text" class="form-control" placeholder="用户名" ng-model="staff.staffKeyword"
+                               ng-keyup="searchStaff()" ng-click="$event.stopPropagation()"
+                               uib-dropdown-toggle autocomplete="off" ng-disabled="staff.staffId">
+
+                        <div class="input-group-addon" ng-show="staff.staffId">
+                            <button type="button" class="close" aria-label="Close" ng-click="removeStaff()">
+                                <span aria-hidden="true">
+                                    <input type="hidden" name="staffId" ng-model="userId"> &times;
+                                </span>
+                            </button>
+                        </div>
+
+                        <div class="input-group-addon" ng-click="searchStaff()" uib-dropdown-toggle role="button">
+                            <i class="glyphicon glyphicon-search" role="button"></i></div>
+
+                        <ul class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenu1"
+                            style="max-height: 300px;overflow: auto">
+                            <li>
+                                <table class="table table-hover">
+                                    <tr ng-repeat="staff1 in staffResult " ng-click="selectStaff(staff1)">
+                                        <td>{{staff1.realName}}</td>
+                                    </tr>
+                                </table>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <span class="glyphicon glyphicon-plus" style="margin-top: 8px" role="button" ng-click="addStaff()"></span>
+            </div>
+
+            <div class="form-group" ng-show="currentStaffGroup.staffs.length > 0" ng-if="source != 'view'">
+                <label  class="col-xs-2 control-label">
+                </label>
+                <div class="col-xs-8">
+                    <h4><label class='label label-default' ng-repeat="staff in currentStaffGroup.staffs"
+                               style="width: auto;display:inline;margin-right: 1em">{{staff.realName}}
+                        <span class='glyphicon glyphicon-remove' ng-click="delStaff($index)"></span>
+                    </label></h4>
+                </div>
+            </div>
+
+            <!--状态-->
+            <div class="form-group" ng-if="source != 'view'">
+                <label for="status" class="col-xs-2 control-label">状态<span style="color:red">*</span></label>
+                <div class="col-xs-8">
+                    <select ng-model="currentStaffGroup.status" name="status" id="status" class="form-control" >
+                        <option value="true">正常</option>
+                        <option value="false">禁用</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group" ng-if="source != 'view'">
+                <label for="status" class="col-xs-2 control-label">说明:</label>
+
+                <div class="col-xs-8">
+                    <input type="text" name="name" class="form-control input-sm"  ng-model="currentStaffGroup.desp"
+                           ng-maxlength="30"  required>
+                </div>
+
+            </div>
+        </form>
+
+
+
+        <div>
+            <!---------------------------------权限列表-------------------------------->
+            <form class="form-horizontal" name="itemPropForm" ng-submit="itemPropSubmit()"
+                  novalidate>
+                <div class="form-group">
+                    <div class="col-xs-1" layout="row">
+                        <span flex>权限列表</span>
+                    </div>
+                </div>
+                <div class="form-group"  ng-repeat="(key, value) in staffGroup.authorMap" >
+                        <!--<label flex>{{key}}</label>-->
+                    <div class=" control-label" layout="row">
+                        <div flex="20">
+                            <label  ng-click="toggle(this)">{{key}}</label>
+                            <md-icon
+                                    ng-if="collapsed"
+                                    md-font-set="ks-admin-font"
+                                    md-font-icon="ks-sort-down"
+                                    style="line-height: 10px;margin-left: 10px"
+                            ></md-icon>
+                            <md-icon
+                                    ng-if="!collapsed"
+                                    md-font-set="ks-admin-font"
+                                    md-font-icon="ks-sort-up"
+                                    style="line-height: 20px;margin-left: 10px"
+                            ></md-icon>
+                        </div>
+                        <div flex></div>
+                    </div>
+
+                    <div ng-show="collapsed" layout="row">
+                        <div flex="20"></div>
+                        <div flex >
+                            <ul ui-tree-nodes="" ng-model="authorityList" style="list-style: none" flex="">
+                                <li style="list-style: none" ng-repeat="(key, value) in value" ui-tree-node
+                                    collapsed="true" layout="row">
+                                    <label flex="10">{{key}}</label>
+                                    <div ng-repeat="(key, value) in value"  flex ='10'>
+                                        <md-checkbox ng-disabled="changeStatus(key)" ng-click="authMap[key]=!authMap[key];"
+                                                     ng-checked="authMap[key]">{{value}}
+                                        </md-checkbox>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-9" ng-if="source == 'new'">
+                <button style="background: #019875" type="button" class="btn btn-info" ng-click="save()">
+                    &nbsp;&nbsp;新增&nbsp;&nbsp;</button>
+                &nbsp;
+                <a class="btn btn-default" style="background: #fff;border: 1px solid #e0e0e0;color: #101010"
+                   ng-click="fallbackPage()"
+                   role="button">返回</a>
+            </div>
+            <div class="col-sm-offset-4 col-sm-9" ng-if="source == 'edit'">
+                <button style="background: #019875" type="button" class="btn btn-info" ng-click="save()">
+                    &nbsp;&nbsp;更新&nbsp;&nbsp;</button>
+                &nbsp;
+                <a class="btn btn-default" style="background: #fff;border: 1px solid #e0e0e0;color: #101010"
+                   ng-click="fallbackPage()"
+                   role="button">返回</a>
+            </div>
+            <div class="col-sm-offset-4 col-sm-9" ng-if="source == 'view'">
+                <a class="btn btn-default" style="background: #fff;border: 1px solid #e0e0e0;color: #101010"
+                   ng-click="fallbackPage()"
+                   role="button">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+

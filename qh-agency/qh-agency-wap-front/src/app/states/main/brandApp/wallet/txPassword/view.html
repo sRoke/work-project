@@ -1,0 +1,38 @@
+<div flex layout="column" class="ks-wallet-payTx">
+    <!--<md-toolbar class="ks-header">-->
+        <!--<div layout="row" class="ks-header-divWrap">-->
+            <!--<div class="divTop" flex class>-->
+                <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+                         <!--ng-click="fallbackPage()"></md-icon>-->
+                <!--<span class="regSpan">余额明细</span>-->
+                <!--&lt;!&ndash;<span class="regSpan-right" ui-sref="main.brandApp.wallet.detail">明细</span>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-toolbar>-->
+
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex style="font-size: 18px;">输入支付密码</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+
+    <md-divider></md-divider>
+
+    <md-content flex layout="column" layout-align="start center" class="main">
+        <div layout="row" class="btn-withdraw">
+            <input type="tel" class="word-pay" placeholder="请输入6位数字密码" ng-model="pswd" ng-blur="formatPassword(pswd);"/>
+        </div>
+        <div layout="row" layout-align="end center" class="word-set">
+            <div class="word-set-password" ui-sref="main.brandApp.center.phone({about:'withdraw',count:count/100})">{{content}}</div>
+            <!--<div class="word-set-password" ui-sref="main.brandApp.center.phone">没有密码？去设置</div>-->
+        </div>
+        <div layout="row" class="btn-withdraw">
+            <button class="btn-next" ng-click="agreePay();">确认</button>
+        </div>
+    </md-content>
+</div>
+

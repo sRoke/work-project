@@ -1,0 +1,25 @@
+.ks-marking{
+  md-content{
+    .tab-title{
+      padding: 0 15px;
+      height: 33px;
+      font-size: 14px;
+      color: #999999;
+      line-height: 33px;
+    }
+
+    .tab-list{
+      font-size: 16px;
+      color: #333333;
+      padding: 0 15px;
+      height: 59px;
+      background: #ffffff;
+    }
+    .disabled{
+      color: #999;
+      md-icon{
+        color: #999;
+      }
+    }
+  }
+}

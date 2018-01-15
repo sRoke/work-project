@@ -1,0 +1,86 @@
+<!--<div flex  class="ks-demo" flex="100" layout="column">-->
+    <!--<md-content flex style="overflow-x:hidden;background: #fff;">-->
+        <!--<img src="4.png" id="shan-img" style="display:none;" />-->
+        <!--<img src="3.png" id="diy2-img" style="display:none;" />-->
+        <!--<img src="5.png" id="diy1-img" style="display:none;" />-->
+        <!--<img src="6.png" id="diy3-img" style="display:none;" />-->
+        <!--<img src="7.png" id="diy4-img" style="display:none;" />-->
+        <!--<img src="7.png" id="diy5-img" style="display:none;" />-->
+        <!--<div class="banner" style="margin-top: 35%">-->
+            <!--<div class="turnplate" style="">-->
+                <!--<canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>-->
+                <!--<img class="pointer" src="jt2.png"/>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-content>-->
+<!--</div>-->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #c1{
+            background: #f00;
+        }
+        .mark{
+            position:absolute;
+            height:100px;
+            width:100px;
+            left:100px;
+            top:180px;
+            border:1px solid #000;
+            cursor:move;
+        }
+        #c3{
+            background: #00f;
+        }
+    </style>
+</head>
+<body>
+<!--//显示原图像-->
+<canvas id="c1"></canvas>
+<div class="mark" id="mark"></div>
+<!--//显示剪切后的图像-->
+<canvas id="c3"></canvas>
+<script>
+    var canvas1 = document.getElementById("c1")
+    var oMark = document.getElementById("mark")
+    var canvas3= document.getElementById("c3")
+    canvas1.height = 300;
+    canvas1.width=300;
+    canvas3.height=100;
+    canvas3.width=100;
+    var cxt1 = canvas1.getContext("2d")
+    var img = new Image();
+    img.src = "./beauty.jpg";
+    var srcX = oMark.offsetLeft-canvas1.getBoundingClientRect().left;
+    var srcY = oMark.offsetTop-canvas1.getBoundingClientRect().top;
+    var sWidth = oMark.offsetWidth;
+    var sHeight = oMark.offsetHeight;
+
+    var canvas2 = document.createElement("canvas")
+    var cxt2=canvas2.getContext("2d")
+    img.onload = function(){
+        cxt1.drawImage(img,0,0,canvas1.width,canvas1.height);
+        var dataImg = cxt1.getImageData(srcX,srcY,sWidth,sHeight)
+        canvas2.width = sWidth;
+        canvas2.height = sHeight;
+        cxt2.putImageData(dataImg,0,0,0,0,canvas2.width,canvas2.height)
+        var img2 = canvas2.toDataURL("image/png");
+
+        var cxt3=canvas3.getContext("2d")
+        var img3 = new Image();
+        img3.src = img2;
+        img3.onload  = function(){
+            cxt3.drawImage(img3,0,0,canvas3.width,canvas3.height)
+        }
+
+    }
+</script>
+</body>
+</html>

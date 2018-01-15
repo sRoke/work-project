@@ -1,0 +1,142 @@
+apply plugin: 'distribution'
+
+dependencies {
+
+}
+
+distributions {
+//    dev {
+//        baseName = project.name
+//    }
+    test12 {
+        baseName = project.name
+    }
+    test13 {
+        baseName = project.name
+    }
+    test14 {
+        baseName = project.name
+    }
+    main {  // prod
+        baseName = project.name
+    }
+}
+
+String npmSysProp = System.properties['npm']
+String npm = npmSysProp ?: "/usr/local/bin/npm"
+
+logger.warn("""
+现在使用 npm 的路径为： $npm
+如果 npm 执行出错，请通过系统属性 npm 给出 npm 的绝对路径。 比如
+
+    ./gradlew -Dnpm=`which npm` 
+
+""")
+
+task buildTest12() {
+    group "build"
+
+    doLast {
+        ConfigurableFileTree ft = fileTree('src/test12/dist')
+        ft.exclude(".gitkeep")
+        ft.visit { FileVisitDetails fvd ->
+            delete fvd.file
+        }
+        project.exec {
+            commandLine "${npm}", "run", "webpack", "--", "--env.env=test12", "--env.out=src/test12/dist"
+        }
+    }
+}
+
+tasks.test12DistTar.dependsOn buildTest12
+tasks.test12DistTar.classifier = "test12"
+tasks.test12DistTar.compression = Compression.GZIP
+
+tasks.test12DistZip.dependsOn buildTest12
+tasks.test12DistZip.classifier = "test12"
+
+task buildTest13() {
+    group "build"
+
+    doLast {
+        ConfigurableFileTree ft = fileTree('src/test13/dist')
+        ft.exclude(".gitkeep")
+        ft.visit { FileVisitDetails fvd ->
+            delete fvd.file
+        }
+        project.exec {
+            commandLine "${npm}", "run", "webpack", "--", "--env.env=test13", "--env.out=src/test13/dist"
+        }
+    }
+}
+
+tasks.test13DistTar.dependsOn buildTest13
+tasks.test13DistTar.classifier = "test13"
+tasks.test13DistTar.compression = Compression.GZIP
+
+tasks.test13DistZip.dependsOn buildTest13
+tasks.test13DistZip.classifier = "test13"
+
+
+task buildTest14() {
+    group "build"
+
+    doLast {
+        ConfigurableFileTree ft = fileTree('src/test14/dist')
+        ft.exclude(".gitkeep")
+        ft.visit { FileVisitDetails fvd ->
+            delete fvd.file
+        }
+        project.exec {
+            commandLine "${npm}", "run", "webpack", "--", "--env.env=test14", "--env.out=src/test14/dist"
+        }
+    }
+}
+tasks.test14DistTar.dependsOn buildTest14
+tasks.test14DistTar.classifier = "test14"
+tasks.test14DistTar.compression = Compression.GZIP
+
+tasks.test14DistZip.dependsOn buildTest14
+tasks.test14DistZip.classifier = "test14"
+
+task buildProd() {
+    group "build"
+
+    doLast {
+        ConfigurableFileTree ft = fileTree('src/main/dist')
+        ft.exclude(".gitkeep")
+        ft.visit { FileVisitDetails fvd ->
+            delete fvd.file
+        }
+        project.exec {
+            commandLine "${npm}", "run", "webpack", "--", "--env.env=prod", "--env.out=src/main/dist"
+        }
+    }
+}
+tasks.distTar.dependsOn buildProd
+tasks.distTar.compression = Compression.GZIP
+
+tasks.distZip.dependsOn buildProd
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+
+            // test12
+            artifact(test12DistZip)
+            artifact(test12DistTar)
+
+            // test13
+            artifact(test13DistZip)
+            artifact(test13DistTar)
+
+            // test14
+            artifact(test14DistZip)
+            artifact(test14DistTar)
+
+            // main / prod
+            artifact(distZip)
+            artifact(distTar)
+        }
+    }
+}

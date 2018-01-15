@@ -1,0 +1,44 @@
+<md-dialog aria-label="修改收货地址" style="width:1000px;">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>关联门店</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
+                    <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div class="form-group">
+                    <label for="newAddress" class="col-sm-2 control-label">关联门店</label>
+                    <div class="col-sm-9">
+                        <div id="newAddress">
+                            <select data-ng-model="vm.shop.selectBrandAppId">
+                                <option value="">全部</option>
+                                <option ng-repeat="shopName in vm.shopData" value="{{shopName.id}}">
+                                    {{shopName.name}}
+                                </option>
+                            </select>
+
+
+                            <select ng-if="vm.shop.selectBrandAppId" data-ng-model="vm.shop.selectShopId">
+                                {{vm.shop.selectShopData}}
+                                <option value="">全部</option>
+                                <option ng-repeat="shopListName in vm.shopList" value="{{shopListName.id}}">
+                                    {{shopListName.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click=" vm.update()">保存
+            </md-button>
+            <md-button ng-click="vm.cancel()">取消</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,14 @@
+rootProject.name = 'qh-raffle'
+
+include 'qh-raffle-domain'
+include 'qh-raffle-api'
+include 'qh-raffle-core'
+include 'qh-raffle-client'
+include 'qh-raffle-service'
+include 'qh-raffle-server'
+include 'qh-raffle-wap-front'
+include 'qh-raffle-admin-front'
+include 'qh-raffle-msg-impl'
+include 'qh-raffle-msg-api'
+
+

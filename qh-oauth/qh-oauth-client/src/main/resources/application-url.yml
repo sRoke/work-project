@@ -1,0 +1,7 @@
+devPort: 16000
+
+a: aab
+
+ut:
+    basePath : https://kingsilk.net/oauth/local/${devPort}/rs/api
+

@@ -1,0 +1,257 @@
+<!-- 右侧内容区域 -->
+<!--<md-content layout="column" flex>-->
+    <!--<h3>商品发布</h3>-->
+<!--</md-content>-->
+<div class="ks-item">
+    <div class="common-list-center">
+        <ul layout="row" >
+            <li layout="row">
+                <label for="bhnum">商品标题：</label>
+                <input id="bhnum" class="choose " ng-model="searchTitle">
+                <label for="status">状态：</label>
+                <select ng-model="searchStatus" name="status" id="status">
+                    <option value="">全部</option>
+                    <option ng-repeat="state in status" value="{{state.status}}">
+                        {{state.value}}
+                    </option>
+                </select>
+                <button class="inquire" style="" ng-click="pageChanged('0')">
+                    搜索
+                </button>
+            </li>
+            <div class="btnBox" ng-if="ITEM_C" layout="row">
+                <md-button class="newAdd" ui-sref="main.brandApp.goodAdd()">
+                    <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-plus" title="新增"></md-icon>-->
+                    新增
+                </md-button>
+            </div>
+            <br style="clear: both">
+        </ul>
+    </div>
+
+
+
+
+
+
+
+    <div class="common-list-detail" layout="column">
+        <!--表头-->
+        <div class="common-list-detail-thead" layout="row">
+            <div class="thead-show" flex layout-align="center" style="padding-left: 30px;">
+                <span>主图</span>
+            </div>
+            <div class="thead-show" flex="20" layout-align="center">
+                <span>名称</span>
+            </div>
+            <div class="thead-show" flex layout-align="center">
+                <span>分类</span>
+            </div>
+            <div class="thead-show" flex layout-align="center">
+                <span>状态</span>
+            </div>
+            <div class="thead-show end-show" flex="30" layout-align="center">
+                <span>操作</span>
+            </div>
+        </div>
+        <!--表格详细内容-->
+        <div class="common-list-detail-tbody" layout="column">
+            <!--定义每列数据    父级用ng-repeat循环此行-->
+            <div class="common-list-detail-row" layout="row" ng-repeat="item in data.content">
+                <div class="thead-show" flex layout-align="center" style="padding-left: 30px;">
+                    <span>
+                         <img  ng-src="{{item.imgs}}"  ng-if="item.imgs"  style="height:40px; width: 40px;"/>
+                    </span>
+                </div>
+                <div class="thead-show" flex="20" layout-align="center">
+                    <span>{{item.title}}{{data.recList.totalCount}}</span>
+                </div>
+                <div class="thead-show" flex layout-align="center"
+                     style="overflow: hidden;text-overflow:ellipsis;white-space:nowrap;">
+                    <span ng-repeat="tag in item.categoryName" style="padding: 0 10px;">{{tag}}</span>
+                </div>
+                <div class="thead-show" flex layout-align="center">
+                    <span>{{item.statusDesp}}</span>
+                </div>
+                <div class="thead-show" flex="30" layout-align="end center" layout="row" style="padding-right: 20px;">
+                    <div  class="operateFont" layout="column">
+                        <button  ng-if="ITEM_R" ui-sref="main.brandApp.gooSee({id:item.id,about:'view'})" >查看</button>
+                    </div>
+                    <div  class="operateFont" layout="column">
+                        <button  ng-if="item.statusCode!='NORMAL' && ITEM_U"
+                                ui-sref="main.brandApp.goodEdit({id:item.id,about:'editor'})">
+                            编辑
+                        </button>
+                    </div>
+                    <div  class="operateFont" layout="column">
+                        <button  ng-if="item.statusCode=='NORMAL' && ITEM_U"
+                                ng-click="saleDialog(item.id,'下架');">
+                            下架
+                        </button>
+                        <button  ng-if="item.statusCode!='NORMAL'"
+                                ng-click="saleDialog(item.id,'上架');">
+                            上架
+                        </button>
+                    </div>
+                    <div  class="operateFont" layout="column">
+                        <button   ng-if="item.statusCode !=='NORMAL' && ITEM_D" ng-click="delete(item.id,item)">
+                            删除
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+<!--改版前-->
+
+    <!--<div class="item-table-head" layout="row" layout-align="center center">-->
+        <!--<div flex>主图</div>-->
+        <!--<div flex="20">名称</div>-->
+        <!--<div flex>分类</div>-->
+        <!--&lt;!&ndash;<div flex>分类</div>&ndash;&gt;-->
+        <!--<div flex>状态</div>-->
+        <!--<div flex="30">操作</div>-->
+    <!--</div>-->
+    <!--<div class="item-table-content" ng-repeat="item in data.content" layout="row" layout-align="center center">-->
+        <!--<div flex class="item-table-content-main">-->
+            <!--&lt;!&ndash;<a >&ndash;&gt;-->
+                <!--<img  ng-src="{{item.imgs}}"  ng-if="item.imgs"  width="100%" height="100%"/>-->
+            <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--</div>-->
+
+        <!--<div flex="20" class="item-table-content-main">{{item.title}}{{data.recList.totalCount}}</div>-->
+
+        <!--<div flex class="item-table-content-main" layout="row" style="width: 100%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">-->
+            <!--&lt;!&ndash;<label ng-if="item.categoryName.length>0">&ndash;&gt;-->
+                <!--&lt;!&ndash;<select style="width:120px;background: #ffffff;height: 30px;font-weight: bold;">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option ng-repeat="tag in item.categoryName" style="font-weight: bold">&ndash;&gt;-->
+                        <!--&lt;!&ndash;{{tag}}&ndash;&gt;-->
+                    <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                <!--&lt;!&ndash;</select>&ndash;&gt;-->
+            <!--&lt;!&ndash;</label>&ndash;&gt;-->
+            <!--<span ng-repeat="tag in item.categoryName" style="margin:0px;padding:0 5px;">{{tag}}</span>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;<div flex>{{item.categoryName}}</div>&ndash;&gt;-->
+        <!--<div flex class="item-table-content-main">{{item.statusDesp}}</div>-->
+
+        <!--<div flex="30" style="text-align: left; padding-left: 20px;" layout="row" class="item-table-content-main">-->
+            <!--<div flex="20" style="min-width:87px;">-->
+                <!--<a style="text-align: center" class="glyphicon" title="查看"-->
+                   <!--ui-sref="main.brandApp.gooSee({id:item.id,about:'view'})" flex ng-if="ITEM_R">-->
+                    <!--&nbsp;-->
+                    <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit" title="查看"></md-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--查看-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--<div flex="20" style="min-width:87px;" ng-if="item.statusCode!='NORMAL' && ITEM_U">-->
+                <!--<a style="text-align: center" class="glyphicon" title="编辑"-->
+                   <!--ui-sref="main.brandApp.goodEdit({id:item.id,about:'editor'})" flex >-->
+                    <!--&nbsp;-->
+                    <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit" title="编辑"></md-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--编辑-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;<div flex="20">&ndash;&gt;-->
+                <!--&lt;!&ndash;<a style="text-align: center" class="glyphicon" title="复制" href="javascript:void(0)" flex&ndash;&gt;-->
+                   <!--&lt;!&ndash;ui-sref="main.brandApp.gooAdd({id:item.id,about:'copy'})" ng-if="ITEM_U">&ndash;&gt;-->
+                    <!--&lt;!&ndash;&nbsp;<md-icon class="wrapIcon" md-fonnet.kingsilk.net.kinet.kingsilk.qh.agency.qh.agency.wapency.net.kinet.kingsilk.qh.agency.qh.agency.wap="ks-admin-font" md-font-icon="ks-copy" title="复制"></md-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>复制&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+            <!--<div flex="20" style="min-width:87px;">-->
+                <!--<a style="text-align: center" class="glyphicon" title="下架" href="javascript:void(0)"-->
+                   <!--ng-if="item.statusCode=='NORMAL' && ITEM_U" flex-->
+                   <!--ng-click="saleDialog(item.id,'下架');">-->
+                    <!--&nbsp;-->
+                    <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-sentiment"&ndash;&gt;-->
+                                   <!--&lt;!&ndash;title="下架"></md-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--下架-->
+                <!--</a>-->
+                <!--<a style="text-align: center" class="glyphicon" title="上架" href="javascript:void(0)"-->
+                   <!--ng-if="item.statusCode!='NORMAL'" flex-->
+                   <!--ng-click="saleDialog(item.id,'上架');">-->
+                    <!--&nbsp;-->
+                    <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-smile-o"&ndash;&gt;-->
+                                   <!--&lt;!&ndash;title="上架"></md-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--上架-->
+                <!--</a>-->
+            <!--</div>-->
+
+            <!--<div flex="20"  style="min-width:87px;">-->
+                <!--<a style="text-align: center" class="glyphicon" title="删除" href="javascript:void(0)"-->
+                   <!--ng-click="delete(item.id,item)" flex ng-if="item.statusCode !=='NORMAL' && ITEM_D">-->
+                    <!--&nbsp;-->
+                    <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-trash" title="删除"></md-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--删除-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<br style="clear: both">-->
+    <!--</div>-->
+    <!--分页-->
+    <div style="width: 99%; margin: 10px auto 0">
+        <div style="margin: 10px;" uib-pagination total-items="data.totalElements" ng-model="curPage" ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="8" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+        <div style="float: right;margin: 10px;"  class="pageSubnav">
+            <span>共{{data.totalElements}}条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="data.curPage">页
+            <md-button ng-click="pageChanged()">确定</md-button>
+        </div>
+    </div>
+
+    <div class="modal fade" role="dialog" id="saleModal" tabindex="-1">
+        <div class="modal-dialog  modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header  ">
+                    <h4 class="modal-title">温馨提示</h4>
+                </div>
+
+                <div class="modal-body">
+                    <p>确定要{{content}}该商品吗？</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn ok" ng-click="setStatus()">确定</button>
+                    <button type="button" class="btn cancle" data-dismiss="modal">取消</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" role="dialog" id="delModal" tabindex="-1" style="background: rgba(0,0,0,0.5)">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header  ">
+                    <h4 class="modal-title">温馨提示</h4>
+                </div>
+
+                <div class="modal-body">
+                    <p>您确定要删除该商品吗?<br/>删除后，将不可恢复！</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn ok" ng-click="delItem()">确定</button>
+                    <button type="button" class="btn cancle" data-dismiss="modal">取消</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</div>

@@ -1,0 +1,22 @@
+<md-dialog aria-label="物流信息" class="aaaa">
+    <!--发货填写物流公司以及单号    弹出框-->
+    <div layout="column" class="tck">
+        <h2>填写物流信息</h2>
+        <div layout="row">
+            <label>填写物流公司</label>
+            <select ng-model="vm.code">
+                <option value="">请选择</option>
+                <option ng-repeat="(code,desp) in  vm.logisticsCompanys" value="{{code}}" >{{desp}}</option>
+            </select>
+        </div>
+        <div layout="row">
+            <label>填写物流单号</label>
+            <input type="text"  ng-model="vm.expressNo">
+        </div>
+        <div layout="row">
+            <button ng-click="vm.ship()" ng-disabled="!(vm.code&&vm.expressNo)" ng-class="{true:'forbid'}[!(vm.code&&vm.expressNo)]"
+                    style="background:#ba9f6e;color:#fff;">确定</button>
+            <button ng-click="vm.cancel()" style="margin:20px 0 0 30px;">返回</button>
+        </div>
+    </div>
+</md-dialog>

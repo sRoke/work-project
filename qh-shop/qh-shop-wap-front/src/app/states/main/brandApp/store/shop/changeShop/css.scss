@@ -1,0 +1,55 @@
+@import "../../../../../../scss/_ksMain.scss";
+
+.ks-changeShop {
+  background: #f5f5f5;
+  .topLine {
+    background: #d5d5d5;
+    height: 1px;
+    width: 100%;
+    -webkit-transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+  }
+  //  主体
+  .main {
+
+  }
+
+  .store-box {
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 8px;
+    color: #333;
+    font-size: 18px;
+    margin: 20px 30px;
+    padding: 0 15px;
+    outline: none;
+    border: 1px solid #ffd2df;
+    background: #f5f5f5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  //.store-box:nth-child(5n+0){
+  //  background: #dbb879;
+  //  box-shadow:0 0 20px #b87600;
+  //}
+  //.store-box:nth-child(5n+1){
+  //  background: #7cceef;
+  //  box-shadow:0 0 20px #0087bd;
+  //}
+  //.store-box:nth-child(5n+2){
+  //  background: #13d0bc;
+  //  box-shadow:0 0 20px #18988a;
+  //}
+  //.store-box:nth-child(5n+3){
+  //  background: #ffb27a;
+  //  box-shadow:0 0 20px #d97731;
+  //}
+  //.store-box:nth-child(5n+4){
+  //  background: #95E481;
+  //  box-shadow:0 0 20px #249b29;
+  //}
+
+}

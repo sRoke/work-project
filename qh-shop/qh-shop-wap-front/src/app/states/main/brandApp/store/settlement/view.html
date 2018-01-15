@@ -1,0 +1,134 @@
+<div flex="100" layout="column" class="ks-settlement">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>结算</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="content-wrap" flex layout="row">
+        <md-content flex style="overflow-x: hidden">
+            <div class="content1" layout="row" layout-align="space-between center">
+                <div class="left">客户手机号</div>
+                <div class="right" flex>
+                    <input placeholder="请输入" type="tel" ng-model="telPhone" ng-change="checkValue()">
+                </div>
+            </div>
+            <div class="content2">
+                <div layout="row" layout-align="space-between center" class="content2-box" ng-if="data.activityType">
+                    <div class="box-icon" layout="row" layout-align="start center">
+                        <div class="left">
+                            <span>{{discountSpec}}</span>
+                        </div>
+                        <div class="right" layout="row" layout-align="start center">
+                            <div class="icon-1">
+                                <img src="icon.png">
+                            </div>
+                            <div class="icon-2" layout="row" layout-align="center center" ng-click="setDiscount()">
+                                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-trash-can-o"></md-icon>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
+                <div layout="row" layout-align="space-between center" class="content2-box">
+                    <div>总数:</div>
+                    <div>{{data.total}}</div>
+                </div>
+                <div layout="row" layout-align="space-between center" class="content2-box">
+                    <div>合计:</div>
+                    <div>￥{{data.orderPrice/100|num:2}}</div>
+                </div>
+                <div layout="row" layout-align="space-between center" class="content2-box" ng-if="data.activityType">
+                    <div>优惠方式:</div>
+                    <div>{{discountSpec}}</div>
+                </div>
+                <div layout="row" layout-align="space-between center" class="content2-box" ng-if="data.activityType">
+                    <div>优惠:</div>
+                    <div>￥{{(data.orderPrice - data.paymentPrice)/100|num:2}}</div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content3">
+                <div layout="row" layout-align="space-between center" class="content3-title">
+                    <div flex="40" class="box" style="text-align: left">商品</div>
+                    <div flex="30" class="box" style="text-align: center">数量</div>
+                    <div flex="30" class="box" style="text-align: right">单价</div>
+                </div>
+                <div layout="row" layout-align="space-between center" class="content3-box"
+                ng-repeat="item in data.items track by $index">
+                    <div flex="40" class="box1" style="text-align: left">
+                        <div class="title">{{item.skuInfo.title}}</div>
+                        <div class="spec">
+                            <span ng-repeat="spec in item.skuInfo.specs">{{spec.value}}</span>
+                        </div>
+                    </div>
+                    <div flex="30" class="box2" style="text-align: center">
+                        <div>X{{item.num}}</div>
+                        <div><span class="not-enough" ng-if="item.num > item.skuInfo.storage">(超出库存)</span></div>
+                    </div>
+                    <div flex="30" class="box3" style="text-align: right;">
+                        <div style="height: 22px;">￥{{item.skuPrice/100|num:2}}</div>
+                        <div style="height: 22px;"></div>
+                    </div>
+                </div>
+                <!--<div layout="row" layout-align="space-between center" class="content3-box">-->
+                    <!--<div flex="40" class="box1" style="text-align: left">-->
+                        <!--<div class="title">夏秋桑蚕丝空调被</div>-->
+                        <!--<div class="spec">-->
+                            <!--<span>220x240</span><span>3斤</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div flex="30" class="box2" style="text-align: center">-->
+                        <!--<div>X1</div>-->
+                        <!--<div></div>-->
+                    <!--</div>-->
+                    <!--<div flex="30" class="box3" style="text-align: right">￥{{13520/100|num:2}}</div>-->
+                <!--</div>-->
+            </div>
+            <div class="content4">
+                <div class="content4-title" layout="row" layout-align="space-between center" ng-click="chooseDiscount()">
+                    <div>选择优惠</div>
+                    <div ng-if="discount" >
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-triangle-down"></md-icon>
+                    </div>
+                    <div ng-if="!discount" >
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-triangle-up"></md-icon>
+                    </div>
+                </div>
+                <!--<md-divider></md-divider>-->
+                <div class="content4-content" ng-show="discount">
+                    <md-divider></md-divider>
+                    <div class="content4-box" layout="row" layout-align="start center" ng-click="alert('1')">
+                        <div class="icon">折</div>
+                        <div class="desc" flex style="border-bottom: 1px dashed  #D5D5D5;">自定义整单折扣</div>
+                    </div>
+                    <div class="content4-box" layout="row" layout-align="start center" ng-click="alert('2')">
+                        <div class="icon">减</div>
+                        <div class="desc" flex>自定义减价</div>
+                    </div>
+                </div>
+            </div>
+        </md-content>
+    </div>
+    <md-divider></md-divider>
+    <div class="footBtn" layout="row">
+        <div flex class="left-wrap" layout="row">
+            <div class="pay-price" flex>
+                应收:<span>￥{{data.paymentPrice/100|num:2}}</span>
+            </div>
+        </div>
+        <div class="goPay" ng-if="goPay" ng-clicK="orderCreate()" layout="row" layout-align="center center">
+            <span>收款</span>
+            <!--<span>加入购物车</span>-->
+        </div>
+        <div class="goPay" ng-if="!goPay" layout="row" layout-align="center center" style="background: #D5D5D5;color: #FFFFFF">
+            <span>收款</span>
+            <!--<span>加入购物车</span>-->
+        </div>
+    </div>
+</div>

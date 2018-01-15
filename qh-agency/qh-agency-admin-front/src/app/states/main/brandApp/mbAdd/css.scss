@@ -1,0 +1,41 @@
+.ks-editItem{
+  background: #fff;
+  margin:20px;
+  .edit{
+    height:40px;
+    background:#e0e0e0;
+    line-height:40px;
+    font-size:14px;
+    color:#999;
+    //margin:20px;
+    // width:98%;
+    padding-left:10px;
+  }
+  .panel-body{
+    margin:20px;
+    width:98%;
+    .edit1{
+      height:40px;
+      label{
+        height:40px;
+        padding-top:0px;
+        padding-right: 0px;
+        line-height:40px;
+        font-weight:100;
+      }
+      span{
+        color: red;
+        line-height:40px;
+        padding-right:6px;
+      }
+      input,select{
+        min-width:180px;
+        height:30px;
+        margin-top:5px;
+        border:1px solid #e0e0e0;
+        border-radius: 4px;
+        background: #fff;
+      }
+    }
+  }
+}

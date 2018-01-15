@@ -1,0 +1,232 @@
+//
+@import "../../../../../scss/_ksMain.scss";
+.ks-confirmOrder{
+  background: #f5f5f5;
+  .line{
+    width: 100%;
+    height: 1px;
+    -webkit-transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+    //overflow: hidden;
+    background: #CDD0CF;
+  }
+  //  主体
+  .main{
+    .center-con{
+      flex-shrink: 0;
+      .delivery{
+        height:80px;
+        padding: 0 15px;
+        background: #fff;
+        span{
+          font-size: 16px;
+          color: #101010;
+        }
+        button{
+          background:none;
+          font-size: 16px;
+          color: #101010;
+          border: 1px solid #999;
+          width:80px;
+          height:34px;
+          -webkit-border-radius:10px;
+          -moz-border-radius:10px;
+          border-radius:10px;
+          margin:0 5px 0 15px;
+        }
+        .btn-checked{
+          border: 1px solid #E53467;
+        }
+      }
+      .bg-line{
+        height:10px;
+      }
+      //到店时间
+      .time{
+        height: 56px;
+        background: #fff;
+        padding:0 15px;
+        .time-left{
+          font-size:16px;
+          color: #101010;
+        }
+        .selectTime{
+          color: #999;
+          font-size: 16px;
+        }
+      }
+      .drawType{
+        height: 60px;
+        font-size: 16px;
+        line-height: 60px;
+        padding: 0 15px ;
+        background: #fff;
+        .drawType-left{
+          //padding-right: 27px;
+          min-width: 92px;
+          color: #101010;
+        }
+        .drawType-right{
+          color: #666;
+          line-height: 60px;
+          //width: 100%;
+          //white-space: nowrap;
+          //overflow: hidden;
+          //text-overflow: ellipsis;
+        }
+      }
+      .address{
+        //height: 80px;
+        background: #fff;
+        padding:0 15px;
+        .select-address{
+         // height: 80px;
+          .ks-icon{
+            margin:0;
+          }
+          .ks-icon1{
+            margin:0;
+            color: #333;
+            font-size: 24px;
+          }
+          .xq{
+            margin-left: 15px;
+            font-size: 16px;
+            color: #101010;
+            .phone{
+              font-size: 14px;
+              line-height: 24px;
+              margin-top:8px;
+              color: #101010;
+            }
+            .address-xq{
+              font-size: 14px;
+              line-height: 24px;
+              color: #101010;
+            }
+          }
+        }
+      }
+      .address1{
+        //height: 80px;
+        background: #fff;
+        padding:0 15px;
+        min-height: 60px;
+        .address1-left{
+          min-width: 92px;
+          color: #101010;
+          font-size: 16px;
+        }
+        .select-address{
+          //height: 80px;
+          .xq{
+            margin-left: 27px;
+            font-size: 16px;
+            color: #101010;
+            .address-xq{
+              font-size: 14px;
+              line-height: 30px;
+              color: #666;
+            }
+          }
+        }
+      }
+      //一个订单的商品信息
+      .order-goods{
+        padding:0 15px;
+        flex-shrink: 0;
+        background: #fff;
+        .img-con{
+          margin:15px 0;
+          height:82px;
+          width:82px;
+          background: #f5f5f5;
+          img{
+            height:82px;
+            width:82px;
+          }
+        }
+        .img-right{
+          margin:15px 0 0 11px;
+          .title{
+            font-size: 16px;
+            color: #333;
+            line-height: 18px;
+          }
+        }
+      }
+      .line{
+        width: 100%;
+        height: 1px;
+        -webkit-transform: scaleY(0.5);
+        -webkit-transform-origin: 0 0;
+        //overflow: hidden;
+        background: #CDD0CF;
+      }
+      .remark-goods{
+        flex-shrink: 0;
+        background: #fff;
+        padding:0 15px;
+        .remark{
+          height:85px;
+          .remark-left{
+            padding:20px 27px 0 0;
+            font-size: 16px;
+            color: #101010;
+          }
+          .remark-right{
+            margin-top:20px;
+            border:none;
+            font-size: 16px;
+            line-height: 30px;
+            overflow-x: auto;
+            resize: none;
+          }
+        }
+        .all-goods{
+          height:55px;
+          .goods-left{
+            font-size:16px;
+            color: #101010;
+          }
+          .goods-right{
+            font-size:14px;
+            color: #E53467;
+          }
+        }
+      }
+    //  优惠信息
+      .discount{
+        flex-shrink: 0;
+        background: #fff;
+        padding: 10px 15px;
+        .discount-left{
+          height:36px;
+          line-height: 36px;
+          font-size: 16px;
+          color: #101010;
+        }
+        .discount-right{
+          height:36px;
+          line-height: 36px;
+          font-size: 14px;
+          color: #333;
+        }
+      }
+    }
+  }
+  //底部
+  .ks-bottom{
+    height:49px;
+    background: #fff;
+    button{
+      height:49px;
+      width: 100%;
+      background: #fff;
+      border:none;
+      font-size: 18px;
+      color: #E53467;
+    }
+  }
+
+}

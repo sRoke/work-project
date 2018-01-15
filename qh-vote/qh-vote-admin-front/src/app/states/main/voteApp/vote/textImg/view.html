@@ -1,0 +1,53 @@
+<div flex="100" layout="column" class="ks-textImg">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex ng-if="type == 'desp'">活动图文</h1>
+        <h1 flex ng-if="type == 'rule'">规则说明</h1>
+        <div class="right-button" flex="20" style="color: #E53467;">
+        </div>
+    </div>
+    <md-content flex ng-show="from != 'view'">
+        <md-divider></md-divider>
+        <div id="div4" ></div>
+        <ul style="visibility: hidden">
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+        </ul>
+    </md-content>
+    <md-content flex ng-show="from == 'view'">
+        <md-divider></md-divider>
+        <div id="detail" class="ks-item-desp" ng-include="tplUrl" ng-show="from = 'view'"></div>
+    </md-content>
+    <md-divider style="border-color:#E53467"></md-divider>
+    <div ng-click="finish()" ng-if="from != 'view'" class="choose" layout="row" layout-align="center center">
+        <span>确定</span>
+    </div>
+    <div ng-click="fallbackPage()" ng-if="from == 'view'" class="choose" layout="row" layout-align="center center">
+        <span>返回</span>
+    </div>
+</div>
+
+<style>
+    .choose {
+        background: #fff;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 49px;
+        min-height: 49px;
+        z-index: 100;
+        border-top: 1px solid #E53467;
+
+    }
+
+    .choose > span {
+        font-size: 14px;
+        color: #e53467;
+
+    }
+</style>

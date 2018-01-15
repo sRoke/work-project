@@ -1,0 +1,65 @@
+<div class="ks-applyRefund"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>申请退款</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <div class="line"></div>
+    <md-content flex style="overflow-x:hidden;background: #fff;">
+        <div class="main" layout="column">
+            <div layout="column" class="center-con">
+                <!--退货商品-->
+                <div class="order-goods" layout="row">
+                    <div class="goods-img"><img ng-src="{{info.skuInfo.imgs[0]}}"></div>
+                    <div layout="column" flex class="goods-right">
+                        <div class="title">{{info.skuInfo.title}}</div>
+                        <div class="goods-type" layout="row">
+                            <span ng-repeat="sku in info.skuInfo.specs"> {{sku}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-line"></div>
+                <!--退款类型-->
+                <div class="refund" layout="column">
+                    <div layout="row" layout-align="space-between center" class="refund-tab">
+                        <div class="refund-left" layout="row">
+                            退款类型
+                        </div>
+                        <div class="refund-right" layout="row" flex ng-click="openAdcDialog()" >
+                            <input type="text" placeholder="请选择退款类型" readonly flex ng-if="!data.selectType">
+                            <!--<input type="text" ng-model="label" readonly flex ng-if="data.selectType">-->
+                            <div class="selectType" ng-model="refundType" ng-if="data.selectType" flex>{{label}}</div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div layout="row" layout-align="space-between center" class="refund-tab">
+                        <div class="refund-left" layout="row">
+                            退款金额
+                        </div>
+                        <div class="refund-right" layout="row" flex>
+                            <input type="text" placeholder="最高可退{{info.skuInfo.allRealPayPrice/100 | num:2}}" ng-model="price"  flex>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div layout="row"  class="refund-tab-reason">
+                        <div class="refund-left" layout="row">
+                            退款原因
+                        </div>
+                        <div class="refund-right" layout="row" flex>
+                            <textarea type="text" placeholder="输入你要退款的原因" ng-model="reason"  flex></textarea>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div layout="row" class="link-phone">
+                        <div class="ts">*</div><div class="word">退款前请先联系商家：</div><a href="tel:{{info.phone}}" class="phone">{{info.phone}}</a>
+                    </div>
+                    <button class="btn-refund" flex ng-click="btnSubmit()">提交</button>
+                </div>
+            </div>
+        </div>
+    </md-content>
+</div>

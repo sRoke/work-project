@@ -1,0 +1,94 @@
+<div class="ks-busApplicationView">
+    <md-tabs md-dynamic-height md-border-bottom md-selected="selectedIndex">
+        <md-tab label="应用信息">
+            <md-content class="md-padding">
+                <div class="content-1">
+                    <div class="tab-1" layout="row">
+                        <div class="title">店铺名称:</div>
+                        <div class="desc">{{data.appName}}</div>
+                    </div>
+                    <div class="tab-1" layout="row">
+                        <div class="title">绑定手机号:</div>
+                        <div class="desc">{{data.creatBy}}</div>
+                    </div>
+                    <div class="tab-1" layout="row" >
+                        <div class="title">有效时间:</div>
+                        <div class="desc">{{data.date}}</div>
+                    </div>
+                </div>
+            </md-content>
+        </md-tab>
+        <md-tab label="微信公众号">
+            <md-content class="md-padding">
+                <!--<h1 class="md-display-2">微信公众号</h1>-->
+                <div class="content-1">
+                    <div class="tab-1" layout="row">
+                        <div class="title">公众号名称:</div>
+                        <div class="desc">{{data2.nickName}}</div>
+                    </div>
+                    <div class="tab-1" layout="row">
+                        <div class="title">公众号原始ID:</div>
+                        <div class="desc">{{data2.userName}}</div>
+                    </div>
+                    <div class="tab-1" layout="row">
+                        <div class="title">微信号:</div>
+                        <div class="desc">{{data2.alias}}</div>
+                    </div>
+                    <div class="tab-1" layout="row">
+                        <div class="title">头像:</div>
+                        <div class="desc">
+                            <img ng-src="{{data2.wxComLog}}" width="100" height="100">
+                        </div>
+                    </div>
+                    <div class="tab-1" layout="row">
+                        <div class="title">公众号AppID:</div>
+                        <div class="desc">{{data2.wxMpAppId}}</div>
+                    </div>
+                    <!--<div class="tab-1" layout="row">-->
+                        <!--<div class="title">AppSecret:</div>-->
+                        <!--<div class="desc">{{data2.date}}</div>-->
+                    <!--</div>-->
+                    <div class="tab-1" layout="row">
+                        <div class="title">二维码:</div>
+                        <div class="desc">
+                            <img ng-src="{{data2.qrcodeUrl}}" width="100" height="100">
+                        </div>
+                    </div>
+                    <!--<div class="tab-1" layout="row">-->
+                        <!--<div class="title">消息加密方式:</div>-->
+                        <!--<div class="desc">{{data2.date}}</div>-->
+                    <!--</div>-->
+                    <!--<div class="tab-1" layout="row">-->
+                        <!--<div class="title">AesEncodingKey:</div>-->
+                        <!--<div class="desc">{{data2.date}}</div>-->
+                    <!--</div>-->
+                    <div class="tab-1" layout="row">
+                        <div class="title">微信号类型:</div>
+                        <div class="desc" ng-if="data2.serviceTypeInfo == 0">订阅号</div>
+                        <div class="desc" ng-if="data2.serviceTypeInfo == 1">订阅号</div>
+                        <div class="desc" ng-if="data2.serviceTypeInfo == 2">服务号</div>
+                    </div>
+                </div>
+            </md-content>
+        </md-tab>
+    </md-tabs>
+
+
+    <!--<md-tabs md-selected="selectedIndex">-->
+        <!--<md-tab ng-repeat="tab in tabs | orderBy:predicate:reversed" md-on-select="onTabSelected(tab)" md-on-deselect="announceDeselected(tab)" ng-disabled="tab.disabled">-->
+            <!--<md-tab-label>-->
+                <!--{{tab.title}}-->
+                <!--<img src="" ng-click="removeTab(tab)" class="delete">-->
+            <!--</md-tab-label>-->
+            <!--<md-tab-body>-->
+                <!--{{tab.content}}-->
+            <!--</md-tab-body>-->
+        <!--</md-tab>-->
+    <!--</md-tabs>-->
+
+
+
+
+
+</div>
+

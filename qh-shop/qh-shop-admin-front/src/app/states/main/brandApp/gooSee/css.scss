@@ -1,0 +1,123 @@
+.ks-gooSee {
+  height:100%;
+  .main{
+    height:100%;
+    background: #fff;
+    margin:10px 20px;
+    .title{
+      border-bottom: 1px solid #d5d5d5;
+      height: 50px;
+      line-height: 50px;
+      li{
+        margin:0 30px;
+        padding:0 4px;
+        list-style: none;
+        border:none;
+        outline: none;
+      }
+      .checked{
+        outline: none;
+        border-bottom: 2px solid #ba9f6e;
+      }
+    }
+    //收银
+    .wxPay{
+      padding:0px;
+      margin-bottom:40px;
+      .content{
+        li{
+          width:180px;
+          text-align: right;
+          margin:20px 10px 0 0;
+          height:30px;
+          line-height:30px;
+          color: #333;
+          font-size:14px;
+        }
+        .review{
+          margin-top:20px;
+        //  标题类
+          .rev-right{
+            height:30px;
+            line-height:30px;
+          }
+          .rev-num{
+            width:88px;
+            height:30px;
+            line-height:30px;
+          }
+          .btn{
+            margin-top: 60px;
+            width:80px;
+            height:30px;
+            background: #fff;
+            border:1px solid #d5d5d5;
+            border-radius: 4px;
+          }
+          .rev-bz{
+            color: #F78B91;
+            height:30px;
+            line-height:30px;
+          }
+          //sku
+          .goods-sku{
+            width:842px;
+            thead{
+              border-bottom: none;
+            }
+            td{
+              text-align: center;
+              b{font-weight: normal;
+
+              }
+            }
+          }
+          span{
+            background: #e6e6e6;
+            height: 34px;
+            line-height: 34px;
+            padding:0 20px;
+            font-size:14px;
+            margin-right:20px;
+          }
+          img{
+            height:100px;
+            width:100px;
+            background: #e6e6e6;
+            margin-right:20px;
+            border:0;
+            display: block;
+          }
+        }
+      //  商品规格
+        .goods{
+          border: 1px solid #d5d5d5;
+          width:843px;
+          border-radius: 4px;
+          padding-left:16px;
+          .goods-right{
+            line-height: 46px;
+            height:46px;
+          }
+          .goods-size{
+            margin-bottom:15px;
+            .gd-size{
+              padding:7px 10px;
+              height:30px;
+              line-height:30px;
+              background: #e6e6e6;
+              margin-right: 20px;
+              -webkit-border-radius:4px;
+              -moz-border-radius:4px;
+              border-radius:4px;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+
+
+}

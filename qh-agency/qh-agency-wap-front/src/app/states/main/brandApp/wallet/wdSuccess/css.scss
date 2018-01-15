@@ -1,0 +1,89 @@
+@import "../../../../../scss/ksMain";
+@import "../../../../../scss/index";
+
+.ks-wdSuccess{
+  md-content{
+    .content{
+      margin: 40px 35px;
+      position: relative;
+      .top{
+        border-radius: 8px;
+        height: 104px;
+        background: #EE635F;
+        .money{
+          font-size: 30px;
+          color: #FFFFFF;
+          letter-spacing: -0.72px;
+          line-height: 26px;
+        }
+        .desc{
+          margin-top: 10px;
+          font-size: 16px;
+          color: #FFFFFF;
+          letter-spacing: -0.39px;
+          line-height: 16px;
+        }
+      }
+      .con{
+        height: 296px;
+        background: #ffffff;
+        border: 1px solid #F0F0F0;
+        border-radius: 8px;
+        //.qrcode{
+        //  width: 180px;
+        //  height: 180px;
+        //  background: #f8ff93;
+        //}
+        .desc{
+          font-size: 16px;
+          color: #555555;
+          letter-spacing: -0.39px;
+          line-height: 16px;
+        }
+        .dec{
+          margin-top:20px;
+          font-size: 14px;
+          color: $agency-word-gray;
+          letter-spacing: -0.34px;
+          line-height: 14px;
+        }
+        .withdraw-success{
+          width:60px;
+          height: 60px;
+          //background: $agency-bg-green;
+          //border-radius: 30px;
+          margin:61px auto 55px;
+
+        }
+      }
+      .semi-circle-left{
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        left: -8px;
+        top: 96px;
+        z-index: 2;
+      }
+      .semi-circle-right{
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        right: -8px;
+        top: 96px;
+        z-index: 2;
+      }
+    }
+  }
+  .footer{
+    background: #FFFFFF;
+    box-shadow: 0 0 0 0 #D5D5D5;
+    height: 50px;
+    font-size: 18px;
+    color: #333333;
+    letter-spacing: -0.43px;
+  }
+}

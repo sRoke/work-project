@@ -1,0 +1,106 @@
+<div class="ks-businessList">
+    <div class="common-list-center">
+        <ul layout="column">
+            <li layout="row">
+                <label for="bhnum">投票人：</label>
+                <input type="text" class="choose form-control" placeholder="输入手机号或微信昵称" ng-model="voteKeyword">
+                <label for="bhnum">报名人：</label>
+                <input id="bhnum" type="text" class="choose form-control" placeholder="请输入编号或手机号搜索"
+                       ng-model="workKeyword">
+                <span class="title-btn-blue" ng-click="pageChanged(1)">搜索</span>
+              <!--  <span class="title-btn-white">
+                    <a style="text-decoration: none" title="导出" target="_blank" href="{{exportUrl}}">
+                        导出excel
+                    </a>
+                </span>-->
+                <!--<span class="title-btn-white">-->
+                    <!--<a style="text-decoration: none" title="导出" target="_blank" ng-click="read()">-->
+                        <!--读取excel-->
+                    <!--</a>-->
+                <!--</span>-->
+                <!--<span class="title-btn-white" style="margin-left: 10px">-->
+                    <!--<a style="text-decoration: none" title="导出" target="_blank" href="{{exportUrl1}}">-->
+                        <!--下载excel-->
+                    <!--</a>-->
+                <!--</span>-->
+
+
+
+                <span class="title-btn-white"  ng-if="exportStatus === 1">
+                    <a style="text-decoration: none" title="导出" target="_blank" ng-click="read()" >
+                        导出excel
+                    </a>
+                </span>
+                <span class="title-btn-white"  ng-if="exportStatus === 2">
+                    <a style="text-decoration: none" title="导出" target="_blank" >
+                        正在准备数据
+                    </a>
+                </span>
+                <span class="title-btn-white" ng-if="exportStatus === 3" ng-click="">
+                    <a style="text-decoration: none" title="导出" target="_self" href="{{exportUrl1}}">
+                        数据准备完成,点击下载
+                    </a>
+                </span>
+
+
+
+
+
+
+
+
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+    <!--div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <!--表头-->
+        <div class="common-list-detail-thead" layout="row">
+            <div class="thead-show" flex="20" layout-align="center">
+                <span>投票时间</span>
+            </div>
+            <div class="thead-show" flex="20" layout-align="center">
+                <span>投票人</span>
+            </div>
+            <div class="thead-show" flex layout-align="center" style="overflow: hidden;text-align: left">
+                <span>报名人</span>
+            </div>
+        </div>
+        <!--表格详细内容-->
+        <div class="common-list-detail-tbody" layout="column">
+            <!--定义每列数据    父级用ng-repeat循环此行 -->
+            <div class="common-list-detail-row" layout="row" ng-repeat="list in data.content">
+                <div class="thead-show" flex="20" layout-align="center">
+                    <span>{{list.voteDate}}</span>
+                </div>
+                <div class="thead-show" flex="20" layout-align="center">
+                    <span style="margin:0">{{list.voteName}} {{list.votePhoe}}</span>
+                </div>
+                <!--<div class="thead-show" flex="15" layout-align="center">-->
+                <!--<span>{{item.partnerType}}</span>-->
+                <!--</div>-->
+                <div class="thead-show" flex layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis;text-align: left">
+                    <span>{{list.workName}} {{list.workPhone}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分页-->
+    <div style="width: 100%; padding:0px 20px;">
+        <div style="width: 500px;min-width: 500px" uib-pagination total-items="data.totalElements"
+             ng-model="curPage"
+             ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+        <div style="float: right" class="pageSubnav">
+            <span>共{{data.totalElements}} 条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button>确定</md-button>
+        </div>
+    </div>
+</div>
+

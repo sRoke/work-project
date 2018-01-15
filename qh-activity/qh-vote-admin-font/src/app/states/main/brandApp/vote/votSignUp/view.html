@@ -1,0 +1,102 @@
+<div flex layout="column" class="ks-votSignUp">
+    <md-content flex layout="column">
+        <div flex="100" class="content-bg" layout="column">
+            <!--<div ng-include="tplUrl"></div>-->
+            <div class="con-top" layout="row" layout-align="center center">
+                <div class="con-top-box">
+                    <img src="sign-top.png">
+                    <!--<div class="con-top-font">填写报名信息</div>-->
+                </div>
+            </div>
+            <div class="con-form" layout="column" layout-align="center center">
+
+                <div class="form-name form-tab" layout="row" layout-align="center center">
+                    <div class="form-title">姓名<span style="color:#FF6F6F ">*</span></div>
+                    <div class="form-input">
+                        <input class="form-control" type="text" placeholder="填写姓名(限10字以内)" maxlength="10" ng-model="user.name">
+                    </div>
+                </div>
+                <div class="form-phone form-tab" layout="row" layout-align="center center">
+                    <div class="form-title">手机号码<span style="color:#FF6F6F ">*</span></div>
+                    <div class="form-input">
+                        <input class="form-control" type="text" placeholder="填写你的手机号码" ng-model="user.phone">
+                    </div>
+                </div>
+                <div class="form-photo form-tab" layout="row" layout-align="center start">
+                    <div class="form-title">参赛美照<span style="color:#FF6F6F ">*</span></div>
+                    <div class="form-input">
+                        <div class="form-upload" layout="column" layout-align="center center"
+                             ng-show="!imgs || imgs==''" ng-click="showPhoteClip()">
+                            <div class="upload-btn">+</div>
+                            <input type="file" id="file">
+                            <div class="upload-font">上传图片</div>
+                        </div>
+                        <div class="form-upload" ng-show="imgs" id="img-box">
+                            <div class="del-img">
+                                <input type="file" id="file2">
+                                <!--更换-->
+                            </div>
+
+                            <img id="img" ng-src="{{imgs}}" width="100%">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-declaration" layout="row" layout-align="center start">
+                    <div class="form-title">参赛宣言<span style="color:#FF6F6F ">*</span></div>
+                    <div class="form-input">
+                        <textarea class="form-control" placeholder="什么都别说,投我!" style="height: 117px"
+                                  ng-model="user.desc"></textarea>
+                    </div>
+                </div>
+                <div class="form-save form-tab" layout="row" layout-align="center start">
+                    <div class="form-title"></div>
+                    <div class="form-input" style="margin-left: -27px">
+                        <div class="form-input-btn">
+                            <div class="save-btn" ng-click="save()"></div>
+                            <div class="return-btn" ng-click="fallBack('main.brandApp.vote.votHome')"> &lt;&lt; 返回活动主页
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </md-content>
+
+    <div class="jqPhote" ng-show="choosePhote" layout="column" layout-align="center center">
+        <div flex class="choosePhote-top"></div>
+        <div id="clipArea"></div>
+        <!--<input type="file" id="file">-->
+        <div flex class="choosePhote-btn" layout="row" layout-align="center start">
+            <div layout="row" layout-align="space-between start" style="width: 260px">
+                <div id = 'cancel' ng-click="cancelChoosePhote()">取消</div>
+                <div id="clipBtn" ng-click="cancelChoosePhote()">保存</div>
+            </div>
+
+        </div>
+
+        <!--<div id="view"></div>-->
+    </div>
+
+
+</div>
+
+
+        <!--二维码弹窗-->
+<script type="text/ng-template" id="qrCode.html">
+    <md-dialog aria-label="" class="qrCode-dialog" style="overflow: initial;">
+        <md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o"
+                 ng-click="vmd.cancel()"></md-icon>
+        <div class="qrCode-dialog-con" layout="column" layout-align="center center">
+            <img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={{vmd.qrCode}}"
+                 width="150px" height="150px" alt="">
+            <div>长按二维码,关注公众号</div>
+            <div>亲,先关注公众号,再报名!</div>
+        </div>
+
+    </md-dialog>
+</script>
+
+

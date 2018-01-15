@@ -1,0 +1,83 @@
+.ks-memberInfo {
+  .img-bg {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    &:before {
+      content: "";
+      display: block; // 如果用火狐浏览器,会出现bug,无法撑起高度  display: inline-table;可以
+      //display: inline-table; //作为内联表格来显示
+      padding-top: 50%;
+    }
+    > img {
+      position: absolute;
+      top: -10px;
+      padding: 0;
+      width: 100%;
+      //height: 100%;
+      -webkit-filter: blur(3px); /* Chrome, Opera */
+      -moz-filter: blur(3px);
+      -ms-filter: blur(3px);
+      filter: blur(3px);
+    }
+    .bg-float {
+      position: absolute;
+      top: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      &:before {
+        content: "";
+        display: block; // 如果用火狐浏览器,会出现bug,无法撑起高度  display: inline-table;可以
+        //display: inline-table; //作为内联表格来显示
+        padding-top: 50%;
+      }
+      > .wrap {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        width: 200px;
+        margin-left: -100px;
+        > img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+        }
+        .name {
+          font-size: 16px;
+          color: #fff;
+        }
+        .phone {
+          font-size: 14px;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .cli-wrap{
+    padding: 0 15px;
+    background: #fff;
+    .dis-wrap{
+      height: 59px;
+      min-height: 59px;
+      .cli-dis{
+        .cli-name{
+          font-size: 16px;
+          color: #333;
+        }
+        > .ks-icon {
+          margin: 0;
+          font-size: 18px;
+          width: 18px;
+          min-width: 18px;
+          height: 18px;
+          min-height: 18px;
+          line-height: 18px;
+        }
+      }
+    }
+  }
+}

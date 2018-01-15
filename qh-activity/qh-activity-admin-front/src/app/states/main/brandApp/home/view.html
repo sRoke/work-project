@@ -1,0 +1,54 @@
+<!--rmy 重新排版-->
+<div class="ks-home">
+    <!--未设置-->
+    <div class="main">
+        <div class="no-authorize" layout="row">
+            <div layout="row" class="authorize-left" flex="70">
+                <div class="left-photo">
+                    <img ng-src="{{item.wxComLog}}"/>
+                </div>
+                <div layout="column" class="right-word">
+                    <div class="no-authorize-word" ng-if="!data.wxMpId">您还为未与微信公众号绑定</div>
+                    <div class="no-authorize-word" ng-if="data.wxMpId">{{item.nickName}}</div>
+                    <div class="line"></div>
+                    <div class="authorize-btn">
+                        <button ng-click="setAuthorize()" ng-if="!data.wxMpId">点击微信授权</button>
+                        <span ng-if="data.wxMpId">已绑定公众号</span>
+                    </div>
+                </div>
+            </div>
+            <div class="link-line"></div>
+            <!--右侧-->
+            <div class="authorize-right" flex>
+                <div class="authorize-right-word" layout-align="end center">
+                    <span ng-mouseenter="isShow()">
+                        访问链接
+                        <div class="link-address" layout="column" ng-if="addressShow" ng-mouseleave="isHide()">
+                            <div layout="row" class="copy-address">
+                                <input type="text" ng-model="linkAddress" id="addr" readonly="readonly"
+                                       ng-click="copy()">
+                                <button ng-click="copyUrl2();">点击复制链接</button>
+                            </div>
+                            <div class="instruction">*点击复制链接或ctrl+c复制链接</div>
+                        </div>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   <!-- <p>编辑器</p>
+    <div id="div1">
+        <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+    </div>
+
+    <hr>
+
+    <div ng-click="yuanma()">源码</div>
+    <div ng-click="aaa()">保存</div>
+
+    <p>textarea</p>
+    <textarea id="text1" style="width:100%; height:200px;" ng-model="vvvv"></textarea>-->
+</div>

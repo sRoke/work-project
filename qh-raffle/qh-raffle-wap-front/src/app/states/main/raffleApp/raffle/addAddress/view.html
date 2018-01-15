@@ -1,0 +1,63 @@
+<div class="ks-addAddress"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="vm.fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>新增地址</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <div class="center-line"></div>
+    <md-content flex style="overflow-x:hidden;background: #f5f5f5;">
+        <div class="main" layout="column">
+            <div layout="column" class="center-con">
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <div class="tab-left">收件人</div>
+                    <div class="tab-right" layout="row" flex>
+                        <input type="text" placeholder="请输入收件人姓名" ng-model="vm.item.receiver" ng-blur="vm.addressContact(vm.item.receiver)">
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <div class="tab-left">联系方式</div>
+                    <div class="tab-right" layout="row" flex>
+                        <input type="text" placeholder="请输入收件人联系方式" ng-model="vm.item.phone" ng-blur="vm.addressPhone(vm.item.phone)">
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <div class="tab-left">所在地区</div>
+                    <div class="tab-right" layout="row" layout-align="space-between center" flex ng-click="openAdcDialog()">
+                        <div ng-if="!vm.adcNo" flex>
+                            <input type="text" placeholder="请选择省/市/区" readonly >
+                        </div>
+                        <div ng-if="vm.adcNo" flex style="color: #666;" class="addr-con">
+                            <span ng-show="vm.province">{{vm.province}} </span>
+                            <span ng-show="vm.city">{{vm.city}}</span>
+                            <span ng-show="vm.area"> {{vm.area}}</span>
+                        </div>
+                        <md-icon class="ks-icon" style="margin-right: 8px;" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <div class="tab-left">详细地址</div>
+                    <div class="tab-right" layout="row" flex>
+                        <input type="text" placeholder="请输入详细地址" ng-model="vm.item.street" ng-blur="vm.addressStreet(vm.item.street)">
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <div class="tab-left-default">设为默认地址</div>
+                    <div class="tab-right-default" layout="row" >
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" ng-show="!vm.item.checked" ng-click="changeCheck()"></md-icon>
+                        <md-icon class="ks-icon" style="color: #E53467;font-size: 18px;" md-font-set="ks-icon" md-font-icon="ag-complete" ng-show="vm.item.checked" ng-click="changeCheck()"></md-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="btn" layout="row" layout-align="center center">
+                <button ng-click="vm.save()">保存</button>
+            </div>
+        </div>
+    </md-content>
+</div>

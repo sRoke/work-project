@@ -1,0 +1,127 @@
+<div flex layout="column" class="ks-voteHome">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>人气投票赛</h1>
+        <!--ui-sref="main.voteApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20" ui-sref="main.voteApp.vote.voteAdd({form:'home'})">新增</div>
+    </div>
+
+    <div class="search" layout="row">
+        <div class="search-input" flex layout="row">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>
+            </div>
+            <div class="con" flex>
+                <input type="text" ng-model="keyWord" placeholder="搜索" ng-focus="focus(true)" ng-blur="focus(false)">
+            </div>
+            <div class="right" ng-show="searchShow" ng-click="clearKeyWord()">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-closed-o"></md-icon>
+            </div>
+        </div>
+        <div class="search-btn" ng-show="searchShow" ng-click="search()">搜索</div>
+    </div>
+
+
+
+    <div class="tab" layout="row" layout-align="center center ">
+        <div class="tab-btn" ng-click="tabs('all','1')" flex layout="row" layout-align="center center "
+             style="    padding-left: 0;">
+            <span class="btn" ng-class="{active:isClick == '1'}">全部</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('notStarted','2')" flex layout="row" layout-align="center center ">
+            <span class="btn" ng-class="{active:isClick == '2'}">未开始</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('starting','3')" flex layout="row" layout-align="center center ">
+            <span class="btn" ng-class="{active:isClick == '3'}">进行中</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('end','4')" flex layout="row" layout-align="center center "
+             style="padding-right: 5px">
+            <span class="btn" ng-class="{active:isClick == '4'}">已结束</span>
+        </div>
+    </div>
+
+
+    <md-content flex style="background: #f5f5f5">
+        <div  layout="column" layout-align="center center" ng-repeat="vote in voteList.content"
+              ng-class="{true: 'voteList2', false: 'voteList'}[vote.voteStatus == '未开始' || vote.voteStatus == '已结束']">
+            <div class="title" layout="row" ui-sref="main.voteApp.vote.voteView({id:vote.id})">
+                <div class="left" flex>{{vote.voteName}}</div>
+                <div class="right" ng-if="vote.voteStatus != '未开始' && vote.voteStatus != '已结束'">{{vote.totalJoinPeople}}人已参加</div>
+                <div class="right" ng-if="vote.voteStatus == '未开始' || vote.voteStatus == '已结束'" >{{vote.voteStatus}}</div>
+
+            </div>
+            <div class="time" layout="row">
+                <div class="left" flex ui-sref="main.voteApp.vote.voteView({id:vote.id})">{{vote.signUpStartTime | date:'yyyy-MM-dd HH:mm' }} ~ {{vote.voteEndTime | date:'yyyy-MM-dd HH:mm' }}</div>
+                <div class="right" ng-click="listDialogShow(vote)">...</div>
+            </div>
+            <div class="listDialog" ng-show="vote.listDialog">
+                <div class="triangle-up"></div>
+                <div layout="row" class="dialog-btn">
+                    <span ng-click="goView(vote.id)">预览</span>
+                    <span ui-sref="main.voteApp.vote.voteEdit({id:vote.id,form:'HOME'})">编辑</span>
+                    <span ng-click="changeStatus(vote)" ng-if="vote.voteStatusEnum == 'END'">启用</span>
+                    <span ng-click="changeStatus(vote)" ng-if="vote.voteStatusEnum == 'NORMAL'">禁用</span>
+
+                    <span ui-sref="main.voteApp.vote.sampleReels({id:vote.id,form:'home'})">作品集</span>
+                    <!--<span ui-sref="main.voteApp.vote.successPeo({id:vote.id,form:'home'})">成功人 </span>-->
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!--<div  layout="column" layout-align="center center" class="voteList">-->
+            <!--<div class="title" layout="row" ui-sref="main.voteApp.vote.voteView({id:vote.id})">-->
+                <!--<div class="left" flex>{{vote.name}}</div>-->
+                <!--<div class="right" ng-if="vote.status != '未开始' && vote.status != '已结束'">{{vote.voteUserNum}}人已参加</div>-->
+                <!--<div class="right" ng-if="vote.status == '未开始' || vote.status == '已结束'" >{{vote.status}}</div>-->
+
+            <!--</div>-->
+            <!--<div class="time" layout="row">-->
+                <!--<div class="left" flex ui-sref="main.voteApp.vote.voteView({id:vote.id})">有效期限: {{vote.beginTime | date:'yyyy-MM-dd' }} ~ {{vote.endTime | date:'yyyy-MM-dd' }}</div>-->
+                <!--<div class="right" ng-click="listDialogShow(vote)">...</div>-->
+            <!--</div>-->
+            <!--<div class="listDialog">-->
+                <!--<div class="triangle-up"></div>-->
+                <!--<div layout="row" class="dialog-btn">-->
+                    <!--<span ng-click="goView(vote.id)">预览</span>-->
+                    <!--<span ng-click="changeStatus(vote)" ng-if="vote.voteStatus == 'CLOSED'">启用</span>-->
+                    <!--<span ng-click="changeStatus(vote)" ng-if="vote.voteStatus == 'ENABLE'">禁用</span>-->
+
+                    <!--<span ui-sref="main.voteApp.vote.sampleReels({id:vote.id,form:'home'})">作品集</span>-->
+                    <!--&lt;!&ndash;<span ui-sref="main.voteApp.vote.successPeo({id:vote.id,form:'home'})">成功人 </span>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+
+
+
+
+
+
+
+        <!--分页-->
+        <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;" ng-show="voteList.totalPages>1">
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-click="pageChange(currpage+1)" ng-show="voteList.number<voteList.totalPages-1">
+                点击加载更多...
+            </md-button>
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;"
+                        ng-show="voteList.number>=voteList.totalPages-1">
+                没有更多活动了
+            </md-button>
+        </div>
+        <div class="empty" ng-if="voteList.content.length<=0" style="width: 100%;height: 100%" layout="column" layout-align="center center">
+            <div class="empty"><img src="empty.png" width="60px"></div>
+            <div class="ts" style="margin-bottom: 80px">暂无活动</div>
+        </div>
+
+    </md-content>
+</div>
+
+
+

@@ -1,0 +1,235 @@
+@import "../../../../scss/ksTheme";
+
+.ks-cart-wrap {
+  .order-wrap {
+    overflow-x: hidden;
+    .top-line {
+      margin: 0 -10px;
+      height: 10px;
+      background: #f5f5f5;
+    }
+
+    &:first-child > .top-line {
+      display: none;
+    }
+    .cart-item {
+      background-color: #fff;
+      height: 120px;
+      md-checkbox {
+        width: 30px;
+        height: 40px;
+        margin: 0 0 0 10px;
+      }
+      //购物车复选框样式
+      md-checkbox .md-icon {
+        border-color: #333 !important;
+        border-width: 1px;
+        border-radius: 0px;
+      }
+      md-checkbox.md-checked .md-icon {
+        background-color: #333 !important;
+      }
+      &:first-child {
+        border-top: none;
+      }
+      .item-img {
+        width: 92px;
+        position: relative;
+        overflow: hidden;
+        &:before {
+          content: "";
+          display: block;
+          padding-top: 100%;
+        }
+        img {
+          position: absolute;
+          top: 0;
+          padding: 0;
+          width: 100%;
+        }
+        .tags {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 30px;
+          height: 20px;
+          background: #ba9f6e;
+          line-height: 20px;
+          text-align: center;
+          span {
+            font-size: 10px;
+            color: #fff;
+          }
+        }
+      }
+
+      .item-desp {
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 92px;
+        // 商品标题
+        .item-title {
+          width: 100%;
+          font-size: 16px;
+          color: #333;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        // 规格
+        .item-specs {
+          width: 100%;
+          font-size: 14px;
+          color: #999;
+          //margin: 7px 0;
+          margin-top: -20px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .price-row {
+          height: 25px;
+          width: 100%;
+
+          // 价格
+          .item-price {
+            font-size: 16px;
+            color: #333333;
+          }
+
+          // 数值 - 显示
+          .count-show {
+            margin-right: 10px;
+            font-size: 16px;
+            color: #333333;
+          }
+
+          // 数值 - 编辑
+          .count {
+            padding: 0;
+            position: relative;
+            text-align: center;
+            //margin: 6px 8px;
+            span.dev {
+              position: absolute;
+              left: 0;
+            }
+            input {
+              text-align: center;
+              background: #d5d5d5;
+              display: inline-block;
+              border: none;
+              margin: 0;
+              padding: 0;
+              width: 56px;
+              font-size: 16px;
+              color: #333333;
+              &::-webkit-outer-spin-button,
+              &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+              }
+              -moz-appearance: textfield;
+              border-radius: 0px;
+            }
+            .minus, .add {
+              width: 30px;
+              background-color: #F5F5F5;
+              .iconBtn {
+                font-size: 10px;
+                color: #101010;
+              }
+            }
+          }
+
+        }
+      }
+    }
+    .bottom-btn-wrap {
+      margin: 0 20px;
+      .bot-btn {
+        width: 90px;
+        height: 30px;
+        border: 1px solid #101010;
+        line-height: 30px;
+        text-align: center;
+        margin: 10px 0 10px 20px;
+      }
+    }
+  }
+
+  // 购物车底部通栏(全选,去结算)
+  .cartToolbar {
+    flex-shrink: 0;
+    height: 52px;
+    color: #F5F5F5;
+    font-size: 14px;
+
+    // 全选
+    .selectAll {
+      padding: 10px 0 10px 10px;
+      box-sizing: border-box;
+
+      md-checkbox {
+        margin: 0;
+        .md-label {
+          color: #333333;
+          font-size: 18px;
+        }
+      }
+      //购物车复选框样式
+      md-checkbox .md-icon {
+        border-color: #333 !important;
+        border-width: 1px;
+        border-radius: 0px;
+      }
+      md-checkbox.md-checked .md-icon {
+        background-color: #333 !important;
+      }
+    }
+    // 合计
+    .totalPrice {
+      margin-left: 10px;
+      color: #999999;
+      font-size: 14px;
+      text-align: right;
+    }
+    // 去结算
+    .md-button.go {
+      line-height: 36px;
+      min-height: 36px;
+      border-radius: 0px;
+      width: 100px;
+      height: 36px;
+      background-color: #e84e40;
+      color: #fff;
+      font-size: 16px;
+      /*margin-right: 10px;*/
+    }
+
+    // 删除
+
+    .md-button.delete {
+      line-height: 36px;
+      min-height: 36px;
+      border-radius: 0px;
+      width: 100px;
+      height: 36px;
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+    }
+  }
+
+  //.empty {
+  //  .icon {
+  //    font-size: 60px;
+  //    line-height: 60px;
+  //    margin: 0 0 15px;
+  //  }
+  //  .txt {
+  //    color: #999;
+  //  }
+  //}
+}

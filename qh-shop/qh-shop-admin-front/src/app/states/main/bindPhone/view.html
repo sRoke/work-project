@@ -1,0 +1,30 @@
+ <div flex="100" layout="column" class="bindPhone">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="vm.fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ks-arrow_left"></md-icon>
+        </div>
+        <h1 flex>绑定手机号</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex>
+        <form class="registerForm2">
+            <div class="relative">
+                <input type="tel" placeholder="手机号" ng-change="vm.checkPhone()" ng-model="vm.show.phone"/>
+            </div>
+            <div layout="row" class="inputWrap" style="border-bottom: 1px solid #d5d5d5">
+                <div flex="70" layout="row" class="relative" style="border: none;">
+                    <input type="tel" ng-change="vm.checkCode()" placeholder="验证码" ng-model="vm.show.code">
+                </div>
+                <div flex layout="row" layout-align="center center">
+                    <span ng-click="vm.realSendCode()" ng-if="vm.show.state == 1">{{vm.show.yzm}}</span>
+                    <span ng-if="vm.show.state == 2">{{vm.show.yzm}}</span>
+                </div>
+            </div>
+            <md-button class="ks-black md-login-button" aria-label="Custom Icon Button" ng-click="vm.submit()">
+                <span>确认</span>
+            </md-button>
+        </form>
+    </md-content>
+</div>

@@ -1,0 +1,136 @@
+.ks-specEdit {
+
+  .titleName {
+    height: 30px;
+    background: #f5f5f5;
+    min-height: 30px;
+    font-size: 14px;
+    color: #999;
+    line-height: 30px;
+    margin-left: 15px;
+  }
+
+  .add-wrap {
+    //padding: 0 15px;
+    background: #fff;
+    .add-box {
+      height: 58px;
+      .add-name {
+        font-size: 16px;
+        color: #333;
+      }
+      .add-input {
+        margin-left: 24px;
+        input {
+          border: none;
+          background: transparent;
+          height: 100%;
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers */
+          font-size: 16px;
+          color: #999;
+        }
+
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-size: 16px;
+          color: #999;
+        }
+
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-size: 16px;
+          color: #999;
+        }
+      }
+    }
+
+    .add-sku-wrap {
+      //padding: 0px 15px;
+      //border: 1px solid #d5d5d5;
+      border-radius: 8px;
+      .skuNum {
+        height: 44px;
+        margin: 0 15px;
+        .name {
+        }
+        .detail {
+
+        }
+        .ks-icon {
+          margin: 0;
+          font-size: 16px;
+          margin-left: 10px;
+        }
+      }
+      .sku-box {
+        margin: 0 30px;
+        position: relative;
+        .position-icon {
+          position: absolute;
+          right: -20px;
+          top: 95px;
+          > .ks-icon {
+            width: 18px;
+            height: 18px;
+            color: #E53467;
+            min-height: 18px;
+            min-width: 18px;
+
+          }
+        }
+        .add-sku-box {
+          height: 44px;
+          .sku-dis {
+            height: 44px;
+            .add-sku-name {
+              font-size: 16px;
+              color: #333;
+              //width: 65px;
+              min-width: 65px;
+              > span {
+                font-size: 14px;
+                color: #666;
+                margin-right: 10px;
+              }
+            }
+            .add-sku-input {
+              margin-left: 24px;
+              .img-icon {
+                margin: 0;
+              }
+              input {
+                border: none;
+                background: transparent;
+                height: 100%;
+              }
+              input::-webkit-input-placeholder { /* WebKit browsers */
+                font-size: 16px;
+                color: #999;
+              }
+
+              input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                font-size: 16px;
+                color: #999;
+              }
+
+              input::-moz-placeholder { /* Mozilla Firefox 19+ */
+                font-size: 16px;
+                color: #999;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .add-sku-btn {
+      height: 40px;
+      border: 1px dashed #e53467;
+      border-radius: 4px;
+      margin-top: 10px;
+      > span {
+        font-size: 14px;
+        color: #e53467;
+      }
+    }
+  }
+}

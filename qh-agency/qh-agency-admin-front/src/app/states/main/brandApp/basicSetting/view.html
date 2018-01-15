@@ -1,0 +1,162 @@
+<div class="ks-basicSetting">
+    <!--<h2>基本配置</h2>-->
+    <div class="main" flex>
+        <!--收银-->
+        <ul layout="row" class="title">
+            <li  ng-class="{checked:activeNum == '1'}" ng-click="changeTab(1)">基础参数</li>
+            <li  ng-class="{checked:activeNum == '2'}" ng-click="changeTab(2)">退货地址</li>
+            <li  ng-class="{checked:activeNum == '3'}" ng-click="changeTab(3)">统计参数</li>
+        </ul>
+        <ul layout="column" class="shouyin" ng-if="activeNum == '1'">
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                   收银最低折扣：
+                </li>
+                <div layout="column" class="update">
+                    <input type="text" placeholder="收银最低折扣" ng-model="data.cashCount" ng-blur="changeCount(data.cashCount);">
+                    <span>（例：最低不能低于7折,则输入7）</span>
+                    <!--<div layout="row" ng-if="isSave">-->
+                        <!--<button class="btn1" ng-click="updateCount();">保存</button>-->
+                        <!--<button ng-click="cancelCount();">取消</button>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    最低提现额度：
+                </li>
+                <div layout="column" class="update">
+                    <input type="text" placeholder="500" ng-blur="changeMoney(data.cash);" ng-model="data.cash">
+                    <span>（单位：元）</span>
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    渠道申请类型：
+                </li>
+                <div layout="column" class="update">
+                    <div layout="row" class="applyType">
+                        <input type="checkbox" checked="check.GENERAL_AGENCY" ng-model="check.GENERAL_AGENCY" class="check">
+                        <span>&nbsp;总代</span>
+                        <input type="checkbox" checked="check.REGIONAL_AGENCY" ng-model="check.REGIONAL_AGENCY" class="check">
+                        <span>&nbsp;代理</span>
+                        <input type="checkbox" checked="check.LEAGUE" ng-model="check.LEAGUE" class="check">
+                        <span>&nbsp;加盟商</span>
+                    </div>
+                    <div layout="row" >
+                        <button class="btn1" ng-click="updateMoney();">保存</button>
+                        <!--<button ng-click="cancelMoney();">取消</button>-->
+                    </div>
+                </div>
+            </div>
+        </ul>
+        <!--提现-->
+        <!--<ul layout="column" class="shouyin">-->
+            <!--<h3>提现</h3>-->
+            <!--<div layout="row" class="content">-->
+                <!--<li layout="row" layout-align="end center">-->
+                    <!--最低提现额度：-->
+                <!--</li>-->
+                <!--<div layout="column" class="update">-->
+                    <!--<input type="text" placeholder="500" ng-click="changeMoney();" ng-model="cash">-->
+                    <!--<span ng-if="isWithdraw;">（单位：元）</span>-->
+                    <!--<div layout="row" ng-if="isWithdraw;">-->
+                        <!--<button class="btn1" ng-click="updateMoney();">保存</button>-->
+                        <!--<button ng-click="cancelMoney();">取消</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</ul>-->
+        <!--退货地址-->
+        <ul layout="column" class="shouyin" ng-if="activeNum == '2'">
+            <!--<h3>退货地址</h3>-->
+            <!--<div layout="row" class="content">-->
+                <!--<li layout="row" layout-align="end center">-->
+                    <!--退货地址：-->
+                <!--</li>-->
+                <!--<div layout="column" class="update address-con">-->
+                    <!--<input type="text" class="address" ng-click="changeAddress();">-->
+                    <!--<input type="text" class="address" ng-click="changeAddress();">-->
+                <!--</div>-->
+            <!--</div>-->
+            <div  class="address-con">
+                <li layout="row">
+                    <label>联系人：</label>
+                    <input type="text" ng-model="addressData.receiver" ng-blur="checkLinkman(addressData.receiver)" />
+                </li>
+                <li layout="row">
+                    <label>手机号：</label>
+                    <input type="text" ng-model="addressData.phone" ng-blur="checkPhone(addressData.phone)" />
+                </li>
+                <li layout="row">
+                    <label>地址：</label>
+                    <select class="select" ng-change="vm.getAddress(vm.provinceNo,1)"
+                    data-ng-model="vm.provinceNo">
+                        <option value="">请选择</option>
+                        <option ng-repeat="province in vm.provinces.list" value="{{province.no}}">
+                        {{province.name}}
+                        </option>
+                    </select>
+                    <select class="select" ng-change="vm.getAddress(vm.cityNo,2)"
+                    data-ng-model="vm.cityNo"  ng-if="vm.citys.list.length>0">
+                        <option value="">请选择</option>
+                        <option ng-repeat="city in vm.citys.list" value="{{city.no}}">{{city.name}}</option>
+                    </select>
+                    <select class="select" data-ng-model="vm.countyNo"  ng-if="vm.countys.list.length>0">
+                        <option value="">请选择</option>
+                        <option ng-repeat="county in vm.countys.list" value="{{county.no}}">{{county.name}}
+                        </option>
+                    </select>
+                </li>
+                <li layout="row">
+                    <label>街道信息：</label>
+                    <input type="text" ng-model="addressData.street" ng-blur="checkStreet(addressData.street)" />
+                </li>
+                <li layout="row">
+                    <label></label>
+                    <button class="btn1" ng-click="save();">更新</button>
+                    <!--<button ng-click="cancelAddress();">取消</button>-->
+                </li>
+            </div>
+        </ul>
+        <ul layout="column" class="shouyin" ng-if="activeNum == '3'">
+            <div  class="statistics">
+                <li layout="row">
+                    <label>加盟商：</label>
+                    <span>以加入起始</span>
+                    <input type="text" ng-model="item.leagueMinPlaceNum" ng-blur="checkRecord(item.leagueMinPlaceNum)"/>
+                    <span>位，&nbsp;&nbsp;</span>
+                    <span>月度业绩排名</span>
+                    <input type="text" ng-model="item.leagueMinPlace" ng-blur="checkRecord(item.leagueMinPlace)"/>
+                    <span>位。</span>
+                </li>
+                <li layout="row">
+                    <label>市代：</label>
+                    <span>以加入起始</span>
+                    <input type="text" ng-model="item.regionaLagencyMinPlaceNum" ng-blur="checkRecord(item.regionaLagencyMinPlaceNum)"/>
+                    <span>位，&nbsp;&nbsp;</span>
+                    <span>月度业绩排名</span>
+                    <input type="text" ng-model="item.regionaLagencyMinPlace" ng-blur="checkRecord(item.regionaLagencyMinPlace)"/>
+                    <span>位。</span>
+                </li>
+                <li layout="row">
+                    <label>总代：</label>
+                    <span>以加入起始</span>
+                    <input type="text" ng-model="item.generalAgencyMinPlaceNum" ng-blur="checkRecord(item.generalAgencyMinPlaceNum)"/>
+                    <span>位，&nbsp;&nbsp;</span>
+                    <span>月度业绩排名</span>
+                    <input type="text" ng-model="item.generalAgencyMinPlace" ng-blur="checkRecord(item.generalAgencyMinPlace)"/>
+                    <span>位。</span>
+                </li>
+                <li layout="row">
+                    <label></label>
+                    <button class="btn1" ng-click="updateRecord();">保存</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>
+
+
+
+

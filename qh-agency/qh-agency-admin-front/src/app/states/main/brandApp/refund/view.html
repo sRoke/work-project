@@ -1,0 +1,200 @@
+<!--rmy-->
+<div class="ks-refunds">
+    <!--rmy 条件检索-->
+    <div class="ks-refunds-search" layout="column">
+        <div class="ks-refunds-search-top" layout="row" layout-align="start center">
+            <div flex="15" class="ks-refund-search">
+                <span>退款类型:</span>
+                <select data-ng-model="search.type" ng-change="btnClick(search.type)">
+                    <option value="all">全部</option>
+                    <option ng-repeat="(typeCode,typeDesp) in refundTypeEnumMap" value="{{typeCode}}">
+                        {{typeDesp}}
+                    </option>
+                </select>
+            </div>
+            <div flex="15" class="ks-refund-search">
+                <span>退款审核:</span>
+                <select data-ng-model="search.status">
+                    <option value="">全部</option>
+                    <option ng-repeat="(statusCode,statusDesp) in refundStatusEnumMap" value="{{statusCode}}">
+                        {{statusDesp}}
+                    </option>
+                </select>
+            </div>
+            <div flex="15" class="ks-refund-search">
+                <span>退款状态:</span>
+                <select data-ng-model="search.status">
+                    <option value="">全部</option>
+                    <option ng-repeat="(statusCode,statusDesp) in refundStatusEnumMap" value="{{statusCode}}">
+                        {{statusDesp}}
+                    </option>
+                </select>
+            </div>
+            <div flex="15" class="ks-refund-search">
+                <span>退款原因:</span>
+                <select data-ng-model="search.reason">
+                    <option value="">全部</option>
+                    <option ng-repeat="(reasonCode,reasonDesp) in refundReasonEnumMap" value="{{reasonDesp}}">
+                        {{reasonDesp}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div flex layout="row" class="fast">
+            <span class="fast1">快速排序：</span>
+            <input type="checkbox" name="" class="all">
+            <span class="fast1">七天无理由</span>
+            <input type="checkbox" name="" class="all">
+            <span class="fast2">多拍/错拍/不想要</span>
+            <input type="checkbox" name="" class="all">
+            <span class="fast3">未按约定时间发货</span>
+            <span>
+                <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-search"
+                         alt="查询" style="color: #999;font-size:20px;text-align: center;cursor: pointer;outline: none;" ng-click="pageChanged('0')"></md-icon>
+            </span>
+            <span style="color:#666;margin-left:0px;cursor: pointer" ng-click="pageChanged('0')">
+                查询
+            </span>
+        </div>
+    </div>
+    <div class="common-list-detail" layout="column">
+        <ul class="tableStatus" layout="row">
+            <li ng-class="{select:activeNum == 'all'}" ng-click="btnClick('all')" >全部</li>
+            <li ng-class="{select:activeNum == 'ITEM'}" ng-click="btnClick('ITEM')">退货并退款</li>
+            <li ng-class="{select:activeNum == 'MONEY_ONLY'}" ng-click="btnClick('MONEY_ONLY')">仅退款</li>
+            <li flex></li>
+        </ul>
+        <div class="tableTit" layout="row">
+            <div class="tableTd" flex="5">
+                <input type="checkbox" name="allcheck" class="all" ng-model="all" style="margin:13px 10px 0 13px">
+                <span>全选</span>
+            </div>
+            <div class="tableTd" flex="30">
+                <span>宝贝</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>交易金额</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>退款金额</span>
+            </div>
+            <div class="tableTd" flex="15">
+                <span>申请时间</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>原因</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>退款物流</span>
+            </div>
+            <div class="tableTd" flex="10">
+                <span>退款状态</span>
+            </div>
+        </div>
+        <!--n个发货订单-->
+        <div class="tableCon">
+            <!--一个订单编号-->
+            <div class="orderNumber">
+                <!--订单头部-->
+                <div class="ordTitle" layout="row">
+                    <div flex class="tit">
+                        <input type="checkbox" class="all" ng-checked="all" style="margin:13px 10px 0 13px">
+                        <span>退款编号：123456</span>
+                        <span>订单号：123456</span>
+                        <span>商品编号：12345</span>
+                        <span>用户：lll</span>
+                    </div>
+                    <div flex="10" class="tit orderSta">
+                        <span>请审核</span>
+                    </div>
+                </div>
+                <!--订单信息-->
+                <div class="ordDetail" layout="row">
+                    <div flex="35" class="orderXq" layout="row">
+                        <div class="pic">
+                            <img ng-src="">
+                        </div>
+                        <div layout="column" class="goodsDetail">
+                            <span>商品名字</span>
+                        </div>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span>￥299</span>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span class="refundMoney">￥299</span>
+                    </div>
+                    <div flex="15" class="orderXq" layout="row">
+                        <span>2017-02-03 12：20：20</span>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span>拍错了</span>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span>-</span>
+                    </div>
+                    <div flex="10" class="orderXq">
+                        <a ui-sref="main.brandApp.refDetail({id:111})">待退款处理</a>
+                    </div>
+                </div>
+            </div>
+            <div class="orderNumber">
+                <!--订单头部-->
+                <div class="ordTitle" layout="row">
+                    <div flex class="tit">
+                        <input type="checkbox" class="all" ng-checked="all" style="margin:13px 10px 0 13px">
+                        <span>退款编号：123456</span>
+                        <span>订单号：123456</span>
+                        <span>商品编号：12345</span>
+                        <span>用户：lll</span>
+                    </div>
+                    <div flex="10" class="tit orderSta">
+                        <span>请审核</span>
+                    </div>
+                </div>
+                <!--订单信息-->
+                <div class="ordDetail" layout="row">
+                    <div flex="35" class="orderXq" layout="row">
+                        <div class="pic">
+                            <img ng-src="">
+                        </div>
+                        <div layout="column" class="goodsDetail">
+                            <span>商品名字</span>
+                        </div>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span>￥299</span>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span class="refundMoney">￥299</span>
+                    </div>
+                    <div flex="15" class="orderXq" layout="row">
+                        <span>2017-02-03 12：20：20</span>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span>拍错了</span>
+                    </div>
+                    <div flex="10" class="orderXq" layout="row">
+                        <span>-</span>
+                    </div>
+                    <div flex="10" class="orderXq">
+                        <a ui-sref="main.brandApp.refDetail({id:111})">待退款处理</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--rmy  分页-->
+    <div style="width: 99%; margin: 10px auto 0">
+        <div uib-pagination total-items="data.totalElements" ng-model="data.number" ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="8" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+        <div style="float: right" class="pageSubnav">
+            <span>共{{data.totalElements}}条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="data.number">页
+            <md-button ng-click="pageChanged()">确定</md-button>
+        </div>
+    </div>
+</div>

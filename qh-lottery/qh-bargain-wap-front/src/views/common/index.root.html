@@ -1,0 +1,42 @@
+<!--<md-dialog ng-cloak>
+    <div class="logout">
+        <div class="dialogTitle" ng-if="vm.title">
+            {{vm.title}}
+        </div>
+        <div class="dialogTitleNeirong" ng-if="vm.msg">
+            {{vm.msg}}
+        </div>
+        <div class="select" layout="row">
+            <div class="left" flex layout="row" layout-align="center center">
+                <span ng-click="vm.cancel()">{{vm.leftButton}}</span>
+            </div>
+            <div class="right" flex layout="row" layout-align="center center" style="color: #101010;border-right: none">
+                <span ng-click="vm.checkSubmit()">{{vm.rightButton}}</span>
+            </div>
+        </div>
+    </div>
+</md-dialog>-->
+
+<md-card class="modal-dialog myDialog" style="margin: 0;max-width: 310px;min-width: 280px;">
+    <md-card-title class="dialog-title">
+        <md-card-title-text style="text-align: center">
+            <span class="md-headline" style="text-align:center;" ng-if="vm.title">{{vm.title}}</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content layout="column">
+        <div class="content" style="text-align: center;" ng-if="vm.msg">
+            <span style="font-size: 14px;color: #323232;word-break: break-all"> {{vm.msg}}</span>
+        </div>
+    </md-card-content>
+    <md-divider></md-divider>
+    <md-card-actions layout="row" layout-align="center center">
+        <div flex class="btn" ng-click="vm.cancel()" ng-if="vm.leftButton"
+             style="font-size: 15px;color: #101010;border-right:1px solid #d5d5d5;border-radius: 0px;">
+            {{vm.leftButton}}
+        </div>
+        <div flex class="btn" ng-click="vm.checkSubmit()" ng-if="vm.rightButton"
+             style="font-size: 15px;color: #101010;">
+            {{vm.rightButton}}
+        </div>
+    </md-card-actions>
+</md-card>

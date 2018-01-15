@@ -1,0 +1,108 @@
+<div flex="100" layout="column" class="ks-home">
+    <div class="search" layout="row" layout-align="center center">
+        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-profile" style="margin:0 0 0 15px" ui-sref="main.brandApp.store.personalCenter.centerHome"></md-icon>-->
+        <div class="input-wrap" flex layout="row">
+            <input type="text" ng-model="keyWord" placeholder="输入商品名称" flex > <!--ui-sref="main.brandApp.store.search"-->
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"
+                     ng-click="getList('0')"></md-icon>
+        </div>
+        <div class="right-rank">
+            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-screen-0"
+                     style="margin:0 15px 0 0" ng-click="openRank()"></md-icon>-->
+           <!-- <div class="pos-wrap" layout="column" ng-show="rankShow">
+                <div class="pos-id" ng-class="{posActive:rank == 1}" ng-click="rankChoose(1)">最新发布</div>
+                <md-divider></md-divider>
+                <div class="pos-id" ng-class="{posActive:rank == 2}" ng-click="rankChoose(2)">销量最高</div>
+            </div>-->
+        </div>
+    </div>
+
+    <div id="swiper-container2" layout="row" ng-show="categoryList.length > 0">
+        <div class="my-wrapper2" ng-class="{active:show}" layout="row" >
+            <div class="my-slide2" ng-click="clickThis(0,{})" layout="column"
+                 layout-align="space-between center">
+                <div class="tab-btn" layout="row" style="height: 100%">
+                    <span flex class="btn" ng-class="{active:isClick == '0'}">精选</span>
+                </div>
+            </div>
+
+            <div class="my-slide2" ng-click="clickThis($index+1,category)" layout="column"
+                 ng-repeat="category in categoryList track by $index"
+                 layout-align="space-between center">
+                <div class="tab-btn" layout="row" style="height: 100%">
+                    <span flex class="btn" ng-class="{active:isClick == $index+1}">{{category.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <!--<div class="tab" layout="row">-->
+    <!--<div class="tab-btn" ng-click="tabs('ALL','1')">-->
+    <!--<span class="btn" ng-class="{active:isClick == '1'}">全部</span>-->
+    <!--</div>-->
+    <!--<div class="tab-btn" ng-click="tabs('ALL','1')">-->
+    <!--<span class="btn" ng-class="{active:isClick == '2'}">已上架</span>-->
+    <!--</div>-->
+    <!--<div class="tab-btn" ng-click="tabs('ALL','1')">-->
+    <!--<span class="btn" ng-class="{active:isClick == '3'}">待上架</span>-->
+    <!--</div>-->
+    <!--<div class="tab-btn" ng-click="tabs('ALL','1')">-->
+    <!--<span class="btn" ng-class="{active:isClick == '4'}">已下架</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row-line"></div>-->
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+        <div class="guess">
+            <div class="div-wrap" layout="row" layout-wrap>
+                <div layout="column" class="rec-item" ng-repeat="list in data.content track by $index">
+                    <div flex layout="column" style="position: relative"
+                         ui-sref="main.brandApp.store.item({id:list.id})">
+                        <!-- 多追加一层div，方便使用  layout-wrap 和 ng-repeat 。 需要CSS特殊处理  -->
+                        <div class="item-img">
+                            <img ng-src="{{list.imgs[0]}}" img-holder/>
+                        </div>
+                        <div class="dis" layout="column" layout-align="space-between start">
+                            <div class="item-title">
+                                {{list.title}}
+                            </div>
+                            <div class="dis-price" layout="row" layout-align="space-between center">
+                                <div class="price">
+                                    <span class="priceY">￥</span>
+                                    <span class="priceX" >{{list.skuMinSalePrice/100|num:2}}</span>
+                                </div>
+                                <div class="old-price"
+                                     ng-if="list.skuMinSalePrice < list.salePrice">
+                                    ￥{{list.salePrice/100|num:2}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!--分页-->
+        <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;" ng-show="data.totalPages>1">
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-click="getList(currpage+1)" ng-show="data.number<data.totalPages-1">
+                点击加载更多...
+            </md-button>
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-show="data.number>=data.totalPages-1">
+                没有更多商品了
+            </md-button>
+        </div>
+
+
+
+
+
+
+
+
+    </md-content>
+
+    <div ks-footer-menu cur="'home'"></div>
+
+</div>

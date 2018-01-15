@@ -1,0 +1,229 @@
+.ks-item {
+  .ks-white-header {
+    .tab-wtap {
+      overflow: hidden;
+      width: 140px;
+      height: 32px;
+      color: #333;
+      font-size: 16px;
+      border: none;
+      background: #fff;
+      letter-spacing: -0.39px;
+      border-radius: 8px;
+      line-height: 32px;
+      text-align: center;
+
+    }
+    .tabActive {
+      color: #ED5F5B;
+      background: #fff;
+    }
+  }
+
+  .banner {
+    /*轮播图样式*/
+    ks-swiper-container {
+      flex-shrink: 0;
+      .swiper-container, .swiper-slide {
+        float: left;
+      }
+      .swiper-pagination-bullets {
+        display: block;
+      }
+      .swiper-pagination-bullet {
+        background: #d5d5d5 !important;
+        height: 6px;
+        width: 6px;
+      }
+      .swiper-pagination-bullet-active {
+        background: #d5d5d5 !important;
+        height: 6px;
+        width: 12px;
+        border-radius: 30px;
+      }
+      .swiper-pagination-bullet {
+        opacity: 1;
+      }
+      .swiper-slide {
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+
+        &:before {
+          content: "";
+          display: block;
+          padding-top: 100%;
+        }
+        img {
+          position: absolute;
+          top: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .swiper-container {
+        width: 100%;
+      }
+    }
+  }
+
+  .item-dis {
+    padding: 20px 15px;
+    background: #fff;
+    flex-shrink: 0;
+
+    .dis-title {
+      color: #333;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .dis-price {
+      color: #E53467;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: #C3C3C3;
+      font-size: 12px;
+      line-height: 22px;
+      margin-left: 8px;
+    }
+  }
+  .icon-tips {
+    flex-shrink: 0;
+    padding: 22px 15px;
+    font-size: 14px;
+    color: #999;
+    background: #fafafa;
+    span {
+      margin-right: 12px;
+      font-size: 12px;
+      .ks-icon {
+        width: 14px;
+        min-width: 14px;
+        height: 14px;
+        min-height: 14px;
+        box-sizing: border-box;
+        font-size: 14px;
+        color: #F8C2A2;
+        margin-right: 5px;
+        line-height: 14px;
+      }
+    }
+  }
+
+  .line-blank {
+    width: 100%;
+    height: 10px;
+    min-height: 10px;
+    background: #f5f5f5;
+  }
+  .choose {
+    flex-shrink: 0;
+    padding: 0 15px;
+    height: 54px;
+    line-height: 54px;
+    .ks-icon {
+      margin: 0;
+      font-size: 14px;
+      line-height: 14px;
+      min-height: 14px;
+      min-width: 14px;
+    }
+  }
+
+  .ks-item-desp {
+    flex-shrink: 0;
+    p {
+      margin: 0;
+      position: relative;
+      width: 100%;
+      -webkit-margin-before: 0;
+      -webkit-margin-after: 0;
+      /*      overflow: hidden;*/
+      &:before {
+        content: "";
+        display: block;
+        /*padding-top: 100%;订单详情页显示问题*/
+      }
+      img {
+        width: 100%;
+        border: medium none;
+        display: block;
+        margin: 0;
+        /*position: absolute;
+        left: 0;
+        top: 0; 订单详情页显示问题*/
+      }
+    }
+    img {
+      width: 100%;
+      border: medium none;
+      display: block;
+      margin: 0;
+    }
+  }
+
+  .fotter-btn {
+    overflow: hidden;
+    height: 49px;
+    min-height: 49px;
+    text-align: center;
+    div {
+      font-size: 16px;
+      color: #fff;
+      font-weight: bold;
+
+      i {
+        position: absolute;
+        left: 50%;
+        text-align: center;
+        line-height: 14px;
+        border-radius: 11px;
+        height: 18px;
+        background: #e84e40;
+        color: #ffffff;
+        font-size: 11px;
+        font-style: normal;
+        min-width: 18px;
+        padding: 0 3px;
+        border: 2px solid #fff;
+        top: 0;
+      }
+    }
+
+    .footer-chat {
+      text-align: center;
+      background: #fff;
+      color: #333;
+      font-size: 10px;
+      border-top: 1px solid #d5d5d5;
+      position: relative;
+      .ks-icon {
+        line-height: 28px;
+        text-align: center;
+        font-size: 18px;
+        color: #333;
+        margin-top: 3px;
+      }
+    }
+    .line {
+      width: 1px;
+      height: 100px;
+      background: #d5d5d5;
+      -webkit-transform: scaleX(0.5);
+      -webkit-transform-origin: 0 0;
+      overflow: hidden;
+    }
+
+    div:nth-of-type(3) {
+      line-height: 48px;
+      background: #EA738F;
+    }
+    div:nth-of-type(4) {
+      line-height: 48px;
+      background: #E53467;
+    }
+  }
+
+}

@@ -1,0 +1,58 @@
+@import "../../../../../scss/index.scss";
+
+.ks-auditing{
+  background: $activity-bg-white;
+  position: relative;
+  md-content{
+    .content {
+      background: #ffffff;
+      padding: 0 15px;
+      //margin-bottom: 10px;
+
+      .content-tab{
+        min-height: 59px;
+        width: 100%;
+        .left{
+          font-size: 16px;
+          color: #333333;
+          margin-right: 30px;
+          min-width: 65px;
+        }
+        .right{
+          color: #666666;
+          font-size: 16px;
+          overflow: hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
+          img{
+            display: block;
+            width: 100%;
+          }
+
+        };
+      }
+    }
+
+  }
+
+  .footBottom{
+    width: 100%;
+    height: 50px;
+    .btn1{
+      font-size: 18px;
+      color: #666666;
+    }
+    .line{
+      width: 1px;
+      height: 29px;
+      background: #d5d5d5;
+      -webkit-transform: scaleX(0.5);
+      -webkit-transform-origin: 0 0;
+      overflow: hidden;
+    }
+    .btn2{
+      font-size: 18px;
+      color: #E53467;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+devPort: 11200
+# ServerProperties
+server:
+  port: 10240
+  context-path: /activity/rs/local/${devPort}                            # todo 其它环境修改该行
+  error.include-stacktrace: on_trace_param
+
+# SecurityProperties
+security:
+  basic.enabled: false
+
+
+
+# QhAgencyProperties
+net.kingsilk.qh.activity:
+  # http代理设置
+  http:
+    proxy:
+      enabled:      false
+  qhOAuth:
+    wap:
+      url:                      'https://kingsilk.net/oauth2/rs/local/${devPort}'           # todo 其它环境修改该行
+  qhPay:
+    wap:
+      url:                      'https://pay.kingsilk.net/qh/pay/local/${devPort}/rs'       # todo 其它环境修改该行
+  qhPlatform:
+     server:
+       url:                      'https://kingsilk.net/activity/rs/local/${devPort}/api'       # TODO 其它环境修改该行
+       clientId:                    'CLIENT_ID_qh-activity-server'
+       clientSecret:                'CLIENT_PWD_qh-activity-server_123456'
+       resourceId:                  'RSC_ID_qh-activity-server'
+  agencyUt:
+     basePath :                  'https://kingsilk.net/agency/rs/local/${devPort}/api'
+  oauthUt:
+     basePath :                  'https://kingsilk.net/oauth2/rs/api'
+# MongoProperties
+spring.data.mongodb:
+  host: '192.168.0.12'
+  port: 27017
+  database: 'qh-activity'
+  username: 'qh-activity'
+  password: 'qh-activity'
+
+ut:
+    basePath : https://kingsilk.net/oauth2/rs/local/${devPort}/api
+
+agencyUt:
+    basePath : https://kingsilk.net/agency/rs/local/${devPort}/api

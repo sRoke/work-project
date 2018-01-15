@@ -1,0 +1,169 @@
+<div flex layout="column" class="ks-home">
+    <!--<div class="ks-black-header" layout="row" style="background: #53D39A">-->
+    <!--<div class="back-button" flex="20">-->
+    <!--</div>-->
+    <!--<h1 flex style="font-size: 18px;color: #FFFFFF;letter-spacing: -0.43px;">销售宝</h1>-->
+    <!--<div class="right-button" flex="20">-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div class="money-wrap" layout="column" layout-align="space-between stretch">
+        <div class="money-box">
+            <div class="money-name">今日收入(元)</div>
+            <div class="price" layout="row" layout-align="center end">
+                <span >
+                <!--style="margin-left:-12px" <span style="font-size: 20px;line-height: 28px; margin-right: -9px;">￥</span>-->
+                <span>{{data.todayPurchaseNum/100 | num :2}}</span>
+                </span>
+            </div>
+        </div>
+        <div flex class="money-detail" layout="row" layout-align="space-between center">
+            <div class="detail">
+                <div class="detail-name">今日销量</div>
+                <div class="detail-num">{{data.todaySaleNum| num :0}}</div>
+                <!--<div class="detail-num" ng-if="!data.todayPurchaseNum">0</div>-->
+
+            </div>
+            <div class="detail">
+                <div class="detail-name">昨日收入</div>
+                <div class="detail-num">{{data.yesterdaySaleNum/100 | num :2}}</div>
+                <!--<div class="detail-num" ng-if="!data.monthPpurchaseNum">0</div>-->
+
+            </div>
+            <div class="detail">
+                <div class="detail-name">本月收入</div>
+                <div class="detail-num">{{data.monthPpurchaseNum/100 | num :2}}</div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="data-box" layout="column" layout-align="center center">
+        <div class="data-box-top" layout="row" layout-align="space-around center" style="padding-bottom: 20px">
+            <div class="data-left" layout="column">
+                <div class="name">今日采购</div>
+                <div class="num">{{data.todayPurchaseNum}}</div>
+            </div>
+            <div class="ling"></div>
+            <div class="data-right">
+                <div class="name">本月采购</div>
+                <div class="num">{{data.monthPpurchaseNum}}</div>
+            </div>
+        </div>
+        <div class="data-center-line"></div>
+        <div class="data-box-top" layout="row" layout-align="space-around center" style="padding-top: 20px">
+            <div class="data-left" layout="column">
+                <div class="name">货品金额</div>
+                <div class="num">80（暂无）</div>
+            </div>
+            <div class="ling"></div>
+            <div class="data-right">
+                <div class="name">当前库存</div>
+                <div class="num">80（暂无）</div>
+            </div>
+        </div>
+    </div>-->
+
+
+    <md-content flex>
+        <div flex class="btn-icon-wrap">
+            <div class="icon-btn" layout="row" layout-align="center center">
+                <div flex layout="row" layout-align="center center" ui-sref="main.brandApp.purchase()">
+                    <div class="icon-wrap" layout="column" layout-align="center center">
+                        <!--<img src="./1.png" alt="">-->
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-cart-line"
+                                 style="font-size: 24px"></md-icon>
+                        <span>采购</span>
+                    </div>
+                </div>
+                <div flex layout="row" layout-align="center center" ui-sref="main.brandApp.unionOrder()">
+                    <div class="icon-wrap" layout="column" layout-align="center center">
+                        <!--<img src="./2.png" alt="">-->
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-order-arrow-o"></md-icon>
+                        <span>采购管理</span>
+                    </div>
+                </div>
+                <div flex layout="row" layout-align="center center" ui-sref="main.brandApp.refund.myRefundManage()">
+                    <div class="icon-wrap" layout="column" layout-align="center center">
+                        <!--<img src="./3.png" alt="">-->
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-r"></md-icon>
+                        <span>采购退货</span>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-btn" layout="row" layout-align="center center">
+                <div flex layout="row" layout-align="center center" ui-sref="main.brandApp.orderManage()">
+                    <div class="icon-wrap" layout="column" layout-align="center center">
+                        <!--<img src="./4.png" alt="">-->
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-fileboard"></md-icon>
+                        <span>销售管理</span>
+                    </div>
+                </div>
+                <div flex layout="row" layout-align="center center" ui-sref="main.brandApp.manageInvoice()">
+                    <div class="icon-wrap" layout="column" layout-align="center center">
+                        <!--<img src="./5.png" alt="">-->
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-truck-o"
+                                 style="font-size: 22px"></md-icon>
+                        <span>发货管理</span>
+                    </div>
+                </div>
+                <div flex layout="row" layout-align="center center" 　ui-sref="main.brandApp.refund.refundManage()">
+                    <div class="icon-wrap" layout="column" layout-align="center center">
+                        <!--<img src="./6.png" alt="">-->
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-money-board"></md-icon>
+                        <span>销售退货</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="icon-btn" layout="row" layout-align="center center">
+                <div flex layout="row" layout-align="center center" ui-sref="main.brandApp.stockControl()">
+                    <div class="icon-wrap" layout="column" layout-align="center center">
+                        <!--<img src="./4.png" alt="">-->
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-grid-system"></md-icon>
+                        <span>库存</span>
+                    </div>
+                </div>
+                <div flex layout="row" layout-align="center center">
+                    <!--<div class="icon-wrap" layout="column" layout-align="center center" ng-click="goto('/cashier')">-->
+                        <!--&lt;!&ndash;<img src="./5.png" alt="">&ndash;&gt;-->
+                        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-money-40"></md-icon>-->
+                        <!--<span>收银</span>-->
+                    <!--</div>-->
+                </div>
+                <div flex layout="row" layout-align="center center">
+                    <!--<div class="icon-wrap" layout="column" layout-align="center center" ng-click="goto('/cashFlow/cashflowMain')">-->
+                        <!--&lt;!&ndash;<img src="./6.png" alt="">&ndash;&gt;-->
+                        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-script"></md-icon>-->
+                        <!--<span>收银流水</span>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <!--<div class="icon-btn" layout="row" layout-align="center center">-->
+                <!--<div flex layout="row" layout-align="center center" ng-click="chooseTv()">-->
+                    <!--<div class="icon-wrap" layout="column" layout-align="center center">-->
+                        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-grid-system"></md-icon>-->
+                        <!--<span>测试</span>-->
+                    <!--</div>-->
+
+
+                    <!--<div class="imgList" layout="column" layout-align="center center"-->
+                         <!--ngf-select="uploading($file)"-->
+                         <!--ngf-pattern="'video/*','application/*'">-->
+                        <!--<md-icon md-font-set="ks-admin-font" md-font-icon="ks-add-o"></md-icon>-->
+                        <!--<div>上传</div>-->
+                        <!--&lt;!&ndash;<div class="button" ngf-select="uploading($file)" ngf-pattern="'image/*'" ng-model="files" ngf-multiple="true">上传图片</div>&ndash;&gt;-->
+                    <!--</div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+
+        <!--<md-button class="md-primary md-raised" ui-sref="main.wxLogin()">去登录</md-button>-->
+
+        <!--<md-button class="md-primary md-raised" ng-click="logout()">退出</md-button>-->
+    </md-content>
+    <div ks-footer-menu cur="'home'"></div>
+</div>
+
+<!--{{brandAppId}}-->
+

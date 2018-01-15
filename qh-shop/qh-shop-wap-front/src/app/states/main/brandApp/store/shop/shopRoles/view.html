@@ -1,0 +1,19 @@
+<div class="ks-shopRoles"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>角色信息</h1>
+        <div class="right-button" flex="20" style="font-size: 25px" ui-sref="main.brandApp.store.shop.shopRoleAdd">
+            +
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden">
+        <div class="rolesList" ui-sref="main.brandApp.store.shop.shopRoleView({id:store.id})" ng-repeat="store in dataInfo.content">
+            <div class="title">{{store.name}}</div>
+            <div class="desc">{{store.desp}}</div>
+            <md-divider></md-divider>
+        </div>
+    </md-content>
+</div>

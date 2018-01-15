@@ -1,0 +1,134 @@
+<div flex="100" layout="column" class="ks-invoiceOrderDetail">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="vm.fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>发货单</h1>
+        <div class="right-button" flex="20">
+
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex>
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row">
+                单据信息
+            </div>
+            <md-divider></md-divider>
+            <div class="center-bottom" layout="column" layout-align="space-between start">
+                <div flex layout="row" layout-align="center start">
+                    <div class="center-left">
+                        单据编号
+                    </div>
+                    <div flex class="center-detail">
+                        {{info.seq}}
+                    </div>
+                </div>
+                <div flex layout="row" layout-align="center start">
+                    <div class="center-left">
+                        单据日期
+                    </div>
+                    <div flex class="center-detail">
+                        {{info.createDate|date:'yyyy-MM-dd HH:mm:ss'}}
+                    </div>
+                </div>
+                <div flex layout="row" layout-align="center start">
+                    <div class="center-left">
+                        单据状态
+                    </div>
+                    <div flex class="center-detail">
+                        <span ng-if="info.status === 'UNCOMMITED'">未提交</span>
+                        <span ng-if="info.status === 'UNPAYED'">待付款</span>
+                        <span ng-if="info.status === 'UNCONFIRMED'">待确认接单</span>
+                        <span ng-if="info.status === 'REJECTED'">卖家拒绝接单</span>
+                        <span ng-if="info.status === 'CANCELING'">申请取消中</span>
+                        <span ng-if="info.status === 'CANCELED'">已取消</span>
+                        <span ng-if="info.status === 'UNSHIPPED'">待发货</span>
+                        <span ng-if="info.status === 'UNRECEIVED'">待收货</span>
+                        <span ng-if="info.status === 'FINISHED'">已完成</span>
+                        <span ng-if="info.status === 'CLOSED'">已关闭</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row">
+                配送信息
+            </div>
+            <md-divider></md-divider>
+            <div class="center-bottom" layout="row" layout-align="space-between start">
+                <div class="center-left">
+                    收货地址
+                </div>
+                <div flex class="center-address" layout="column" layout-align="center start">
+                    <div ng-if="info.address.id">
+                        <div class="commit">
+                            <span>{{info.address.receiver}}</span>
+                            <span>{{info.address.phone}}</span>
+                        </div>
+                        <div class="address-detail">
+                            <span>{{info.address.province}}{{info.address.city}}{{info.address.county}}{{info.address.street}}</span>
+                        </div>
+                    </div>
+                </div>
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row">
+                商品信息
+            </div>
+            <md-divider></md-divider>
+            <div class="itemWrap" layout="column" layout-align="center stretch">
+                <div class="item" layout="column" ng-repeat="item in info.items track by $index">
+                    <div layout="row" class="item-box">
+                        <div class="img-wrap">
+                            <img img-holder src="{{item.skuInfo.imgs[0]}}"/>
+                        </div>
+                        <div class="item-detail" layout="column" flex layout-align="space-between start">
+                            <div class="item-title"> {{item.skuInfo.title}}</div>
+                            <div class="item-num-wrap" layout="row" layout-align="space-between center">
+                                <div class="item=num">数量 {{item.num}}</div>
+                                <div class="num-price">单价 ￥{{item.skuPrice/100|num:2 }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <md-divider class="dashed" ng-if="!$last"></md-divider>
+                </div>
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row" layout-align="space-between center">
+                <div class="center-left">
+                    备注描述
+                </div>
+                <div class="center-right"></div>
+            </div>
+            <div class="textarea-wrap" layout="row">
+                <div ng-model="info.memo"></div>
+                <!--<textarea flex placeholder="输入描述..."></textarea>-->
+            </div>
+        </div>
+        <div class="total-price" layout="row" layout-align="center start">
+            <span>合计: ￥{{info.paymentPrice/100|num:2 }}</span>
+        </div>
+    </md-content>
+
+    <div class="bottom-btn" ng-click="pay(info.id)" ng-if="info.status == 'UNPAYED'">
+        <span class="btn-txt">付款</span>
+    </div>
+
+    <div class="bottom-btn" layout="row" layout="center center"
+         ng-if="info.status == 'UNRECEIVED'">
+        <div class="btn-txt" flex ng-click="receive(info.id)">确认收货</div>
+    </div>
+
+    <!--<div class="bottom-btn" layout="row" layout="center center"-->
+    <!--ng-if="deliver=='WAIT_SENDING'">-->
+    <!--<div class="btn-txt" flex style="background: #333333" ui-sref="main.brandApp.order.deliver({id:info.id})">填写物流-->
+    <!--</div>-->
+    <!--</div>-->
+</div>

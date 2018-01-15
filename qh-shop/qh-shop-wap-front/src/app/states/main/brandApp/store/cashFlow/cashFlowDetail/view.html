@@ -1,0 +1,91 @@
+<div flex="100" layout="column" class="ks-cashFlowDetail">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>账单流水</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+        <div class="top" layout="column" layout-align="center center">
+            <div layout="column" layout-align="center center">
+                <div class="money">¥{{data.paymentPrice/100 | num:2}}</div>
+                <!--<div class="desc" ng-if="false">应收金额</div>-->
+                <div class="desc" ng-if="true">交易金额</div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content-top">
+                <div style="border-bottom: 1px dashed #D5D5D5">
+                    <div layout="row" layout-align="space-between center" class="list">
+                        <div class="key">交易时间:</div>
+                        <div class="value">{{data.createDate}}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center" class="list">
+                        <div class="key">收银单号:</div>
+                        <div class="value">{{data.seq}}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center" class="list">
+                        <div class="key">客户手机:</div>
+                        <div class="value">{{data.cellphone}}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center" class="list">
+                        <div class="key">支付方式:</div>
+                        <div class="value" ng-if="data.status == 'UNPAYED'" style="color:#ED5F5B">未支付</div>
+                        <div class="value" ng-if="data.status == 'FINISHED' && data.payType == 'WX'">微信</div>
+                        <div class="value" ng-if="data.status == 'FINISHED' && data.payType == 'ALI'">支付宝</div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px">
+                    <div layout="row" layout-align="space-between center" class="list">
+                        <div class="key">合计金额:</div>
+                        <div class="value">¥{{data.orderPrice/100 | num:2}}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center" class="list" ng-if="data.activityType">
+                        <div class="key">优惠方式:</div>
+                        <div class="value">{{discountSpec}}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center" class="list" ng-if="data.activityType">
+                        <div class="key">优惠:</div>
+                        <div class="value">¥{{data.activityPrice/100 | num:2}}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center" class="list">
+                        <div class="key">应收金额:</div>
+                        <div class="value">¥{{data.paymentPrice/100 | num:2}}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center" class="list">
+                        <div class="key">实收金额:</div>
+                        <div class="value">¥{{data.paymentPrice/100 | num:2}}</div>
+                    </div>
+                </div>
+
+            </div>
+            <md-divider></md-divider>
+            <div class="content-item">
+                <div layout="row" layout-align="space-between center" class="item-title">
+                    <div flex="40" class="box" style="text-align: left">商品</div>
+                    <div flex="30" class="box" style="text-align: center">数量</div>
+                    <div flex="30" class="box" style="text-align: right">单价</div>
+                </div>
+                <div layout="row" layout-align="space-between center" class="item-box" ng-repeat="item in data.items">
+                   <div flex="100" layout="row" layout-align="center start">
+                       <div flex="40" class="box1" style="text-align: left">
+                           <div class="title">{{item.skuInfo.title}}</div>
+                           <div class="spec">
+                               <span ng-repeat="spec in item.skuInfo.specs">{{spec.value}}</span>
+                           </div>
+                       </div>
+                       <div flex="30" class="box2" style="text-align: center">
+                           <div>X{{item.num}}</div>
+                           <div></div>
+                       </div>
+                       <div flex="30" class="box3" style="text-align: right">￥{{item.skuPrice/100|num:2}}</div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </md-content>
+</div>

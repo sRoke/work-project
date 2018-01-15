@@ -1,0 +1,46 @@
+devPort: 11400
+# ServerProperties
+server:
+  port: 10240
+  context-path: /vote/rs/local/${devPort}                        # todo 其它环境修改该行
+  error.include-stacktrace: on_trace_param
+
+# SecurityProperties
+security:
+  basic.enabled: false
+
+
+
+# QhAgencyProperties
+net.kingsilk.qh.vote:
+  # http代理设置
+  http:
+    proxy:
+      enabled:      false
+  qhOAuth:
+    wap:
+      url:                      'https://kingsilk.net/oauth2/rs/local/${devPort}'           # todo 其它环境修改该行
+  qhPlatform:
+    server:
+      url:                      'https://kingsilk.net/vote/rs/local/${devPort}/api'       # TODO 其它环境修改该行
+      clientId:                    'CLIENT_ID_qh-vote-server'
+      clientSecret:                'CLIENT_PWD_qh-vote-server_123456'
+      resourceId:                  'RSC_ID_qh-vote-server'
+  agencyUt:
+    basePath : 'https://kingsilk.net/agency/rs/local/${devPort}/api'
+  oauthUt:
+    basePath :                  'https://kingsilk.net/oauth2/rs/api'
+
+# MongoProperties
+spring.data.mongodb:
+  host: '192.168.0.12'
+  port: 27017
+  database: 'qh-vote'
+  username: 'qh-vote'
+  password: 'qh-vote'
+
+ut:
+    basePath : https://kingsilk.net/oauth2/rs/local/${devPort}/api
+
+agencyUt:
+    basePath : https://kingsilk.net/agency/rs/local/${devPort}/api

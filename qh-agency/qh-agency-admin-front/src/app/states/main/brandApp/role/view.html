@@ -1,0 +1,186 @@
+<!--<div class="ks-role">
+    <div class="userList-center">
+        <ul>
+            <li>
+                角色名称：<input type="text" ng-model="staffGroup.keyWord" ng-change="pageChanged()">
+            </li>
+        </ul>
+    </div>
+    <div class="itemProp-operate">
+        <md-button class="new-btn-green" ui-sref="main.brandApp.roAdd({id:user.id,source:'new'})">
+            <md-icon class="glyphicon" md-font-set=net.kingsilknet.kingsilk.qh.agencyency.admindmin-font" md-font-icon="ks-plus" title="新增"></md-icon>
+            新增
+        </md-button>
+    </div>
+    <div class="userList-tableBox" layout="row">
+        <div flex>角色名称</div>
+        <div flex>成员数量</div>
+        <div flex>更新时间</div>
+        <div flex>操作</div>
+    </div>
+    <div style="clear: both"></div>
+    <div class="userList-tableBox-content" ng-repeat="staffGroup in data.content" layout="row">
+        <div class="userList-tableBox1" flex>
+            <a id="{{staffGroup.id}}">{{staffGroup.name}}</a>
+        </div>
+        <div flex>
+            {{staffGroup.staffSize}}
+        </div>
+        <div flex>
+            {{staffGroup.lastModifiedDate | date:"yyyy-MM-dd HH:mm:ss"}}
+        </div>
+        <div flex class="operation">
+
+            <a class="glyphicon" title="查看" href="javascript:void(0)">
+                <md-icon class="wrapIcon" md-font-set=net.kingsilknet.kingsilk.qh.agencyency.admindmin-font" md-font-icon="ks-edit" title="查看"
+                         ui-sref="main.brandApp.roAdd({id:staffGroup.id,source:'view'})"></md-icon>
+                <br>查看
+            </a>
+
+            <a class="glyphicon" title="编辑" href="javascript:void(0)">
+                <md-icon class="wrapIcon" md-font-set=net.kingsilknet.kingsilk.qh.agencyency.admindmin-font" md-font-icon="ks-edit" title="编辑"
+                         ui-sref="main.brandApp.roAdd({id:staffGroup.id,source:'edit'})"></md-icon>
+                <br>编辑
+            </a>
+            <a class="glyphicon" title="删除" href="javascript:void(0)">
+                <md-icon class="wrapIcon" md-font-set=net.kingsilknet.kingsilk.qh.agencyency.admindmin-font" md-font-icon="ks-edit" title="删除"
+                         ng-click="delete(staffGroup.id)"></md-icon>
+                <br>删除
+            </a>
+
+        </div>
+        <br style="clear: both">
+    </div>
+
+
+    <div style="width: 500px;min-width: 500px" uib-pagination total-items="data.totalElements" ng-model="data.number"
+         ng-change="pageChanged()"
+         class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"
+         items-per-page="appConfig.pageSize" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+
+    </div>
+
+    <div style="float: right" class="pageSubnav">
+        <span>共{{data.totalElements}}条</span>
+        到第<input type="text" ng-model="data.number">页
+        <md-button ng-click="pageChanged(data.number)">确定</md-button>
+    </div>
+
+</div>-->
+
+<!--引入ks-common-list放在最外面的div即可-->
+<div class="ks-common-list">
+    <div class="common-list-center">
+        <ul>
+            <li>
+                <span>搜索:</span>
+                <input type="text" class="choose " ng-model="staffGroup.keyWord" ng-change="pageChanged()">
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+
+    <!--按钮-->
+    <div class="nav-wrap" style="border-bottom: 1px dashed #d5d5d5">
+        <md-content class="md-padding">
+        </md-content>
+        <div class="btnBox" ng-if="STAFF_GROUP_C">
+            <md-button class="newAdd" ui-sref="main.brandApp.roAdd({id:user.id,source:'new'})" >
+                <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-plus" title="新增"></md-icon>
+                新增
+            </md-button>
+        </div>
+    </div>
+
+    <!--div数据表title-->
+    <div class="common-list-tableBox" layout="row" layout-align="center center">
+        <div flex>角色名称</div>
+        <div flex>成员数量</div>
+        <div flex>更新时间</div>
+        <div flex>状态</div>
+        <div flex>操作</div>
+    </div>
+    <!--div数据表详细信息-->
+    <div layout="column" class="common-wrap">
+
+        <!--div数据主要显示区域  ng-repeat可用于此-->
+        <div class="common-list-tableBox-content" layout="row"
+             ng-repeat="staffGroup in data.content"
+             layout-align="center stretch">
+            <div class="div" flex layout="column" layout-align="center center">
+                <span id="{{staffGroup.id}}"> {{staffGroup.name}}
+
+                </span>
+            </div>
+            <div class="div" flex layout="column" layout-align="center center">
+                <span>
+                     {{staffGroup.staffSize}}
+                </span>
+            </div>
+            <div class="div" flex layout="column" layout-align="center center">
+                <span>
+                     {{staffGroup.lastModifiedDate | date:"yyyy-MM-dd HH:mm:ss"}}
+                </span>
+            </div>
+            <div class="div" flex layout="column" layout-align="center center">
+                <span ng-if="staffGroup.status">正常</span>
+                <span ng-if="!staffGroup.status">已禁用</span>
+            </div>
+            <div class="div" flex layout="row" layout-align="center center">
+                <div flex="25">
+                    <a  class="glyphicon" title="禁用" href="javascript:void(0)"
+                        ng-click="alert(staffGroup.id, staffGroup.status)" ng-if="STAFF_GROUP_U">
+                        <md-icon class="wrapIcon"
+                                 ng-if="!staffGroup.status"
+                                 md-font-set="ks-admin-font" md-font-icon="ks-qiyong" title=""></md-icon>
+                        <md-icon class="wrapIcon"
+                                 ng-if="staffGroup.status"
+                                 md-font-set="ks-admin-font" md-font-icon="ks-jinyong" title=""
+                        ></md-icon>
+                        <br>
+                        <span ng-if="!staffGroup.status">启用</span>
+                        <span ng-if="staffGroup.status">禁用</span>
+                    </a>
+                </div>
+                <div flex="25">
+                    <a  class="glyphicon" title="查看" href="javascript:void(0)"
+                       ui-sref="main.brandApp.roAdd({id:staffGroup.id,source:'view'})" ng-if="STAFF_GROUP_R">
+                        <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit" title="查看"></md-icon>
+                        <br>查看
+                    </a>
+                </div>
+                <div flex="25">
+                    <a  class="glyphicon" title="编辑" href="javascript:void(0)" ng-if="STAFF_GROUP_U">
+                        <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit" title="编辑"
+                                 ui-sref="main.brandApp.roAdd({id:staffGroup.id,source:'edit'})"></md-icon>
+                        <br>编辑
+                    </a>
+                </div>
+                <div flex="25">
+                    <a  class="glyphicon" title="删除" href="javascript:void(0)" ng-if="!staffGroup.status && STAFF_GROUP_D">
+                        <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-trash" title="删除"
+                                 ng-click="delete(staffGroup.id)"></md-icon>
+                        <br>删除
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 99%; margin: 10px auto 0">
+        <div style="width: 500px;min-width: 500px" uib-pagination total-items="data.totalElements" ng-model="data.number"
+             ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+
+        </div>
+
+        <div style="float: right"  class="pageSubnav">
+            <span>共{{data.totalElements}}条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="data.number">页
+            <md-button ng-click="pageChanged()">确定</md-button>
+        </div>
+    </div>
+</div>
+
+

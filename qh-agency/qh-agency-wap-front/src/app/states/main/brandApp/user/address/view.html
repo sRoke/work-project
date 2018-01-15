@@ -1,0 +1,85 @@
+<div flex="" layout="column" class="ks-shippingAddress">
+    <md-toolbar class="ks-header">
+        <div layout="row" class="ks-header-divWrap">
+            <div class="divTop" flex >
+                <md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"
+                         ng-click="fallbackPage()"></md-icon>
+                <span class="regSpan">收货地址</span>
+            </div>
+        </div>
+    </md-toolbar>
+    <md-divider></md-divider>
+
+    <md-content flex="" id="content" class="top-border" ng-if="addressList[0]">
+    <!--<md-content flex="" id="content" class="top-border">-->
+        <div class="content-divWrap">
+            <div class="shWrap" ng-repeat="addr in addressList track by $index">
+            <!--<div class="shWrap" >-->
+                <div class="line" ng-if="$index!=0"></div>
+                <div class="shBox" ng-click="orderUpdateAddress(addr)">
+                    <div class="nameRow">
+                        <span class="name">豆豆</span>
+                        <span class="tel">11011101110</span>
+                    </div>
+                    <p class="xiangxi">
+                        <span ng-if="addr.province">{{addr.province}}浙江省/</span>
+                        <span ng-if="addr.city">{{addr.city}}杭州市/</span>
+                        {{addr.area}}浙江省/杭州市/江干区/123124343阿司司法所法还比较高本法司法所法还比较高本所司法所法还比较高本法还比较高本公司地方吧所法并发送到{{addr.street}}
+                    </p>
+                </div>
+                <div class="line-divi" ></div>
+                <div class="set" layout="row" layout-align="space-between center">
+                    <div class="defaultSet" ng-click="setDefault(addr)">
+                        <md-icon style="color: #53D39A" md-font-set="ks-icon" md-font-icon="ag-success"
+                                 ng-if="addr.updateDefault"></md-icon>
+                        <md-icon style="color: #999" md-font-set="ks-icon" md-font-icon="ag-r-unselected"
+                                 ng-if="!addr.updateDefault" ></md-icon>
+                        <span ng-if="addr.updateDefault" >默认地址</span>
+                        <span ng-if="!addr.updateDefault" class="cur">设为默认</span>
+                    </div>
+                   <!--<div class="defaultSet" ng-click="setDefault(addr)" ng-if="!addr.updateDefault">-->
+                         <!--<span>设为默认</span>-->
+                     <!--</div>-->
+                    <div class="edit">
+                        <div class="icon" ng-click="openadddialog(addr,$index)" layout="row" layout-align="center center">
+                            <md-icon md-font-set="ks-icon" md-font-icon="ag-edit-o"></md-icon>
+                            <span>编辑</span>
+                        </div>
+                        <div class="icon" ng-click="deleteAddress($event,$index)" layout="row" layout-align="center center">
+                            <md-icon md-font-set="ks-icon" md-font-icon="ag-trash-can-o"></md-icon>
+                            <span>删除</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="line-divi" ></div>-->
+        </div>
+        <!--<div class="address">-->
+            <!--<button class="but" ng-click="openadddialog($event,0)">+添加新地址</button>-->
+        <!--</div>-->
+        <div class="empty-1">
+            <!--<div flex layout="column" layout-align="center center">-->
+                <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-location" class="icon"></md-icon>-->
+                <!--<div class="txt">您还没有收货地址，快来创建吧～</div>-->
+            <!--</div>-->
+            <div layout="row" layout-align="center center" class="add-row" ui-sref="main.brandApp.addAddress">
+                <md-button  flex ng-click="openadddialog($event,0)"> + 添加新地址</md-button>
+            </div>
+        </div>
+
+
+    </md-content>
+
+     <!--收货地址列表为空 -->
+    <md-content flex layout="column" class="top-border empty" ng-if="!addressList[0]">
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-location" class="icon"></md-icon>
+            <div class="txt">您还没有收货地址，快来创建吧～</div>
+        </div>
+
+        <div layout="row" layout-align="center center" class="add-row">
+            <md-button  flex ng-click="openadddialog($event,0)"> + 添加新地址</md-button>
+        </div>
+    </md-content>
+</div>
+

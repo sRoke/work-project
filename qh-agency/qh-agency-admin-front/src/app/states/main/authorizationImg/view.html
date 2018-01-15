@@ -1,0 +1,58 @@
+<div class="ks-authorization">
+    <div class="author-wrap">
+        <img src="https://img.kingsilk.net/3f79e2d9b7442af651d76be8cf98c11a" alt="" width="560" height="800">
+        <div class="name">
+            <input type="text" placeholder="姓名" ng-model="message.name" ng-if="edit">
+            <div ng-if="!edit">{{message.name}}</div>
+        </div>
+        <div class="adress">
+            <input type="text" placeholder="地址" ng-model="message.address" ng-if="edit">
+            <div ng-if="!edit" ng-if="edit">{{message.address}}</div>
+
+        </div>
+        <div class="prox">
+            <input type="text" placeholder="代理" ng-model="message.prox" ng-if="edit">
+            <div ng-if="!edit">{{message.prox}}</div>
+        </div>
+
+        <div class="start-year">
+            <input type="text" placeholder="年" ng-model="message.year" ng-if="edit">
+            <div ng-if="!edit">{{message.year}}</div>
+        </div>
+        <div class="start-month">
+            <input type="text" placeholder="月" ng-model="message.month" ng-if="edit">
+            <div ng-if="!edit">{{message.month}}</div>
+        </div>
+        <div class="start-day">
+            <input type="text" placeholder="日" ng-mpdel="message.day" ng-if="edit">
+            <div ng-if="!edit">{{message.day}}</div>
+        </div>
+        <div class="end-year">
+            <input type="text" placeholder="年" ng-model="message.endYear" ng-if="edit">
+            <div ng-if="!edit">{{message.endYear}}</div>
+        </div>
+        <div class="end-month">
+            <input type="text" placeholder="月" ng-model="message.endMonth" ng-if="edit">
+            <div ng-if="!edit">{{message.endMonth}}</div>
+        </div>
+        <div class="end-day">
+            <input type="text" placeholder="日" ng-model="message.endDay" ng-if="edit">
+            <div ng-if="!edit">{{message.endDay}}</div>
+        </div>
+
+
+        <div class="seq">
+            <span ng-if="!edit">{{message.seq}}</span>
+        </div>
+
+        <div class="sign-day">
+            <input type="text" placeholder="日期" ng-model="message.signDay" ng-if="edit">
+        </div>
+
+        <div>
+            <button>生成授权书</button>
+            <button ng-click="generate()">预览授权书</button>
+        </div>
+    </div>
+
+</div>

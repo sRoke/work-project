@@ -1,0 +1,312 @@
+.ks-appSearch.ks-main {
+
+  //header开始
+  .ks-header._md.ks-search-header {
+    height: 44px;
+    margin: 0px auto;
+    position: relative;
+    background: #fff;
+    .ks-header-divWrap {
+      padding: 0 10px;
+      height: 100%;
+      color: #101010;
+      .divTop {
+        text-align: center;
+        position: relative;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 7px;
+        margin-bottom: 7px;
+        .chevron_left_Wrap {
+          padding-right: 34px;
+          width: 20px;
+          .chevron_left {
+            color: #101010;
+            line-height: 24px;
+            font-size: 16px;
+            margin-top: 2px;
+          }
+        }
+        .searchInputWrap {
+
+          position: relative;
+          height: 30px;
+          background: #f0f0f0;
+          display: inline-block;
+          .searchIcon {
+            position: absolute;
+            left: 5px;
+            top: 3px;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+          }
+          .searchInput {
+            color: #101010;
+            height: 14px;
+            line-height: 14px;
+            font-size: 12px;
+            width: 100%;
+            text-indent: 30px;
+            background: transparent;
+            border: none;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            position: absolute;
+            left: 0px;
+            top: 7px;
+          }
+        }
+        .rightDiv {
+          line-height: 26px;
+          float: right;
+          padding-left: 10px;
+          text-align: right;
+          .spanSearch {
+            font-size: 14px;
+            color: #101010;
+          }
+        }
+
+      }
+    }
+  }
+
+  .search {
+    background: #fff;
+    height: 44px;
+    min-height: 44px;
+    .input-wrap {
+      position: relative;
+      margin: 0 15px;
+      input {
+        border: none;
+        background: #F5F5F5;
+        border-radius: 8px;
+        height: 32px;
+        padding-left: 35px;
+      }
+      input::-webkit-input-placeholder { /* WebKit browsers */
+        font-size: 14px;
+        color: #D5D5D5;
+        letter-spacing: -0.34px;
+        //line-height: 14px;
+        //padding-left: 10px;
+      }
+
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        font-size: 14px;
+        color: #D5D5D5;
+        letter-spacing: -0.34px;
+        //line-height: 14px;
+        //padding-left: 10px;
+      }
+
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        font-size: 14px;
+        color: #D5D5D5;
+        letter-spacing: -0.34px;
+        //line-height: 14px;
+        //padding-left: 10px;
+      }
+      .ks-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        margin-top: -8px;
+        font-size: 16px;
+        min-height: 16px;
+        min-width: 16px;
+        line-height: 16px;
+      }
+    }
+
+    > .ks-icon {
+      color: #000;
+      font-size: 20px;
+      min-height: 20px;
+      min-width: 20px;
+      line-height: 20px;
+      margin: 0;
+    }
+    .right-rank {
+      position: relative;
+      .ks-icon {
+        color: #000;
+        font-size: 20px;
+        min-height: 20px;
+        min-width: 20px;
+        line-height: 20px;
+        margin: 0;
+      }
+      .pos-wrap {
+        padding: 5px 10px;
+        position: absolute;
+        width: 80px;
+        right: 10px;
+        top: 34px;
+        z-index: 11;
+        background: #fff;
+        -webkit-box-shadow: 0 0 0 1px #ddd;
+        box-shadow: 0 0 0 1px #ddd;
+        &::before, &::after {
+          position: absolute;
+          content: ' ';
+          border: 8px solid transparent;
+          border-bottom-width: 10px;
+          border-bottom-color: #fff;
+          top: -16px;
+          left: 58px
+        }
+        &::before {
+          top: -19px;
+          border-bottom-color: #ddd
+        }
+        .pos-id {
+          line-height: 30px;
+          color: #999;
+        }
+        .posActive {
+          color: #101010;
+        }
+      }
+    }
+  }
+
+  //主题部分
+  .content-divWrap {
+    .notCommodity {
+      left: 50%;
+      margin-left: -74px;
+      margin-top: -52px;
+      position: absolute;
+      top: 50%;
+      .ks-handbag {
+        width: 60px;
+        height: 60px;
+        font-size: 60px;
+        text-align: center;
+        line-height: 60px;
+        display: block;
+        margin: 0 auto;
+        color: #ccc;
+
+        background: -webkit-gradient(linear, 0 0, 0 bottom, from(#e6e6e6), to(#f5f5f5));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+    .SearchTitle {
+      font-size: 14px;
+      padding: 0 0 0 10px;
+      color: #999;
+      margin: 15px 0 0px 0;
+    }
+    .hotBox {
+      div.row {
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        /* div.main { }*/
+        color: #101010;
+        .mainChildren {
+          padding: 10px;
+          text-align: center;
+          background: transparent;
+          text-align: center;
+          & > div {
+            height: 30px;
+            background: #f5f5f5;
+            line-height: 30px;
+          }
+        }
+
+        div.cur {
+          color: #dd191d;
+          padding: 0;
+        }
+
+      }
+      .layout-padding {
+        padding: 0;
+      }
+    }
+    .solidDiv {
+      margin: 0 10px;
+      border-top: 1px solid #d5d5d5;
+    }
+    .searchRowBox {
+      margin: 0 10px;
+      .searchRow {
+        font-size: 14px;
+        padding-top: 9px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #d5d5d5;
+        .commodity {
+          line-height: 24px;
+          color: #101010;
+        }
+        div.closeWrap {
+          .close {
+            color: #999;
+            font-size: 14px;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+    .btnSearch {
+      width: 35%;
+      text-align: center;
+      height: 25px;
+      line-height: 25px;
+      margin: 15px auto 15px auto;
+      border: 1px solid #101010;
+      span {
+        font-size: 14px;
+        color: #101010;
+
+      }
+    }
+  }
+
+  .histWrap {
+    margin: 0 15px;
+    .hist-top {
+      margin-top: 18px;
+      margin-bottom: 10px;
+      .hist-name {
+        font-size: 16px;
+        color: #192336;
+
+      }
+      > .ks-icon {
+        font-size: 16px;
+        min-height: 16px;
+        min-width: 16px;
+        line-height: 16px;
+        color: #F8C2A2;
+        margin: 0;
+      }
+    }
+
+    .hist-list {
+      .list-wrap {
+        .commodity {
+          padding: 8px 18px;
+          font-size: 14px;
+          color: #52565D;
+          background: #f5f5f5;
+          border-radius: 30px;
+          margin: 5px 10px;
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+
+      }
+    }
+  }
+
+}

@@ -1,0 +1,74 @@
+<div flex="" layout="column" class="ks-main  ks-appSearch">
+
+    <div class="search" layout="row" layout-align="center center">
+        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left" style="margin:0 0 0 15px"
+                 ng-click=" fallbackPage()"></md-icon>
+        <div class="input-wrap" flex layout="row">
+            <input type="text" ng-model="searchTmp" placeholder="输入商品名称" flex ui-sref="main.brandApp.store.search">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"
+                     ng-click="getList('0')"></md-icon>
+        </div>
+        <div class="right-rank" ng-click=" search(searchTmp,true)" style="    margin-right: 15px;">
+            <span class="spanSearch">搜索</span>
+        </div>
+    </div>
+
+    <!-- <md-toolbar class="ks-header ks-search-header">
+         <div layout="row" class="ks-header-divWrap">
+             <div class="divTop" flex layout="row">
+                 &lt;!&ndash; <md-icon  md-font-set="material-icons" class="chevron_left">chevron_left</md-icon>&ndash;&gt;
+
+                 <div class="chevron_left_Wrap" ng-click=" fallbackPage()">
+                     &lt;!&ndash;<md-icon class="chevron_left_Wrap" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>&ndash;&gt;
+                     <md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"></md-icon>
+                 </div>
+                 <div class="searchInputWrap" flex>
+                     <input type="search" class="searchInput" ng-model="searchTmp" placeholder="搜索： 分类 商品 系列 服务"/>
+                     <md-icon md-font-set="ks-icon" class="searchIcon" md-font-icon="ks-search"></md-icon>
+                 </div>
+                 <div class="rightDiv" ng-click=" search(searchTmp,true)">
+                     <span class="spanSearch">搜索</span>
+                 </div>
+
+             </div>
+         </div>
+     </md-toolbar>-->
+
+
+    <md-content flex="" id="content">
+
+        <div class="histWrap">
+
+            <div class="hist-top" layout="row" layout-align="space-between center" ng-if="data.keyWords[0]">
+                <div class="hist-name">最近搜索</div>
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-trash-can-o" ng-click=" removeCookieAll()"></md-icon>
+            </div>
+
+            <div class="hist-list" layout="row" layout-wrap>
+                <div class="list-wrap" layout="row" ng-repeat="tmp in data.keyWords track by $index">
+                    <div class="commodity" ng-click=" search(tmp)">{{tmp}}</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--<div class="content-divWrap">
+            <div class="ngif" ng-if="data.keyWords.length > 0">
+                <div class="solidDiv"></div>
+                <div class="SearchTitle">搜索历史</div>
+                <div class="searchRowBox" layout="column">
+                    <div class="searchRow" layout="row" ng-repeat="tmp in data.keyWords track by $index">
+                        <div class="commodity" flex ng-click=" search(tmp)">{{tmp}}</div>
+                        <div class="closeWrap">
+                            <md-icon layout="row" ng-click=" removeCookie(tmp)" layout-align="center center"
+                                     md-font-set="ks-icon" class="close" md-font-icon="ks-close"></md-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="btnSearch">
+                    <span ng-click=" removeCookieAll()">清空搜索历史</span>
+                </div>
+            </div>
+        </div>-->
+    </md-content>
+</div>

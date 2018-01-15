@@ -1,0 +1,250 @@
+@import "../../../../../scss/index";
+
+.ks-shippingAddress {
+
+  //header开始
+  .ks-header._md {
+    min-height: 44px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    background: $agency-bg-white;
+
+    .ks-header-divWrap {
+      padding: 0 15px;
+      height: 100%;
+      color: $agency-word-dark;
+      .divTop {
+        text-align: center;
+        position: relative;
+        line-height: 44px;
+        .chevron_left {
+          color: $agency-word-dark;
+          position: absolute;
+          left: 0;
+          font-size: 21px;
+          line-height: 44px;
+        }
+        .regSpan {
+          font-size: 18px;
+          color: #030303;
+          letter-spacing: -0.43px;
+        }
+        .regSpan-right {
+          position: absolute;
+          right: 0;
+          font-size: 14px;
+          color: $agency-word-black;
+          letter-spacing: -0.34px;
+          line-height: 44px;
+        }
+      }
+    }
+  }
+
+  //主体部分
+  .content-divWrap {
+    .addressWrap {
+      width: 100%;
+      position: relative;
+      margin: 0;
+      .addcheng {
+        padding-top: 100%;
+      }
+      .addBox {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -30px 0 0 -30px;
+        text-align: center;
+        .add {
+          font-size: 60px;
+          color: #e6e6e6;
+        }
+      }
+      .addressTxt {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        font-size: 14px;
+        color: $agency-word-gray;
+        text-align: center;
+        margin-top: 60px;
+      }
+    }
+    div.line-divi {
+      height: 1px;
+      background-color: $agency-bg-disabled;
+    }
+    .shWrap {
+      div.line {
+        height: 10px;
+        background-color: $agency-bg-default;
+      }
+      div.shBox {
+        margin: 20px 15px;
+        .nameRow {
+          margin-bottom: 12px;
+          font-size: 16px;
+          color: #030303;
+          letter-spacing: -0.39px;
+          line-height: 16px;
+          .tel {
+            float: right;
+          }
+        }
+        p.xiangxi {
+          margin: 0;
+          margin: -5px 0 -3px 0;
+          font-size: 16px;
+          color: #333333;
+          letter-spacing: -0.39px;
+          line-height: 22px;
+
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+
+        }
+      }
+      div.set {
+        width: 100%;
+        padding: 0 15px;
+        height: 54px;
+        span {
+          font-size: 14px;
+        }
+        .defaultSet {
+          float: left;
+          line-height: 44px;
+          md-icon {
+            font-size: 18px;
+            line-height: 22px;
+          }
+          span {
+            float: right;
+            font-size: 14px;
+            color: $agency-word-gray;
+            letter-spacing: -0.34px;
+          }
+          span.cur {
+            font-size: 14px;
+            color: $agency-word-gray;
+            letter-spacing: -0.34px;
+          }
+        }
+        .defaultSet.cur {
+          span {
+            color: $agency-word-dark;
+          }
+        }
+        .edit {
+          float: right;
+
+          line-height: 40px;
+          div.icon {
+            float: left;
+            color: #808080;
+            margin-left: 15px;
+            md-icon {
+              line-height: 17px;
+              text-align: right;
+              font-size: 17px;
+              color: $agency-word-gray;
+              min-width: 17px;
+              min-height: 17px;
+            }
+            span {
+              font-size: 14px;
+              color: $agency-word-gray;
+              letter-spacing: -0.34px;
+              line-height: 14px;
+              margin-left: 7px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //添加新地址按钮
+  //.address {
+  //  width: 100%;
+  //  padding: 20px;
+  //  margin: 20px 10px 10px 10px;
+  //  .but {
+  //    width: 100%;
+  //    height: 40px;
+  //    background: #333;
+  //    color: #fff;
+  //    font-size: 15px;
+  //    border: none;
+  //  }
+  //}
+  .empty-1 {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    .icon {
+      font-size: 60px;
+      line-height: 60px;
+      margin: 0 0 15px;
+      background: linear-gradient(to bottom, #e6e6e6, #f5f5f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .txt {
+      color: $agency-word-gray;
+    }
+    .add-row {
+      width: 100%;
+      padding: 0 15px 17px;
+      .md-button {
+        height: 44px;
+        background: $agency-bg-green;
+        border-radius: 8px;
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        color: $agency-word-white;
+        letter-spacing: -0.43px;
+        line-height: 44px;
+      }
+    }
+  }
+
+  .empty {
+    //position: fixed;
+    bottom: 0;
+    width: 100%;
+    .icon {
+      font-size: 60px;
+      line-height: 60px;
+      margin: 0 0 15px;
+      background: linear-gradient(to bottom, #e6e6e6, #f5f5f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .txt {
+      color: $agency-word-gray;
+    }
+    .add-row {
+      width: 100%;
+      padding: 0 15px 17px;
+      .md-button {
+        height: 44px;
+        background: $agency-bg-green;
+        border-radius: 8px;
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        color: $agency-word-white;
+        letter-spacing: -0.43px;
+        line-height: 44px;
+      }
+    }
+  }
+}

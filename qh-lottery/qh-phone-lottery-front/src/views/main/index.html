@@ -1,0 +1,102 @@
+<div flex="" layout="column" class="ks-main md-whiteframe-z2 ks-newLogin">
+    <!--<md-content layout="column" flex>-->
+        <!--<div class="content">-->
+            <!--<div class="content-divWrap">-->
+                <!--<img src="./assets/img/lottery/loginPhone.png">-->
+
+                <!--<div class="luckyDog" layout="row">-->
+                    <!--<div class="luckyDogList" flex>-->
+                        <!--<div class="luckyBox" id="luckyBox">-->
+                            <!--<div class="lucky" id="lucky">-->
+                                <!--<p ng-repeat="People in RandomPeople">恭喜{{People.phone}}获得了{{People.title}}:{{People.awardName}}&nbsp;&nbsp;</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<form class="registerForm2" style="width: 100%" layout="row">-->
+                    <!--<div flex style="margin: 0 40px">-->
+                        <!--<div class="btn">-->
+                            <!--<input  type="tel" placeholder="输入手机号,获取抽奖资格" ng-change="checkPhone()" ng-model="user.phone"-->
+                                   <!--style="text-align: center;width: 100%;border: none;margin: 0;padding: 0"/>-->
+                        <!--</div>-->
+                        <!--<div class="btn">-->
+                            <!--<div class="ks-black md-login-button" aria-label="Custom Icon Button"-->
+                                 <!--ng-click="goLottery()"-->
+                                 <!--ng-disabled=" !user.phone || user.phone.length<=10">-->
+                                <!--<span>去抽奖</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div>-->
+                            <!--<p>规则：每人一次机会，微信分享获得一次抽奖机会，每天最多获得3次机会</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div flex class="footer" style="width: 100%"></div>-->
+    <!--</md-content>-->
+
+
+
+    <div class="next-up" layout="row" layout-align="center center">
+        <div class="up">
+            <img src="./assets/img/lottery/next-up.png">
+        </div>
+    </div>
+    <!--输入手机号码页面-->
+    <div class="input-phone" ng-if="!inputPhone" >
+        <md-content layout="column" flex  style="background: #fff">
+            <div class="top">
+                <!--<img src="./assets/img/lottery/inputPhone1.jpg">-->
+                <img ng-src="{{loginImg}}">
+            </div>
+            <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
+            <div class="content">
+                <div class="content-divWrap">
+                    <form class="registerForm2" style="width: 100%" layout="row">
+                        <div flex style="margin: 0 35px">
+                            <div class="btn">
+                                <input  type="tel" placeholder="输入手机号,领取第一波福利" ng-change="checkPhone()" ng-model="user.phone"
+                                        style="text-align: center;width: 100%;border: none;margin: 0;padding: 0"/>
+                            </div>
+                            <div class="btn">
+                                <div class="ks-black md-login-button" aria-label="Custom Icon Button"
+                                     ng-click="goLottery()" ng-if="!isEarlier && !overdue"
+                                     ng-disabled=" !user.phone || user.phone.length<=10">
+                                    <span>去领取</span>
+                                </div>
+                                <div class="ks-black md-login-button" aria-label="Custom Icon Button"
+                                     ng-if="isEarlier" ng-disabled="isEarlier">
+                                    <span>活动未开始</span>
+                                </div>
+                                <div class="ks-black md-login-button" aria-label="Custom Icon Button"
+                                     ng-if="overdue" ng-disabled="overdue">
+                                    <span>活动已结束</span>
+                                </div>
+                            </div>
+                            <div style="margin: 20px 0">
+                                <p>已有300万+用户加入,拿走了2000万+的佣金</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div flex class="footer" style="width: 100%">
+                <div>
+                    <img src="./assets/img/lottery/inputPhone2.jpg">
+                </div>
+                <div>
+                    <img src="./assets/img/lottery/inputPhone3.jpg">
+                </div>
+                <div>
+                    <!--<img src="./assets/img/lottery/inputPhone4.jpg">-->
+                    <img ng-src="{{qRCodeImg}}" alt="">
+                </div>
+                <!--<div style="height: 30px"></div>-->
+            </div>
+        </md-content>
+    </div>
+</div>
+

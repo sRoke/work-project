@@ -1,0 +1,136 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "plupload",
+        "scope": null,
+        "escapedName": "plupload",
+        "name": "plupload",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/susf/work/git-repo/qh-shop/qh-shop-admin-front"
+    ]
+  ],
+  "_from": "plupload@latest",
+  "_id": "plupload@2.3.2",
+  "_inCache": true,
+  "_location": "/plupload",
+  "_nodeVersion": "6.9.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/plupload-2.3.2.tgz_1486392378264_0.8291153607424349"
+  },
+  "_npmUser": {
+    "name": "jayarjo",
+    "email": "jayarjo@gmail.com"
+  },
+  "_npmVersion": "3.10.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "plupload",
+    "scope": null,
+    "escapedName": "plupload",
+    "name": "plupload",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/plupload/-/plupload-2.3.2.tgz",
+  "_shasum": "925bc782c04171829491d887c3cb343f97ee39ce",
+  "_shrinkwrap": null,
+  "_spec": "plupload",
+  "_where": "/home/susf/work/git-repo/qh-shop/qh-shop-admin-front",
+  "author": {
+    "name": "Ephox"
+  },
+  "bugs": {
+    "url": "https://github.com/moxiecode/plupload/issues"
+  },
+  "contributors": [
+    {
+      "name": "Davit Barbakadze",
+      "email": "davit.barbakadze@ephox.com"
+    }
+  ],
+  "dependencies": {},
+  "description": "Plupload is a JavaScript API for dealing with file uploads it supports features like multiple file selection, file type filtering, request chunking, client side image scaling and it uses different runtimes to achieve this such as HTML 5, Silverlight and F",
+  "devDependencies": {
+    "async": "0.2.x",
+    "bunyip": "https://github.com/jayarjo/bunyip/tarball/master",
+    "coverjs": "0.0.x",
+    "dateformat": "1.x",
+    "fileset": "0.1.x",
+    "glob": "3.2.x",
+    "handlebars": "1.0.x",
+    "jake": "0.5.x",
+    "jshint": "2.1.x",
+    "moxie-zip": "0.0.x",
+    "request": "2.25.x",
+    "yuidocjs": "0.3.x"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "925bc782c04171829491d887c3cb343f97ee39ce",
+    "tarball": "https://registry.npmjs.org/plupload/-/plupload-2.3.2.tgz"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "gitHead": "d7150ca0a192e3a07ac7468f661edeca767a7163",
+  "homepage": "http://plupload.com",
+  "keywords": [
+    "fileuploader",
+    "upload",
+    "chunk",
+    "image",
+    "resize",
+    "crop",
+    "orientation",
+    "JavaScript",
+    "HTML5",
+    "Flash",
+    "Silverlight",
+    "moxie"
+  ],
+  "licenses": [
+    {
+      "type": "AGPLv3",
+      "url": "https://github.com/moxiecode/plupload/blob/master/license.txt"
+    },
+    {
+      "type": "Single Website",
+      "url": "http://plupload.com/license/plupload_commercial_single.txt"
+    },
+    {
+      "type": "OEM",
+      "url": "http://plupload.com/license/plupload_commercial_oem.txt"
+    },
+    {
+      "type": "Custom Licensing",
+      "url": "http://www.moxiecode.com/contact.php"
+    }
+  ],
+  "main": "./js/plupload.full.min",
+  "maintainers": [
+    {
+      "name": "jayarjo",
+      "email": "jayarjo@gmail.com"
+    }
+  ],
+  "name": "plupload",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "releaseDate": "2017-02-06",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moxiecode/plupload.git"
+  },
+  "scripts": {},
+  "version": "2.3.2"
+}

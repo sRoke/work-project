@@ -1,0 +1,111 @@
+<div flex layout="column" class="ks-priceList">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>抽奖单</h1>
+        <!--ui-sref="main.raffleApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20"></div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="background: #f5f5f5">
+        <div class="order-adress" layout="row" layout-align="start center"  ng-if="orderDetail.address.receiver && orderDetail.drawType=='ONLINE'">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-address-1"></md-icon>
+            </div>
+            <div flex class="con" layout="column">
+                <div class="userInfo">{{orderDetail.address.receiver}} {{orderDetail.address.phone}}</div>
+                <div class="userAddress">{{orderDetail.address.province}}{{orderDetail.address.city}}{{orderDetail.addr.area}}{{orderDetail.address.street}}</div>
+            </div>
+            <div class="right">
+                <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            </div>
+        </div>
+
+        <div class="order-item" layout="row" layout-align="start center">
+            <div class="left">
+                <img ng-src="{{orderDetail.awardInfoList[0].picture}}">
+            </div>
+            <div flex class="con" layout="column">
+                <div class="name">{{orderDetail.awardInfoList[0].name}}</div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left" flex="25">
+                    中奖人
+                </div>
+                <div class="right" flex="75">
+                    {{orderDetail.phone}}&nbsp;&nbsp;{{orderDetail.name}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left" flex="25">
+                    领取方式：
+                </div>
+                <div class="right" flex="75" ng-if="orderDetail.drawType=='SINCE'">
+                    到店领取
+                </div>
+                <div class="right" flex="75" ng-if="orderDetail.drawType=='ONLINE'">
+                    快递发货
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center" ng-show="orderDetail.drawType=='ONLINE'">
+                <div class="left" flex="25">
+                    快递单号
+                </div>
+                <div class="right" flex="75" layout="row" ng-show="orderDetail.handleStatus == 'HANDLING'">
+                    <div flex>
+                        <input type="number" placeholder="请输入快递单号" ng-model="orderDetail.expressNo">
+                    </div>
+                    <div style="line-height: 32px" ng-click="wxSys()">
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-focus-horizontal"></md-icon>
+                    </div>
+                </div>
+
+                <div class="right" flex="75" ng-show="orderDetail.handleStatus != 'HANDLING'">
+                    {{orderDetail.expressNo}}
+                </div>
+            </div>
+            <md-divider ng-if="orderDetail.drawType=='ONLINE'"></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center" ng-if="orderDetail.drawType=='ONLINE'">
+                <div class="left" flex="25">
+                    快递公司
+                </div>
+                <div class="right" flex="75" ng-if="orderDetail.handleStatus == 'HANDLING'">
+                    <input type="text" placeholder="请输入快递公司" ng-model="orderDetail.logisticsCompany">
+                </div>
+                <div class="right" flex="75" ng-if="orderDetail.handleStatus != 'HANDLING'">
+                    {{orderDetail.logisticsCompany}}
+                </div>
+            </div>
+            <md-divider ng-if="orderDetail.drawType=='ONLINE'"></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left" flex="25">
+                    备注信息
+                </div>
+                <!--<div class="right" flex="75" ng-if="orderDetail.handleStatus == 'HANDLING'">-->
+                    <!--<input type="text" placeholder="请输入备注信息" ng-model="orderDetail.memo">-->
+                <!--</div>-->
+                <div class="right" flex="75">
+                    <!--<input type="text" placeholder="请输入备注信息" ng-model="memo">-->
+                    {{orderDetail.memo}}
+                </div>
+            </div>
+        </div>
+    </md-content>
+
+    <div class="footBottom" layout="column" ng-if="orderDetail.handleStatus == 'HANDLING'">
+        <md-divider style="border-color:#E53467"></md-divider>
+        <div class="btn" flex layout="row" layout-align="center center">
+            <div flex style="text-align: center" ng-click="fallbackPage()">取消</div>
+            <div class="line"></div>
+            <div flex style="text-align: center;color: #e53467" ng-click="deliver()">领取登记</div>
+        </div>
+    </div>
+</div>
+
+
+

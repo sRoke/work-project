@@ -1,0 +1,198 @@
+.ks-common-list-order{
+  a {
+    text-decoration: none;
+    color: #00aaee;
+  }
+  height:100%;
+  width:100%;
+  background: #f5f5f5;
+  .common-list-center{
+    ul{
+      height:70px;
+      margin-bottom: 0px;
+      width: 100%;
+      padding:0 20px;
+      li{
+        float: left;
+        height:70px;
+        list-style: none;
+        label{
+          padding-right:5px;
+          line-height:30px;
+          height:30px;
+          font-size:14px;
+          font-weight:100;
+          margin:22px 0px 0px 0px;
+        }
+        .choose{
+          width:180px;
+          height: 30px;
+          margin: 22px 10px 0 0;
+          border:1px solid #e0e0e0;
+          border-radius: 4px;
+          padding-left: 5px;
+        }
+        span{
+          text-align: center;
+          padding:0 5px;
+          height:30px;
+          line-height: 30px;
+          margin-top:22px;
+          font-size:14px;
+          font-weight:100;
+          margin-right:10px;
+        }
+        #btnSearch{
+          color:#fff;
+          margin-left:20px;
+          cursor: pointer;
+          background: #00aaee;
+          border-radius: 4px;
+          padding:0 20px;
+        }
+        .inquire{
+          color:#fff;
+          cursor: pointer;
+          height:30px;
+          margin:20px 0 0 20px;
+          background:#00aaee;
+          padding:0 20px;
+          border-radius: 4px;
+          border:none;
+          outline: none;
+        }
+        #applyStatus{
+          height:30px;
+          border:1px solid #e0e0e0;
+          background: #fff;
+          border-radius:4px;
+          width:160px;
+          margin: 22px 10px 0px 0px;
+        }
+      }
+    }
+  }
+  .common-list-detail{
+    width:100%;
+    margin-bottom:30px;
+    //发货单状态
+    .tableStatus{
+      margin:0 20px;
+      padding:0px;
+      height:44px;
+      //border-top:4px solid #f5f5f5;
+      background: #fff;
+      li{
+        height:44px;
+        line-height: 44px;
+        font-size:14px;
+        color: #999;
+        list-style: none;
+        padding:0 16px;
+        //border-top:4px solid #f5f5f5;
+        outline: none;
+      }
+      .select{
+        //border-top:4px solid #ba9f6e;
+        //background: #ba9f6e;
+        color: #ba9f6e;
+        border-bottom: 2px solid #ba9f6e;
+        outline: none;
+      }
+    }
+    //发货单表头
+    .tableTit{
+      height:42px;
+      margin:0 20px;
+      //border-top:2px solid #ba9f6e;
+      line-height:40px;
+      text-align:center;
+      background: #e6e6e6;
+      .tableTd{
+       // font-weight: bold;
+        font-size:14px;
+        //color: #666;
+      }
+    }
+    .tableCon{
+      margin:0 20px;
+      .orderNumber{
+        height: 150px;
+        width:100%;
+        margin-top:10px;
+      }
+      .ordTitle{
+        height: 40px;
+        background: #fff9eb;
+        border-top: 1px solid #d5d5d5;
+        border-left: 1px solid #d5d5d5;
+        border-right: 1px solid #d5d5d5;
+        .tit{
+          text-align: left;
+          color:#101010;
+          font-size:14px;
+          line-height:40px;
+          span{
+            margin:0 25px 0 20px;
+          }
+        }
+        .orderSta{
+          color: #24b0ef;
+          text-align: center;
+          margin:0px;
+        }
+      }
+      .ordDetail{
+        height: 110px;
+        background: #fff;
+        border: 1px solid #d5d5d5;
+        border-right:none;
+        .orderXq{
+          border-right:1px solid #d5d5d5;
+          .pic{
+            height:70px;
+            width:70px;
+            margin:20px 10px;
+            img {
+              height: 70px;
+              width: 70px;
+            }
+          }
+          span{
+            height:22px ;
+            line-height:22px;
+            color:#101010;
+            font-size:14px;
+            text-align: left;
+            padding-left: 10px;
+            margin-top:16px;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          button{
+            height:30px;
+            width:70px;
+            border-radius: 4px;
+            background: #00aaee;
+            border:none;
+            text-align: center;
+            color:#fff;
+            display: block;
+            margin: 40px auto 0;
+          }
+          .goodsDetail{
+            margin-top:16px;
+            span{
+              margin: 0px;
+              height: 22px;
+              line-height:22px;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

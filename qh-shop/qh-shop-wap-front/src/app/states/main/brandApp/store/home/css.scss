@@ -1,0 +1,183 @@
+.ks-home {
+
+  .btn-line {
+    display: block;
+    border-left-width: 1px;
+    border-left-style: solid;
+    margin: 0;
+    border-color: #d5d5d5;
+    -webkit-transform: scaleX(.5);
+    -webkit-transform-origin: 0 0;
+    overflow: hidden;
+  }
+  //提示到期
+  .expireDate {
+    height: 24px;
+    background: #e53467;
+    .expire {
+      height: 24px;
+      width: 100%;
+      padding: 0 15px;
+      line-height: 24px;
+      background: #fff;
+      opacity: 0.6;
+      .ts {
+        color: #666;
+        font-size: 14px;
+        span {
+          color: #f00;
+        }
+      }
+      .right {
+        text-align: right;
+      }
+    }
+  }
+  //
+  .top-header {
+    height: 221px;
+    padding: 10px 15px;
+    background: url(bg.png) #f5f5f5 no-repeat center -30px;
+    position: relative;
+    background-size: cover;
+    .header-dis {
+      margin-top: 20px;
+      .dis-lift {
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 8px;
+        }
+        .dis-header-icon {
+          width: 60px;
+          height: 60px;
+          border-radius: 8px;
+          line-height: 60px;
+          font-size: 40px;
+          text-align: center;
+          background: #d5d5d5;
+        }
+        .dis-name {
+          margin: 5px 0 0 10px;
+          font-size: 16px;
+          color: #FFFEFE;
+        }
+      }
+    }
+
+    .dis-creat {
+      position: absolute;
+      right: 0;
+      top: 45px;
+      background: #fff;
+      color: #e53467;
+      font-size: 12px;
+      padding: 0px 14px;
+      height: 24px;
+      line-height: 24px;
+      max-height: 24px;
+      border-radius: 30px 0 0 30px;
+      letter-spacing: 2px;
+    }
+    .bottom-header {
+      height: 86px;
+      background: #fff;
+      .count-detail {
+        height: 100%;
+        .det {
+          text-align: center;
+          color: #333;
+          .det-top {
+            font-weight: bold;
+            font-size: 16px;
+          }
+          .det-bottom {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .icon-button {
+    background: #ffffff;
+    .btn-dis {
+      margin: 0 15px;
+      .top-detail {
+        color: #999999;
+        font-size: 14px;
+        .dis-name {
+          height: 40px;
+          line-height: 40px;
+          font-size: 16px;
+          color: #222222;
+        }
+        .dis-icon {
+          margin: 0;
+          color: #999999;
+          font-size: 14px;
+        }
+      }
+    }
+    .btn-wrap {
+      padding: 15px;
+
+      .btn-box {
+        height: 70px;
+        .btn {
+          .btn-icon {
+            margin: 0;
+            color: #999999;
+          }
+          .btn-name {
+            color: #222222;
+            font-size: 14px;
+
+          }
+
+          position: relative;
+          i {
+            //position: absolute;
+            //left: 50%;
+            //text-align: center;
+            //line-height: 14px;
+            //border-radius: 11px;
+            //height: 18px;
+            //background: #e84e40;
+            //color: #ffffff;
+            //font-size: 11px;
+            //font-style: normal;
+            //min-width: 18px;
+            //padding: 0 3px;
+            //border: 2px solid #fff;
+            //top: 0;
+
+            position: absolute;
+            left: 52%;
+            width: 20px;
+            height: 20px;
+            line-height: 18px;
+            text-align: center;
+            border-radius: 36px;
+            background: #fff;
+            color: #e53467;
+            font-size: 10px;
+            font-style: normal;
+            min-width: 18px;
+            border: 1px solid #e53467;
+            top: 4px;
+            //font-weight: 700;
+
+          }
+
+        }
+      }
+    }
+  }
+  .line-blank {
+    width: 100%;
+    height: 10px;
+    min-height: 10px;
+    background: #f5f5f5;
+  }
+}

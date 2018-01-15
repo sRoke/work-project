@@ -1,0 +1,279 @@
+<div flex layout="column" class="ks-setLottery">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>奖项</h1>
+        <div class="right-button" flex="20"></div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="background: #f5f5f5" ng-if="from=='add'">
+        <div class="ts"><span style="color: red;">*</span>&nbsp;最少设置3个奖项，最多可设置6个奖项</div>
+        <div class="content" ng-repeat="lottery in lotteryList track by $index">
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    奖品{{$index+1}}名称
+                </div>
+                <div class="right" flex>
+                    <input type="text" placeholder="请输入奖品{{$index+1}}名称" ng-model="lottery.name">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    商品图片
+                </div>
+                <div class="right" flex>
+                    <input type="file" class="allFile" id="file_{{$index}}" ng-click="aa($index)">
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div ng-show="!lottery.picture">
+                            请上传图片
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                        <div class="itemImg" layout="row" ng-show="lottery.picture">
+                            <img ng-src="{{lottery.picture}}"  id="{{$index+1}}-img"  crossorigin="anonymous">
+
+                            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    奖品数量
+                </div>
+                <div class="right" flex>
+                    <input type="number" placeholder="请输入奖品数量" ng-model="lottery.num">
+                </div>
+                <md-icon class="ks-icon icon-delete" ng-click="deleteLottery($index)" md-font-set="ks-icon"
+                         md-font-icon="ag-delete-s"></md-icon>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    中奖概率
+                </div>
+                <div class="right" flex>
+                    <input type="number" placeholder="请输入中奖概率（%）" ng-model="lottery.chance">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="space-between center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    奖品类型
+                </div>
+                <div class="right" layout="row">
+                    <button class="btn btn1" ng-class="{'selectBtn':lottery.awardType=='MATERIAL'}"
+                            ng-click="changeAwardType(lottery,1)">实物
+                    </button>
+                    <button class="btn btn2" ng-class="{'selectBtn':lottery.awardType=='VIRTUAL'}"
+                            ng-click="changeAwardType(lottery,2)">虚拟
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!--添加奖项-->
+        <div class="add-lottery" ng-if="lotteryList.length<6">
+            <button ng-click="addLottery()">添加奖项</button>
+        </div>
+
+    </md-content>
+    <md-content flex style="background: #f5f5f5" ng-if="from=='view'">
+        <div class="ts"><span style="color: red;">*</span>&nbsp;最少设置3个奖项，最多可设置6个奖项</div>
+        <div class="content" ng-repeat="lottery in lotteryList track by $index">
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    奖品{{$index+1}}名称
+                </div>
+                <div class="right" flex>
+                    <input type="text" readonly ng-model="lottery.name">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    商品图片
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div class="itemImg" layout="row" ng-show="lottery.picture">
+                            <img ng-src="{{lottery.picture}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    奖品数量
+                </div>
+                <div class="right" flex>
+                    <input type="text" readonly ng-model="lottery.num">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    中奖概率
+                </div>
+                <div class="right" flex>
+                    <input type="text" readonly ng-model="lottery.chance">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="space-between center">
+                <div class="left">
+                    奖品类型
+                </div>
+                <div class="right" layout="row">
+                    <button class="btn btn1" ng-class="{'selectBtn':lottery.awardType=='MATERIAL'}"
+                    >实物
+                    </button>
+                    <button class="btn btn2" ng-class="{'selectBtn':lottery.awardType=='VIRTUAL'}"
+                    >虚拟
+                    </button>
+                </div>
+            </div>
+        </div>
+    </md-content>
+    <md-content flex style="background: #f5f5f5" ng-if="from=='edit'">
+        <div class="ts"><span style="color: red;">*</span>&nbsp;最少设置3个奖项，最多可设置6个奖项</div>
+        <div class="content" ng-repeat="lottery in lotteryList track by $index">
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    奖品{{$index+1}}名称
+                </div>
+                <div class="right" flex>
+                    <input type="text" placeholder="请输入奖品{{$index+1}}名称" ng-model="lottery.name">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    商品图片
+                </div>
+                <div class="right" flex>
+                    <input type="file" class="allFile" id="file_{{$index}}" ng-click="aa($index)">
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div ng-show="!lottery.picture">
+                            请上传图片
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                        <div class="itemImg" layout="row" ng-show="lottery.picture">
+                            <img ng-src="{{lottery.picture}}"  id="{{$index+1}}-img" crossorigin="anonymous">
+                            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    奖品数量
+                </div>
+                <div class="right" flex>
+                    <input type="number" placeholder="请输入奖品数量" ng-model="lottery.num">
+                </div>
+                <md-icon class="ks-icon icon-delete" ng-click="deleteLottery($index)" md-font-set="ks-icon"
+                         md-font-icon="ag-delete-s"></md-icon>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    中奖概率
+                </div>
+                <div class="right" flex>
+                    <input type="number" placeholder="请输入中奖概率（%）" ng-model="lottery.chance">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="space-between center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    奖品类型
+                </div>
+                <div class="right" layout="row">
+                    <button class="btn btn1" ng-class="{'selectBtn':lottery.awardType=='MATERIAL'}"
+                            ng-click="changeAwardType(lottery,1)">实物
+                    </button>
+                    <button class="btn btn2" ng-class="{'selectBtn':lottery.awardType=='VIRTUAL'}"
+                            ng-click="changeAwardType(lottery,2)">虚拟
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--添加奖项-->
+        <div class="add-lottery" ng-if="lotteryList.length<6">
+            <button ng-click="addLottery()">添加奖项</button>
+        </div>
+    </md-content>
+    <div class="footBottom" layout="column" ng-click="save()" ng-if="from!='view'">
+        <md-divider style="border-color:#E53467"></md-divider>
+        <div class="btn" flex layout="row" layout-align="center center">保存</div>
+    </div>
+    <div class="footBottom" layout="column" ng-click="fallbackPage()" ng-if="from=='view'">
+        <md-divider style="border-color:#E53467"></md-divider>
+        <div class="btn" flex layout="row" layout-align="center center">返回</div>
+    </div>
+    <div class="jqPhote" ng-show="choosePhote" layout="column" layout-align="center center">
+        <div flex class="choosePhote-top"></div>
+        <div id="clipArea"></div>
+        <!--<input type="file" id="file">-->
+        <div flex class="choosePhote-btn" layout="row" layout-align="center start">
+            <div layout="row" layout-align="space-between start" style="width: 260px">
+                <div id='cancel' ng-click="cancelChoosePhote()">取消</div>
+                <div id="clipBtn" ng-click="cancelChoosePhote()">保存</div>
+            </div>
+
+        </div>
+
+        <!--<div id="view"></div>-->
+    </div>
+    <!--分享弹窗背景-->
+    <div class="dialog-backdrop" ng-show="backdrop" stop-touch-event></div>
+
+    <!--奖品生成图片弹窗-->
+    <div class="dialog-lottery-wrap" layout="column" ng-show="lotteryShow">
+
+        <div class="bargain-con" layout="row">
+            <div class="main" layout="column">
+                <div class="raffle-top" layout="row" layout-align="center center">
+                    <!--<div class="raffle-rule" ng-click="openRule()"></div>-->
+                    <!--转盘-->
+                    <!--<img ng-repeat="lotteryUrl in raffleList" ng-src="{{lotteryUrl.picture}}?imageView2/0/w/36/h/36/q/50" id="{{$index+1}}-img"-->
+                         <!--style="display:none;"/>-->
+                    <div class="banner" style="margin-top: 40px;">
+                        <div class="turnplate" style=""  id="abc">
+                            <canvas class="item" id="wheelcanvas" width="280px" height="280px"></canvas>
+                            <!--<img class="pointer" src="pointer.png"/>-->
+                        </div>
+                        <!--<img  id="fff" style="height: 100px;width:100px;">-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-canvas" layout="row" layout-align="center center" style="margin-top: 20px;">
+            <button class="canvas-left " ng-click="sureCanvas()" id="aaa">确认</button>
+            <button class="canvas-right" ng-click="cancelCanvas()">取消</button>
+        </div>
+    </div>
+
+
+</div>
+
+
+

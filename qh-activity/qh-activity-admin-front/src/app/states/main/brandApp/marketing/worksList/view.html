@@ -1,0 +1,264 @@
+<div class="ks-worksList">
+    <div class="common-list-center">
+        <ul layout="column">
+            <li layout="row">
+                <label for="bhnum">关键词：</label>
+                <input id="bhnum" style="width: 220px" type="text" class="choose form-control"
+                       placeholder="请输入编号,姓名或手机号搜索" ng-model="keyWords">
+                <span class="title-btn-blue" ng-click="pageChanged(1)">搜索</span>
+                <span class="title-btn-white" ui-sref="main.brandApp.marketing.recordVote({id:id})">投票记录</span>
+
+                <!--<span class="title-btn-white">
+                    <a style="text-decoration: none" title="导出" target="_blank" href="{{exportUrl}}">
+                        导出excel
+                    </a>
+                </span>-->
+                <!--<span class="title-btn-white">-->
+                    <!--<a style="text-decoration: none" title="导出" target="_blank" ng-click="read()">-->
+                        <!--读取excel-->
+                    <!--</a>-->
+                <!--</span>-->
+                <!--<span class="title-btn-white">-->
+                    <!--<a style="text-decoration: none" title="导出" target="_blank" href="{{exportUrl1}}">-->
+                        <!--下载excel-->
+                    <!--</a>-->
+                <!--</span>-->
+
+
+
+                <span class="title-btn-white"  ng-if="exportStatus === 1">
+                    <a style="text-decoration: none" title="导出" target="_blank" ng-click="read()" >
+                        导出excel
+                    </a>
+                </span>
+                <span class="title-btn-white"  ng-if="exportStatus === 2">
+                    <a style="text-decoration: none" title="导出" target="_blank" >
+                        正在准备数据
+                    </a>
+                </span>
+                <span class="title-btn-white" ng-if="exportStatus === 3" ng-click="">
+                    <a style="text-decoration: none" title="导出" target="_self" href="{{exportUrl1}}">
+                        数据准备完成,点击下载
+                    </a>
+                </span>
+
+
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+    <!--div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <!--表头-->
+        <div class="common-list-detail-thead" layout="row">
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>排名</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>编号</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center" style="overflow: hidden;">
+                <span>姓名</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center" style="overflow: hidden;">
+                <span>手机号</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>累计票数</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>累计访问</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>报名时间</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>状态</span>
+            </div>
+            <div class="thead-show" flex layout-align="center">
+                <span>操作</span>
+            </div>
+        </div>
+        <!--表格详细内容-->
+        <div class="common-list-detail-tbody" layout="column">
+            <!--定义每列数据    父级用ng-repeat循环此行 -->
+            <div class="common-list-detail-row" layout="row" ng-repeat="works in data.content">
+                <div class="thead-show" flex="10" layout-align="center">
+                    <span ng-if="works.status!='APPLYING'">{{works.rank}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center">
+                    <span>{{works.seq}}</span>
+                </div>
+                <!--<div class="thead-show" flex="15" layout-align="center">-->
+                <!--<span>{{item.partnerType}}</span>-->
+                <!--</div>-->
+                <div class="thead-show" flex="10" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{works.name}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{works.phone}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{works.totalVotes}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{works.pv}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{works.dateCreated|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span ng-if="works.status=='REJECT'">已拒绝</span>
+                    <span ng-if="works.status=='NORMAL'">正常</span>
+                    <span ng-if="works.status=='APPLYING'">待审核</span>
+                </div>
+                <div class="thead-show" flex layout-align="center">
+                    <!--
+                     APPLYING("APPLYING", "待审核"),
+                     NORMAL("NORMAL", "审核通过"),
+                     REJECT("REJECT", "已拒绝");
+                    -->
+
+                    <span ng-if="works.status=='APPLYING'" ng-click="checkWork($event,works.id)">审核</span>
+                    <span ng-click="alertDialog($event,works.id)"> 查看作品</span>
+                    <span ng-if="works.status=='NORMAL'" ng-click="addVoteDialog($event,works.id)">加票</span>
+                    <span ng-click="deleteWork(works.id)">删除</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--分页-->
+    <div style="width: 100%; padding:0px 20px;">
+        <div style="width: 500px;min-width: 500px" uib-pagination total-items="data.totalElements"
+             ng-model="curPage"
+             ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+        <div style="float: right" class="pageSubnav">
+            <span>共{{data.totalElements}} 条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button>确定</md-button>
+        </div>
+    </div>
+
+</div>
+
+<!--//报名信息-->
+<script type="text/ng-template" id="seeWorks.html">
+    <div class="md-dialog-container">
+        <md-dialog aria-label="查看作品" class="seeWorks">
+            <div flex layout="column" layout-align="start center" class="tck" style="position:absolute;">
+                <div style="width:100%" flex="">
+                    <h3>报名信息</h3>
+                    <md-divider></md-divider>
+                    <div layout="row" class="defaultTck">
+                        <div class="left">姓名:</div>
+                        <div class="right">{{vmd.data.name}}</div>
+                    </div>
+                    <div layout="row" class="defaultTck">
+                        <div class="left">手机号码:</div>
+                        <div class="right">{{vmd.data.phone}}</div>
+                    </div>
+                    <div layout="row" class="defaultTck">
+                        <div class="left">参赛感言:</div>
+                        <div class="right">{{vmd.data.slogan}}</div>
+                    </div>
+                    <div layout="row" class="defaultTck">
+                        <div class="left">参赛作品:</div>
+                        <div class="right">
+                            <img src="{{vmd.data.worksImgUrl}}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-wrap" layout="row" layout-align="center center">
+                    <button class="btn" ng-click="vmd.cancel()">关闭</button>
+                </div>
+            </div>
+        </md-dialog>
+    </div>
+</script>
+
+<!--//报名信息-->
+<script type="text/ng-template" id="checkWorks.html">
+    <md-dialog aria-label="查看作品" class="seeWorks">
+        <div flex layout="column" layout-align="start center" class="tck" style="position:absolute;">
+            <div style="width:100%" flex="">
+                <h3>报名信息</h3>
+                <md-divider></md-divider>
+                <div layout="row" class="defaultTck">
+                    <div class="left">姓名:</div>
+                    <div class="right">{{vmd.data.name}}</div>
+                </div>
+                <div layout="row" class="defaultTck">
+                    <div class="left">手机号码:</div>
+                    <div class="right">{{vmd.data.phone}}</div>
+                </div>
+                <div layout="row" class="defaultTck">
+                    <div class="left">参赛感言:</div>
+                    <div class="right">{{vmd.data.slogan}}</div>
+                </div>
+                <div layout="row" class="defaultTck">
+                    <div class="left">参赛作品:</div>
+                    <div class="right">
+                        <img src="{{vmd.data.worksImgUrl}}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="btn-wrap" layout="row" layout-align="center center">
+                <button class="btn" ng-click="vmd.check(true)" style="background: #00aaee;color: #fff">同意</button>
+                <button class="btn" ng-click="vmd.check(false)" style="background: #ED5F5B;color: #fff">拒绝</button>
+            </div>
+        </div>
+    </md-dialog>
+</script>
+
+<!--//报名信息-->
+<script type="text/ng-template" id="addVote.html">
+    <div class="md-dialog-container">
+        <md-dialog aria-label="加票" class="seeWorks">
+            <div flex layout="column" layout-align="start center" class="tck" style="position:absolute;">
+                <div style="width:100%" flex="">
+                    <h3>加票</h3>
+                    <md-divider></md-divider>
+                    <div layout="row" class="defaultTck">
+                        <div class="left">姓名:</div>
+                        <div class="right">{{vmd.data.name}}</div>
+                    </div>
+                    <div layout="row" class="defaultTck">
+                        <div class="left">手机号码:</div>
+                        <div class="right">{{vmd.data.phone}}</div>
+                    </div>
+                    <div layout="row" class="defaultTck">
+                        <div class="left">当前票数:</div>
+                        <div class="right">{{vmd.data.totalVotes}}(含已加{{vmd.data.virtualVotes}}票)</div>
+                    </div>
+                    <div layout="row" class="defaultTck">
+                        <div class="left">排名:</div>
+                        <div class="right">
+                            {{vmd.data.ranking}}
+                        </div>
+                    </div>
+                    <div layout="row" class="defaultTck">
+                        <div class="left">加票数:</div>
+                        <div class="right">
+                            <input type="number" ng-model="vmd.voteNum" placeholder="输入数字">
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-wrap" layout="row" layout-align="center center">
+                    <button class="btn save" ng-click="vmd.saveVote()">确认</button>
+                    <button class="btn" ng-click="vmd.cancel()">关闭</button>
+                </div>
+            </div>
+        </md-dialog>
+    </div>
+</script>

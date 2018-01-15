@@ -1,0 +1,159 @@
+<div flex layout="column" class="ks-wallet-withdraw">
+    <!--<md-toolbar class="ks-header">-->
+        <!--<div layout="row" class="ks-header-divWrap">-->
+            <!--<div class="divTop" flex class>-->
+                <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+                         <!--ng-click="fallbackPage()"></md-icon>-->
+                <!--<span class="regSpan">余额明细</span>-->
+                <!--&lt;!&ndash;<span class="regSpan-right" ui-sref="main.brandApp.wallet.detail">明细</span>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-toolbar>-->
+
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex style="font-size: 18px;">提现</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+
+    <md-divider></md-divider>
+
+    <md-content flex layout="column" layout-align="start center" class="main">
+
+
+
+        <!--<div class="withdraw-con" layout="column">-->
+            <!--<div class="con-wd">申请提现金额(元)</div>-->
+            <!--<div style="padding: 38px 0 18px;">-->
+                <!--<input type="number" placeholder="0.00" ng-model="txMoney"  ng-change="checkMoney(txMoney)">-->
+            <!--</div>-->
+            <!--<div class="center-tab-line">-->
+                <!--<div class="line"></div>-->
+            <!--</div>-->
+            <!--<div layout="row" layout-align="space-between center" class="withdraw-count">-->
+                <!--<div layout="row">-->
+                    <!--<div class="y-withdraw"> 可提现金额</div>-->
+                    <!--<div class="money-count" style="color: #999;">￥{{ count/100 | num : 2}}</div>-->
+                <!--</div>-->
+                <!--<button class="withdraw-btn" ng-click="getAll()">全部提现</button>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div layout="row"  class="tip">-->
+            <!--<div class="tip-wd">提示：</div>-->
+            <!--<div layout="column">-->
+                <!--<div class="tip-wd">当前仅提供微信提现，最低额度：¥{{minCount}}</div>-->
+                <!--&lt;!&ndash;<div class="tip-wd tip-last"></div>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div layout="row" class="btn-withdraw" >-->
+            <!--<button class="btn-next" ng-class="{'successd':check}" ng-disabled="!check" ng-click="checkCount();">确认提现</button>-->
+            <!--&lt;!&ndash;<button class="btn-next" ng-class="{'successd':check}" ng-click="checkCount();">确认提现</button>&ndash;&gt;-->
+        <!--</div>-->
+
+
+
+        <!--改版-->
+        <div class="line-width"></div>
+        <div class="wx"  >
+            <div class="wx-withdraw" layout="row" layout-align="space-between center">
+                <div class="center-tab-left" layout="row" layout-align="start center">
+                    <div class="tab-img" layout="row" layout-align="center center">
+                        <md-icon md-font-set="ks-icon" md-font-icon="ag-weixin"  style="font-size: 24px;color: #fff;"></md-icon>
+                    </div>
+                    <div class="tab-desc">微信提现</div>
+                </div>
+                <div>
+                    <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+
+                </div>
+            </div>
+        </div>
+        <div class="line-width"></div>
+        <div class="withdraw-center" >
+            <div class="con-withdraw" layout="column" >
+                <div class="con-top" layout-align="space-between center" layout="row">
+                    <div class="top-left">提现金额</div>
+                    <!--<div class="top-right"><span>*</span>每次最低提现额度{{minCount}}元</div>-->
+                </div>
+                <!--输入框-->
+                <div class="center-money" layout="row">
+                    <div class="tx-type">￥</div>
+                    <div flex class="tx-money">
+                        <input type="number" class="tx-money-input" ng-model="txMoney"  ng-change="checkMoney(txMoney)">
+                    </div>
+                </div>
+                <div class="line1"></div>
+                <!--全部提现-->
+                <div layout="row" layout-align="space-between center" class="all-withdraw">
+                    <div layout="row" class="wd-left">
+                        <div>可提现</div>
+                        <div style="color: #53d39a;">{{ count/100 | num : 2}}</div>
+                        <div>元</div>
+                    </div>
+                    <div   class="wd-right" ng-click="getAll()">全部提现</div>
+                </div>
+            </div>
+        </div>
+        <div layout="column" class="withdraw-bz" layout-align="start center">
+            <div class="ts">* 每次最低提现额度{{minCount}}元,每日累计最高2万</div>
+        </div>
+        <div layout="row" class="btn-withdraw" >
+             <button class="btn-next" ng-class="{'successd':check}" ng-disabled="!check" ng-click="checkCount();">确认提现</button>
+        </div>
+
+
+
+
+        <!--改版-->
+        <!--<div class="line-width"></div>-->
+        <!--<div class="wx"  >-->
+            <!--<div class="wx-withdraw" layout="row" layout-align="space-between center">-->
+                <!--<div class="center-tab-left" layout="row" layout-align="start center">-->
+                    <!--<div class="tab-img" layout="row" layout-align="center center">-->
+                        <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-weixin"  style="font-size: 24px;color: #fff;"></md-icon>-->
+                    <!--</div>-->
+                    <!--<div class="tab-desc">微信提现</div>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="line-width"></div>-->
+        <!--<div class="withdraw-center" >-->
+            <!--<div class="con-withdraw" layout="column" >-->
+                <!--<div class="con-top" layout-align="space-between center" layout="row">-->
+                    <!--<div class="top-left">提现金额</div>-->
+                    <!--<div class="top-right"><span>*</span>每次最低提现额度{{minCount}}元</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;输入框&ndash;&gt;-->
+                <!--<div class="center-money" layout="row">-->
+                    <!--<div class="tx-type">￥</div>-->
+                    <!--<div flex class="tx-money">-->
+                        <!--<input type="number" class="tx-money-input" ng-model="txMoney"  ng-change="checkMoney(txMoney)">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="line1"></div>-->
+                <!--&lt;!&ndash;全部提现&ndash;&gt;-->
+                <!--<div layout="row" layout-align="space-between center" class="all-withdraw">-->
+                    <!--<div layout="row" class="wd-left">-->
+                        <!--<div>可提现</div>-->
+                        <!--<div style="color: #53d39a;">{{ count/100 | num : 2}}</div>-->
+                        <!--<div>元</div>-->
+                    <!--</div>-->
+                    <!--<div   class="wd-right" ng-click="getAll()">全部提现</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div layout="row" class="btn-withdraw" >-->
+            <!--<button class="btn-next" ng-class="{'successd':check}" ng-disabled="!check" ng-click="checkCount();">确认提现</button>-->
+        <!--</div>-->
+    </md-content>
+</div>
+

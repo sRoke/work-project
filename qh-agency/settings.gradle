@@ -1,0 +1,15 @@
+rootProject.name = 'qh-agency'
+
+include 'qh-agency-core'
+include 'qh-agency-domain'
+include 'qh-agency-service'
+
+include 'qh-agency-admin-front'
+include 'qh-agency-wap-front'
+
+include 'qh-agency-api'
+include 'qh-agency-client'
+include 'qh-agency-server'
+
+include 'qh-agency-msg-api'
+include 'qh-agency-msg-impl'

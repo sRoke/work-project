@@ -1,0 +1,11 @@
+
+
+# QhOAuthProperties
+net.kingsilk.qh.oauth:
+  wxLoginUrl: /wxLogin
+  passwordLoginUrl: /login
+  wxScanLoginUrl: /wxScanLogin
+  phoneLoginUrl: /phoneLogin
+
+# QhOAuthUtProperties
+net.kingsilk.qh.oauth.ut:

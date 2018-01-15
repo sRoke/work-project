@@ -1,0 +1,83 @@
+apply plugin: "java"
+apply plugin: 'org.springframework.boot'
+apply plugin: "com.gorylenko.gradle-git-properties"
+
+
+bootRepackage {
+    enabled = false
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives sourcesJar
+    //archives javadocJar
+}
+
+dependencies {
+    compile project(':qh-oauth-api')
+
+//    compile('org.apache.httpcomponents:httpclient')
+    compile('org.springframework:spring-web')
+    compile('org.springframework.boot:spring-boot')
+
+
+    testCompile('com.fasterxml.jackson.module:jackson-module-parameter-names')
+    testCompile('com.fasterxml.jackson.datatype:jackson-datatype-jdk8')
+    testCompile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
+    testCompile('com.fasterxml.jackson.datatype:jackson-datatype-jsr353')
+
+    testCompile('org.apache.httpcomponents:httpclient')
+    testCompile('org.springframework.boot:spring-boot-starter')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.boot:spring-boot-configuration-processor')
+
+//    // 只依赖 RestTemplate 以及相关的传递依赖。
+//    testCompile('org.apache.httpcomponents:httpclient')
+//    testCompile('org.springframework.boot:spring-boot-starter-jersey')
+//    testCompile('org.glassfish.jersey.ext:jersey-spring3')
+//    testCompile('org.springframework.boot:spring-boot-starter-test')
+//    testCompile('org.springframework.boot:spring-boot-configuration-processor')
+}
+
+bootRepackage {
+    enabled = false
+}
+
+bootRun {
+    addResources = true
+    systemProperties = System.properties
+}
+
+springBoot {
+    //mainClass = System.properties['mainClass']
+    buildInfo {
+        additionalProperties = [
+                'foo': 'bar'
+        ]
+    }
+}
+
+jar {
+    manifest {
+        attributes "Implementation-Version": project.version
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            artifact sourcesJar {
+                classifier "sources"
+            }
+        }
+    }
+}

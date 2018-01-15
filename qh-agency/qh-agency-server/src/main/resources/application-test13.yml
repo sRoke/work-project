@@ -1,0 +1,66 @@
+devPort: 11300
+# ServerProperties
+server:
+  port: 10070
+  context-path: /agency/rs/local/${devPort}                           # todo 其它环境修改该行
+  error.include-stacktrace: on_trace_param
+
+# SecurityProperties
+security:
+  basic.enabled: false
+
+
+
+# QhAgencyProperties
+net.kingsilk.qh.agency:
+  # http代理设置
+  http:
+    proxy:
+      enabled:      false
+  qhOAuth:
+    wap:
+      url:                      'https://kingsilk.net/oauth2/rs/local/${devPort}'           # todo 其它环境修改该行
+  qhPay:
+    wap:
+      url:                      'https://kingsilk.net/pay/rs/local/${devPort}'       # todo 其它环境修改该行
+      appId:                    'wxf9f2b8b1a506c068'
+  qhAgency:
+    server:
+      url:                      'https://kingsilk.net/agency/rs/local/${devPort}/api'       # TODO 其它环境修改该行
+  mq:
+    prefix: test13
+    defaultConf:
+      lockWaitTime: 1000
+  msg:
+    publishTo: ALL
+  zk:
+    connStr: 127.0.0.1:2181
+  oauthUt:
+    basePath :        'https://kingsilk.net/oauth2/rs/local/${devPort}/api'
+# MongoProperties
+spring.data.mongodb:
+  host: '192.168.0.12'
+  port: 27017
+  database: 'agency'
+  username: 'agency'
+  password: 'agency'
+
+
+# RABBIT (RabbitProperties)
+# org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+spring.rabbitmq:
+  addresses: 127.0.0.1
+  port: 5672
+  username: guest
+  password: guest
+  enabled: false
+  virtual-host: /
+
+spring:
+    data:
+        elasticsearch:
+            cluster-name: qh-es
+            cluster-nodes: 192.168.0.13:9300
+            local: false
+            repositories:
+                enable: true

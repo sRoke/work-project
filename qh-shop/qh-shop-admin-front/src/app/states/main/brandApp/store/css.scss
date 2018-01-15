@@ -1,0 +1,191 @@
+@import "../../../../scss/index.scss";
+
+.ks-store {
+  .ks-common-list-apply {
+    a {
+      text-decoration: none;
+      color: #00aaee;
+    }
+    height: 100%;
+    width: 100%;
+    background: #f5f5f5;
+    .common-list-center {
+      ul {
+        height: 70px;
+        margin-bottom: 0px;
+        width: 100%;
+        padding: 0 20px;
+        li {
+          float: left;
+          height: 70px;
+          list-style: none;
+          label {
+            //padding-right:5px;
+            line-height: 30px;
+            height: 30px;
+            font-size: 14px;
+            //min-width:80px;
+            font-weight: 500;
+            padding: 0 5px;
+            margin: 20px 0px 0px 0px;
+            white-space: nowrap;
+          }
+          .choose {
+            width: 160px;
+            height: 30px;
+            padding-left: 5px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            margin: 20px 10px 0 0;
+          }
+          span {
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: 100;
+            margin-right: 10px;
+            white-space: nowrap;
+          }
+          #applyStatus, #applyType {
+            height: 30px;
+            width: 160px;
+            background: #fff;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            margin: 20px 10px 0px 0px;
+          }
+          .inquire {
+            color: #fff;
+            cursor: pointer;
+            height: 30px;
+            margin: 20px 0 0 10px;
+            background: #00aaee;
+            padding: 0 20px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            white-space: nowrap;
+          }
+          .inquire2 {
+            color: #333;
+            cursor: pointer;
+            height: 30px;
+            margin: 20px 0 0 10px;
+            background: #fff;
+            border: 1px solid #d5d5d5;
+            padding: 0 20px;
+            border-radius: 4px;
+            outline: none;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+    //合作商
+    .common-list-detail {
+      width: 100%;
+      padding: 0px 20px 20px;
+      //申请表头
+      .common-list-detail-thead {
+        height: 40px;
+        line-height: 40px;
+        // text-align: center;
+        //border-top: 4px solid #ba9f6e;
+        background: #e6e6e6;
+        .thead-show {
+          text-align: left;
+          padding-left: 20px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          span {
+            font-size: 14px;
+            //font-weight: bold;
+            //color: #666;
+          }
+        }
+        .end-show {
+          text-align: right;
+          padding-right: 30px;
+        }
+      }
+      //表格详细内容
+      .common-list-detail-tbody {
+        .common-list-detail-row {
+          height: 60px;
+          line-height: 60px;
+          text-align: center;
+          .thead-show {
+            text-align: left;
+            padding-left: 20px;
+            span {
+              font-size: 14px;
+              color: #666;
+            }
+          }
+        }
+        .common-list-detail-row:nth-child(odd) {
+          background: #fff;
+          border: 1px solid #fff;
+        }
+        .common-list-detail-row:nth-child(even) {
+          background: #fbf9f6;
+          border: 1px solid #fbf9f6;
+        }
+        .common-list-detail-row:hover {
+          z-index: 2;
+          border: 1px solid #ba9f6e;
+          -webkit-box-shadow: 0px 4px 8px rgba(186, 159, 110, 0.45);
+          -moz-box-shadow: 0px 4px 8px rgba(186, 159, 110, 0.45);
+          box-shadow: 0px 4px 8px rgba(186, 159, 110, 0.45);
+        }
+      }
+    }
+    //分页
+    .pageSubnav {
+      margin: 10px 0;
+      input {
+        width: 50px;
+        text-align: center;
+        background-color: #f5f5f5;
+        border: 1px solid #d5d5d5;
+        margin: 0 10px;
+        line-height: 26px;
+      }
+      .md-button {
+        border: 1px solid #d5d5d5;
+        line-height: 26px;
+        padding: 0;
+        margin: 0 10px;
+        min-height: 30px;
+        min-width: 60px;
+      }
+    }
+    .pagination {
+      margin: 10px 0 10px 0px;
+      .active {
+        a {
+          color: #ba9f6e;
+          background-color: #fff !important;
+          text-decoration: none;
+          border: none;
+        }
+        //a:hover{
+        //  color: #fff;
+        //}
+
+      }
+      a {
+        margin: 0 2px;
+        background-color: #f5f5f5;
+        color: #101010 !important;
+      }
+
+    }
+  }
+}
+
+
+

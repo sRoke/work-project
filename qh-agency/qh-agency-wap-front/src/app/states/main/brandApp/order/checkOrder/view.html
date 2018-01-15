@@ -1,0 +1,201 @@
+<div flex="100" layout="column" class="ks-checkOrder">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>采购确认</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5;">
+
+        <!--中间详细内容-->
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row" layout-align="space-between center">
+                <div class="center-left">
+                    单据日期
+                </div>
+                <div class="center-right">{{info.createDate|date:'yyyy-MM-dd HH:mm:ss'}}</div>
+            </div>
+            <md-divider></md-divider>
+            <div class="center-bottom" layout="row" layout-align="space-between start"
+                 ui-sref="main.brandApp.address({orderId:info.id})" ng-if="info.address">
+                <div class="center-left">
+                    收货地址
+                </div>
+                <div flex class="center-address" layout="column" layout-align="center start">
+                    <div>
+                        <div class="commit">
+                            <span>{{info.address.receiver}}</span>
+                            <span style="margin-left: 6px;">{{info.address.phone}}</span>
+                        </div>
+                        <div class="address-detail">
+                            <span>{{info.address.province}}{{info.address.city}}{{info.address.county}}</span>
+                        </div>
+                        <div class="address-detail">
+                            <span>{{info.address.street}}</span>
+                        </div>
+                    </div>
+                </div>
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+            <div class="center-bottom" layout="row" layout-align="space-between start" ng-if="!info.address"
+                 ui-sref="main.brandApp.addAddress({orderId:orderId,about:'noAddress'})">
+                <div class="center-left">
+                    收货地址
+                </div>
+                <div flex class="center-address" layout="column" layout-align="center start">
+                </div>
+                <div  style="color: #d5d5d5;" class="center-left">请填写收货地址</div>
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row" layout-align="space-between center">
+                <div class="center-left">
+                    商品信息
+                </div>
+                <div class="center-right"></div>
+            </div>
+            <md-divider class="dashed"></md-divider>
+            <div class="center-item" layout="column" ng-repeat="me in info.items track by $index">
+                <div class="item-title" layout="row" layout-align="space-between center">
+                    <div class="title-dis">{{me.skuInfo.title}}</div>
+                    <div class="price-dis" style="color:#333">￥{{me.skuPrice/100|num:2}} </div>
+                </div>
+                <div class="item-des" layout="row" layout-align="space-between center">
+                    <div layout="row" layout-align="space-between center">
+                        <div class="item-dis" ng-repeat="spec in me.skuInfo.specs" style="margin-right:15px">
+                            {{spec.value}}
+                        </div>
+                        <!--<div class="item-dis">单价 {{me.skuPrice}}</div>-->
+                        <!--<div class="item-dis">总额 {{me.num * (me.skuPrice) }}</div>-->
+                    </div>
+                    <div class="price" style="color:#999;">x {{me.num}}</div>
+                </div>
+                <md-divider class="dashed" ng-if="!$last"></md-divider>
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <!--rmy 合计-->
+        <div class="center-box-all" layout="row">
+            <div class="center-top-all" layout="row" layout-align="end center" style="width: 100%;color: #333;font-size: 16px;">
+                合计:￥{{info.orderPrice/100|num:2}}
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="center-balances" ng-if="info.useDeduction!='0'">
+            <div class="center-top" layout="row" layout-align="space-between center">
+                <div class="center-left" layout="column">
+                    <div class="center-left-top">账户资产抵扣 ¥ {{info.useDeduction/100 | num:2}}</div>
+                    <div class="center-left-bottom">*优先抵扣货款金额,再抵扣账户金额</div>
+                </div>
+                <div class="center-right"><md-switch ng-model="noCash" ng-change="getCount(noCash)"></md-switch></div>
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <!--余额-->
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row" layout-align="space-between center">
+                <div class="center-left">
+                    备注信息
+                </div>
+                <input  flex class="center-right" type="text" ng-model="memo" placeholder="(选填)对本次交易的说明">
+            </div>
+        </div>
+        <div flex style="min-height: 80px;flex-shrink: 0;background: #f5f5f5;width: 100%;"></div>
+        <!--<div class="center-box" layout="column">-->
+            <!--<div class="center-top" layout="row" layout-align="space-between center">-->
+                <!--<div class="center-left">-->
+                    <!--备注描述-->
+                <!--</div>-->
+                <!--<div class="center-right"></div>-->
+            <!--</div>-->
+            <!--<div class="textarea-wrap" layout="row">-->
+                <!--<textarea ng-model="memo" flex placeholder="输入描述..."></textarea>-->
+            <!--</div>-->
+        <!--</div>-->
+    </md-content>
+    <md-divider></md-divider>
+    <div class="footBtn" layout="row">
+        <div flex class="left-wrap" layout="row">
+            <div class="pay-price" flex>
+                应付:￥{{info.paymentPrice/100|num:2}}
+            </div>
+        </div>
+        <div class="goPay" ng-click="createOrder()">
+            <span>去支付</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="noAddress.html">
+    <div class="md-dialog-container ">
+        <md-dialog aria-label="" class="noAddress">
+            <div class="dis">收货地址还没填哦</div>
+            <md-divider></md-divider>
+            <div layout="row" layout-align="center center">
+                <div flex style="font-size: 18px;color: #53D39A;text-align: center" ng-click="vmd.goAddress()">去填写</div>
+                <div class="line"></div>
+                <div flex style="font-size: 18px;text-align: center" ng-click="vmd.cancel()">取消</div>
+            </div>
+        </md-dialog>
+    </div>
+</script>
+
+<script type="text/ng-template" id="checkAddress.html">
+    <div class="md-dialog-container ">
+        <md-dialog aria-label="" class="checkAddress" style="overflow: initial;">
+            <md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o" ng-click="vmd.cance()"></md-icon>
+            <div class="dis">确认收货地址</div>
+            <md-divider></md-divider>
+            <div class="address-dis">
+                <div class="dis-name" style="font-size: 16px;">
+                    <span>{{vmd.info.address.receiver}}</span><span style="margin-left: 20px;">{{vmd.info.address.phone}}</span>
+                </div>
+                <div class="dis-address"  style="font-size: 16px;">
+                    <span>{{vmd.info.address.province}}{{vmd.info.address.city}}{{vmd.info.address.county}}{{vmd.info.address.street}}</span>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div layout="row" layout-align="center center">
+                <div flex style="font-size: 18px;text-align: center"  ng-click="vmd.goAddress()">修改</div>
+                <div class="line"></div>
+                <div flex style="font-size: 18px;text-align: center;color: #53D39A;" ng-click="vmd.cancel1()">确认</div>
+            </div>
+        </md-dialog>
+    </div>
+</script>
+
+<!--弹窗 验证码-->
+<script type="text/ng-template" id="messageCode.html">
+    <div class="md-dialog-container ">
+        <md-dialog aria-label="" class="messageCode" style="overflow: initial;">
+            <!--<md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o" ng-click="vmd.cance()"></md-icon>-->
+            <div class="dis">验证信息</div>
+            <md-divider></md-divider>
+            <div class="address-dis">
+                <div class="dis-name" layout-align="center center" style="color: #999;">
+                    {{vmd.getCodeCon}}
+                </div>
+                <div class="dis-code" layout="row" flex>
+                    <input type="tel" placeholder="请输入验证码" flex ng-model="vmd.code" ng-click="vmd.getCodeShow();">
+                    <button ng-click="vmd.getVCcode()">{{vmd.gitCodeTime}}</button>
+                </div>
+                <div class="dis-code" layout="row" flex
+                     style="height: 16px;margin-top: 10px;font-size: 14px;color: #e84e40;"
+                     ng-if="vmd.codeShow">
+                   请输入正确的验证码！
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div layout="row" layout-align="center center">
+                <div flex style="font-size: 18px;text-align: center"  ng-click="vmd.cance()">取消</div>
+                <div class="line"></div>
+                <div flex style="font-size: 18px;text-align: center;color: #53D39A;" ng-click="vmd.confirm()">确认</div>
+            </div>
+        </md-dialog>
+    </div>
+</script>

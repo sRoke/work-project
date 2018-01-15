@@ -1,0 +1,106 @@
+plugins {
+    id "com.ewerk.gradle.plugins.querydsl" version "1.0.8"
+}
+apply plugin: "java"
+apply plugin: 'org.springframework.boot'
+apply plugin: "com.gorylenko.gradle-git-properties"
+
+bootRepackage {
+    enabled = false
+}
+
+sourceSets {
+    querydsl
+
+    main {
+        // Fixes problem with JPA EntityManager factory requiring classes and persistence.xml in same path
+        //output.resourcesDir = output.classesDir
+        java {
+            srcDirs = [
+                    'src/main/java',
+                    'src/querydsl/java'
+            ]
+        }
+    }
+}
+
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    //archives javadocJar
+}
+
+
+dependencies {
+    compile project(":qh-raffle-core")
+
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+    compile('com.querydsl:querydsl-mongodb')
+    compile('com.querydsl:querydsl-apt')
+    compile('com.querydsl:querydsl-core')
+    //compile('joda-time:joda-time')
+    //compile('org.mongodb.morphia:morphia')
+    //querydslapt('com.querydsl:querydsl-apt')
+}
+
+querydsl {
+    springDataMongo = true
+    library = 'com.querydsl:querydsl-apt'
+    //querydslSourcesDir = 'src/querydsl/java'
+}
+
+idea {
+    module {
+        sourceDirs += file('src/querydsl/java')
+        generatedSourceDirs += file('src/querydsl/java')
+    }
+}
+
+test {
+    testLogging.showStandardStreams = false
+}
+
+
+bootRun {
+    addResources = true
+    systemProperties = System.properties
+}
+
+bootRepackage {
+    enabled = false
+}
+
+springBoot {
+    buildInfo {
+        additionalProperties = [
+                'foo': 'bar'
+        ]
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+
+            artifact sourcesJar {
+                classifier "sources"
+            }
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes "Implementation-Version": project.version
+    }
+}

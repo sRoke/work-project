@@ -1,0 +1,341 @@
+@import "../../../../../../scss/ksMain";
+@import "../../../../../../scss/index";
+.ks-sellersItem {
+  .ks-white-header {
+    .tab-wtap {
+      overflow: hidden;
+      width: 140px;
+      height: 32px;
+      color: #333;
+      font-size: 16px;
+      border: none;
+      background: #fff;
+      letter-spacing: -0.39px;
+      border-radius: 8px;
+      line-height: 32px;
+      text-align: center;
+
+    }
+    .tabActive {
+      color: #ED5F5B;
+      background: #fff;
+    }
+  }
+
+  .banner {
+    /*轮播图样式*/
+    ks-swiper-container {
+      flex-shrink: 0;
+      .swiper-container, .swiper-slide {
+        float: left;
+      }
+      .swiper-pagination-bullets {
+        display: block;
+      }
+      .swiper-pagination-bullet {
+        background: #d5d5d5 !important;
+        height: 6px;
+        width: 6px;
+      }
+      .swiper-pagination-bullet-active {
+        background: #d5d5d5 !important;
+        height: 6px;
+        width: 12px;
+        border-radius: 30px;
+      }
+      .swiper-pagination-bullet {
+        opacity: 1;
+      }
+      .swiper-slide {
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+
+        &:before {
+          content: "";
+          display: block;
+          padding-top: 100%;
+        }
+        img {
+          position: absolute;
+          top: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .swiper-container {
+        width: 100%;
+      }
+    }
+  }
+
+  .item-dis {
+    padding: 20px 15px;
+    background: #fff;
+    flex-shrink: 0;
+
+    .dis-title {
+      color: #333;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .dis-price {
+      color: #333333;
+      width: 100%;
+    }
+    .old-price {
+      //text-decoration: line-through;
+      color: #E53467;
+      font-size: 18px;
+      line-height: 1em;
+      //margin-left: 8px;
+
+
+    }
+  }
+  .icon-tips {
+    flex-shrink: 0;
+    padding: 22px 15px;
+    font-size: 14px;
+    color: #999;
+    background: #fafafa;
+    span {
+      margin-right: 12px;
+      font-size: 12px;
+      .ks-icon {
+        width: 14px;
+        min-width: 14px;
+        height: 14px;
+        min-height: 14px;
+        box-sizing: border-box;
+        font-size: 14px;
+        color: #F8C2A2;
+        margin-right: 5px;
+        line-height: 14px;
+      }
+    }
+  }
+
+  .line-blank {
+    width: 100%;
+    height: 10px;
+    min-height: 10px;
+    background: #f5f5f5;
+  }
+  .choose {
+    flex-shrink: 0;
+    padding: 0 15px;
+    height: 54px;
+    line-height: 54px;
+    .ks-icon {
+      margin: 0;
+      font-size: 14px;
+      line-height: 14px;
+      min-height: 14px;
+      min-width: 14px;
+    }
+  }
+
+  .ks-item-desp {
+    flex-shrink: 0;
+    p {
+      margin: 0;
+      position: relative;
+      width: 100%;
+      -webkit-margin-before: 0;
+      -webkit-margin-after: 0;
+      /*      overflow: hidden;*/
+      &:before {
+        content: "";
+        display: block;
+        /*padding-top: 100%;订单详情页显示问题*/
+      }
+      img {
+        width: 100%;
+        border: medium none;
+        display: block;
+        margin: 0;
+        /*position: absolute;
+        left: 0;
+        top: 0; 订单详情页显示问题*/
+      }
+    }
+    img {
+      width: 100%;
+      border: medium none;
+      display: block;
+      margin: 0;
+    }
+  }
+
+  .mask {
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    background-color: #101010 !important;
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    top: 0;
+    .maskButton1 {
+      position: absolute;
+      float: right;
+      width: 259px;
+      height: 176px;
+      right: 9px;
+      background: url("share.png") no-repeat;
+      background-size: 100%;
+    }
+  }
+
+}
+
+
+//已选页面开始
+
+.ks-sellersItem-select-spec {
+  //height: 80%;
+  padding: 0 !important;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.ks-sellersItem-select-spec .header {
+  padding: 0 10px;
+  position: relative;
+  flex-shrink: 0;
+  min-height: 98px;
+  // 商品图片
+  .item-img {
+    width: 98px;
+    position: relative;
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+
+    img {
+      position: absolute;
+      top: -15px;
+      padding: 0;
+      width: 100%;
+    }
+  }
+  .Htop {
+    margin: 10px auto 10px 20px;
+    color: #dd191d;
+    font-size: 20px;
+    font-weight: bold;
+    span {
+      font-size: 14px;
+      color: #101010;
+      font-weight: normal;
+      margin: 0 0 0 5px;
+    }
+  }
+  .txtWarp {
+    font-size: 12px;
+    color: #101010;
+    margin-left: 20px;
+    margin-bottom: 7px;
+    margin-top: -4px;
+  }
+
+  .ks-icon {
+    font-size: 14px;
+    color: #999;
+    margin-top: 15px;
+    text-align: center;
+    line-height: 24px;
+  }
+}
+
+
+.ks-sellersItem-select-spec .contentTxt {
+  overflow: hidden;
+  padding: 10px 10px 0 10px;
+  .selectLeft {
+    width: 72px;
+    margin-top: 15px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #101010;
+    text-align: left;
+  }
+
+  .slectBtn {
+    background: #f5f5f5;
+    height: 24px;
+    padding: 0 17px;
+    line-height: 26px;
+    float: left;
+    font-size: 12px;
+    color: #101010;
+    margin: 18px 10px 0px 0;
+    border-radius: 30px;
+  }
+  .slectBtn.active {
+    background: #E53467;
+    color: #fff;
+  }
+}
+
+.ks-sellersItem-select-spec .footer {
+  bottom: 80px;
+  width: 100%;
+  /*   position: fixed;*/
+  height: 48px;
+  flex-shrink: 0;
+  min-height: 48px;
+  //.btnLeft {
+  //  font-size: 15px;
+  //  color: #fff;
+  //  background: #333;
+  //  line-height: 48px;
+  //  text-align: center;
+  //
+  //}
+  .btnRight {
+    text-align: center;
+    line-height: 48px;
+    font-size: 18px;
+    color: #fff;
+    background: #666;
+  }
+}
+
+.ks-sellersItem-select-spec .md-padding {
+  //padding: 20px 10px 20px 10px;
+  padding: 0;
+}
+
+.ks-sellersItem-select-spec .tabsdemoDynamicHeight md-content h1:first-child {
+  margin-top: 10px;
+}
+
+.ks-sellersItem-select-spec md-content.md-default-theme, md-content {
+  background: #fff;
+}
+
+.ks-sellersItem-select-spec md-bottom-sheet.ng-enter-active {
+  -webkit-transform: translate3d(0, 110%, 0) !important;
+  transform: translate3d(0, 110%, 0) !important;
+}
+
+.ks-sellersItem-select-spec md-bottom-sheet {
+  bottom: 0;
+  left: 0;
+  padding: 8px 16px 88px;
+  position: absolute;
+  right: 0;
+  transform: translate3d(0px, 80px, 0px);
+  transition: transform 0.1s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  z-index: 70;
+  //border-top: 1px solid #999;
+}
+
+

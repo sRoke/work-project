@@ -1,0 +1,207 @@
+<!--引入ks-common-list放在最外面的div即可-->
+<div class="ks-common-list-member">
+    <div class="common-list-center">
+        <ul>
+            <li layout="row">
+                <label> 帐号：</label>
+                <input type="text" class="choose"  id="bhnum" ng-model="user.keyword">
+                <label style="margin-left: 20px;">申请时间：</label>
+                <div>
+                    <input type="text" class="layui-input choose" id="test1" ng-model="startDate" placeholder="开始时间">
+                    <!--<md-datepicker md-placeholder="Enter date" md-open-on-focus-->
+                                   <!--md-date-locale="s" md-date-locale="dateF" ng-model="user.startDate"></md-datepicker>-->
+                </div>
+                <span>一</span>
+                <div>
+                    <input type="text" class="layui-input choose" id="test2" ng-model="endDate" placeholder="结束时间">
+                    <!--<md-datepicker md-placeholder="End date" md-open-on-focus-->
+                                   <!--md-date-locale="s" md-date-locale="dateF" ng-model="user.endDate"></md-datepicker>-->
+                </div>
+                <button class="inquire" ng-click="search()">
+                    搜索
+                </button>
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+
+    <!--按钮-->
+    <!--<div class="nav-wrap" style="border-bottom: 1px dashed #d5d5d5">-->
+        <!--<md-content class="md-padding">-->
+        <!--</md-content>-->
+        <!--<div class="btnBox" >-->
+            <!--<md-button class="newAdd" ui-sref="main.brandApp.mbAdd({source:'new'})" ng-if="MEMBER_C">-->
+                <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-plus" title="新增"></md-icon>-->
+                <!--新增-->
+            <!--</md-button>-->
+            <!--<md-button class="newAdd"  type="file" ngf-select="uploadFiles($file)" ng-if="MEMBER_E">-->
+                <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set=net.kingsilk.qh.agency.admindmin-font" md-font-icon="ks-plus" title="新增"></md-icon>&ndash;&gt;-->
+                <!--导入会员信息-->
+            <!--</md-button>-->
+            <!--<md-button class="newAdd" ng-click="export()" ng-if="MEMBER_C">-->
+                <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set=net.kingsilk.qh.agency.admindmin-font" md-font-icon="ks-plus" title="新增"></md-icon>&ndash;&gt;-->
+                <!--导出会员模板-->
+            <!--</md-button>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--rmy    div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <!--div数据表title-->
+        <div class="common-list-detail-thead" layout="row" layout-align="center center">
+            <!--<div flex>头像</div>-->
+            <!--<div flex>会员名</div>-->
+            <div class="thead-show" flex style="padding-left: 30px;">会员ID</div>
+            <div class="thead-show" flex>手机号</div>
+            <div class="thead-show" flex>渠道编号</div>
+            <div class="thead-show" flex>渠道类型</div>
+            <div class="thead-show" flex>账号状态</div>
+            <div class="thead-show end-show" flex>操作</div>
+        </div>
+        <!--div数据表详细信息-->
+        <div layout="column" class="common-list-detail-tbody">
+            <!--div数据主要显示区域  ng-repeat可用于此-->
+            <div class="common-list-detail-row" layout="row"
+                 ng-repeat="user in data.recList"
+                 layout-align="center stretch" layout="column">
+                <div class="thead-show" flex layout="column" style="padding-left: 30px;">
+                    <span> {{user.id}}</span>
+                </div>
+                <div class="thead-show" flex layout="column" >
+                    <span> {{user.phone}}</span>
+                </div>
+                <div class="thead-show" flex layout="column" >
+                    <span>{{user.partnerSeq}}</span>
+                </div>
+                <div class="thead-show" flex layout="column" >
+                    <span>{{user.partnerType}}</span>
+                </div>
+                <div class="thead-show" flex layout="column">
+                    <span ng-if="user.disabled==='false'">正常</span>
+                    <span ng-if="user.disabled==='true'">已禁用</span>
+                </div>
+                <div class="thead-show" flex layout="row" layout-align="end center" style="padding-right: 20px;">
+                    <a class="glyphicon" title="查看" href="javascript:void(0)" style="min-width: 38px;"
+                    ui-sref="main.brandApp.mbAdd({id:user.id})" ng-if="PARTNERINFO_R">
+                    查看
+                    </a>
+                    <a class="glyphicon" title="编辑" href="javascript:void(0)" style="min-width: 38px;"
+                    ui-sref="main.brandApp.memEdit({id:user.id})" ng-if="PARTNERINFO_U">
+                    编辑
+                    </a>
+                    <a class="glyphicon" title="未启用：可以启用" href="javascript:void(0)" ng-if="user.disabled==='true' && 'PARTNERINFO_D'"
+                    ng-click="alert(user.id,false)" style="min-width: 38px;" >
+                    启用
+                    </a>
+                    <a class="glyphicon" title="未禁用：可以禁用" href="javascript:void(0)" ng-if="user.disabled==='false' && 'PARTNERINFO_D'"
+                    ng-click="alert(user.id, true)"  style="min-width: 38px;" >
+                    禁用
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--&lt;!&ndash;div数据表title&ndash;&gt;-->
+    <!--<div class="common-list-tableBox" layout="row" layout-align="center center">-->
+        <!--&lt;!&ndash;<div flex>头像</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div flex>会员名</div>&ndash;&gt;-->
+        <!--<div flex>会员ID</div>-->
+        <!--<div flex>手机号</div>-->
+        <!--<div flex>渠道编号</div>-->
+        <!--<div flex>渠道类型</div>-->
+        <!--<div flex>账号状态</div>-->
+        <!--<div flex>操作</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;div数据表详细信息&ndash;&gt;-->
+    <!--<div layout="column" class="common-wrap">-->
+        <!--&lt;!&ndash;div数据主要显示区域  ng-repeat可用于此&ndash;&gt;-->
+        <!--<div class="common-list-tableBox-content" layout="row"-->
+             <!--ng-repeat="user in data.recList"-->
+             <!--layout-align="center stretch" layout="column">-->
+            <!--<div class="div" flex layout="column" layout-align="center center">-->
+                <!--<span> {{user.id}}</span>-->
+            <!--</div>-->
+            <!--<div class="div" flex layout="column" layout-align="center center">-->
+                <!--<span> {{user.phone}}</span>-->
+            <!--</div>-->
+            <!--<div class="div" flex layout="column" layout-align="center center">-->
+                <!--<span>{{user.partnerSeq}}</span>-->
+            <!--</div>-->
+            <!--<div class="div" flex layout="column" layout-align="center center">-->
+                <!--<span>{{user.partnerType}}</span>-->
+            <!--</div>-->
+            <!--<div class="div" flex layout="column" layout-align="center center">-->
+                <!--<span ng-if="user.disabled==='false'">正常</span>-->
+                <!--<span ng-if="user.disabled==='true'">已禁用</span>-->
+            <!--</div>-->
+            <!--<div class="div" flex layout="row" layout-align="center center">-->
+                <!--<a class="glyphicon" title="查看" href="javascript:void(0)" style="color: #00aaee;"-->
+                   <!--ui-sref="main.brandApp.mbAdd({id:user.id})" ng-if="MEMBER_R">-->
+                    <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit" title="查看" style="margin-left: 12px;"></md-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--查看-->
+                <!--</a>-->
+                <!--<a class="glyphicon" title="编辑" href="javascript:void(0)" style="color: #00aaee;"-->
+                   <!--ui-sref="main.brandApp.memEdit({id:user.id})" ng-if="MEMBER_U">-->
+                    <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit" title="编辑" style="margin-left: 12px;"&ndash;&gt;-->
+                    <!--&lt;!&ndash;&gt;</md-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--编辑-->
+                <!--</a>-->
+                <!--<a class="glyphicon" title="未启用：可以启用" href="javascript:void(0)" ng-if="user.disabled==='true'"-->
+                   <!--ng-click="alert(user.id,false)" ng-if="MEMBER_U" style="color: #00aaee;">-->
+                    <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-qiyong"&ndash;&gt;-->
+                    <!--&lt;!&ndash;title="会员资质可用：可以锁定" style="margin-left: 10px;"></md-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--<span>启用</span>-->
+                <!--</a>-->
+                <!--<a class="glyphicon" title="未禁用：可以禁用" href="javascript:void(0)" ng-if="user.disabled==='false'"-->
+                   <!--ng-click="alert(user.id, true)" ng-if="MEMBER_U" style="color: #00aaee;">-->
+                    <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-jinyong"&ndash;&gt;-->
+                    <!--&lt;!&ndash;title="会员资质可用：可以锁定" style="margin-left: 10px;"></md-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                    <!--<span >禁用</span>-->
+                <!--</a>-->
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+    <!--分页-->
+    <div style="width: 99%; margin: 10px auto 0">
+        <div style="width: 500px" uib-pagination total-items="data.totalElements" ng-model="curPage"
+             ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="8" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+
+        <div style="float: right"  class="pageSubnav">
+            <span>共{{data.totalElements}}条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button ng-click="pageChanged()">确定</md-button>
+        </div>
+    </div>
+    <!-- <div style="float: right">
+         <span>共{{data.totalElements}}条</span>
+         到第<input type="number" ng-model="data.number">页
+         <md-button ng-click="pageChanged(data.number)">确定</md-button>
+     </div>-->
+</div>
+

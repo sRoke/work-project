@@ -1,0 +1,23 @@
+<div flex="100" layout="column" class="bindPhone">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="vm.fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>登录中</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex layout="row" layout-align="center center">
+        <!--<h1 flex laoyut="row" layout-align="center center" style="text-align: center">-->
+            <!--<span flex>登录中...</span>-->
+        <!--</h1>-->
+        <select class="select" flex ng-change="queryAddress(data.voteApp)"
+                data-ng-model="data.voteApp">
+            <option value="">请选择</option>
+            <option ng-repeat="voteApp in voteApps" value="{{voteApp.id}}">{{voteApp.name}}</option>
+        </select>
+
+    </md-content>
+    <md-button class="md-primary md-raised" ng-click="logout()">退出</md-button>
+</div>

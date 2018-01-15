@@ -1,0 +1,48 @@
+devPort: 16500
+# ServerProperties
+server:
+  port: 10260
+  context-path: /activity/rs/local/${devPort}                           # todo 其它环境修改该行
+  error.include-stacktrace: on_trace_param
+
+# SecurityProperties
+security:
+  basic.enabled: false
+
+
+
+# QhAgencyProperties
+net.kingsilk.qh.activity:
+  # http代理设置
+  http:
+    proxy:
+      enabled:      false
+  qhRaffle:
+    url:                        'https://kingsilk.net/raffle/rs/local/16500/api/' # TODO 其它环境修改该行
+  qhOAuth:
+    wap:
+      url:                      'https://kingsilk.net/oauth2/rs/local/${devPort}/rs'   # todo 其它环境修改该行
+  qhPay:
+    wap:
+      url:                      'https://pay.kingsilk.net/qh/pay/local/${devPort}/rs'  # todo 其它环境修改该行
+  wx4j:
+      wap:
+        api:
+          url:                    'https://kingsilk.net/wx/rs/local/11300/api'
+
+# MongoProperties
+spring.data.mongodb:
+  host: '192.168.0.12'
+  port: 27017
+  database: 'qh-raffle-13'
+  username: 'qh-raffle-13'
+  password: 'qh-raffle-13'
+
+
+ut:
+    basePath : https://kingsilk.net/oauth2/rs/local/${devPort}/api
+
+agencyUt:
+    basePath : https://kingsilk.net/agency/rs/local/${devPort}/api
+
+logging.level.org.apache.http: DEBUG

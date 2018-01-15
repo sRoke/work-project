@@ -1,0 +1,110 @@
+<div flex="100" layout="column" class="ks-stockItem">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>库存商品</h1>
+        <div class="right-button" flex="20" >
+            <!--明细ui-sref="main.brandApp.stockDetail({itemId:itemId})"-->
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="content-wrap" flex layout="row">
+        <md-content flex style="overflow-x: hidden">
+            <div class="itemWrap" layout="column" layout-align="center stretch">
+                <div class="item" layout="column">
+                    <div layout="row" class="item-box">
+                        <div class="img-wrap">
+                            <!--<img ng-src="{{item.imgKey}}" alt="">-->
+                            <img src="{{data.skuInfo.imgs[0]}}" alt="">
+                        </div>
+                        <div class="item-detail" layout="column" flex>
+                            <div class="item-title">{{data.skuInfo.title}}</div>
+                            <!--<div class="item-title" style="color: #999;margin-top: 10px">{{data.desp}}</div>-->
+                            <div class="item-desc">
+                                <div>
+                                    <span class="num" ng-repeat="spec in data.skuInfo.specs" style="margin-right: 10px">{{spec.value}}</span>
+                                </div>
+                            </div>
+                            <div class="item-spec">
+                                <span class="specs">采购价:￥{{data.skuInfo.price/100 | num : 2}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-line"></div>
+            <div class="item-information">
+                <div class="informationList" layout="row" layout-align="space-between center">
+                    <div class="main-title">入库信息</div>
+                </div>
+                <md-divider></md-divider>
+                <div class="informationList" layout="row" layout-align="space-between center">
+                    <div class="title">当前库存</div>
+                    <div class="desc">{{data.num}}</div>
+                </div>
+                <md-divider></md-divider>
+                <!--<div class="informationList" layout="row" layout-align="space-between center">-->
+                    <!--<div class="title">销量</div>-->
+                    <!--<div class="desc">{{data.salesNum}}</div>-->
+                <!--</div>-->
+                <!--<md-divider></md-divider>-->
+                <div class="informationList" layout="row" layout-align="space-between center">
+                    <div class="title" ng-if="data.skuInfo.curTag == 'GENERAL_AGENCY'">总代价</div>
+                    <div class="title" ng-if="data.skuInfo.curTag == 'REGIONAL_AGENCY'">市代价</div>
+                    <div class="title" ng-if="data.skuInfo.curTag == 'LEAGUE'">加盟价</div>
+                    <div class="desc">{{data.skuInfo.price/100|num:2}}</div>
+                </div>
+                <md-divider></md-divider>
+                <div class="informationList" layout="row" layout-align="space-between center">
+                    <div class="title">零售价</div>
+                    <div class="desc">{{data.skuInfo.salePrice/100|num:2}}</div>
+                </div>
+                <md-divider></md-divider>
+                <div class="informationList" layout="row" layout-align="space-between center">
+                    <div class="title">单位</div>
+                    <div class="desc">件</div>
+                </div>
+                <md-divider></md-divider>
+                <!--<div class="informationList" layout="row" layout-align="space-between center">-->
+                    <!--<div class="title">累计销量</div>-->
+                    <!--<div class="desc">XXX</div>-->
+                <!--</div>-->
+                <!--<md-divider></md-divider>-->
+
+                <div class="informationList" layout="row" layout-align="space-between center">
+                    <div class="title">入库时间</div>
+                    <div class="desc">{{data.dateCreated | date:"yyyy-MM-dd HH:mm:ss"}}</div>
+                </div>
+
+                <md-divider></md-divider>
+
+                <!--<div class="sure-btn" layout="row" layout-align="center center">-->
+                    <!--确定修改-->
+                <!--</div>-->
+            </div>
+        </md-content>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

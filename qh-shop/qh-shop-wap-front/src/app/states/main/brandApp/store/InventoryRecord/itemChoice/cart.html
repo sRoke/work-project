@@ -1,0 +1,54 @@
+<md-bottom-sheet class="md-grid ks-mdBottomSheet"
+                 style=" padding-left: 0;padding-right: 0;padding-bottom: 80px;max-width: 600px;margin: 0 auto;"
+                 layout="column" ng-cloak>
+    <div class="header" layout="row" layout-align="space-between center">
+        <div class="header-dis">取消</div>
+        <div class="icon-btn" layout="row" >
+            <span style="color: #E53467;" ng-click="vmd.changeEdit();">确认</span>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content class="content-box" flex="" stop-touch-event>
+        <div class="item-box" ng-repeat="item in  vmd.comments track by $index" layout="column">
+            <div class="item" layout="row" layout-align="space-between start" >
+                <div class="item-left" layout="row">
+                    <div class="item-checked" ng-if="!vmd.isEdit">
+                        <md-icon class="icon-Btn" md-font-set="ks-icon" md-font-icon="ag-circle"
+                                 ng-if="item.checked" ng-click="vmd.changeCheck(item)"></md-icon>
+                        <md-icon class="icon-Btn icon-btn-check" md-font-set="ks-icon" md-font-icon="ag-complete"
+                                 ng-if="!item.checked" ng-click="vmd.changeCheck(item)"></md-icon>
+                    </div>
+                    <div layout="column">
+                        <div class="item-title">{{item.sku.title}}</div>
+                        <div class="item-specs">
+                            <span ng-repeat="spec in item.sku.specs">{{spec.value}}</span>
+                        </div>
+                        <div class="item-price">￥{{item.sku.salePrice/100|num:2}}</div>
+                    </div>
+                </div>
+
+                <div layout="row" class="count">
+                    <div ng-class="{true: 'minusActive', false: 'minus'}[item.num == 0]"
+                         ng-mobile-click="vmd.skuNumCount(-1,item)" layout=""
+                         layout-align="center center">
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-minus"></md-icon>
+                    </div>
+                    <!--<div ng-if="vmd.skuNum == 0" class="minus" layout="" layout-align="center center" style="background: ">-->
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-minus"></md-icon>-->
+                    <!--</div>-->
+                    <div ng-class="{true: 'inputActive', false: 'input'}[0< item.num && item.num < item.sku.storage]">
+                        <!--<div style="position: absolute;width: 100%;height: 100%"></div>-->
+                        <input  type="tel" ng-model="item.num"  ng-blur="vmd.numBlur(item)"
+                                layout="" layout-align="center center"/>
+                    </div>
+                    <div ng-class="{true: 'addActive', false: 'add'}[item.num >= item.sku.storage]"
+                         ng-mobile-click="vmd.skuNumCount(1,item)" layout=""
+                         layout-align="center center">
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-plus"></md-icon>
+                    </div>
+                </div>
+            </div>
+            <md-divider ng-if="$index != vmd.comments.length"></md-divider>
+        </div>
+    </md-content>
+</md-bottom-sheet>

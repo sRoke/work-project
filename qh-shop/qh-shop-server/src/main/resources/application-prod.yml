@@ -1,0 +1,7 @@
+# MongoProperties
+spring.data.mongodb:
+  host: 'prod14.kingsilk.net'
+  port: 27017
+  database: 'qhShop'
+  username: 'qhShop'
+  password: '{qhShop2017]'

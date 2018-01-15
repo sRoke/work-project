@@ -1,0 +1,59 @@
+<md-dialog aria-label="分类编辑" style="width:1000px;">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{vm.isAdd?'新增分类':'编辑分类'}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
+                    <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <input type="hidden" name="vm.id" ng-model="id">
+                <div class="form-group" ng-if="vm.parent">
+                    <label for="parent" class="col-sm-2 control-label">父类名称</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="parent" class="form-control input-sm" id="parent"
+                               ng-model="vm.parentName" readonly>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">分类名称
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="name" class="form-control input-sm" id="name" ng-model="vm.name"
+                                required>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="icon" class="col-sm-2 control-label">图标</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="icon" class="form-control input-sm" ng-model="vm.icon">
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="order" class="col-sm-2 control-label">顺序</label>
+                    <div class="col-sm-9">
+                        <input type="number" id="order" class="form-control input-sm" ng-model="vm.order">
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="desp" class="col-sm-2 control-label">说明</label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" rows="3" ng-model="vm.desp" id="desp" name="desp"></textarea>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="vm.save()">保存</md-button>
+            <md-button ng-click="vm.cancel()">退出</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,14 @@
+rootProject.name = 'qh-oauth'
+
+include 'qh-oauth-core'
+include 'qh-oauth-domain'
+include 'qh-oauth-msg-api'
+include 'qh-oauth-msg-impl'
+include 'qh-oauth-service'
+//include 'qh-oauth-admin'
+include 'qh-oauth-wap'
+include 'qh-oauth-api'
+include 'qh-oauth-client'
+include 'qh-oauth-wap-front'
+
+//includeBuild '../qh-common/qh-common-admin-stub'

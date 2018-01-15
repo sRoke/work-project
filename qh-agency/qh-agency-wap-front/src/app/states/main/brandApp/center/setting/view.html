@@ -1,0 +1,53 @@
+<div flex layout="column" class="ks-center-setting">
+    <!--<md-toolbar class="ks-header">-->
+        <!--<div layout="row" class="ks-header-divWrap">-->
+            <!--<div class="divTop" flex class>-->
+                <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+                <!--ng-click="fallbackPage()"></md-icon>-->
+                <!--<span class="regSpan">设置</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-toolbar>-->
+
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex style="font-size: 18px;">设置</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+    <md-divider></md-divider>
+
+    <md-content flex layout="column" layout-align="start center" class="main">
+        <!--rmy 2017-08-23 支付密码-->
+
+        <!--<div layout="row" layout-align="space-between center" class="setting-list setting-pay" ui-sref="main.brandApp.center.phone({about:'setting'})">-->
+            <!--<div>支付密码</div>-->
+            <!--<div layout="row">-->
+                <!--<div class="password-status" layout-align="right">{{data.data}}</div>-->
+                <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <div layout="row" layout-align="space-between center" class="setting-list" style="margin-top:10px;">
+            <div>用户反馈</div>
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+        </div>
+        <md-divider></md-divider>
+        <div layout="row" layout-align="space-between center" class="setting-list">
+            <div>关于</div>
+            <div>v 2.5.1</div>
+            <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+        </div>
+
+        <div layout="row" layout-align="space-between center" class="exit" ng-click="exit()">
+            <div>退出</div>
+            <div></div>
+            <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+        </div>
+    </md-content>
+</div>
+

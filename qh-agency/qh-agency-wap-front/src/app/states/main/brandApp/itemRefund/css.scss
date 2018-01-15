@@ -1,0 +1,611 @@
+@import "../../../../scss/index.scss";
+
+.ks-newItem {
+
+  //商品信息
+  .itemWrap {
+    .item {
+      .item-box {
+        margin: 10px 15px;
+        .img-wrap {
+          width: 70px;
+          height: 70px;
+          position: relative;
+          &:before {
+            content: "";
+            //display: block;// 如果用火狐浏览器,会出现bug,无法撑起高度  display: inline-table;可以
+            display: inline-table; //作为内联表格来显示
+            padding-top: 100%;
+          }
+          img {
+            position: absolute;
+            top: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .ks-icon {
+          font-size: 14px;
+          min-width: 14px;
+          min-height: 14px;
+          line-height: 14px;
+          color: #C7CCCB;
+        }
+        .item-detail {
+          margin-left: 15px;
+          .item-title {
+            font-size: 14px;
+            color: #333333;
+            letter-spacing: -0.34px;
+            line-height: 14px;
+            margin-top: 5px;
+
+          }
+          .item-spec {
+            font-size: 14px;
+            color: #ED5F5B;
+            letter-spacing: -0.34px;
+            line-height: 14px;
+            margin-top: 15px;
+          }
+        }
+      }
+    }
+  }
+  .info-line {
+    width: 100%;
+    height: 10px;
+    min-height: 10px;
+    background: #F5F5F5;
+  }
+  .weight-wrap {
+    //margin: 0 15px;
+    .weight-top {
+      font-size: 14px;
+      color: #999999;
+      letter-spacing: -0.34px;
+      line-height: 14px;
+      margin-left: 15px;
+      margin-top: 20px;
+    }
+    .weight-tag-wrap {
+      //display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+      //display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+      //display: -ms-flexbox; /* TWEENER - IE 10 */
+      //display: -webkit-flex; /* NEW - Chrome */
+      //display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+      //flex-direction: row;
+      //margin: 15px 0px;
+      margin-bottom: 20px;
+      margin-right: 15px;
+      /* width: 85px; */
+      /* padding: 0 84px; */
+      display: inline-block;
+      //flex-wrap: wrap;
+      //flex: 1;
+      .wight-tag {
+        //margin: 15px;
+        margin-left: 15px;
+        margin-top: 15px;
+        display: inline-block;
+        min-width: 60px;
+        .tag {
+          //width: 75px;
+          height: 32px;
+          padding: 0 10px;
+          line-height: 32px;
+          text-align: center;
+          border: 1px solid #999999;
+          border-radius: 6px;
+          font-size: 16px;
+          color: #999999;
+          letter-spacing: -0.39px;
+        }
+        .wightTagActive {
+          background: #53D39A;
+          border: 1px solid #53D39A;
+          border-radius: 6px;
+          color: #fff;
+        }
+        .canNotChoose {
+          border: 1px solid #D5D5D5;
+          border-radius: 6px;
+          font-size: 16px;
+          color: #D5D5D5;
+          letter-spacing: -0.39px;
+        }
+      }
+    }
+    .item-box {
+      margin: 0 15px;
+      .item {
+        .item-left {
+          .item-title {
+            font-size: 14px;
+            color: #333333;
+            letter-spacing: -0.34px;
+            line-height: 14px;
+          }
+          .item-price {
+            font-size: 14px;
+            color: #ED5F5B;
+            letter-spacing: -0.34px;
+            line-height: 14px;
+          }
+        }
+        .count {
+          padding: 0;
+          text-align: center;
+          margin: 18px 0px 16px 0;
+
+          input {
+            flex-shrink: 0;
+            height: 24px;
+            text-align: center;
+            display: inline-block;
+            //background-color: #d5d5d5;
+            border: none;
+            padding: 0;
+            border-radius: 0;
+            width: 56px;
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+            }
+            -moz-appearance: textfield;
+          }
+          .minus, .add {
+            min-width: 20px;
+            min-height: 20px;
+            //background-color: #F5F5F5;
+            border-radius: 50%;
+            font-size: 20px;
+            line-height: 20px;
+            color: #53D39A;
+            .iconBtn {
+              font-size: 20px;
+              color: #53D39A;
+            }
+          }
+        }
+      }
+
+    }
+    .input-wrap {
+      margin: 15px;
+      input {
+        width: 165px;
+        border: none;
+        background: #F5F5F5;
+        border-radius: 6px;
+        font-size: 16px;
+        color: #333333;
+        letter-spacing: -0.39px;
+        line-height: 32px;
+        padding-left: 15px;
+      }
+      input::-webkit-input-placeholder { /* WebKit browsers */
+        font-size: 16px;
+        color: #D5D5D5;
+        letter-spacing: -0.39px;
+      }
+
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        font-size: 16px;
+        color: #D5D5D5;
+        letter-spacing: -0.39px;
+      }
+
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        font-size: 16px;
+        color: #D5D5D5;
+        letter-spacing: -0.39px;
+      }
+    }
+  }
+  .ks-item-desp {
+    flex-shrink: 0;
+    p {
+      margin: 0;
+      position: relative;
+      width: 100%;
+      -webkit-margin-before: 0;
+      -webkit-margin-after: 0;
+      /*      overflow: hidden;*/
+      &:before {
+        content: "";
+        display: block;
+        /*padding-top: 100%;订单详情页显示问题*/
+      }
+      img {
+        width: 100%;
+        border: medium none;
+        display: block;
+        margin: 0;
+        /*position: absolute;
+        left: 0;
+        top: 0; 订单详情页显示问题*/
+      }
+    }
+    img {
+      width: 100%;
+      border: medium none;
+      display: block;
+      margin: 0;
+    }
+
+  }
+
+  .count {
+    padding: 0;
+    text-align: center;
+    margin: 18px 0px 16px 0;
+
+    input {
+      flex-shrink: 0;
+      height: 24px;
+      text-align: center;
+      display: inline-block;
+      //background-color: #d5d5d5;
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      width: 56px;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      -moz-appearance: textfield;
+    }
+    .minus, .add {
+      min-width: 20px;
+      min-height: 20px;
+      //background-color: #F5F5F5;
+      border-radius: 50%;
+      font-size: 20px;
+      line-height: 20px;
+      color: #53D39A;
+      .iconBtn {
+        font-size: 20px;
+        color: #53D39A;
+      }
+    }
+  }
+  //底部按钮
+  .footBtn {
+    height: 49px;
+    min-height: 49px;
+    background: #fff;
+    .left-wrap {
+      position: relative;
+      .cart-wrap {
+        position: relative;
+        width: 48px;
+        height: 54px;
+        margin: -10px 0 0 15px;
+        text-align: center;
+        .icon-wrap {
+          position: relative;
+          width: 48px;
+          height: 48px;
+          min-height: 48px;
+          background: #fff;
+          border-radius: 30px;
+          -moz-box-shadow: 0 0.5px 0 #d5d5d5 inset; /* For Firefox3.6+ */
+          -webkit-box-shadow: 0 0.5px 0 #d5d5d5 inset; /* For Chrome5+, Safari5+ */
+          box-shadow: 0 0.5px 0 #d5d5d5 inset; /* For Latest Opera */
+          border-top: 1px solid rgba(213, 213, 213, 0.5);
+          .icon {
+            font-size: 24px;
+            color: #53D39A;
+          }
+          i {
+            position: absolute;
+            left: 10px;
+            border-radius: 11px;
+            width: 8px;
+            height: 8px;
+            background: #e84e40;
+            top: 10px;
+          }
+          .warm-i{
+            -webkit-animation: warn 1s ease-out;
+            -moz-animation: warn 1s ease-out;
+            animation: warn 1s ease-out;
+          }
+        }
+        .cart-dis {
+          font-size: 10px;
+          width: 48px;
+          line-height: 5px;
+          margin: 0 auto;
+          z-index: 1;
+        }
+      }
+
+      .pay-price {
+        text-align: end;
+        line-height: 49px;
+        margin-right: 14px;
+        font-size: 14px;
+        color: #999999;
+        letter-spacing: -0.34px;
+      }
+    }
+    .goPay {
+      width: 125px;
+      height: 49px;
+      min-width: 125px;
+      line-height: 49px;
+      text-align: center;
+      background: #53D39A;
+      span {
+        font-size: 18px;
+        color: #FFFFFF;
+        letter-spacing: -0.43px;
+        line-height: 18px;
+      }
+    }
+    .noPay {
+      width: 125px;
+      height: 49px;
+      min-width: 125px;
+      line-height: 49px;
+      text-align: center;
+      background: $agency-bg-disabled;
+      span {
+        font-size: 18px;
+        color: #FFFFFF;
+        letter-spacing: -0.43px;
+        line-height: 18px;
+      }
+    }
+  }
+}
+
+@keyframes warn {
+  0% {
+    transform: scale(1);
+
+  }
+  25%{
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(1);
+
+  }
+  75%{
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes warn {
+  0% {
+    -webkit-transform: scale(0);
+
+  }
+  25%{
+    -webkit-transform: scale(1.5);
+  }
+  50% {
+    -webkit-transform: scale(0.1);
+  }
+  75%{
+    -webkit-transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.ks-mdBottomSheet {
+  .header {
+    height: 44px;
+    min-height: 44px;
+    margin: 0 15px;
+    .header-dis {
+      font-size: 14px;
+      color: #999999;
+      letter-spacing: -0.34px;
+      line-height: 14px;
+    }
+    .icon-btn {
+      .ks-icon {
+        font-size: 20px;
+        min-width: 20px;
+        min-height: 20px;
+        line-height: 20px;
+        color: #999999;
+      }
+      .ks-icon:nth-of-type(1) {
+        //margin-right: 15px;
+        font-size: 16px;
+      }
+    }
+  }
+  .content-box {
+    height: 226px;
+    min-height: 226px;
+    background: #fff;
+    .item-box {
+      margin: 0 15px;
+      height: 73px;
+      .item {
+        .item-left {
+          .item-title {
+            font-size: 14px;
+            color: #333333;
+            letter-spacing: -0.34px;
+            line-height: 14px;
+            margin: 15px 0;
+          }
+
+          .item-specs {
+            margin-bottom: 15px;
+            font-size: 14px;
+            letter-spacing: -0.34px;
+            line-height: 14px;
+            color: $agency-word-gray;
+            span {
+              display: inline-block;
+              margin-right: 15px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+        .count {
+          padding: 0;
+          text-align: center;
+          margin: 18px 0px 16px 0;
+          .item-price {
+            font-size: 14px;
+            color: $agency-word-red;
+            letter-spacing: -0.34px;
+            margin-right: 5px;
+          }
+          input {
+            flex-shrink: 0;
+            height: 24px;
+            text-align: center;
+            display: inline-block;
+            //background-color: #d5d5d5;
+            border: none;
+            padding: 0;
+            border-radius: 0;
+            width: 40px;
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+            }
+            -moz-appearance: textfield;
+          }
+          .minus, .add {
+            min-width: 20px;
+            min-height: 20px;
+            //background-color: #F5F5F5;
+            border-radius: 50%;
+            font-size: 20px;
+            line-height: 20px;
+            color: #53D39A;
+            .iconBtn {
+              font-size: 20px;
+              color: #53D39A;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  .footBtn {
+    height: 49px;
+    min-height: 49px;
+    background: #fff;
+    .left-wrap {
+      position: relative;
+      .cart-wrap {
+        position: relative;
+        width: 48px;
+        height: 54px;
+        margin: -10px 0 0 15px;
+        text-align: center;
+        .icon-wrap {
+          position: relative;
+          width: 48px;
+          height: 48px;
+          min-height: 48px;
+          background: #fff;
+          border-radius: 30px;
+          -moz-box-shadow: 0 0.5px 0 #d5d5d5 inset; /* For Firefox3.6+ */
+          -webkit-box-shadow: 0 0.5px 0 #d5d5d5 inset; /* For Chrome5+, Safari5+ */
+          box-shadow: 0 0.5px 0 #d5d5d5 inset; /* For Latest Opera */
+          border-top: 1px solid rgba(213, 213, 213, 0.5);
+
+          .icon {
+            font-size: 24px;
+            color: #53D39A;
+          }
+          i {
+            position: absolute;
+            left: 10px;
+            border-radius: 11px;
+            width: 8px;
+            height: 8px;
+            background: #e84e40;
+            top: 10px;
+          }
+          .warm-i{
+            -webkit-animation: warn 1s ease-out;
+            -moz-animation: warn 1s ease-out;
+            animation: warn 1s ease-out;
+          }
+        }
+        .cart-dis {
+          /* position: absolute; */
+          /* bottom: 4px; */
+          font-size: 10px;
+          width: 48px;
+          /* color: #333; */
+          /* letter-spacing: -.24px; */
+          line-height: 5px;
+          margin: 0 auto;
+          z-index: 1;
+        }
+      }
+
+      .pay-price {
+        text-align: end;
+        line-height: 49px;
+        margin-right: 14px;
+        font-size: 14px;
+        color: #999999;
+        letter-spacing: -0.34px;
+      }
+    }
+    .goPay {
+      width: 125px;
+      height: 49px;
+      min-width: 125px;
+      line-height: 49px;
+      text-align: center;
+      background: #53D39A;
+      span {
+        font-size: 18px;
+        color: #FFFFFF;
+        letter-spacing: -0.43px;
+        line-height: 18px;
+      }
+    }
+    .noPay {
+      width: 125px;
+      height: 49px;
+      min-width: 125px;
+      line-height: 49px;
+      text-align: center;
+      background: $agency-bg-disabled;
+      span {
+        font-size: 18px;
+        color: #FFFFFF;
+        letter-spacing: -0.43px;
+        line-height: 18px;
+      }
+    }
+  }
+}

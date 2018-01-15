@@ -1,0 +1,336 @@
+<div class="ks-common-list-applyCk">
+    <div class="checkTitle" layout="row"
+         style="border: none;border-bottom: 1px solid #d5d5d5;height: 50px;margin:0px;line-height: 40px;">
+        <span flex="95" style="padding-left: 20px;font-weight: 600;font-size: 16px;">申请审核</span>
+        <a class="glyIcon" title="编辑" href="javascript:void(0)" ng-if="!isSave">
+            <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit"
+                     ng-click="changeStatus()"></md-icon>
+        </a>
+        <a class="glyIcon" title="保存" href="javascript:void(0)" ng-if="isSave">
+            <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-save" ng-click="save();"></md-icon>
+        </a>
+    </div>
+    <div style="border: none;" ng-if="!isSave" class="checkCon">
+        <ul layout="column">
+            <li layout="row">
+                <label>渠道类型：</label>
+                <span>{{data.partnerType}}</span>
+            </li>
+            <!--<li layout="row">-->
+            <!--<label>邀请号码：</label>-->
+            <!--<span>{{data.invitationCode}}</span>-->
+            <!--</li>-->
+            <li layout="row">
+                <label>身份证号：</label>
+                <span>{{data.idNo}}</span>
+            </li>
+            <li layout="row">
+                <label for="linkman">联系人：</label>
+                <span>{{data.realName}}</span>
+            </li>
+            <li layout="row">
+                <label for="linkphone">联系方式：</label>
+                <span>{{data.phone}}</span>
+            </li>
+            <li layout="row">
+                <label for="linkphone">邀请手机号：</label>
+                <span>{{data.invitationCode}}</span>
+            </li>
+            <li layout="row">
+                <label>申请地区：</label>
+                <span>{{data.shopAddr}}</span>
+            </li>
+            <li layout="row" ng-if="data.parentId">
+                <label>上级渠道：</label>
+                <span>{{parentInfo.parentDesp}}</span>
+            </li>
+            <div ng-if="!data.parentId" style="height: 50px;position: relative;margin:0px;" layout="row">
+                <!--<span style="line-height:50px;">上级渠道<span class="flag">*</span></span>-->
+                <span style="line-height:50px;margin-left: 88px;">上级渠道:</span>
+                <div class="input-group t1" uib-dropdown style="margin: 8px 0 0 180px;position: absolute;
+                outline: none;width:800px;">
+                    <input type="text" class="form-control" style="    box-shadow: none;padding-left: 0;"
+                           placeholder="上级渠道" ng-model="search.keywords"
+                           ng-click="$event.stopPropagation()"
+                           uib-dropdown-toggle id="brand11" autocomplete="off" ng-disabled="brand">
+
+                    <div class="input-group-addon" ng-show="brand">
+                        <button type="button" class="close" aria-label="Close" ng-click="removeActivityBrand()">
+                                <span aria-hidden="true">
+                                    <input type="hidden" name="activityBrand" ng-model="brand"> &times;
+                                </span>
+                        </button>
+                    </div>
+
+                    <div class="input-group-addon" ng-click="selectedPartner()" uib-dropdown-toggle
+                         role="button"><i
+                            class="glyphicon glyphicon-search" role="button"></i></div>
+                    <ul class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenu1" style="margin:0px; ">
+                        <li style="min-height:500px;overflow: auto;">
+                            <table class="table table-hover">
+                                <tr class="hd" style="height: 40px;">
+                                    <th>联系人</th>
+                                    <th>联系方式</th>
+                                    <th>申请类型</th>
+                                    <th>申请地址</th>
+                                </tr>
+                                <tr ng-repeat="result in items" style="height: 40px;"
+                                    ng-click="selectActivityBrand(result)">
+                                    <td>{{result.realName}}</td>
+                                    <td>{{result.phone}}</td>
+                                    <td>{{result.partnerType}}</td>
+                                    <td>{{result.shopAddr}}</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--<div ng-if="!data.parentId" style="height: 50px;position: relative;margin:0px;" layout="row">-->
+            <!--&lt;!&ndash;<span style="line-height:50px;">上级渠道<span class="flag">*</span></span>&ndash;&gt;-->
+            <!--<span style="line-height:50px;margin-left: 88px;">上级渠道:</span>-->
+            <!--<div class="input-group t1" uib-dropdown style="margin: 8px 0 0 180px;position: absolute;-->
+            <!--outline: none;width:800px;">-->
+            <!--<input type="text" class="form-control" style="    box-shadow: none;padding-left: 0;"-->
+            <!--placeholder="上级渠道" ng-model="keywords"-->
+            <!--ng-keyup="selectedPartner()" ng-click="$event.stopPropagation()"-->
+            <!--uib-dropdown-toggle id="brand" autocomplete="off" ng-disabled="brand">-->
+
+            <!--<div class="input-group-addon" ng-show="brand">-->
+            <!--<button type="button" class="close" aria-label="Close" ng-click="removeActivityBrand()">-->
+            <!--<span aria-hidden="true">-->
+            <!--<input type="hidden" name="activityBrand" ng-model="brand"> &times;-->
+            <!--</span>-->
+            <!--</button>-->
+            <!--</div>-->
+
+            <!--<div class="input-group-addon" ng-click="selectedPartner()" uib-dropdown-toggle-->
+            <!--role="button"><i-->
+            <!--class="glyphicon glyphicon-search" role="button"></i></div>-->
+            <!--<ul class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenu1" style="margin:0px; ">-->
+            <!--<li style="min-height:500px;overflow: auto;">-->
+            <!--<table class="table table-hover">-->
+            <!--<tr class="hd" style="height: 40px;">-->
+            <!--<th>联系人</th>-->
+            <!--<th>联系方式</th>-->
+            <!--<th>申请类型</th>-->
+            <!--<th>申请地址</th>-->
+            <!--</tr>-->
+            <!--<tr ng-repeat="result in items" style="height: 40px;"-->
+            <!--ng-click="selectActivityBrand(result)">-->
+            <!--<td>{{result.realName}}</td>-->
+            <!--<td>{{result.phone}}</td>-->
+            <!--<td>{{result.partnerType}}</td>-->
+            <!--<td>{{result.shopAddr}}</td>-->
+            <!--</tr>-->
+            <!--</table>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</div>-->
+            <li layout="row" ng-if="shopData.length>0">
+                <label ng-click="test()">关联门店系统：</label>
+                <select data-ng-model="shop.selectBrandAppId">
+                    <option value="">全部</option>
+                    <option ng-repeat="shopName in shopData" value="{{shopName.id}}">
+                        {{shopName.name}}
+                    </option>
+                </select>
+
+
+                <select ng-if="shop.selectBrandAppId" data-ng-model="shop.selectShopId">
+                    {{shop.selectShopData}}
+                    <option value="">全部</option>
+                    <option ng-repeat="shopListName in shopList" value="{{shopListName.id}}">
+                        {{shopListName.name}}
+                    </option>
+                </select>
+            </li>
+
+            <!-- <div ng-if="shopData.length>0" style="height: 50px;position: relative;margin:0px;" layout="row">
+                 &lt;!&ndash;<span style="line-height:50px;">上级渠道<span class="flag">*</span></span>&ndash;&gt;
+                 <span style="line-height:50px;margin-left: 88px;">关联门店系统:</span>
+                 <div class="input-group t1" uib-dropdown style="margin: 8px 0 0 180px;position: absolute;
+                 outline: none;width:800px;">
+                     <input type="text" class="form-control" style="    box-shadow: none;padding-left: 0;"
+                            placeholder="门店选择" ng-model="search.shopwords"
+                            ng-click="$event.stopPropagation()"
+                            uib-dropdown-toggle id="shop" autocomplete="off" ng-disabled="shop">
+
+                     <div class="input-group-addon" ng-show="shop">
+                         <button type="button" class="close" aria-label="Close" ng-click="removeshop()">
+                                 <span aria-hidden="true">
+                                     <input type="hidden" name="removeshop" ng-model="shop"> &times;
+                                 </span>
+                         </button>
+                     </div>
+
+                     <div class="input-group-addon" ng-click="getShopList()" uib-dropdown-toggle
+                          role="button"><i
+                             class="glyphicon glyphicon-search" role="button"></i></div>
+                     <ul class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenu1" style="margin:0px; ">
+                         <li style="min-height:500px;overflow: auto;" ng-repeat="result in shopData" ng-click="selectShop(result)">
+                             {{result.name}}
+                             &lt;!&ndash; <table class="table table-hover" >
+                                  <tr class="hd" style="height: 40px;">
+                                      <th>联系人</th>
+                                      <th>联系方式</th>
+                                      <th>申请类型</th>
+                                      <th>申请地址</th>
+                                  </tr>
+                                  <tr ng-repeat="result in items" style="height: 40px;"
+                                      ng-click="selectActivityBrand(result)">
+                                      <td>{{result.realName}}</td>
+                                      <td>{{result.phone}}</td>
+                                      <td>{{result.partnerType}}</td>
+                                      <td>{{result.shopAddr}}</td>
+                                  </tr>
+                              </table>&ndash;&gt;
+                         </li>
+                     </ul>
+                 </div>
+             </div>-->
+
+
+           <!-- <div ng-if="shopData.length>0" style="height: 50px;position: relative;margin:0px;" layout="row">
+                &lt;!&ndash;<span style="line-height:50px;">上级渠道<span class="flag">*</span></span>&ndash;&gt;
+                <span style="line-height:50px;margin-left: 88px;">关联门店系统:</span>
+                <div class="input-group t1" uib-dropdown style="margin: 8px 0 0 180px;position: absolute;
+                outline: none;width:800px;">
+                    <input type="text" class="form-control" style="    box-shadow: none;padding-left: 0;"
+                           placeholder="门店选择" ng-model="search.shopwords"
+                           ng-click="$event.stopPropagation()"
+                           uib-dropdown-toggle id="shop" autocomplete="off" ng-disabled="shop">
+
+                    <div class="input-group-addon" ng-show="shop">
+                        <button type="button" class="close" aria-label="Close" ng-click="removeshop()">
+                                <span aria-hidden="true">
+                                    <input type="hidden" name="removeshop" ng-model="shop"> &times;
+                                </span>
+                        </button>
+                    </div>
+
+                    <div class="input-group-addon" ng-click="getShopList()" uib-dropdown-toggle
+                         role="button"><i
+                            class="glyphicon glyphicon-search" role="button"></i></div>
+                    <ul class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenu1" style="margin:0px; ">
+                        <li style="min-height:500px;overflow: auto;" ng-repeat="result in shopData"
+                            ng-click="selectShop(result)">
+                            {{result.name}}
+
+                        </li>
+                    </ul>
+                </div>
+            </div>-->
+        </ul>
+    </div>
+    <div style="border: none;" ng-if="isSave" class="checkCon">
+        <ul layout="column">
+            <li layout="row">
+                <label>渠道类型：</label>
+                <!--<span>{{data.partnerTypeEnum}}</span>-->
+                <select ng-model="data.partnerTypeEnum" style="background: #fff;outline: none;border:1px solid #ccc;">
+                    <option value="LEAGUE">加盟商</option>
+                    <option value="REGIONAL_AGENCY">市代理</option>
+                    <option value="GENERAL_AGENCY">总代理</option>
+                </select>
+            </li>
+            <!--<li layout="row">-->
+            <!--<label>邀请号码：</label>-->
+            <!--<span>{{data.invitationCode}}</span>-->
+            <!--</li>-->
+            <li layout="row">
+                <label>身份证号码：</label>
+                <input id="" type="text" ng-model="data.idNo">
+            </li>
+            <li layout="row">
+                <label for="linkman">联系人：</label>
+                <input id="linkman" type="text" ng-model="data.realName">
+            </li>
+            <li layout="row">
+                <label for="linkphone">联系方式:</label>
+                <input id="linkphone" type="text" ng-model="data.phone">
+            </li>
+            <li layout="row">
+                <label for="linkph">邀请手机号:</label>
+                <input id="linkph" type="text" ng-model="data.invitationCode">
+            </li>
+            <!--<li layout="row">-->
+            <!--<label>原申请地区:</label>-->
+            <!--<span >{{data.shopAddr}}</span>-->
+            <!--</li>-->
+            <li layout="row">
+                <label>申请地区：</label>
+                <select class="select" ng-change="getAddress(address.provinceNo,1)"
+                        data-ng-model="address.provinceNo" style="height: 25px">
+                    <option value="">请选择</option>
+                    <option ng-repeat="province in provinces.list" value="{{province.no}}">
+                        {{province.name}}
+                    </option>
+                </select>
+                <select class="select" ng-change="getAddress(address.cityNo,2)"
+                        data-ng-model="address.cityNo" style="height: 25px" ng-if="citys.list.length>0">
+                    <option value="">请选择</option>
+                    <option ng-repeat="city in citys.list" value="{{city.no}}">{{city.name}}</option>
+                </select>
+                <select class="select" data-ng-model="address.countyNo" style="height: 25px"
+                        ng-if="countys.list.length>0">
+                    <option value="">请选择</option>
+                    <option ng-repeat="county in countys.list" value="{{county.no}}">{{county.name}}
+                    </option>
+                </select>
+            </li>
+            <div style="height: 50px;position: relative;margin:0px;" layout="row">
+                <!--<span style="line-height:50px;">上级渠道<span class="flag">*</span></span>-->
+                <span style="line-height:50px;margin-left: 88px;">上级渠道:</span>
+                <div class="input-group t1" uib-dropdown style="margin: 8px 0 0 180px;position: absolute;
+                outline: none;width:800px;">
+                    <input type="text" class="form-control" style="    box-shadow: none;padding-left: 0;"
+                           placeholder="上级渠道" ng-model="search.keywords"
+                           ng-click="$event.stopPropagation()"
+                           uib-dropdown-toggle id="brand" autocomplete="off" ng-disabled="brand">
+
+                    <div class="input-group-addon" ng-show="brand">
+                        <button type="button" class="close" aria-label="Close" ng-click="removeActivityBrand()">
+                                <span aria-hidden="true">
+                                    <input type="hidden" name="activityBrand" ng-model="brand"> &times;
+                                </span>
+                        </button>
+                    </div>
+
+                    <div class="input-group-addon" ng-click="selectedPartner()" uib-dropdown-toggle
+                         role="button"><i
+                            class="glyphicon glyphicon-search" role="button"></i></div>
+                    <ul class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenu1" style="margin:0px; ">
+                        <li style="min-height:500px;overflow: auto;">
+                            <table class="table table-hover">
+                                <tr class="hd" style="height: 40px;">
+                                    <th>联系人</th>
+                                    <th>联系方式</th>
+                                    <th>申请类型</th>
+                                    <th>申请地址</th>
+                                </tr>
+                                <tr ng-repeat="result in items" style="height: 40px;"
+                                    ng-click="selectActivityBrand(result)">
+                                    <td>{{result.realName}}</td>
+                                    <td>{{result.phone}}</td>
+                                    <td>{{result.partnerType}}</td>
+                                    <td>{{result.shopAddr}}</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <!--<h3>！当前地区已经存在代理商</h3>-->
+    <div class="check-bottom" style="width:100%;background: #f5f5f5;margin:0px;overflow: hidden;">
+        <li>
+            <button ng-click="checkStatus(true,'通过');" class="tg" ng-if="!isSave" ng-class="{true:'forbid'}[isSave]">
+                审核通过
+            </button>
+            <button ng-click="checkStatus(false,'拒绝');" ng-if="!isSave" ng-class="{true:'forbid'}[isSave]">拒绝申请</button>
+        </li>
+    </div>
+</div>

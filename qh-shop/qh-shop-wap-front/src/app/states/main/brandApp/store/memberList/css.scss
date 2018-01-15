@@ -1,0 +1,107 @@
+.ks-memberList {
+  background: #fff;
+  //搜索
+  .search {
+    margin: 10px 15px;
+    background: #fff;
+    height: 32px;
+    .search-input {
+      background: #f5f5f5;
+      border-radius: 8px;
+      position: relative;
+      height: 100%;
+      .left {
+        margin-left: 15px;
+        margin-right: 10px;
+        md-icon {
+          font-size: 12px;
+          height: 32px;
+          line-height: 32px;
+          width: 12px;
+          min-width: 12px;
+          color: #999999;
+        }
+      }
+      .right {
+        margin-left: 10px;
+        margin-right: 10px;
+        md-icon {
+          font-size: 12px;
+          height: 32px;
+          line-height: 32px;
+          width: 12px;
+          min-width: 12px;
+          color: #999999;
+        }
+      }
+      .con {
+        input {
+          width: 100%;
+          border: none;
+          background: #F5F5F5;
+          border-radius: 8px;
+          height: 32px;
+          line-height: 32px;
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers */
+          font-size: 14px;
+          letter-spacing: -0.34px;
+          //text-align: center;
+        }
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-size: 14px;
+          letter-spacing: -0.34px;
+          //text-align: center;
+        }
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-size: 14px;
+          letter-spacing: -0.34px;
+          //text-align: center;
+        }
+      }
+    }
+    .search-btn {
+      color: #333333;
+      margin-left: 10px;
+      font-size: 14px;
+      height: 32px;
+      line-height: 32px;
+    }
+  }
+
+  .list-wrap {
+    .sort-list {
+      .sort-name-list {
+        height: 30px;
+        line-height: 30px;
+        padding-left: 15px;
+        background: #f5f5f5;
+      }
+      .sort-data-list-wrap {
+        padding-left: 15px;
+        background: #fff;
+        .list-wrap {
+          margin-left: 10px;
+          padding: 6px 0;
+          .img {
+            height: 47px;
+            > img {
+              border-radius: 30px;
+            }
+          }
+          .name {
+            margin-left: 10px;
+            color: #333;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          .phone {
+            color: #666;
+            margin-left: 15px;
+          }
+        }
+      }
+    }
+  }
+}

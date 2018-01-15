@@ -1,0 +1,14 @@
+rootProject.name = 'qh-activity'
+
+include 'qh-activity-domain'
+include 'qh-activity-api'
+include 'qh-activity-core'
+include 'qh-activity-client'
+include 'qh-activity-service'
+include 'qh-activity-server'
+include 'qh-activity-wap-front'
+include 'qh-activity-admin-front'
+include 'qh-activity-msg-impl'
+include 'qh-activity-msg-api'
+
+

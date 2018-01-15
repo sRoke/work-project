@@ -1,0 +1,20 @@
+{
+  "name": "qh-oauth-wap-front",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "nzy <niuzy@kingsilk.net>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jso": "^2.0.3"
+  }
+}

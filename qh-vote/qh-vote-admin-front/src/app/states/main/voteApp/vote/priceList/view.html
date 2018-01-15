@@ -1,0 +1,159 @@
+<div flex layout="column" class="ks-priceList">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>砍价单</h1>
+        <!--ui-sref="main.voteApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20"></div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="background: #f5f5f5">
+        <div class="order-adress" layout="row" layout-align="start center"  ng-if="orderDetail.orderType !== 'SINCE'">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-address-1"></md-icon>
+            </div>
+            <div flex class="con" layout="column">
+                <div class="userInfo">{{orderDetail.addr.receiver}} {{orderDetail.addr.phone}}</div>
+                <div class="userAddress">地方的方式第三方{{orderDetail.addr.province}}{{orderDetail.addr.city}}{{orderDetail.addr.area}}{{orderDetail.addr.street}}</div>
+            </div>
+            <div class="right">
+                <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            </div>
+        </div>
+
+        <div class="order-item" layout="row" layout-align="start center">
+            <div class="left">
+                <img ng-src="{{orderDetail.awardImg}}">
+            </div>
+            <div flex class="con" layout="column">
+                <div class="name">{{orderDetail.awardName}}</div>
+                <div class="heightPrice">最高价:{{orderDetail.initPrice/100 |num:2}}</div>
+                <div class="lowerPrice">最低价:{{orderDetail.miniPrice/100 |num:2}}</div>
+
+            </div>
+            <div class="right">
+                <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left" flex="25">
+                    砍价人
+                </div>
+                <div class="right" flex="75">
+                    {{orderDetail.phone}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left" flex="25">
+                    支付状态
+                </div>
+                <div class="right" flex="75">
+                    <span ng-if="orderDetail.payStatus">已支付</span>
+                    <span ng-if="!orderDetail.payStatus">未支付</span>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left" flex="25">
+                    砍价金额
+                </div>
+                <div class="right" flex="75">
+                    {{orderDetail.price/100 |num:2}}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left" flex="25">
+                    快递单号
+                </div>
+                <div class="right" flex="75" layout="row" ng-if="orderDetail.recordStatus != 'RECEIVED'">
+                    <div flex>
+                        <input type="text" placeholder="请输入快递单号" ng-model="orderDetail.expressNo">
+                    </div>
+                    <div style="line-height: 32px" ng-click="wxSys()">
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-focus-horizontal"></md-icon>
+                    </div>
+                </div>
+                <div class="right" flex="75" ng-if="orderDetail.recordStatus == 'RECEIVED'">
+                    <!--<input type="text" placeholder="请输入备注信息" ng-model="memo">-->
+                    {{orderDetail.expressNo}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left" flex="25">
+                    快递公司
+                </div>
+                <div class="right" flex="75" ng-if="orderDetail.recordStatus != 'RECEIVED'">
+                    <input type="text" placeholder="请输入快递公司" ng-model="orderDetail.company">
+                </div>
+                <div class="right" flex="75" ng-if="orderDetail.recordStatus == 'RECEIVED'">
+                    <!--<input type="text" placeholder="请输入备注信息" ng-model="memo">-->
+                    {{orderDetail.company}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left" flex="25">
+                    备注信息
+                </div>
+                <div class="right" flex="75" ng-if="orderDetail.recordStatus != 'RECEIVED'">
+                    <input type="text" placeholder="请输入备注信息" ng-model="orderDetail.memo">
+                </div>
+                <div class="right" flex="75" ng-if="orderDetail.recordStatus == 'RECEIVED'">
+                    <!--<input type="text" placeholder="请输入备注信息" ng-model="memo">-->
+                    {{orderDetail.memo}}
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </md-content>
+
+    <div class="footBottom" layout="column" ng-if="orderDetail.recordStatus !== 'RECEIVED'">
+        <md-divider style="border-color:#E53467"></md-divider>
+        <div class="btn" flex layout="row" layout-align="center center">
+            <div flex style="text-align: center" ng-click="fallbackPage()">取消</div>
+            <div class="line"></div>
+            <div flex style="text-align: center;color: #e53467" ng-click="deliver()">发货</div>
+        </div>
+    </div>
+
+
+
+    <!--<div class="dialog-pay" layout="column">-->
+        <!--<div class="top" flex></div>-->
+        <!--<div class="con">-->
+            <!--<div class="title" layout="row">-->
+                <!--<div class="left">取消</div>-->
+                <!--<div class="name" flex>选择支付方式</div>-->
+                <!--<div class="right">确定</div>-->
+            <!--</div>-->
+            <!--<md-divider></md-divider>-->
+            <!--<div class="tab">到最低价购买</div>-->
+            <!--<md-divider></md-divider>-->
+            <!--<div class="tab">随时购买</div>-->
+            <!--<md-divider></md-divider>-->
+            <!--<div class="tab">联系商家</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+
+
+

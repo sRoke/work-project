@@ -1,0 +1,110 @@
+md-dialog-container {
+  background: red;
+}
+
+md-backdrop.md-opaque {
+  background: rgba(51, 51, 51, 0.97) !important;
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  top: 200px;
+}
+
+.modal-content {
+  box-shadow: 0 0 0 #fff !important;
+}
+
+.md-card .md-actions, md-card md-card-actions {
+  margin: 14px;
+}
+
+.md-headline {
+  font-size: 18px;
+  font-family: inherit;
+  color: #101010;
+  font-weight: bold;
+}
+
+md-card md-card-title {
+  padding: 15px 16px 10px 16px;
+}
+
+md-dialog._md-transition-in {
+  min-width: 280px;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 6px 20px;
+  overflow: hidden;
+}
+
+.modal-dialog md-card-content {
+  padding: 0 20px 0px 20px !important;
+}
+
+.md-card .md-actions, md-card md-card-actions {
+  margin: 0px !important;
+}
+
+md-backdrop {
+  height: 100% !important;
+}
+
+//弹窗提示
+.successCont {
+  position: absolute;
+  border-radius: 16px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);;
+  min-width: 180px;
+  max-width: 210px;
+  width: 90%;
+  box-shadow: 0 0 12px rgba(51, 51, 51, 0.3);
+  top: 44px;
+  left: 5%;
+  .sus {
+    text-align: center;
+    border-radius: 16px;
+    color: #fff;
+    .ks-icon {
+      margin-top: -2px;
+      font-size: 34px;
+      color: #fff;
+    }
+    p {
+      padding: 0 20px;
+      font-size: 18px;
+      color: #101010;
+      margin: 18px 0;
+      line-height: 1.5;
+    }
+  }
+}
+
+md-dialog.myDialog._md-transition-in {
+  min-width: 280px;
+  max-width: 310px;
+  box-sizing: border-box;
+  margin: 0 15px;
+  overflow: hidden;
+}
+
+.modal-dialog {
+  border-radius: 6px;
+  box-shadow: 0 0 0 #fff;
+  md-card-actions {
+    .btn {
+      font-size: 15px;
+      padding: 10px 12px;
+      border-radius: 4px;
+      outline: none;
+      color: #101010;
+      text-align: center;
+    }
+  }
+
+  md-card-content {
+    padding: 0;
+  }
+}

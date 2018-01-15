@@ -1,0 +1,120 @@
+@import "../../../../../scss/ksMain";
+@import "../../../../../scss/index";
+.ks-wallet-detail {
+
+  .ks-header._md {
+    min-height: 44px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    background: $agency-bg-white;
+
+    .ks-header-divWrap {
+      padding: 0 15px;
+      height: 100%;
+      color: $agency-word-dark;
+      .divTop {
+        text-align: center;
+        position: relative;
+        line-height: 44px;
+        .chevron_left {
+          color: $agency-word-dark;
+          position: absolute;
+          left: 0;
+          font-size: 21px;
+          line-height: 44px;
+        }
+        .regSpan{
+          font-size: 18px;
+          color: #030303;
+          letter-spacing: -0.43px;
+        }
+        .regSpan-right{
+          position: absolute;
+          right: 0;
+          font-size: 16px;
+          color: $agency-word-black;
+          letter-spacing: -0.39px;
+          line-height: 44px;
+        }
+      }
+    }
+  }
+  .main {
+    background: $agency-bg-white;
+    .tab-choose{
+      width: 100%;
+      padding: 0 15px;
+      background: $agency-bg-white;
+      height: 70px;
+      .tab-left{
+        font-size: 16px;
+        color: $agency-word-black;
+        letter-spacing: -0.39px;
+        line-height: 16px;
+        .note-data{
+          font-size: 14px;
+          color: $agency-word-gray;
+          letter-spacing: -0.34px;
+          line-height: 14px;
+          margin-top: 10px;
+        }
+        .note-wd{
+          font-size: 16px;
+          color: $agency-word-black;
+          letter-spacing: -0.39px;
+          line-height: 16px;
+          margin-top: 20px;
+        }
+
+      }
+      .tab-right{
+        font-size: 18px;
+        letter-spacing: -0.43px;
+        line-height: 18px;
+        .desc{
+          font-size: 14px;
+          color: $agency-word-black;
+          letter-spacing: -0.3px;
+          line-height: 14px;
+          margin-top: 10px;
+        }
+        .Positive{
+          color: $agency-word-black;
+          font-size: 16px;
+          letter-spacing: -0.39px;
+          line-height: 16px;
+          margin-top: 20px;
+        }
+        //.negative{
+        //  color: $agency-word-red;
+        //}
+      }
+      md-icon{
+        color: #C7CCCB;
+        font-size: 13px;
+        height: 13px;
+        min-height: 13px;
+        min-width: 0;
+        line-height: 13px;
+      }
+    }
+    .center-tab-boldLine{
+      width: 100%;
+      height: 10px;
+    }
+    .center-tab-line{
+      //width: 100%;
+      padding:0 15px;
+      background: $agency-bg-white;
+      .line{
+        width: 100%;
+        height: 1px;
+        -webkit-transform: scaleY(0.5);
+        -webkit-transform-origin: 0 0;
+        //overflow: hidden;
+        background: #CDD0CF;
+      }
+    }
+  }
+}

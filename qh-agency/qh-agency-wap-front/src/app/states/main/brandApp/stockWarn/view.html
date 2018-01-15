@@ -1,0 +1,66 @@
+<div flex="100" layout="column" class="ks-stockWarn">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>库存预警</h1>
+        <div class="right-button" flex="20" ui-sref="main.brandApp.purchase">
+            采购
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="search" layout="row" layout-align="center center">
+        <div class="input-wrap" flex layout="row">
+            <input type="text" ng-model="keyWord" ng-blur="searchItem()" placeholder="请输入商品名称或编号" flex>
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>
+        </div>
+        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon>-->
+    </div>
+    <md-divider></md-divider>
+        <md-content flex style="overflow-x: hidden">
+            <div class="itemWrap" layout="column" layout-align="center stretch">
+                <div class="item" layout="column" ng-repeat="item in itemList"
+                     ui-sref="main.brandApp.item({itemId:item.itemId})">
+                    <div layout="row" class="item-box">
+                        <!--<div class="img-wrap">-->
+                            <!--<img src="{{item.imgs[0]}}" alt="">-->
+                        <!--</div>-->
+                        <div class="item-detail" layout="column" flex>
+                            <div class="item-title">{{item.title}}</div>
+                            <div class="item-spec" layout="row">
+                                <div >库存 <span class="num warn">200</span></div>
+                                <div >销量 <span class="num">500</span></div>
+                                <div >零售价 <span class="num">{{ 200.12 | number : 2}}</span></div>
+                            </div>
+                        </div>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                    </div>
+                    <md-divider></md-divider>
+                </div>
+            </div>
+        </md-content>
+    </div>
+    <md-divider style="z-index: -1;"></md-divider>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

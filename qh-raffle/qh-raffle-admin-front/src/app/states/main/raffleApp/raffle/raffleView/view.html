@@ -1,0 +1,196 @@
+<div flex layout="column" class="ks-raffleView">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>幸运抽大奖</h1>
+        <!--ui-sref="main.raffleApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20" ng-click="editRaffle()">编辑</div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="background: #f5f5f5">
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    活动标题
+                </div>
+                <div class="right" flex>
+                    {{raffleDataview.raffleName}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    生效时间
+                </div>
+                <div class="right" flex>
+                    {{raffleDataview.beginTime | date:'yyyy'}}年{{raffleDataview.beginTime | date:'M' }}月{{raffleDataview.beginTime | date:'d'}}日
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    过期时间
+                </div>
+                <div class="right" flex>
+                    {{raffleDataview.endTime | date:'yyyy'}}年{{raffleDataview.endTime | date:'M' }}月{{raffleDataview.endTime | date:'d'}}日
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center"  ng-click="goEdit('rule')">
+                <div class="left">
+                    规则说明
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            查看详细
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center"   ng-click="goEdit('desp')">
+                <div class="left">
+                    活动图文
+                </div>
+                <div class="right" flex >
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            查看详细
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left  left-con">
+                    免费抽奖次数
+                </div>
+                <div class="right" flex>
+                    {{raffleDataview.freeCount}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left left-con">
+                    每次分享可获抽奖次数
+                </div>
+                <div class="right" flex>
+                    {{raffleDataview.shareCount}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left left-con">
+                    最多抽奖次数
+                </div>
+                <div class="right" flex>
+                   {{raffleDataview.lotteryCount}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center" ng-click="setLottery()">
+                <div class="left">
+                    奖项设置
+                </div>
+                <div class="right" flex >
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            查看详细
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    领取方式
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <span ng-if="raffleDataview.drawType == 'SINCE'">到店领取
+                            <md-icon class="ks-icon" md-font-set="ks-icon" ></md-icon></span>
+                            <span ng-if="raffleDataview.drawType == 'ONLINE'">快递发货
+                            <md-icon class="ks-icon" md-font-set="ks-icon" ></md-icon></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    是否强制关注
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center" ng-show="!raffleDataview.mustFollow">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" style="color: #999"></md-icon>
+                        </div>
+                    </div>
+
+                    <div class="right-R" layout="row" layout-align="end center" ng-show="raffleDataview.mustFollow">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-check-circle" style="color: #e53467"></md-icon>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    微信分享标题
+                </div>
+                <div class="right" flex>
+                    {{raffleDataview.shareTitle}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    微信分享描述
+                </div>
+                <div class="right" flex>
+                    {{raffleDataview.shareDesp}}
+                </div>
+            </div>
+        </div>
+    </md-content>
+
+    <div class="footBottom" layout="column">
+        <md-divider style="border-color:#E53467"></md-divider>
+        <div class="btn" flex layout="row" layout-align="center center">
+            <div flex class="tab" style="text-align: center" ng-click="goView(id)">预览</div>
+            <div class="line"></div>
+            <div flex class="tab" style="text-align: center" ng-click="share(id)">分享</div>
+            <div class="line"></div>
+            <div flex class="tab" style="text-align: center" ng-click="changeStatus(raffleDataview)" ng-if="raffleDataview.raffleStatus == 'CLOSED'">启用</div>
+            <div flex class="tab" style="text-align: center" ng-click="changeStatus(raffleDataview)" ng-if="raffleDataview.raffleStatus == 'ENABLE'">禁用</div>
+            <div class="line"></div>
+            <div flex class="tab" style="text-align: center" ui-sref="main.raffleApp.raffle.joinNum({id:id})">参与人</div>
+        </div>
+    </div>
+
+    <!--遮罩-->
+    <div class="mask" ng-if="mask" style="position: absolute"   ng-click="maskHide()">
+        <div class="maskButton1">
+            <!--<div class="shareKnow" md-font-icon="ks-arrow_left"></div>-->
+        </div>
+    </div>
+
+
+
+</div>
+
+
+

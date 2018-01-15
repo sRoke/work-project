@@ -1,0 +1,48 @@
+<div class="contentMain" layout="column" layout-align="start center">
+    <div class="contentMain-top" layout="row" layout-align="space-between center">
+        <div class="left" layout="row" layout-align="start center">
+            <div class="left-img">
+                <img src="1.png">
+            </div>
+            <div class="left-user" layout="column" layout-align="center start">
+                <div class="name"></div>
+                <div class="phone-set" layout="row" layout-align="start center">
+                    <div class="phone">{{user.phone}}</div>
+                    <div class="set" style="cursor: pointer;">设置</div>
+                </div>
+            </div>
+        </div>
+        <div class="right" ng-click="logout()">退出</div>
+    </div>
+    <div class="line"></div>
+    <div class="contentMain-con">
+        <div class="app" ng-repeat="app in userAppList" ng-click="goApp(app)">
+            <div class="tab name">{{app.shopName}}</div>
+            <div class="tab type">经营类目 : {{app.categoryId[0]}}</div>
+            <div class="tab status">店铺状态 : 营业中</div>
+            <!--<div class="Mask" layout="row" layout-align="center center">-->
+                <!--&lt;!&ndash;<div class="Mask-btn">开通</div>&ndash;&gt;-->
+            <!--</div>-->
+        </div>
+        <!--<div class="app">-->
+            <!--<div class="tab name">钱皇股份-微商城</div>-->
+            <!--<div class="tab type">经营类目 : 衣服</div>-->
+            <!--<div class="tab status">店铺状态 : 营业中</div>-->
+        <!--</div>-->
+        <div style="clear: both"></div>
+
+        <div ng-if="!userAppList || userAppList.length == 0" layout="row" layout-align="center center" class="noApp">
+            <div layout="column" layout-align="center center">
+                <div class="img">
+                    <img src="2.png">
+                </div>
+                <div class="ts">
+                    暂未开通应用,请联系客服
+                </div>
+                <div class="phone">
+                    0571-86064050-803
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,597 @@
+<div class="ks-goodEdit">
+    <!--<div class="panel-heading"><h4>添加商品</h4></div>-->
+    <div class="item-information">
+        <md-nav-bar
+                md-selected-nav-item="currentNavItem"
+                nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-click="goto('page1')" name="page1">
+                1.基本信息
+            </md-nav-item>
+            <md-nav-item md-nav-click="goto('page2')" name="page2">
+                2.图文详情
+            </md-nav-item>
+        </md-nav-bar>
+        <div class="ext-content" ng-click="hideList()">
+            <div ng-show=" currentNavItem == 'page1' ">
+                <form class="form-horizontal" name="itemBaseForm2" ng-submit="itemBaseSubmit()" novalidate>
+                    <!--==================================================================================================标题-->
+                    <div class="item-informations" layout="row">
+                        <div flex="10" class="informations-title" layout="row" layout-align="end center">标题 :</div>
+                        <div flex="80" class="informations-content" layout="row" layout-align="start center">
+                            <input type="text" name="title" class="form-control input-sm informations-content-input"
+                                   ng-model="baseData.title"
+                                   ng-disabled="views.disabledTitle"  placeholder="请输入商品标题或商品名称">
+                        </div>
+                    </div>
+                    <!--==================================================================================================副标题-->
+
+                    <div class="item-informations" layout="row">
+                        <div flex="10" class="informations-title" layout="row" layout-align="end center">副标题 :</div>
+                        <div flex="80" class="informations-content" layout="row" layout-align="start center">
+                            <input type="text" name="Subtitle" class="form-control input-sm informations-content-input"
+                                   ng-model="baseData.desp"
+                                   ng-disabled="views.disabledTitle"  placeholder="请输入商品副标题">
+                        </div>
+                    </div>
+                    <!--==================================================================================================商品标签-->
+
+                    <div class="item-informations" layout="row" ng-click="stopPropagation($event)">
+                        <div flex="10" class="informations-title" layout="row" layout-align="end center">商品标签 :</div>
+                        <div flex="80" class="informations-content" layout="row" layout-align="start center">
+                            <div class="uploadCategory" layout="row" layout-align="start center"
+                                 style="min-height: 48px" ng-click="changeCategory()">
+                                <div class="uploadCategory-chips">
+                                    <div class="chip" ng-repeat="chip in baseData.chips track by $index" layout="row"
+                                         layout-align="center center">{{chip.name}}
+                                        <!--<div class="chip-del" ng-click="chipDel($index,chips)">-->
+                                        <!--<md-icon md-font-set="ks-admin-font" md-font-icon="ks-close"></md-icon>-->
+                                        <!--</div>-->
+                                    </div>
+                                    <!--<input type="text" class="chip-ipt"/>-->
+                                    <div style="clear: both"></div>
+                                </div>
+
+                                <!--<md-chips ng-model="ctrl.fruitNames" readonly="ctrl.readonly" md-removable="ctrl.removable"></md-chips>-->
+                                <!--<md-chips flex ng-model="chips"  md-max-chips="20" readonly="true" md-removable="true"></md-chips>-->
+                                <md-icon style="outline: none;line-height:15px" md-font-set="ks-admin-font"
+                                         md-font-icon="ks-sort-down"></md-icon>
+                            </div>
+
+
+                            <div class="addCategory-btn" layout="row" layout-align="center center">
+                                <div class="uploadCategory-btn">刷新</div>
+                                <div class="line">|</div>
+                                <div class="addCategory" ng-click="goto('main.brandApp.classify')">新增</div>
+                            </div>
+
+
+
+
+                            <div class="categoryList" ng-show="categoryShow">
+                                <script type="text/ng-template" id="nodes_renderer2.html">
+                                    <div class="tree-node">
+                                        <div class="tree-node-content" layout="row" layout-align="start center"
+                                             style="height: 40px">
+                                            <div class="line" layout="row" layout-align="start center">
+                                                <div ng-repeat="lv in node.lv track by $index"
+                                                     style="display: inline-block">
+                                                    <md-icon
+                                                            md-font-set="ks-admin-font"
+                                                            md-font-icon="ks-dashed-line"
+                                                            ng-if="lv == 'false'"
+                                                    ></md-icon>
+                                                    <span style="width: 40px;display: inline-block"
+                                                          ng-if="lv == 'true'"></span>
+                                                </div>
+                                                <md-icon
+                                                        md-font-set="ks-admin-font"
+                                                        md-font-icon="ks-dashed-t"
+                                                        ng-if="!node.last"
+                                                ></md-icon>
+                                                <md-icon
+                                                        md-font-set="ks-admin-font"
+                                                        md-font-icon="ks-dashed-l"
+                                                        ng-if="node.last"
+                                                ></md-icon>
+                                            </div>
+                                            <div style="" ng-click="toggle(this)">
+                                                <md-icon
+                                                        ng-if="node.child.length>0 && collapsed"
+                                                        md-font-set="ks-admin-font"
+                                                        md-font-icon="ks-add-o"
+                                                        style="line-height: 20px;"
+                                                ></md-icon>
+                                                <md-icon
+                                                        ng-if="node.child.length>0 && !collapsed"
+                                                        md-font-set="ks-admin-font"
+                                                        md-font-icon="ks-minus"
+                                                        style="line-height: 20px;"
+                                                ></md-icon>
+
+                                                <input type="checkbox" ng-model="node.status"
+                                                       ng-checked="uploadCategory.indexOf(node.id) != -1"
+                                                       ng-disabled="views.staffGroup || node.child.length>0"
+                                                       ng-click="choose(this)" ng-show="!node.child">
+                                            </div>
+                                            <span>{{node.name}}</span>
+                                        </div>
+                                    </div>
+                                    <ol style="list-style: none;" ui-tree-nodes="" ng-model="node.child"
+                                        ng-class="{hidden: collapsed}">
+                                        <li style="list-style: none" ng-repeat="node in node.child track by $index"
+                                            ui-tree-node
+                                            collapsed="false" ng-if="!node.disabled"
+                                            ng-include="'nodes_renderer2.html'">
+                                        </li>
+                                    </ol>
+                                </script>
+                                <div layout="row" layout-align="start center">
+                                    <div style="" ng-click="showAuthorityList(this)">
+                                        <md-icon
+                                                ng-if="!authorityListShow"
+                                                md-font-set="ks-admin-font"
+                                                md-font-icon="ks-add-o"
+                                                style="line-height: 20px;margin-left: 10px"
+                                        ></md-icon>
+                                        <md-icon
+                                                ng-if="authorityListShow"
+                                                md-font-set="ks-admin-font"
+                                                md-font-icon="ks-minus"
+                                                style="line-height: 20px;margin-left: 10px"
+                                        ></md-icon>
+                                    </div>
+                                    <span ng-click="">请选择商品标签</span>
+                                </div>
+                                <div ng-show="authorityListShow">
+                                    <div>
+                                        <div ui-tree id="tree2-root" data-clone-enabled="true">
+                                            <ol ui-tree-nodes="" ng-model="authorityList" style="list-style: none">
+                                                <li style="list-style: none"
+                                                    ng-repeat="node in exampleAuthorityList track by $index"
+                                                    ui-tree-node
+                                                    collapsed="true" ng-if="!node.disabled"
+                                                    ng-include="'nodes_renderer2.html'"></li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--==================================================================================================商品主图-->
+                    <div class="item-informations" layout="row" layout-align="start start">
+                        <div flex="10" class="informations-title" layout="row" layout-align="end center">商品主图 :</div>
+                        <div flex="80" class="informations-content">
+                            <div layout="row" layout-align="start start" class="mainImg">
+                                <div class="imgList" ng-repeat="img in baseData.imgs track by $index" id="img{{$index}}"
+                                     ng-mouseenter="showOperate($index)" ng-mouseleave="hideOperate($index)">
+                                    <p class="imgWrap">
+                                        <img ng-src="{{img}}" width="100px"
+                                             height="100px"/>
+                                    </p>
+                                    <div class="file-panel" ng-if="!views.deleteImg" layout="column"
+                                         layout-align="start center">
+                                        <span class="cancel" ng-click="cancelDel($index)">删除</span>
+                                        <!--<span class="rotateRight">向右旋转</span>
+                                        <span class="rotateLeft">向左旋转</span>-->
+                                    </div>
+                                </div>
+
+                                <div class="imgList" layout="column" layout-align="center center"
+                                     ngf-select="uploading($file)" ngf-pattern="'image/*'"
+                                     ng-if="baseData.imgs && baseData.imgs.length<5">
+                                    <md-icon md-font-set="ks-admin-font" md-font-icon="ks-add-o"></md-icon>
+                                    <div>上传图片</div>
+                                    <!--<div class="button" ngf-select="uploading($file)" ngf-pattern="'image/*'" ng-model="files" ngf-multiple="true">上传图片</div>-->
+                                </div>
+                            </div>
+                            <div class="erro"><span style="color:#F78B91">*</span>建议尺寸 : 640 X 640 像素(1:1),最多五张主图</div>
+                        </div>
+                    </div>
+                    <!--==================================================================================================添加规格-->
+                    <div class="item-informations" layout="row" layout-align="start start">
+                        <div flex="10" class="informations-title" layout="row" layout-align="end center">商品规格 :</div>
+                        <div flex="80" class="informations-content" layout="column" layout-align="start start">
+                            <div class="itemSpec-content" layout="row" layout-align="start start"
+                                 ng-repeat="Specification in baseData.Specifications track by $index">
+                                <div flex layout="column" layout-align="start start">
+                                    <div class="itemSpec">
+                                        <div class="input-group" uib-dropdown style="width: 200px">
+                                            <input type="text" class="form-control" placeholder="请选择商品规格"
+                                                   ng-model="Specification.realName"
+                                                   ng-click="$event.stopPropagation()"
+                                                   uib-dropdown-toggle autocomplete="off" disabled>
+                                            <!--<div class="input-group-addon" ng-click="obtainSpecification(Specification)" uib-dropdown-toggle-->
+                                            <!--role="button">-->
+                                            <!--<i class="glyphicon glyphicon-search" role="button"></i></div>-->
+
+                                            <!--<ul class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenu1"-->
+                                            <!--style="max-height: 300px;overflow: auto">-->
+                                            <!--<li>-->
+                                            <!--<table class="table table-hover">-->
+                                            <!--<tr ng-repeat="staff1 in SpecificationsList"-->
+                                            <!--ng-click="selectSpecification(staff1,Specification)">-->
+                                            <!--<td>{{staff1.name}}</td>-->
+                                            <!--</tr>-->
+                                            <!--</table>-->
+                                            <!--</li>-->
+                                            <!--</ul>-->
+                                        </div>
+
+                                        <div class="add-itemSpec" layout="row" layout-align="center center">
+                                            <div class="uploadItemSpec-btn">刷新</div>
+                                            <div class="line">|</div>
+                                            <div class="add-itemSpec-btn" ng-click="goto('main.brandApp.attAdd')">新增</div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="attr">
+                                        <!--<div class="attr-list" layout="row" layout-align="center center">属性</div>-->
+                                        <div class="attr-list" layout="row" layout-align="center center"
+                                             ng-repeat="itemProp in Specification.itemProp track by $index">
+                                            {{itemProp.name}}
+
+                                            <div class="attr-list-del" layout="row" layout-align="center center"
+                                                 ng-click="attrDel(Specification,itemProp,$index)"
+                                                 ng-if="itemProp.flog !== true">
+                                                <md-icon md-font-set="ks-admin-font" md-font-icon="ks-close"></md-icon>
+                                            </div>
+
+                                        </div>
+                                        <div class="attr-add" ng-click="showPopup(Specification)" layout="row"
+                                             layout-align="center center">+ 添加
+                                        </div>
+                                        <div style="clear: both"></div>
+                                    </div>
+
+                                </div>
+                                <!--<div layout="column" layout-align="start center" ng-click="closeSpec($index,Specification)">-->
+                                <!--<md-icon md-font-set="ks-admin-font" md-font-icon="ks-close"></md-icon>-->
+                                <!--</div>-->
+                                <div class="popup" ng-show="Specification.showPop">
+                                    <div class="jiao"></div>
+                                    <div class="popup-content" layout="row" layout-align="start center">
+                                        <div flex="80" class="popup-content-input">
+                                            <md-chips flex ng-model="Specification.selectItemPropChips" readonly="false"
+                                                      md-removable="true"
+                                                      ng-click="popupInputShowToggle(Specification)"></md-chips>
+                                            <div class="popupInputShowList" ng-show="popupToggle">
+                                                <div ng-repeat="itemProp in Specification.itemPropList"
+                                                     ng-click="selectItemProp(itemProp,Specification)" class="showList">
+                                                    {{itemProp.name}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div flex="10" style="color: #05A3FC"
+                                             ng-click="showPopup(Specification,'true')">确认
+                                        </div>
+                                        <div flex="10" ng-click="showPopup(Specification)">取消</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--<div class="itemSpec-btn" layout="row" layout-align="center center" ng-click="addSpecification()">-->
+                            <!--<md-icon md-font-set="ks-admin-font" md-font-icon="ks-add-o"></md-icon>-->
+                            <!--<div>添加规格</div>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                    <!--==================================================================================================sku-->
+                    <div class="item-informations" layout="row" layout-align="start start">
+                        <div flex="10" class="informations-title" layout="row" layout-align="end center">商品sku :</div>
+                        <div flex="80" class="informations-content itemSku" layout="column" layout-align="start start">
+                            <div layout="row" layout-align="start center" class="prompt"
+                                 ng-show="baseData.skus.length<=0 || !baseData.skus || baseData.Specifications.length <=0">
+                                <span style="color:#F78B91">*</span>
+                                <div>请先完善规格信息</div>
+                            </div>
+
+                            <!--<div class="getSku" layout="row" layout-align="center center" ng-click="getSku()">生成SKU</div>-->
+
+
+                            <div class="" ng-show="baseData.skus.length>0 && baseData.Specifications.length>0"
+                                 style="width: 100%">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th ng-repeat="head in  baseData.Specifications"
+                                                style="width: 66px;text-align: center;vertical-align: middle;"
+                                                ng-if="head.id">{{head.realName}}
+                                            </th>
+                                            <th style="width: 100px; text-align: center;vertical-align: middle;">图片</th>
+                                            <th style="width: 100px; text-align: center;vertical-align: middle;">
+                                                总代价<span style="color:red">*</span></th>
+                                            <th style="width: 100px; text-align: center;vertical-align: middle;">
+                                                市代价<span style="color:red">*</span></th>
+                                            <th style="width: 100px; text-align: center;vertical-align: middle;">
+                                                加盟价<span style="color:red">*</span></th>
+                                            <th style="width: 100px; text-align: center;vertical-align: middle;">
+                                                零售价<span style="color:red">*</span></th>
+                                            <th style="width: 100px; text-align: center;vertical-align: middle;">
+                                                吊牌价<span style="color:red">*</span></th>
+                                            <th style="width: 100px; text-align: center;vertical-align: middle;">库存</th>
+                                            <th style="width: 150px; text-align: center;vertical-align: middle;">编码</th>
+                                            <th style="text-align: left;vertical-align: middle;">操作</th>
+                                        </tr>
+                                        </thead>
+
+
+                                        <tbody>
+
+                                        <tr ng-repeat="sku in baseData.skus">
+                                            <td ng-repeat="spec in sku.specs" ng-init="spec"
+                                                title="{{spec.value}}"
+                                                style="text-align: center;vertical-align: middle;">{{spec.value.name}}
+                                            </td>
+                                            <td>
+                                                <!--//图片-->
+                                                <div class="skuImg">
+                                                    <div class="btn" ng-if="!sku.img"
+                                                         ngf-select="chooseSkuImg($file,sku)" ngf-pattern="'image/*'">
+                                                        选择图片
+                                                    </div>
+                                                    <div class="img" ng-if="sku.img" layout="row"
+                                                         layout-align="center center">
+                                                        <img ng-src="{{sku.img}}">
+                                                        <div class="delSkuImg" ng-click="delSkuImg(sku)">
+                                                            <md-icon md-font-set="ks-admin-font"
+                                                                     md-font-icon="ks-close"></md-icon>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <!--//总代价-->
+                                                <input type="text" name="generalAgencyPrice"
+                                                       ng-model="sku.generalAgencyPrice"
+                                                       ng-pattern="/^\d+(\.\d{1,2})?$/"
+                                                       ng-focus="normalPrice($index,'market')"
+                                                       ng-blur="formatPrice($index,'market')"
+                                                       ng-disabled="views.itemSpec"
+                                                       class="form-control input-sm"
+                                                       required>
+                                            </td>
+
+                                            <!--ng-pattern="/^[1-9][0-9]*$/"-->
+
+                                            <td>
+                                                <!--市代价-->
+                                                <input type="text" name="regionalAgencyPrice"
+                                                       ng-pattern="/^\d+(\.\d{1,2})?$/"
+                                                       ng-model="sku.regionalAgencyPrice"
+                                                       ng-focus="normalPrice($index)"
+                                                       ng-blur="formatPrice($index)" ng-disabled="views.itemSpec"
+                                                       class="form-control input-sm" required>
+                                            </td>
+                                            <td>
+                                                <!--//加盟价-->
+                                                <input type="text" ng-pattern="/^\d+(\.\d{1,2})?$/" name="leaguePrice"
+                                                       class="form-control input-sm" ng-disabled="views.itemSpec"
+                                                       ng-model="sku.leaguePrice" required>
+                                            </td>
+                                            <td>
+                                                <!--//零售价-->
+                                                <input type="text" ng-pattern="/^\d+(\.\d{1,2})?$/" name="salePrice"
+                                                       class="form-control input-sm" ng-disabled="views.itemSpec"
+                                                       ng-model="sku.salePrice" required>
+                                            </td>
+                                            <td>
+                                                <!--//吊牌价-->
+                                                <input type="text" ng-pattern="/^\d+(\.\d{1,2})?$/" name="labelPrice"
+                                                       class="form-control input-sm" ng-disabled="views.itemSpec"
+                                                       ng-model="sku.labelPrice" required>
+                                            </td>
+                                            <td>
+                                                <!--//库存-->
+                                                <input type="text" ng-model="sku.storage" ng-pattern="/^[1-9][0-9]*$/"
+                                                       ng-disabled="views.itemSpec" name="storage"
+                                                       class="form-control input-sm" required>
+                                            </td>
+                                            <td>
+                                                <!--编码-->
+                                                <input type="text" name="labelPrice"
+                                                       class="form-control input-sm" ng-disabled="views.itemSpec"
+                                                       ng-model="sku.skuCode">
+                                            </td>
+                                            <td style="text-align: left">
+                                                <input type="button" value="禁用" ng-click="disabledSku(sku)"
+                                                       ng-disabled="views.itemSpec" ng-if="sku.status == 'false'">
+                                                <input type="button" value="启用" ng-click="disabledSku(sku)"
+                                                       ng-disabled="views.itemSpec" ng-if="sku.status == 'true'">
+                                                <!--<a href="javascript:void(0);" title="禁用" ng-click="disabledSku(sku)"-->
+                                                <!--class="btn-default"  ng-disabled="views.itemSpec"-->
+                                                <!--ng-if="!sku.status"><span class="glyphicon glyphicon-ban-circle"></span>-->
+                                                <!--</a>-->
+                                                <!--<a href="javascript:void(0);" title="启用" ng-click="disabledSku($index)"-->
+                                                <!--class="btn-default"  ng-disabled="views.itemSpec"-->
+                                                <!--ng-if="sku.status"><span class="glyphicon glyphicon-ok-circle"></span>-->
+                                                <!--</a>-->
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--==================================================================================================佣金-->
+                    <!--<div class="item-informations" layout="row">-->
+                    <!--<div flex="10" class="informations-title" layout="row" layout-align="end center">佣金比例 :</div>-->
+                    <!--<div flex="80" class="informations-content " layout="row" layout-align="start center">-->
+                    <!--<div flex="30">-->
+                    <!--<input ng-pattern="/^\d+(\.\d{1,2})?$/" type="text" class="form-control input-sm informations-content-input" >-->
+                    <!--</div>-->
+                    <!--<div layout="row" layout-align="start center" class="prompt">-->
+                    <!--<span style="color:#F78B91">*</span>-->
+                    <!--<div>佣金比例为小数,如0.1表示10%</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--==================================================================================================积分-->
+                    <!--<div class="item-informations" layout="row">-->
+                    <!--<div flex="10" class="informations-title" layout="row" layout-align="end center">积分比例 :</div>-->
+                    <!--<div flex="80" class="informations-content " layout="row" layout-align="start center">-->
+                    <!--<div flex="30">-->
+                    <!--<input ng-pattern="/^\d+(\.\d{1,2})?$/" type="text" class="form-control input-sm informations-content-input">-->
+                    <!--</div>-->
+                    <!--<div layout="row" layout-align="start center" class="prompt">-->
+                    <!--<span style="color:#F78B91">*</span>-->
+                    <!--<div>积分比例为整数,如100表示1100积分=1元钱</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--==================================================================================================运费-->
+                    <div class="item-informations" layout="row" layout-align="start start">
+                        <div flex="10" class="informations-title" layout="row" layout-align="end center">运费模板 :</div>
+                        <div flex="80" class="informations-content " layout="row" layout-align="start center">
+                            <div flex layout="column" layout-align="start start">
+                                <div layout="row" layout-align="start start" class="freight">
+                                    <md-checkbox ng-checked="freight" ng-click="freightToggle('1')" disabled="true">
+                                        统一运费:
+                                    </md-checkbox>
+                                    <input type="text" disabled="true"
+                                           class="form-control input-sm informations-content-input"
+                                           placeholder="¥ 0.00">
+
+                                    <!--<input ng-pattern="/^\d+(\.\d{1,2})?$/" type="text" class="form-control input-sm informations-content-input" placeholder="¥ 0.00">-->
+                                </div>
+                                <div layout="row" layout-align="start start" class="freight">
+                                    <md-checkbox ng-checked="!freight" ng-click="freightToggle('2')" disabled="true">
+                                        运费模板:
+                                    </md-checkbox>
+                                    <input type="text" disabled="true"
+                                           class="form-control input-sm informations-content-input"
+                                           placeholder="¥ 0.00">
+                                    <!--<input ng-pattern="/^\d+(\.\d{1,2})?$/" type="text" class="form-control input-sm informations-content-input" placeholder="¥ 0.00">-->
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--==================================================================================================下一步-->
+                    <div class="item-informations" layout="row">
+                        <div flex="10" class="informations-title" layout="row" layout-align="end center"></div>
+                        <div flex="80" class="informations-content " layout="row" layout-align="start center">
+                            <button class="next-btn" layout="row" layout-align="center center"
+                                    ng-click="changePage('2')">下一步
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="error">
+                    <div class="form-group has-error"
+                         ng-if="itemBaseForm2.$dirty"
+                         ng-hide="itemBaseForm2.$valid">
+                        <div class="alert alert-danger">
+                            <!--<div>-->
+                                <!--<div>输入信息有误请修改后再提交</div>-->
+                            <!--</div>-->
+                            <!--<div ng-messages="itemBaseForm2.title.$error">-->
+                                <!--<div ng-message="required">商品标题不能为空</div>-->
+                            <!--</div>-->
+                            <div ng-messages="itemBaseForm2.generalAgencyPrice.$error">
+                                <div ng-message="required">总代价不能为空</div>
+                                <div ng-message="pattern">总代价只能填写数字,最多2位小数</div>
+                            </div>
+                            <div ng-messages="itemBaseForm2.regionalAgencyPrice.$error">
+                                <div ng-message="required">市代价不能为空</div>
+                                <div ng-message="pattern">市代价只能填写数字,最多2位小数</div>
+                            </div>
+                            <div ng-messages="itemBaseForm2.leaguePrice.$error">
+                                <div ng-message="required">加盟价不能为空</div>
+                                <div ng-message="pattern">加盟价只能填写数字,最多2位小数</div>
+                            </div>
+                            <div ng-messages="itemBaseForm2.salePrice.$error">
+                                <div ng-message="required">零售价不能为空</div>
+                                <div ng-message="pattern">零售价只能填写数字,最多2位小数</div>
+                            </div>
+                            <div ng-messages="itemBaseForm2.labelPrice.$error">
+                                <div ng-message="required">吊牌价不能为空</div>
+                                <div ng-message="pattern">吊牌价只能填写数字,最多2位小数</div>
+                            </div>
+
+                            <div ng-messages="itemBaseForm2.storage.$error">
+                                <div ng-message="required">库存不能为空</div>
+                                <div ng-message="pattern">库存只能填写大于0的数字</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div ng-show=" currentNavItem == 'page2' ">
+                <div class="item-editor" layout="row" layout-align="start start">
+                    <div flex="10" class="informations-title" layout="row" layout-align="end center">商品详细:</div>
+                    <div flex="80" class="informations-content " layout="row" layout-align="start center">
+                        <div id="div4" flex>
+                            <p>欢迎使用 wangEditor 富文本编辑器</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-editor" layout="row" layout-align="start start">
+                    <div flex="10" class="informations-title" layout="row" layout-align="end center"></div>
+                    <div flex="80" class="informations-content " layout="row" layout-align="start center">
+                        <button class="previous-btn" layout="row" layout-align="center center"
+                                ng-click="changePage('1')">上一步
+                        </button>
+                        <button class="next-btn" layout="row" layout-align="center center" ng-click="pageSave()"
+                                ng-disabled="!itemBaseForm2.$valid">编辑
+                        </button>
+                        <!--<div class="next-btn" layout="row" layout-align="center center" ng-click="getHtml()">html转化</div>-->
+                        <!--<div class="next-btn" layout="row" layout-align="center center"></div>-->
+                    </div>
+                </div>
+
+                <div class="error">
+                    <div class="form-group has-error"
+                         ng-if="itemBaseForm2.$dirty"
+                         ng-hide="itemBaseForm2.$valid">
+                        <div class="alert alert-danger">
+                            <!--<div>-->
+                                <!--<div>输入信息有误请修改后再提交</div>-->
+                            <!--</div>-->
+                            <!--<div ng-messages="itemBaseForm2.title.$error">-->
+                                <!--<div ng-message="required">商品标题不能为空</div>-->
+                            <!--</div>-->
+                            <div ng-messages="itemBaseForm2.generalAgencyPrice.$error">
+                                <div ng-message="required">总代价不能为空</div>
+                                <div ng-message="pattern">总代价只能填写数字,最多2位小数</div>
+                            </div>
+                            <div ng-messages="itemBaseForm2.regionalAgencyPrice.$error">
+                                <div ng-message="required">市代价不能为空</div>
+                                <div ng-message="pattern">市代价只能填写数字,最多2位小数</div>
+                            </div>
+                            <div ng-messages="itemBaseForm2.leaguePrice.$error">
+                                <div ng-message="required">加盟价不能为空</div>
+                                <div ng-message="pattern">加盟价只能填写数字,最多2位小数</div>
+                            </div>
+                            <div ng-messages="itemBaseForm2.salePrice.$error">
+                                <div ng-message="required">零售价不能为空</div>
+                                <div ng-message="pattern">零售价只能填写数字,最多2位小数</div>
+                            </div>
+                            <div ng-messages="itemBaseForm2.labelPrice.$error">
+                                <div ng-message="required">吊牌价不能为空</div>
+                                <div ng-message="pattern">吊牌价只能填写数字,最多2位小数</div>
+                            </div>
+
+                            <div ng-messages="itemBaseForm2.storage.$error">
+                                <div ng-message="pattern">库存只能填写大于0的数字</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<md-checkbox ng-model="disableInkBar">Disable Ink Bar</md-checkbox>-->
+        </div>
+    </div>
+</div>

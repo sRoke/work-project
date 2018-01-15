@@ -1,0 +1,57 @@
+/**
+ * 底部按钮通栏
+ */
+.ksFooterMenu {
+
+  @include flex-shrink(0);
+
+  md-toolbar {
+
+    min-height: 49px !important;
+    height: 49px !important;
+    background-color: #101010;
+
+    .menu-item {
+      position: relative;
+
+      &.cur {
+        color: #fff;
+        md-icon {
+          color: #fff;
+          /*font-weight: 900;*/
+        }
+      }
+
+      md-icon {
+        margin-top: 2px;
+        //margin: 3px 0;
+        font-size: 24px;
+        text-align: center;
+      }
+
+      .md-grid-text {
+        margin-top: 2px;
+        font-size: 11px;
+        text-align: center;
+      }
+      .md-grid-text:nth-of-type(2) {
+        margin-top: 1px;
+      }
+    }
+
+
+    //更换图标，这里先注释掉
+   /* // 福利社的图标因为设计原因，有点大，在这里单独给缩小字号。
+    & > .menu-item:nth-child(2) {
+      md-icon {
+        font-size: 24px;
+      }
+    }*/
+
+  }
+  //设置其它未选中图标u颜色
+  md-toolbar:not(.md-menu-toolbar) md-icon {
+    color: #666;
+    /*font-weight: 600;*/
+  }
+}

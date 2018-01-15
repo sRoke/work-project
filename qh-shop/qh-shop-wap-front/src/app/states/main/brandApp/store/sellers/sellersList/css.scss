@@ -1,0 +1,403 @@
+@import "../../../../../../scss/ksMain";
+@import "../../../../../../scss/index";
+.ks-sellersList {
+  background: #ffffff;
+  .search{
+    margin: 6px 15px;
+    height: 32px;
+    .search-input{
+      background: #f5f5f5;
+      border-radius: 8px;
+      position: relative;
+      height: 100%;
+      .left{
+        margin-left: 15px;
+        margin-right: 10px;
+        md-icon{
+          font-size: 12px;
+          height: 32px;
+          line-height: 32px;
+          width: 12px;
+          min-width: 12px;
+          color: #999999;
+        }
+      }
+      .right{
+        margin-left: 10px;
+        margin-right: 10px;
+        md-icon{
+          font-size: 12px;
+          height: 32px;
+          line-height: 32px;
+          width: 12px;
+          min-width: 12px;
+          color: #999999;
+        }
+      }
+      .con{
+        input{
+          width: 100%;
+          border: none;
+          background: #F5F5F5;
+          border-radius: 8px;
+          height: 32px;
+          line-height: 32px;
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers */
+          font-size: 14px;
+          letter-spacing: -0.34px;
+          //text-align: center;
+        }
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-size: 14px;
+          letter-spacing: -0.34px;
+          //text-align: center;
+        }
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-size: 14px;
+          letter-spacing: -0.34px;
+          //text-align: center;
+        }
+      }
+    }
+    .search-btn{
+      color: #333333;
+      margin-left: 10px;
+      font-size: 14px;
+      height: 32px;
+      line-height: 32px;
+    }
+  }
+
+  .tab {
+    background: #fff;
+    .tab-btn {
+      padding: 0 20px;
+
+      .btn {
+        display: block;
+        padding: 10px 0;
+        color: #333;
+      }
+    }
+    .active {
+      border-bottom: 1px solid #E53467;
+    }
+  }
+
+  #swiper-container2 {
+    width: 100%;
+    //height: 40px;
+    min-height: 40px;
+    //margin: 0 auto 10px;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    .my-slide2 {
+      box-sizing: border-box;
+      text-align: center;
+      -webkit-flex-shrink: 0;
+      -ms-flex: 0 0 auto;
+      flex-shrink: 0;
+      height: 100%;
+      //width: 100px;
+      //margin-right: 0 !important;
+      position: relative;
+      //line-height: 44px;
+      color: #333;
+      font-size: 14px;
+      .tab-btn {
+        padding: 0 20px;
+
+        .btn {
+          display: block;
+          padding: 10px 0;
+          color: #333;
+        }
+      }
+      .active {
+        border-bottom: 1px solid #E53467;
+      }
+      //
+      //.my-slide2-content {
+      //  //background: #ffe9d9;
+      //  width: 100%;
+      //  background: #ffffff;
+      //  height: 32px;
+      //  min-height: 32px;
+      //  padding: 9px 0;
+      //  //color: #d59b71;
+      //  font-size: 14px;
+      //  text-align: center;
+      //  .line {
+      //    width: 1px;
+      //    height: 100%;
+      //    background: #e9cdb9;
+      //    -webkit-transform: scaleX(0.5);
+      //    -webkit-transform-origin: 0 0;
+      //    //overflow: hidden;
+      //    //position: absolute;
+      //    //height: 32px;
+      //  }
+      //}
+      //
+      //.line{
+      //
+      //}
+
+    }
+    .my-slide2-content.active {
+      //border-bottom: 2px solid #b8383a;
+      //color: #fff;
+      //background: #e84e40 !important;
+      //font-weight: bold;
+    }
+    .swiper-pagination-bullets {
+      display: block !important;
+    }
+    .active {
+      visibility: visible !important;
+    }
+    .my-wrapper2 {
+      display: flex;
+      //visibility: hidden;
+      height: inherit;
+      background: #fff;
+      //margin: 0 auto;
+      //visibility: visible !important;
+    }
+  }
+  md-content {
+    width:100%;
+    .itemTab{
+      background: #ffffff;
+      .item{
+        //height: 82px;
+        min-height: 50px;
+        padding: 10px 15px;
+        .item-img{
+          width: 70px;
+          height: 100%;
+          background: #f5f5f5;
+          margin-right: 10px;
+          img{
+            width: 100%;
+            height: 100%;
+            display: block;
+          }
+        }
+        .item-desc{
+
+
+          .item-name{
+            color: #333333;
+            font-size: 14px;
+            width: 100%;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+
+          .item-sales{
+            font-size: 14px;
+            color: #999999;
+          }
+
+          .item-desp{
+            width: 100%;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            font-size: 14px;
+            color: #999999;
+            .price{
+              height: 20px;
+              line-height: 20px;
+            }
+            md-icon{
+              font-size: 20px;
+              min-height: 20px;
+              min-width: 20px;
+              line-height: 20px;
+              height: 20px;
+              width: 20px;
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+
+  .footBottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background: #ffffff;
+    .hight-line{
+      height: 1px;
+      width: 100%;
+      background: #E53467;
+      -webkit-transform: scaleY(0.5);
+      -webkit-transform-origin: 0 0;
+      overflow: hidden;
+    }
+
+
+    .left{
+      text-align: center;
+      font-size: 18px;
+      color: #666666;
+    }
+    .line{
+      width: 1px;
+      height: 29px;
+      background: #d5d5d5;
+      -webkit-transform: scaleX(0.5);
+      -webkit-transform-origin: 0 0;
+      overflow: hidden;
+    }
+    .right{
+      text-align: center;
+      font-size: 18px;
+      color: #E53467;
+    }
+  }
+
+
+
+
+
+  .mask {
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    background-color: #101010 !important;
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    top: 0;
+    .maskButton1 {
+      position: absolute;
+      float: right;
+      width: 259px;
+      height: 176px;
+      right: 9px;
+      background: url("share.png") no-repeat;
+      background-size: 100%;
+    }
+  }
+
+
+
+
+
+
+}
+
+
+
+.shareItem-dialog{
+  //width: 270px;
+  //height: 180px;
+  min-height: 212px;
+  min-width: 270px;
+  border-radius: 8px;
+  background: #fff;
+  //overflow: hidden;
+  overflow: initial;
+  .closed{
+    width: 24px;
+    height: 24px;
+    background: #e53467;
+    border-radius: 12px;
+    position: absolute;
+    right: -12px;
+    top:-12px;
+    md-icon{
+      font-size: 12px;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+}
+
+.md-scroll-mask{
+  background: rgba(51,51,51,0.6);
+}
+
+.ks-btSheet1{
+  background: #ffffff;
+}
+
+.canvasSimple{
+  background: #ffffff;
+  position: fixed;
+  //bottom: -450px;
+  z-index: -1;
+  width: 300px;
+  height: 447px;
+  .title{
+    height: 55px;
+    font-size: 18px;
+    color: #333333;
+    text-align: center;
+    line-height: 55px;
+  }
+  .img{
+    width: 260px;
+    height: 260px;
+    img{
+      width: 260px;
+      height: 260px;
+      display: block;
+    }
+  }
+  .foot{
+    padding: 20px;
+    height: 132px;
+    .foot-desc{
+      height: 100%;
+      .name{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        font-size: 16px;
+        color: #333333;
+      }
+      .newPrice{
+        font-size: 18px;
+        color: #E53467;
+      }
+      .oldPrice{
+        text-decoration:line-through;
+        color: #999999;
+        font-size: 12px;
+        height: 14px;
+        line-height: 14px;
+      }
+    }
+    .vsCode{
+      margin-left: 26px;
+      .img{
+        width: 77px;
+        height: 77px;
+        img{
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+      }
+      .ts{
+        font-size: 10px;
+        color: #666666;
+        height: 12px;
+        line-height: 12px;
+        margin-top: 3px;
+      }
+    }
+  }
+}

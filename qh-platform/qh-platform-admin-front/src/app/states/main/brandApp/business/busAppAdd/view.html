@@ -1,0 +1,41 @@
+<div class="ks-busAppAdd">
+    <div class="content">
+        <div class="tab" layout="row" layout-align="start center">
+            <div class="title">店铺名称:</div>
+            <div layout="row" layout-align="start center">
+                <input class="form-control" type="text" placeholder="为店铺取个名称吧" style="width: 200px" ng-model="app.shopName">
+                <!--<div class="ts">*超过有效时间该应用不能使用</div>-->
+            </div>
+        </div>
+        <div class="tab" layout="row" layout-align="start center">
+            <div class="title">店铺类型:</div>
+            <div layout="row" layout-align="start center">
+                <div class="demo-select-all-checkboxes" ng-repeat="item in data.content" layout="row"
+                     layout-align="center center">
+                    <md-checkbox ng-checked="exists(item.id, checkedApp)"
+                                 ng-click="toggle(item.id, checkedApp)">
+                        {{item.appName}}
+                    </md-checkbox>
+                </div>
+                <!--<div class="btn-type">微商城</div>-->
+                <!--<div class="btn-type">销售宝</div>-->
+            </div>
+        </div>
+        <div class="tab" layout="row" layout-align="start center">
+            <div class="title">有效时间:</div>
+            <div layout="row" layout-align="start center">
+                <!--<input class="form-control" type="text" placeholder="请输入有效时间" style="width: 200px">-->
+                <md-datepicker ng-model="app.date" md-placeholder="Enter date" md-open-on-focus
+                               md-date-locale="s" md-date-locale="dateF" md-hide-icons="calendar"
+                               md-min-date = 'today'></md-datepicker>
+                <!--<input type="text" value="2012-05-15 21:05" id="datetimepicker">-->
+                <div class="ts">*超过有效时间该应用不能使用</div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-save" layout="row" layout-align="start center">
+        <div class="save" ng-click="save()" >保存</div>
+        <div class="return" ng-click="fallbackPage()">返回</div>
+    </div>
+</div>
+

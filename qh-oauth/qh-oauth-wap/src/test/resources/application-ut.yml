@@ -1,0 +1,12 @@
+
+# UNIT TEST
+
+net.kingsilk.qh.oauth.ut:
+  oauth:
+    wap:
+      url :                 http://localhost:10040
+      accessTokenUri:       ${net.kingsilk.qh.oauth.ut.oauth.wap.url}/oauth/token
+      userAuthorizationUri: ${net.kingsilk.qh.oauth.ut.oauth.wap.url}/oauth/authorize
+      checkTokenUri:        ${net.kingsilk.qh.oauth.ut.oauth.wap.url}/oauth/check_token
+
+

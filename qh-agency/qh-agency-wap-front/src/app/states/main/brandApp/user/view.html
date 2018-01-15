@@ -1,0 +1,51 @@
+<div flex="100" layout="column" class="ks-user-wrap">
+    <div class="ks-black-header" layout="row">
+        <div class="back-button" flex="20" ng-click="vm.fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>个人中心</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-content flex style="overflow-x: hidden">
+        <div class="box">
+            <div class="wrap" layout="row" layout-align="space-between center">
+                <div flex class="txt">头像</div>
+                <div class="right-wrap" layout="row" layout-align="center center">
+                    <img img-holder
+                         src="https://img.kingsilk.net/71cbc9197589ad0b0fdaaee08afa4114?imageView2/2"/>
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="wrap" layout="row" layout-align="space-between center">
+                <div flex class="txt">手机号</div>
+                <div class="right-wrap" layout="row" layout-align="center center">
+                    <div class="des">{{info.phone}}</div>
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                </div>
+            </div>
+            <!--<md-divider></md-divider>-->
+            <!--<div class="wrap" layout="row" layout-align="space-between center" ng-click="openDialog()">-->
+            <!--<div flex class="txt">我的二维码</div>-->
+            <!--<div class="right-wrap" layout="row" layout-align="center center">-->
+            <!--<md-icon class="ks-left-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon>-->
+            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+            <!--</div>-->
+            <md-divider></md-divider>
+            <div flex class="wrap" layout="row" layout-align="space-between center" ui-sref="main.brandApp.address">
+                <div class="txt">收货地址</div>
+                <div class="right-wrap" layout="row" layout-align="center center">
+                    <md-icon class="ks-left-icon" md-font-set="ks-icon" md-font-icon="ag-location-o"></md-icon>
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+            </div>
+            <md-divider></md-divider>
+
+        </div>
+    </md-content>
+    <div class="bottom-btn" layout="row" layout="center center">
+        <div class="btn-txt" flex style="background: #333333" ng-click="logout()">退出登录</div>
+    </div>
+</div>

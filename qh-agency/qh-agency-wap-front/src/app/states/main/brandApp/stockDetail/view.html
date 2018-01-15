@@ -1,0 +1,76 @@
+<div flex="100" layout="column" class="ks-stockDetail">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>出入库明细</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="content-wrap" flex layout="row">
+        <md-content flex style="overflow-x: hidden">
+            <div class="itemWrap" layout="column" layout-align="center stretch">
+                <div class="item" layout="column">
+                    <div layout="row" class="item-box">
+                        <div class="img-wrap">
+                            <img src="{{data.imgs[0]}}" alt="">
+                        </div>
+                        <div class="item-detail" layout="column" flex>
+                            <div class="item-title">{{data.title}}</div>
+                            <div class="item-desc">
+                                <div>规格:
+                                    <span class="num" ng-repeat="spec in data.specs" style="margin-left: 10px">
+                                        {{spec.name}}:{{spec.value}}</span>
+                                </div>
+                            </div>
+                            <div class="item-spec">
+                                <span class="specs">采购价:￥{{data.price/100|num:2}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-line"></div>
+            <div class="item-information">
+                <div>
+                    <div class="informationList" layout="row" layout-align="space-between center">
+                        <div class="title">2017-06-12</div>
+                        <div class="desc">出库8条</div>
+                    </div>
+                    <md-divider></md-divider>
+                </div>
+                <div>
+                    <div class="informationList" layout="row" layout-align="space-between center">
+                        <div class="title">2017-06-12</div>
+                        <div class="Storage">入库20条</div>
+                    </div>
+                    <md-divider></md-divider>
+                </div>
+
+            </div>
+        </md-content>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

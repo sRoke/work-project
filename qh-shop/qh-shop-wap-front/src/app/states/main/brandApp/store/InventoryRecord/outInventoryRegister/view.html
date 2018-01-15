@@ -1,0 +1,224 @@
+<div flex="100" layout="column" class="ks-outInventoryRegister">
+    <div class="ks-white-header" layout="row" style="z-index: 11">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>
+            <div>销售出库</div>
+        </h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+
+
+    <div class="tabList" layout="column" ng-show="checkTabsShow" layout-align="end center">
+        <div flex style="width: 100%" ng-click="checkTabs('cancel')"></div>
+        <div style="width: 100%;background: #f5f5f5">
+            <md-divider style=""></md-divider>
+            <div class="list" layout="row" layout-align="space-between center">
+                <div class="title-left" ng-click="checkTabs('cancel')">取消</div>
+                <div class="title-cen">发货方式</div>
+                <div class="title-right" ng-click="checkTabs('true')">确定</div>
+            </div>
+            <md-divider style="border-color: #d5d5d5"></md-divider>
+            <div class="list" ng-click="checkDelivery('快递')" ng-class="{'activeList':deliveryCopy == '快递'}">快递</div>
+            <md-divider style="border-color: #d5d5d5"></md-divider>
+            <div class="list" ng-click="checkDelivery('自提')" ng-class="{'activeList':deliveryCopy == '自提'}">自提</div>
+            <!--<div class="line"></div>-->
+            <md-divider style="border-color: #d5d5d5"></md-divider>
+            <div class="list" ng-click="checkDelivery('邮寄')" ng-class="{'activeList':deliveryCopy == '邮寄'}">邮寄</div>
+        </div>
+    </div>
+
+    <!-- Simple List -->
+    <!--<div id="simpleList" class="list-group">-->
+    <!--<div class="list-group-item">This is <a href="http://rubaxa.github.io/Sortable/">Sortable</a></div>-->
+    <!--<div class="list-group-item">It works with Bootstrap...</div>-->
+    <!--<div class="list-group-item">...out of the box.</div>-->
+    <!--<div class="list-group-item">It has support for touch devices.</div>-->
+    <!--<div class="list-group-item">Just drag some elements around.</div>-->
+    <!--</div>-->
+
+
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+        <div class="con-top">
+            <div class="top-list" layout="row" layout-align="center center">
+                <div class="name">供应商</div>
+                <div class="inputName" flex>
+                    <div class="placeholder">请选择供应商名称(选填)</div>
+                    <!--<div class="">请选择供应商名称(选填)</div>-->
+                </div>
+                <div class="right">
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"
+                             ng-click="checkTabs('show')"></md-icon>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="top-list" layout="row" layout-align="center center">
+                <div class="name">仓库</div>
+                <div class="inputName" flex>
+                    <div class="placeholder" style="color: #333">默认仓库</div>
+                    <!--<div class="">默认仓库</div>-->
+
+                </div>
+                <div class="right">
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"
+                             ng-click="checkTabs('show')"></md-icon>
+                </div>
+            </div>
+        </div>
+
+        <div class="con-top2" layout="column" layout-align="center center">
+
+            <div class="item">
+                <div class="item-name">真丝内衣Q</div>
+                <md-divider></md-divider>
+                <div class="item-spec">
+                    <div class="spec" layout="row" layout-align="space-between center">
+                        <div flex="30" class="spec-name">红色 M</div>
+                        <div flex="35" class="spec-sprice">单价:{{12121|num:2}}</div>
+                        <div flex="35" class="spec-num">数量:22222</div>
+                    </div>
+                    <div class="spec" layout="row" layout-align="space-between center">
+                        <div flex="30" class="spec-name">红色 M</div>
+                        <div flex="35" class="spec-sprice">单价:{{12121|num:2}}</div>
+                        <div flex="35" class="spec-num">数量:22222</div>
+                    </div>
+                    <div class="spec" layout="row" layout-align="space-between center">
+                        <div flex="30" class="spec-name">红色 M</div>
+                        <div flex="35" class="spec-sprice">单价:{{12121|num:2}}</div>
+                        <div flex="35" class="spec-num">数量:22222</div>
+                    </div>
+                    <div class="spec" layout="row" layout-align="space-between center">
+                        <div flex="30" class="spec-name">红色 M</div>
+                        <div flex="35" class="spec-sprice">单价:{{12121|num:2}}</div>
+                        <div flex="35" class="spec-num">数量:22222</div>
+                    </div>
+                </div>
+                <div class="item-total">
+                    小计:{{342.65 | num:2}}
+                </div>
+            </div>
+
+
+            <div class="con-top2-btn" layout="row" layout-align="space-between center">
+                <div class="ScanCode" ng-class="{'active':scanCode}" ng-click="chooseMode('scanCode')">扫码入库</div>
+                <div class="Manual" ng-class="{'active':Manual}" ng-click="chooseMode('Manual')">手动入库</div>
+            </div>
+
+            <!--<div class="ScanCode" ng-class="{'active':scanCode}" ng-click="chooseMode('scanCode')">扫码入库</div>-->
+            <!--<div class="Manual" ng-class="{'active':Manual}" ng-click="chooseMode('Manual')">手动入库</div>-->
+        </div>
+
+        <div class="con-con" layout="column">
+            <div class="list-group" layout="row" layout-align="space-between center">
+                <div class="left">商品数量:</div>
+                <div class="right">100</div>
+            </div>
+            <md-divider></md-divider>
+
+            <div class="list-group" layout="row" layout-align="space-between center">
+                <div class="left">商品货款:</div>
+                <div class="right">￥{{23131231|num:2}}</div>
+            </div>
+            <md-divider></md-divider>
+
+            <div class="list-group" layout="row" layout-align="space-between center">
+                <div class="left">应付金额:</div>
+                <div class="right">￥{{5658645|num:2}}</div>
+            </div>
+            <md-divider></md-divider>
+            <div class="list-group" layout="row" layout-align="space-between center">
+                <div class="left">实付金额:</div>
+                <div class="right">
+                    <input class="inputNum" placeholder="请输入实付金额">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="list-group" layout="row" layout-align="space-between center">
+                <div class="left">经手人:</div>
+                <div class="right">XXX
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"
+                             ng-click="checkTabs('show')"></md-icon>
+                </div>
+            </div>
+            <md-divider></md-divider>
+
+            <div class="list-group" layout="row" layout-align="space-between center">
+                <div class="left">发货方式:</div>
+                <div class="right">XXX
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"
+                             ng-click="checkTabs('show')"></md-icon>
+                </div>
+            </div>
+
+            <md-divider></md-divider>
+            <div class="list-group" layout="row" layout-align="space-between center">
+                <div class="left">登记日期:</div>
+                <div class="right">100
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"
+                             ng-click="checkTabs('show')"></md-icon>
+                </div>
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <div class="desp">
+            <div class="title">备注:</div>
+            <textarea placeholder="填写备注内容"></textarea>
+        </div>
+        <md-divider></md-divider>
+        <div class="Enclosure">
+            <div class="title">附件:</div>
+            <div class="phote" id="simpleList" layout="row" layout-fill layout-wrap>
+                <div class="imgBox" ng-repeat="img in imgs track by $index">
+                    <div class="del" ng-click="cancelDel($index)">
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-trash-can-o"></md-icon>
+                    </div>
+                    <img src="{{img}}">
+                </div>
+                <div class=" addImg" layout="column" layout-align="center center"
+                     ngf-select="uploading($file)" ngf-pattern="'image/*'"
+                     ng-show="imgs.length<5">
+                    <div class="add">+</div>
+                    <!--<input type="file" id="file">-->
+                    <div class="font">上传图片</div>
+                </div>
+                <!--<div style="clear: both"></div>-->
+            </div>
+            <div class="ts"><span style="color: #fe0000">*</span>最多上传5张</div>
+        </div>
+        <md-divider></md-divider>
+    </md-content>
+
+
+    <div class="jqPhote" ng-show="choosePhote" layout="column" layout-align="center center">
+        <div flex class="choosePhote-top"></div>
+        <div id="clipArea"></div>
+        <!--<input type="file" id="file">-->
+        <div flex class="choosePhote-btn" layout="row" layout-align="center start">
+            <div layout="row" layout-align="space-between start" style="width: 260px">
+                <div id = 'cancel' ng-click="cancelChoosePhote()">取消</div>
+                <div id="clipBtn" ng-click="cancelChoosePhote()">保存</div>
+            </div>
+
+        </div>
+
+        <!--<div id="view"></div>-->
+    </div>
+
+
+
+
+
+    <div class="footBottom" layout="column">
+        <div class="hight-line"></div>
+        <div flex layout="row" layout-align="center center">
+            <div flex class="left">保存草稿</div>
+            <div class="line"></div>
+            <div flex class="right" ng-click="save()">保存出库</div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,94 @@
+<md-bottom-sheet class="md-grid ks-mdBottomSheet-item"
+                 style=" padding-left: 0;padding-right: 0;padding-bottom: 80px;max-width: 600px;margin: 0 auto;"
+                 layout="column" ng-cloak>
+
+    <div class="header" layout="row" layout-align="space-between center">
+        <div class="header-dis">已选商品</div>
+        <div class="icon-btn" layout="row"  ng-if="vmd.editShow">
+            <span style="color: #999;" ng-if="vmd.isEdit" ng-click="vmd.changeEdit();">编辑</span>
+            <span style="color: #999;" ng-if="!vmd.isEdit" ng-click="vmd.changeEdit();">完成</span>
+            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-trash-can-o"-->
+            <!--ng-click="vmd.deleteOrder()"></md-icon>-->
+            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-closed" ng-click="vmd.submit()"></md-icon>-->
+        </div>
+    </div>
+    <md-divider></md-divider>
+
+    <md-content class="content-box" flex="" stop-touch-event>
+        <div class="item-box" ng-repeat="item in  vmd.comments track by $index" layout="column">
+            <div class="item" layout="row"
+                 layout-align="space-between center">
+                <div class="item-left" layout="row">
+                    <!--{{item|json}}-->
+                    <div class="item-checked" ng-if="!vmd.isEdit">
+                        <md-icon class="icon-Btn" md-font-set="ks-icon" md-font-icon="ag-circle"
+                                 ng-if="item.checked" ng-click="vmd.changeCheck(item)"></md-icon>
+                        <md-icon class="icon-Btn icon-btn-check" md-font-set="ks-icon" md-font-icon="ag-complete"
+                                 ng-if="!item.checked" ng-click="vmd.changeCheck(item)"></md-icon>
+                    </div>
+                    <div layout="column">
+                        <div class="item-title">{{item.sku.title}}</div>
+                        <div class="item-specs">
+                            <span ng-repeat="spec in item.sku.specs">{{spec.value}}</span>
+                        </div>
+                        <div class="item-price">￥{{item.sku.price/100|num:2}}</div>
+                    </div>
+                </div>
+                <div layout="row" class="count">
+
+                    <div class="minus-cart" ng-mobile-click="vmd.skuNumCount(-1,item)" layout=""
+                         layout-align="center center">
+                        <md-icon class="iconBtn icon-left" md-font-set="ks-icon" md-font-icon="ag-minus"></md-icon>
+                    </div>
+                    <input class="cart-num" type="tel" ng-model="item.num" layout="" layout-align="center center"
+                           ng-blur="vmd.numBlur(item)"/>
+                    <div class="add-cart" ng-mobile-click="vmd.skuNumCount(1,item)" layout=""
+                         layout-align="center center"
+                    >
+                        <md-icon class="iconBtn icon-right" md-font-set="ks-icon" md-font-icon="ag-plus"></md-icon>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+        </div>
+    </md-content>
+    <md-divider style="z-index: -1;"></md-divider>
+    <div class="footBtn" layout="row" ng-if="vmd.isEdit">
+        <div flex class="left-wrap" layout="row">
+            <div class="cart-wrap" layout="column" layout-align="center center" ng-click="vmd.cancleDialog()">
+                <div class="icon-wrap" layout="column" layout-align="center center">
+                    <md-icon class="icon" md-font-set="ks-icon" md-font-icon="ag-cart-line"></md-icon>
+                    <i class="" ng-if="vmd.totlePrice >0 "></i>
+                </div>
+                <div class="cart-dis">退货篮</div>
+            </div>
+            <div class="pay-price" flex>
+                合计:￥{{vmd.totlePrice/100|num:2}}
+            </div>
+        </div>
+        <div class="goPay" ng-if="vmd.totlePrice >0 " ng-clicK="vmd.orderCreate()">
+            <span>退货</span>
+            <!--<span>加入购物车</span>-->
+        </div>
+        <div class="noPay" ng-if="vmd.totlePrice <=0 ">
+            <span>退货</span>
+            <!--<span>加入购物车</span>-->
+        </div>
+    </div>
+    <div ng-if="!vmd.isEdit" class="footBtn" layout="row" layout-align="space-between center">
+        <div layout="row" class="foot-check" flex >
+            <div layout-align="center center">
+                <md-icon class="icon-Btn" md-font-set="ks-icon" md-font-icon="ag-circle"
+                         ng-if="vmd.checkAll" ng-click="vmd.checkdAll()" ></md-icon>
+                <md-icon class="icon-Btn icon-btn-check" md-font-set="ks-icon" md-font-icon="ag-complete"
+                         ng-if="!vmd.checkAll" ng-click="vmd.checkdAll()"></md-icon>
+            </div>
+            <div>
+                全选
+            </div>
+        </div>
+        <div layout-align="center" class="foot-delete" ng-click="vmd.deleteCar()">
+            删除
+        </div>
+    </div>
+</md-bottom-sheet>

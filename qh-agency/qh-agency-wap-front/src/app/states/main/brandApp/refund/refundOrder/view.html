@@ -1,0 +1,127 @@
+<div flex="100" layout="column" class="ks-refundOrder">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>退货确认</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden">
+
+        <!--中间详细内容-->
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row" layout-align="space-between center">
+                <div class="center-left">
+                    单据日期
+                </div>
+                <div class="center-right">{{info.dateCreated|date:'yyyy-MM-dd HH:mm:ss'}}</div>
+            </div>
+            <md-divider></md-divider>
+            <!-- ui-sref="main.brandApp.address({orderId:info.id})"-->
+            <div class="center-bottom" layout="row" layout-align="space-between start">
+                <div class="center-left">
+                    退货地址
+                </div>
+                <div flex class="center-address" layout="column" layout-align="center start">
+                    <div>
+                        <div class="commit">
+                            <span>{{info.address.receiver}}&nbsp;</span>
+                            <span>{{info.address.phone}}</span>
+                        </div>
+                        <div class="address-detail">
+                            <span>{{info.address.province}}{{info.address.city}}{{info.address.county}}{{info.address.street}}</span>
+                        </div>
+                    </div>
+                </div>
+                <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row" layout-align="space-between center">
+                <div class="center-left">
+                    商品信息
+                </div>
+                <div class="center-right"></div>
+            </div>
+            <md-divider class="dashed"></md-divider>
+            <div class="center-item" layout="column" ng-repeat="me in info.orderItemInfos track by $index">
+                <div class="item-title" layout="row" layout-align="space-between center">
+                    <div class="title-dis">{{me.itemTitle}}</div>
+                    <div class="price-dis" style="color:#999">￥{{me.skuPrice/100|num:2}}</div>
+                </div>
+                <div class="item-des" layout="row" layout-align="space-between center">
+                    <div layout="row" layout-align="space-between center">
+                        <div class="item-dis" ng-repeat="spec in me.specInfos" style="margin-right:15px">
+                            {{spec.propValue}}
+                        </div>
+                        <!--<div class="item-dis">单价 {{me.skuPrice}}</div>-->
+                        <!--<div class="item-dis">总额 {{me.num * (me.skuPrice) }}</div>-->
+                    </div>
+                    <div class="price" style="color:#ED5F5B"> x {{me.num}}</div>
+                </div>
+                <md-divider class="dashed" ng-if="!$last"></md-divider>
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="center-box" layout="column">
+            <div class="center-top" layout="row" layout-align="space-between center">
+                <div class="center-left">
+                    退货说明
+                </div>
+                <div class="center-right"></div>
+            </div>
+            <div class="textarea-wrap" layout="row">
+                <textarea ng-model="memo" flex placeholder="输入描述..."></textarea>
+            </div>
+        </div>
+    </md-content>
+    <md-divider></md-divider>
+    <div class="footBtn" layout="row">
+        <div flex class="agree" ng-click="createOrder()" style="color: #ED5F5B">
+            <span>确认提交</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="noAddress.html">
+    <div class="md-dialog-container ">
+        <md-dialog aria-label="" class="noAddress">
+            <div class="dis">退货地址还没填哦</div>
+            <md-divider></md-divider>
+            <div layout="row" layout-align="center center">
+                <div flex style="font-size: 18px;color: #53D39A;text-align: center" ng-click="vmd.goAddress()">去填写</div>
+                <div class="line"></div>
+                <div flex style="font-size: 18px;text-align: center" ng-click="vmd.cancel()">取消</div>
+            </div>
+        </md-dialog>
+    </div>
+</script>
+
+<script type="text/ng-template" id="checkAddress.html">
+    <div class="md-dialog-container ">
+        <md-dialog aria-label="" class="checkAddress">
+            <div class="dis">确认收货地址</div>
+            <md-divider></md-divider>
+            <div class="address-dis">
+                <div class="dis-name">
+                    <span>{{vmd.info.address.receiver}}</span>
+                </div>
+                <div class="dis-phone">
+                    <span>{{vmd.info.address.phone}}</span>
+                </div>
+                <div class="dis-address">
+                    <span>{{vmd.info.address.province}}/{{vmd.info.address.city}}/{{vmd.info.address.county}}/{{vmd.info.address.street}}</span>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div layout="row" layout-align="center center">
+                <div flex style="font-size: 18px;color: #53D39A;text-align: center" ng-click="vmd.accress()">确认</div>
+                <div class="line"></div>
+                <div flex style="font-size: 18px;text-align: center" ng-click="vmd.cancel()">取消</div>
+            </div>
+        </md-dialog>
+    </div>
+</script>

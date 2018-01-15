@@ -1,0 +1,200 @@
+<!--<div class="ks-classify">-->
+    <!--<div class="classify-title">-->
+        <!--<ul>-->
+            <!--<li>-->
+                <!--<div ng-if="CATEGORY_C">分类数据-->
+                    <!--<a class="glyphicon" ng-click="openDialog({isAdd:true},$event)">-->
+                        <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-plus"></md-icon>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="classify-row" ng-repeat="classify in datas" layout="column" style="width:100%">-->
+        <!--<div layout="row" flex ng-if="!classify.parentId">-->
+            <!--<div flex="20" style="text-align: right;">-->
+                <!--<div layout="row">-->
+                    <!--<div flex="80" ng-click="showChild(classify)">{{classify.name}}</div>-->
+                    <!--<div flex="20">-->
+                        <!--<div layout="row">-->
+                            <!--<div flex></div>-->
+                            <!--<div flex>-->
+                                <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font"-->
+                                         <!--md-font-icon="ks-sort-down"></md-icon>-->
+                            <!--</div>-->
+                            <!--<div flex></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div flex="30"></div>-->
+            <!--<div flex="20">-->
+                <!--<a class="glyphicon" href="javascript:void(0)"-->
+                   <!--ng-click="openDialog({classify: classify, isAdd:false },$event)" ng-if="CATEGORY_U">-->
+                    <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit2"></md-icon>-->
+                <!--</a>-->
+                <!--<a class="glyphicon" href="javascript:void(0)" title="删除" ng-click="delete(classify.id)"-->
+                   <!--ng-if="CATEGORY_D">-->
+                    <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" title="删除" md-font-icon="ks-trash"></md-icon>-->
+                <!--</a>-->
+                <!--<a class="glyphicon" href="javascript:void(0)"-->
+                   <!--ng-click="openDialog({parent:classify, isAdd:true },$event)" ng-if="CATEGORY_C">-->
+                    <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-plus"></md-icon>-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div ng-repeat="children in datas track by $index" layout="row" style="width:100%"-->
+             <!--ng-if="children.parentId === classify.id"-->
+             <!--ng-show="classify.show" flex>-->
+            <!--<div flex="20"></div>-->
+            <!--<div style="text-align: left;" flex="30">{{children.name}}</div>-->
+            <!--<div flex="20">-->
+                <!--<a class="glyphicon" href="javascript:void(0)"-->
+                   <!--ng-click="openDialog({classify: children, parent:classify, isAdd:false },$event)">-->
+                    <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit2"></md-icon>-->
+                <!--</a>-->
+                <!--<a class="glyphicon" href="javascript:void(0)" title="删除" ng-click="delete(children.id)"-->
+                   <!--ng-if="CATEGORY_D">-->
+                    <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" title="删除" md-font-icon="ks-trash"></md-icon>-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<div class="ks-classify2" layout="row" layout-align="start start">
+    <div class="left-tab">
+        <script type="text/ng-template" id="nodes_renderer2.html">
+            <div class="tree-node">
+                <div class="tree-node-content" layout="row" layout-align="start center" style="height: 40px">
+                    <div class="line" layout="row" layout-align="start center">
+                        <div ng-repeat="lv in node.lv track by $index" style="display: inline-block">
+                            <md-icon
+                                    md-font-set="ks-admin-font"
+                                    md-font-icon="ks-dashed-line"
+                                    ng-if="lv == 'false'"
+                            ></md-icon>
+                            <span style="width: 40px;display: inline-block" ng-if="lv == 'true'"></span>
+                        </div>
+
+                        <md-icon
+                                md-font-set="ks-admin-font"
+                                md-font-icon="ks-dashed-t"
+                                ng-if="!this.$last"
+                        ></md-icon>
+                        <md-icon
+                                md-font-set="ks-admin-font"
+                                md-font-icon="ks-dashed-l"
+                                ng-if="this.$last"
+                        ></md-icon>
+                    </div>
+
+
+                    <div style="" ng-click="toggle(this)">
+                        <md-icon
+                                ng-if="node.child.length>0 && collapsed"
+                                md-font-set="ks-admin-font"
+                                md-font-icon="ks-add-o"
+                                style="line-height: 20px;"
+                        ></md-icon>
+                        <md-icon
+                                ng-if="node.child.length>0 && !collapsed"
+                                md-font-set="ks-admin-font"
+                                md-font-icon="ks-minus"
+                                style="line-height: 20px;"
+                        ></md-icon>
+                    </div>
+                    <span ng-click="choose(this)">{{node.name}}</span>
+
+                </div>
+            </div>
+            <ol style="list-style: none;" ui-tree-nodes="" ng-model="node.child"
+                ng-class="{hidden: collapsed}">
+                <li style="list-style: none" ng-repeat="node in node.child track by $index" ui-tree-node
+                    collapsed="false" ng-if="!node.disabled"
+                    ng-include="'nodes_renderer2.html'">
+                </li>
+            </ol>
+        </script>
+        <div layout="row" layout-align="start center">
+
+            <div style="" ng-click="showAuthorityList(this)">
+                <md-icon
+                        ng-if="!authorityListShow"
+                        md-font-set="ks-admin-font"
+                        md-font-icon="ks-add-o"
+                        style="line-height: 20px;margin-left: 10px"
+                ></md-icon>
+                <md-icon
+                        ng-if="authorityListShow"
+                        md-font-set="ks-admin-font"
+                        md-font-icon="ks-minus"
+                        style="line-height: 20px;margin-left: 10px"
+                ></md-icon>
+            </div>
+            <span ng-click="choose('top-level')">标签</span>
+        </div>
+        <div ng-show="authorityListShow">
+            <div>
+                <div ui-tree id="tree2-root" data-clone-enabled="true">
+                    <ol ui-tree-nodes="" ng-model="authorityList" style="list-style: none">
+                        <li style="list-style: none" ng-repeat="node in exampleAuthorityList track by $index"
+                            ui-tree-node
+                            collapsed="true" ng-if="!node.disabled"
+                            ng-include="'nodes_renderer2.html'"></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-tab" flex>
+            <div class="content-right">
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="tab-left">上级标签:</div>
+                    <div class="tab-right">{{showCategory.parentName}}</div>
+                </div>
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="tab-left">标签名称:<span style="color: red">*</span></div>
+                    <div class="tab-right" >
+                        <input type="text" class="form-control" ng-model="showCategory.name">
+                    </div>
+                </div>
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="tab-left">标签图标:</div>
+                    <div class="tab-right" >
+                        <input type="text" class="form-control" ng-model="showCategory.icon">
+                    </div>
+                </div>
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="tab-left">显示排序:</div>
+                    <div class="tab-right" >
+                        <input type="text" class="form-control" ng-model="showCategory.order">
+                    </div>
+                </div>
+                <div class="tab" layout="row" layout-align="start start" style="margin-top: 20px;">
+                    <div class="tab-left">描述:</div>
+                    <div class="tab-right" style="width: 500px">
+                        <textarea ng-model = "showCategory.desp" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="tab" layout="row" layout-align="start start">
+                    <div class="tab-left"></div>
+                    <div class="tab-right" style="width: 500px" layout="row" layout-align="start start">
+                        <div style="margin-top:20px" layout="row" layout-align="start end">
+                            <div class="save" layout="row" layout-align="center center" ng-click="save('add')"
+                                 ng-if="status == 'add' && CATEGORY_C">添加</div>
+                            <div class="save" layout="row" layout-align="center center" ng-click="save('add')"
+                                 ng-if="status == 'top-level'  && CATEGORY_C">添加顶级标签</div>
+                            <div class="save" layout="row" layout-align="center center" ng-click="save('edit')"
+                                 ng-if="status == 'edit'  && CATEGORY_U">修改</div>
+                            <div class="addNext" layout="row" layout-align="center center" ng-click="delete(showCategory.id)"
+                                 ng-if="status == 'edit'  && CATEGORY_D">删除</div>
+                            <div class="addNext" ng-click="addNew()" ng-if="status == 'edit' && CATEGORY_C">新增下级</div>
+                            <div class="error"  ng-if="status == 'error'"><span style="color: red">*</span> 请先从左侧选择标签,再进行相关操作!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

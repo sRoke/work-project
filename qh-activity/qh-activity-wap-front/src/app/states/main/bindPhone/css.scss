@@ -1,0 +1,78 @@
+.bindPhone {
+  .registerForm2 {
+    position: relative;
+    padding: 0 20px;
+    margin-top: 40px;
+    div.inputWrap {
+      height: 40px;
+      line-height: 20px;
+      input {
+        width: 100%;
+        font-size: 14px;
+        height: 14px;
+        margin-top: 12px;
+        border: none;
+        background: transparent;
+      }
+      span {
+        border-left: 1px solid #d5d5d5;
+        color: #ba9f6e;
+        width: 80px;
+        text-align: center;
+      }
+      .rePush {
+        color: #ba9f6e;
+      }
+    }
+
+    .relative {
+      position: relative;
+      height: 44px;
+      border-bottom: 1px solid #d5d5d5;
+      line-height: 44px;
+      input {
+        width: 100%;
+        font-size: 14px;
+        height: 14px;
+        background: transparent;
+        border: none;
+        height: 100%;
+      }
+      .visibility, .close {
+        position: absolute;
+        right: 0px;
+        line-height: 14px;
+        top: 50%;
+        margin-top: -7px;
+        font-size: 14px;
+      }
+      .close {
+        top: 10px;
+      }
+
+    }
+    .md-button {
+      width: 100%;
+      padding: 0;
+      margin: 20px 0 0 0;
+      border-radius: 0;
+      height: 40px;
+      line-height: 40px;
+      background: #999;
+      color: #fff;
+      border: none;
+      font-size: 14px;
+    }
+    .loginLink {
+      padding: 0px;
+      margin-top: 10px;
+      font-size: 13px;
+      a {
+        text-decoration: none;
+        .loginGo {
+          color: #bfa679;
+        }
+      }
+    }
+  }
+}

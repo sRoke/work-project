@@ -1,0 +1,279 @@
+<div class="ks-itemProp">
+    <div class="common-list-center" layout="row">
+        <ul layout="row" flex>
+            <li>
+                <label for="bhnum">属性名称：</label>
+                <input id="bhnum" class="choose " type="text" ng-model="search.name" ng-change="pageChanged('0')" placeholder="输入属性名称查找">
+                <button class="inquire"  ng-click="pageChanged('0')">
+                    搜索
+                </button>
+            </li>
+            <div class="btnBox" ng-if="ITEM_PROP_C" >
+                <md-button class="newAdd" ui-sref="main.brandApp.attAdd" >
+                    <!--<md-icon class="newAdd" md-font-set="ks-admin-font" md-font-icon="ks-plus" title="新增"></md-icon>-->
+                    新增
+                </md-button>
+            </div>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+    <!--rmy         2017-09-15-->
+
+
+
+
+
+
+
+
+
+
+    <div class="common-list-detail" layout="column">
+        <!--表头-->
+        <div class="common-list-detail-thead" layout="row">
+            <div class="thead-show" flex layout-align="center" style="padding-left: 30px;">
+                <span>属性名称</span>
+            </div>
+            <div class="thead-show" flex layout-align="center">
+                <span>候选值</span>
+            </div>
+            <div class="thead-show end-show" flex layout-align="center">
+                <span>操作</span>
+            </div>
+        </div>
+        <!--表格详细内容-->
+        <div class="common-list-detail-tbody" layout="column">
+            <!--定义每列数据    父级用ng-repeat循环此行-->
+            <div class="common-list-detail-row" layout="row" ng-repeat="itemProp in data.content">
+                <div class="thead-show"  layout-align="center" flex style="padding-left: 30px;">
+                    <span id="{{itemProp.id}}">{{itemProp.name}}</span>
+                </div>
+                <div class="thead-show"  layout-align="center" flex layout="row">
+                    <span ng-if="itemProp.propValues.length>0" flex>
+                        <select>
+                            <option ng-repeat="value in itemProp.propValues" style="">
+                                {{value.name}}
+                            </option>
+                        </select>
+                    </span>
+                </div>
+                <div class="thead-show"  layout-align="end center" layout="row" flex style="padding-right: 20px;">
+                    <div class="operateFont" title="查看"  ng-if="ITEM_PROP_R"
+                         >
+                        <button ui-sref="main.brandApp.attAdd({id:itemProp.id,about:'view'})">查看</button>
+                    </div>
+                    <div class="operateFont" title="编辑" ng-if="ITEM_PROP_U"
+                         >
+                        <button  ui-sref="main.brandApp.attAdd({id:itemProp.id,about:'editor'})"> 编辑</button>
+                    </div>
+                    <div class="operateFont"  title="删除" href="javascript:void(0)"  ng-if="ITEM_PROP_D"
+                    >
+                        <button ng-click="delate(itemProp.id,itemProp)">删除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<div class="itemProp-table-head">-->
+        <!--<div style="float: left;width: 30%">属性名称</div>-->
+        <!--<div style="float: left;width: 35%">候选值</div>-->
+        <!--<div style="float: left;width: 35%">操作</div>-->
+        <!--<br style="clear: both">-->
+    <!--</div>-->
+    <!--<div style="clear: both"></div>-->
+    <!--<div class="itemProp-table-content" ng-repeat="itemProp in data.content">-->
+    <!--&lt;!&ndash;<div class="itemProp-table-content">&ndash;&gt;-->
+        <!--<div style="width: 30%" layout layout-align="center center">-->
+            <!--<span id="{{itemProp.id}}">{{itemProp.name}}</span>-->
+
+        <!--</div>-->
+        <!--&lt;!&ndash;<div style="width: 15%">{{itemProp.code}}</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div style="width: 15%">{{itemProp.type}}</div>&ndash;&gt;-->
+        <!--<div style="width: 35%"  layout layout-align="center center">-->
+            <!--<span ng-if="itemProp.propValues.length>0">-->
+                <!--<select>-->
+                <!--<option ng-repeat="value in itemProp.propValues" style="">-->
+                    <!--{{value.name}}-->
+                <!--</option>-->
+            <!--</select>-->
+            <!--</span>-->
+            <!--&lt;!&ndash; <span ng-repeat="value in itemProp.propValues" title="{{value.desp}}"-->
+                                       <!--style="font-weight: bold">{{value.name+','}}</span></div>&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div style="width: 35%;text-align: center" layout="row">-->
+            <!--<a class="glyphicon" title="查看" ui-sref="main.brandApp.attAdd({id:itemProp.id,about:'view'})" ng-if="ITEM_PROP_R"-->
+               <!--style="line-height: 55px;min-width: 36px;" flex="20">-->
+                <!--&lt;!&ndash;&nbsp;<md-icon   class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit" title="查看"></md-icon>&ndash;&gt;-->
+                <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                <!--查看-->
+            <!--</a>-->
+            <!--<a class="glyphicon" title="编辑" ui-sref="main.brandApp.attAdd({id:itemProp.id,about:'editor'})" ng-if="ITEM_PROP_U"-->
+               <!--style="line-height: 55px;min-width: 36px;" flex="20">-->
+                <!--&lt;!&ndash;&nbsp;<md-icon   class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit" title="编辑"></md-icon>&ndash;&gt;-->
+                <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                <!--编辑-->
+            <!--</a>-->
+            <!--&lt;!&ndash;<a class="glyphicon" title="删除" href="javascript:void(0)" ng-click="remove(itemProp.id,itemProp)">&ndash;&gt;-->
+            <!--<a class="glyphicon"  title="删除" href="javascript:void(0)" ng-click="delate(itemProp.id,itemProp)" ng-if="ITEM_PROP_D"-->
+               <!--style="line-height: 55px;min-width: 36px;" flex="20">-->
+                <!--&lt;!&ndash;&nbsp;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-trash" title="删除"></md-icon>&ndash;&gt;-->
+                <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                <!--删除-->
+            <!--</a>-->
+
+        <!--</div>-->
+        <!--<br style="clear: both">-->
+    <!--</div>-->
+    <!--分页-->
+    <div style="width: 99%; margin: 10px auto 0">
+        <div style="margin:10px;" uib-pagination total-items="data.totalElements" ng-model="curPage" ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="8" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+
+        </div>
+        <div style="float: right;margin: 10px;"  class="pageSubnav">
+            <span>共{{data.totalElements}}条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button ng-click="pageChanged()">确定</md-button>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<!--&lt;!&ndash;引入ks-common-list放在最外面的div即可&ndash;&gt;-->
+<!--<div class="ks-common-list">-->
+    <!--<div class="common-list-center">-->
+        <!--<ul>-->
+            <!--<li>-->
+                <!--<span>搜索:</span>-->
+                <!--<input type="text" class="choose " ng-model="staffGroup.keyWord" ng-change="pageChanged()">-->
+            <!--</li>-->
+            <!--<br style="clear: both">-->
+        <!--</ul>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash;按钮&ndash;&gt;-->
+    <!--<div class="nav-wrap">-->
+        <!--<md-content class="md-padding">-->
+        <!--</md-content>-->
+        <!--<div class="btnBox">-->
+            <!--<md-button class="newAdd" ui-sref="main.brandApp.roAdd({id:user.id,source:'new'})">-->
+                <!--<md-icon class="wrapIcon" md-font-set=net.kingsilknet.kingsilk.qh.agencyency.admindmin-font" md-font-icon="ks-plus" title="新增"></md-icon>-->
+                <!--新增-->
+            <!--</md-button>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash;div数据表title&ndash;&gt;-->
+    <!--<div class="common-list-tableBox" layout="row" layout-align="center center">-->
+        <!--<div flex>角色名称</div>-->
+        <!--<div flex>成员数量</div>-->
+        <!--<div flex>更新时间</div>-->
+        <!--<div flex>操作</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;div数据表详细信息&ndash;&gt;-->
+    <!--<div layout="column" class="common-wrap">-->
+
+        <!--&lt;!&ndash;div数据主要显示区域  ng-repeat可用于此&ndash;&gt;-->
+        <!--<div class="common-list-tableBox-content" layout="row"-->
+             <!--ng-repeat="staffGroup in data.content"-->
+             <!--layout-align="center stretch">-->
+            <!--<div class="div" flex layout="column" layout-align="center center">-->
+                <!--<span>-->
+                    <!--<a id="{{staffGroup.id}}">{{staffGroup.name}}</a>-->
+                <!--</span>-->
+            <!--</div>-->
+            <!--<div class="div" flex layout="column" layout-align="center center">-->
+                <!--<span>-->
+                     <!--{{staffGroup.staffSize}}-->
+                <!--</span>-->
+            <!--</div>-->
+            <!--<div class="div" flex layout="column" layout-align="center center">-->
+                <!--<span>-->
+                     <!--{{staffGroup.lastModifiedDate | date:"yyyy-MM-dd HH:mm:ss"}}-->
+                <!--</span>-->
+            <!--</div>-->
+            <!--<div class="div" flex layout="row" layout-align="center center">-->
+                <!--<a class="glyphicon" title="查看" href="javascript:void(0)">-->
+                    <!--<md-icon class="wrapIcon" md-font-set=net.kingsilknet.kingsilk.qh.agencyency.admindmin-font" md-font-icon="ks-edit" title="查看"-->
+                             <!--ui-sref="main.brandApp.roAdd({id:staffGroup.id,source:'view'})"></md-icon>-->
+                    <!--<br>查看-->
+                <!--</a>-->
+
+                <!--<a class="glyphicon" title="编辑" href="javascript:void(0)">-->
+                    <!--<md-icon class="wrapIcon" md-font-set=net.kingsilknet.kingsilk.qh.agencyency.admindmin-font" md-font-icon="ks-edit" title="编辑"-->
+                             <!--ui-sref="main.brandApp.roAdd({id:staffGroup.id,source:'edit'})"></md-icon>-->
+                    <!--<br>编辑-->
+                <!--</a>-->
+                <!--<a class="glyphicon" title="删除" href="javascript:void(0)">-->
+                    <!--<md-icon class="wrapIcon" md-font-set=net.kingsilknet.kingsilk.qh.agencyency.admindmin-font" md-font-icon="ks-edit" title="删除"-->
+                             <!--ng-click="delete(staffGroup.id)"></md-icon>-->
+                    <!--<br>删除-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div style="width: 500px;min-width: 500px" uib-pagination total-items="data.totalElements" ng-model="data.number"-->
+         <!--ng-change="pageChanged()"-->
+         <!--class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"-->
+         <!--items-per-page="appConfig.pageSize" previous-text="<" next-text=">" first-text="|<" last-text=">|">-->
+
+    <!--</div>-->
+
+    <!--<div style="float: right" class="pageSubnav">-->
+        <!--<span>共{{data.totalElements}}条</span>-->
+        <!--到第<input type="text" ng-model="data.number">页-->
+        <!--<md-button ng-click="pageChanged(data.number)">确定</md-button>-->
+    <!--</div>-->
+<!--</div>-->
+
+

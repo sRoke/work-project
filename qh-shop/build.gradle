@@ -1,0 +1,129 @@
+buildscript {
+    ext {
+    }
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:1.0.0.RELEASE")
+        classpath("gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.17")
+        classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5")
+    }
+}
+
+
+allprojects {
+
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: 'project-report'
+    apply plugin: 'maven'
+
+
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url "http://mvn.kingsilk.xyz/content/groups/public/" }
+        mavenCentral()
+    }
+
+    idea {
+        module {
+            downloadJavadoc = false
+            downloadSources = true
+        }
+    }
+    eclipse {
+        classpath {
+            downloadSources = true
+        }
+    }
+
+    dependencyManagement {
+        resolutionStrategy {
+            cacheChangingModulesFor 0, 'seconds'
+        }
+        dependencies {
+            dependency('joda-time:joda-time:2.9.7')
+            dependency('com.querydsl:querydsl-apt:4.1.4')
+            dependency('com.querydsl:querydsl-collections:4.1.4')
+            dependency('com.querydsl:querydsl-core:4.1.4')
+            dependency('com.querydsl:querydsl-jpa:4.1.4')
+            dependency('com.querydsl:querydsl-mongodb:4.1.4')
+            dependency('com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.7')
+            dependency('org.apache.httpcomponents:httpclient:4.5.3')
+
+            dependency('org.springframework.security:spring-security-jwt:1.0.7.RELEASE')
+            dependency('com.qiniu:qiniu-java-sdk:7.2.5')
+
+            //swagger
+            dependency('io.swagger:swagger-core:1.5.16')  // 1.5.12
+            dependency('io.swagger:swagger-jaxrs:1.5.16')  // 1.5.12
+            dependency('io.swagger:swagger-jersey2-jaxrs:1.5.16')  // 1.5.12
+
+            dependency('org.apache.commons:commons-lang3:3.5')
+
+            dependency('org.webjars:swagger-ui:3.0.19')
+            dependency('org.slf4j:slf4j-api:1.7.24')
+
+            dependency('net.kingsilk:qh-agency-client:2.4.1-SNAPSHOT')
+            dependency('net.kingsilk:qh-agency-api:2.4.1-SNAPSHOT')
+
+            dependency('net.kingsilk:qh-oauth-client:1.2.0-SNAPSHOT')
+            dependency('net.kingsilk:qh-oauth-api:1.2.0-SNAPSHOT')
+
+            dependency("net.kingsilk:tb4j-api:0.1.1-SNAPSHOT")
+            dependency("net.kingsilk:tb4j-client:0.1.1-SNAPSHOT")
+
+            dependency('net.kingsilk:qh-platform-api:1.1.0-SNAPSHOT')
+            dependency('net.kingsilk:qh-platform-client:1.1.0-SNAPSHOT')
+
+            dependency('net.kingsilk:qh-platform-msg-impl:1.1.0-SNAPSHOT')
+            dependency('net.kingsilk:qh-platform-msg-api:1.1.0-SNAPSHOT')
+
+            dependency('net.kingsilk:wx4j-broker-client:0.2.1-SNAPSHOT')
+            dependency('net.kingsilk:wx4j-broker-api:0.2.1-SNAPSHOT')
+
+            dependency('net.kingsilk:wx4j-api:0.2.1-SNAPSHOT')
+            dependency('net.kingsilk:wx4j-client:0.2.1-SNAPSHOT')
+
+            dependency('net.kingsilk:wx4j-broker-msg-api:0.2.1-SNAPSHOT')
+
+            dependency('org.apache.poi:poi:3.15')
+            dependency('org.apache.poi:poi-ooxml:3.15')
+
+        }
+    }
+
+    uploadArchives {
+        dependsOn assemble
+        repositories {
+            mavenDeployer {
+                repository(url: "http://mvn.kingsilk.xyz/content/repositories/releases/") {
+                    authentication(userName: "admin", password: "admin123")
+                }
+                snapshotRepository(url: "http://mvn.kingsilk.xyz/content/repositories/snapshots/") {
+                    authentication(userName: "admin", password: "admin123")
+                }
+                //pom.version = "0.1.0-SNAPSHOT"
+                //pom.artifactId = "simple-project"
+                //pom.groupId = "com.example"
+            }
+        }
+    }
+
+}
+
+subprojects {
+    apply plugin: "org.sonarqube"
+
+    sonarqube {
+
+        properties {
+            property "sonar.exclusions", "**/querydsl/java/**/Q*.java"
+        }
+    }
+
+}

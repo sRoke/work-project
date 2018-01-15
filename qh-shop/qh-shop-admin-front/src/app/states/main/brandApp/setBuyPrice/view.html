@@ -1,0 +1,75 @@
+<div class="ks-setBuyPrice">
+    <div class="main" flex>
+        <!--支付宝设置-->
+        <ul layout="column" class="wxPay">
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    免费试用：
+                </li>
+                <div layout="column" class="update">
+                    <input type="text" ng-model="price.free" placeholder="请输入免费试用天数">
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    月费：
+                </li>
+                <div layout="column" class="update">
+                    <div layout="row">
+                        <input type="text" ng-model="price.mOldPrice" placeholder="请输入原价">
+                        <input type="text" ng-model="price.mSallPrice" placeholder="请输入优惠后价格">
+                        <input type="text" ng-model="price.mDay" placeholder="默认30天">
+                    </div>
+                    <div layout="row">
+                        <button class="btn1" ng-click="save();">保存</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div layout="row" class="content">-->
+                <!--<li layout="row" layout-align="end center">-->
+                    <!--季费：-->
+                <!--</li>-->
+                <!--<div layout="column" class="update">-->
+                    <!--<div layout="row">-->
+                        <!--<input type="text" ng-model="price.tOldPrice" placeholder="请输入原价">-->
+                        <!--<input type="text" ng-model="price.tSallPrice" placeholder="请输入优惠后价格">-->
+                        <!--<input type="text" ng-model="price.tDay" placeholder="默认365天">-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div layout="row" class="content">-->
+                <!--<li layout="row" layout-align="end center">-->
+                    <!--年费：-->
+                <!--</li>-->
+                <!--<div layout="column" class="update">-->
+                    <!--<div layout="row">-->
+                        <!--<input type="text" ng-model="price.yOldPrice" placeholder="请输入原价">-->
+                        <!--<input type="text" ng-model="price.ySallPrice" placeholder="请输入优惠后价格">-->
+                        <!--<input type="text" ng-model="price.yDay" placeholder="默认365天">-->
+                    <!--</div>-->
+                    <!--<div layout="row">-->
+                        <!--<button class="btn1" ng-click="save();">保存</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                </li>
+                <div layout="column" class="update">
+                    <!--<span>*备注：商家开通支付宝支付，用户购买时可以使用支付宝支付，支付宝参数设置示例</span>-->
+                    <!--<span>1：登录微信公众平台后，开通支付宝支付功能，-->
+                        <!--<a>点击查看步骤</a>-->
+                    <!--</span>-->
+                    <!--<span>2：支付宝平台设置参数，<a>点击查看步骤</a></span>-->
+                    <!--<span>3：生意参谋设置参数</span>-->
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
+
+
+
+

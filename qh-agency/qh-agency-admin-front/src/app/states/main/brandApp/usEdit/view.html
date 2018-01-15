@@ -1,0 +1,44 @@
+<div class="ks-staff">
+    <!--rmy 改版 2017-09-27-->
+    <div layout="row" class="linkMan">
+        <div class="top-left" layout="row" layout-align="end center">
+            <div>手机号：</div>
+            <div style="color: #e51c23;">*</div>
+        </div>
+        <div class="top-right">
+            <span >{{staff.phone}}</span>
+        </div>
+    </div>
+
+    <div layout="row" class="linkMan">
+        <div class="top-left" layout="row" layout-align="end center">
+            <div>姓名：</div>
+            <div style="color:#f5f5f5;">*</div>
+        </div>
+        <div class="top-right">
+            <input type="text" ng-model="staff.realName">
+        </div>
+    </div>
+    <!--角色按钮-->
+    <div layout="row" class="role">
+        <div class="top-left" layout="row" layout-align="end center">
+            <div>角色 ：</div>
+            <div style="color:#e51c23;">*</div>
+        </div>
+        <div class="top-right">
+            <button ng-repeat="role in roles track by $index" ng-click="selectRole(role)">
+                {{role.name}}
+                <md-icon class="icon-ok" md-font-set="ks-admin-font" md-font-icon="ks-check"
+                         ng-class="{'iconCheck': role.selected}"></md-icon>
+            </button>
+        </div>
+    </div>
+    <div class="btn-save" layout="row">
+        <button ng-click="saveRole()">保存</button>
+    </div>
+</div>
+
+
+
+
+

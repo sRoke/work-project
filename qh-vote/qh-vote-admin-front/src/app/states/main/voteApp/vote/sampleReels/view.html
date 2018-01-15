@@ -1,0 +1,168 @@
+<div flex layout="column" class="ks-sampleReels">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>作品集</h1>
+        <!--ui-sref="main.voteApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20"></div>
+    </div>
+
+    <div class="search" layout="row">
+        <div class="search-input" flex layout="row">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>
+            </div>
+            <div class="con" flex>
+                <input type="text" ng-model="keyWord" placeholder="搜索" ng-focus="focus(true)" ng-blur="focus(false)">
+            </div>
+            <div class="right" ng-show="searchShow" ng-click="clearKeyWord()">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-closed-o"></md-icon>
+            </div>
+        </div>
+        <div class="search-btn" ng-show="searchShow" ng-click="search()">搜索</div>
+    </div>
+
+
+
+    <div class="tab" layout="row" layout-align="center center ">
+        <div class="tab-btn" ng-click="tabs(null,'1')" flex="20" layout="row" layout-align="center center "
+             style="    padding-left: 0;">
+            <span class="btn" ng-class="{active:isClick == '1'}">全部</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('APPLYING','2')" flex="30" layout="row" layout-align="center center ">
+            <span class="btn" ng-class="{active:isClick == '2'}">未审核({{tatleNum.checkingNum}})</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('NORMAL','3')" flex="30" layout="row" layout-align="center center ">
+            <span class="btn" ng-class="{active:isClick == '3'}">已审核({{tatleNum.checkedNum}})</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('REJECT','4')" flex="20" layout="row" layout-align="center center "
+             style="padding-right: 5px">
+            <span class="btn" ng-class="{active:isClick == '4'}">已拒绝</span>
+        </div>
+    </div>
+
+
+    <md-content flex style="background: #f5f5f5">
+
+        <div class="con-tab" layout="row" layout-align="space-between center" ng-repeat="sample in voteList.content track by $index">
+            <div class="tab-left" layout="row" layout-align="start center">
+                <div class="left">
+                    <img ng-src="{{sample.worksImgUrl}}">
+                    <div class="posi" layout="row" layout-align="center center">
+                        <div class="num">{{$index+1}}</div>
+                    </div>
+                </div>
+                <div class="right" layout="column" layout-align="center start">
+
+                    <div class="name">{{sample.name}}</div>
+                    <div class="phone" style="color: #666">{{sample.phone}}</div>
+
+                </div>
+            </div>
+            <div class="tab-right" layout="row" layout-align="end center"  ng-click="viewDetail(sample)">
+                <div class="left">
+                    <span ng-if="sample.status == 'REJECT'">已拒绝</span>
+                    <span ng-if="sample.status == 'APPLYING'">未审核</span>
+                    <span ng-if="sample.status == 'NORMAL'">{{sample.totalVotes}}票</span>
+                </div>
+                <div class="right">
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s" ng-if="sample.status != 'REJECT'"></md-icon>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <!--<div class="con-tab" layout="row" layout-align="space-between center">-->
+            <!--<div class="tab-left" layout="row" layout-align="start center">-->
+                <!--<div class="left">-->
+                    <!--<div class="posi" layout="row" layout-align="center center">-->
+                        <!--<div class="num">55</div>-->
+                    <!--</div>-->
+                    <!--<img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=937172761,2063490346&fm=58&u_exp_0=370139146,1730184936&fm_exp_0=86&bpow=128&bpoh=128">-->
+                <!--</div>-->
+                <!--<div class="right">-->
+                    <!--12345678958-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="tab-right" layout="row" layout-align="end center">-->
+                <!--<div class="left">-->
+                    <!--5000票-->
+                <!--</div>-->
+                <!--<div class="right">-->
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="con-tab" layout="row" layout-align="space-between center">-->
+            <!--<div class="tab-left" layout="row" layout-align="start center">-->
+                <!--<div class="left">-->
+                    <!--<img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=937172761,2063490346&fm=58&u_exp_0=370139146,1730184936&fm_exp_0=86&bpow=128&bpoh=128">-->
+                    <!--<div class="posi" layout="row" layout-align="center center">-->
+                        <!--<div class="num">778</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="right">-->
+                    <!--12345678958-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="tab-right" layout="row" layout-align="end center">-->
+                <!--<div class="left">-->
+                    <!--未审核-->
+                <!--</div>-->
+                <!--<div class="right">-->
+                    <!--&lt;!&ndash;<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="con-tab" layout="row" layout-align="space-between center">-->
+            <!--<div class="tab-left" layout="row" layout-align="start center">-->
+                <!--<div class="left">-->
+                    <!--<div class="posi" layout="row" layout-align="center center">-->
+                        <!--<div class="num">1</div>-->
+                    <!--</div>-->
+                    <!--<img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=937172761,2063490346&fm=58&u_exp_0=370139146,1730184936&fm_exp_0=86&bpow=128&bpoh=128">-->
+                <!--</div>-->
+                <!--<div class="right">-->
+                    <!--12345678958-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="tab-right" layout="row" layout-align="end center">-->
+                <!--<div class="left">-->
+                    <!--已拒绝-->
+                <!--</div>-->
+                <!--<div class="right">-->
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--分页-->
+        <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;" ng-show="voteList.totalPages>1">
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-click="pageChange(currpage+1)" ng-show="voteList.number<voteList.totalPages-1">
+                点击加载更多...
+            </md-button>
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;"
+                        ng-show="voteList.number>=voteList.totalPages-1">
+                没有更多作品了
+            </md-button>
+        </div>
+        <div class="empty" ng-if="voteList.content.length<=0" style="width: 100%;height: 100%" layout="column" layout-align="center center">
+            <div class="empty"><img src="empty.png" width="60px"></div>
+            <div class="ts" style="margin-bottom: 80px">暂无作品</div>
+        </div>
+
+    </md-content>
+</div>
+
+
+

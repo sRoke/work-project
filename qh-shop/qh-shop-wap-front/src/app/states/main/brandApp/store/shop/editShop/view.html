@@ -1,0 +1,104 @@
+<div class="ks-editShop"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex ng-if="!isSave">门店信息</h1>
+        <h1 flex ng-if="isSave">修改门店信息</h1>
+        <div class="right-button" flex="20" style="color: #E53467;" ng-if="!isSave" ng-click="changeStatus()">
+            编辑
+        </div>
+        <div class="right-button" flex="20" style="color: #E53467;" ng-if="isSave" ng-click="save()">
+            保存
+        </div>
+    </div>
+    <div class="center-line"></div>
+
+    <md-content flex style="overflow-x:hidden;">
+        <div class="main" layout="column">
+            <div layout="column" class="center-con">
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <div class="tab-left">门店名称</div>
+                    <div class="tab-right" layout="row">
+                        <input type="text"  ng-model="data.name" readonly ng-if="!isSave">
+                        <input type="text" placeholder="请输入门店名称" ng-model="data.name"  ng-if="isSave">
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <div class="tab-left">门店照片</div>
+                    <div class="tab-right" layout="row" ng-if="!isSave" style="position:relative;height: 60px;width: 47px;" layout-align="center">
+                        <img ng-show="data.img" class="img1" ng-src="{{data.img}}">
+                    </div>
+                    <div flex class="tab-right" layout="row" ng-show="isSave">
+                        <input flex type="file" id="file">
+                        <input flex ng-if="!data.img" placeholder="点击上传门店照片" id="noImg" readonly>
+                        <img ng-if="data.img" ng-src="{{data.img}}" id="file2">
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <div layout="row">
+                        <div class="tab-left">所属地区</div>
+                    </div>
+                    <div flex layout="row" ng-if="!isSave">
+                        <div flex class="tab-right" layout="row" layout-align="end center">
+                             <!--<input type="text"  ng-model="data.address" readonly>-->
+                            <span style="   overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;">{{data.address}}</span>
+                        </div>
+                    </div>
+                    <div flex layout="row"  ng-click="openAdcDialog()" layout-align="end center" ng-if="isSave">
+                        <div  class="tab-right" layout="row" ng-if="vm.province || vm.city || vm.area ">
+                            <span class="tab-right-addr" ng-show="vm.province">{{vm.province}} </span>
+                            <span class="tab-right-addr" ng-show="vm.city">{{vm.city}}</span>
+                            <span class="tab-right-addr" ng-show="vm.area" style="   overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;"> {{vm.area}}</span>
+                        </div>
+                        <div flex class="tab-right" layout="row" ng-if="!(vm.province || vm.city || vm.area) ">
+                           <input placeholder="请选择所属地区" readonly>
+                        </div>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <div class="tab-left">详细地址</div>
+                    <div class="tab-right" ng-if="!isSave">
+                        <input type="text"   ng-model="data.detailAddr" readonly>
+                    </div>
+                    <div class="tab-right" ng-if="isSave">
+                        <input type="text" placeholder="请填写详细地址" ng-model="data.detailAddr">
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <div class="tab-left">联系电话</div>
+                    <div class="tab-right" ng-if="!isSave">
+                        <input type="text" ng-model="data.tel" readonly>
+                    </div>
+                    <div class="tab-right" ng-if="isSave">
+                        <input type="text" ng-model="data.tel">
+                    </div>
+                </div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </md-content>
+    <div class="jqPhote" ng-show="choosePhote" layout="column" layout-align="center center">
+        <div flex class="choosePhote-top"></div>
+        <div id="clipArea"></div>
+        <!--<input type="file" id="file">-->
+        <div flex class="choosePhote-btn" layout="row" layout-align="center start">
+            <div layout="row" layout-align="space-between start" style="width: 260px">
+                <div id = 'cancel' ng-click="cancelChoosePhote()">取消</div>
+                <div id="clipBtn" ng-click="cancelChoosePhote()">保存</div>
+            </div>
+
+        </div>
+
+        <!--<div id="view"></div>-->
+    </div>
+</div>

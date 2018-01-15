@@ -1,0 +1,106 @@
+<div class="ks-businessAdd">
+    <div class="contentAdd">
+        <div class="content-1" layout="row" layout-align="space-between start">
+            <div class="left">
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="title">商家名称:</div>
+                    <div layout="row" layout-align="start center">
+                        <input class="form-control" type="text" placeholder="请输入商家名称" style="width: 200px"
+                               ng-model="business.title">
+                    </div>
+                </div>
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="title">主营类目:</div>
+                    <div layout="row" layout-align="start center">
+                        <select ng-model="business.categoryId " style="width: 200px" class="form-control">
+                            <!--<option value="111">服装</option>-->
+                            <!--<option value="qqq">衣服</option>-->
+                        </select>
+                        <!--<input class="form-control" type="text" placeholder="请输入数字" style="width: 200px">-->
+                        <!--<div style="margin-left: 10px">月</div>-->
+                    </div>
+                </div>
+                <div class="tab" layout="row" layout-align="start start">
+                    <div class="title" style="margin-top: 5px">绑定手机号:</div>
+                    <div layout="column" layout-align="start start">
+                        <input class="form-control" type="text" placeholder="请输入手机号码" style="width: 200px"
+                               ng-model="business.phone">
+                        <!--<div class="ts">*必须是平台注册过的帐号</div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="right" layout="row" layout-align="start end">
+                <!--<img src="#" width="120px" height="120px">-->
+
+                <div class="imgList" layout="column" layout-align="center center"
+                     ngf-select="uploading($file)" ngf-pattern="'image/*'" ng-if="!business.logoUrl">
+                    <md-icon md-font-set="ks-admin-font" md-font-icon="ks-add-o"></md-icon>
+                    <div>上传Logo图片</div>
+                    <!--<div class="button" ngf-select="uploading($file)" ngf-pattern="'image/*'" ng-model="files" ngf-multiple="true">上传图片</div>-->
+                </div>
+                <div class="imgList" id="img{{$index}}" ng-if="business.logoUrl">
+                    <p class="imgWrap">
+                        <img ng-src="{{business.logoUrl}}" width="120px"
+                             height="120px"/>
+                    </p>
+                    <div class="file-panel" layout="column" layout-align="start center">
+                        <span class="cancel" ng-click="cancelDelImg()">删除</span>
+                    </div>
+                </div>
+                <div class="ts">*点击上传商家Logo图片png,1:1</div>
+            </div>
+        </div>
+        <div class="content-2">
+            <div class="tab" layout="row" layout-align="start center">
+                <div class="title">开通应用:</div>
+                <div layout="row" layout-align="start center">
+                    <div class="demo-select-all-checkboxes" ng-repeat="item in data.content" layout="row"
+                         layout-align="center center">
+                        <md-checkbox ng-checked="exists(item.id, checkedApp)"
+                                     ng-click="toggle(item.id, checkedApp)">
+                            {{item.appName}}
+                        </md-checkbox>
+                    </div>
+                    <!--<div class="btn-type">微商城</div>-->
+                    <!--<div class="btn-type">销售宝</div>-->
+                </div>
+            </div>
+            <div class="tab" layout="row" layout-align="start center">
+                <div class="title">有效时间:</div>
+                <div layout="row" layout-align="start center">
+                    <!--<input class="form-control" type="text" placeholder="请输入有效时间" style="width: 200px"-->
+                           <!--ng-model="business.date">-->
+                    <md-datepicker ng-model="business.date" md-placeholder="Enter date" md-open-on-focus
+                                   md-date-locale="s" md-date-locale="dateF" md-hide-icons="calendar"
+                                   md-min-date = 'today'></md-datepicker>
+                    <div class="ts">*超过有效时间该应用不能使用</div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-save" layout="row" layout-align="start center">
+            <div class="save" ng-click="save()">保存</div>
+            <div class="return" ng-click="fallbackPage()">返回</div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="businessAdd.html">
+    <div class="md-dialog-container ks-default">
+        <md-dialog aria-label="" class="businessAdd-dialog">
+            <div layout="column" class="tck" style="position:absolute">
+                <div layout="row" class="defaultTck">
+                    手机号码 15858451545 尚未注册，你可以让系统发送邀请短信到该手机，对方通过短信链接设置好密码，即可登录。
+                </div>
+                <div layout="row" class="" layout-align="center center">
+                    <div class="dialog-btn" ng-click="vmd.reject()"
+                         style=" background: #00aaee;color: #FFFFFF;margin-right: 20px">发送邀请
+                    </div>
+                    <div class="dialog-btn" ng-click="vmd.cancel()"
+                         style=" background: #ffffff;color: #333;border: 1px solid #d5d5d5">关闭
+                    </div>
+                </div>
+            </div>
+        </md-dialog>
+    </div>
+</script>

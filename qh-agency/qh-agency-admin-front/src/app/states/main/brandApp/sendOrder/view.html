@@ -1,0 +1,116 @@
+<div class="ks-common-list-order">
+    <div class="common-list-center">
+        <ul layout="column">
+            <li layout="row">
+                <label>创建时间：</label>
+                <div>
+                    <input type="text" class="layui-input choose" id="test1" ng-model="startDate" placeholder="开始时间">
+                    <!--<md-datepicker ng-model="startDate" md-placeholder="Enter date" md-open-on-focus-->
+                                   <!--md-date-locale="s"  md-date-locale="dateF"></md-datepicker>-->
+                </div>
+                <span>一</span>
+                <div>
+                    <input type="text" class="layui-input choose" id="test2" ng-model="endDate" placeholder="结束时间">
+                    <!--<md-datepicker ng-model="endDate" md-placeholder="End date" md-open-on-focus-->
+                                   <!--md-date-locale="s"  md-date-locale="dateF"></md-datepicker>-->
+                </div>
+                <label for="applyStatus" style="margin-left: 10px;">状态：</label>
+                <select id="applyStatus" ng-model="refundStatus">
+                    <option value="all">全部</option>
+                    <option value="UNSHIPPED">待发货</option>
+                    <option value="UNRECEIVED">待收货</option>
+                    <option value="RECEIVED">已完成</option>
+                </select>
+                <label for="orderName" style="margin-left: 10px;">请输入：</label>
+                <input type="text" id="orderName" placeholder="手机号、物流单号" class="choose" ng-model="keyword">
+                <button  class="inquire" ng-click="pageChanged('0')">
+                   搜索
+                </button>
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+    <!--div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <ul class="tableStatus" layout="row">
+            <li ng-class="{select:activeNum == 'all'}" ng-click="btnClick('all')" >全部</li>
+            <li ng-class="{select:activeNum == 'UNSHIPPED'}" ng-click="btnClick('UNSHIPPED')">待发货</li>
+            <li ng-class="{select:activeNum == 'UNRECEIVED'}" ng-click="btnClick('UNRECEIVED')">待收货</li>
+            <li ng-class="{select:activeNum == 'RECEIVED'}" ng-click="btnClick('RECEIVED')">已完成</li>
+            <li flex></li>
+        </ul>
+        <div class="tableTit" layout="row">
+            <div class="tableTd" flex>
+                <span>商品信息</span>
+            </div>
+            <div class="tableTd" flex>
+                <span>收货信息</span>
+            </div>
+            <div class="tableTd" flex>
+                <span>物流信息</span>
+            </div>
+            <div class="tableTd" flex>
+                <span>操作</span>
+            </div>
+        </div>
+        <!--n个发货订单-->
+        <div class="tableCon">
+            <!--一个订单编号-->
+            <div class="orderNumber" ng-repeat="item in items">
+                <!--订单头部-->
+                <div class="ordTitle" layout="row">
+                    <div flex="75" class="tit" layout="row">
+                        <span>发货单号：{{item.seq}}</span>
+                        <span>创建时间：{{item.dateCreated | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                        <!--<span>订单编号：{{item.orderSeq}}</span>-->
+                        <span>订单来源：生意参谋</span>
+
+                    </div>
+                    <div flex="25" class="tit orderSta" style="text-align: right;">
+                        <span>{{item.statusDesp}}</span>
+                    </div>
+                </div>
+                <!--订单信息-->
+                <div class="ordDetail" layout="row">
+                    <div flex class="orderXq" layout="row">
+                        <div class="pic">
+                            <img ng-src="{{item.orderItems[0].skuImg}}">
+                        </div>
+                        <div layout="column" class="goodsDetail">
+                            <span>{{item.orderItems[0].itemTitle}}</span>
+                            <span style="text-align: left;">共{{item.orderItems.length}}样</span>
+                        </div>
+                    </div>
+                    <div flex class="orderXq" layout="column">
+                        <span>收货人：{{item.addressInfo.receiver}}{{item.addressInfo.phone}}</span>
+                        <span>收获地址：{{item.addressInfo.province}}{{item.addressInfo.city}}{{item.addressInfo.county}}{{item.addressInfo.street}}</span>
+                    </div>
+                    <div flex class="orderXq" layout="column">
+                        <span>物流公司：{{item.logisticInfo[0].company}}</span>
+                        <span>物流单号：{{item.logisticInfo[0]. expressNo}}</span>
+                    </div>
+                    <!--<div flex class="orderXq" layout="column" ng-if="item.status=='UNSHIPPED'">-->
+                        <!--<span>发货方式：暂未发货</span>-->
+                    <!--</div>-->
+                    <div flex class="orderXq">
+                        <button ui-sref="main.brandApp.sendDetail({id:item.id})" ng-if="DELIVERINVOICE_R">详情</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分页-->
+    <div style="width: 100%; padding:0px 20px;">
+        <div style="width: 500px;min-width: 500px" uib-pagination total-items="page.totalElements" ng-model="curPage"
+             ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"
+             items-per-page="page.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+        <div style="float: right"  class="pageSubnav">
+            <span>共{{page.totalElements}} 条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button >确定</md-button>
+        </div>
+    </div>
+</div>

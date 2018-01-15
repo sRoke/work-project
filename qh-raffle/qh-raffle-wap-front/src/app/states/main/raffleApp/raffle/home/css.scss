@@ -1,0 +1,575 @@
+@import "../../../../../scss/index.scss";
+
+.ks-home {
+  .main{
+    .raffle-top {
+      height: 375px;
+      width:100%;
+      background: url("./bg1.png") no-repeat;
+      background-size:100% 375px;
+      .raffle-rule{
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: url("./bg3.png") no-repeat;
+        background-size: 66px 63px;
+        height: 66px;
+        width: 63px;
+      }
+      /* 大转盘样式 */
+      .banner{display:block;width:100%;margin-left:auto;margin-right:auto;margin-bottom: 20px;}
+      .banner .turnplate{display:block;width:280px;height:280px;position:relative;margin:0 auto;}
+
+      .banner .turnplate img.item{width:100%; background:url(./bgLottery.png) no-repeat;background-size:280px 280px;width: 280px;height: 280px;border-radius:140px;}
+      .banner .turnplate img.pointer{position:absolute;width:84px;height:102px;left:98px;top:89px;}
+      #mark{width: 100%;height: 100%;background: rgba(0,0,0,0.5);position: fixed;top: 0;left: 0;display: none;}
+      //.red-img{position: fixed;top: 10%;left: 5%;width: 50%;}
+    }
+  // 参与人数
+    .joinNum{
+      height:50px;
+      line-height: 50px;
+      text-align: center;
+      .joinNumTs{
+        width:100%;
+        font-size: 14px;
+        //font-weight: 500;
+        color: #676767;
+        span{
+          font-size: 16px;
+          color: #AF0538;
+        }
+      }
+    }
+  //  砍一刀
+    .btn-con{
+      height:40px;
+      margin-top: 10px;
+      button{
+        width:210px;
+        height:40px;
+        border:none;
+        background: #AF0538;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 20px;
+      }
+    }
+    .ts{
+      height:42px;
+      line-height: 42px;
+      color: #515151;
+      font-size: 14px;
+      margin-top: 5px;
+      //font-weight:500;
+    }
+    //图文详情
+    .activity-desp{
+      flex-shrink:0;
+      margin: 17px 0;
+      padding: 0 15px;
+    }
+  }
+  //分享二维码弹窗样式
+  .dialog-wrap {
+    z-index: 140;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 309px;
+    min-height: 309px;
+    -webkit-transform: translate(0, 100%);
+    width: 100%;
+    .dialog-box {
+      height: 260px;
+      max-height: 260px;
+      background: #fff;
+      .dialog-header {
+        font-size: 18px;
+        font-weight: bold;
+        color: #e84e40;
+        line-height: 1em;
+        margin-top: 30px;
+      }
+      .dialog-dis {
+        color: #555555;
+        font-size: 16px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+      }
+      .dialog-btn-icon {
+        width: 100%;
+        .btn-icon-wrap {
+          .dialog-icon1 {
+            width: 48px;
+            height: 48px;
+            border-radius: 100px;
+            border: 1px solid #86c373;
+            color: #86c373;
+            font-size: 24px;
+            text-align: center;
+            line-height: 48px
+          }
+          .dialog-icon2 {
+            width: 48px;
+            height: 48px;
+            border-radius: 100px;
+            border: 1px solid #59bec9;
+            color: #59bec9;
+            font-size: 24px;
+            text-align: center;
+            line-height: 48px
+          }
+          .dialog-icon3 {
+            width: 48px;
+            height: 48px;
+            border-radius: 100px;
+            border: 1px solid #e7a14c;
+            color: #e7a14c;
+            font-size: 20px;
+            text-align: center;
+            line-height: 48px
+          }
+          .dialog-btn-txt {
+            width: 70px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            line-height: 1em;
+            margin-top: 15px;
+          }
+        }
+      }
+    }
+    .btnLeft {
+      text-align: center;
+      background: #fff;
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+      .ks-icon {
+        margin: 0;
+        border: 1px solid #d5d5d5;
+        border-radius: 30px;
+        overflow: hidden;
+        font-size: 12px;
+        width: 28px;
+        height: 28px;
+        line-height: 26px;
+        color: #d5d5d5;
+      }
+    }
+  }
+  .dialogWrapActive {
+    -webkit-transform: translate(0, 0);
+  }
+  //分享二维码弹窗背景
+  .dialog-backdrop {
+    width: 100%;
+    height: 100%;
+    background: rgba(51, 51,51, 0.8);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 140;
+    overflow: hidden;
+  }
+  //分享二维码弹窗背景2
+  .dialog-backdrop2 {
+    width: 100%;
+    height: 100%;
+    background: rgba(51, 51,51, 0.8);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 142;
+    overflow: hidden;
+  }
+  //图片二维码
+  .dialog-img-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 143;
+    //margin-left: -162px;
+    //margin-top: -245px;
+    //width: 100%;
+    //height: 100%;
+    .closeDialog {
+      margin-bottom: -12px;
+      z-index: 190;
+      margin-left: 300px;
+      width: 24px;
+      height: 24px;
+      border-radius: 12px;
+      background: #e84e40;
+      text-align: center;
+      line-height: 24px
+    }
+    img {
+      margin: 0 auto;
+    }
+    .imgShare {
+
+    }
+  }
+  //砍价弹窗
+  .dialog-imgShare-wrap {
+    //position: absolute;
+    //z-index: 12;
+    //width: 100%;
+    //height: 100%;
+    text-align: center;
+    position: absolute;
+    z-index: 141;
+    top: 50%;
+    margin-top: -200px;
+    width: 100%;
+    img {
+      margin: 0 auto;
+    }
+    .imgShare {
+
+    }
+    .raffle-dis {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      width: 200px;
+      margin-left: -100px;
+      text-align: center;
+      z-index: 190;
+      font-size: 16px;
+      color: #333;
+      span {
+        font-size: 20px;
+        color: #e84e40;
+      }
+    }
+    .btn {
+      width: 131px;
+      height: 32px;
+      background: #fad642;
+      border-radius: 30px;
+      color: #1a1a1a;
+      font-size: 14px;
+      text-align: center;
+      line-height: 32px;
+      position: absolute;
+      bottom: 28px;
+      z-index: 200;
+      left: 50%;
+      margin-left: -65px;
+    }
+  }
+  //长按识别二维码
+  .dialog-ewm-wrap {
+    text-align: center;
+    position: absolute;
+    border-radius:10px;
+    height: 260px;
+    z-index: 143;
+    top: 50%;
+    width: 100%;
+    margin-top: -200px;
+    .dialog-ewm-wrap-con{
+      margin: 0 auto;
+      width: 210px;
+      height: 260px;
+      background: url("./ewm.png") no-repeat;
+      background-size: 210px 260px;
+      .top-tit{
+        color: #E43526;
+        font-size: 14px;
+        line-height: 30px;
+        height: 30px;
+        text-align: center;
+        margin-top: 61px;
+      }
+      .ewmImg{
+        background:#fff;
+        height: 140px;
+        width: 140px;
+        background: #fff;
+        margin:14px auto 0px;
+        img{
+          border: 0;
+          height: 132px;
+          width: 132px;
+          margin-top: 4px;
+        }
+      }
+    }
+    .bottom-tit{
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      z-index: 143;
+      color: #E7C3FF;
+      font-size: 14px;
+      height: 18px;
+      line-height: 18px;
+      bottom: -30px;
+      span{
+        color: #F4D954;
+      }
+    }
+  }
+  //活动规则弹窗
+  .dialog-rule-wrap {
+    text-align: center;
+    position: absolute;
+    z-index: 141;
+    border-radius:12px;
+    background: #fff;
+    flex-shrink: 0;
+    height: 70%;
+    width: 85%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    .top-con{
+      border-top-right-radius: 12px;
+      border-top-left-radius: 12px;
+      width: 100%;
+      height: 60px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      background: -moz-linear-gradient(left, #E84E40 , #FF4FE4);
+      /* Safari 5.1+, Chrome 10+ */
+      background: -webkit-linear-gradient(left, #E84E40 , #FF4FE4);
+      /* Opera 11.10+ */
+      background: -o-linear-gradient(left, #E84E40 , #FF4FE4);
+      .ks-icon1{
+        position: absolute;
+        color: #e84e40;
+        font-size: 12px;
+        top: 5px;
+        right: 5px;
+      }
+    }
+    .bargain-con{
+      height: 100%;
+      width: 100%;
+      .bargainer{
+        padding: 8px 15px 18px;
+        flex-shrink: 0;
+        overflow-x: auto;
+        .rank-list-content{
+          flex-shrink: 0;
+          margin-top: 10px;
+        }
+      }
+    }
+
+  }
+  //中奖弹窗
+  .dialog-lottery-wrap {
+    text-align: center;
+    position: absolute;
+    z-index: 141;
+    border-radius:12px;
+   // background: #fff;
+    flex-shrink: 0;
+    height: 500px;
+    width: 276px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    .bargain-con{
+      height: 326px;
+      width: 276px;
+      background: url(./lotteryBg.png) no-repeat;
+      background-size: 276px 326px;
+      .lottery-name{
+        height: 26px;
+        line-height: 26px;
+        font-size: 18px;
+        color: #9E0029;
+        margin-top: 118px;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .img-con{
+        margin-top: 10px;
+        height:110px;
+        width: 100%;
+        img{
+          height: 110px;
+          width: 110px;
+        }
+      }
+      .ks-close{
+        position: absolute;
+        height: 26px;
+        width: 26px;
+        top: 10px;
+        right: 20px;
+      }
+    }
+    .lottery{
+      height: 80px;
+      width: 274px;
+      background: url(./lottery.png) no-repeat;
+      background-size: 274px 80px;
+    }
+    .reshare{
+      height: 44px;
+      width: 240px;
+      background: url(./reshare.png) no-repeat;
+      background-size: 240px 44px;
+      margin:0 auto;
+    }
+  }
+  //活动奖品弹窗
+  .dialog-media-wrap {
+    text-align: center;
+    position: absolute;
+    z-index: 141;
+    border-radius:12px;
+    background: #fff;
+    flex-shrink: 0;
+    height: 70%;
+    width: 85%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    .top-con{
+      border-top-right-radius: 12px;
+      border-top-left-radius: 12px;
+      width: 100%;
+      height: 60px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      background: -moz-linear-gradient(left, #E84E40 , #FF4FE4);
+      /* Safari 5.1+, Chrome 10+ */
+      background: -webkit-linear-gradient(left, #E84E40 , #FF4FE4);
+      /* Opera 11.10+ */
+      background: -o-linear-gradient(left, #E84E40 , #FF4FE4);
+    }
+    .bargain-con{
+      height: 100%;
+      width: 100%;
+      .raffle1{
+        padding: 8px 10px 0px;
+        flex-shrink: 0;
+        overflow-x: auto;
+        .rank-list-content{
+          padding: 0 13px;
+          flex-shrink: 0;
+          .list-con{
+            padding: 15px 0px 0px;
+            .list-left{
+              height: 60px;
+              width: 60px;
+              img{
+                height: 60px;
+                width: 60px;
+              }
+            }
+            .list-right{
+              width: 100%;
+              margin-left: 15px;
+              .right-title{
+                text-align: left;
+                font-size: 14px;
+                line-height: 16px;
+                height: 48px;
+              }
+              .right-click{
+                text-align: left;
+                color: #EF4E70;
+                font-size:12px;
+                height: 12px;
+                line-height: 12px;
+              }
+            }
+            .line{
+              margin-top: 15px;
+              width: 100%;
+              height: 1px;
+              -webkit-transform: scaleY(0.5);
+              -webkit-transform-origin: 0 0;
+              //overflow: hidden;
+              background: #CDD0CF;
+            }
+          }
+        }
+      }
+      .raffle2{
+        padding: 0 10px;
+        flex-shrink: 0;
+        overflow-x: auto;
+        .line{
+          width: 100%;
+          height: 1px;
+          -webkit-transform: scaleY(0.5);
+          -webkit-transform-origin: 0 0;
+          //overflow: hidden;
+          background: #CDD0CF;
+        }
+        .center-con{
+          padding: 0 15px;
+          .center-left{
+            min-width: 56px;
+            font-size: 14px;
+            color: #333;
+          }
+          .center-right1{
+            padding-left: 18px;
+            color: #666;
+            font-size: 14px;
+            text-align: left;
+            .phone{
+              margin-top: 15px;
+              line-height: 16px;
+            }
+            .address{
+              margin: 10px 0 15px 0;
+              line-height: 16px;
+            }
+          }
+          .center-right2{
+            text-align: left;
+            padding-left: 18px;
+            line-height: 52px;
+            color: #666;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+          }
+        }
+      }
+    //  按钮
+      .btn{
+        height: 68px;
+        width: 100%;
+        .btn1{
+          height: 40px;
+          width: 160px;
+          background: url("./know.png") no-repeat;
+          background-size: 160px 40px;
+        }
+        .btn2{
+          height: 40px;
+          width: 160px;
+          background: url("./rerun.png") no-repeat;
+          background-size: 160px 40px;
+        }
+      }
+    }
+
+  }
+}

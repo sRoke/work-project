@@ -1,0 +1,97 @@
+@import "../../../../../scss/index.scss";
+
+.ks-applicationList{
+    //background: #FFFFFF;
+    margin: 32px 20px 0;
+    //border: 1px solid #d5d5d5;
+    //.list-th{
+    //    background: #d5d5d5;
+    //    .list-th-td{
+    //        height: 45px;
+    //        color: #333333;
+    //        font-size: 14px;
+    //        text-align: center;
+    //        line-height: 45px;
+    //    }
+    //}
+    //.list-tr{
+    //    .list-tr-td{
+    //        height: 67px;
+    //        color: #333333;
+    //        font-size: 14px;
+    //        text-align: center;
+    //        line-height: 67px;
+    //        .btn-blue{
+    //            span{
+    //                cursor: pointer;
+    //                color:#00aaee;
+    //                text-align: right;
+    //                margin-right:10px;
+    //            }
+    //        }
+    //    }
+    //}
+
+    .common-list-detail {
+        .common-list-detail-thead {
+            height: 40px;
+            line-height: 40px;
+            text-align: left;
+            //border-top: 4px solid #ba9f6e;
+            background: #e6e6e6;
+            .thead-show {
+                span {
+                    font-size: 14px;
+                }
+            }
+            .thead-show:first-child {
+                margin-left: 40px;
+            }
+            .thead-show:last-child {
+                margin-right: 40px;
+                text-align: right;
+            }
+        }
+        //表格详细内容
+        .common-list-detail-tbody {
+            .common-list-detail-row {
+                height: 60px;
+                line-height: 60px;
+                text-align: left;
+                .thead-show {
+                    span {
+                        font-size: 14px;
+                        color: #666;
+                    }
+                }
+                .thead-show:first-child{
+                    margin-left: 40px;
+                }
+                .thead-show:last-child {
+                    margin-right: 40px;
+                    text-align: right;
+                    span{
+                        margin-left: 10px;
+                        color: $platform-operation-btn-blue;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .common-list-detail-row:nth-child(odd) {
+                background: #fff;
+                border: 1px solid #fff;
+            }
+            .common-list-detail-row:nth-child(even) {
+                background: #fbf9f6;
+                border: 1px solid #fbf9f6;
+            }
+            .common-list-detail-row:hover {
+                z-index:2;
+                border: 1px solid #ba9f6e;
+                -webkit-box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+                -moz-box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+                box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+            }
+        }
+    }
+}

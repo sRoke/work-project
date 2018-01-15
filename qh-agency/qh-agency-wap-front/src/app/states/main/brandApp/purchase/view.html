@@ -1,0 +1,100 @@
+<div flex="100" layout="column" class="ks-purchase">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>采购</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="search" layout="row" layout-align="center center">
+        <div class="input-wrap" flex layout="row">
+            <input type="text" ng-model="keyWord" ng-blur="getItemList()" placeholder="请输入商品名称或编号" flex>
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>
+        </div>
+        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon>
+    </div>
+    <md-divider></md-divider>
+    <div class="content-wrap" flex layout="row">
+        <div class="leftBtn-wrap" layout="column" layout-align="start center">
+            <md-content flex style="background: #f5f5f5">
+                <div class="btn"
+                     ng-class="{btnActive:check}"
+                     ng-click="btnClick(null)">全部
+                </div>
+                <div class="btn"
+                     ng-class="{btnActive:btn.check}"
+                     ng-repeat="btn in btnList track by $index"
+                     ng-click="btnClick(btn)">{{btn.name}}
+                </div>
+            </md-content>
+        </div>
+        <md-content flex style="overflow-x: hidden">
+            <div flex class="itemWrap" layout="column" layout-align="center stretch">
+                <div class="item" layout="column" ng-repeat="item in itemList"
+                     ng-if="itemList[0]"
+                     ui-sref="main.brandApp.item({itemId:item.id})">
+                    <div layout="row" class="item-box">
+                        <div class="img-wrap">
+                            <img ng-src="{{item.imgs}}{{imgView}}" alt="">
+                        </div>
+                        <div class="item-detail" layout="column" flex>
+                            <div class="item-title">{{item.title}}</div>
+                            <div class="item-spec">
+                                <span class="specs">￥{{item.price/100|num:2}} <span class="qi">起</span></span>
+                            </div>
+                        </div>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                    </div>
+                    <md-divider></md-divider>
+                </div>
+            </div>
+            <div ng-if="!data&&!itemList[0]" style="text-align: center;margin-top: 130px;font-size: 16px;">加载商品!</div>
+            <!--<div ng-if="data&&!itemList[0]" style="text-align: center;margin-top: 130px;font-size: 16px;">暂无商品!</div>-->
+
+            <!--<div ng-if="data&&pageEnd" ng-click="getItemList()">
+                点击加载更多
+            </div>-->
+
+            <!--分页-->
+            <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;">
+                <md-button class="ks-white md-raised ks-white-noBorder" flex
+                           style="color: #999;box-shadow: 0 0 0 0 #fff"
+                           ng-click="getItemList(categoryId,'more')"
+                           ng-if="data&&pageEnd">
+                    点击加载更多...
+                </md-button>
+
+                <md-button class="ks-white md-raised" flex style="color: #999;box-shadow: 0 0 0 0 #fff"
+                           ng-if="data&&!pageEnd">
+                    没有更多商品了
+                </md-button>
+            </div>
+        </md-content>
+    </div>
+    <md-divider style="z-index: -1;"></md-divider>
+    <div class="footBtn" layout="row">
+        <div flex class="left-wrap" layout="row">
+            <div class="cart-wrap" layout="column" ng-click="openDialog()">
+                <div class="icon-wrap" layout="column" layout-align="center center">
+                    <md-icon class="icon" md-font-set="ks-icon" md-font-icon="ag-cart-line"></md-icon>
+                    <i class="" ng-if="totlePrice >0 "></i>
+                </div>
+                <div class="cart-dis">购物车</div>
+            </div>
+            <div class="pay-price" flex>
+                合计:￥{{totlePrice/100|num:2}}
+            </div>
+        </div>
+        <div class="goPay" ng-if="totlePrice >0 " ng-clicK="orderCreate()">
+            <span>去结算</span>
+            <!--<span>加入购物车</span>-->
+        </div>
+        <div class="noPay" ng-if="totlePrice <=0 ">
+            <span>去结算</span>
+            <!--<span>加入购物车</span>-->
+        </div>
+    </div>
+</div>

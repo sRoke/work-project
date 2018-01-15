@@ -1,0 +1,56 @@
+devPort: 11300
+
+# ServerProperties
+server:
+  context-path: /oauth2/rs/local/${devPort}
+  session.timeout: 600  # 10min
+
+# LOGGING
+logging:
+  level:
+    org.springframework.web:                                                      INFO
+    org.springframework.security:                                                 INFO
+    org.springframework.boot.actuate.audit.listener.AuditListener:                DEBUG
+    org.springframework.boot.web.support.ErrorPageFilter:                         DEBUG
+    org.springframework.web.servlet.view.ContentNegotiatingViewResolver:          DEBUG
+    org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping:  DEBUG
+    org.apache.http.wire:                                                         DEBUG
+    net.kingsilk:                                                                 DEBUG
+
+# MongoProperties
+spring.data.mongodb:
+  host: '192.168.0.12'
+  port: 27017
+  database: 'qhOauth'
+  username: 'qhOauth'
+  password: 'qhOauth'
+
+# QhOAuthProperties
+net.kingsilk.qh.oauth:
+
+  # http代理设置
+  http:
+    proxy:
+      enabled:      false
+
+  qhOAuth:
+    wap:
+      url:          https://kingsilk.net/oauth2/rs/local/${devPort}
+
+
+      wx:
+        # 钱皇内部测试号
+        appId:      wxf9f2b8b1a506c068
+        appSecret:  9c2fe3b32ceda561a63f267eb116473a
+#      wxQyh: # qyh
+#        corpId: wxd8a8a4e8d7cc21ab 111
+#        corpSecret: JGMq35G_b1MfXBakO83nlSWjC_Vu_Q09mF15Sh6zw4xm8v8vSwDu3kugKTe2Y5oI
+#        providerSecret: nL9R7blG_wFUlJTdNZ_esvznArSNa9iQTdrWyhRRvcygHhO6Q7mt788rLvDXOazQ
+
+  qhCommon:
+    admin:
+      url:          http://common.kingsilk.net/admin/local/${devPort}/rs
+
+  wx4j:
+    broker:
+      apiBaseUri:       https://kingsilk.net/wx/rs/local/${devPort}/api

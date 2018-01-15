@@ -1,0 +1,108 @@
+
+@import "../../../../../scss/index.scss";
+.ks-appUserView{
+    //margin: 32px 150px 0;
+
+    margin: 20px;
+    background: #fff;
+    padding: 30px 150px 150px;
+    .contentEdit{
+        .left{
+            .tab{
+                min-height: 45px;
+                //margin-top: 20px;
+                .title{
+                    color: #333333;
+                    margin-right: 20px;
+                }
+                textarea{
+                    width: 600px;
+                    min-height: 80px;
+                }
+
+
+                .table{
+                    border-radius: 4px;
+                    overflow: hidden;
+                    border:1px solid #d5d5d5;
+                    .th{
+                        width: 100%;
+                        border-bottom:1px solid #d5d5d5;
+                        .td-1{
+                            min-width: 76px;
+                            padding: 0 10px;
+                        }
+                        .td-2{
+                            width: 100%;
+                            border-left:1px solid #d5d5d5;
+                            .td-list{
+                                padding: 0 10px;
+                                border-bottom:1px solid #d5d5d5;
+                                //width: 100px;
+                                height: 30px;
+                                line-height: 30px;
+
+                                md-checkbox{
+                                    margin-bottom: 0;
+                                    label{
+                                        font-size: 14px;
+                                        font-weight: 100;
+
+                                    }
+                                }
+                                .md-checked{
+                                    .md-icon{
+                                        background: #333333;
+                                    }
+                                }
+
+                                .td-list-label{
+                                    label{
+                                        margin-right: 10px;
+                                        color: #333333;
+                                        font-weight: 100;
+                                    }
+                                }
+
+                            }
+                            .td-list:last-child{
+                                border:none;
+                            }
+                        }
+                    }
+                    .th:last-child{
+                        border:none;
+                    }
+                }
+
+            }
+        }
+        .btn-save{
+            margin-top: 18px;
+            height: 45px;
+            .save{
+                height: 30px;
+                border-radius: 4px;
+                background: $platform-btn-blue;
+                width: 80px;
+                margin-left: 80px;
+                text-align: center;
+                line-height: 30px;
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+            .return{
+                height: 30px;
+                border-radius: 4px;
+                background: $platform-btn-white;
+                width: 80px;
+                margin-left: 20px;
+                text-align: center;
+                line-height: 30px;
+                border: 1px solid #d5d5d5;
+                color: #333333;
+                cursor: pointer;
+            }
+        }
+    }
+}

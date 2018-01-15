@@ -1,0 +1,125 @@
+<div class="ks-selectSpec" flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="finish()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex ng-click="getSku()">商品规格</h1>
+        <div class="right-button" flex="20" style="color: #E53467;">
+            <!--新增ng-click="add()"-->
+        </div>
+    </div>
+    <div class="center-line"></div>
+    <!--无商品分类空白页面-->
+    <md-content flex style="overflow-x:hidden;" ng-if="noGood">
+        <div class="main-noGoods" layout="column">
+            <div layout="row" layout-align="center" class="img-con">
+                <img src="noGoods.png" class="noGoods">
+            </div>
+            <div layout-align="center" layout="row" class="noGoods-word">
+                您还没有商品规格哦，快去新增吧
+            </div>
+        </div>
+    </md-content>
+    <md-content flex style="overflow-x:hidden;" ng-if="!noGood">
+        <div class="main">
+            <!--<div layout="row" class="edit-ts">【向左滑动】可选择新增/编辑/删除</div>-->
+            <div layout="column" class="center-con">
+                <div class="center-tab" layout="column" ng-repeat="item in items">
+                    <!--父级-->
+                    <div class="tab-parent" layout="row" layout-align="space-between center" ng-show="item.specShow">
+                        <div class="tab-parent-left" layout="row">
+                            <div>{{item.name}}</div>
+                        </div>
+                        <div class="tab-parent-right" layout="row">
+                            <div class="right-btn-add" ng-click="add(item.id)">新增</div>
+                            <!-- <div class="right-btn-edit" ng-click="edit(item.id,item.name,'parent')">编辑</div>
+                             <div class="right-btn-del" ng-click="delte(item.id,'parent')">删除</div>-->
+                        </div>
+                    </div>
+                    <div class="line" ng-if="!$last" ng-show="item.specShow"></div>
+                    <div class="tab-sublevel" layout="column" ng-repeat="subItem in item.propValues"
+                         ng-show="item.specShow">
+                        <div class="sublevel" layout="row" layout-align="space-between center">
+                            <div class="tab-sublevel-left" layout="row">
+                                <div ng-if="subItem.flog == true">
+                                    <md-icon class="ks-icon" ng-if="!subItem.checked" md-font-set="ks-icon"
+                                             md-font-icon="ag-circle"></md-icon>
+                                    <md-icon class="ks-icon" style="color: #999;" ng-if="subItem.checked"
+                                             md-font-set="ks-icon" md-font-icon="ag-complete"
+                                    ></md-icon>
+                                </div>
+
+                                <div ng-if="subItem.flog != true">
+                                    <md-icon class="ks-icon" ng-if="!subItem.checked" md-font-set="ks-icon"
+                                             md-font-icon="ag-circle" ng-click="selectCheck(subItem,item)"></md-icon>
+                                    <md-icon class="ks-icon" style="color: #E53467;" ng-if="subItem.checked"
+                                             md-font-set="ks-icon" md-font-icon="ag-complete"
+                                             ng-click="selectCheck(subItem,item)"></md-icon>
+
+                                </div>
+
+                                <div>{{subItem.name}}</div>
+                            </div>
+                            <div class="tab-sublevel-right" layout="row">
+                                <div class="right-btn-add"></div>
+                                <div class="right-btn-edit" ng-hide="subItem.flog == true"
+                                     ng-click="edit(subItem,item,'sub')">编辑
+                                </div>
+                                <div class="right-btn-del" ng-hide="subItem.flog == true"
+                                     ng-click="delte(subItem,item,'sub')">删除
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line" ng-if="!$last"></div>
+
+                        <!--<div class="sublevel" layout="row" layout-align="space-between center"-->
+                        <!--ng-if="$last" ng-click="add(item.id)">-->
+                        <!--<div class="tab-sublevel-left" layout="row">-->
+                        <!--<div>新增属性值</div>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="line" ng-if="!$last"></div>-->
+                    </div>
+                    <div class="center-line" ng-if="!$last" ng-show="item.specShow"></div>
+                </div>
+            </div>
+        </div>
+    </md-content>
+
+
+    <!-- <md-divider ng-if="choose"></md-divider>
+     <div ng-if="choose" ng-click="test()" class="choose" layout="row" layout-align="center center">
+         <span>测试1</span>
+     </div>  <md-divider style="border-color:#E53467"></md-divider>-->
+    <md-divider ng-if="choose" style="border-color:#E53467"></md-divider>
+    <div ng-click="finish()" ng-if="choose" class="choose" layout="row" layout-align="center center">
+        <span>确定</span>
+    </div>
+    <!--增加商品分类-->
+    <script type="text/ng-template" id="addGood.html">
+        <!--<div class="md-dialog-container ">-->
+        <md-dialog aria-label="" class="addGood2" style="overflow: initial;">
+            <!--<md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o" ng-click="vmd.cance()"></md-icon>-->
+            <div class="dis">{{ vmd.titleName }}</div>
+            <div class="rowLine"></div>
+            <div class="address-dis">
+                <div class="dis-code" layout="column" flex>
+                    <input type="text" placeholder="{{ vmd.placeHolder }}" flex ng-model="vmd.name" ng-change="vmd.check(vmd.name)">
+                    <!--<input type="tel" placeholder="请输入排序号" flex ng-model="vmd.number">-->
+                </div>
+                <div class="dis-ts" layout="row" flex
+                     style="line-height: 16px;margin-bottom: 15px;font-size: 14px;color: #e84e40;"
+                     ng-if="vmd.noName">
+                    规格名称不得为空！
+                </div>
+            </div>
+            <div class="rowLine"></div>
+            <div layout="row" layout-align="center center">
+                <div flex style="font-size: 18px;text-align: center" ng-click="vmd.cance()">取消</div>
+                <div class="line"></div>
+                <div flex style="font-size: 18px;text-align: center;color: #e53467;" ng-click="vmd.confirm()">确定</div>
+            </div>
+        </md-dialog>
+        <!--</div>-->
+    </script>
+</div>

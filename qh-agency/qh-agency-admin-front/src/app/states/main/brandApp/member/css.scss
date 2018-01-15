@@ -1,0 +1,460 @@
+
+.ks-common-list-member {
+  a {
+    text-decoration: none;
+    color: #00aaee;
+  }
+  //头部开始
+  height: 50px;
+  background: #fff;
+  .common-list-center{
+    ul{
+      height:70px;
+      margin-bottom: 0px;
+      width: 100%;
+      padding:0 20px;
+      background: #f5f5f5;
+      li{
+        float: left;
+        height:70px;
+        list-style: none;
+        label{
+          line-height:30px;
+          height:30px;
+          font-size:14px;
+          font-weight:500;
+          margin:20px 0px 0px 0px;
+        }
+        .choose{
+          width:160px;
+          height: 30px;
+          padding-left:5px;
+          margin-top: 20px;
+          border-radius: 4px;
+          border:1px solid #e0e0e0;
+        }
+        span{
+          text-align: center;
+          height:30px;
+          line-height: 30px;
+          margin-top:20px;
+          font-size:14px;
+          font-weight:100;
+          padding:0 10px;
+        }
+        .inquire{
+          color:#fff;
+          cursor: pointer;
+          height:30px;
+          margin: 20px 0 0 20px;
+          background:#00aaee;
+          padding:0 20px;
+          border-radius: 4px;
+          border:none;
+          outline: none;
+        }
+        #applyStatus,#applyType{
+          height:30px;
+          width:160px;
+          margin: 20px 10px 0px 0px;
+          background:#fff;
+          border-radius: 4px;
+          border:1px solid #e0e0e0;
+        }
+        .publish{
+          height:30px;
+          margin-top: 20px;
+          border:1px solid #ccc;
+          background: #fff;
+          outline: none;
+          margin-left:290px;
+        }
+      }
+    }
+  }
+  //短链接页面搜索
+
+  .search-wrap {
+    margin-left: 10px;
+    width: 300px;
+    height: 30px;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    input {
+      border: none;
+      background: transparent;
+      padding-left: 10px;
+      outline: none;
+    }
+    span {
+      border-left: 1px solid #e0e0e0;
+      width: 90px;
+      background: transparent;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+
+  //批量操作开始
+
+  //导航按钮
+  .nav-wrap {
+    position: relative;
+    margin: -1px 10px;
+    //border-top: 1px dashed #e0e0e0;
+    height: 45px;
+    .md-nav-bar {
+      height: 36px;
+      min-height: 36px;
+      border: none;
+      nav {
+        overflow: hidden;
+        ul {
+          margin-top: 1px;
+        }
+      }
+      .md-button._md-nav-button {
+        border: 1px solid #e0e0e0;
+        background: #fff;
+        padding: 0 16px 1px;
+        margin: 0 4px;
+      }
+      .md-button._md-nav-button.md-unselected {
+        border: 1px solid #e0e0e0 !important;
+      }
+    }
+
+    md-nav-ink-bar {
+      height: 0;
+    }
+    .md-padding {
+      padding: 8px 0 0 0;
+    }
+    .md-nav-item:first-of-type {
+      margin-left: -4px;
+    }
+
+    .md-accent {
+      color: #ba9f6e;
+      border-bottom: none;
+      z-index: 10;
+      border-bottom: none !important;
+    }
+    .nav-line {
+      width: 100%;
+      height: 1px;
+      background: #e0e0e0;
+    }
+
+    /*右边的按钮*/
+    .btnBox {
+      position: absolute;
+      right: 0;
+      top: 0;
+      .btn {
+        margin-right: 15px;
+        border: 1px #ececec solid;
+      }
+      .newAdd {
+        min-width: 97px;
+        float: right;
+        height: 30px !important;
+        border-radius: 4px;
+        background-color: #019875;
+        font-size: 14px;
+        color: #FFF;
+        text-align: center;
+        .wrapIcon {
+          color: #FFF;
+          font-size: 14px;
+          line-height: 24px;
+        }
+      }
+      .newAdd:hover {
+        cursor: pointer;
+      }
+      .md-button {
+        min-height: 30px;
+        line-height: 0;
+        padding: 5px 12px;
+      }
+    }
+  }
+
+  //rmy
+  .common-list-detail {
+    width: 100%;
+    padding:0px 20px 20px;
+    //申请表头
+    .common-list-detail-thead {
+      height: 40px;
+      line-height: 40px;
+    //  text-align: center;
+     // border-top: 4px solid #ba9f6e;
+      background: #e6e6e6;
+      .thead-show {
+        text-align: left;
+        padding-left: 20px;
+        span {
+          font-size: 14px;
+          //font-weight: bold;
+          //color: #666;
+        }
+        .operateFont{
+          .glyIcon{
+            font-size:16px;
+            margin-top:4px;
+          }
+          span{
+            height:58px;
+            font-size:14px;
+            text-align: center;
+            line-height:58px;
+          }
+        }
+      }
+      .end-show{
+        text-align: right;
+        padding-right:30px;
+      }
+    }
+    //表格详细内容
+    .common-list-detail-tbody {
+      .common-list-detail-row {
+        height: 60px;
+        line-height: 60px;
+        //text-align: center;
+        .thead-show {
+          text-align: left;
+          padding-left: 20px;
+          span {
+            font-size: 14px;
+            color: #666;
+          }
+          .glyphicon{
+            padding-right: 10px;
+            color: #00aaee;
+            cursor: pointer;
+          }
+        }
+      }
+      .common-list-detail-row:nth-child(odd) {
+        background: #fff;
+        border: 1px solid #fff;
+      }
+      .common-list-detail-row:nth-child(even) {
+        background: #fbf9f6;
+        border: 1px solid #fbf9f6;
+      }
+      .common-list-detail-row:hover {
+        z-index:2;
+        border: 1px solid #ba9f6e;
+        -webkit-box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+        -moz-box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+        box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+      }
+    }
+  }
+
+  //弹窗效果修改
+  .modal {
+    .modal-dialog {
+      min-width: 330px;
+      .modal-content {
+        border-radius: 6px;
+        box-shadow: 0 0 0 #fff;
+        .modal-header {
+          text-align: center;
+
+          background: #eeeeee;
+          padding: 10px;
+          font-size: 18px;
+          font-family: inherit;
+          height: 50px;
+        }
+        .modal-body {
+          text-align: center;
+          padding: 30px 0 30px 0;
+          font-size: 16px;
+          color: #323232;
+          .form-horizontal {
+            .form-group {
+              .col-sm-4 {
+                font-weight: normal;
+              }
+              .col-sm-8 {
+                text-align: left;
+                margin-top: 7px;
+              }
+              .col-sm-6 {
+                input[type=number] {
+                  -moz-appearance: textfield;
+                }
+                input[type=number]::-webkit-inner-spin-button,
+                input[type=number]::-webkit-outer-spin-button {
+                  -webkit-appearance: none;
+                  margin: 0;
+                }
+              }
+            }
+          }
+        }
+
+        /*用于微信群发消息页面的预览弹窗对应样式 start*/
+        .preview-wrap {
+          padding: 20px 0;
+          .ul-wrap {
+            position: relative;
+            width: 300px;
+            margin: 0 auto;
+            border: 1px solid #e0e0e0;
+            padding: 10px 20px;
+            .li-wrap {
+              position: relative;
+              margin: 10px 0;
+              border-top: 1px solid #e0e0e0;
+              padding-top: 10px;
+              list-style: none;
+              a {
+                .preview-title {
+                  font-size: 14px;
+                  color: #101010;
+                }
+                .preview-img {
+                  width: 80px;
+                  height: 80px;
+                }
+              }
+            }
+            .li-wrap:nth-of-type(1) {
+              border-top: none;
+              padding-top: 0;
+              a {
+                .preview-title {
+                  position: absolute;
+                  bottom: 0;
+                  background: rgba(51, 51, 51, 0.5);
+                  color: #fff;
+                  display: inline-block;
+                  width: 100%;
+                }
+                .preview-img {
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+            }
+          }
+        }
+        /*用于微信群发消息页面的预览弹窗对应样式  finish*/
+
+        /*用于微信群发弹出框对应样式  start*/
+        .article-wrap {
+          margin: 20px 0;
+          .list-wrap {
+            > span {
+              display: inline-block;
+              width: 120px;
+              height: 30px;
+              line-height: 30px;
+              text-align: right;
+            }
+            > p {
+              margin: 0;
+              padding: 0;
+              height: 30px;
+              line-height: 30px;
+            }
+            > .choose {
+              height: 30px;
+              padding-left: 10px;
+              border-radius: 4px;
+              border: 1px solid #e0e0e0;
+              outline: none;
+              min-width: 150px;
+            }
+            > label {
+              font-weight: normal;
+              height: 30px;
+              line-height: 30px;
+              cursor: pointer;
+            }
+            > .article-choose {
+              width: 220px;
+            }
+            md-radio-button {
+              display: inline-block;
+              margin-right: 10px;
+              min-height: 30px;
+              max-height: 30px;
+              line-height: 30px;
+            }
+          }
+          md-radio-button.md-default-theme.md-checked ._md-off, md-radio-button.md-checked ._md-off {
+            border-color: #e0e0e0;
+            background: #e0e0e0;
+
+          }
+          md-radio-button.md-default-theme ._md-on, md-radio-button ._md-on {
+            background: #666666;
+          }
+          md-radio-button ._md-off, md-radio-button ._md-on {
+            width: 15px;
+            height: 15px;
+            top: 2px;
+            font-size: 14px;
+            color: #666;
+          }
+          md-radio-button ._md-label {
+            margin-left: 20px;
+          }
+        }
+        /*用于微信群发弹出框对应样式  finish*/
+
+        .modal-footer {
+          text-align: center;
+          .btn {
+            margin-left: 12px !important;
+            margin-right: 12px !important;
+            font-size: 14px;
+            min-width: 90px;
+            height: 30px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            outline: none;
+            border-radius: 4px;
+          }
+          .btn.ok {
+            background: #ba9f6e;
+            color: #fff;
+            border: none;
+          }
+          .btn.cancle {
+            color: #101010;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pageSubnav {
+  margin: 10px 0;
+  input {
+    width: 50px;
+    text-align: center;
+    background-color: #f5f5f5;
+    border: 1px solid #d5d5d5;
+    margin: 0 10px;
+    line-height: 26px;
+  }
+  .md-button {
+    border: 1px solid #d5d5d5;
+    line-height: 26px;
+    padding: 0;
+    margin: 0 10px;
+    min-height: 30px;
+    min-width: 60px;
+  }
+}

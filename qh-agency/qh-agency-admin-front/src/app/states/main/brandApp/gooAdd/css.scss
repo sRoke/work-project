@@ -1,0 +1,457 @@
+.ks-mdAdd {
+  max-width: 800px;
+  margin: 0 auto;
+  .listLine {
+    min-height: 50px;
+    .msgLeft{
+      width: 150px;
+    }
+  }
+}
+
+
+.ks-itemProp {
+  //头部开始
+  height: 100vh;
+  //height: 50px;
+  background: #fff;
+  margin: 0px;
+  padding: 0px;
+
+  //头部标题
+  .itemProp-title {
+    margin: 10px 10px 0px 10px;
+    padding: 0px;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    height: 60px;
+
+    //标题用p,添加编辑页使用
+    p {
+      height: 40px;
+      padding-left: 20px;
+      line-height: 40px;
+      //text-indent: 20px;
+      margin: 0px;
+      font-size: 14px;
+      color: #101010;
+    }
+
+    //搜索框用ul+li，列表页使用
+    ul {
+      height: 10px;
+      margin-right: 36px;
+      margin-top: 16px;
+      margin-bottom: 16px;
+      li {
+        font-size: 14px;
+        color: #101010;
+        float: left;
+        margin-left: 0px;
+        margin-right: 25px;
+        //margin-right: 36px;
+        //margin-top: 16px;
+        list-style: none;
+      }
+      li:nth-of-type(1) {
+        margin-left: -18px;
+        input {
+          min-width: 150px;
+          border-radius: 4px;
+          height: 30px;
+          outline: none;
+          border: 1px solid #e0e0e0;
+          padding-left: 10px;
+        }
+
+      }
+    }
+  }
+
+  //新增、下载按钮
+  .itemProp-operate {
+    width: 99%;
+    height: 56px;
+    padding: 0 10px;
+    margin: 0px auto 10px auto;
+    border-bottom: 1px #d5d5d5 dashed;
+
+    .new-btn-green {
+      width: 97px;
+      float: right;
+      height: 30px;
+      border-radius: 4px;
+      margin-left: 3px;
+      background-color: #019875;
+      font-size: 14px;
+      color: #FFF;
+      text-align: center;
+      margin-top: 15px;
+      .glyphicon {
+        color: #FFF;
+        font-size: 18px;
+        line-height: 22px;
+      }
+    }
+    .new-btn-green:hover {
+      cursor: pointer;
+    }
+    .md-button {
+      line-height: 0;
+      min-height: 30px;
+      padding: 5px 12px;
+    }
+  }
+
+  //数据表表头
+  .itemProp-table-head {
+    width: 99%;
+    height: 44px;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-bottom: 2px #ba9f6e solid;
+  }
+
+  //数据表内容
+  .itemProp-table-content {
+    width: 99%;
+    margin: 10px auto;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    border-right: none;
+    height: 55px;
+
+    //每一行的数据
+    div {
+      float: left;
+      padding: 10px;
+      text-align: center;
+      line-height: 1.5em;
+      border-right: 1px solid #e0e0e0;
+      height: 55px;
+      select {
+        height: 30px;
+        min-width: 300px;
+        color: #666;
+        border: 1px solid #e0e0e0;
+        outline: none;
+        padding-left: 10px;
+        border-radius: 4px;
+        background: transparent;
+      }
+      a {
+        text-decoration: none;
+        color: #101010;
+      }
+      a:hover {
+        color: #00aaee;
+      }
+      .glyphicon {
+        line-height: 1.5em;
+        color: #101010;
+        font-size: 14px;
+        margin: -10px 10px;
+        .wrapIcon {
+          font-size: 18px;
+          color: #666;
+        }
+      }
+      .glyphicon:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  //添加、编辑、详情页正文样式
+  .itemProp-edit-content {
+    margin: 10px;
+    div {
+      position: relative;
+
+      //input标签所对应的字段文字
+      label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #101010;
+        width: 124px;
+        text-align: right;
+        margin: 15px;
+        display: inline-block;
+      }
+
+      //图片
+      .itemProp-show-img {
+        img {
+          margin-left: 38px;
+          margin-top: 25px;
+        }
+      }
+
+      //文本显示框
+      .itemProp-show-text {
+        position: absolute;
+        left: 180px;
+        margin-top: 7px;
+        padding-left: 15px;
+        top: 10px;
+        width: 448px;
+        height: 28px;
+      }
+
+      //长文本输入框
+      .itemProp-long-text {
+        position: absolute;
+        left: 157px;
+        margin-top: 7px;
+        top: 10px;
+        //width: 448px;
+        width: 60%;
+        max-width: 602px;
+        height: 28px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+      }
+
+      //短文本输入框
+      .itemProp-short-text {
+        position: absolute;
+        left: 157px;
+        top: 10px;
+        width: 272px;
+        height: 28px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+      }
+
+      //radio-button样式
+      .itemProp-radio-button {
+        float: left;
+        margin-top: 20px;
+        margin-right: 15px;
+        line-height: 23px;
+        input[type="radio"] {
+          float: left;
+          margin: 3px 5px 0 0;
+        }
+      }
+
+      //select-option样式
+      .itemProp-select {
+        position: absolute;
+        left: 157px;
+        top: 10px;
+        width: 150px;
+        height: 28px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        select {
+          margin-left: 3px;
+          margin-right: 10px;
+          background: none;
+        }
+      }
+
+    }
+
+    //表单验证，提示信息样式
+    .zcw-form-error {
+      font-size: 12px;
+      color: red;
+    }
+
+  }
+
+  //添加、编辑、详情页底部保存按钮样式
+  .itemProp-edit-bottom {
+    width: 99%;
+    margin: 10px auto;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+    input {
+      margin: 20px;
+      width: 90px;
+      height: 30px;
+    }
+  }
+
+  .form-horizontal {
+    .form-group {
+
+      label {
+        font-weight: 100 !important;
+        color: #101010;
+      }
+
+      .col-sm-9 {
+        margin-top: 6px;
+        input {
+          color: #666666;
+          border: 1px solid #e0e0e0;
+          border-radius: 4px;
+        }
+        select, textarea {
+          border: 1px solid #e0e0e0 !important;
+        }
+        .input-group {
+          .dropdown-menu {
+            .table {
+              tr {
+                th {
+                  border-top: none;
+                  border-bottom: 1px solid #e0e0e0;
+                }
+                td {
+                  border-bottom: 1px solid #e0e0e0;
+                }
+              }
+            }
+          }
+        }
+        .table-striped > tbody > tr:nth-of-type(odd) {
+          background: #fff;
+        }
+        .table-striped > tbody > th {
+          text-align: center;
+          height: 85px;
+          min-height: 85px;
+        }
+        .table-striped > tbody > tr {
+          text-align: center;
+        }
+        table {
+          th {
+            margin-bottom: -1px;
+            text-align: center;
+          }
+          tbody {
+            tr {
+              td {
+                height: 85px;
+                min-height: 85px;
+                max-height: 85px;
+                padding: 0;
+                vertical-align: middle;
+              }
+            }
+          }
+        }
+        .btn {
+          min-width: 90px;
+          height: 30px;
+          border: 1px solid #e0e0e0;
+          border-radius: 4px;
+          outline: none;
+          padding: 5px 12px;
+          margin-top: 15px;
+        }
+        .btn.ok {
+          background: #ba9f6e;
+          color: #fff;
+        }
+
+        .btn.cancle {
+
+          background: #fff;
+          color: #101010;
+        }
+
+      }
+
+      .input-group-addon {
+        padding: 0 12px;
+        border-radius: 4px;
+        .glyphicon {
+          line-height: 2;
+          height: 30px;
+          .wrapIcon {
+            color: #000;
+            font-size: 14px;
+            line-height: 24px;
+          }
+        }
+      }
+      .webuploader-pick {
+        height: 30px;
+        width: 100px;
+        margin-top: 4px;
+        margin-right: 10px;
+        border: 1px solid #e0e0e0 !important;
+        padding: 0;
+        font-weight: normal;
+        color: #00aaee;
+        background: #fff;
+        font-size: 14px;
+        line-height: 30px;
+
+        margin-left: 12px;
+
+        span {
+          line-height: 30px;
+        }
+      }
+      .spanTxt {
+        position: relative;
+        top: -10px;
+        font-size: 14px;
+        color: #666;
+      }
+    }
+  }
+
+  //编辑页面样式
+  .panel {
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    box-shadow: 0 0 0 #fff;
+    .panel-heading {
+      height: 40px;
+      line-height: 40px;
+      min-height: 40px;
+      border: 1px solid #e0e0e0;
+      margin: 10px 20px 0 10px;
+      background: #f5f5f5;
+      padding: 0 0 0 20px;
+    }
+  }
+
+  .panel-body {
+    .form-horizontal {
+      .form-group {
+        .col-sm-offset-2 {
+          div {
+            h4 {
+              label {
+                background: #f5f5f5;
+              }
+            }
+          }
+          .btn {
+            margin-top: 20px;
+            background: #fff;
+            border-radius: 4px;
+            outline: none;
+            height: 30px;
+            min-height: 30px;
+            padding: 5px 12px;
+            font-size: 14px;
+            min-width: 90px;
+            margin-right: 10px;
+          }
+          .btn.ok {
+            background: #ba9f6e;
+            color: #fff;
+          }
+          .btn.cancle {
+            color: #101010;
+            border: 1px solid #e0e0e0;
+
+          }
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,73 @@
+/*
+ * 该文件是全局配置。
+ */
+html, body {
+    font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Heiti SC", "Roboto", "Droid Sans", "Noto Sans CJK SC", "Droid Sans Fallback", Tahoma, Arial, Simsun, sans-self;
+    font-size: 14px;
+    color: #101010;
+}
+
+/**
+ * 主要内容区域
+ */
+.ks-main {
+    //@extend .md-whiteframe-z2;
+
+    min-width: $ks-main-min-width !important;
+    width: 100%;
+
+    // 当小于 600px 时，百分比宽度。否则600px;
+    @media (min-width: $layout-breakpoint-xs) {
+        max-width: $layout-breakpoint-xs;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h1 {
+        color: #101010;
+        font-size: 18px;
+    }
+
+    // 使内容区域有顶部边框
+    md-content.top-border {
+        //暂时不要了
+        // border-top: 1px solid rgba(0, 0, 0, 0.12);
+    }
+    //统一 md-content 字体颜色
+    md-content.md-default-theme, md-content {
+        color: #101010;
+    }
+}
+/**
+ * 顶部菜单条
+ */
+.ks-header {
+    height: $ks-header-height;
+    min-height: $ks-header-height;
+    background: #fff !important;
+    .md-toolbar-tools {
+        height: $ks-header-height;
+        max-height: $ks-header-height;
+        padding: 0 0 0 10px;
+        h2 {
+            color: #101010;
+        }
+        .glyphicon {
+            color: #666;
+            margin-left: 20px;
+        }
+        .header-img-wrap {
+            width: 50px;
+            height: 50px;
+            background: #d5d5d5;
+            margin-left: 30px;
+        }
+    }
+    md-icon {
+        vertical-align: inherit;
+    }
+    h1 {
+        text-align: center;
+    }
+
+    // TODO 媒体查询：横向、纵向时特别处理，参考 angular-materials.scss $toolbar-height-mobile-landscape
+}

@@ -1,0 +1,181 @@
+<div flex="100" layout="column" class="ks-specEdit">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="finish()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>规格设置</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5" ng-if="skuData.skuList[0]">
+
+        <div class="titleName">规格</div>
+        <div class="add-wrap">
+            <div class="add-sku-wrap" ng-repeat="spec in skuData.specs track by $index">
+                <div class="skuNum" layout="row" layout-align="space-between center">
+                    <div class="name">
+                        {{spec.itemProp.name}}
+                    </div>
+                    <div layout="row">
+                        <!--<div class="detail">{{sku.specValue}}</div>-->
+                    </div>
+                </div>
+                <md-divider></md-divider>
+                <div class="sku-box">
+                    <div class="add-sku-box" layout="column">
+                        <div class="sku-dis" layout="row" layout-align="start center">
+                            <div class="add-sku-name" layout-wrap>
+                                <span ng-repeat="specValue in spec.itemPropValueList">{{specValue.name}}</span>
+                            </div>
+                        </div>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="titleName">SKU</div>
+        <div class="add-wrap">
+            <div class="add-sku-wrap" ng-repeat="sku in skuData.skuList track by $index" ng-if="sku != null">
+                <md-divider></md-divider>
+                <div class="skuNum" layout="row" layout-align="space-between center" ng-click="openSku(sku)">
+                    <div class="name">
+                        <!-- <span ng-repeat="specName in sku.specList" ng-if="from == 'itemEdit'"> {{specName.itemPropValueName}} </span>
+                         <span ng-repeat="specName in sku.specList" ng-if="from == 'itemAdd'"> {{specName.value.name}} </span>-->
+
+                        <span ng-repeat="specName in sku.specList" ng-if="specName.itemPropValueName"> {{specName.itemPropValueName}} </span>
+                        <span ng-repeat="specName in sku.specList"
+                              ng-if="specName.value.name"> {{specName.value.name}} </span>
+
+                    </div>
+                    <div layout="row">
+                        <div class="detail">{{sku.specValue}}</div>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-up"
+                                 ng-if="!sku.check"></md-icon>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-down"
+                                 ng-if="sku.check"></md-icon>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+                <div class="sku-box">
+                    <!--<div class="add-sku-box" layout="column">-->
+                    <!--<div class="sku-dis" layout="row" layout-align="center center">-->
+                    <!--<div class="add-sku-name">-->
+                    <!--规格-->
+                    <!--</div>-->
+                    <!--<div class="add-sku-input" flex ng-click="goChooseSpec()">-->
+                    <!--<input type="text" ng-model="sku.specValue"-->
+                    <!--placeholder="请输入规格名称" readonly>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<md-divider></md-divider>-->
+                    <!--</div>-->
+                    <div class="add-sku-box" layout="column">
+                        <div class="sku-dis" layout="row" layout-align="center center">
+                            <div class="add-sku-name">
+                                销售价格
+                            </div>
+                            <div class="add-sku-input" flex>
+                                <!--<input type="text" ng-model="sku.salePrice"-->
+                                       <!--placeholder="请输入价格">-->
+
+                                <span>{{sku.salePrice}}</span>
+
+                                <!--<input type="text" ng-model="sku.salePrice" placeholder="请输入价格">-->
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                    </div>
+                    <div class="add-sku-box" layout="column">
+                        <div class="sku-dis" layout="row" layout-align="center center">
+                            <div class="add-sku-name">
+                                商品库存
+                            </div>
+                            <div class="add-sku-input" flex>
+                                <!--<input type="text" ng-model="sku.storage"-->
+                                       <!--placeholder="请输入库存数量">-->
+                                <span>{{sku.storage}}</span>
+                                <!--<input type="text" ng-model="sku.storage" placeholder="请输入库存数量">-->
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                    </div>
+                    <div class="add-sku-box" layout="column" ng-if="sku.check">
+                        <div class="sku-dis" layout="row" layout-align="center center">
+                            <div class="add-sku-name">
+                                吊牌价格
+                            </div>
+                            <div class="add-sku-input" flex>
+                                <!--<input type="text" ng-model="sku.labelPrice"
+                                       placeholder="请输入价格">-->
+                                <span>{{sku.labelPrice}}</span>
+                                <!--<input type="text" ng-model="sku.labelPrice" placeholder="请输入价格">-->
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                    </div>
+                    <div class="add-sku-box" layout="column" ng-if="sku.check">
+                        <div class="sku-dis" layout="row" layout-align="center center">
+                            <div class="add-sku-name">
+                                采购价格
+                            </div>
+                            <div class="add-sku-input" flex>
+                                <!--<input type="text" ng-model="sku.buyPrice"-->
+                                       <!--placeholder="请输入价格">-->
+
+                                <span>{{sku.buyPrice}}</span>
+                                <!--<input type="text" ng-model="sku.buyPrice" placeholder="请输入价格">-->
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                    </div>
+
+                    <div class="add-sku-box" layout="column" ng-if="sku.check">
+                        <div class="sku-dis" layout="row" layout-align="center center">
+                            <div class="add-sku-name">
+                                商品编码
+                            </div>
+                            <div class="add-sku-input" flex layout="row" layout-align="space-between center">
+                                <!--<input type="text" ng-model="sku.code"-->
+                                       <!--placeholder="请输入商品编码">-->
+                                <span>{{sku.code}}</span>
+                                <!--<input type="text" ng-model="sku.code" placeholder="请输入商品编码">-->
+                                <!--<md-icon class="img-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon>-->
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+
+                    </div>
+
+                    <!--<div class="position-icon" ng-if="sku.check" ng-click="deleteSku(sku)">
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-delete-s"></md-icon>
+                    </div>-->
+
+                    <div ng-click="openSku(sku)" style="height: 44px;line-height: 44px;text-align: center;color:#999">
+                        <span ng-if="sku.check">收起</span>
+                        <span ng-if="!sku.check">展开</span>
+                        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-up"
+                                 ng-if="sku.check" style=" margin: 0;font-size: 16px;color:#999"></md-icon>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-down"
+                                 ng-if="!sku.check" style=" margin: 0;font-size: 16px;color:#999"></md-icon>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </md-content>
+
+
+    <md-content flex layout="column" class="empty"
+                ng-if="!skuData.skuList[0]"
+                style="overflow-x: hidden;    background: #f5f5f5;">
+        <!--<div class="top-line"></div>-->
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-order-manage" class="icon"></md-icon>
+            <div class="txt" style="margin-bottom: 100px">未选择规格～</div>
+        </div>
+    </md-content>
+
+</div>

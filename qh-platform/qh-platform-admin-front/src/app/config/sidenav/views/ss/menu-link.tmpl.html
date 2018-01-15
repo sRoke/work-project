@@ -1,0 +1,15 @@
+<md-button
+    ng-class="{'button-color': (isSelected(section.state) || $state.includes(section.state))}"
+    class="md-raised md-primary memu-button"
+    ui-sref="{{section.state}}"
+    ng-click="focusSection(section);">
+    {{section.name}}
+    <b class="memu-b" ng-if="section.number" flex>
+        {{section.number}}
+    </b>
+    <span class="md-visually-hidden"
+          ng-if="isSelected(section.state)">
+       current page
+   </span>
+</md-button>
+<!--ss-style-color="{'background-color': (isSelected(section.state) || $state.includes(section.state)) ? 'primary.A200': 'primary.default'}"-->

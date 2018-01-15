@@ -1,0 +1,110 @@
+<div class="ks-vote">
+    <div class="common-list-center">
+        <ul layout="column">
+            <li layout="row">
+                <label for="bhnum">活动名称：</label>
+                <input id="bhnum" type="text" class="choose form-control" placeholder="请输入活动名称" ng-model="keyWords">
+                <span class="title-btn-blue" ng-click="pageChanged(1)">搜索</span>
+                <span class="title-btn-white" ui-sref="main.brandApp.marketing.creatVote">新增</span>
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+    <!--div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <!--表头-->
+        <div class="common-list-detail-thead" layout="row">
+            <div class="thead-show" flex="15" layout-align="center">
+                <span>活动名称</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>参与人数</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center" style="overflow: hidden;">
+                <span>累计票数</span>
+            </div>
+            <!-- <div class="thead-show" flex="10" layout-align="center" style="overflow: hidden;">
+                 <span>累计访问</span>
+             </div>-->
+            <div class="thead-show" flex="15" layout-align="center">
+                <span>创建时间</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>状态</span>
+            </div>
+            <div class="thead-show" flex layout-align="center">
+                <span>操作</span>
+            </div>
+        </div>
+        <!--表格详细内容-->
+        <div class="common-list-detail-tbody" layout="column">
+            <!--定义每列数据    父级用ng-repeat循环此行 -->
+            <div class="common-list-detail-row" layout="row" ng-repeat="list in data.content">
+                <div class="thead-show" flex="15" layout-align="center">
+                    <span>{{list.activityName}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center">
+                    <span>{{list.totalJoinPeople}}</span>
+                </div>
+                <!--<div class="thead-show" flex="15" layout-align="center">-->
+                <!--<span>{{item.partnerType}}</span>-->
+                <!--</div>-->
+                <div class="thead-show" flex="10" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{list.totalVote}}</span>
+                </div>
+                <!-- <div class="thead-show" flex="10" layout-align="center"
+                      style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                     <span>{{list.totalVisit}}</span>
+                 </div>-->
+                <div class="thead-show" flex="15" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{list.creatTime}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span ng-if="list.voteStatusEnum == 'EDITING'">编辑中</span>
+                    <span ng-if="list.voteStatusEnum == 'NORMAL'">正常</span>
+                    <span ng-if="list.voteStatusEnum == 'END'">已结束</span>
+                </div>
+                <div class="thead-show" flex layout-align="center" ng-mouseleave="isHide()">
+                    <span ui-sref="main.brandApp.marketing.worksList({id:list.id})">作品集</span>
+                    <!--<span>链接</span>-->
+
+                    <span>
+                        <span ng-mouseenter="isShow(list.id)">链接</span>
+                        <div class="link-address" layout="column" ng-if="list.clickThis" ng-mouseleave="isHide()">
+                            <div layout="row" class="copy-address">
+                                <input type="text" ng-model="linkAddress" id="addr" readonly="readonly"
+                                       ng-click="copy()">
+                                <button ng-click="copyUrl2();">点击复制链接</button>
+                            </div>
+                            <div class="instruction">*点击复制链接或ctrl+c复制链接</div>
+                        </div>
+                    </span>
+
+
+                    <!--<span ng-click="cancel(list.id)">取消</span>-->
+                    <span ui-sref="main.brandApp.marketing.creatVote()" ui-sref-opts="{id:list.id}">编辑</span>
+                    <span ng-click="del(list.id)">删除</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分页-->
+    <div style="width: 100%; padding:0px 20px;">
+        <div style="width: 500px;min-width: 500px" uib-pagination total-items="data.totalElements"
+             ng-model="curPage"
+             ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+        <div style="float: right" class="pageSubnav">
+            <span>共{{data.totalElements}} 条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button>确定</md-button>
+        </div>
+    </div>
+</div>
+

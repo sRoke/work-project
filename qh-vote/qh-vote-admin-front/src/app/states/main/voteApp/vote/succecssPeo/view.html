@@ -1,0 +1,117 @@
+<div flex layout="column" class="ks-successPeo">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>成功人</h1>
+        <!--ui-sref="main.voteApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20"></div>
+    </div>
+
+    <div class="search" layout="row">
+        <div class="search-input" flex layout="row">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>
+            </div>
+            <div class="con" flex>
+                <input type="text" ng-model="keyWord" placeholder="输入手机号搜索" ng-focus="focus(true)" ng-blur="focus(false)">
+            </div>
+            <div class="right" ng-show="searchShow" ng-click="clearKeyWord()">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-closed-o"></md-icon>
+            </div>
+        </div>
+        <div class="search-btn" ng-show="searchShow" ng-click="search()">搜索</div>
+    </div>
+
+    <md-content flex style="background: #f5f5f5">
+
+        <!--<div class="con-title">-->
+            <!--当前参与人:&nbsp;1000人&nbsp;&nbsp;&nbsp;&nbsp;帮砍人:&nbsp;5000人-->
+        <!--</div>-->
+
+
+        <div class="voteList" layout="row" layout-align="center center"
+             ng-repeat="list in pageList.content" ng-click="friendsList(list)">
+            <div flex layout="row" layout-align="center center">
+                <div class="List-img">
+                    <img ng-src="{{list.wxImg}}">
+                </div>
+                <div class="List-info" layout="column" flex>
+                    <div class="name" flex>{{list.userName}}</div>
+                    <div class="phone">{{list.phone}}</div>
+                </div>
+                <div class="List-time" layout="column">
+                    <div class="price"><span>￥</span>{{list.finalPrice/100 | num:2}}</div>
+                    <div class="time" ng-if="list.payStatus == false">未支付</div>
+                    <div class="time" ng-if="list.payStatus == true && list.payType == 'LINEBUY'">{{list.statusDesp}}</div>
+                    <!--<div class="time" ng-if="list.payStatus == true && list.payType == 'LINEBUY'">{{list.statusDesp}}</div>-->
+                    <div class="time" ng-if="list.payStatus == true && list.payType != 'LINEBUY' && list.status == 'WAITGET'">已支付 未领取</div>
+                    <div class="time" ng-if="list.payStatus == true && list.payType != 'LINEBUY' && list.status == 'RECEIVED'">已支付 已领取</div>
+                </div>
+            </div>
+            <div style="margin-right: 10px;width: 20px" class="icon-div">
+                <div ng-if="list.payType == 'LINEBUY' || list.payStatus == true">
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="empty" ng-if="pageList.content.length<=0" style="width: 100%;margin-top: 100px" layout="column" layout-align="center center">
+            <div class="empty"><img src="empty.png" width="60px"></div>
+            <div class="ts">暂无成功人</div>
+        </div>
+
+        <!--分页-->
+        <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;" ng-show="pageList.totalPages>1">
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-click="pageChange(currpage+1)" ng-show="pageList.number<pageList.totalPages-1">
+                点击加载更多...
+            </md-button>
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;"
+                        ng-show="pageList.number>=pageList.totalPages-1">
+                没有更多活动了
+            </md-button>
+        </div>
+
+
+
+    </md-content>
+</div>
+
+
+<!--        亲友团弹窗                -->
+<script type="text/ng-template" id="frends.html">
+    <md-dialog aria-label="" class="receive-prize-dialog" style="overflow: hidden;">
+        <md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o"
+                 ng-click="vmd.cancel()"></md-icon>
+        <div class="dis">领取商品</div>
+        <md-divider></md-divider>
+        <md-content style="border-radius: 8px;background: #ffffff">
+            <div class="content" layout="column" layout-align="start center">
+                <div class="img-div">
+                    <img ng-src="{{vmd.dataInfo.awardImg}}">
+                </div>
+                <div class="item-title">
+                    {{vmd.dataInfo.awardName}}
+                </div>
+                <div class="item-text" ng-if="vmd.data.status != 'RECEIVED'" layout="row">
+                    <textarea flex="100" placeholder="请输入备注信息" ng-model="vmd.dataInfo.memo"></textarea>
+                </div>
+                <div class="item-text" ng-if="vmd.data.status == 'RECEIVED'" layout="row">
+                   <div flex="100" style="height: 45px;border: 1px solid #e0e0e0;padding: 10px;overflow-y: scroll;">
+                       <span style="color: #666">备注:</span>
+                       {{vmd.dataInfo.memo}}
+                   </div>
+                </div>
+            </div>
+            <div class="footBottom" layout="column" ng-if="vmd.data.status != 'RECEIVED'">
+                <md-divider></md-divider>
+                <div class="btn" flex layout="row" layout-align="center center">
+                    <div flex style="text-align: center" ng-click="vmd.cancel()">取消</div>
+                    <div class="line"></div>
+                    <div flex style="text-align: center;color: #e53467" ng-click="vmd.save()">领取登记</div>
+                </div>
+            </div>
+        </md-content>
+    </md-dialog>
+</script>

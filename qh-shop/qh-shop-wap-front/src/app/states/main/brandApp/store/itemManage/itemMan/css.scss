@@ -1,0 +1,194 @@
+.ks-itemMan {
+
+  .ks-white-header {
+    .right-button {
+      //.right-rank {
+      position: relative;
+      .ks-icon {
+        color: #000;
+        font-size: 20px;
+        min-height: 20px;
+        min-width: 20px;
+        line-height: 20px;
+        margin: 0;
+      }
+      .pos-wrap {
+        padding: 5px 10px;
+        position: absolute;
+        width: 80px;
+        right: 10px;
+        top: 34px;
+        z-index: 11;
+        background: #fff;
+        -webkit-box-shadow: 0 0 0 1px #ddd;
+        box-shadow: 0 0 0 1px #ddd;
+        &::before, &::after {
+          position: absolute;
+          content: ' ';
+          border: 8px solid transparent;
+          border-bottom-width: 10px;
+          border-bottom-color: #fff;
+          top: -16px;
+          left: 58px
+        }
+        &::before {
+          top: -19px;
+          border-bottom-color: #ddd
+        }
+        .pos-id {
+          line-height: 30px;
+          color: #999;
+        }
+        .posActive {
+          color: #101010;
+        }
+        //}
+      }
+    }
+  }
+
+  //搜索
+  .search{
+    margin: 6px 15px;
+    height: 32px;
+    .search-input{
+      background: #f5f5f5;
+      border-radius: 8px;
+      position: relative;
+      height: 100%;
+      .left{
+        margin-left: 15px;
+        margin-right: 10px;
+        md-icon{
+          font-size: 12px;
+          height: 32px;
+          line-height: 32px;
+          width: 12px;
+          min-width: 12px;
+          color: #999999;
+        }
+      }
+      .right{
+        margin-left: 10px;
+        margin-right: 10px;
+        md-icon{
+          font-size: 12px;
+          height: 32px;
+          line-height: 32px;
+          width: 12px;
+          min-width: 12px;
+          color: #999999;
+        }
+      }
+      .con{
+        input{
+          width: 100%;
+          border: none;
+          background: #F5F5F5;
+          border-radius: 8px;
+          height: 32px;
+          line-height: 32px;
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers */
+          font-size: 14px;
+          letter-spacing: -0.34px;
+          //text-align: center;
+        }
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-size: 14px;
+          letter-spacing: -0.34px;
+          //text-align: center;
+        }
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-size: 14px;
+          letter-spacing: -0.34px;
+          //text-align: center;
+        }
+      }
+    }
+    .search-btn{
+      color: #333333;
+      margin-left: 10px;
+      font-size: 14px;
+      height: 32px;
+      line-height: 32px;
+    }
+  }
+
+  .tab {
+    background: #fff;
+    .tab-btn {
+      padding: 0 20px;
+      .btn {
+        display: block;
+        padding: 10px 0;
+        color: #333;
+      }
+    }
+    .active {
+      border-bottom: 1px solid #E53467;
+      color: #E53467 !important;
+    }
+  }
+
+  .list-wrap {
+    background: #fff;
+    .list {
+      .list-det {
+        padding: 10px 15px;
+        .img {
+          width: 70px;
+          position: relative;
+          overflow: hidden;
+          &:before {
+            content: "";
+            display: block;
+            padding-top: 100%;
+          }
+          img {
+            position: absolute;
+            top: 0;
+            padding: 0;
+            width: 100%;
+          }
+          .imgStatus{
+            position: absolute;
+            top: 0;
+            padding: 0;
+            width: 100%;
+            z-index: 1;
+            height: 100%;
+            color: #fff;
+            line-height: 70px;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+          }
+        }
+        .list-right {
+          margin-left: 15px;
+          .list-name {
+            font-size: 14px;
+            color: #333;
+          }
+          .list-price {
+            color: #ED5F5B;
+            font-size: 14px;
+            > span {
+              font-size: 12px
+            }
+          }
+          .list-bot {
+            .bot-dis {
+              font-size: 12px;
+              color: #999;
+            }
+            .list-icon {
+              margin: 0;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>my authorization server phoneLogin form</title>
+</head>
+<body>
+<h1>my authorization server login form</h1>
+<p th:if="${param.logout}" class="alert">You have been logged out</p>
+<p th:if="${param.error}" class="alert alert-error">${param.error}</p>
+<h2>Login with Username and Password</h2>
+<form name="form" th:action="@{/phoneLogin}" action="/phoneLogin" method="POST">
+    <fieldset>
+        <input type="text" name="phone" value="" placeholder="手机号" />
+        <input type="password" name="verifyCode" placeholder="验证码" />
+    </fieldset>
+    <input type="submit" id="phoneLogin" value="phoneLogin"
+           class="btn btn-primary" />
+</form>
+</body>
+</html>

@@ -1,0 +1,107 @@
+.ks-itemStock {
+  .blank-line {
+    width: 100%;
+    height: 10px;
+    min-height: 10px;
+    background: #f5f5f5;
+  }
+
+  .stock-detail {
+    background: #fff;
+    height: 75px;
+    min-height: 75px;
+    .detail-box {
+      .box-num {
+        color: #ED5F5B;
+        font-size: 16px;
+      }
+      .box-name {
+        font-size: 14px;
+        color: #999;
+      }
+    }
+  }
+
+  .list-wrap {
+    overflow: hidden;
+    background: #fff;
+    .list {
+      .list-det {
+        margin: 10px 15px;
+        .img {
+          width: 70px;
+          position: relative;
+          overflow: hidden;
+          &:before {
+            content: "";
+            display: block;
+            padding-top: 100%;
+          }
+          img {
+            position: absolute;
+            top: 0;
+            padding: 0;
+            width: 100%;
+          }
+        }
+        .list-right {
+          margin-left: 15px;
+          .list-name {
+            font-size: 14px;
+            color: #333;
+          }
+          .list-price {
+            color: #ED5F5B;
+            font-size: 14px;
+            > span {
+              font-size: 12px
+            }
+          }
+          .list-bot {
+            .bot-dis {
+              font-size: 12px;
+              color: #999;
+            }
+            .list-icon{
+              margin: 0;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .chooseDialog {
+    overflow-x: hidden;
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 0;
+    top: 45px;
+    width: 100%;
+    height: 100%;
+    .dialog-list {
+      height: 42px;
+      width: 100%;
+      background: #fff;
+      .box {
+        width: 100%;
+        height: 100%;
+        .list-name {
+          font-size: 18px;
+          color: #999;
+        }
+        .active {
+          color: #333;
+
+        }
+        > span {
+          display: block;
+          height: 100%;
+          line-height: 42px;
+          text-align: center;
+        }
+      }
+
+    }
+  }
+}

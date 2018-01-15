@@ -1,0 +1,344 @@
+<div flex layout="column" class="ks-voteEdit" style="background: #f5f5f5">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>人气投票赛</h1>
+        <!--ui-sref="main.voteApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20" ng-click="save()">保存</div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="background: #f5f5f5">
+        <div class="contentMain" style="padding-top: 20px">
+            <div class="content-tab-img" layout="column" layout-align="center center" ng-show="!rootVoteDataEdit.primaryImgUrl">
+
+                <div style="font-size: 18px;color: #666666">+</div>
+                <div style="font-size: 14px;color: #666666">上传图片</div>
+                <input type="file" id="file">
+            </div>
+            <div class="content-tab-img2" layout="column" layout-align="center center" ng-show="rootVoteDataEdit.primaryImgUrl">
+                <input type="file" id="file2">
+                <img ng-src="{{rootVoteDataEdit.primaryImgUrl}}">
+            </div>
+            <md-divider></md-divider>
+            <!--<div class="content-tab" layout="row" layout-align="satrt center">-->
+            <!--<div class="left">-->
+            <!--<span style="color: #ff0000">*</span>-->
+            <!--店铺名称-->
+            <!--</div>-->
+            <!--<div class="right" flex>-->
+            <!--<input type="text" placeholder="请输入店铺名称" ng-model="rootVoteDataEdit.shopName">-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<md-divider></md-divider>-->
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    活动名称
+                </div>
+                <div class="right" flex>
+                    <input type="text" placeholder="请输入活动名称" ng-model="rootVoteDataEdit.voteName">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center" ng-click="chooseTime('signUp')">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    报名时间
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <span ng-if="!rootVoteDataEdit.signUpStartTime || !rootVoteDataEdit.signUpEndTime">请选择报名时间</span>
+                            <span ng-if="rootVoteDataEdit.signUpStartTime && rootVoteDataEdit.signUpEndTime && !timeHide" style="color: #666;font-size: 13px">
+                               {{rootVoteDataEdit.signUpStartTime | date:'yyyy' }}.{{rootVoteDataEdit.signUpStartTime | date:'MM' }}.{{rootVoteDataEdit.signUpStartTime | date:'dd'}}&nbsp;{{rootVoteDataEdit.signUpStartTime | date:'HH'}}:00 ~
+                               {{rootVoteDataEdit.signUpEndTime | date:'yyyy' }}.{{rootVoteDataEdit.signUpEndTime | date:'MM' }}.{{rootVoteDataEdit.signUpEndTime | date:'dd'}}&nbsp;{{rootVoteDataEdit.signUpEndTime | date:'HH'}}:00
+                            </span>
+                            <span ng-if="rootVoteDataEdit.signUpStartTime && rootVoteDataEdit.signUpEndTime && timeHide" style="color: #666;font-size: 13px">
+                               {{rootVoteDataEdit.signUpStartTime | date:'MM' }}.{{rootVoteDataEdit.signUpStartTime | date:'dd'}}&nbsp;{{rootVoteDataEdit.signUpStartTime | date:'HH'}}:00 ~
+                               {{rootVoteDataEdit.signUpEndTime | date:'MM' }}.{{rootVoteDataEdit.signUpEndTime | date:'dd'}}&nbsp;{{rootVoteDataEdit.signUpEndTime | date:'HH'}}:00
+                            </span>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center" ng-click="chooseTime('voting')">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    投票时间
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <span ng-if="!rootVoteDataEdit.voteStartTime || !rootVoteDataEdit.voteEndTime">请选择过期时间</span>
+                            <span ng-if="rootVoteDataEdit.voteStartTime && rootVoteDataEdit.voteEndTime && !timeHide" style="color: #666;font-size: 13px">
+                                {{rootVoteDataEdit.voteStartTime | date:'yyyy' }}.{{rootVoteDataEdit.voteStartTime | date:'MM' }}.{{rootVoteDataEdit.voteStartTime | date:'dd'}}&nbsp;{{rootVoteDataEdit.voteStartTime | date:'HH'}}:00 ~
+                                {{rootVoteDataEdit.voteEndTime | date:'yyyy' }}.{{rootVoteDataEdit.voteEndTime | date:'MM' }}.{{rootVoteDataEdit.voteEndTime | date:'dd'}}&nbsp;{{rootVoteDataEdit.voteEndTime | date:'HH'}}:00
+                            </span>
+                            <span ng-if="rootVoteDataEdit.voteStartTime && rootVoteDataEdit.voteEndTime && timeHide" style="color: #666;font-size: 13px">
+                                {{rootVoteDataEdit.voteStartTime | date:'MM' }}.{{rootVoteDataEdit.voteStartTime | date:'dd'}}&nbsp;{{rootVoteDataEdit.voteStartTime | date:'HH'}}:00 ~
+                                {{rootVoteDataEdit.voteEndTime | date:'MM' }}.{{rootVoteDataEdit.voteEndTime | date:'dd'}}&nbsp;{{rootVoteDataEdit.voteEndTime | date:'HH'}}:00
+                            </span>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    规则说明
+                </div>
+                <div class="right" flex ng-click="goEdit('rule')">
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <span ng-if="!rootVoteDataEdit.rule">填写规则描述</span>
+                            <span ng-if="rootVoteDataEdit.rule">详情</span>
+
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    &nbsp;&nbsp;活动图文
+                </div>
+                <div class="right" flex ng-click="goEdit('desp')">
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <span ng-if="!rootVoteDataEdit.desp">设置图文介绍</span>
+                            <span ng-if="rootVoteDataEdit.desp">详情</span>
+
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 10px;background: #f5f5f5" ></div>
+
+        <div class="contentMain">
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    每天投票次数
+                </div>
+                <div class="right" flex>
+                    <input type="tel" placeholder="请输入次数" ng-model="rootVoteDataEdit.maxVotePerDay" ng-change="AddEventInput('maxVotePerDay')">
+                </div>
+
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-question" style="color: #999;font-size: 20px" ng-click="listDialogShow(1)"></md-icon>
+
+
+
+
+
+                <div class="listDialog" ng-show="listDialog1">
+                    <div class="triangle-up"></div>
+                    <div layout="row" class="dialog-btn">
+                        <span>
+                             注释：投票人每天最大允许的投票次数。
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    每人总投票数
+                </div>
+                <div class="right" flex>
+                    <input type="tel" placeholder="请输入次数" ng-model="rootVoteDataEdit.totalVoteCount" ng-change="AddEventInput('totalVoteCount')">
+                </div>
+
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-question" style="color: #999;font-size: 20px" ng-click="listDialogShow(2)"></md-icon>
+
+
+
+
+
+                <div class="listDialog" ng-show="listDialog2">
+                    <div class="triangle-up"></div>
+                    <div layout="row" class="dialog-btn">
+                        <span>
+                             注释：投票人累计总共最多投票次数。
+                        </span>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    每人被投票数
+                </div>
+                <div class="right" flex>
+                    <input type="tel" placeholder="请输入次数"  ng-model="rootVoteDataEdit.maxTicketPerDay" ng-change="AddEventInput('maxTicketPerDay')">
+                </div>
+
+
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-question" style="color: #999;font-size: 20px" ng-click="listDialogShow(3)"></md-icon>
+
+
+
+
+
+                <div class="listDialog" ng-show="listDialog3">
+                    <div class="triangle-up"></div>
+                    <div layout="row" class="dialog-btn">
+                        <span>
+                             注释：参赛者每天能从同一个投票人获取的最大票数。
+                        </span>
+                    </div>
+                </div>
+
+
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    能给多少人投票
+                </div>
+                <div class="right" flex>
+                    <input type="tel" placeholder="请输入多少人,默认不限" ng-model="rootVoteDataEdit.votePeoplePerDay" ng-change="AddEventInput('votePeoplePerDay')">
+                </div>
+            </div>
+            <md-divider></md-divider>
+        </div>
+        <div style="height: 10px;background: #f5f5f5" ></div>
+        <div class="contentMain">
+            <!--<div class="content-tab" layout="row" layout-align="start center">-->
+            <!--<div class="left">-->
+            <!--&lt;!&ndash;<span style="color: #ff0000">*</span>&ndash;&gt;-->
+            <!--&nbsp;&nbsp;是否强制输入手机号-->
+            <!--</div>-->
+            <!--<div class="right" flex>-->
+            <!--<div class="right-R" layout="row" layout-align="end center" ng-click="changeFollow(true)" ng-show="!rootVoteDataEdit.isFollow">-->
+            <!--<div>-->
+            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" style="color: #999"></md-icon>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="right-R" layout="row" layout-align="end center" ng-click="changeFollow(false)" ng-show="rootVoteDataEdit.isFollow">-->
+            <!--<div>-->
+            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-check-circle" style="color: #e53467"></md-icon>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--</div>-->
+            <!--</div>-->
+
+
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <!--<span style="color: #ff0000">*</span>-->
+                    &nbsp;&nbsp;是否需要审核
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center" ng-click="changeCheck(true)" ng-show="!rootVoteDataEdit.mustCheck">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" style="color: #999"></md-icon>
+                        </div>
+                    </div>
+
+                    <div class="right-R" layout="row" layout-align="end center" ng-click="changeCheck(false)" ng-show="rootVoteDataEdit.mustCheck">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-check-circle" style="color: #e53467"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <!--<span style="color: #ff0000">*</span>-->
+                    &nbsp;&nbsp;是否强制关注公众号
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center" ng-click="changeFollow(true)" ng-show="!rootVoteDataEdit.forceFollow">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" style="color: #999"></md-icon>
+                        </div>
+                    </div>
+
+                    <div class="right-R" layout="row" layout-align="end center" ng-click="changeFollow(false)" ng-show="rootVoteDataEdit.forceFollow">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-check-circle" style="color: #e53467"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 10px;background: #f5f5f5" ></div>
+        <div class="contentMain">
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    微信分享标题
+                </div>
+                <div class="right" flex>
+                    <input type="text" placeholder="请输入分享标题" ng-model="rootVoteDataEdit.shareTitle">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    &nbsp;&nbsp;微信分享描述
+                </div>
+                <div class="right" flex>
+                    <input type="text" placeholder="请输入分享描述" ng-model="rootVoteDataEdit.shareContent">
+                </div>
+            </div>
+        </div>
+        <div style="height: 10px;background: #f5f5f5" ></div>
+    </md-content>
+
+    <!--<div class="footBottom" layout="column" ng-click="save()">-->
+        <!--<md-divider style="border-color:#E53467"></md-divider>-->
+        <!--<div class="btn" flex layout="row" layout-align="center center">保存</div>-->
+    <!--</div>-->
+
+
+
+
+
+
+
+    <div class="jqPhote" ng-show="choosePhote" layout="column" layout-align="center center">
+        <div flex class="choosePhote-top"></div>
+        <div id="clipArea"></div>
+        <!--<input type="file" id="file">-->
+        <div flex class="choosePhote-btn" layout="row" layout-align="center start">
+            <div layout="row" layout-align="space-between start" style="width: 260px">
+                <div id = 'cancel' ng-click="cancelChoosePhote()">取消</div>
+                <div id="clipBtn" ng-click="cancelChoosePhote()">保存</div>
+            </div>
+
+        </div>
+
+        <!--<div id="view"></div>-->
+    </div>
+
+
+
+
+
+</div>
+
+
+

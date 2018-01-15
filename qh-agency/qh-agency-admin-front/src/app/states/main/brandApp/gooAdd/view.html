@@ -1,0 +1,643 @@
+<div class="ks-item">
+    <!--<div class="panel-heading"><h4>添加商品</h4></div>-->
+    <div class="panel-body">
+        <form class="form-horizontal" name="itemBaseForm" ng-submit="itemBaseSubmit()" novalidate>
+            <!--ng-show="isEditBase"-->
+            <div class="form-group">
+                <div class="col-xs-1" layout="row">
+                    <span flex>基本信息</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="title" class="col-xs-2 control-label">短标题
+                    <span style="color:red">*</span>
+                </label>
+                <div class="col-xs-8">
+                    <input type="text" name="title" class="form-control input-sm" id="title" ng-model="baseData.title"
+                           ng-disabled="views.disabledTitle" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description" class="col-xs-2 control-label">描述
+                    <span style="color:red">*</span>
+                </label>
+
+                <div class="col-xs-8">
+                            <textarea class="form-control" rows="3" ng-model="baseData.desp" id="description"
+                                      ng-disabled="views.disabledDesp" name="description" required></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <!--<div class="form-group" ng-show="attrData.type=='LIST'">-->
+                <label class="col-xs-2 control-label">分类标签</label>
+
+                <div class="col-xs-8">
+                    <input type="hidden" name="uploadCategory" id="uploadCategory" ng-required="uploadCategory.length == 0">
+
+                    <script type="text/ng-template" id="nodes_renderer2.html">
+                        <div class="tree-node"   >
+                            <div class="tree-node-content">
+                                <input type="checkbox" ng-model="staffGroup[node.id].status"
+                                       ng-disabled="views.staffGroup"
+                                       ng-click="choose(this)">
+                                <span ng-click="toggle(this)">{{node.name}}</span>
+                                <md-icon
+                                        ng-if="node.child.length>0 && collapsed"
+                                        md-font-set="ks-admin-font"
+                                        md-font-icon="ks-sort-down"
+                                        style="line-height: 10px;margin-left: 10px"
+                                ></md-icon>
+                                <md-icon
+                                        ng-if="node.child.length>0 && !collapsed"
+                                        md-font-set="ks-admin-font"
+                                        md-font-icon="ks-sort-up"
+                                        style="line-height: 20px;margin-left: 10px"
+                                ></md-icon>
+                            </div>
+                        </div>
+                        <ol style="list-style: none;" ui-tree-nodes="" ng-model="node.child"
+                            ng-class="{hidden: collapsed}">
+                            <li style="list-style: none" ng-repeat="node in node.child" ui-tree-node
+                                collapsed="false" ng-if="!node.disabled"
+                                ng-include="'nodes_renderer2.html'">
+                            </li>
+                        </ol>
+                    </script>
+
+
+                    <input type = 'button' value="{{authorityListStatus}}"  ng-click="authorityListShow()">
+                    <!--<input type = 'button' value="收起" ng-click="authorityListShow()">-->
+                    <div class="row" style="margin-left: 10%;margin-top: 40px;" ng-show="authorityListShowValue">
+                        <div class="col-sm-6">
+                            <div ui-tree id="tree2-root" data-clone-enabled="true">
+                                <ol ui-tree-nodes="" ng-model="authorityList" style="list-style: none">
+                                    <li style="list-style: none" ng-repeat="node in authorityList" ui-tree-node
+                                        collapsed="true" ng-if="!node.disabled"
+                                        ng-include="'nodes_renderer2.html'"></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<a href="javascript:void(0)" title="添加" class="btn-default" ng-show="!flog">-->
+                    <!--<span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addValueGroup()"></span>-->
+                <!--</a>-->
+            </div>
+
+            <div class="form-group" ng-show="attrData.valueGroups.length>0">
+                <div class="col-xs-offset-2 col-xs-8">
+                    <div ng-repeat="valueGroup in attrData.valueGroups track by $index"
+                         style="width: auto;display: inline-block;padding-right: 1em">
+                        <h4><label class='label label-default'>{{valueGroup.name}}
+                            <span class='glyphicon glyphicon-remove' ng-click="delValueGroup($index)"></span>
+                        </label>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-xs-2 control-label">主图
+                    <span style="color:red">*</span>
+                </label>
+
+                <div class="col-xs-9">
+                    <button type="file" ngf-select="uploading($file)" ng-disabled="views.chooseImg">选择图片</button>
+                    <input type="hidden" name="imgs" ng-model="imgs" ng-required="baseData.imgs.length==0">
+
+                    <div class="uploader-list">
+                        <div class="queueList">
+                            <ul class="filelist">
+                                <li ng-repeat="img in baseData.imgs track by $index" id="img{{$index}}"
+                                    ng-mouseenter="showOperate($index)" ng-mouseleave="hideOperate($index)">
+                                    <p class="imgWrap">
+                                        <img ng-src="{{img}}" width="110px"
+                                             height="110px" />
+                                    </p>
+
+                                    <div class="file-panel"   ng-if="!views.deleteImg">
+                                   <span class="cancel" ng-click="cancelDel($index)" >删除</span>
+                                   <!--<span class="rotateRight">向右旋转</span>
+                                   <span class="rotateLeft">向左旋转</span>-->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--<label id="imgPicker">选择图片</label><span class="spanTxt">*商品主图宽高比例必须是1:1</span>-->
+                    <!--<label id="imgPicker1">选择套餐图片</label><span class="spanTxt">*商品主图宽高比例必须是3:2</span>-->
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="status" class="col-sm-2 control-label">状态<span style="color:red">*</span></label>
+
+                <div class="col-sm-8">
+                    <select ng-model="statu" name="status" id="status" ng-disabled="views.status" >
+                        <option ng-repeat="state in baseData.status" value="{{state.status}}">
+                            {{state.value}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-offset-2 col-sm-8">
+                <div class="form-group has-error"
+                     ng-if="itemBaseForm.$dirty"
+                     ng-hide="itemBaseForm.$valid">
+                    <div class="alert alert-danger">
+                        <div ng-messages="itemBaseForm.title.$error">
+                            <div ng-message="required">商品标题不能为空</div>
+                        </div>
+                        <div ng-messages="itemBaseForm.description.$error">
+                            <div ng-message="required">商品描述不能为空.</div>
+                        </div>
+                        <div ng-messages="itemBaseForm.uploadCategory.$error">
+                            <div ng-message="required">分类标签至少选择一个</div>
+                        </div>
+                        <div ng-messages="itemBaseForm.imgs.$error">
+                            <div ng-message="required">商品主图至少添加一张</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+
+
+
+        <div>
+            <!---------------------------------商品属性查看框-------------------------------->
+            <form class="form-horizontal" name="itemPropForm" ng-submit="itemPropSubmit()"
+                  novalidate>
+                <div class="form-group">
+                    <div class="col-xs-1" layout="row">
+                        <span flex>商品属性</span>
+                    </div>
+                </div>
+
+
+                <div class="form-group" ng-if="!views.itemProp">
+                    <label for="listindex" class="col-xs-2 control-label">请选择商品属性
+                        <span style="color:red">*</span></label>
+
+
+                    <div class="col-xs-8" id="listindex">
+                        <div class="input-group" uib-dropdown>
+                            <input type="text" class="form-control" placeholder="请输入商品属性" ng-model="itemPropKeyword.key"
+                                   ng-click="$event.stopPropagation()"
+                                   uib-dropdown-toggle autocomplete="off">
+                            <div class="input-group-addon" ng-click="comAttr()" uib-dropdown-toggle role="button">
+                                <i class="glyphicon glyphicon-search" role="button"></i></div>
+
+                            <ul class="dropdown-menu col-sm-12" uib-dropdown-menu aria-labelledby="dropdownMenu1"
+                                style="max-height: 300px;overflow: auto;z-index: 100001;">
+                                <li>
+                                    <table class="table table-hover">
+                                        <tr ng-repeat="staff1 in propListResult.content" ng-click="selectStaff(staff1)">
+                                            <td>{{staff1.name}}</td>
+                                        </tr>
+                                    </table>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)" title="添加" class="btn-default" ng-show="!flog">
+                        <div style="margin-top: 7px">
+                            <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-plus"
+                                     ng-click="addproplist()" title="新增"></md-icon>
+                        </div>
+
+                        <!--<span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addproplist()"></span>-->
+                    </a>
+                </div>
+
+
+                <div class="form-group" ng-repeat="text in baseData.cpmc track by $index">
+                    <label for="description" class="col-xs-2 control-label">{{text.realName}}
+                        <span style="color:red" ng-if="text.required">*</span>
+                    </label>
+                    <div class="col-xs-8">
+                        <!--<input type="text" name="title" class="form-control input-sm"
+                               ng-model="baseData.text[$index].value" ng-required="text.required" ng-minlength="1"
+                               ng-maxlength="15"  ng-change="baseData.text[$index].id='{{text.id}}'">-->
+
+                        <select class="form-control input-sm" name="list" ng-model="text.content[0].value"
+                                ng-change="listPropChange($index,text,text.content[0].value);"
+                                ng-disabled="views.itemProp"
+                                ng-required="list.required">
+                            <option value="{{value.id}}" ng-repeat="value in text.itemPropListItem">
+                                {{value.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <a class="glyphicon" title="删除" href="javascript:void(0)" ng-click="removeProp(text.id)"
+                    ng-if="!views.itemProp">
+                        <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-trash"
+                                 title="删除"></md-icon>
+                    </a>
+                </div>
+            </form>
+
+
+            <div class="col-sm-offset-2 col-sm-8">
+                <div class="form-group has-error" ng-if="itemPropForm.$dirty" ng-hide="itemPropForm.$valid">
+                    <div class="alert alert-danger">
+                        <div ng-messages="itemPropForm.title.$error">
+                            <div ng-message="required">请填写完整</div>
+                            <div ng-message="maxlength">该文本长度最长15个字</div>
+                        </div>
+                        <div ng-messages="itemPropForm.list.$error">
+                            <div ng-message="required">该下拉框必选</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div>
+            <!---------------------------------商品规格编辑框-------------------------------->
+            <form class="form-horizontal" name="itemSpecForm" ng-submit="itemSpecSubmit()"
+                  novalidate>
+                <div class="form-group">
+                    <div class="col-xs-1" layout="row">
+                        <span flex>商品规格</span>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group" ng-if="!views.itemSpec && about != 'editor'">
+                    <label class="col-xs-2 control-label">请选择商品规格
+                        <span style="color:red" ng-if="list.required">*</span></label>
+                    <div class="col-xs-8">
+                        <div class="input-group" uib-dropdown>
+                            <input type="text" class="form-control" placeholder="请选择商品规格" ng-model="specsKeyword.key"
+                                   ng-click="$event.stopPropagation()"
+                                   uib-dropdown-toggle autocomplete="off">
+                            <div class="input-group-addon" ng-click="selectedSpecsAttr()" uib-dropdown-toggle
+                                 role="button">
+                                <i class="glyphicon glyphicon-search" role="button"></i></div>
+
+                            <ul class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenu1"
+                                style="max-height: 300px;overflow: auto;z-index: 100001;">
+                                <li>
+                                    <table class="table table-hover">
+                                        <tr ng-repeat="staff1 in specsListResult.content"
+                                            ng-click="selectSpecsLIst(staff1)">
+                                            <td>{{staff1.name}}</td>
+                                        </tr>
+                                    </table>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)" title="添加" class="btn-default" ng-show="!flog">
+
+                        <div style="margin-top: 7px">
+                            <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-plus"
+                                     ng-click="addPropSpecsList()" title="新增"></md-icon>
+                        </div>
+                        <!--<span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addPropSpecsList()"></span>-->
+                    </a>
+                </div>
+
+
+                <div class="col-sm-offset-1 col-xs-9">
+                    <div class="panel panel-default" style="padding: 1em" ng-repeat="spec in selectedSpecs" flex>
+                        <p class="form-control-static" flex="">{{spec.name}}：</p>
+                        <div style="padding: 1em" ng-show="spec.specValues.length>0">
+                            <label ng-repeat="specValue in spec.specValues track by $index" style="margin-right: 1em" role="button">
+                                <input type="checkbox" ng-model="specValue.isCheck" role="button"
+                                       ng-disabled="views.itemSpec||specValue.disabled"
+                                       ng-click="checkedSpecValue($index,spec,specValue)"/>{{specValue.name}}
+                            </label>
+                        </div>
+                        <a class="glyphicon" title="删除" href="javascript:void(0)" ng-click="removeSpecsList(spec.id)"
+                           ng-if="!views.itemSpec && about != 'editor'">
+                            <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-trash"
+                                     title="删除"></md-icon>
+                        </a>
+                    </div>
+                </div>
+
+                <!--sku------------------------------------------------------------------------->
+
+                <div class="form-group" ng-show="selectedSpecs.length>0">
+                    <div class="table-responsive col-sm-offset-1 col-xs-9">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th ng-repeat="head in  selectedSpecs" style="width: 66px;text-align: center;vertical-align: middle;">{{head.name}}</th>
+                                <th style="text-align: center;vertical-align: middle;">总代价<span style="color:red">*</span></th>
+                                <th style="text-align: center;vertical-align: middle;">市代价<span style="color:red">*</span></th>
+                                <th style="text-align: center;vertical-align: middle;">加盟价<span style="color:red">*</span></th>
+                                <th style="text-align: center;vertical-align: middle;">零售价<span style="color:red">*</span></th>
+                                <th style="text-align: center;vertical-align: middle;">吊牌价<span style="color:red">*</span></th>
+                                <th style="text-align: center;vertical-align: middle;">商品编码<span style="color:red">*</span></th>
+                                <th style="text-align: center;vertical-align: middle;">库存</th>
+                                <th style="text-align: center;vertical-align: middle;">操作</th>
+                            </tr>
+                            </thead>
+
+
+                            <tbody>
+
+                            <tr ng-repeat="sku in skus">
+                                <td ng-repeat="spec in sku.specs" ng-init="spec"
+                                    title="{{spec.value}}" style="text-align: center;vertical-align: middle;">{{spec.value.name}}
+                                </td>
+                                <td>
+                                                    <!--//总代价-->
+                                    <input type="text" name="generalAgencyPrice"  ng-model="sku.generalAgencyPrice" ng-pattern="/^\d+(\.\d{1,2})?$/"
+                                           ng-focus="normalPrice($index,'market')"
+                                           ng-blur="formatPrice($index,'market')"
+                                           ng-disabled="views.itemSpec"
+                                           class="form-control input-sm"
+                                           required>
+                                </td>
+
+                                <!--ng-pattern="/^[1-9][0-9]*$/"-->
+
+                                <td>
+                                    <!--市代价-->
+                                    <input type="text" name="regionalAgencyPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" ng-model="sku.regionalAgencyPrice" ng-focus="normalPrice($index)"
+                                           ng-blur="formatPrice($index)"  ng-disabled="views.itemSpec"
+                                           class="form-control input-sm" required>
+                                </td>
+                                <td>
+                                    <!--//加盟价-->
+                                    <input type="text" ng-pattern="/^\d+(\.\d{1,2})?$/" name="leaguePrice"
+                                           class="form-control input-sm"  ng-disabled="views.itemSpec"
+                                           ng-model="sku.leaguePrice" required>
+                                </td>
+                                <td>
+                                    <!--//零售价-->
+                                    <input type="text" ng-pattern="/^\d+(\.\d{1,2})?$/" name="salePrice"
+                                           class="form-control input-sm"  ng-disabled="views.itemSpec"
+                                           ng-model="sku.salePrice" required>
+                                </td>
+                                <td>
+                                    <!--//吊牌价-->
+                                    <input type="text" ng-pattern="/^\d+(\.\d{1,2})?$/" name="labelPrice"
+                                           class="form-control input-sm"  ng-disabled="views.itemSpec"
+                                           ng-model="sku.labelPrice" required>
+                                </td>
+                                <td>
+                                    <!--//商品编码-->
+                                    <input type="text" name="labelCode"
+                                           class="form-control input-sm"  ng-disabled="views.itemSpec"
+                                           ng-model="sku.code" required>
+                                </td>
+                                <td><input type="text" ng-model="sku.storage" ng-pattern="/^[1-9][0-9]*$/" ng-disabled="views.itemSpec" name="storage"
+                                           class="form-control input-sm"></td>
+                                <td>
+                                    <input type="button" value="禁用" ng-click="disabledSku(sku)"
+                                           ng-disabled="views.itemSpec" ng-if="sku.status == 'false'">
+                                    <input type="button" value="启用" ng-click="disabledSku(sku)"
+                                           ng-disabled="views.itemSpec" ng-if="sku.status == 'true'">
+                                    <!--<a href="javascript:void(0);" title="禁用" ng-click="disabledSku(sku)"-->
+                                       <!--class="btn-default"  ng-disabled="views.itemSpec"-->
+                                       <!--ng-if="!sku.status"><span class="glyphicon glyphicon-ban-circle"></span>-->
+                                    <!--</a>-->
+                                    <!--<a href="javascript:void(0);" title="启用" ng-click="disabledSku($index)"-->
+                                       <!--class="btn-default"  ng-disabled="views.itemSpec"-->
+                                       <!--ng-if="sku.status"><span class="glyphicon glyphicon-ok-circle"></span>-->
+                                    <!--</a>-->
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+
+
+            <div class="form-group has-error" ng-if="itemSpecForm.$dirty" ng-hide="itemSpecForm.$valid">
+                <div class="col-sm-offset-1 col-sm-9">
+                    <div class="alert alert-danger">
+                        <div ng-messages="itemSpecForm.labelPrice.$error">
+                            <div ng-message="required">吊牌价不能为空</div>
+                            <div ng-message="pattern">吊牌价只能填写数字,最多2位小数</div>
+                        </div>
+                        <div ng-messages="itemSpecForm.labelCode.$error">
+                            <div ng-message="required">商品编码不能为空</div>
+                            <!--<div ng-message="pattern">商品编码只能填写数字</div>-->
+                        </div>
+                        <div ng-messages="itemSpecForm.salePrice.$error">
+                            <div ng-message="required">零售价不能为空</div>
+                            <div ng-message="pattern">零售价只能填写数字,最多2位小数</div>
+                        </div>
+                        <div ng-messages="itemSpecForm.leaguePrice.$error">
+                            <div ng-message="required">加盟价不能为空</div>
+                            <div ng-message="pattern">加盟价只能填写数字,最多2位小数</div>
+                        </div>
+                        <div ng-messages="itemSpecForm.regionalAgencyPrice.$error">
+                            <div ng-message="required">市代价不能为空</div>
+                            <div ng-message="pattern">市代价只能填写数字,最多2位小数</div>
+                        </div>
+                        <div ng-messages="itemSpecForm.generalAgencyPrice.$error">
+                            <div ng-message="required">总代价不能为空</div>
+                            <div ng-message="pattern">总代价只能填写数字,最多2位小数</div>
+                        </div>
+                        <div ng-messages="itemSpecForm.storage.$error">
+                            <div ng-message="pattern">库存只能填写大于0的数字</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!---------------------------------宝贝描述编辑框-------------------------------->
+
+        <form class="form-horizontal" ng-submit="itemDetailSubmit()" name="detailForm">
+            <div class="form-group">
+                <div class="col-xs-1" layout="row">
+                    <span flex>宝贝描述</span>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div id="wangEditor"></div>
+                    <!--<div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='views.htmlcontent'></div>-->
+                </div>
+            </div>
+
+
+        </form>
+
+
+        <div class="form-group has-error" ng-if="detailForm.$dirty" ng-hide="detailForm.$valid">
+            <div class="col-sm-offset-1 col-sm-9">
+                <div class="alert alert-danger">
+                    <div ng-messages="detailForm.content.$error">
+                        <div ng-message="required">宝贝描述不能为空</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-9">
+                <button style="background: #019875" type="button" class="btn btn-info" ng-click="save()"
+                        ng-disabled="views.save||!itemBaseForm.$valid || !itemPropForm.$valid || !itemSpecForm.$valid || specData.skus.length == 0">
+                    &nbsp;&nbsp;保存并发布&nbsp;&nbsp;</button>
+                &nbsp;
+                <a class="btn btn-default" style="background: #fff;border: 1px solid #e0e0e0;color: #101010"
+                   ng-click="fallbackPage()"
+                   role="button">返回</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/ng-template" id="addSuccessContent.html">
+        <div class="modal-header alert alert-success" role="alert">
+            <h3 class="modal-title">添加成功</h3>
+        </div>
+
+        <div class="modal-body">
+            <a class="btn btn-default" role="button" ng-click="ok()">继续添加</a>&nbsp;&nbsp;
+            <a class="btn btn-default" role="button" ng-click="back()">返回</a>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="isWitchContent.html">
+        <div class="modal-header alert alert-success" role="alert">
+            <h3 class="modal-title">是否切换，切换后sku将全部清除</h3>
+        </div>
+
+        <div class="modal-body">
+            <button class="btn btn-primary" ng-click="ok()">继续切换</button>
+            <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        </div>
+    </script>
+
+
+    <style type='text/css'>
+        .filelist {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .filelist:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            clear: both;
+        }
+
+        .filelist li {
+            width: 110px;
+            height: 110px;
+            background: url(http://7xlv3z.com2.z0.glb.qiniucdn.com/bg.png) no-repeat;
+            text-align: center;
+            margin: 0 8px 0 0;
+            position: relative;
+            display: inline;
+            float: left;
+            overflow: hidden;
+            font-size: 12px;
+        }
+
+        .filelist li p.imgWrap {
+            position: relative;
+            z-index: 2;
+            line-height: 110px;
+            vertical-align: middle;
+            overflow: hidden;
+            width: 110px;
+            height: 110px;
+
+            -webkit-transform-origin: 50% 50%;
+            -moz-transform-origin: 50% 50%;
+            -o-transform-origin: 50% 50%;
+            -ms-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+
+            -webit-transition: 200ms ease-out;
+            -moz-transition: 200ms ease-out;
+            -o-transition: 200ms ease-out;
+            -ms-transition: 200ms ease-out;
+            transition: 200ms ease-out;
+        }
+
+        .filelist li img {
+            width: 100%;
+        }
+
+        .filelist div.file-panel {
+            position: absolute;
+            height: 0;
+            filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#80000000', endColorstr='#80000000') \0;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 300;
+        }
+
+        .filelist div.file-panel span {
+            width: 24px;
+            height: 24px;
+            display: inline;
+            float: right;
+            text-indent: -9999px;
+            overflow: hidden;
+            background: url(http://7xlv3z.com2.z0.glb.qiniucdn.com/icons.png) no-repeat;
+            margin: 5px 1px 1px;
+            cursor: pointer;
+        }
+
+        .filelist div.file-panel span.rotateLeft {
+            background-position: 0 -24px;
+        }
+
+        .filelist div.file-panel span.rotateLeft:hover {
+            background-position: 0 0;
+        }
+
+        .filelist div.file-panel span.rotateRight {
+            background-position: -24px -24px;
+        }
+
+        .filelist div.file-panel span.rotateRight:hover {
+            background-position: -24px 0;
+        }
+
+        .filelist div.file-panel span.cancel {
+            background-position: -48px -24px;
+        }
+
+        .filelist div.file-panel span.cancel:hover {
+            background-position: -48px 0;
+        }
+
+    </style>
+
+
+
+</div>
+

@@ -1,0 +1,436 @@
+.ks-goodSee{
+  //.wangEditor-menu-container .menu-tip{
+  //  width: 60px !important;
+  //}
+  div{
+    outline: none;
+  }
+  .item-information{
+    background: #F5F5F5;
+    margin-bottom: 100px;
+    .ext-content {
+      margin: 20px;
+      background-color: #F5F5F5;
+      .form-horizontal{
+        //margin-top: 10px;
+        .item-informations{
+          //height: 45px;
+          margin: 10px;
+          .informations-title{
+            //text-align: right;
+            color: #555555;
+            font-size: 14px;
+            line-height: 20px;
+
+          }
+          .informations-content{
+            position: relative;
+            margin-left: 20px;
+            .informations-content-input{
+              height: 30px;
+              width: 100%;
+              outline: none;
+              border-radius: 3px;
+              padding-left: 5px;
+              border: none;
+            }
+            .uploadCategory{
+              width: 100%;
+              height: 100%;
+              background: #ffffff;
+              //overflow-x: auto;
+              //overflow-y: hidden;
+              .uploadCategory-chips{
+                width: 100%;
+                .chip{
+                  position: relative;
+                  height: 30px;
+                  border: 1px solid #D5D5D5;
+                  border-radius: 3px;
+                  float: left;
+                  margin-left: 10px;
+                  padding: 0 10px;
+                  .chip-del{
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    right: 0;
+                    top: 0;
+                    line-height: 10px;
+                    md-icon{
+                      font-size: 10px;
+                      min-width: 10px;
+                      min-height: 10px;
+                      line-height: 10px;
+                      outline: none;
+                    }
+                  }
+                }
+                .chip-ipt{
+                  border: none;
+                  outline: none;
+                  min-width: 100px;
+                  height: 30px;
+                  float: left;
+                }
+              }
+              md-chips{
+                border: none;
+                outline: none;
+                .md-chips{
+                  box-shadow: none;
+                  outline: none;
+                }
+              }
+            }
+            .categoryList{
+              position: absolute;
+              top: 48px;
+              left: 0;
+              //width: 100%;
+              //height: 200px;
+              //padding: 20px;
+              background: #fff;
+              z-index: 10;
+              border: 1px solid #ccc;
+              box-shadow: 0 6px 12px rgba(0,0,0,.175);
+              padding-right: 20px;
+
+
+              //ol:first-child{
+              //  border: none;
+              //}
+              //ol:nth-child(n+2){
+              //  margin-left: 30px;
+              //  padding: 0;
+              //  li:last-child{
+              //    border: none;
+              //  }
+              //
+              //  li{
+              //    border-left: 1px dashed #d5d5d5;
+              //
+              //     .line{
+              //       border-top: 1px dashed #d5d5d5;
+              //       width: 20px;
+              //       height: 0;
+              //       display: inline-block;
+              //       padding-top: 6px;
+              //     }
+              //  }
+              //}
+
+              md-icon{
+                margin: 0;
+              }
+              span{
+                outline:none;
+              }
+              #tree2-root{
+                font-size: 14px;
+                color: #333333;
+                .line{
+                  md-icon{
+                    font-size: 40px;
+                    line-height: 40px;
+                  }
+                }
+                ol{
+                  padding: 0;
+                }
+              }
+
+            }
+
+            .mainImg{
+              //margin-top: 10px;
+              .imgList{
+                position: relative;
+                width: 100px;
+                height: 100px;
+                background: #E6E6E6;
+                margin-right: 10px;
+                md-icon{
+                  font-size: 35px;
+                  margin: 0;
+                  padding: 0;
+                }
+                div{
+                  font-size: 12px;
+                  color: #000000;
+                }
+                .imgWrap{
+                  margin: 0;
+                }
+                .file-panel{
+                  height: 25px;
+                  position: absolute;
+                  background: #d5d5d5;
+                  top: 0;
+                  right: 0;
+                  padding: 5px;
+                  opacity: 0.8;
+                  .cancel{
+                    overflow: hidden;
+                  }
+                }
+              }
+            }
+            .erro{
+              color: #F78B91;
+              font-size: 14px;
+              margin-top: 15px;
+            }
+            .itemSpec-content{
+              width: 100%;
+              position: relative;
+              border: 1px solid #D5D5D5;
+              //height: 105px;
+              margin-bottom: 10px;
+              //.itemSpec {
+              //  margin: 10px;
+              //  padding-left: 10px;
+              //  height: 30px;
+              //  line-height: 30px;
+              //  border: 1px solid #e0e0e0;
+              //  outline: none !important;
+              //  background: #fff;
+              //  border-radius: 4px;
+              //}
+              .itemSpec{
+                margin: 10px;
+                width: 200px;
+              }
+              .attr{
+                margin: 10px;
+                width: 100%;
+                //overflow: auto;
+                .attr-list{
+                  position: relative;
+                  height: 30px;
+                  border: 1px solid #D5D5D5;
+                  border-radius: 3px;
+                  font-size: 12px;
+                  color: #000000;
+                  padding: 5px 15px;
+                  margin-right: 10px;
+                  margin-bottom: 10px;
+                  float: left;
+
+                  .attr-list-del{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    md-icon{
+                      width: 10px;
+                      height: 10px;
+                      min-width: 10px;
+                      min-height: 10px;
+                      font-size: 10px;
+                      line-height: 10px;
+                    }
+                  }
+
+                }
+                .attr-add{
+                  color: #05A3FC;
+                  font-size: 12px;
+                  min-width: 60px;
+                  height: 30px;
+                  float: left;
+                }
+              }
+              .popup{
+                position: absolute;
+                background: #ffffff;
+                left: -1px;
+                top: 100%;
+                min-height: 60px;
+                width: 450px;
+                border: 1px solid #D5D5D5;
+                z-index: 10;
+                border-radius: 5px;
+                .jiao{
+                  width: 16px;
+                  height: 16px;
+                  border: 1px solid #D5D5D5;
+                  transform:rotate(45deg);
+                  -ms-transform:rotate(45deg); 	/* IE 9 */
+                  -moz-transform:rotate(45deg); 	/* Firefox */
+                  -webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+                  -o-transform:rotate(45deg);
+                  position: absolute;
+                  left: 30px;
+                  top: -8px;
+                  background: #ffffff;
+                  z-index: -1;
+                }
+                .popup-content{
+                  width: 100%;
+                  height: 100%;
+                  background: #ffffff;
+                  border-radius: 5px;
+                  .popup-content-input{
+                    border: 1px solid #D5D5D5;
+                    margin: 10px;
+                    min-height: 40px;
+                    .md-chips{
+                      //height: 100%;
+                      border: none;
+                      outline: none;
+                      .md-chips{
+                        box-shadow: none;
+                        outline: none;
+                      }
+                    }
+                    .popupInputShowList{
+                      position: absolute;
+                      background: #ffffff;
+                      border: 1px solid #D5D5D5;
+                      border-radius: 3px;
+                      max-height: 300px;
+                      width: 300px;
+                      overflow: auto;
+                      .showList{
+                        //width: 100%;
+                        //border-top: 1px solid #D5D5D5;
+                        padding: 8px;
+                        line-height: 1.42857143;
+                        vertical-align: top;
+                        border-top: 1px solid #ddd;
+                      }
+                    }
+
+
+
+                  }
+                }
+              }
+
+
+            }
+            .itemSpec-btn{
+              height: 30px;
+              width: 120px;
+              border: 1px solid #D5D5D5;
+              border-radius: 3px;
+              color: #000000;
+              md-icon{
+                font-size: 14px;
+                margin: 0;
+                padding: 0;
+              }
+              div{
+                font-size: 14px;
+              }
+
+            }
+            .prompt{
+              color: #F78B91;
+            }
+            .freight{
+              md-checkbox{
+                width: 200px;
+              }
+            }
+
+            .next-btn{
+              width: 80px;
+              height: 30px;
+              color: #ffffff;
+              border-radius: 3px;
+              background: #05A3FC;
+              font-size: 14px;
+              margin-bottom: 40px;
+            }
+
+          }
+
+          .itemSku{
+            .getSku{
+              width: 80px;
+              height: 30px;
+              color: #fff;
+              border-radius: 3px;
+              background: #fc3c25;
+              font-size: 14px;
+            }
+            .skuImg{
+              text-align: center;
+              .btn{
+                color: #05a3fc;
+                font-size: 12px;
+              }
+              .img{
+                position: relative;
+                height: 30px;
+                //width: 30px;
+                img{
+                  height: 100%;
+                }
+                .delSkuImg{
+                  position: absolute;
+                  width: 10px;
+                  height: 10px;
+                  right: 0;
+                  top: 0;
+                  line-height: 10px;
+                  md-icon{
+                    font-size: 10px;
+                    min-height: 10px;
+                    min-width:10px;
+                    line-height: 10px;
+                  }
+                }
+              }
+            }
+          }
+
+
+        }
+      }
+      .item-editor{
+        margin: 10px;
+        .informations-title {
+          //text-align: right;
+          color: #555555;
+          font-size: 14px;
+          line-height: 20px;
+        }
+        .informations-content {
+          position: relative;
+          margin-left: 20px;
+          #div4{
+            .w-e-text-container{
+              height: auto !important;
+              min-height: 300px;
+            }
+          }
+          .next-btn{
+            width: 80px;
+            height: 30px;
+            color: #ffffff;
+            border-radius: 3px;
+            background: #05A3FC;
+            font-size: 14px;
+            margin-bottom: 40px;
+          }
+          .previous-btn{
+            width: 80px;
+            height: 30px;
+            color: #555555;
+            border: 1px solid #d5d5d5;
+            border-radius: 3px;
+            background: #FFFFFF;
+            font-size: 14px;
+            margin-bottom: 40px;
+            margin-right: 20px;
+          }
+
+        }
+
+      }
+
+    }
+  }
+}

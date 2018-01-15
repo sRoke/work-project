@@ -1,0 +1,26 @@
+$bootstrap-sass-asset-helper: false !default;
+//
+// Variables
+// --------------------------------------------------
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+$gray-base: #000 !default;
+
+//== Layout
+$layout-breakpoint-xs: 600px !default;
+$layout-breakpoint-sm: 960px !default;
+$layout-breakpoint-md: 1280px !default;
+$layout-breakpoint-lg: 1920px !default;
+
+//header的设置
+$ks-header-height: 44px;
+$ks-main-min-width: 320px;
+$ks-leftnav-bg-color: rgba(0, 0, 0, 0.7);
+$ks-header-font: 16px;
+
+
+
+

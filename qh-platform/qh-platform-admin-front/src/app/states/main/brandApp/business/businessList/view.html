@@ -1,0 +1,80 @@
+<div class="ks-businessList">
+    <div class="common-list-center">
+        <ul layout="column">
+            <li layout="row">
+                <label for="bhnum" >商家名称：</label>
+                <input id="bhnum" type="text" class="choose form-control" placeholder="请输入商家名称"  ng-model="keyWords">
+                <span class="title-btn-blue" ng-click="pageChanged(1)">筛选</span>
+                <span class="title-btn-white" ui-sref="main.brandApp.business.businessAdd" ng-if="BRANDAPP_C">新增</span>
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+    <!--div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <!--表头-->
+        <div class="common-list-detail-thead" layout="row">
+            <div class="thead-show" flex="15" layout-align="center">
+                <span>商家Logo</span>
+            </div>
+            <div class="thead-show" flex="15" layout-align="center">
+                <span>商家名称</span>
+            </div>
+            <!--<div class="thead-show" flex="15" layout-align="center">-->
+                <!--<span>主营类目</span>-->
+            <!--</div>-->
+            <div class="thead-show" flex="20" layout-align="center" style="overflow: hidden;">
+                <span>绑定联系人</span>
+            </div>
+            <div class="thead-show" flex="15" layout-align="center" style="overflow: hidden;">
+                <span>创建日期</span>
+            </div>
+            <div class="thead-show" flex="20" layout-align="center">
+                <span>操作</span>
+            </div>
+        </div>
+        <!--表格详细内容-->
+        <div class="common-list-detail-tbody" layout="column">
+            <!--定义每列数据    父级用ng-repeat循环此行-->
+            <div class="common-list-detail-row" layout="row" ng-repeat="item in data.content">
+                <div class="thead-show" flex="15" layout-align="center">
+                    <span>{{item.realName}}</span>
+                    <img ng-src="{{item.logUrl}}" width="50px" height="50px">
+                </div>
+                <div class="thead-show" flex="15" layout-align="center">
+                    <span>{{item.title}}</span>
+                </div>
+                <!--<div class="thead-show" flex="15" layout-align="center">-->
+                    <!--<span>{{item.partnerType}}</span>-->
+                <!--</div>-->
+                <div class="thead-show" flex="20" layout-align="center" style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{item.phone}}</span>
+                </div>
+                <div class="thead-show" flex="15" layout-align="center" style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{item.dateCreated |date:'yyyy-MM-dd'}}</span>
+                </div>
+                <div class="thead-show" flex="20" layout-align="center">
+                    <span ui-sref="main.brandApp.business.busApplication({id:item.id})" ng-if="BRANDAPP_Y || BRANDAPP_R">应用</span>
+                    <span ui-sref="main.brandApp.business.businessEdit({businessId:item.id})" ng-if="BRANDAPP_U">编辑</span>
+                    <span ng-click="delBusiness(item.id)" ng-if="BRANDAPP_D">删除</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分页-->
+    <div style="width: 100%; padding:0px 20px;">
+        <div style="width: 500px;min-width: 500px" uib-pagination total-items="data.totalElements"
+             ng-model="curPage"
+             ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+        <div style="float: right" class="pageSubnav">
+            <span>共{{data.totalElements}} 条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button>确定</md-button>
+        </div>
+    </div>
+</div>
+

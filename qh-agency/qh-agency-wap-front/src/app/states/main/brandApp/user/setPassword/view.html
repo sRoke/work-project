@@ -1,0 +1,82 @@
+<div flex="" layout="column" class="ks-setPassword">
+    <!--<md-toolbar class="ks-header">-->
+        <!--<div layout="row" class="ks-header-divWrap">-->
+            <!--<div class="divTop" flex class>-->
+                <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+                         <!--ng-click="fallbackPage()"></md-icon>-->
+                <!--<span class="regSpan" ng-if="setPassword">设置支付密码</span>-->
+                <!--<span class="regSpan" ng-if="!setPassword">修改支付密码</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-toolbar>-->
+
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>
+            <span class="regSpan" ng-if="setPassword">设置支付密码</span>
+            <span class="regSpan" ng-if="!setPassword">修改支付密码</span>
+        </h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+
+    <md-divider></md-divider>
+
+    <!--<md-content flex="" id="content" class="top-border" ng-if="list.addressList[0]">-->
+    <md-content flex="" id="content" class="top-border">
+        <div class="content-set" ng-if="setPassword">
+            <div class="tab-choose" layout="row" layout-align="space-between center">
+                <!--<label>密码</label>-->
+                <div flex layout="row" layout-align="end center">
+                    <!--<div class="choosePhone" ng-if="viewStatus">222222222</div>-->
+                    <input ng-model="set.password" ng-if="setPassword" type="password" class="editInput"
+                           placeholder="请输入6位数字密码"  ng-blur="formatPassword(set.password)">
+                </div>
+            </div>
+            <div class="center-tab-line"><div class="line"></div></div>
+            <div class="tab-choose" layout="row" layout-align="space-between center">
+                <!--<label>确认密码</label>-->
+                <div flex layout="row" layout-align="end center">
+                    <!--<div class="choosePhone" ng-if="viewStatus">222222222</div>-->
+                    <input ng-model="set.surePassword" ng-if="setPassword"  type="password"  class="editInput" placeholder="确认密码">
+                </div>
+            </div>
+            <div class="center-tab-line"><div class="line"></div></div>
+        </div>
+
+        <div class="content-set" ng-if="!setPassword">
+            <div class="tab-choose" layout="row" layout-align="space-between center">
+                <!--<label>旧密码</label>-->
+                <div flex layout="row" layout-align="end center">
+                    <input ng-model="change.old"  type="password"  class="editInput" placeholder="旧密码"
+                           ng-blur="formatPassword(change.old)">
+                </div>
+            </div>
+            <div class="center-tab-line"><div class="line"></div></div>
+            <div class="tab-choose" layout="row" layout-align="space-between center">
+                <!--<label>新密码</label>-->
+                <div flex layout="row" layout-align="end center">
+                    <input ng-model="change.new"  type="password"  class="editInput" placeholder="新密码"
+                           ng-blur="formatPassword(change.new)">
+                </div>
+            </div>
+            <div class="center-tab-line"><div class="line"></div></div>
+            <div class="tab-choose" layout="row" layout-align="space-between center">
+                <!--<label>确认新密码</label>-->
+                <div flex layout="row" layout-align="end center">
+                    <input ng-model="change.sure"   type="password"  class="editInput" placeholder="确认新密码">
+                </div>
+            </div>
+            <div class="center-tab-line"><div class="line"></div></div>
+        </div>
+
+        <div class="edit-btn" ng-click="save()">
+            <div class="btn">完成</div>
+        </div>
+
+    </md-content>
+</div>
+

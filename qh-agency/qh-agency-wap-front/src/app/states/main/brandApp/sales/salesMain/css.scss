@@ -1,0 +1,100 @@
+@import "../../../../../scss/ksMain";
+@import "../../../../../scss/index";
+.ks-salesMain {
+
+  .ks-header._md {
+    min-height: 44px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    background: $agency-bg-green;
+
+    .ks-header-divWrap {
+      padding: 0 15px;
+      height: 100%;
+      color: $agency-word-dark;
+      .divTop {
+        text-align: center;
+        position: relative;
+        line-height: 44px;
+        .chevron_left {
+          color: $agency-word-dark;
+          position: absolute;
+          left: 0;
+          font-size: 14px;
+          line-height: 44px;
+        }
+        .regSpan{
+          font-size: 18px;
+          color: $agency-word-white;
+          letter-spacing: -0.43px;
+        }
+      }
+    }
+  }
+  .main {
+    background: $agency-bg-default;
+    .center-tab-line{
+      width: 100%;
+      padding-left: 70px;
+      background: $agency-bg-white;
+      .line{
+        width: 100%;
+        height: 1px;
+        -webkit-transform: scaleY(0.5);
+        -webkit-transform-origin: 0 0;
+        //overflow: hidden;
+        background: #CDD0CF;
+      }
+    }
+    .center-tab-boldLine{
+      width: 100%;
+      height: 10px;
+    }
+
+    .defaultTab{
+      opacity: 0.5;
+    }
+
+    .center-tab{
+      width: 100%;
+      height: 60px;
+      background: $agency-bg-white;
+      padding: 0 15px;
+      .center-tab-left{
+        .tab-img{
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+          background: #84DEE5;
+          margin-right: 15px;
+          md-icon{
+            font-size: 20px;
+            height: 20px;
+            min-height: 20px;
+            min-width: 20px;
+            //margin-left: 5px;
+            color:$agency-word-white;
+            line-height: 20px;
+            margin: 0;
+          }
+        }
+        .tab-desc{
+          font-size: 16px;
+          color: #333333;
+          letter-spacing: -0.39px;
+        }
+      }
+      md-icon{
+        font-size: 13px;
+        height: 13px;
+        min-height: 13px;
+        min-width: 8px;
+        //margin-left: 5px;
+        color: #C7CCCB;
+        line-height: 13px;
+        margin: 0;
+      }
+    }
+  }
+}

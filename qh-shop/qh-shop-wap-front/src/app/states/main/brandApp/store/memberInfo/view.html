@@ -1,0 +1,69 @@
+<div flex="100" layout="column" class="ks-memberInfo">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>会员资料</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+
+        <div class="img-bg">
+            <img src="{{data.avatar}}" alt="">
+            <div class="bg-float" layout="column">
+                <div class="wrap" layout="column" layout-align="center center">
+                    <img src="{{data.avatar}}" alt="">
+                    <div class="name">{{data.nickName}}</div>
+                    <div class="phone">{{data.phone}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cli-wrap" layout="column">
+            <div class="dis-wrap" layout="column" ui-sref="main.brandApp.store.memberDetail({id:id})">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name">
+                        详细资料
+                    </div>
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="dis-wrap" layout="column">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name" style="color:#999">
+                         交易订单
+                    </div>
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"
+                             style="color:#999"></md-icon>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="dis-wrap" layout="column">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name" style="color:#999">
+                        会员标记
+                    </div>
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"
+                             style="color:#999"></md-icon>
+                </div>
+                <md-divider></md-divider>
+            </div>
+        <!--    <div class="dis-wrap" layout="column">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name">
+                        交易订单
+                    </div>
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+                &lt;!&ndash;<md-divider></md-divider>&ndash;&gt;
+            </div>-->
+        </div>
+
+    </md-content>
+
+
+</div>

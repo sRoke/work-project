@@ -1,0 +1,45 @@
+.ks-mdAdd {
+  max-width: 800px;
+  margin: 0 auto;
+  .listLine {
+    min-height: 50px;
+    .msgLeft{
+      width: 150px;
+    }
+  }
+}
+.form-horizontal {
+  .form-group {
+    .col-sm-4 {
+      font-weight: normal;
+    }
+    .col-sm-8 {
+      text-align: left;
+      margin-top: 7px;
+    }
+    .col-sm-6 {
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+    .bottom-btn{
+      button{
+        background: #0ae;
+        padding:0 20px;
+        height:30px;
+        color:#fff;
+        border-radius: 4px;
+        border:1px solid #0ae;
+        margin-right:20px;
+      }
+      a{
+        color: #0ae;
+      }
+    }
+  }
+}

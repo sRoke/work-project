@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>my authorization server form</title>
+    <style>
+
+        @media only screen and   (min-width: 0px) and (max-width: 600px) {
+            /*在这里写小屏幕设备的样式*/
+            html {
+                min-width: 320px;
+            }
+
+            body {
+                margin: 0;
+                min-width: 320px;
+                background: url("http://bpic.588ku.com/master_pic/00/09/74/33565e6af150385.jpg") no-repeat center center;
+                background-size: cover;
+                width: 100%;
+                overflow: hidden;
+                height: 100vh;
+            }
+
+            .ks-login {
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                margin-top: -220px;
+            }
+
+            .ks-login .img-wrap {
+                display: none;
+                width: 100%;
+                height: 80px;
+                min-height: 80px;
+                line-height: 80px;
+                text-align: center;
+            }
+
+            .ks-login .img-wrap img {
+                width: auto;
+                margin: 10px;
+            }
+
+            .center-wrap {
+                /*background: url("https://img.kingsilk.net/Fq2liSI5-3ah2Z3VZgM_KqI8EKxwhttps://img.kingsilk.net/Fq2liSI5-3ah2Z3VZgM_KqI8EKxw") no-repeat center center;*/
+                /*background-size: cover;*/
+                /*width: 100%;*/
+                /*height: 100%;*/
+                /*min-height: 500px;*/
+                /*overflow: hidden;*/
+            }
+
+            .center-wrap .parent {
+                width: 80%;
+                margin: 20px auto;
+            }
+
+            .center-wrap .parent .contentRight {
+                width: 100%;
+                height: 360px;
+                min-width: 256px;
+                border: 1px solid #e0e0e0;
+                background: rgba(31, 31, 31, 0.2);
+            }
+
+            .center-wrap .parent .contentRight .contentRightHeader {
+                margin: 30px auto 0 auto;
+                text-align: center;
+                font-size: 25px;
+                color: #ba9f6e;
+                font-weight: bold;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter {
+                margin: 30px auto 0 auto;
+                text-align: center;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter .wrap {
+                margin-bottom: 18px;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter .wrap > p {
+                width: 80%;
+                margin: 10px auto;
+                text-align: left;
+                font-weight: bold;
+                color: #fff;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter .wrap > input {
+                width: 80%;
+                height: 36px;
+                border: none;
+                background: #f5f5f5;
+                padding-left: 12px;
+                outline: none;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter .centerBtn {
+                cursor: pointer;
+                margin: 30px auto 0 auto;
+                width: 80%;
+                height: 40px;
+                background: #ba9f6e;
+                text-align: center;
+                padding: 0 6px;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter .centerBtn > input {
+                font-size: 20px;
+                width: 100%;
+                color: #fff;
+                font-weight: bold;
+                line-height: 36px;
+                background: transparent;
+                border: none;
+            }
+
+            .bottom {
+                /*display: none;*/
+            }
+
+            .bottom .txt {
+                text-align: center;
+                /*width: 1026px;*/
+            }
+
+            .bottom .txt span {
+                margin-right: 3px;
+                font-size: 14px;
+                color: #fff;
+            }
+
+            .bottom .txt span.lode {
+                color: #4a8df2;
+                cursor: pointer;
+            }
+
+            ol {
+                color: #fff;
+            }
+
+        }
+
+        @media only screen and (min-width: 600px) {
+            /*这里写pc客户端的样式*/
+            .ks-login {
+                width: 100%;
+                height: 70vh;
+            }
+
+            .ks-login .img-wrap {
+                width: 1200px;
+                margin: 0 auto;
+                height: 80px;
+                min-height: 80px;
+                line-height: 80px;
+            }
+
+            .ks-login .img-wrap img {
+                width: auto;
+                height: 54px;
+            }
+
+            .center-wrap {
+                background: url("https://img.kingsilk.net/Fjx0XtADGKaLBJI2RsRVkrgixsr5") no-repeat center center;
+                background-size: cover;
+                width: 100%;
+                height: 100%;
+                min-height: 500px;
+                position: relative;
+            }
+
+            .center-wrap .parent {
+                width: 360px;
+                position: absolute;
+                top: 50%;
+                margin-top: -220px;
+                /* right: 10%; */
+                left: 50%;
+                margin-left: -180px;
+            }
+
+            .center-wrap .parent .contentRight {
+                width: 360px;
+                height: 440px;
+                margin-left: 16px;
+                border: 1px solid #e0e0e0;
+                background: #fff;
+                float: right;
+            }
+
+            .center-wrap .parent .contentRight .contentRightHeader {
+                margin: 30px auto 0 auto;
+                text-align: center;
+                font-size: 25px;
+                color: #ba9f6e;
+                font-weight: bold;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter {
+                margin: 40px auto 0 auto;
+                text-align: center;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter .wrap {
+                margin-bottom: 18px;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter .wrap > p {
+                width: 280px;
+                margin: 10px auto;
+                text-align: left;
+                font-weight: bold;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter .wrap > input {
+                width: 280px;
+                height: 36px;
+                border: none;
+                background: #f5f5f5;
+                padding-left: 12px;
+                outline: none;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter .centerBtn {
+                cursor: pointer;
+                margin: 30px auto 0 auto;
+                width: 280px;
+                height: 40px;
+                background: #ba9f6e;
+                text-align: center;
+            }
+
+            .center-wrap .parent .contentRight .contentRightCenter .centerBtn > input {
+                font-size: 20px;
+                width: 100%;
+                color: #fff;
+                font-weight: bold;
+                line-height: 36px;
+                background: transparent;
+                border: none;
+            }
+
+            .bottom {
+                height: 160px;
+                min-height: 160px;
+                text-align: center;
+                /*width: 1200px;*/
+                margin: 0 auto;
+                padding-top: 30px;
+            }
+
+            .bottom .txt {
+                text-align: center;
+                /*width: 1026px;*/
+            }
+
+            .bottom .txt span {
+                margin-right: 3px;
+                font-size: 14px;
+                color: #101010;
+            }
+
+            .bottom .txt span.lode {
+                color: #4a8df2;
+                cursor: pointer;
+            }
+
+            ol {
+                color: #101010;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<!--
+<h1>my authorization server login form</h1>
+<p th:if="${param.logout}" class="alert">You have been logged out</p>
+<p th:if="${param.error}" class="alert alert-error">There was an error, please try again</p>
+<h2>Login with Username and Password</h2>
+<form name="form" th:action="@{/login}" action="/login" method="POST">
+    <fieldset>
+        <input type="text" name="username" value="" placeholder="Username" />
+        <input type="password" name="password" placeholder="Password" />
+    </fieldset>
+    <input type="submit" id="login" value="Login"
+           class="btn btn-primary" />
+</form>
+<ul> users :
+    <li>a_admin/a_admin</li>
+    <li>a_user/a_user</li>
+</ul>
+-->
+
+
+<div class="ks-login">
+    <div class="img-wrap">
+        <img src="https://img.kingsilk.net/FgaZnyDUYaIpWQK3iPr6cDT4rYf6"/>
+    </div>
+    <div class="center-wrap">
+        <div class="parent">
+            <div class="contentRight">
+                <div class="contentRightHeader" style="color: #333333">
+                    生意参谋后台管理系统
+                </div>
+                <div class="contentRightCenter">
+                    <form name="form" th:action="@{/login}" action="/login" method="POST">
+                        <div class="wrap">
+                            <p>用户名：</p>
+                            <input type="text" name="username" value="" placeholder="Username"/>
+                        </div>
+                        <div class="wrap">
+                            <p>密码：</p>
+                            <input type="password" name="password" placeholder="Password"/>
+                        </div>
+                        <div class="centerBtn" style="padding: 0 5px;">
+                            <input style="width: 100%" type="submit" id="login" value="登录"
+                                   class="btn btn-primary"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<ol> users :-->
+    <!--<li>a_admin/a_admin</li>-->
+    <!--<li>a_user/a_user</li>-->
+    <!--</ol>-->
+    <div class="bottom">
+        <div class="txt">
+            <span>
+                Copyright © 2017杭州钱皇网络科技有限公司
+            </span>
+            <!-- <span>
+                 建议分辨率1280*720，浏览器
+             </span>-->
+            <!--<span class="lode">-->
+            <!--<a href="http://www.firefox.com.cn/download/" target="_blank">火狐下载</a>-->
+            <!--</span>-->
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+<!--rmy  2017-07-27-->
+
+
+<!--<!doctype html>-->
+<!--<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8"/>-->
+    <!--<meta name="viewport"-->
+          <!--content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>-->
+    <!--<title>my authorization server form</title>-->
+    <!--<style>-->
+
+        <!--@media only screen and   (min-width: 0px) and (max-width: 600px) {-->
+            <!--/*在这里写小屏幕设备的样式*/-->
+            <!--html {-->
+                <!--min-width: 320px;-->
+            <!--}-->
+
+            <!--body {-->
+                <!--margin: 0;-->
+                <!--min-width: 320px;-->
+                <!--background: url("http://bpic.588ku.com/master_pic/00/09/74/33565e6af150385.jpg") no-repeat center center;-->
+                <!--background-size: cover;-->
+                <!--width: 100%;-->
+                <!--overflow: hidden;-->
+                <!--height: 100vh;-->
+            <!--}-->
+            <!--.center-wrap {-->
+                <!--/*background: url("https://img.kingsilk.net/Fq2liSI5-3ah2Z3VZgM_KqI8EKxwhttps://img.kingsilk.net/Fq2liSI5-3ah2Z3VZgM_KqI8EKxw") no-repeat center center;*/-->
+                <!--/*background-size: cover;*/-->
+                <!--/*width: 100%;*/-->
+                <!--/*height: 100%;*/-->
+                <!--/*min-height: 500px;*/-->
+                <!--/*overflow: hidden;*/-->
+            <!--}-->
+
+            <!--.center-wrap .parent {-->
+                <!--width: 80%;-->
+                <!--margin: 20px auto;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight {-->
+                <!--width: 100%;-->
+                <!--height: 360px;-->
+                <!--min-width: 256px;-->
+                <!--border: 1px solid #e0e0e0;-->
+                <!--background: rgba(31, 31, 31, 0.2);-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightHeader {-->
+                <!--margin: 30px auto 0 auto;-->
+                <!--text-align: center;-->
+                <!--font-size: 25px;-->
+                <!--color: #ba9f6e;-->
+                <!--font-weight: bold;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightCenter {-->
+                <!--margin: 30px auto 0 auto;-->
+                <!--text-align: center;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightCenter .wrap {-->
+                <!--margin-bottom: 18px;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightCenter .wrap > p {-->
+                <!--width: 80%;-->
+                <!--margin: 10px auto;-->
+                <!--text-align: left;-->
+                <!--font-weight: bold;-->
+                <!--color: #fff;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightCenter .wrap > input {-->
+                <!--width: 80%;-->
+                <!--height: 36px;-->
+                <!--border: none;-->
+                <!--background: #f5f5f5;-->
+                <!--padding-left: 12px;-->
+                <!--outline: none;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightCenter .centerBtn {-->
+                <!--cursor: pointer;-->
+                <!--margin: 30px auto 0 auto;-->
+                <!--width: 80%;-->
+                <!--height: 40px;-->
+                <!--background: #ba9f6e;-->
+                <!--text-align: center;-->
+                <!--padding: 0 6px;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightCenter .centerBtn > input {-->
+                <!--font-size: 20px;-->
+                <!--width: 100%;-->
+                <!--color: #fff;-->
+                <!--font-weight: bold;-->
+                <!--line-height: 36px;-->
+                <!--background: transparent;-->
+                <!--border: none;-->
+            <!--}-->
+        <!--}-->
+        <!--@media only screen and (min-width: 600px) {-->
+
+            <!--/*这里写pc客户端的样式*/-->
+            <!--body{-->
+                <!--height:100%;-->
+                <!--width:100%;-->
+                <!--background:url("https://img.kingsilk.net/439df5a654dfb821717d2d9febf0c00e") top left;-->
+                <!--background-size:cover;-->
+                <!--overflow:hidden;-->
+            <!--}-->
+            <!--.center-wrap .parent {-->
+                <!--min-width: 840px;-->
+                <!--height:480px;-->
+                <!--position: absolute;-->
+                <!--top: 50%;-->
+                <!--margin-top: -240px;-->
+                <!--/* right: 10%; */-->
+                <!--left: 50%;-->
+                <!--margin-left: -420px;-->
+            <!--}-->
+            <!--.center-wrap .parent .contentLeft{-->
+                <!--width: 280px;-->
+                <!--height: 480px;-->
+                <!--background: #ba9f6e;-->
+                <!--float: left;-->
+            <!--}-->
+            <!--.center-wrap .parent .contentLeft .leftTop{-->
+                <!--height:40px;-->
+                <!--display: block;-->
+                <!--line-height: 40px;-->
+                <!--font-size:40px;-->
+                <!--margin:120px 0 0 40px;-->
+                <!--color: #fff;-->
+            <!--}-->
+            <!--.center-wrap .parent .contentLeft .leftBottom{-->
+                <!--height:28px;-->
+                <!--display: block;-->
+                <!--line-height: 28px;-->
+                <!--font-size:28px;-->
+                <!--margin:30px 0 0 40px;-->
+                <!--color: #fff;-->
+            <!--}-->
+            <!--.center-wrap .parent .contentRight {-->
+                <!--width: 560px;-->
+                <!--height: 480px;-->
+                <!--background: #fff;-->
+                <!--float: right;-->
+            <!--}-->
+            <!--.center-wrap .parent .contentRight .contentRightHeader {-->
+                <!--margin: 64px auto 0;-->
+                <!--text-align: center;-->
+                <!--font-size: 24px;-->
+                <!--color: #333;-->
+                <!--height:24px;-->
+                <!--line-height:24px;-->
+            <!--}-->
+            <!--.center-wrap .parent .contentRight .contentRightCenter {-->
+                <!--margin: 30px auto 0 auto;-->
+                <!--text-align: center;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightCenter .wrap {-->
+                <!--margin-bottom: 18px;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightCenter .wrap > p {-->
+                <!--width: 320px;-->
+                <!--margin: 0px auto 10px;-->
+                <!--text-align: left;-->
+                <!--color: #999;-->
+                <!--font-size:14px;-->
+                <!--height:14px;-->
+                <!--line-height:14px;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightCenter .wrap > input {-->
+                <!--width: 320px;-->
+                <!--height: 44px;-->
+                <!--border: none;-->
+                <!--background: #f5f5f5;-->
+                <!--padding:0 0 0 12px;-->
+                <!--outline: none;-->
+                <!--margin-bottom:20px;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightCenter .centerBtn {-->
+                <!--cursor: pointer;-->
+                <!--margin: 30px auto 0 auto;-->
+                <!--width: 320px;-->
+                <!--height: 48px;-->
+                <!--background: #53d39a;-->
+                <!--text-align: center;-->
+            <!--}-->
+
+            <!--.center-wrap .parent .contentRight .contentRightCenter .centerBtn > input {-->
+                <!--font-size: 20px;-->
+                <!--width: 100%;-->
+                <!--color: #fff;-->
+                <!--outline: none;-->
+                <!--height:48px;-->
+                <!--font-weight: bold;-->
+                <!--background: #53d39a;-->
+                <!--border: none;-->
+            <!--}-->
+            <!--.center-wrap .parent .contentRight .contentRightBottom{-->
+                <!--font-size:12px;-->
+                <!--line-height: 12px;-->
+                <!--height:12px;-->
+                <!--margin-top:50px;-->
+                <!--color: #999;-->
+                <!--text-align: center;-->
+            <!--}-->
+        <!--}-->
+
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="ks-login">-->
+    <!--<div class="center-wrap">-->
+        <!--<div class="parent" >-->
+            <!--<div class="contentLeft">-->
+                <!--<span class="leftTop">销售宝</span>-->
+                <!--<span class="leftBottom">经销管理系统</span>-->
+            <!--</div>-->
+            <!--<div class="contentRight">-->
+                <!--<div class="contentRightHeader" >-->
+                    <!--登录-->
+                <!--</div>-->
+                <!--<div class="contentRightCenter">-->
+                    <!--<form name="form" th:action="@{/login}" action="/login" method="POST">-->
+                        <!--<div class="wrap">-->
+                            <!--<p>用户名：</p>-->
+                            <!--<input type="text" name="username" value="" autocomplete="off"/>-->
+                        <!--</div>-->
+                        <!--<div class="wrap">-->
+                            <!--<p>密码：</p>-->
+                            <!--<input type="password" name="password" autocomplete="off"/>-->
+                        <!--</div>-->
+                        <!--<div class="centerBtn" >-->
+                            <!--<input style="width: 100%" type="submit" id="login" value="登录"-->
+                                   <!--class="btn btn-primary"/>-->
+                        <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+                <!--<div class="contentRightBottom">-->
+                    <!--<span> Copyright © 2017杭州钱皇网络科技有限公司 </span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+

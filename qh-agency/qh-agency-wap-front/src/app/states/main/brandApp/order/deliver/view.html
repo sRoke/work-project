@@ -1,0 +1,36 @@
+<div flex="100" layout="column" class="ks-deliver">
+    <div class="ks-black-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>物流信息</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex>
+        <div class="deliver-wrap">
+            <div class="con" layout="row">
+                <div class="txt">快递公司：</div>
+                <div class="sel" flex ng-click="open()" ng-bind="expressName">
+                    请选择
+                </div>
+                <div class="icon-wrap" flex="10" layout="row">
+                    <md-icon class=" ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_down"></md-icon>
+                </div>
+            </div>
+            <div class="con" layout="row">
+                <div class="txt">快递单号：</div>
+                <input type="text" ng-model="logistics.expressNo"
+                       placeholder="填写快递单号" flex>
+            </div>
+            <div class="con" layout="row">
+                <div class="txt">备注：</div>
+                <textarea flex type="text" ng-model="deliver.memo" placeholder="最多200字"></textarea>
+            </div>
+        </div>
+    </md-content>
+    <div class="submit-btn" layout="row" layout-align="center center">
+        <md-button class="ks-black " flex="90" ng-click="save()">提交</md-button>
+    </div>
+</div>

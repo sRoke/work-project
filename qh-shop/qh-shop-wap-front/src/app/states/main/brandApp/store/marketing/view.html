@@ -1,0 +1,54 @@
+<div flex="100" layout="column" class="ks-marking">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>营销管理</h1>
+        <div class="right-button" flex="20" layout="row" layout-align="end center"></div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+        <div class="tab-title">
+            商品促销
+        </div>
+
+        <div class="tab-list disabled" layout="row" layout-align="start center">
+            <div class="left" flex>优惠券</div>
+            <div class="right">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <div class="tab-list disabled" layout="row" layout-align="start center">
+            <div class="left" flex>多人拼团</div>
+            <div class="right">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+
+        <div class="tab-title">
+            互动营销
+        </div>
+        <div class="tab-list " layout="row" layout-align="start center" ng-click="toActivity('bargain')">
+            <div class="left" flex>砍价嗨翻天</div>
+            <div class="right">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <div class="tab-list" layout="row" layout-align="start center"  ng-click="toActivity('raffle')">
+            <div class="left" flex>幸运抽大奖</div>
+            <div class="right">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <!---->
+        <div class="tab-list " layout="row" layout-align="start center" ng-click="toActivity('vote')">
+            <div class="left" flex>人气投票赛</div>
+            <div class="right">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+    </md-content>
+</div>

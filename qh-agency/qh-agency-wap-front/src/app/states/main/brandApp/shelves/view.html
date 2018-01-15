@@ -1,0 +1,101 @@
+<div flex="100" layout="column" class="ks-shelves-wrap">
+    <!--<div class="searchWrap" layout="row">-->
+    <!--<div class="close-btn">-->
+    <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-r-close"></md-icon>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;<md-icon md-font-set="ks-icon" class="logo" md-font-icon="ag-logo-square"></md-icon>&ndash;&gt;-->
+    <!--<img class="logo" img-holder src="https://img.kingsilk.net/FnqDJjNg4XsWoQI82j5cmzFqrxGm" width="40px"-->
+    <!--height="40px">-->
+
+    <!--<div class="searchFather" flex ng-click="openDialog()">-->
+    <!--<span class="gzh">钱皇&nbsp;&nbsp;公众号</span> <br>-->
+    <!--<span class="tip">更多便捷服务点击关注</span>-->
+    <!--</div>-->
+    <!--<div class="scan" ng-click="openDialog()">关注</div>-->
+    <!--</div>-->
+    <div class="top" layout="row" layout-wrap="wrap" layout-align="start center">
+        <div class="navs" flex="33" ng-class="{active:vm.choose == null}" layout="row">
+            <md-icon md-font-set="ks-icon" class="ks-icon" md-font-icon="ag-all"></md-icon>
+            <span>|</span>
+            <span class="type_name" ng-click="vm.tabs(null)">全部</span>
+        </div>
+        <div class="navs" flex="33" ng-repeat="comment in vm.comments track by $index" ng-click="vm.tabs(comment)"
+             ng-class="{active:comment.checked}" layout="row">
+            <md-icon md-font-set="ks-icon" class="ks-icon" md-font-icon="{{comment.icon}}"></md-icon>
+            <span>|</span>
+            <span class="type_name">{{comment.name}}</span>
+        </div>
+        <div class="navs" flex="33" ng-class="{active:vm.choose == 'other'}" layout="row">
+            <md-icon md-font-set="ks-icon" class="ks-icon" md-font-icon="ag-all"></md-icon>
+            <span>|</span>
+            <span class="type_name" ng-click="vm.tabs('other')">其他</span>
+        </div>
+    </div>
+    <md-content flex ng-if="vm.account.content[0]">
+        <div class="wrapper" layout="row" layout-wrap="wrap">
+            <div class="item" flex="50" ng-repeat="l in vm.account.content track by $index">
+                <div class="goods" ui-sref="main.brandApp.item({itemId:l.itemId})">
+                    <!--https://img.kingsilk.net/71cbc9197589ad0b0fdaaee08afa4114?imageView2/2/w/1200/h/1200-->
+                    <img img-holder
+                         src="{{l.imgs[0]}}"/>
+                </div>
+                <div class="title">{{l.title}}</div>
+                <div class="price">￥{{l.price/100|num:2}}</div>
+                <!--<div class="seq">{{l.desp}}</div>-->
+            </div>
+        </div>
+
+        <!--<div class="contentCommodity">
+            <div class="layoutWrap">
+                <div>
+                    <div class="commodityList" ng-repeat="l in vm.account.content"
+                         ng-if="$odd" ui-sref="main.brandApp.item({itemId:l.itemId})">
+                        <div class="commodity ">
+                            <div class="commodityImg"></div>
+                            <img src="{{l.imgs[0]}}" img-holder title="商品图片">
+                        </div>
+                        <div class="paremsTtitle">{{l.title}}</div>
+                        <div class="paremsPrice">￥{{l.price/100}}</div>
+                        <div class="seq">
+                            {{l.desp}}
+                        </div>
+                    </div>
+                    <div class="commodityList" ng-repeat="l in vm.account.content"
+                         ng-if="$even" ui-sref="main.brandApp.item({itemId:l.itemId})">
+                        <div class="commodity ">
+                            <div class="commodityImg"></div>
+                            <img src="{{l.imgs[0]}}" img-holder title="商品图片">
+                        </div>
+                        <div class="paremsTtitle">{{l.title}}</div>
+                        <div class="paremsPrice">￥{{l.price/100}}</div>
+                        <div class="seq">
+                            {{l.desp}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+        <div layout="row" layout-align="center center" style="padding: 10px" ng-click="vm.page()"
+             ng-if="!vm.pageEnd">
+            <md-button class="ks-white md-raised" flex style="color: #999;box-shadow: 0 0 0 0 #fff">
+                点击加载更多...
+            </md-button>
+        </div>
+        <div layout="row" layout-align="center center" style="padding: 10px"
+             ng-if="vm.pageEnd&&vm.totalElements>10 ">
+            <md-button class="ks-white md-raised" flex style="color: #999;box-shadow: 0 0 0 0 #fff">
+                没有更多记录了
+            </md-button>
+        </div>
+    </md-content>
+
+    <md-content flex layout="column" class="empty" ng-if="!vm.account.content[0]" style="overflow-x: hidden">
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-fileboard-down-o" class="icon"></md-icon>
+            <div class="txt">暂无商品～</div>
+        </div>
+    </md-content>
+    <!--<md-button ui-sref="main.brandApp.order.deliver">物流</md-button>-->
+    <div ks-footer-menu cur="'shelves'"></div>
+</div>

@@ -1,0 +1,47 @@
+.ks-common-list-applyCheck{
+  margin:20px;
+  background: #fff;
+  overflow: hidden;
+  ul{
+    width:100%;
+    margin:20px 0px;
+    padding:0 20px;
+    li{
+      list-style: none;
+      height:40px;
+      width:100%;
+      label{
+        width:200px;
+        font-weight:100;
+        text-align: right;
+        padding-right:30px;
+        height: 40px;
+        line-height:40px;
+        font-size: 14px;
+      }
+      span{
+        height: 40px;
+        width:500px;
+        line-height:40px;
+        font-size: 14px;
+      }
+    }
+  }
+  div{
+    margin: 70px 20px;
+    border-top:1px solid #ccc;
+    li{
+      list-style:none;
+      width:400px;
+      margin: 100px auto 0;
+      button{
+        height:30px;
+        width:140px;
+        margin: 0 20px;
+        background: #fff;
+        outline: none;
+        border:1px solid #ccc;
+      }
+    }
+  }
+}

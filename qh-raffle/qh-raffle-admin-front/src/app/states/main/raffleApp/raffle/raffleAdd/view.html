@@ -1,0 +1,254 @@
+<div flex layout="column" class="ks-raffleAdd" >
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>幸运抽大奖</h1>
+        <!--ui-sref="main.raffleApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20"></div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="background: #f5f5f5">
+
+
+
+        <div class="content">
+
+            <!--<div class="content-tab" layout="row" layout-align="satrt center">-->
+                <!--<div class="left">-->
+                    <!--<span style="color: #ff0000">*</span>-->
+                    <!--店铺名称-->
+                <!--</div>-->
+                <!--<div class="right" flex>-->
+                    <!--<input type="text" placeholder="请输入店铺名称" ng-model="rootBragainData.shopName">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<md-divider></md-divider>-->
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    活动名称
+                </div>
+                <div class="right" flex>
+                    <input type="text" placeholder="请输入活动名称" ng-model="rootBragainData.name">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center" ng-click="chooseStartTime()">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    生效时间
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <span ng-if="!rootBragainData.beginTime">请选择生效时间</span>
+                            <span ng-if="rootBragainData.beginTime">{{rootBragainData.beginTime | date:'yyyy'}}年{{rootBragainData.beginTime | date:'M' }}月{{rootBragainData.beginTime | date:'d'}}日</span>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center" ng-click="chooseEndTime()">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    过期时间
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <!--2017年11月12日-->
+                            <span ng-if="!rootBragainData.endTime">请选择过期时间</span>
+                            <span ng-if="rootBragainData.endTime">{{rootBragainData.endTime | date:'yyyy'}}年{{rootBragainData.endTime | date:'M' }}月{{rootBragainData.endTime | date:'d'}}日</span>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    规则说明
+                </div>
+                <div class="right" flex ng-click="goEdit('rule')">
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <span ng-if="!rootBragainData.rule">填写规则描述</span>
+                            <span ng-if="rootBragainData.rule">详情</span>
+
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    &nbsp;&nbsp;活动图文
+                </div>
+                <div class="right" flex ng-click="goEdit('desp')">
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <span ng-if="!rootBragainData.desp">设置图文介绍</span>
+                            <span ng-if="rootBragainData.desp">详情</span>
+
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left  left-con">
+                    <span style="color: #ff0000">*</span>
+                    免费抽奖次数
+                </div>
+                <div class="right" flex>
+                    <input type="number" placeholder="请输入抽奖次数" ng-model="rootBragainData.freeCount">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left left-con">
+                    <span style="color: #ff0000">*</span>
+                    每次分享可获抽奖次数
+                </div>
+                <div class="right" flex>
+                    <input type="number" placeholder="请输入抽奖次数" ng-model="rootBragainData.shareCount">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left left-con">
+                    <span style="color: #ff0000">*</span>
+                    最多抽奖次数
+                </div>
+                <div class="right" flex>
+                    <input type="number" placeholder="请输入抽奖次数" ng-change="AddEventInput('awardPrice')" ng-model="rootBragainData.lotteryCount">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center" ng-click="setLottery()">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    奖项设置
+                </div>
+                <div class="right" flex >
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <span ng-if="lotteryList.length>2">详情</span>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    领取方式
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center" ng-click="sureChoosePayType()">
+                        <div>
+                            <span ng-if="!rootBragainData.receiveType">选择方式</span>
+                            <span ng-if="rootBragainData.receiveType == 'SINCE'">到店领取</span>
+                            <span ng-if="rootBragainData.receiveType == 'ONLINE'">快递发货</span>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+        </div>
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <!--<span style="color: #ff0000">*</span>-->
+                    &nbsp;&nbsp;是否强制关注
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center" ng-click="changeFollow(true)" ng-show="!rootBragainData.mustFollow">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" style="color: #999"></md-icon>
+                        </div>
+                    </div>
+
+                    <div class="right-R" layout="row" layout-align="end center" ng-click="changeFollow(false)" ng-show="rootBragainData.mustFollow">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-check-circle" style="color: #e53467"></md-icon>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <span style="color: #ff0000">*</span>
+                    微信分享标题
+                </div>
+                <div class="right" flex>
+                    <input type="text" placeholder="请输入分享标题" ng-model="rootBragainData.shareTitle">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    &nbsp;&nbsp;微信分享描述
+                </div>
+                <div class="right" flex>
+                    <input type="text" placeholder="请输入分享描述" ng-model="rootBragainData.shareDesp">
+                </div>
+            </div>
+        </div>
+    </md-content>
+
+    <div class="footBottom" layout="column" ng-click="save()">
+        <md-divider style="border-color:#E53467"></md-divider>
+        <div class="btn" flex layout="row" layout-align="center center">保存</div>
+    </div>
+
+    <div class="dialog-pay" layout="column" ng-show="choosePayType" style="z-index: 10">
+        <div class="top" flex ng-click="cancelChoosePayType(false)"></div>
+        <div class="con">
+            <div class="title" layout="row">
+                <div class="left" ng-click="cancelChoosePayType(false)">取消</div>
+                <div class="name" flex>选择领取方式</div>
+                <div class="right" ng-click="cancelChoosePayType(true)">确定</div>
+            </div>
+            <md-divider></md-divider>
+            <div class="tab" ng-click="dialogChoosePayType('SINCE')" ng-class="{active : dialogPayType === 'SINCE'}">到店领取</div>
+            <md-divider></md-divider>
+            <div class="tab" ng-click="dialogChoosePayType('ONLINE')" ng-class="{active : dialogPayType === 'ONLINE'}">快递发货</div>
+        </div>
+    </div>
+
+
+    <div class="jqPhote" ng-show="choosePhote" layout="column" layout-align="center center">
+        <div flex class="choosePhote-top"></div>
+        <div id="clipArea"></div>
+        <!--<input type="file" id="file">-->
+        <div flex class="choosePhote-btn" layout="row" layout-align="center start">
+            <div layout="row" layout-align="space-between start" style="width: 260px">
+                <div id = 'cancel' ng-click="cancelChoosePhote()">取消</div>
+                <div id="clipBtn" ng-click="cancelChoosePhote()">保存</div>
+            </div>
+        </div>
+
+        <!--<div id="view"></div>-->
+    </div>
+
+
+
+
+
+</div>
+
+
+

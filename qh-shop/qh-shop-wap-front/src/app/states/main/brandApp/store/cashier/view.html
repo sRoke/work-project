@@ -1,0 +1,196 @@
+<div flex="100" layout="column" class="ks-cashier">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>收银</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="tab" layout="row" layout-align="center center">
+        <div class="tabDiv" layout="row" layout-align="center center">
+            <div flex layout="row" layout-align="center center" class="tabs" ng-click="changeTab(1)">
+                <div class="tabNav" ng-class="{'active' : tab =='1'}" layout="row" layout-align="center center">全部商品</div>
+            </div>
+            <div flex layout="row" layout-align="center center" class="tabs" ng-click="changeTab(2)">
+                <div class="tabNav" ng-class="{'active' : tab =='2'}" layout="row" layout-align="center center">扫码选择</div>
+            </div>
+            <!--<div flex layout="row" layout-align="center center" class="tabs" ng-click="changeTab(3)">-->
+                <!--<div class="tabNav" ng-class="{'active' : tab =='3'}" layout="row" layout-align="center center">无码收银</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="content-wrap" flex layout="row" ng-if="tab =='1'">
+        <div class="leftBtn-wrap" layout="column" layout-align="start center">
+            <md-content flex style="background: #f5f5f5">
+                <div class="btn"
+                     ng-class="{btnActive:check}"
+                     ng-click="btnClick(null)">全部
+                </div>
+                <div class="btn"
+                     ng-class="{btnActive:btn.check}"
+                     ng-repeat="btn in btnList track by $index"
+                     ng-click="btnClick(btn)">{{btn.name}}
+                </div>
+            </md-content>
+        </div>
+        <div layout="column" flex>
+            <div class="content-wrap-listTop" ng-if="num">
+                {{chooseNav}}({{num.totalElements}})
+            </div>
+            <md-content flex style="overflow-x: hidden">
+                <div flex class="itemWrap" layout="column" layout-align="center stretch" ng-if="itemList[0]">
+                    <div class="item" layout="column" ng-repeat="item in itemList"
+                         >
+                        <div layout="row" class="item-box" >
+                            <div class="img-wrap">
+                                <img ng-src="{{item.imgs}}{{imgView}}" alt="">
+                            </div>
+                            <div class="item-detail" layout="column" flex layout-align="space-between stretch">
+                                <div class="item-title">{{item.title}}</div>
+                                <!--sku-->
+                                <div layout-align="space-between start" layout="row" style="margin-top: 8px;line-height: 16px">
+                                    <div style="width: 60%;" layout="row">
+                                        <div ng-repeat="(key,sku) in item.specs" style="color: #999;font-size: 12px;
+                                    min-width: 50%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{sku}}</div>
+                                    </div>
+                                    <div  style="color: #666;font-size: 12px;min-width: 27px;">x{{item.num}}</div>
+                                </div>
+                                <div class="item-spec" layout="row" layout-align="space-between center" style="margin-top: 0px;">
+                                    <div flex class="specs" style="margin-top: 14px;color: #f18a87;font-size: 12px;" layout="row">
+                                        <div>￥</div><div style="font-size: 16px;">{{item.salePrice/100|num:2}}</div>
+                                    </div>
+                                    <div layout="row" style="margin-top: 9px;min-width: 83px;">
+                                        <div layout-align="center center" ng-click="minusNum(item);">
+                                            <md-icon class="ks-icon icon-left" md-font-set="ks-icon" md-font-icon="ag-minus"></md-icon>
+                                        </div>
+                                        <!--<div ng-if="vmd.skuNum == 0" class="minus" layout="" layout-align="center center" style="background: ">-->
+                                        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-minus"></md-icon>-->
+                                        <!--</div>-->
+                                        <div>
+                                            <div class="spec-num" ng-if="item.checkedNum">{{item.checkedNum}}</div>
+                                            <div class="spec-num" ng-if="!item.checkedNum">0</div>
+                                            <!--<input  type="tel" ng-model="item.num" ng-change="vmd.formatNum(item)" ng-blur="vmd.numBlur(item)"-->
+                                                    <!--layout="" layout-align="center center"/>-->
+                                        </div>
+                                        <div layout-align="center center" ng-click="addNum(item);">
+                                            <md-icon class="ks-icon icon-right" md-font-set="ks-icon" md-font-icon="ag-plus" ></md-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                        </div>
+                        <md-divider></md-divider>
+                    </div>
+                    <div ng-if="num&&num.totalPages>currentPage+1" style="text-align: center;font-size: 16px;margin: 20px 0;color: #999;"
+                    ng-click="getMore()">加载更多!</div>
+                    <div ng-if="!(num&&num.totalPages>currentPage+1)" style="text-align: center;color: #999;font-size: 16px;margin: 20px 0"
+                         >暂无更多商品!</div>
+
+                </div>
+
+                <div ng-if="!num&&!itemList[0]" style="text-align: center;margin-top: 130px;font-size: 16px;">加载商品中 !</div>
+                <div ng-if="num&&!itemList[0]" class="noItem" style="text-align: center;margin-top: 130px;font-size: 16px;"
+                     layout="column" layout-align="center center">
+                    <div class="img"><img src="noItem.png"></div>
+                    <div class="ts" style="color: #999;">暂无商品,快去采购吧!</div>
+                    <div class="btn-cg" ng-click="pageGo('/purchase')" layout="row" layout-align="center center">
+                        <span>采购</span>
+                    </div>
+                </div>
+            </md-content>
+        </div>
+
+    </div>
+
+    <div class="content-wrap2" flex layout="column" ng-if="tab =='2'">
+        <md-content style="background: #f5f5f5">
+            <div class="inputCode" layout="row" layout-align="stretch center">
+
+                <input placeholder="请输入条形码" type="text" flex ng-model="sysQrcode">
+
+                <div class="btn" layout="row" layout-align="center center" ng-click="getItemInformation(sysQrcode)">确定</div>
+
+            </div>
+
+            <div class="sys-btn" layout="row" layout-align="center center" ng-click="wxSys()">
+                扫一扫
+            </div>
+
+            <div layout="row" layout-align="center center" class="ts" ng-if="!sysItem">
+                如图所示条形码(合格证底部)
+            </div>
+
+            <div class="img" ng-if="!sysItem">
+                <img src="./example2.png">
+            </div>
+
+            <div class="item" ng-if="sysItem">
+                <div layout="row" class="item-box" layout-align="start center">
+                    <div class="img-wrap">
+                        <img ng-src="{{sysItem.imgs[0]}}{{imgView}}" alt="">
+                    </div>
+                    <div class="item-detail" layout="column" flex>
+                        <div class="item-title" layout="row" layout-align="space-between center">
+                            <div flex class="title">{{sysItem.title}}</div>
+                            <!--<div class="num">¥{{ 516/100|num:2}}</div>-->
+                        </div>
+                        <div class="item-desc">
+                            <div>
+                                <span class="spec" ng-repeat="spec in sysItem.specs" style="margin-right: 10px">{{spec.value}}</span>
+                            </div>
+                        </div>
+                        <div class="item-spec" layout="row">
+                            <!--<div >库存 <span class="num">{{item.num}}</span></div>-->
+                            <!--&lt;!&ndash;<div >销量 <span class="num">500</span></div>&ndash;&gt;-->
+                            <div >￥ <span class="num">{{ sysItem.salePrice/100 | number : 2}}</span></div>
+                        </div>
+                    </div>
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                </div>
+            </div>
+
+        </md-content>
+    </div>
+    <div class="content-wrap3" flex layout="column" ng-if="tab =='3'">
+        <md-content style="background: #f5f5f5">
+            <div class="inputCode" layout="row" layout-align="stretch center">
+                <input placeholder="0.00" type="tel" flex >
+            </div>
+            <!--<div class="input" layout="column" layout-align="center center">-->
+                <!--<input type="text" placeholder="0.00">-->
+            <!--</div>-->
+            <div class="btn" layout="row" layout-align="center center">
+                收款
+            </div>
+        </md-content>
+    </div>
+
+    <md-divider style="z-index: -1;"></md-divider>
+    <div class="footBtn" layout="row" ng-if="tab !='3'">
+        <div flex class="left-wrap" layout="row">
+            <div class="cart-wrap" layout="column" ng-click="openDialog()">
+                <div class="icon-wrap" layout="column" layout-align="center center">
+                    <md-icon class="icon" md-font-set="ks-icon" md-font-icon="ag-cart-line"></md-icon>
+                    <span class="" ng-if="totleNum > 0">{{totleNum}}</span>
+                </div>
+                <div class="cart-dis">购物车</div>
+            </div>
+            <div class="pay-price" flex>
+                合计:￥{{totlePrice/100|num:2}}
+            </div>
+        </div>
+        <div class="goPay" ng-if="totlePrice >0 " ng-clicK="orderCreate()">
+            <span>选好了</span>
+            <!--<span>加入购物车</span>-->
+        </div>
+        <div class="noPay" ng-if="totlePrice <=0 || !totlePrice">
+            <span>选好了</span>
+            <!--<span>加入购物车</span>-->
+        </div>
+    </div>
+</div>

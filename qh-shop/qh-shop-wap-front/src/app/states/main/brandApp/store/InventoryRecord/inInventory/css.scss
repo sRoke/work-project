@@ -1,0 +1,60 @@
+
+@import "../../../../../../scss/ksMain";
+@import "../../../../../../scss/index";
+.ks-inInventory{
+  md-content {
+    width: 100%;
+    padding:0 15px;
+    .tab{
+      margin-top: 15px;
+      border: 1px solid #d5d5d5;
+      border-radius: 8px;
+      width: 100%;
+      .tab-title{
+        padding: 0 15px;
+        color: #333333;
+        font-size: 15px;
+        height: 44px;
+      }
+      .tab-th{
+        padding: 0 15px;
+        height: 44px;
+        background: #f5f5f5;
+        border-top: 1px solid #d5d5d5;
+        border-bottom: 1px solid #d5d5d5;
+        color: #E53467;
+        font-size: 14px;
+        .td:last-child{
+          text-align: right;
+        }
+      }
+      .tab-tr{
+        padding: 0 15px;
+        height: 53px;
+        background: #fff;
+        color: #999;
+        font-size: 14px;
+        .td{
+          overflow: hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
+        }
+        .td:last-child{
+          text-align: right;
+        }
+      }
+      .tab-foot{
+        padding: 0 15px;
+        color: #333333;
+        font-size: 14px;
+        height: 54px;
+        .detail{
+          color: #E53467;
+        }
+      }
+    }
+    .tab:last-child{
+      margin-bottom: 30px;
+    }
+  }
+}

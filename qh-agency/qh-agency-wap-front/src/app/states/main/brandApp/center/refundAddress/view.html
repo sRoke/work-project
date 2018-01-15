@@ -1,0 +1,49 @@
+<div flex layout="column" class="ks-refundAddress">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>退货地址</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="add-box">
+        <div class="add-wrap" layout="row" layout-align="space-between center">
+            <input class="input" type="text" ng-model="receiver"
+                   ng-blur="addressContact()"
+                   placeholder="联系人"/>
+        </div>
+        <md-divider></md-divider>
+        <div class="add-wrap" layout="row" layout-align="space-between center">
+            <input class="input" type="text" ng-model="phone"
+                   ng-blur="addressPhone()"
+                   placeholder="联系方式"/>
+        </div>
+        <md-divider></md-divider>
+        <div class="add-wrap" data-tap-disabled="true" ng-click="openAdcDialog()" layout="row"
+             layout-align="center center">
+            <div flex="100" layout="row" layout-align="space-between center">
+                <div ng-if="vm.adcNo" flex class="address-show">
+                    <span ng-show="vm.province">{{vm.province}} </span><span ng-show="vm.city">{{vm.city}}</span><span ng-show="vm.area"> {{vm.area}}</span>
+                </div>
+                <div ng-if="!vm.adcNo" flex style="color: #c5c5c5" class="address-show">所在地区</div>
+                <div  class="address-show" style="color: #c5c5c5" layout="row" layout-align="center center">
+                        <span ng-show="!vm.adcNo">请选择</span>
+                    <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s" class="addrIcon"></md-icon>
+                </div>
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <div flex class="add-wrap" layout="row" layout-align="space-between center">
+            <input class="input" ng-model="street" type="text"
+                   ng-blur="addressStreet()"
+                   placeholder="街道、小区、门牌等详细信息">
+        </div>
+        <md-divider></md-divider>
+        <div class="address" ng-click="saveInfo()">
+            <div class="but">确定</div>
+        </div>
+    </div>
+
+</div>

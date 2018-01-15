@@ -1,0 +1,53 @@
+<div class="ks-appUserView" layout="column">
+    <div class="contentEdit" layout="column">
+        <div layout="row" layout-align="start end">
+            <div class="left">
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="title">角色名称:</div>
+                    <div layout="row" layout-align="start center">
+                        <div>{{data.name}}</div>
+                        <!--<input class="form-control" type="text" placeholder="请输入应用名称" style="width: 250px" ng-model="data.name">-->
+                    </div>
+                </div>
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="title">角色描述:</div>
+                    <div layout="row" layout-align="start center">
+                        <div>{{data.desp}}</div>
+                        <!--<textarea class="form-control" placeholder="请输入角色的描述,如:具体哪些功能等" ng-model="data.desp"></textarea>-->
+                    </div>
+                </div>
+                <div class="tab" layout="row" layout-align="start start" style="margin-top: 10px">
+                    <div class="title">菜单权限:</div>
+                    <div layout="row" layout-align="start center">
+                        <div class="table" layout="column" layout-align="start start">
+                            <div class="th" layout="row" layout-align="start center" ng-repeat="(key, value) in PermissionsList">
+                                <div class="td-1">
+                                    {{key}}
+                                </div>
+                                <div class="td-2">
+                                    <div class="td-list" layout="row"  ng-repeat="(key2, value2) in value">
+                                        <div layout="row" class="td-list-label">
+                                            <!--<md-checkbox ng-checked="existsTotal(value2, checkedList)" ng-click="toggleTotal(value2, checkedList)" disabled="true">-->
+                                                <label>{{key2}}</label>
+                                            <!--</md-checkbox>-->
+                                        </div>
+                                        <div style="border-left: 1px solid #D5D5D5;padding-left:10px" layout="row" class="td-list-label">
+                                            <!--<md-checkbox ng-repeat="(key3, value3) in value2" ng-checked="exists(key3, checkedList)" ng-click="toggle(key3, checkedList)">-->
+                                                <label ng-repeat="(key3, value3) in value2" ng-if="exists(key3, checkedList)">{{value3}}</label>
+                                            <!--</md-checkbox>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-save" layout="row" layout-align="start center">
+            <!--<div class="save" ng-click="save()">保存</div>-->
+            <div class="return" ng-click="fallbackPage()">返回</div>
+        </div>
+    </div>
+</div>
+

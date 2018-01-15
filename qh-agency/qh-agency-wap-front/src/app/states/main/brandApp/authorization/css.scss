@@ -1,0 +1,137 @@
+@import "../../../../scss/index.scss";
+
+.ks-home {
+  background: $agency-bg-white;
+  .money-wrap {
+    background: $agency-bg-green;
+    padding: 0 30px;
+    .money-box {
+      text-align: center;
+      .money-name {
+        font-size: 14px;
+        color: $agency-word-white;
+        letter-spacing: -0.34px;
+        line-height: 1em;
+        margin: 40px 0 15px 0;
+      }
+      .price {
+        font-size: 40px;
+        color: $agency-word-white;
+        letter-spacing: -0.96px;
+        line-height: 40px;
+        margin-bottom: 50px;
+      }
+    }
+    .money-detail {
+      margin-bottom: 18px;
+      .detail {
+        .detail-name {
+          font-size: 14px;
+          color: $agency-word-white;
+          letter-spacing: -0.34px;
+          line-height: 14px;
+          margin-bottom: 10px;
+        }
+        .detail-num {
+          font-size: 24px;
+          color: $agency-word-white;
+          letter-spacing: -0.58px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+  .data-box {
+    margin: 15px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.90);
+    box-shadow: 0 1px 8px 0 #D7E1DD;
+    .data-box-top {
+      position: relative;
+      width: 100%;
+      .data-left, .data-right {
+        .name {
+          font-size: 14px;
+          color: #9B9B9B;
+          letter-spacing: -0.34px;
+          text-align: center;
+          line-height: 14px;
+          margin-bottom: 10px;
+        }
+        .num {
+          font-size: 24px;
+          color: #333333;
+          letter-spacing: -0.58px;
+          line-height: 20px;
+          text-align: center;
+        }
+      }
+      .ling {
+        position: absolute;
+        height: 100%;
+        left: 50%;
+        top: 0;
+        width: 1px;
+        -webkit-transform: translateX(-50%) scaleX(.5);
+        -webkit-transform-origin: 0 0;
+        background: #d5d5d5;
+      }
+      .data-right {
+
+      }
+    }
+    .data-center-line {
+      width: 100%;
+      height: 1px;
+      -webkit-transform: scaleY(.5);
+      -webkit-transform-origin: 0 0;
+      overflow: hidden;
+      background: #d5d5d5;
+    }
+  }
+  .btn-icon-wrap {
+    .icon-btn {
+      margin: 20px 0 30px 0;
+      text-align: center;
+      .icon-wrap {
+        width: 64px;
+        position: relative;
+        &:before {
+          content: "";
+          //display: block;// 如果用火狐浏览器,会出现bug,无法撑起高度  display: inline-table;可以
+          display: inline-table; //作为内联表格来显示
+          padding-top: 100%;
+        }
+        img {
+          position: absolute;
+          top: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+        }
+        .ks-icon {
+          position: absolute;
+          font-size: 20px;
+          width: 100%;
+          height: 100%;
+          left: 50%;
+          top: 50%;
+          line-height: 64px;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          color: #585858;
+        }
+        span {
+          //opacity: 0.5;
+          white-space: nowrap;
+          position: absolute;
+          bottom: -16px;
+          left: 50%;
+          color: #999999;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
+}

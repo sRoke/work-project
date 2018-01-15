@@ -1,0 +1,153 @@
+ <div class="ks-orderDetail"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>订单详情</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <div class="line"></div>
+    <md-content flex style="overflow-x:hidden;background: #f5f5f5;">
+        <div class="main" layout="column">
+            <div layout="column" class="center-con">
+                <!--配送方式-->
+                <div class="order-status" layout="row" layout-align="start center">
+                    {{items.statusDesp}}
+                </div>
+                <!--配送自提-->
+                <div layout="column"  class="pick"  ng-if="items.orderSourceType=='SINCE'">
+                    <div class="pick-top" layout="row" >
+                        <div class="pick-left">配送方式</div>
+                        <div class="pick-right">到店自提</div>
+                    </div>
+                    <div class="pick-top" layout="row">
+                        <div class="pick-left">到店时间</div>
+                        <div class="pick-right">{{items.sinceTakeTime}}</div>
+                    </div>
+                </div>
+                <!--物流公司-->
+                <div layout="row"  class="logistics" layout-align="start center" ng-if="items.logisticses[0]">
+                    <md-icon class="ks-icon1" md-font-set="ks-icon" md-font-icon="ag-truck-o"></md-icon>
+                    <div layout="column" class="logistics-xq">
+                        <div class="logistics-top" layout="row" >
+                            <div class="logistics-left">快递公司：</div>
+                            <div class="logistics-right">{{items.logisticses[0].company}}</div>
+                        </div>
+                        <div class="logistics-top" layout="row">
+                            <div class="logistics-left">快递单号：</div>
+                            <div class="logistics-right">{{items.logisticses[0].expressNo}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-line"></div>
+                <!--配送收货地址-->
+                <div class="address" ng-if="items.orderSourceType=='MALL'">
+                    <div layout="row" layout-align="space-between center" class="select-address">
+                        <div layout="row" layout-align="start center" class="" flex>
+                            <md-icon class="ks-icon1" md-font-set="ks-icon" md-font-icon="ag-address-1"></md-icon>
+                            <!--选择后-->
+                            <div layout="column" class="xq" >
+                                <div class="phone">{{items.address.receiver}} {{items.address.phone}}</div>
+                                <div class="address-xq">{{items.address.province}}{{items.address.city}}{{items.address.area}}{{items.address.street}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-line"></div>
+                <!--订单商品 ng-repeat-->
+                <div class="order-goods" ng-repeat="item in items.orderItems">
+                    <div layout="row">
+                        <div class="img-con">
+                            <img ng-src="{{item.skuImg}}">
+                        </div>
+                        <div layout="column" class="img-right" flex >
+                            <div layout="row" class="goods-top" layout-align="space-between center">
+                                <div class="title" flex>{{item.skuTitle}}</div>
+                                <div layout="column" class="price-right">
+                                    <div class="price">￥{{item.realPayPrice/100 |num:2}}</div>
+                                    <div class="del-price" ng-if="item.realPayPrice-item.labelPrice<0">￥{{item.labelPrice/100 |num:2}}</div>
+                                    <div class="num">x&nbsp;{{item.num}}</div>
+                                </div>
+                            </div>
+                            <div class="goods-bottom" layout="row" layout-align="space-between center">
+                                <div class="goods-type">
+                                    <span ng-repeat="sku in item.specInfos">{{sku.propValue}}</span>
+                                </div>
+                                <button class="btn-refund"
+                                 ng-if="(items.status=='UNSHIPPED' || items.status=='UNRECEIVED' || items.status=='FINISHED' || items.status=='SINCEING') && (item.refundStatus=='REJECTED' || item.refundStatus==null )"
+                                        ng-click="refundOrder(items.id,item.skuId)">申请退款</button>
+                                <span style="color: #E53467;" ng-if="!((items.status=='UNSHIPPED' || items.status=='UNRECEIVED' || items.status=='FINISHED' || items.status=='SINCEING') && (item.refundStatus=='REJECTED' || item.refundStatus==null ))">
+                                    {{item.refundStatusDesp}}
+                                     <!--<b style="font-weight: normal"  ng-if="item.refundStatus=='FINISHED'">退款以完成</b>-->
+                                     <!--<b style="font-weight: normal" ng-if="item.refundStatus!='FINISHED'">退款中</b>-->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                </div>
+                <div class="bg-line"></div>
+                <!--备注-->
+                <div class="remark-goods" layout="column">
+                    <div layout="row" class="remark">
+                        <div class="remark-left">买家备注</div>
+                        <div class="remark-right"  flex>{{items.buyerMemo}}</div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="discount" layout="column">
+                        <div layout="row" layout-align="space-between center">
+                            <div class="discount-left">商品金额</div>
+                            <div class="discount-right">￥{{items.orderPrice/100 |num:2}}</div>
+                        </div>
+                        <div layout="row" layout-align="space-between center" ng-if="items.orderSourceType!='SINCE'">
+                            <div class="discount-left">运费</div>
+                            <div class="discount-right">￥{{items.freight/100 | num:2}}</div>
+                        </div>
+                        <div layout="row" layout-align="space-between center"  ng-if="items.adjustPrice">
+                            <div class="discount-left">改价优惠</div>
+                            <div class="discount-right">-￥{{items.adjustPrice/100 |num:2}}</div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div layout="row" class="all-goods" layout-align="space-between center">
+                        <div class="goods-left">商品合计</div>
+                        <div class="goods-right">￥{{items.paymentPrice/100 |num:2}}</div>
+                    </div>
+                </div>
+                <div class="bg-line"></div>
+               <!--下单信息-->
+                <div class="detail" layout="column">
+                    <div layout="row" class="detail-xq">下单人：{{items.phone}}</div>
+                    <div layout="row" class="detail-xq">订单编号：{{items.seq}}</div>
+                    <div layout="row" class="detail-xq">订单时间：{{ items.dateCreated |date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                    <div layout="row" class="detail-xq" ng-if="items.payTime">付款时间：{{items.payTime}}</div>
+                    <div layout="row" class="detail-xq" ng-if="items.payTime">支付类型：{{items.payTypeDesp}}</div>
+                </div>
+                <div class="bg-line"></div>
+            </div>
+        </div>
+    </md-content>
+     <!--按钮-->
+    <div layout="column" layout-align="end cneter" class="ks-bottom" ng-if="items.status=='UNPAYED' || items.status=='UNCONFIRMED' ||items.status=='UNRECEIVED' || items.status=='SINCEING'">
+        <div class="line"></div>
+        <!--待付款-->
+        <div class="confirm" layout="row" layout-align="center center" ng-if="items.status=='UNPAYED'">
+            <button class="cancel-btn" flex ng-click="canclOrder(items.id)">取消</button>
+            <div class="cancel-line" ></div>
+            <button class="confirm-btn" flex ng-click="pay(items.id)">去付款</button>
+        </div>
+        <!--待接单-->
+        <div class="confirm" layout="row" ng-if="items.status=='UNCONFIRMED'">
+            <button class="cancel-btn" ng-click="canclOrder(items.id)">取消</button>
+        </div>
+        <!--待收货-->
+        <div class="confirm" layout="row" ng-if="items.status=='UNRECEIVED'">
+            <button class="confirm-btn" ng-click="confirmReceive(items.id)">确认收货</button>
+        </div>
+        <!--待自提-->
+        <div class="confirm" layout="row" ng-if="items.status=='SINCEING'">
+            <button class="confirm-btn" ng-click="confirmSince(items.id)">自提</button>
+        </div>
+    </div>
+</div>

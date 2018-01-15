@@ -1,0 +1,371 @@
+<div flex="100" layout="column" class="ks-itemAdd">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>商品发布</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+        <div class="add-wrap">
+            <div layout="row" layout-align="start start" layout-wrap layout-fill class="mainImg">
+                <div class="imgList" ng-repeat="img in skuData.imgs track by $index" id="img{{$index}}">
+                    <p class="imgWrap" ng-click="viewImg(img)">
+                        <img ng-src="{{img}}" width="68" height="68"/>
+                    </p>
+                    <div class="file-panel" ng-if="!views.deleteImg" layout="column"
+                         layout-align="start center">
+                        <span class="cancel" ng-click="cancelDel($index)">
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-delete"></md-icon>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="imgList" layout="column" layout-align="center center"
+                     ng-show="skuData.imgs && skuData.imgs.length<50">
+                    <!--ngf-select="uploading($file)" ngf-pattern="'image/*'"-->
+                    <md-icon class="img-icon" md-font-set="ks-icon" md-font-icon="ag-plus"></md-icon>
+                    <input type="file" id="file">
+                    <div>上传图片</div>
+                </div>
+            </div>
+            <!--<div class="erro"><span style="color:#F78B91">*</span>最多上传5张图片</div>-->
+        </div>
+        <div class="blank-line"></div>
+        <div class="add-wrap">
+            <div class="add-box" layout="row" layout-align="center center">
+                <div class="add-name">
+                    商品名称
+                </div>
+                <div class="add-input" flex layout="row">
+                    <input flex type="text" ng-model="skuData.title"
+                           placeholder="请输入商品名称">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="add-box" layout="row" layout-align="center center">
+                <div class="add-name">
+                    商品描述
+                </div>
+                <div class="add-input" flex layout="row">
+                    <input flex type="text" ng-model="skuData.desp" placeholder="请输入商品描述">
+                </div>
+            </div>
+        </div>
+        <div class="blank-line"></div>
+
+
+
+        <div class="add-wrap" ng-click="moreSpec()">
+            <div class="add-box" layout="row" layout-align="center center">
+                <div class="add-name">
+                    多规格
+                </div>
+                <div class="add-input" flex layout="row">
+                    <div flex></div>
+                    <md-icon class="ks-icon" ng-if="!selectMoreSpec" md-font-set="ks-icon"
+                             md-font-icon="ag-circle"></md-icon>
+                    <md-icon class="ks-icon" style="color: #E53467;" ng-if="selectMoreSpec"
+                             md-font-set="ks-icon" md-font-icon="ag-complete"
+                    ></md-icon>
+                </div>
+            </div>
+        </div>
+        <md-divider></md-divider>
+
+        <div class="add-wrap" style="padding:10px 15px" ng-if="!selectMoreSpec">
+            <!--ng-repeat="sku in skuData.skuList track by $index"-->
+            <div class="add-sku-wrap">
+                <!--<div class="skuNum" layout="row" layout-align="space-between center" ng-click="openSku(sku)">
+                    <div class="name">规格</div>
+                    <div layout="row">
+                        <div class="detail">{{sku.specValue}}</div>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-triangle-up"
+                                 ng-if="!sku.check"></md-icon>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-triangle-down"
+                                 ng-if="sku.check"></md-icon>
+                    </div>
+                </div>
+                <md-divider ng-if="sku.check"></md-divider>-->
+                <div class="sku-box">
+                    <!--<div class="add-sku-box" layout="column">-->
+                    <!--<div class="sku-dis" layout="row" layout-align="center center">-->
+                    <!--<div class="add-sku-name">-->
+                    <!--规格-->
+                    <!--</div>-->
+                    <!--<div class="add-sku-input" flex ng-click="goChooseSpec()">-->
+                    <!--<input type="text" ng-model="sku.specValue"-->
+                    <!--placeholder="请输入规格名称" readonly>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<md-divider></md-divider>-->
+                    <!--</div>-->
+                    <div class="add-sku-box" layout="column">
+                        <div class="sku-dis" layout="row" layout-align="center center">
+                            <div class="add-sku-name">
+                                销售价格
+                            </div>
+                            <div class="add-sku-input" flex>
+                                <!--<input type="text" ng-model="sku.salePrice"-->
+                                <!--placeholder="请输入价格">-->
+
+                                <input flex type="text" ng-model="skuData.singleSku.salePrice"
+                                       ng-blur="AddEventInput(1)"
+                                       placeholder="请输入价格">
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                    </div>
+                    <div class="add-sku-box" layout="column">
+                        <div class="sku-dis" layout="row" layout-align="center center">
+                            <div class="add-sku-name">
+                                商品库存
+                            </div>
+                            <div class="add-sku-input" flex>
+                                <!--<input type="text" ng-model="sku.storage"-->
+                                <!--placeholder="请输入库存数量">-->
+                                <!--<span>{{sku.storage}}</span>-->
+                                <input flex type="number" ng-model="skuData.singleSku.storage"
+                                       onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                                       onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                                       placeholder="请输入库存数量">
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                    </div>
+                    <div class="add-sku-box" layout="column" ng-if="check">
+                        <div class="sku-dis" layout="row" layout-align="center center">
+                            <div class="add-sku-name">
+                                吊牌价格
+                            </div>
+                            <div class="add-sku-input" flex>
+                                <!--<input type="text" ng-model="sku.labelPrice"
+                                       placeholder="请输入价格">-->
+                                <!--<span>{{sku.labelPrice}}</span>-->
+                                <input flex type="text" ng-model="skuData.singleSku.labelPrice"
+                                       ng-blur="AddEventInput(2)"
+
+                                       placeholder="请输入价格">
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                    </div>
+                    <div class="add-sku-box" layout="column" ng-if="check">
+                        <div class="sku-dis" layout="row" layout-align="center center">
+                            <div class="add-sku-name">
+                                采购价格
+                            </div>
+                            <div class="add-sku-input" flex>
+                                <!--<input type="text" ng-model="sku.buyPrice"-->
+                                <!--placeholder="请输入价格">-->
+
+                                <!--<span>{{sku.buyPrice}}</span>-->
+                                <input flex type="text" ng-model="skuData.singleSku.buyPrice"
+                                       ng-blur="AddEventInput(3)"
+                                       placeholder="请输入价格">
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                    </div>
+
+                    <div class="add-sku-box" layout="column" ng-if="check">
+                        <div class="sku-dis" layout="row" layout-align="center center">
+                            <div class="add-sku-name">
+                                商品编码
+                            </div>
+                            <div class="add-sku-input" flex layout="row" layout-align="space-between center">
+                                <!--<input type="text" ng-model="sku.code"-->
+                                <!--placeholder="请输入商品编码">-->
+                                <!--<span>{{sku.code}}</span>-->
+                                <input flex type="text" ng-model="skuData.singleSku.code" placeholder="请输入商品编码">
+                                <!--<md-icon class="img-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon>-->
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+
+                    </div>
+
+                    <!--<div class="position-icon" ng-if="sku.check" ng-click="deleteSku(sku)">
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-delete-s"></md-icon>
+                    </div>-->
+
+                    <div ng-click="openSku()" style="height: 44px;line-height: 44px;text-align: center;color:#999">
+                        <span ng-if="check">收起</span>
+                        <span ng-if="!check">展开</span>
+                        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-up"
+                                 ng-if="sku.check" style=" margin: 0;font-size: 16px;color:#999"></md-icon>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-down"
+                                 ng-if="!sku.check" style=" margin: 0;font-size: 16px;color:#999"></md-icon>-->
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div ng-if="skuData.skuList[0]" class="every" ng-click="openDialog(skuData)" layout="row" layout-align="end center ">
+                 <span style="color:#e53467">统一设置</span>
+             </div>-->
+
+            <!--<div class="add-sku-btn" layout="row" layout-align="center center" ng-click="addSku()">
+                <span>添加规格</span>
+            </div>-->
+        </div>
+
+        <div class="add-wrap" ng-if="selectMoreSpec">
+            <div class="add-box" layout="row" layout-align="center center">
+                <div class="add-name">
+                    规格选择
+                </div>
+                <div class="add-input" flex layout="row"
+                     ng-click="goChooseSpec()">
+                    <div flex></div>
+                    <!-- <span ng-if="!skuData.categorys">未选择</span>
+                     <span ng-if="skuData.categorys">
+                         <span ng-repeat="cat in skuData.category.name | limitTo:'3'">
+                             {{cat}}
+                         </span>
+                     </span>-->
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="add-box" layout="row" layout-align="center center"
+                 ng-click="goSetPrice()">
+                <div class="add-name">
+                    价格设置
+                </div>
+                <div class="add-input" flex layout="row">
+                    <div flex></div>
+                    <!--<span ng-if="!skuData.detail">未编辑</span>-->
+                    <!--<span ng-if="skuData.detail">已编辑</span>-->
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+            </div>
+        </div>
+
+        <div class="blank-line"></div>
+        <div class="add-wrap">
+            <div class="add-box" layout="row" layout-align="center center">
+                <div class="add-name">
+                    运费设置
+                </div>
+                <div class="add-input" flex>
+                    <input flex type="text" ng-model="skuData.freight"   ng-blur="AddEventInput(4)" placeholder="统一运费0.0元">
+                </div>
+            </div>
+        </div>
+        <div class="blank-line"></div>
+        <div class="add-wrap">
+            <div class="add-box" layout="row" layout-align="center center">
+                <div class="add-name">
+                    商品分类
+                </div>
+                <div class="add-input" flex layout="row"
+                     ng-click="goChoose()">
+                    <div flex></div>
+                    <span ng-if="!skuData.category" style="text-align: right">未选择</span>
+                    <span ng-if="skuData.category" style="text-align: right">
+                        <span ng-repeat="cat in skuData.category.name | limitTo:'3'">
+                            {{cat}}
+                        </span>
+                    </span>
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="add-box" layout="row" layout-align="center center"
+                 ng-click="goEdit()">
+                <div class="add-name">
+                    商品图文
+                </div>
+                <div class="add-input" flex layout="row">
+                    <div flex></div>
+                    <!--      <span ng-if="!skuData.detail" style="text-align: right">未编辑</span>
+                          <span ng-if="skuData.detail" style="text-align: right">已编辑</span>-->
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+            </div>
+        </div>
+    </md-content>
+    <md-divider style="border-color:#E53467"></md-divider>
+    <div class="btn-wrap" layout="row" layout-align="center center" ng-show="!id">
+        <div class="btn-box" flex layout="row">
+            <div class="save" flex ng-click="save()">保存</div>
+            <div class="btn-line"></div>
+            <div class="realSave" flex ng-click="saveAndUpdate()">保存,并上架</div>
+        </div>
+    </div>
+    <div class="btn-wrap" layout="row" layout-align="center center" ng-show="id">
+        <div class="btn-box" flex layout="row">
+            <div class="save" flex ng-click="">删除</div>
+            <div class="btn-line"></div>
+            <div class="realSave" flex ng-click="updateItem()">上架</div>
+        </div>
+    </div>
+
+    <div class="imgView" ng-click="closeView()" ng-if="imgDialog" layout="column" layout-align="center center">
+        <img src="{{imgView}}" alt="" width="100%">
+    </div>
+
+
+    <div class="jqPhote" ng-show="choosePhote" layout="column" layout-align="center center">
+        <div flex class="choosePhote-top"></div>
+        <div id="clipArea"></div>
+        <!--<input type="file" id="file">-->
+        <div flex class="choosePhote-btn" layout="row" layout-align="center start">
+            <div layout="row" layout-align="space-between start" style="width: 260px">
+                <div id='cancel' ng-click="cancelChoosePhote()">取消</div>
+                <div id="clipBtn" ng-click="cancelChoosePhote()">保存</div>
+            </div>
+
+        </div>
+
+        <!--<div id="view"></div>-->
+    </div>
+
+
+    <script type="text/ng-template" id="setSku.html">
+        <md-dialog aria-label="" class="setSku" style="overflow: initial;">
+            <div class="set-dis">
+                <div class="dis-wrap" layout="row">
+                    <div class="dis-name">促销价</div>
+                    <input flex type="text" ng-model="vmd.data.salePrice"
+
+                           placeholder="请输入价格">
+                </div>
+                <md-divider></md-divider>
+
+                <div class="dis-wrap" layout="row">
+                    <div class="dis-name">采购价</div>
+                    <input flex type="text" ng-model="vmd.data.buyPrice"
+
+                           placeholder="请输入价格">
+                </div>
+                <md-divider></md-divider>
+
+                <div class="dis-wrap" layout="row">
+                    <div class="dis-name">吊牌价</div>
+                    <input flex type="text" ng-model="vmd.data.labelPrice"
+
+                           placeholder="请输入价格">
+                </div>
+                <md-divider></md-divider>
+
+                <div class="dis-wrap" layout="row">
+                    <div class="dis-name">库存</div>
+                    <input flex type="number" ng-model="vmd.data.storage"
+                           onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                           onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                           placeholder="请输入库存数量">
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div layout="row" layout-align="center center" style="height: 42px">
+                <div flex style="font-size: 18px;text-align: center" ng-click="vmd.cance()">取消</div>
+                <div class="line"></div>
+                <div flex style="font-size: 18px;text-align: center;color: #e53467;" ng-click="vmd.confirm()">确定</div>
+            </div>
+        </md-dialog>
+    </script>
+</div>

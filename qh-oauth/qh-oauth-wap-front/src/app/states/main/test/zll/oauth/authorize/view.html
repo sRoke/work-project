@@ -1,0 +1,29 @@
+<div>aaa</div>
+<!--<div> response_type <input type="text" ng-model="responseType"> </div>-->
+<div layout="row">
+    <span style="width:100px;">client_id</span>
+    <input flex type="text" ng-model="clientId">
+</div>
+<div layout="row">
+    <span style="width:100px;">redirect_uri</span>
+    <input flex type="text" ng-model="redirectUri">
+</div>
+<div layout="row">
+    <span style="width:100px;">scope</span>
+    <input flex type="text" ng-model="scope">
+</div>
+<div layout="row">
+    <span style="width:100px;">state</span>
+    <input flex type="text" ng-model="state">
+</div>
+
+<div>
+    原来的：
+    <button ng-click="oldImplicitAuthorize()">implicit 授权</button>
+</div>
+
+<div>
+    新的：
+    <button ng-click="goImplicitAuthorize()">implicit 授权</button>
+    <button ng-click="goCodeAuthorize()">Authorize code 授权</button>
+</div>

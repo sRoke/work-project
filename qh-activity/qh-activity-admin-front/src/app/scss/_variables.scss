@@ -1,0 +1,57 @@
+$bootstrap-sass-asset-helper: false !default;
+//
+// Variables
+// --------------------------------------------------
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+$gray-base: #000 !default;
+
+//== Layout
+$layout-breakpoint-xs: 600px !default;
+$layout-breakpoint-sm: 960px !default;
+$layout-breakpoint-md: 1280px !default;
+$layout-breakpoint-lg: 1920px !default;
+
+//header的设置
+$ks-header-height: 44px;
+$ks-main-min-width: 320px;
+$ks-leftnav-bg-color: rgba(0, 0, 0, 0.7);
+$ks-header-font: 16px;
+
+//一些常用文字颜色,word是默认 pop是弹窗文字 hint是提示
+$activity-word-dark: #101010;
+$activity-word-black: #333;
+$activity-word-white: #fff;
+$activity-word-gray: #999;
+$activity-word-red: #ED5F5B;
+$activity-word-green: #53D39A;
+
+//图标icon颜色 default默认 white白色图标 pop灰色图标 sup辅助类图标(很少用)
+$activity-icon-white: #fff;
+$activity-icon-light-gray: #C7CCCB;
+$activity-icon-green: #53D39A;
+$activity-icon-gray: #999;
+$activity-icon-dark: #101010;
+
+//主要用到的颜色,服务于高度统一的主色调使用,如果是有新增颜色,请找言一确认后再增加
+$activity-bg-white: #fff;
+$activity-bg-green: #53D39A;
+$activity-bg-red: #ED5F5B;
+$activity-bg-default: #f5f5f5;
+$activity-bg-disabled: #d5d5d5;
+
+//的边框颜色 default是默认(一般都是这个) pop是弹窗的边框色  white是备用的白色边框线
+$activity-border-default: #d5d5d5;
+$activity-border-white: #ffffff;
+$activity-border-green: #53D39A;
+
+
+//按钮btn
+$activity-btn-white: #ffffff;
+$activity-btn-red: red;
+$activity-btn-blue: #00aaee;
+//操作
+$activity-operation-btn-blue: #00aaee;

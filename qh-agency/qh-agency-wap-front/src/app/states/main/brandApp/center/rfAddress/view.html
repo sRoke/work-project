@@ -1,0 +1,27 @@
+<div flex layout="column" class="ks-center-rfAddress">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()" >
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex style="font-size: 18px;">退货地址</h1>
+        <div class="right-button" flex="20">
+            <span class="regSpan-right"  style="font-size: 14px;" ui-sref="main.brandApp.center.refundAddress({id:id})">编辑</span>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex layout="column" layout-align="start center" class="main">
+        <div class="content-address" layout="column">
+            <div class="linkman" layout="row" layout-align="space-between center">
+                <div class="phone">{{data.receiver}}</div>
+                <div class="phone" layout="row" layout-align="center center">
+                   {{data.phone}}
+                </div>
+            </div>
+            <div class="address" layout="row" layout-align="space-between center">
+                {{data.province}}{{data.city}}{{data.area}}{{data.street}}
+            </div>
+        </div>
+        <md-divider class="line"></md-divider>
+    </md-content>
+</div>
+

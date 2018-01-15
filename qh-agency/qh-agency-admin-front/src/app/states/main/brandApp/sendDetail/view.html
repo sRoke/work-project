@@ -1,0 +1,107 @@
+<div class="ks-sendDetail">
+    <!--配送相关以及状态-->
+    <div class="ks-sendDetail-send" layout="row">
+        <!--左侧-->
+        <div class="ks-sendDetail-orderLeft" layout="column" flex="30">
+            <h3>配送相关</h3>
+            <li layout="row" style="border-top: none;"><label flex="20">订单编号：</label><span flex="80">{{order.seq}}</span></li>
+            <li layout="row"><label flex="20">发货单号：</label><span flex="80">{{sendXq.seq}}</span></li>
+            <li layout="row"><label flex="20">收货地址：</label><span flex="80">{{order.address.province}}{{order.address.city}}{{order.address.county}}{{order.address.street}}</span></li>
+            <li layout="row"><label flex="20">收货人：</label><span flex="80">{{order.address.receiver}}{{order.address.phone}}</span></li>
+            <li layout="row"><label flex="20">创建时间：</label><span flex="80">{{order.dateCreated | date:"yyyy-MM-dd HH:mm:ss"}}</span></li>
+            <li layout="row"><label flex="20">订单来源：</label><span flex="80">生意参谋</span></li>
+            <li layout="row"><label flex="20">发货人：</label><span flex="80">{{sendName.realName}}</span></li>
+        </div>
+        <!--右侧-->
+        <div class="ks-sendDetail-orderRight" layout="row" flex>
+            <div layout="row" class="ks-status-top">
+                <md-icon class="ks-tishi" md-font-set="ks-admin-font" md-font-icon="ks-tishi"
+                         style="color: #ba9f6e;font-size: 30px;"></md-icon>
+            </div>
+            <div layout="column" class="ks-status-bottom-content">
+                <span style="font-size: 18px;">发货状态：{{sendXq.statusDesp}}</span>
+                <!--待收货-->
+                <div layout="row" class="ks-status-bottom" ng-if="sendXq.deliverStatusEnum=='UNRECEIVED'">
+                    <button class="return" ng-click="fallbackPage()">返回</button>
+                </div>
+                <!--已收货-->
+                <div layout="row" class="ks-status-bottom" ng-if="sendXq.deliverStatusEnum=='RECEIVED'">
+                    <button class="return" ng-click="fallbackPage()">返回</button>
+                </div>
+                <!--待发货-->
+                <div layout="row" class="ks-status-bottom" ng-if="sendXq.deliverStatusEnum=='UNSHIPPED'">
+                    <button class="sendStatus" ng-click="openDialog($event)" ng-if="DELIVERINVOICE_U">发货</button>
+                    <button class="return" ng-click="fallbackPage()">返回</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--订单情况-->
+    <div class="ks-sendDetail-order">
+        <!--订单标题栏-->
+        <!--订单表头-->
+        <div class="tableTit" layout="row">
+            <div class="tableTd" flex="40" style="text-align: left;padding-left: 10px;">
+                <span>商品</span>
+            </div>
+            <div class="tableTd" flex="">
+                <span>规格</span>
+            </div>
+            <div class="tableTd" flex="">
+                <span>商品编码</span>
+            </div>
+            <div class="tableTd" flex="">
+                <span>数量</span>
+            </div>
+            <div class="tableTd" flex="20">
+                <span>物流信息</span>
+            </div>
+        </div>
+        <!--<div class="ks-sendOrder-title" layout="row">-->
+            <!--<div flex="40">订单</div>-->
+            <!--<div flex="20">规格</div>-->
+            <!--<div flex="20">数量</div>-->
+            <!--<div flex="20">物流信息</div>-->
+        <!--</div>-->
+        <!--订单详情-->
+        <div layout="column" class="ks-sendOrder-xq">
+            <!--<div layout="row" class="sendNum">-->
+                <!--<span>发货单号：{{sendXq.seq}}</span>-->
+                <!--<span>订单编号：{{order.seq}}</span>-->
+            <!--</div>-->
+            <!---->
+            <div layout="column" class="sendXq">
+                <!--one-->
+                <div layout="row">
+                    <div layout="column" class="xq" flex="80">
+                        <div layout="row" class="xqOrder" ng-repeat="item in order.orderItems">
+                            <div flex="50" layout="row" class="xqImg">
+                                <img ng-src="{{item.skuImg}}" />
+                                <span>{{item.itemTitle}}</span>
+                            </div>
+                            <div flex="" class="xqDetail" layout="column">
+                                <span ng-repeat="sk in item.specInfos">{{sk.propValue}}</span>
+                            </div>
+                            <div flex="" class="xqDetail" layout="row">
+                                <span>{{item.code}}</span>
+                            </div>
+                            <div flex="" class="xqDetail" layout="row">
+                                <span>{{item.num}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--物流信息-->
+                    <div class="xq logistics" flex="20" layout="column" ng-if="sendXq.deliverStatusEnum=='UNSHIPPED'">
+                        <li class="nologistics">暂未发货</li>
+                    </div>
+                    <div class="xq logistics" flex="20" layout="column" ng-if="sendXq.deliverStatusEnum!='UNSHIPPED'">
+                        <li layout="row"><label>物流公司：</label><sapn style="line-height:40px;">{{sendXq.logisticses[0].company}}</sapn></li>
+                        <li layout="row"><label>物流单号：</label><sapn style="line-height:40px;">{{sendXq.logisticses[0].expressNo}}</sapn></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

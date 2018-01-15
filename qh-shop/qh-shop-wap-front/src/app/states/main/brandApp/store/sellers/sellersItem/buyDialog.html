@@ -1,0 +1,37 @@
+<md-bottom-sheet class="md-grid ks-sellersItem-select-spec" layout="column" ng-cloak stop-touch-event>
+    <div class="header" layout="row" style="background: #fff">
+        <div class="item-img">
+            <img ng-src="{{vmd.checkedSku.imgs}}"/>
+        </div>
+        <div flex>
+            <div class="Htop">
+                ￥{{vmd.checkedSku.salePrice/100 | num:2}}
+            </div>
+            <!--<div class="txtWarp" ng-if="vm.tempCheckSku&&vm.tempCheckSku.delete">当前商品缺货</div>-->
+            <div class="txtWrap" layout="row" layout-align="start center"
+                 style="margin: 10px auto 10px 20px;color:#999">
+                已选:<span ng-repeat="specName in vmd.checkedSku.specList">{{specName.itemPropValueName}}<span
+                    ng-if="!$last">/</span>    </span>
+            </div>
+
+        </div>
+        <md-icon flex="5" class="chevron_left ks-icon" md-font-set="ks-icon" ng-click="vm.cancel()">close</md-icon>
+    </div>
+    <md-divider style=" -webkit-transform: scaleY(0.5);-webkit-transform-origin: 0 0;"></md-divider>
+    <md-content flex="" stop-touch-event style="padding-bottom: 20px">
+        <div class="contentTxt" layout="row" ng-repeat="spec in vmd.list.specs track by $index">
+            <div class="selectLeft">{{spec.itemProp.name}}</div>
+            <div flex>
+                <div class="slectBtn" ng-class="{active:vmd.selectSpecs[spec.itemProp.id] ==specValue.id  }"
+                     ng-style="disabled"
+                     ng-click="vmd.clickedSpec(spec,specValue)" ng-repeat="specValue in spec.itemPropValueList">
+                    {{specValue.name}}
+                </div>
+            </div>
+        </div>
+    </md-content>
+    <div class="footer" layout="row">
+        <div class="btnRight" flex style="background: #E53467 " ng-click="vmd.submit()">确认</div>
+    </div>
+    <div style="padding-bottom: 80px; background:#fff; flex-shrink: 0"></div>
+</md-bottom-sheet>

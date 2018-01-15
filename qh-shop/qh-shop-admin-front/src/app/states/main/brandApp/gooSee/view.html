@@ -1,0 +1,141 @@
+<div class="ks-gooSee">
+    <div class="main" flex>
+        <!--微信设置-->
+        <ul layout="row" class="title">
+            <li ng-class="{checked:activeNum == '1'}" ng-click="changeTab(1)">1 基本信息</li>
+            <li ng-class="{checked:activeNum == '2'}" ng-click="changeTab(2)">2 图文详情</li>
+        </ul>
+        <ul layout="column" class="wxPay" ng-if="activeNum == '1'">
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    标题：
+                </li>
+                <div layout="column" class="review">
+                    <div class="rev-right">{{items.title}}</div>
+                </div>
+            </div>
+            <!--<div layout="row" class="content">-->
+            <!--<li layout="row" layout-align="end center">-->
+            <!--副标题：-->
+            <!--</li>-->
+            <!--<div layout="column" class="review">-->
+            <!--<div class="rev-right"></div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    商品分类：
+                </li>
+                <div layout="row" class="review">
+                    <span ng-repeat="sk in items.category.name">{{sk}}</span>
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    商品主图：
+                </li>
+                <div layout="row" class="review">
+                    <img ng-repeat="imgUrl in items.imgs" ng-src="{{imgUrl}}"/>
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    商品规格：
+                </li>
+                <div layout="column" class="review goods">
+                    <div class="goods-right">规格</div>
+                    <div class="goods-size" layout="row">
+                        <div ng-repeat="cateSpec in items.specs">
+                            <span class="gd-size" ng-repeat="spec in cateSpec.itemPropValueList">{{spec.name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--sku-->
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    商品SKU：
+                </li>
+                <div layout="row" class="review">
+                    <table class="table table-bordered goods-sku">
+                        <thead>
+                        <tr>
+                            <td>规格</td>
+                            <td>吊牌价</td>
+                            <td>采购价</td>
+                            <td>促销价</td>
+                            <td>初始库存</td>
+                            <td>商品编码</td>
+                            <td>操作</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in items.skuList">
+                            <td><b ng-repeat="cateSku in item.specList">{{cateSku.itemPropValueName}}&nbsp;</b></td>
+                            <td>{{item.labelPrice/100 | num:2}}</td>
+                            <td>{{item.buyPrice/100 | num:2}}</td>
+                            <td>{{item.salePrice/100 | num:2}}</td>
+                            <td>{{item.storage}}</td>
+                            <td>{{item.code}}</td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    佣金比例：
+                </li>
+                <div layout="row" class="review">
+                    <div class="rev-num"></div>
+                    <div class="rev-bz">*佣金比例为小数，如0.1表示10%</div>
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    积分比例：
+                </li>
+                <div layout="row" class="review">
+                    <div class="rev-num"></div>
+                    <div class="rev-bz">*积分比例为整数，如100表示100积分=1元钱</div>
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    积分抵扣比例：
+                </li>
+                <div layout="row" class="review">
+                    <div class="rev-num"></div>
+                    <div class="rev-bz">*积分比例为小数，如0.1表示抵扣商品总价的10%</div>
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    运费模板：
+                </li>
+                <div layout="row" class="review">
+                    <div class="rev-right"></div>
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                </li>
+                <div layout="row" class="review">
+                    <button class="btn" ng-click="fallBack()">返回</button>
+                </div>
+            </div>
+        </ul>
+        <!--图文详情-->
+        <ul layout="column" class="wxPay" ng-if="activeNum == '2'">
+            <p ng-include="tplUrl" style="    width: 80%;margin: 0 auto;height: 500px;overflow: auto;"></p>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                </li>
+                <div layout="row" class="review">
+                    <button class="btn" ng-click="fallBack()">返回</button>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>

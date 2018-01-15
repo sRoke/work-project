@@ -1,0 +1,138 @@
+<div class="ks-common-list">
+    <div class="common-list-center">
+        <ul>
+            <li layout="row">
+                <label for="bhnum">请输入：</label>
+                <input  id="bhnum" type="text" class="choose "  placeholder="订单号、用户名" ng-model="reason">
+                <label>申请时间:</label>
+                <div >
+                    <input type="text" class="layui-input choose" id="test1" ng-model="startDate" placeholder="开始时间">
+                    <!--<md-datepicker ng-model="startDate" md-placeholder="Enter date" md-open-on-focus-->
+                                   <!--md-date-locale="s"  md-date-locale="dateF"></md-datepicker>-->
+                </div>
+                <span>至</span>
+                <div>
+                    <input type="text" class="layui-input choose" id="test2" ng-model="endDate" placeholder="结束时间">
+                    <!--<md-datepicker ng-model="endDate" md-placeholder="End date" md-open-on-focus-->
+                                   <!--md-date-locale="s"  md-date-locale="dateF"></md-datepicker>-->
+                </div>
+
+
+
+                <!--<input type="text"  class="dateTime"-->
+                        <!--readonly="readonly">-->
+
+
+
+                <label for="refundStatus">状态:</label>
+                <select id="refundStatus" ng-model="refundStatus">
+                    <option value="">全部</option>
+                    <option value="UNPAYED">待退款</option>
+                    <option value="CLOSED">已关闭</option>
+                    <option value="FINISHED">已完成</option>
+                </select>
+                <!--<span style="margin-left: 0px;">-->
+                    <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-search"-->
+                             <!--alt="查询" style="color: #999;font-size:20px;text-align: center;cursor: pointer;outline: none;" ng-click="getInfo('0')"></md-icon>-->
+                <!--</span>-->
+                <button id="inquire" style="" ng-click="getInfo('0')">
+                    查询
+                </button>
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+    <!--div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <!--表头-->
+        <div class="common-list-detail-thead" layout="row" >
+            <div class="thead-show" flex="15"  layout-align="center" style="padding-left: 30px;">
+                <span >编号</span>
+            </div>
+            <div class="thead-show" flex="10"  layout-align="center">
+                <span>退款类型</span>
+            </div>
+            <div class="thead-show" flex="10"  layout-align="center">
+                <span>退款账户</span>
+            </div>
+            <div class="thead-show" flex="15"  layout-align="center">
+                <span>发起时间</span>
+            </div>
+            <div class="thead-show" flex="10"  layout-align="center">
+                <span>退款金额</span>
+            </div>
+            <div class="thead-show" flex="15"  layout-align="center">
+                <span>退款原因</span>
+            </div>
+            <div class="thead-show" flex="10"  layout-align="center">
+                <span>审核员工</span>
+            </div>
+            <div class="thead-show" flex="5"  layout-align="center">
+                <span>状态</span>
+            </div>
+            <div class="thead-show end-show" flex="10" layout-align="center">
+                <span>操作</span>
+            </div>
+        </div>
+        <!--表格详细内容-->
+        <div class="common-list-detail-tbody" layout="column">
+            <!--定义每列数据    父级用ng-repeat循环此行-->
+            <div class="common-list-detail-row" layout="row" ng-repeat="item in items">
+                <div class="thead-show" flex="15"  layout-align="center" style="padding-left: 30px;">
+                    <span >{{item.refundSeq}}</span>
+                </div>
+                <div class="thead-show" flex="10"  layout-align="center">
+                    <span>{{item.typeDesp}}</span>
+                </div>
+                <div class="thead-show" flex="10"  layout-align="center" style="overflow: hidden;text-overflow:ellipsis;white-space:nowrap;">
+                    <span>{{item.buyerPartnerName}}     {{item.buyerPartnerPhone}}</span>
+                </div>
+                <div class="thead-show" flex="15"  layout-align="center" style="min-width: 134px;">
+                    <span>{{item.dateCreated | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="thead-show" flex="10"  layout-align="center">
+                    <span>￥{{item.refundAmount/100 | num:2}}</span>
+                </div>
+                <div class="thead-show" flex="15"  layout-align="center">
+                    <span>{{item.reason}}</span>
+                </div>
+                <div class="thead-show" flex="10"  layout-align="center">
+                    <span>{{item.staff}}</span>
+                </div>
+                <div class="thead-show" flex="5"  layout-align="center">
+                    <span>{{item.statusDesp}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="end center" layout="row" style="padding-right: 20px;">
+                    <div  class="operateFont" layout="column" ng-if="item.status=='UNPAYED'">
+                        <!--<a  class="glyphicon" title="同意" href="javascript:void(0)" ng-click="openDialog($event)">-->
+                            <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-edit"-->
+                            <!--&gt;</md-icon>-->
+                        <!--</a>-->
+                       <button ng-click="openDialog(item,$event)" ng-if="REFUNDMONEY_U">同意退款</button>
+                    </div>
+                    <div  class="operateFont" layout="column" ng-if="item.status=='UNPAYED' ">
+                        <!--<a  class="glyphicon" title="拒绝" href="javascript:void(0)" >-->
+                            <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-minus-circle"-->
+                                     <!--&gt;</md-icon>-->
+                        <!--</a>-->
+                        <button class="rejet" ng-click="reject(item)" ng-if="REFUNDMONEY_U">拒绝退款</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分页-->
+    <div style="width: 98%; margin: 10px auto 0px">
+        <div style="width: 500px;min-width: 500px;margin-left: 10px;" uib-pagination total-items="data.totalElements" ng-model="curPage"
+             ng-change="getInfo()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+        <div style="float: right"  class="pageSubnav">
+            <span>共{{data.totalElements}}条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button  ng-click="getInfo()">确定</md-button>
+        </div>
+    </div>
+</div>

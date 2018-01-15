@@ -1,0 +1,82 @@
+devPort: 16700
+# ServerProperties
+server:
+  port: 10290
+  context-path: /raffle/rs/local/${devPort}                        # todo 其它环境修改该行
+  error.include-stacktrace: on_trace_param
+
+# SecurityProperties
+security:
+  basic.enabled: false
+
+
+
+# QhAgencyProperties
+net.kingsilk.qh.raffle:
+  # http代理设置
+  http:
+    proxy:
+      enabled:      false
+  qhOAuth:
+    wap:
+      url:                      'https://kingsilk.net/oauth2/rs/local/11300'           # todo 其它环境修改该行
+  qhPay:
+      wap:
+        url:                      'https://kingsilk.net/pay/rs/local/11300'       # todo 其它环境修改该行
+        api:
+          url:                    '${net.kingsilk.qh.raffle.qhPay.wap.url}/api/app/'
+  qhRaffle:
+    server:
+      url:                      'https://kingsilk.net/raffle/rs/local/16700/api/'       # todo 其它环境修改该行
+      api:
+        url:                    '${net.kingsilk.qh.raffle.qhRaffle.server.url}/api/app/'
+  qhShop:
+    wap:
+      url:                      'https://kingsilk.net/shop/rs/local/16700'       # todo 其它环境修改该行
+      api:
+        url:                    '${net.kingsilk.qh.raffle.qhShop.wap.url}/api/'
+  qhPlatform:
+    server:
+      url:                      'https://kingsilk.net/platform/rs/local/11300/api'       # TODO 其它环境修改该行
+      clientId:                    'CLIENT_ID_qh-activity-server'
+      clientSecret:                'CLIENT_PWD_qh-activity-server_123456'
+      resourceId:                  'RSC_ID_qh-activity-server'
+  agencyUt:
+    basePath :                  'https://kingsilk.net/agency/rs/local/11300/api'
+  shopUt:
+      basePath :                  'https://kingsilk.net/shop/rs/local/11300/api'
+  oauthUt:
+    basePath :                  'https://kingsilk.net/oauth2/rs/local/11300/api'
+  platformUt:
+    basePath :                  'https://kingsilk.net/platform/rs/local/11300/api'
+  wx4jUt:
+    basePath :                  'https://kingsilk.net/wx/rs/local/11300/api'
+    tplId:                      '_nSnzfLKUQ1x8HtQsxxM9cK9S_CdQu9Q6njaYCDkSSg'
+  zk:
+    connStr: 192.168.0.13:2181
+  mq:
+    prefix: dev
+    defaultConf:
+      lockWaitTime: 1000
+
+net.kingsilk.wx4j.broker:
+  mq:
+    prefix: dev
+    defaultConf:
+        lockWaitTime: 1000
+
+# MongoProperties
+spring.data.mongodb:
+  host: '192.168.0.12'
+  port: 27017
+  database: 'qh-raffle'
+  username: 'qh-raffle'
+  password: '{qh-raffle]'
+
+spring.rabbitmq:
+  addresses: 192.168.0.13
+  port: 5672
+  username: guest
+  password: guest
+  enabled: false
+  virtual-host: /

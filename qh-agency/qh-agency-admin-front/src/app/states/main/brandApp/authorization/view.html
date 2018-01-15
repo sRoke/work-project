@@ -1,0 +1,73 @@
+<div class="ks-authorization" layout="column">
+    <div>
+        <button ng-click="preShow(1)" style="    width: 100px;
+    height: 30px;
+    background: #00aaee;
+    border: none;
+    color: #fff;
+    border-radius: 4px;">生成授权书
+        </button>
+        <!--ng-click="generate()"-->
+        <!--<button id="imgShow" ng-click="preShow(2)">预览授权书</button>-->
+    </div>
+    <!--background: url('https://img.kingsilk.net/3f79e2d9b7442af651d76be8cf98c11a');-->
+    <div id="imgData" class="author-wrap" style="height: 800px;
+    width: 560px;
+    min-width: 560px;
+    background-size: 100%;">
+        <img src="https://img.kingsilk.net/3f79e2d9b7442af651d76be8cf98c11a" alt="" width="560" height="800">
+        <div class="name">
+            <!--<input type="text" placeholder="姓名" ng-model="message.realName" ng-if="edit">-->
+            <div>{{message.realName}}</div>
+        </div>
+        <div class="adress">
+            <!--<input type="text" placeholder="地址" ng-model="message.address" ng-if="edit">-->
+            <div>{{message.address}}</div>
+        </div>
+        <div class="prox">
+            <!--<input type="text" placeholder="代理" ng-model="message.prox" ng-if="edit">-->
+            <div>{{message.prox}}</div>
+        </div>
+
+        <div class="start-year">
+            <!--<input type="text" placeholder="年" ng-model="message.startYear" ng-if="edit">-->
+            <div>{{message.startYear}}</div>
+        </div>
+        <div class="start-month">
+            <!--<input type="text" placeholder="月" ng-model="message.startMonth" ng-if="edit">-->
+            <div>{{message.startMonth}}</div>
+        </div>
+        <div class="start-day">
+            <!--<input type="text" placeholder="日" ng-model="message.startDay" ng-if="edit">-->
+            <div>{{message.startDay}}</div>
+        </div>
+        <div class="end-year">
+            <!--<input type="text" placeholder="年" ng-model="message.endYear" ng-if="edit">-->
+            <div>{{message.endYear}}</div>
+        </div>
+        <div class="end-month">
+            <!--<input type="text" placeholder="月" ng-model="message.endMonth" ng-if="edit">-->
+            <div>{{message.endMonth}}</div>
+        </div>
+        <div class="end-day">
+            <!--<input type="text" placeholder="日" ng-model="message.endDay" ng-if="edit">-->
+            <div>{{message.endDay}}</div>
+        </div>
+
+        <div class="seq">
+            <span>NO.</span> <span style="color: #ED5F5B">{{message.seq}}</span>
+        </div>
+
+        <div class="sign-day">
+            <!--<input type="text" placeholder="日期" ng-model="message.signDay" ng-if="edit">-->
+            <div>{{message.signDay}}</div>
+        </div>
+    </div>
+    <!-- <div id="preserve" ng-if="backShow" style="    position: fixed;
+     width: 100%;
+     height: 100%;
+     background: rgba(31,31,31,0.5);"></div>-->
+    <md-icon id="mdIcon" md-font-set="ks-admin-font" md-font-icon="ks-close" style="position:fixed;opacity: 0"
+             ng-click="changeBack()"></md-icon>
+
+</div>

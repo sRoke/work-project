@@ -1,0 +1,57 @@
+<div class="ks-address"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="vm.fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>收货地址</h1>
+        <div class="right-button" flex="20" ng-click="vm.add()">
+            新增
+        </div>
+    </div>
+    <div class="line"></div>
+    <md-content flex style="overflow-x:hidden;background: #f5f5f5;" >
+        <div class="noAddress" layout="column" layout-align="top center" ng-if="!vm.items.length">
+            <div class="img-con">
+                <img src="nobg.png">
+            </div>
+            <div class="word-con">暂无收货地址 去新增</div>
+        </div>
+        <div class="main" layout="column" ng-if="vm.items.length">
+            <div layout="column" class="center-con">
+                <!--ng-repeat-->
+                <div class="center-tab" layout="column" ng-repeat="item in vm.items">
+                    <div class="center-tab-top">
+                        <div ng-click="vm.selectAdd(item)">
+                            <div class="tab-top">{{item.receiver}}&nbsp;{{item.phone}}</div>
+                            <div class="tab-address">
+                                <span ng-show="item.province">{{item.province}}/</span>
+                                <span ng-show="item.city">{{item.city}}/</span>
+                                <span ng-show="item.area">{{item.area}}/</span>
+                                <span>{{item.street}}</span>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                        <div layout="row" class="tab-default" layout-align="space-between center">
+                            <div layout="row">
+                                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" ng-if="!item.defaultAddr" ng-click="vm.setDefault(item,$index)"></md-icon>
+                                <md-icon class="ks-icon ks-icon-check" md-font-set="ks-icon" md-font-icon="ag-complete" ng-if="item.defaultAddr" ng-click="vm.setDefault(item,$index)"></md-icon>
+                                <span>默认地址</span>
+                            </div>
+                            <div layout="row">
+                                <div layout="row" ui-sref="main.brandApp.store.personalCenter.editAddress({addrId:item.id,orderId:vm.orderId,from:vm.from})">
+                                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-edit-0"></md-icon>
+                                    <span>编辑</span>
+                                </div>
+                                <div layout="row" style="margin-left: 10px;" ng-click="vm.delete(item);">
+                                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-delete"></md-icon>
+                                    <span>删除</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-line"></div>
+                </div>
+            </div>
+        </div>
+    </md-content>
+</div>

@@ -1,0 +1,41 @@
+<div flex layout="column" class="ks-center-modifyPassword">
+    <!--<md-toolbar class="ks-header">-->
+        <!--<div layout="row" class="ks-header-divWrap">-->
+            <!--<div class="divTop" flex class>-->
+                <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+                <!--ng-click="fallbackPage()"></md-icon>-->
+                <!--<span class="regSpan">设置</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-toolbar>-->
+
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>修改支付密码</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+    <md-divider></md-divider>
+
+    <md-content flex layout="column" layout-align="start center" class="main">
+        <!--<div class="center-tab-line"><div class="line-bottom"></div></div>-->
+        <!--<md-divider class="line"></md-divider>-->
+        <div layout="row" layout-align="space-between center" class="phone-list">
+            <input type="tel" placeholder="新密码" class="phone-num" ng-model="psword"  ng-blur="formatPassword(psword)">
+        </div>
+        <div class="center-tab-line"><div class="line-bottom"></div></div>
+        <!--<md-divider class="line"></md-divider>-->
+        <div layout="row" layout-align="space-between center" class="phone-list">
+            <input type="tel" placeholder="确认密码" class="phone-num" ng-model="confirmPswd" ng-blur="formatPswd(confirmPswd)">
+        </div>
+        <div class="center-tab-line"><div class="line-bottom"></div></div>
+        <!--<md-divider class="line"></md-divider>-->
+        <div layout="row" class="btn-list">
+            <button class="btn-next" ng-click="getCheck();">完成</button>
+        </div>
+    </md-content>
+</div>
+

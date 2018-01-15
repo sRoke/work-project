@@ -1,0 +1,85 @@
+<md-dialog aria-label="修改收货地址" style="width:1000px;">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>修改收货地址</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
+                    <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <input type="hidden" name="vm.orderId" ng-model="vm.orderId">
+                <div class="form-group">
+                    <label for="old" class="col-sm-2 control-label">原地址</label>
+                    <div class="col-sm-9">
+                        <span id="old">{{vm.oldAddress}}</span>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="receiver" class="col-sm-2 control-label">收货人</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="name" class="form-control input-sm" id="receiver"
+                               ng-model="vm.receiver" ng-maxlength="15" ng-minlength="2" required>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="phone" class="col-sm-2 control-label">收货人电话</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="phone" class="form-control input-sm"
+                               ng-model="vm.phone"  autofocus="autofocus">
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="newAddress" class="col-sm-2 control-label">收货地址</label>
+                    <div class="col-sm-9">
+                        <div id="newAddress">
+                            <select class="select" ng-change="vm.getAddress(vm.provinceNo,1)"
+                                    data-ng-model="vm.provinceNo" style="height: 25px">
+                                <option value="">请选择</option>
+                                <option ng-repeat="province in vm.provinces.list" value="{{province.no}}">
+                                    {{province.name}}
+                                </option>
+                            </select>
+                            <select class="select" ng-change="vm.getAddress(vm.cityNo,2)"
+                                    data-ng-model="vm.cityNo" style="height: 25px" ng-if="vm.citys.list.length>0">
+                                <option value="">请选择</option>
+                                <option ng-repeat="city in vm.citys.list" value="{{city.no}}">{{city.name}}</option>
+                            </select>
+                            <select class="select" data-ng-model="vm.countyNo" style="height: 25px" ng-if="vm.countys.list.length>0">
+                                <option value="">请选择</option>
+                                <option ng-repeat="county in vm.countys.list" value="{{county.no}}">{{county.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="street" class="col-sm-2 control-label">街道地址</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="street" class="form-control input-sm" ng-model="vm.street">
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group"
+                     ng-if="!(vm.receiver&&vm.phone&&vm.provinceNo&&vm.cityNo&&vm.countyNo&&vm.street)">
+                    <div class="col-sm-9">
+                        <div style="">请填写完整信息</div>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-if="vm.receiver&&vm.phone&&vm.provinceNo&&vm.cityNo&&vm.countyNo&&vm.street"
+                       ng-click="vm.save()">保存
+            </md-button>
+            <md-button ng-click="vm.cancel()">取消</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

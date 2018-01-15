@@ -1,0 +1,38 @@
+
+.ks-chooseTime {
+    md-content{
+      background: #f5f5f5;
+      .con{
+        margin-top: 10px;
+        padding: 0 15px;
+        background: #ffffff;
+        .con-time{
+          height: 59px;
+          .left{
+            font-size: 16px;
+            color: #333333;
+            margin-right: 10px;
+          }
+          .right{
+            font-size: 16px;
+            color: #999999;
+            md-icon{
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      .footBtn{
+        margin: 50px 15px;
+        background: #e53467;
+        border-radius: 5px;
+        color: #ffffff;
+        height: 44px;
+        font-size: 18px;
+      }
+
+
+    }
+
+}

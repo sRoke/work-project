@@ -1,0 +1,113 @@
+
+@import "../../../../../scss/index.scss";
+.ks-busApplication{
+    margin: 0 20px 0;
+    .common-list-center{
+        ul{
+            height:70px;
+            margin-bottom: 0;
+            width: 100%;
+            padding:0 ;
+            li{
+                float: left;
+                height:70px;
+                list-style: none;
+                label{
+                    padding-right:5px;
+                    line-height:30px;
+                    height:30px;
+                    font-size:14px;
+                    min-width:80px;
+                    font-weight:100;
+                    //padding:0 5px;
+                    margin:20px 0px 0px 0px;
+                }
+                .choose{
+                    width:160px;
+                    height: 30px;
+                    padding-left:5px;
+                    border-radius: 4px;
+                    border:1px solid #e0e0e0;
+                    margin: 20px 10px 0 0;
+                }
+                span{
+                    text-align: center;
+                    height:30px;
+                    width: 73px;
+                    border-radius: 4px;
+                    line-height: 30px;
+                    margin-top:20px;
+                    font-size:14px;
+                    font-weight:100;
+                    //margin-left:10px;
+
+                    background: $platform-btn-blue;
+                    color: #FFFFFF;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .common-list-detail {
+        .common-list-detail-thead {
+            height: 40px;
+            line-height: 40px;
+            text-align: left;
+            //border-top: 4px solid #ba9f6e;
+            background: #e6e6e6;
+            .thead-show {
+                span {
+                    font-size: 14px;
+                }
+            }
+            .thead-show:first-child {
+                margin-left: 40px;
+            }
+            .thead-show:last-child {
+                margin-right: 40px;
+                text-align: right;
+            }
+        }
+        //表格详细内容
+        .common-list-detail-tbody {
+            .common-list-detail-row {
+                height: 60px;
+                line-height: 60px;
+                text-align: left;
+                .thead-show {
+                    span {
+                        font-size: 14px;
+                        color: #666;
+                    }
+                }
+                .thead-show:first-child {
+                    margin-left: 40px;
+                }
+                .thead-show:last-child {
+                    margin-right: 40px;
+                    text-align: right;
+                    span{
+                        margin-left: 10px;
+                        color: $platform-operation-btn-blue;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .common-list-detail-row:nth-child(odd) {
+                background: #fff;
+                border: 1px solid #fff;
+            }
+            .common-list-detail-row:nth-child(even) {
+                background: #fbf9f6;
+                border: 1px solid #fbf9f6;
+            }
+            .common-list-detail-row:hover {
+                z-index:2;
+                border: 1px solid #ba9f6e;
+                -webkit-box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+                -moz-box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+                box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+            }
+        }
+    }
+}

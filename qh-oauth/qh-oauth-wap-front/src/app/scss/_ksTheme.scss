@@ -1,0 +1,180 @@
+////////////////////////////////////////////////////////////////////////////// 暗金色
+.ks-gold {
+
+  // 按钮
+  &.md-button {
+    background-color: #ba9f6e !important;
+    &:hover:not([disabled]) {
+      //background-color: #ba9f6e !important;
+      background-color: #c59147 !important;
+    }
+    &:active:not([disabled]) {
+      //background-color: #ba9f6e !important;
+      background-color: #c59147 !important;
+    }
+    &[disabled] {
+      background-color: rgba(0, 0, 0, 0.12) !important;
+    }
+  }
+
+  //md-checkbox.md-checked .md-ink-ripple {
+  //  color: #ba9f6e;
+  //}
+  //
+  //md-checkbox.md-checked ._md-icon {
+  //  background-color: #ba9f6e;
+  //}
+}
+
+// 复选框
+md-checkbox.ks-gold:not([disabled]) {
+
+  ._md-icon {
+    border-color: #ba9f6e !important;
+    border-radius: 0;
+    border-width: 1px;
+  }
+  &.md-checked {
+
+    &.md-focused ._md-container:before {
+      background-color: rgba(186, 159, 110, 0.26);
+    }
+    ._md-icon {
+      background-color: #ba9f6e !important;
+    }
+    .md-ink-ripple {
+      color: rgba(186, 159, 110, 0.5) !important;
+    }
+  }
+}
+md-checkbox.ks-gold[disabled]{
+  ._md-icon {
+    border-radius: 0;
+    border-width: 1px;
+  }
+}
+
+// 单选框
+md-radio-group.ks-gold {
+  .md-checked .md-ink-ripple {
+    color: rgba(186, 159, 110, 0.26) !important;
+  }
+
+  md-radio-button ._md-off {
+    border-color: rgba(186, 159, 110, 0.54) !important;
+  }
+
+  md-radio-button.md-checked ._md-off {
+    border-color: rgba(186, 159, 110, 0.87) !important;
+  }
+
+  md-radio-button ._md-on {
+    background-color: rgba(186, 159, 110, 0.87) !important;
+  }
+
+  &.md-focused:not(:empty) .md-checked ._md-container:before {
+    background-color: rgba(186, 159, 110, 0.26);
+  }
+  //.xx md-radio-group.md-focused:not(:empty) .md-checked ._md-container:before{
+  //  background-color: rgba(186, 159, 110, 0.26);
+  //}
+}
+
+// 开关
+md-switch.ks-gold:not([disabled]) {
+  ._md-container{
+    ._md-bar{
+      background-color: #d5d5d5;
+    }
+  }
+  &.md-checked {
+    ._md-bar {
+      background-color: rgba(186, 159, 110, 0.5);
+    }
+    ._md-thumb {
+      background-color: #ba9f6e;
+    }
+    .md-ink-ripple {
+      color: #ba9f6e;
+    }
+    &.md-focused ._md-thumb:before {
+      background-color: rgba(186, 159, 110, 0.26);
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////// 红色
+.ks-red {
+
+  // 按钮
+  &.md-button {
+    background-color: #e84e40 !important;
+    &:hover:not([disabled]) {
+      background-color: #dd191d !important;
+    }
+    &:active:not([disabled]) {
+      background-color: #dd191d !important;
+      //background-color: #c59147;
+    }
+    &[disabled] {
+      background-color: rgba(0, 0, 0, 0.12) !important;
+    }
+  }
+}
+
+// 黑色
+.ks-black {
+  // 按钮
+  &.md-button {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #333 !important;
+    &:hover:not([disabled]) {
+      background-color: #808080 !important;
+    }
+    &:active:not([disabled]) {
+      background-color: #808080 !important;
+      //background-color: #c59147;
+    }
+    &[disabled] {
+      background-color: rgba(0, 0, 0, 0.12) !important;
+    }
+  }
+}
+
+// 灰色
+.ks-grey {
+
+  // 按钮
+  &.md-button {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #808080 !important;
+    &:hover:not([disabled]) {
+      background-color: #999 !important;
+    }
+    &:active:not([disabled]) {
+      background-color: #999 !important;
+      //background-color: #c59147;
+    }
+    &[disabled] {
+      background-color: rgba(0, 0, 0, 0.12) !important;
+    }
+  }
+}
+
+// 白色
+.ks-white {
+  // 按钮
+  &.md-button {
+    background-color: #fff !important;
+    &:hover {
+      background-color: rgb(250, 250, 250) !important;
+    }
+    &:active {
+      background-color: rgb(250, 250, 250) !important;
+      //background-color: #c59147;
+    }
+    &[disabled] {
+      background-color: rgba(0, 0, 0, 0.12) !important;
+    }
+  }
+}

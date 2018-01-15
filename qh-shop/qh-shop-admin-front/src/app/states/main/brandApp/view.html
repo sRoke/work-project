@@ -1,0 +1,94 @@
+<div id="preserve" layout="row" style="height: 100%;">
+    <div ng-show="backShow" ng-click="changeBack()" style="position: fixed;width: 100%;height: 100%;background: rgba(31,31,31,0.5);z-index: 111111111;"></div>
+    <!-- 左侧侧边栏 -->
+    <md-sidenav style="z-index: 100000000;overflow-x: hidden;min-width: 200px;box-shadow: none;height: 100%;/*position:absolute;*/"
+                class="md-sidenav-left md-whiteframe-z2 ks-sidenav"
+                md-component-id="left"
+                md-is-locked-open="leftShow">
+
+        <header class="nav-header" layout="row"
+                layout-align="center center" style="height: 50px;line-height: 50px;color: #fff;font-size: 20px;font-weight: 900;">
+                门店系统
+            <!--<md-icon flex md-font-set="ks-admin-font" md-font-icon="ks-agency" ui-sref="main.brandApp.home"-->
+                     <!--class="logo"></md-icon>-->
+        </header>
+
+        <md-content class="content-wrap" style="overflow-x: hidden" flex role="navigation">
+            <ss-sidenav flex menu="menu"></ss-sidenav>
+        </md-content>
+    </md-sidenav>
+    <div layout="column" flex style="width: 100%;height: 100%;/*padding-left: 200px;*/">
+        <!-- 顶部栏 -->
+        <md-toolbar class="ks-header" layout="row">
+            <div class="md-toolbar-tools" flex>
+                <h2 flex>
+                    <!--ng-hide="leftShow"-->
+                    <span ng-click="openLeft()" style="outline: none" >
+                        <md-icon md-font-set="ks-admin-font" md-font-icon="ks-menu"></md-icon>
+                    </span>
+                </h2>
+                <!-- <select ng-model="org" ng-options="tmp.name for tmp in orgList.orgList" ng-change="orgChange()"
+                         style="color: #000000">
+                 </select>-->
+
+                <!--<i class="glyphicon glyphicon-log-out">
+                    &lt;!&ndash; <md-icon md-font-set="material-icons">adb</md-icon>&ndash;&gt;
+                </i>-->
+                <md-icon class="glyphicon" md-font-set="ks-admin-font" md-font-icon="ks-sign-out"
+                         ng-click="logout()"></md-icon>
+                <!--  <i class="glyphicon glyphicon-lock" style="margin-left: 20px;">
+                      &lt;!&ndash; <md-icon md-font-set="material-icons">adb</md-icon>&ndash;&gt;
+                  </i>-->
+                <md-icon class="glyphicon" md-font-set="ks-admin-font" md-font-icon="ks-lock"
+                         ng-click="changePassword()"></md-icon>
+                <span class="header-img-wrap" ng-if="appConfig.imgUrl">
+                    <img ng-src="{{appConfig.imgUrl}}{{userInfo.avatar}}?imageView2/2/w/{{simpleImg.w}}/h/{{simpleImg.h}}"
+                         class="md-avatar"
+                         width="50px"
+                         height="50px"
+                         style="width:100%;"
+                         alt="Name"/>
+                 </span>
+                <span class="header-img-wrap" style="text-align: center;line-height: 32px; font-size:14px;" ng-if="!appConfig.imgUrl">
+                    <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-user"
+                             title="用户"
+                             alt="用户" style="color: #666;"></md-icon>
+                </span>
+                <span class="header-user-wrap">{{telShow}}</span>
+            </div>
+        </md-toolbar>
+        <!--<md-divider></md-divider>-->
+
+        <!-- 内容区域 -->
+        <div flex layout="column">
+            <div   class="tab-parent" layout="row" layout-align="start center">
+                <md-tabs md-selected="vm.sidenavTab.tabIndex"
+                         md-no-ink-bar="true"
+                         md-autoselect="true"
+                         style="width: 100%;min-width: 1300px;background: #e6e6e6;">
+                    <md-tab ng-repeat="tab in vm.sidenavTab.tabs"
+                            ui-sref-active="active"
+                            ng-click="viewTab(tab)">
+                        <md-tab-label>
+                            <span>{{tab.title}}</span>
+                            <md-icon class="right-icon"
+                                     md-font-set="ks-admin-font"
+                                     md-font-icon="ks-close"
+                                     ng-if="!tab.disableClose"
+                                     ng-click="vm.close(tab, $event)"></md-icon>
+                        </md-tab-label>
+                    </md-tab>
+                </md-tabs>
+            </div>
+            <md-content layout="column" flex style="min-width: 1300px;overflow-x:hidden;background-color: #f5f5f5;height: 100%;">
+                <div flex ng-repeat="tab in vm.sidenavTab.tabs"
+                     ui-view="{{tab.uiView}}"
+                     ng-show="$state.includes(tab.matchStates)">
+                    <!-- 右侧内容区域 -->
+                </div>
+            </md-content>
+        </div>
+
+    </div>
+
+</div>

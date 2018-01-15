@@ -1,0 +1,205 @@
+//
+.ks-basicSetting {
+  height:100%;
+  .main{
+    height:100%;
+    background: #fff;
+    margin:10px 20px;
+    .title{
+      border-bottom: 1px solid #d5d5d5;
+      height: 50px;
+      line-height: 50px;
+      li{
+        margin:0 30px;
+        padding:0 4px;
+        list-style: none;
+        border:none;
+        outline: none;
+      }
+      .checked{
+        outline: none;
+        border-bottom: 2px solid #ba9f6e;
+      }
+    }
+    //收银
+    .shouyin{
+      padding:0px;
+      margin-bottom:40px;
+      .content{
+        li{
+          width:180px;
+          text-align: right;
+          margin:20px 10px 0 0;
+          height:30px;
+          line-height:30px;
+          color: #333;
+          font-size:14px;
+        }
+        .update{
+          margin-top:20px;
+          input{
+            outline: none;
+            padding-left:10px;
+            background: #fff;
+            height:30px;
+            min-width:400px;
+            border:1px solid #d5d5d5;
+            -webkit-border-radius:4px;
+            -moz-border-radius:4px;
+            border-radius:4px;
+          }
+          .address{
+            //width:400px;
+            border:none;
+          }
+          span{
+            height:44px;
+            line-height:44px;
+            color: #333;
+            font-size:14px;
+          }
+          button{
+            outline: none;
+            height:30px;
+            line-height: 30px;
+            margin-right:10px;
+            padding:0 20px;
+            border:1px solid #d5d5d5;
+            background: #fff;
+            -webkit-border-radius:4px;
+            -moz-border-radius:4px;
+            border-radius:4px;
+          }
+          .btn1{
+            background: #00aaee;
+            border:1px solid #00aaee;
+            color: #fff;
+            margin-bottom:40px;
+          }
+          .applyType{
+            .check{
+              min-width: 20px;
+              height:20px;
+              background:none;
+            }
+            span{
+              margin-right:20px;
+              line-height: 30px;
+            }
+          }
+        }
+        //地址框
+        //.address-con{
+        //  border:1px solid #d5d5d5;
+        //  -webkit-border-radius:4px;
+        //  -moz-border-radius:4px;
+        //  border-radius:4px;
+        //}
+      }
+      //地址编辑
+      .address-con{
+        margin-bottom: 40px;
+        li{
+          list-style: none;
+          margin-top:15px;
+          height:32px;
+          label{
+            width:180px;
+            text-align: right;
+            height:32px;
+            line-height: 32px;
+            font-weight:normal;
+            color: #333;
+            margin-right:10px;
+          }
+          input{
+            outline: none;
+            padding-left:10px;
+            background: #fff;
+            min-width:400px;
+            height:30px;
+            border:1px solid #d5d5d5;
+            -webkit-border-radius:4px;
+            -moz-border-radius:4px;
+            border-radius:4px;
+          }
+          button{
+            outline: none;
+            height:30px;
+            line-height: 30px;
+            margin-right:10px;
+            padding:0 20px;
+            border:1px solid #d5d5d5;
+            background: #fff;
+            -webkit-border-radius:4px;
+            -moz-border-radius:4px;
+            border-radius:4px;
+          }
+          .btn1{
+            background: #00aaee;
+            border:1px solid #00aaee;
+            color: #fff;
+          }
+          //地址选择
+          select{
+            background: #fff;
+            margin-right: 20px;
+          }
+        }
+      }
+      //统计参数
+      .statistics{
+        margin-bottom: 40px;
+        li{
+          list-style: none;
+          margin-top:15px;
+          height:32px;
+          label{
+            width:180px;
+            text-align: right;
+            height:32px;
+            line-height: 32px;
+            font-weight:normal;
+            color: #333;
+            margin-right:10px;
+          }
+          span{
+            height:32px;
+            line-height: 32px;
+            color: #333;
+          }
+          input{
+            border: none;
+            border-bottom: 1px solid #d5d5d5;
+            padding: 0 10px;
+            width: 100px;
+            text-align: center;
+            outline: none;
+          }
+          button{
+            outline: none;
+            height:30px;
+            line-height: 30px;
+            margin-right:10px;
+            padding:0 20px;
+            border:1px solid #d5d5d5;
+            background: #fff;
+            -webkit-border-radius:4px;
+            -moz-border-radius:4px;
+            border-radius:4px;
+          }
+          .btn1{
+            background: #00aaee;
+            border:1px solid #00aaee;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+
+
+}
+
+

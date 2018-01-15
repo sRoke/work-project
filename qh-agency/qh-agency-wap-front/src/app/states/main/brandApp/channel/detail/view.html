@@ -1,0 +1,77 @@
+<div flex layout="column" class="ks-channelDetail">
+    <!--<md-toolbar class="ks-header">-->
+        <!--<div layout="row" class="ks-header-divWrap">-->
+            <!--<div class="divTop" flex class>-->
+                <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+                         <!--ng-click="fallbackPage()"></md-icon>-->
+                <!--<span class="regSpan">客户信息</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-toolbar>-->
+
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>客户信息</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+    <md-divider></md-divider>
+
+    <md-content flex layout="column" layout-align="start center" class="main">
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>编码</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" >{{data.number}}</div>
+            </div>
+        </div>
+        <div class="center-tab-line"><div class="line"></div></div>
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>名称</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" >{{data.name}}</div>
+            </div>
+        </div>
+        <div class="center-tab-line"><div class="line"></div></div>
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>类别</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" >{{data.type}}</div>
+            </div>
+        </div>
+        <div class="center-tab-line"><div class="line"></div></div>
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>等级</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" >{{data.lv}}</div>
+            </div>
+        </div>
+        <div class="center-tab-line"><div class="line"></div></div>
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>地址</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" >{{data.address}}</div>
+            </div>
+        </div>
+        <div class="center-tab-line"><div class="line"></div></div>
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>联系人</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" >{{data.contacts}}</div>
+            </div>
+        </div>
+        <div class="center-tab-line"><div class="line"></div></div>
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>手机号</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" >{{data.phone}}</div>
+            </div>
+        </div>
+        <!--<div class="center-tab-line"><div class="line"></div></div>-->
+
+
+    </md-content>
+</div>
+

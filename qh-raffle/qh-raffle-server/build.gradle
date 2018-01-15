@@ -1,0 +1,133 @@
+apply plugin: "java"
+apply plugin: 'org.springframework.boot'
+apply plugin: "com.gorylenko.gradle-git-properties"
+
+bootRun {
+    addResources = true
+    systemProperties = System.properties
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    //archives javadocJar
+}
+
+
+dependencies {
+    compile project(":qh-raffle-api")
+    compile project(":qh-raffle-domain")
+    compile project(":qh-raffle-service")
+    compile project(":qh-raffle-msg-impl")
+
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile("org.springframework.boot:spring-boot-devtools")
+
+    compile('com.fasterxml.jackson.dataformat:jackson-dataformat-xml')
+    compile('com.fasterxml.jackson.module:jackson-module-parameter-names')
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-jdk8')
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
+
+    compile('org.apache.httpcomponents:httpclient')
+    compile('org.springframework.security.oauth:spring-security-oauth2')
+    compile('org.springframework.security:spring-security-jwt')
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+    compile 'org.apache.poi:poi'
+    compile 'org.apache.poi:poi-ooxml'
+
+
+    compile('com.querydsl:querydsl-mongodb')
+    compile('com.querydsl:querydsl-apt')
+    compile('com.querydsl:querydsl-core')
+    compile('joda-time:joda-time')
+
+
+    compile('org.apache.curator:curator-framework')
+    compile("org.springframework.integration:spring-integration-zookeeper")
+//    compile('org.apache.curator:curator-framework')
+
+
+
+
+    //compile('org.mongodb.morphia:morphia')
+    //querydslapt('com.querydsl:querydsl-apt')
+
+    compile('org.springframework.boot:spring-boot-starter-jersey')
+    compile('org.glassfish.jersey.ext:jersey-spring3')
+
+    compile('io.swagger:swagger-core')
+    compile('io.swagger:swagger-jaxrs')
+    compile('io.swagger:swagger-jersey2-jaxrs')
+    compile('io.swagger:swagger-annotations')
+    compile('org.webjars:swagger-ui:3.0.19')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+//    compile("net.kingsilk:qh-common-admin-stub:${qhCommonAdminVersion}")
+
+    compile('org.springframework.session:spring-session')
+    compile('org.springframework.session:spring-session-data-mongo')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+}
+
+test {
+    testLogging.showStandardStreams = false
+}
+
+
+bootRun {
+    addResources = true
+    systemProperties = System.properties
+}
+
+bootRepackage {
+    enabled = true
+    withJarTask jar
+    classifier = 'boot'
+}
+
+springBoot {
+    buildInfo {
+        additionalProperties = [
+                'foo': 'bar'
+        ]
+    }
+}
+
+publish {
+    dependsOn assemble
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+
+            artifact sourcesJar {
+                classifier "sources"
+            }
+
+            artifact(file("${buildDir}/libs/${project.name}-${project.version}-${bootRepackage.classifier}.jar")) {
+                classifier 'boot'
+            }
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes "Implementation-Version": project.version
+    }
+}

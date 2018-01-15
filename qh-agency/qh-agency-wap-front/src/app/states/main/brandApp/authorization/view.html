@@ -1,0 +1,25 @@
+<div flex layout="column" class="ks-home">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>授权书</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex ng-if="aaa">
+        <img src="{{aaa}}" alt="" width="100%">
+    </md-content>
+    <md-content flex layout="column" class="empty"
+                ng-if="!aaa"
+                style="overflow-x: hidden;background: #f5f5f5">
+        <!--<div class="top-line"></div>-->
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-authorize-o" class="icon"></md-icon>
+            <div class="txt">暂无授权书～</div>
+        </div>
+    </md-content>
+</div>
+
+

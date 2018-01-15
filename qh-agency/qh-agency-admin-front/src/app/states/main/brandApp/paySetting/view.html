@@ -1,0 +1,112 @@
+<div class="ks-paySetting">
+    <div class="main" flex>
+        <!--微信设置-->
+        <ul layout="row" class="title">
+            <li  ng-class="{checked:activeNum == '1'}" ng-click="changeTab(1)">微信支付设置</li>
+            <li  ng-class="{checked:activeNum == '2'}" ng-click="changeTab(2)">支付宝支付设置</li>
+        </ul>
+        <ul layout="column" class="wxPay" ng-if="activeNum == '1'">
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    公众号APPID：
+                </li>
+                <div layout="column" class="update">
+                    <input type="text" ng-model="data.appId">
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    微信支付密钥：
+                </li>
+                <div layout="column" class="update">
+                    <input type="text" ng-model="data.paySecret">
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    商户号：
+                </li>
+                <div layout="column" class="update">
+                    <input type="text" ng-model="data.mchId">
+                    <div layout="row" >
+                        <button class="btn1" ng-click="save('wx');">保存</button>
+                    </div>
+                </div>
+            </div>
+            <div layout="row" class="content" style="border-top: 1px solid #D5D5D5;margin-top: 30px;">
+                <li layout="row" layout-align="end center">
+                    微信支付证书：
+                </li>
+                <div layout="column" class="update">
+                    <input type="file" file-model="myFile" id="fileText">
+                    <!--<div class="fileBox" layout="row">-->
+                        <!--<input type="file" file-model="myFile" id="fileText">-->
+                        <!--<span class="file1">点击上传文件</span>-->
+                        <!--<span class="file2"></span>-->
+                    <!--</div>-->
+                    <div layout="row" >
+                        <button class="btn1" ng-click="btn()">上传</button>
+                    </div>
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                </li>
+                <div layout="column" class="update">
+                    <span>*备注：商家开通微信支付，用户购买时可以使用微信支付，微信参数设置示例</span>
+                    <span>1：登录微信公众平台后，开通微信支付功能，
+                        <a href="http://jingyan.baidu.com/article/636f38bb48c6fcd6b9461071.html" target="_blank">点击查看步骤</a>
+                    </span>
+                    <span>2：微信支付平台设置参数，<a href="https://pay.weixin.qq.com/index.php/public/cms/content_detail?lang=zh&id=37000" target="_blank">点击查看步骤</a></span>
+                    <span>3：生意参谋设置参数</span>
+                </div>
+            </div>
+        </ul>
+        <!--支付宝设置-->
+        <ul layout="column" class="wxPay" ng-if="activeNum == '2'">
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    APPID：
+                </li>
+                <div layout="column" class="update">
+                    <input type="text" ng-model="item.appId">
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    商户的公钥：
+                </li>
+                <div layout="column" class="update">
+                    <input type="text" ng-model="item.mchPubKey">
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                    商户的私钥：
+                </li>
+                <div layout="column" class="update">
+                    <input type="text" ng-model="item.mchPriKey">
+                    <div layout="row" >
+                        <button class="btn1" ng-click="save('pay');">保存</button>
+                    </div>
+                </div>
+            </div>
+            <div layout="row" class="content">
+                <li layout="row" layout-align="end center">
+                </li>
+                <div layout="column" class="update">
+                    <span>*备注：商家开通支付宝支付，用户购买时可以使用支付宝支付，支付宝参数设置示例</span>
+                    <span>1：登录微信公众平台后，开通支付宝支付功能，
+                        <a>点击查看步骤</a>
+                    </span>
+                    <span>2：支付宝平台设置参数，<a>点击查看步骤</a></span>
+                    <span>3：生意参谋设置参数</span>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
+
+
+
+

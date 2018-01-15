@@ -1,0 +1,55 @@
+.ks-user-wrap {
+  .box {
+    margin: 0 20px;
+    md-divider {
+      height: 1px;
+      -webkit-transform: scaleY(0.5);
+      -webkit-transform-origin: 0 0;
+      overflow: hidden;
+    }
+    .wrap {
+      height: 56px;
+      line-height: 56px;
+      .txt {
+        font-size: 16px;
+        color: #101010;
+      }
+      .right-wrap {
+        .ks-icon {
+          font-size: 12px;
+          color: #d5d5d5;
+          text-align: right;
+        }
+        .ks-left-icon {
+          font-size: 14px;
+          color: #999;
+          text-align: right;
+        }
+      }
+
+    }
+    .wrap:nth-of-type(1) {
+      height: 70px;
+      line-height: 70px;
+      img {
+        width: 44px;
+        height: 44px;
+        vertical-align: middle;
+        border-radius: 50%;
+      }
+    }
+  }
+  .bottom-btn {
+    height: 50px;
+    min-height: 50px;
+    flex-shrink: 0;
+    background: #333333;
+    line-height: 50px;
+    text-align: center;
+    .btn-txt {
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+    }
+  }
+}

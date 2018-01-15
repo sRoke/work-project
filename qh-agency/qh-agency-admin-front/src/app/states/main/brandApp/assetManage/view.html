@@ -1,0 +1,121 @@
+<div class="ks-common-list-withdraw">
+    <div class="common-list-center">
+        <ul>
+            <li layout="row">
+                <!--<label for="bhnum">用户：</label>-->
+                <!--<input id="bhnum" type="text" class="choose " placeholder="用户名" ng-model="reason">-->
+                <label for="status" >状态:</label>
+                <select id="status" ng-model="status">
+                    <option value="">全部</option>
+                    <option value="CASHING">提现处理中</option>
+                    <option value="SUCCESS">提现成功</option>
+                    <option value="REJECT">提现被拒绝</option>
+                    <option value="ERROR">提现失败</option>
+                </select>
+                <label  style="margin-left: 20px;">时间:</label>
+                <div >
+                    <input type="text" class="layui-input choose" id="test1" ng-model="startDate" placeholder="开始时间">
+                    <!--<md-datepicker ng-model="startDate" md-placeholder="Enter date" md-open-on-focus-->
+                                   <!--md-date-locale="s" md-date-locale="dateF"></md-datepicker>-->
+                </div>
+                <span>至</span>
+                <div>
+                    <input type="text" class="layui-input choose" id="test2" ng-model="endDate" placeholder="结束时间">
+                    <!--<md-datepicker ng-model="endDate" md-placeholder="End date" md-open-on-focus-->
+                                   <!--md-date-locale="s" md-date-locale="dateF"></md-datepicker>-->
+                </div>
+
+                <!--<span style="margin-left: 0px;">-->
+                    <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-search"-->
+                             <!--alt="查询"-->
+                             <!--style="color: #999;font-size:20px;text-align: center;cursor: pointer;outline: none;"-->
+                             <!--ng-click="getInfo('0')"></md-icon>-->
+                <!--</span>-->
+                <button id="inquire" style="" ng-click="pageChanged('0')">
+                   搜索
+                </button>
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+    <!--div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <!--表头-->
+        <div class="common-list-detail-thead" layout="row">
+            <div class="thead-show" flex="15" layout-align="center" style="padding-left: 30px;">
+                <span>编号</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>提现用户</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>提现金额</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>钱包余额</span>
+            </div>
+            <div class="thead-show" flex layout-align="center">
+                <span>申请时间</span>
+            </div>
+            <div class="thead-show" flex="15" layout-align="center">
+                <span>状态</span>
+            </div>
+            <div class="thead-show end-show" flex="15" layout-align="center">
+                <span>操作</span>
+            </div>
+        </div>
+        <!--表格详细内容-->
+        <div class="common-list-detail-tbody" layout="column">
+            <!--定义每列数据    父级用ng-repeat循环此行-->
+            <div class="common-list-detail-row" layout="row" ng-repeat="list in data">
+                <div class="thead-show" flex="15" layout-align="center" style="padding-left: 30px;">
+                    <span>{{list.seq}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center">
+                    <span>{{list.partnerStaffName}}&nbsp;{{list.partnerStaffPhone}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center"
+                     style="overflow: hidden;text-overflow:ellipsis;white-space:nowrap;">
+                    <span>{{list.withdrawAmount/100|num:2}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center" style="min-width: 134px;">
+                    <span>{{list.available/100|num:2}}</span>
+                </div>
+                <div class="thead-show" flex layout-align="center">
+                    <span>{{list.applyTime|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="thead-show" flex="15" layout-align="center">
+                    <span>{{list.statusDesp}}</span>
+                </div>
+                <div class="thead-show" flex="15" layout-align="end center" layout="row" style="padding-right: 20px;">
+                    <div  class="operateFont" layout="column">
+                        <!--<button ng-if="list.status == 'SUCCESS'">提现打款</button>-->
+                        <button ng-click="agree(list.id)" ng-if="list.status != 'SUCCESS'" ng-if="WITHDRAWCASH_U">提现打款</button>
+                    </div>
+                    <!--<div flex class="operateFont" layout="column">-->
+                    <!--<button ng-click="openDialog(item,$event)">重新打款</button>-->
+                    <!--</div>-->
+                    <!--  <div flex class="operateFont" layout="column">
+                          <button class="rejet" ng-click="reject(list.id)" ng-if="list.status =='PAY'">拒绝</button>
+                          <button class="rejet" ng-if="list.status !='PAY'">拒绝</button>
+                      </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分页-->
+    <div style="width: 98%; margin: 10px auto 0px">
+        <div style="width: 500px;min-width: 500px;margin-left: 10px;" uib-pagination total-items="data.totalElements"
+             ng-model="curPage"
+             ng-change="getInfo()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+        <div style="float: right" class="pageSubnav">
+            <span>共{{data.totalElements}}条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button ng-click="getInfo()">确定</md-button>
+        </div>
+    </div>
+</div>

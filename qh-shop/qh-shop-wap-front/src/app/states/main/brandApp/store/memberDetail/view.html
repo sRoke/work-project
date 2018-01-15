@@ -1,0 +1,129 @@
+<div flex="100" layout="column" class="ks-memberDetail">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex ng-if="!isSave">详细资料</h1>
+        <h1 flex ng-if="isSave">修改详细资料</h1>
+        <div class="right-button" flex="20" style="color: #E53467;" ng-if="!isSave" ng-click="changeStatus()">
+            编辑
+        </div>
+        <div class="right-button" flex="20" style="color: #E53467;" ng-if="isSave" ng-click="editSave()">
+            保存
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+
+
+        <div class="cli-wrap" layout="column">
+            <div class="dis-wrap" layout="column" ui-sref="main.brandApp.store.memberDetail({id})">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name">
+                        姓名
+                    </div>
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                    <div class="cli-right">
+                        <input type="text" ng-model="member.realName" readonly ng-if="!isSave">
+                        <input type="text" placeholder="请输入姓名" ng-model="member.realName" ng-if="isSave">
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="dis-wrap" layout="column">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name">
+                        手机号码
+                    </div>
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"
+                             style="color:#999"></md-icon>-->
+                    <div class="cli-right">
+                        <input type="text" ng-model="data.phone" readonly>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="dis-wrap" layout="column">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name">
+                        联系方式1
+                    </div>
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"-->
+                    <!--style="color:#999"></md-icon>-->
+                    <div class="cli-right">
+                        <input type="text"  ng-model="member.phone1" readonly ng-if="!isSave">
+                        <input type="text" placeholder="请输入联系方式1" ng-model="member.phone1"  ng-if="isSave">
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="dis-wrap" layout="column">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name">
+                        联系方式2
+                    </div>
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                    <div class="cli-right"> <!--ng-show="data.contacts[1]"-->
+                        <input type="text"  ng-model="member.phone2" readonly ng-if="!isSave">
+                        <input type="text" placeholder="请输入联系方式2" ng-model="member.phone2" ng-if="isSave">
+                    </div>
+                </div>
+                <!--<md-divider></md-divider>-->
+            </div>
+        </div>
+        <div class="blank-line"></div>
+        <div class="cli-wrap" layout="column">
+            <div class="dis-wrap" layout="column" ui-sref="main.brandApp.store.memberDetail({id})">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name">
+                        微信头像
+                    </div>
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                    <div class="cli-right" layout="column" layout-align="center center">
+                        <img src="{{data.avatar}}" alt="" width="50" height="50">
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="dis-wrap" layout="column">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name">
+                        微信昵称
+                    </div>
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"
+                             style="color:#999"></md-icon>-->
+                    <div class="cli-right">
+                        {{data.nickName}}
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="dis-wrap" layout="column">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name">
+                        所属地区
+                    </div>
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"-->
+                    <!--style="color:#999"></md-icon>-->
+                    <div class="cli-right">
+                        {{data.province}}{{data.city}}
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <!--<div class="dis-wrap" layout="column">
+                <div flex class="cli-dis" layout="row" layout-align="space-between center">
+                    <div class="cli-name">
+                        联系方式2
+                    </div>
+                    &lt;!&ndash;<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>&ndash;&gt;
+                    <div class="cli-right">
+                        {{data.phone}}
+                    </div>
+                </div>
+                &lt;!&ndash;<md-divider></md-divider>&ndash;&gt;
+            </div>-->
+        </div>
+    </md-content>
+
+</div>

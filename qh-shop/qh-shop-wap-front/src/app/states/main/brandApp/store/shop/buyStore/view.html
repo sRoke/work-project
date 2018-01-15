@@ -1,0 +1,25 @@
+<div class="ks-buyStore"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20"  ui-sref="main.brandApp.store.shop.shopManage">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>续费</h1>
+        <div class="right-button" flex="20" ui-sref="main.brandApp.store.shop.payDetail">
+            记录
+        </div>
+    </div>
+    <div class="topLine"></div>
+    <md-content flex style="overflow-x:hidden;" layout="column" layout-align="center center">
+        <div class="price-wrap" layout="column">
+            <div class="word1">新零售解决方案</div>
+            <div class="word2">开一家店，卖一座城</div>
+            <div class="word3">续费仅需</div>
+            <div class="price"><span style="color: #E53467 ;">￥</span>{{buyPrice.mSallPrice/100|num:2}}<span style="color: #333;">元/月</span></div>
+
+            <div class="oldPrice"><a>原价：￥{{buyPrice.mOldPrice/100|num:2}}元/月</a></div>
+            <div class="btn-con" layout-align="center center" layout="row">
+                <button class="btn" ng-click="goBuy()">续费</button>
+            </div>
+        </div>
+    </md-content>
+</div>

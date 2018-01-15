@@ -1,0 +1,50 @@
+<!--<div flex layout="column" class="ks-lotteryDialog">-->
+<!--<div class="ks-lotteryDialog-bg">-->
+<!--</div>-->
+<!--</div>-->
+
+
+<!--<div class="md-dialog-container" id="myStaticDialog">-->
+<!--<md-dialog>-->
+<!--This is a pre-rendered dialog.-->
+<!--</md-dialog>-->
+<!--</div>-->
+
+<md-dialog class="ks-lotteryDialog" >
+    <md-dialog-content class="ks-lotteryDialog-main" ng-if="vm.ind !=0">
+        <div class="ks-lotteryDialog-cancel" ng-click="vm.cancel()"></div>
+        <div class="ks-lotteryDialog-label">
+            <label>{{vm.ind.awardName}}</label>
+        </div>
+        <div class="ks-lotteryDialog-img">
+            <img ng-src="{{vm.imgUrl}}{{vm.ind.awardImg}}">
+        </div>
+        <div class="ks-lotteryDialog-checked" ng-click="vm.checkSubmit()">
+            <!--<a ng-href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5NzY4NTc2Mg==&scene=124#wechat_redirect">领取奖品</a>-->
+            <!--领取奖品-->
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions class="ks-lotteryDialog-share" id="ks-lotteryDialog-share" ng-click="vm.check()" ng-if="vm.flog">
+        <!--<div class="ks-lotteryDialog-share" ng-click="vm.check()"></div>-->
+    </md-dialog-actions>
+
+
+
+
+    <!--<md-dialog-content class="ks-noLotteryDialog-main" ng-if="vm.ind ==0">-->
+        <!--<div class="ks-lotteryDialog-cancel" ng-click="vm.cancel()"></div>-->
+        <!--<div class="ks-lotteryDialog-label">-->
+            <!--<label>{{vm.ind}}哎呀,离中奖还差一丢丢的距离</label>-->
+        <!--</div>-->
+        <!--<div class="ks-lotteryDialog-img">-->
+            <!--<img src="assets/img/lottery/ku.png" class="ku" alt="">-->
+        <!--</div>-->
+        <!--<div class="ks-lotteryDialog-checked" ng-click="vm.checkSubmit()">-->
+            <!--&lt;!&ndash;<a ng-href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5NzY4NTc2Mg==&scene=124#wechat_redirect">领取奖品</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;领取奖品&ndash;&gt;-->
+        <!--</div>-->
+    <!--</md-dialog-content>-->
+
+
+</md-dialog>
+

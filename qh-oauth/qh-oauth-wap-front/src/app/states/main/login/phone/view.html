@@ -1,0 +1,82 @@
+<div class="ks-login" style="min-width: 1024px">
+    <div class="img-wrap">
+        <img src="https://img.kingsilk.net/FgaZnyDUYaIpWQK3iPr6cDT4rYf6"/>
+    </div>
+    <div class="center-wrap">
+        <div class="parent">
+            <div class="contentRight">
+                <div class="contentRightHeader" layout="row">
+                    <div class="tab" flex ng-class="{active:loginType == 'phonePwd'}" ng-click="changeTab('phonePwd')">
+                        <div class="tab-top"></div>
+                        <div class="tab-content">
+                            手机验证码登录
+                        </div>
+                    </div>
+                    <div class="tab" flex ng-class="{active:loginType == 'pwd'}" ng-click="changeTab('pwd')">
+                        <div class="tab-top"></div>
+                        <div class="tab-content">
+                            密码登录
+                        </div>
+                    </div>
+                </div>
+                <div class="contentRightCenter" layout="column" layout-align="start center" ng-if="loginType == 'phonePwd'">
+                    <div class="phone" layout="row" layout-align="start center">
+                        <label>手机号</label>
+                        <div style="border: 1px solid #d5d5d5;border-radius: 4px;overflow: hidden">
+                            <input type="tel" placeholder="请输入手机号码" ng-model="user.phone" ng-keyup="enterEvent($event,'phonePwd')">
+                        </div>
+                    </div>
+                    <div class="pwd" layout="row" layout-align="start center">
+                        <label>验证码</label>
+                        <div style="border: 1px solid #d5d5d5;border-radius: 4px;overflow: hidden" layout="row" layout-align="start center">
+                            <div>
+                                <input type="tel" placeholder="请输入验证码" ng-model="user.pwd" ng-keyup="enterEvent($event,'phonePwd')">
+                            </div>
+                            <div style="width: 1px;background: #d5d5d5;height: 20px"></div>
+                            <div class="getPwd" ng-click="getVCcode()">{{gitCodeTime}}</div>
+                        </div>
+                    </div>
+                    <div class="login-btn" ng-click="login()">登录</div>
+                    <div class="login-wx" layout="row" layout-align="end center">
+                        <div class="login-wx-btn">微信登录</div>
+                    </div>
+                </div>
+
+                <div class="contentRightCenter2" layout="column" layout-align="start center" ng-if="loginType == 'pwd'">
+                    <div class="phone" layout="row" layout-align="start center">
+                        <label>帐号</label>
+                        <div style="border: 1px solid #d5d5d5;border-radius: 4px;overflow: hidden">
+                            <input type="tel" placeholder="请输入帐号" ng-model="user.accounts" ng-keyup="enterEvent($event,'pwd')">
+                        </div>
+                    </div>
+                    <div class="pwd" layout="row" layout-align="start center">
+                        <label>密码</label>
+                        <div style="border: 1px solid #d5d5d5;border-radius: 4px;overflow: hidden" layout="row" layout-align="start center">
+                            <div>
+                                <input type="password" placeholder="请输入密码" ng-model="user.accountsPwd" ng-keyup="enterEvent($event,'pwd')">
+                            </div>
+                            <!--<div style="width: 1px;background: #d5d5d5;height: 20px"></div>-->
+                            <!--<div class="getPwd" ng-click="getVCcode()">{{gitCodeTime}}</div>-->
+                        </div>
+                    </div>
+                    <div class="login-btn" ng-click="loginPwd()">登录</div>
+                    <div class="login-wx" layout="row" layout-align="end center">
+                        <div class="login-wx-btn">微信登录</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--<ol> users :-->
+    <!--<li>a_admin/a_admin</li>-->
+    <!--<li>a_user/a_user</li>-->
+    <!--</ol>-->
+    <div class="bottom">
+        <div class="txt">
+            <span>
+                Copyright © 2017杭州钱皇网络科技有限公司
+            </span>
+        </div>
+    </div>
+</div>

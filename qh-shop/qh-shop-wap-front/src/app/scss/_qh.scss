@@ -1,0 +1,6 @@
+@mixin transform($transform) {
+  -webkit-transform: scaleX($transform);
+  -ms-transform: scaleX($transform); // IE9 only
+  -o-transform: scaleX($transform);
+  transform: scaleX($transform);
+}

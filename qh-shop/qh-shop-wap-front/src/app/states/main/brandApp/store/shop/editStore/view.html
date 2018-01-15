@@ -1,0 +1,75 @@
+<div class="ks-editStore"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex ng-if="!isSave">仓库</h1>
+        <h1 flex ng-if="isSave">编辑仓库</h1>
+        <div class="right-button" flex="20" style="color: #E53467;" ng-if="!isSave" ng-click="changeStatus()">
+            编辑
+        </div>
+        <div class="right-button" flex="20" style="color: #E53467;" ng-if="isSave" ng-click="changeStatus()">
+            保存
+        </div>
+    </div>
+    <div class="center-line"></div>
+
+    <md-content flex style="overflow-x:hidden;">
+        <div class="main" layout="column">
+            <div layout="column" class="center-con">
+                <div class="center-tab" layout="row">
+                    <div class="tab-left">名称</div>
+                    <div class="tab-right" flex>
+                        <input type="text" placeholder="请输入仓库名称">
+                    </div>
+                </div>
+                <!--0.5px细线-->
+                <div class="line"></div>
+                <div class="center-tab" layout="row" layout-align="space-between center">
+                    <div layout="row">
+                        <div class="tab-left">所属门店</div>
+                    </div>
+                    <div layout="row" flex layout-align="space-between center" ng-click="openChecked()">
+                        <div class="tab-right">
+                            <input type="text" placeholder="请选择所属门店"  readonly>
+                        </div>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="center-tab" layout="row">
+                    <div class="tab-left">负责人</div>
+                    <div class="tab-right" flex>
+                        <input type="text" placeholder="请选择门店负责人">
+                    </div>
+                </div>
+                <!--0.5px细线-->
+                <div class="line"></div>
+                <div class="center-tab" layout="row">
+                    <div class="tab-left">是否启用</div>
+                    <div class="tab-right" flex>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" ng-click="changeCheck()" ng-if="!checked"></md-icon>
+                        <md-icon class="ks-icon ks-icon1" md-font-set="ks-icon" md-font-icon="ag-complete" ng-click="changeCheck()" ng-if="checked"></md-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="center-line"></div>
+            <!--备注-->
+            <div layout="column" class="center-con">
+                <div class="center-tab" layout="row">
+                    <div class="tab-left-role">备注</div>
+                </div>
+                <!--0.5px细线-->
+                <!--<div class="line"></div>-->
+                <div>
+                    <textarea placeholder="请输入备注内容"></textarea>
+                </div>
+                <!--删除仓库-->
+                <div layout="row" ng-if="isSave">
+                    <button class="delete-btn">删除仓库信息</button>
+                </div>
+            </div>
+
+        </div>
+    </md-content>
+</div>

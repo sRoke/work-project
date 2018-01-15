@@ -1,0 +1,539 @@
+.ks-home {
+  //搜索
+  .search {
+    background: #fff;
+    height: 44px;
+    min-height: 44px;
+    .input-wrap {
+      position: relative;
+      margin: 0 15px;
+      input {
+        border: none;
+        background: #F5F5F5;
+        border-radius: 8px;
+        height: 32px;
+        padding-left: 24px;
+      }
+      input::-webkit-input-placeholder { /* WebKit browsers */
+        font-size: 14px;
+        color: #D5D5D5;
+        letter-spacing: -0.34px;
+        //line-height: 14px;
+        padding-left: 24px;
+      }
+
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        font-size: 14px;
+        color: #D5D5D5;
+        letter-spacing: -0.34px;
+        //line-height: 14px;
+        padding-left: 24px;
+      }
+
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        font-size: 14px;
+        color: #D5D5D5;
+        letter-spacing: -0.34px;
+        //line-height: 14px;
+        padding-left: 24px;
+      }
+      .ks-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        margin-top: -8px;
+        font-size: 16px;
+        min-height: 16px;
+        min-width: 16px;
+        line-height: 16px;
+      }
+    }
+
+    > .ks-icon {
+      color: #000;
+      font-size: 20px;
+      min-height: 20px;
+      min-width: 20px;
+      line-height: 20px;
+      margin: 0;
+    }
+    .right-rank {
+      position: relative;
+      .ks-icon {
+        color: #000;
+        font-size: 20px;
+        min-height: 20px;
+        min-width: 20px;
+        line-height: 20px;
+        margin: 0;
+      }
+      .pos-wrap {
+        padding: 5px 10px;
+        position: absolute;
+        width: 80px;
+        right: 10px;
+        top: 34px;
+        z-index: 11;
+        background: #fff;
+        -webkit-box-shadow: 0 0 0 1px #ddd;
+        box-shadow: 0 0 0 1px #ddd;
+        &::before, &::after {
+          position: absolute;
+          content: ' ';
+          border: 8px solid transparent;
+          border-bottom-width: 10px;
+          border-bottom-color: #fff;
+          top: -16px;
+          left: 58px
+        }
+        &::before {
+          top: -19px;
+          border-bottom-color: #ddd
+        }
+        .pos-id {
+          line-height: 30px;
+          color: #999;
+        }
+        .posActive {
+          color: #101010;
+        }
+      }
+    }
+  }
+
+  .tab {
+    background: #fff;
+    .tab-btn {
+      padding: 0 20px;
+      .btn {
+        display: block;
+        padding: 10px 0;
+        color: #333;
+      }
+    }
+    .active {
+      border-bottom: 1px solid #E53467;
+      color: #E53467 !important;
+    }
+  }
+
+  #swiper-container2 {
+    width: 100%;
+    //height: 40px;
+    min-height: 40px;
+    //margin: 0 auto 10px;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    my-wrapper2{
+      height: 100%;
+    }
+    .my-slide2 {
+      box-sizing: border-box;
+      text-align: center;
+      -webkit-flex-shrink: 0;
+      -ms-flex: 0 0 auto;
+      flex-shrink: 0;
+      height: 100%;
+      //width: 100px;
+      //margin-right: 0 !important;
+      position: relative;
+      //line-height: 44px;
+      color: #333;
+      font-size: 14px;
+      .tab-btn {
+        padding: 0 20px;
+        min-height: 40px;
+        .btn {
+          display: block;
+          color: #333;
+          line-height: 40px;
+          min-height: 40px;
+        }
+      }
+      .active {
+        min-height: 40px;
+        border-bottom: 1px solid #E53467;
+      }
+    }
+    .my-slide2-content.active {
+      //border-bottom: 2px solid #b8383a;
+      //color: #fff;
+      //background: #e84e40 !important;
+      //font-weight: bold;
+    }
+    .swiper-pagination-bullets {
+      display: block !important;
+    }
+    .active {
+      visibility: visible !important;
+    }
+    .my-wrapper2 {
+      display: flex;
+      //visibility: hidden;
+      height: inherit;
+      background: #fff;
+      //margin: 0 auto;
+      //visibility: visible !important;
+    }
+  }
+
+  .guess {
+    .title {
+      font-size: 16px;
+      color: #101010;
+      height: 46px;
+    }
+    .div-wrap {
+
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-orient: normal;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+    }
+    // 推荐商品
+    .rec-item {
+      width: 50%;
+      margin-top: 2px;
+      //margin-bottom: 15px;
+      // 奇数
+
+      &:nth-child(odd) > div {
+        //border: 1px solid blue;
+        margin: 10px 6px 0 10px;
+      }
+
+      // 偶数
+      &:nth-child(even) > div {
+        //border: 1px solid greenyellow;
+        margin: 10px 10px 0 6px;
+      }
+
+      /* 前两个 */
+      &:nth-child(-n+2) > div {
+        //margin-top: 0;
+      }
+
+      /* 倒数第二个并且是基数、最后一个元素并且是偶数 */
+      &:nth-last-child(-n+2):nth-child(odd) > div, &:last-child:nth-child(even) > div {
+        margin-bottom: 10px;
+      }
+
+      // 商品图片
+      .item-img {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+
+        &:before {
+          content: "";
+          display: block;
+          padding-top: 100%;
+        }
+        img {
+          position: absolute;
+          top: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .dis {
+        background: #fff;
+        height: 104px;
+        padding: 10px 10px;
+        .item-title {
+          color: #464646;
+          font-size: 14px;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
+        .dis-price {
+          width: 100%;
+          .price {
+            color: #E53467;
+            white-space: nowrap;
+            .priceY {
+              font-size: 12px !important;
+              display: inline-block;
+            }
+            .priceX {
+              display: inline-block;
+              margin-left: -6px;
+              font-size: 18px;
+            }
+          }
+          .old-price {
+            text-decoration: line-through;
+            color: #C3C3C3;
+            font-size: 14px;
+            white-space: nowrap;
+          }
+        }
+
+        //@media all and (orientation : landscape) { /*这是匹配横屏的状态，横屏时的css代码*/
+        //  body {
+        //    background-color: #ff0000;
+        //  }
+        //}
+        //@media all and (orientation : portrait){ /*这是匹配竖屏的状态，竖屏时的css代　*/
+        //  body {
+        //    background-color: #00ff00;
+        //  }
+        //}
+
+      }
+
+      //.item-title {
+      //  height: 21px;
+      //  min-height: 21px;
+      //  margin: 6px 0 8px 0;
+      //  font-size: 14px;
+      //  color: #101010;
+      //  line-height: 1.5em;
+      //  overflow: hidden;
+      //  text-overflow: ellipsis;
+      //  white-space: nowrap;
+      //  -webkit-box-orient: vertical;
+      //}
+      //.item-price {
+      //  font-size: 14px;
+      //  color: #ba9f6e;
+      //  margin-top: -4px;
+      //  overflow: hidden;
+      //  text-overflow: ellipsis;
+      //  display: -webkit-box;
+      //  -webkit-line-clamp: 2;
+      //  -webkit-box-orient: vertical;
+      //}
+    }
+  }
+
+  @media (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) { /* 兼容iphone4/4s */
+
+    .guess {
+      .title {
+        font-size: 16px;
+        color: #101010;
+        height: 46px;
+      }
+      .div111 {
+
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-orient: normal;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+      }
+      // 推荐商品
+      .rec-item {
+        width: 50%;
+        margin-top: 2px;
+        //margin-bottom: 15px;
+        // 奇数
+
+        &:nth-child(odd) > div {
+          //border: 1px solid blue;
+          margin: 10px 6px 0 10px;
+        }
+
+        // 偶数
+        &:nth-child(even) > div {
+          //border: 1px solid greenyellow;
+          margin: 10px 10px 0 6px;
+        }
+
+        /* 前两个 */
+        &:nth-child(-n+2) > div {
+          //margin-top: 0;
+        }
+
+        /* 倒数第二个并且是基数、最后一个元素并且是偶数 */
+        &:nth-last-child(-n+2):nth-child(odd) > div, &:last-child:nth-child(even) > div {
+          margin-bottom: 10px;
+        }
+
+        // 商品图片
+        .item-img {
+          width: 100%;
+          position: relative;
+          overflow: hidden;
+
+          &:before {
+            content: "";
+            display: block;
+            padding-top: 100%;
+          }
+          img {
+            position: absolute;
+            top: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .dis {
+          background: #fff;
+          height: 104px;
+          padding: 10px 10px;
+          .item-title {
+            color: #464646;
+            font-size: 14px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+          }
+          .dis-price {
+            width: 100%;
+            .price {
+              color: #E53467;
+              .priceY {
+                font-size: 12px !important;
+              }
+              .priceX {
+                margin-left: -6px;
+                font-size: 18px;
+              }
+            }
+            .old-price {
+              text-decoration: line-through;
+              color: #C3C3C3;
+              font-size: 12px !important;
+            }
+          }
+
+        }
+
+      }
+    }
+
+    .dis-price {
+      width: 100%;
+      .price {
+        color: #E53467;
+        .priceY {
+          font-size: 12px !important;
+          margin-left: -6px;
+        }
+        .priceX {
+          font-size: 18px;
+        }
+      }
+      .old-price {
+        text-decoration: line-through;
+        color: #C3C3C3;
+        font-size: 12px !important;
+      }
+    }
+  }
+  @media (width: 320px) and (-webkit-min-device-pixel-ratio: 2) { /* 兼容iphone5 */
+
+    .guess {
+      .title {
+        font-size: 16px;
+        color: #101010;
+        height: 46px;
+      }
+      .div111 {
+
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-orient: normal;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+      }
+      // 推荐商品
+      .rec-item {
+        width: 50%;
+        margin-top: 2px;
+        //margin-bottom: 15px;
+        // 奇数
+
+        &:nth-child(odd) > div {
+          //border: 1px solid blue;
+          margin: 10px 6px 0 10px;
+        }
+
+        // 偶数
+        &:nth-child(even) > div {
+          //border: 1px solid greenyellow;
+          margin: 10px 10px 0 6px;
+        }
+
+        /* 前两个 */
+        &:nth-child(-n+2) > div {
+          //margin-top: 0;
+        }
+
+        /* 倒数第二个并且是基数、最后一个元素并且是偶数 */
+        &:nth-last-child(-n+2):nth-child(odd) > div, &:last-child:nth-child(even) > div {
+          margin-bottom: 10px;
+        }
+
+        // 商品图片
+        .item-img {
+          width: 100%;
+          position: relative;
+          overflow: hidden;
+
+          &:before {
+            content: "";
+            display: block;
+            padding-top: 100%;
+          }
+          img {
+            position: absolute;
+            top: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .dis {
+          background: #fff;
+          height: 104px;
+          padding: 10px 10px;
+          .item-title {
+            color: #464646;
+            font-size: 14px;
+
+          }
+          .dis-price {
+            width: 100%;
+            .price {
+              color: #E53467;
+              .priceY {
+                font-size: 12px !important;
+              }
+              .priceX {
+                margin-left: -6px;
+                font-size: 18px;
+              }
+            }
+            .old-price {
+              text-decoration: line-through;
+              color: #C3C3C3;
+              font-size: 12px !important;
+            }
+          }
+
+        }
+      }
+    }
+
+  }
+
+}

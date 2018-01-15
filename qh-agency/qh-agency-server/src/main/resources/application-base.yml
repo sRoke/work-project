@@ -1,0 +1,120 @@
+# ServerProperties
+server:
+  port: 10070
+  context-path: /agency/rs                            # todo 其它环境修改该行
+  error.include-stacktrace: on_trace_param
+
+# SecurityProperties
+security:
+  basic.enabled: false
+
+
+# AOP
+spring.aop:
+
+  proxy-target-class: true
+
+# LOGGING
+logging:
+  path: /data0/app/qh-agency/qh-agency-wap/logs/
+  file: agency-admin.log
+  level:
+    root: INFO
+    org.glassfish.jersey.server.ContainerRequest:   TRACE
+    org.glassfish.jersey.message.internal:          TRACE
+    org.apache.http.wire:                           DEBUG
+
+# JacksonProperties
+spring.jackson:
+  default-property-inclusion: non_null
+
+qh:
+  qiniu:
+          prefix : "https://img.kingsilk.net/"
+          accessKey : 'aLIjaY2adjM5HC5sDCPVLJYam74lLKgJ1HM-oehT'
+          secretKey : 'In0fWPyrtAoXplKHpO1GA_KMzFmEW2jypHTBtWR8'
+          defaultBucket : "kingsilk"
+  url: "https://kingsilk.net"
+
+# QhAgencyProperties
+net.kingsilk.qh.agency:
+  # http代理设置
+  http:
+    proxy:
+      enabled:      false
+      host:         prod11.kingsilk.net
+      port:         9999
+  jwt:
+    verifierKey: "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxj5GGRjurkM30lTQvrJGnjoIA2QWewPRGrPqtEBB7SWTbdgWIvxuapwPWRAif19iL4LSMxUKBxM68QNkboZ63VWtW6GcZltpH1cO0p1jMzuWo6YPQiV0JT+zF6RmbFJd2uCLRAVjIDwdhyMGrgFmBSV191pSISk3NEVoJpMb3mRxjnLyZXY0cyyIxUC5Nw9Fn62ce5Xe0UdCrwzhMnQ3dXSZK4d1Xw+jOT/vsTKPUutqVWuFbAtu1N3w5UxQmu8JoPHlQvQtfwIVE8UYUDT/a1jtLjFASgDOUSD+gAkgxvjnR2lFC5yNrNKoZhDY9wX+z+mc8z4ynpX9qdHruj/lpwIDAQAB\n-----END PUBLIC KEY-----"
+  qhOAuth:
+    wap:
+      resourceId:               'RSC_ID_qh-oauth-server'
+      url:                      'https://kingsilk.net/oauth2/rs'           # todo 其它环境修改该行
+      accessTokenUri:           '${net.kingsilk.qh.agency.qhOAuth.wap.url}/oauth/token'
+      userAuthorizationUri:     '${net.kingsilk.qh.agency.qhOAuth.wap.url}/oauth/authorize'
+      checkTokenUri:            '${net.kingsilk.qh.agency.qhOAuth.wap.url}/oauth/check_token'
+      userinfoApi:              '${net.kingsilk.qh.agency.qhOAuth.wap.url}/api/user/info'
+      getUserInfoByUserIdApi:   '${net.kingsilk.qh.agency.qhOAuth.wap.url}/api/user/getInfoByUserId'
+      getOpenIdByUserId:        '${net.kingsilk.qh.agency.qhOAuth.wap.url}/api/user/getOpenIdByUserId'
+  qhAgency:
+    server:
+      resourceId:               'RSC_ID_qh-agency-server'
+      clientId:                 'CLIENT_ID_qh-agency-server'
+      url:                      'https://kingsilk.net/agency/rs/api'
+      clientSecret:             'CLIENT_PWD_qh-agency-server_123456'
+      payNotifyUrl:             '/notify/qhPay'
+      withdrawCashNotifyUrl:    '/notify/qhPay'
+
+      #refundNotifyUrl:          'https://agency.kingsilk.net/local/${devPort}/rs/api/notify/qhPay'   //FIXME 不需要，和支付时同一个回调地址
+      scopes:
+        - LOGIN
+
+  qhPay:
+    wap:
+      url:                      'https://kingsilk.net/pay/rs'        # todo 其它环境修改该行
+      resourceId:               'RSC_ID_qh-pay-server'
+      appId:                    'wxbba6def439fc0bd0'
+      api:
+        refund:             '${net.kingsilk.qh.agency.qhPay.wap.url}/api/app/'
+        create:             '${net.kingsilk.qh.agency.qhPay.wap.url}/api/app/'
+        withdrawCash:       '${net.kingsilk.qh.agency.qhPay.wap.url}/api/app/'
+  oauthUt:
+        basePath :                'https://kingsilk.net/oauth2/rs/api'
+  mq:
+    prefix: prod
+    defaultConf:
+      lockWaitTime: 1000
+  msg:
+    publishTo: ALL
+  zk:
+    connStr: prod14.kingsilk.net:2110
+
+
+# JerseyProperties
+# http://docs.spring.io/spring-boot/docs/1.5.1.RELEASE/reference/htmlsingle/#boot-features-jersey
+# https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-Jersey-2.X-Project-Setup-1.5#adding-the-dependencies-to-your-application
+spring.jersey:
+  application-path: /api
+  type: servlet
+  servlet.load-on-startup: 0
+
+
+
+# RABBIT (RabbitProperties)
+# org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+spring.rabbitmq:
+  addresses: prod11.kingsilk.net
+  port: 5672
+  username: guest
+  password: guest
+  enabled: false
+  virtual-host: /
+
+spring:
+    data:
+        elasticsearch:
+            cluster-name: qh-es
+            cluster-nodes: prod14.kingsilk.net:9500
+            local: false
+            repositories:
+                enable: true

@@ -1,0 +1,106 @@
+<div class="ks-confirmOrder"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>订单确认</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <div class="line"></div>
+    <md-content flex style="overflow-x:hidden;background: #f5f5f5;">
+        <div class="main" layout="column">
+            <div layout="column" class="center-con">
+                <!--配送方式-->
+                <div class="delivery" layout="row" layout-align="start center">
+                    <span>配送方式：</span>
+                    <button ng-class ="{'btn-checked': isCheck}"  ng-click="changeStyle(1)">到店自提</button>
+                    <button ng-class ="{'btn-checked': isSelect}" ng-click="changeStyle(2)">快递配送</button>
+                </div>
+                <div class="bg-line"></div>
+                <!--到店时间-->
+                <div layout="row" layout-align="space-between center" class="time" ng-if="isCheck" ng-click="openAdcDialog()">
+                    <div class="time-left">到店时间</div>
+                    <div layout="row"  >
+                        <div class="selectTime">{{select.time}}</div>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                    </div>
+                </div>
+                <!--配送收货地址-->
+                <div class="address" ng-if="isSelect">
+                    <div layout="row" layout-align="space-between center" class="select-address" ng-click="selectAddress()">
+                        <div layout="row" layout-align="start center" class="" flex>
+                            <md-icon class="ks-icon1" md-font-set="ks-icon" md-font-icon="ag-address-1"></md-icon>
+                            <!--选择后-->
+                            <div layout="column" class="xq" ng-if="items.address">
+                                <div class="phone">{{items.address.receiver}} {{items.address.phone}}</div>
+                                <div class="address-xq">{{items.address.province}}{{items.address.city}}{{items.address.area}}{{items.address.street}}</div>
+                            </div>
+                            <!--选择前-->
+                            <div layout="column" class="xq" layout-align="start center" ng-if="!items.address">
+                                请填写您的收货地址
+                            </div>
+                        </div>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                    </div>
+                </div>
+                <div class="bg-line"></div>
+                <!--订单商品 ng-repeat-->
+                <div class="order-goods" ng-repeat="item in items.orderItems">
+                    <div layout="row">
+                        <div class="img-con">
+                            <img ng-src={{item.skuImg}}>
+                        </div>
+                        <div layout="column" class="img-right" flex>
+                            <div class="title">{{item.skuTitle}}</div>
+                            <div class="goods-type">
+                                <span ng-repeat="sku in item.specInfos" style="margin-right: 5px;">{{sku.propValue}}</span>
+                            </div>
+                            <div layout="row" class="one-price" layout-align="space-between center">
+                                <div class="price">￥{{item.skuPrice/100 | num:2}}</div>
+                                <div class="num">x&nbsp;{{item.num}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                </div>
+                <div class="bg-line"></div>
+                <!--备注-->
+                <div class="remark-goods" layout="column">
+                    <div layout="row" class="remark">
+                        <div class="remark-left">买家备注</div>
+                        <textarea class="remark-right" ng-model="memo" placeholder="点击给商家备注信息" flex></textarea>
+                    </div>
+                    <div class="line"></div>
+                    <div layout="row" class="all-goods" layout-align="space-between center">
+                        <div class="goods-left">商品合计</div>
+                        <div class="goods-right">￥{{items.orderPrice/100 | num:2}}</div>
+                    </div>
+                </div>
+                <div class="bg-line"></div>
+                <!--运费购物车-->
+                <div class="discount" layout="column">
+                    <div layout="row" layout-align="space-between center">
+                        <div class="discount-left">商品金额</div>
+                        <div class="discount-right">￥{{items.orderPrice/100 | num:2}}</div>
+                    </div>
+                    <div layout="row" layout-align="space-between center" ng-if="isSelect && items.freight">
+                        <div class="discount-left">运费</div>
+                        <div class="discount-right">￥{{items.freight/100 | num:2}}</div>
+                    </div>
+                    <!--<div layout="row" layout-align="space-between center">-->
+                        <!--<div class="discount-left">改价优惠</div>-->
+                        <!--<div class="discount-right">-￥10</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </md-content>
+    <div layout="row" layout-align="end cneter" class="ks-bottom">
+        <div layout="column" class="ks-bottom-left" flex>
+            <div class="line"></div>
+            <div class="word">实付款：￥{{items.paymentPrice/100 | num:2}}</div>
+        </div>
+        <button ng-click="submitOrder()">提交订单</button>
+    </div>
+</div>

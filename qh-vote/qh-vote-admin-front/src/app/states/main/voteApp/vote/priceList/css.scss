@@ -1,0 +1,207 @@
+@import "../../../../../scss/index.scss";
+
+.ks-priceList{
+  background: $activity-bg-white;
+  position: relative;
+  md-content{
+    .order-adress{
+      background: #ffffff;
+      height: 80px;
+      padding: 13px 15px;
+      margin: 10px 0;
+      .left{
+        margin-right: 10px;
+        md-icon{
+          font-size: 25px;
+          color: #333333;
+          line-height: 25px;
+        }
+      }
+      .con{
+        font-size: 14px;
+        color: #333;
+        line-height: 15px;
+        .userInfo{
+          overflow: hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
+        }
+        .userAddress{
+          color: #666666;
+          margin-top: 5px;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
+      }
+      .right{
+        md-icon{
+          color: #d5d5d5;
+        }
+      }
+    }
+    .order-item{
+      background: #ffffff;
+      //height: 80px;
+      padding:15px;
+      margin: 10px 0;
+      .left{
+        margin-right: 10px;
+        img{
+          display: block;
+          width: 82px;
+          height: 82px;
+        }
+      }
+      .con{
+        color: #333;
+        .name{
+          font-size: 16px;
+          height: 16px;
+          line-height: 16px;
+          overflow: hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
+          margin-bottom: 19px;
+        }
+        .heightPrice{
+          color: #666666;
+          font-size: 14px;
+          margin-bottom: 15px;
+          height: 14px;
+          line-height: 14px;
+          //margin-top: 5px;
+          //display: -webkit-box;
+          //-webkit-box-orient: vertical;
+          //-webkit-line-clamp: 2;
+          //overflow: hidden;
+        }
+        .lowerPrice{
+          color: #666666;
+          font-size: 14px;
+          height: 14px;
+          line-height: 14px;
+        }
+      }
+    }
+
+    .content{
+      background: #ffffff;
+      padding: 0 15px;
+      margin-bottom: 10px;
+      .content-tab{
+        min-height: 59px;
+        width: 100%;
+        .left{
+          font-size: 16px;
+          color: #333333;
+          margin-right: 30px;
+        }
+        .right{
+          color: #666666;
+          font-size: 16px;
+
+
+          input{
+            width: 100%;
+            border: none;
+            background: #fff;
+            border-radius: 8px;
+            height: 32px;
+            line-height: 32px;
+          }
+          input::-webkit-input-placeholder { /* WebKit browsers */
+            font-size: 16px;
+            letter-spacing: -0.34px;
+            color: #999999;
+            //text-align: center;
+          }
+          input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            font-size: 16px;
+            letter-spacing: -0.34px;
+            color: #999999;
+            //text-align: center;
+          }
+          input::-moz-placeholder { /* Mozilla Firefox 19+ */
+            font-size: 16px;
+            letter-spacing: -0.34px;
+            color: #999999;
+            //text-align: center;
+          }
+
+
+
+
+
+
+
+
+        };
+      }
+    }
+
+
+
+
+
+  }
+
+  .footBottom{
+    width: 100%;
+    height: 50px;
+    .btn{
+      font-size: 18px;
+      color: #333;
+      .line { //竖线
+        width: 1px;
+        height: 29px;
+        background: #d5d5d5;
+        -webkit-transform: scaleX(0.5);
+        -webkit-transform-origin: 0 0;
+        overflow: hidden;
+      }
+    }
+
+  }
+
+  .dialog-pay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    .top{
+      width: 100%;
+      background: rgba(0,0,0,.5);
+    }
+    .con{
+      background: #ffffff;
+      width: 100%;
+      .title{
+        height: 45px;
+        padding: 0 20px;
+        text-align: center;
+        line-height: 45px;
+        .right{
+          font-size: 14px;
+          color: #E53467;
+        }
+        .left{
+          font-size: 14px;
+          color: #666;
+        }
+        .name{
+          font-size: 17px;
+          color: #2A2B30;
+        }
+      }
+      .tab{
+        height: 42px;
+        line-height: 42px;
+        text-align: center;
+        font-size: 16px;
+        color: #999999;
+        //color: #333333;
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<div flex layout="column" class="ks-wdSuccess">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>提现成功</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+        <div class="content">
+            <div class="top" layout="column" layout-align="center center">
+                <div class="money">¥{{count | num:2}}</div>
+                <div class="desc">提现金额</div>
+            </div>
+            <div class="con" layout="column" layout-align="start center">
+                <div class="withdraw-success">
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-check-circle" style="color: #53d39a;font-size: 60px;line-height:60px;"></md-icon>
+                </div>
+                <div class="desc">提现申请成功</div>
+                <div class="dec">将于1个工作日内到账</div>
+            </div>
+            <div class="semi-circle-left"></div>
+            <div class="semi-circle-right"></div>
+        </div>
+    </md-content>
+    <md-divider></md-divider>
+    <div class="footer" layout="column" layout-align="center center" ui-sref="main.brandApp.wallet.assets">
+        返回
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div flex="100" layout="column" class="ks-textImg">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>商品图文</h1>
+        <div class="right-button" flex="20" style="color: #E53467;">
+        </div>
+    </div>
+    <md-content flex>
+        <md-divider></md-divider>
+        <div id="div4"></div>
+        <ul style="visibility: hidden">
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+            <li>qwe</li>
+        </ul>
+    </md-content>
+    <div class="addImg"  ng-show="showLead" ng-if="lead != 5">
+        <img  src="./1.png" ng-show="lead == 1" alt="" ng-click="leading(2)">
+        <img  src="./2.png" ng-show="lead == 2" alt="" ng-click="leading(3)" >
+        <img  src="./3.png" ng-show="lead == 3" alt="" ng-click="leading(4)">
+        <img  src="./4.png" ng-show="lead == 4" alt="" ng-click="leading(5)">
+    </div>
+    <md-divider ng-if="choose" style="border-color:#E53467"></md-divider>
+    <div ng-click="finish()" ng-if="choose" class="choose" layout="row" layout-align="center center">
+        <span>确定</span>
+    </div>
+</div>
+
+<style>
+    .choose {
+        background: #fff;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 49px;
+        min-height: 49px;
+        z-index: 100;
+        border-top: 1px solid #E53467;
+
+    }
+
+    .choose > span {
+        font-size: 14px;
+        color: #e53467;
+
+    }
+</style>

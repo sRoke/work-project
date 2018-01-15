@@ -1,0 +1,166 @@
+<div flex layout="column" class="ks-workInfo" >
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>作品审核</h1>
+        <!--ui-sref="main.voteApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20"></div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="background: #f5f5f5">
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    姓名
+                </div>
+                <div class="right" flex>
+                    {{dataInfo.name}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    手机号
+                </div>
+                <div class="right" flex>
+                    {{dataInfo.phone}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    参赛宣言
+                </div>
+                <div class="right" flex>
+                    {{dataInfo.slogan}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab"  layout="row" layout-align="start center">
+                <div class="left">
+                    参赛作品
+                </div>
+                <div class="right" flex>
+                    <img ng-src=" {{dataInfo.worksImgUrl}}">
+                </div>
+            </div>
+
+            <md-divider></md-divider>
+            <div class="content-tab"  layout="row" layout-align="start center">
+                <div class="left">
+                    总票数
+                </div>
+                <div class="right" flex>
+                    {{dataInfo.totalVotes}}票<span ng-if="dataInfo.virtualVotes">(已加票 {{dataInfo.virtualVotes}})</span>
+                </div>
+            </div>
+
+            <md-divider></md-divider>
+            <div class="content-tab"  layout="row" layout-align="start center">
+                <div class="left">
+                    投票人
+                </div>
+                <div class="right" flex>
+                    {{dataInfo.voterNum}}人
+                </div>
+            </div>
+            <div class="voteTable" layout="column" >
+                <div class="table-title" layout="row">
+                    <div class="left" flex="60" layout="row" layout-align="center center">
+                        <div>时间</div>
+                    </div>
+                    <div class="right" flex="40" layout="row" layout-align="center center">
+                        <div>投票人</div>
+                    </div>
+                </div>
+                <div class="table-con" layout="row" ng-repeat="list in voteList.content">
+                    <div class="left" flex="60" layout="row" layout-align="center center">
+                        <div>{{list.voteDate}}</div>
+                    </div>
+                    <div class="right" flex="40" layout="row" layout-align="center center">
+                        <div>{{list.votePhoe}}</div>
+                    </div>
+                </div>
+                <!--<div class="table-con" layout="row">-->
+                    <!--<div class="left" flex="60" layout="row" layout-align="center center">-->
+                        <!--<div> 2017-11-25 10:44:59</div>-->
+                    <!--</div>-->
+                    <!--<div class="right" flex="40" layout="row" layout-align="center center">-->
+                        <!--<div>12345687548</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="table-con" layout="row">-->
+                    <!--<div class="left" flex="60" layout="row" layout-align="center center">-->
+                        <!--<div> 2017-11-25 10:44:59</div>-->
+                    <!--</div>-->
+                    <!--<div class="right" flex="40" layout="row" layout-align="center center">-->
+                        <!--<div>12345687548</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+
+
+                <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;" ng-show="voteList.totalPages>1">
+                    <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-click="pageChange(currpage+1)" ng-show="voteList.number<voteList.totalPages-1">
+                        点击加载更多...
+                    </md-button>
+                    <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;"
+                                ng-show="voteList.number>=voteList.totalPages-1">
+                        没有更多了
+                    </md-button>
+                </div>
+                <div class="empty" ng-if="voteList.content.length<=0" style="width: 100%;height: 100%;margin: 20px auto" layout="column" layout-align="center center">
+                    <div class="empty"><img src="empty.png" width="60px"></div>
+                    <div class="ts">暂无投票人</div>
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+    </md-content>
+
+    <div class="footBottom" layout="column">
+        <md-divider style="border-color:#E53467"></md-divider>
+        <div layout="row" layout-align="start center" flex>
+            <div class="btn1" flex layout="row" layout-align="center center" ng-click="toVoid()">作废</div>
+            <div class="line"></div>
+            <div class="btn2" flex layout="row" layout-align="center center" ng-click="plusTicket()">加票</div>
+        </div>
+    </div>
+</div>
+
+
+<!--        加票弹窗                -->
+<script type="text/ng-template" id="frends.html">
+    <md-dialog aria-label="" class="addVoteNum-dialog" style="overflow: hidden;">
+        <md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o"
+                 ng-click="vmd.cancel()"></md-icon>
+        <div class="dis">加票</div>
+        <md-divider></md-divider>
+        <md-content style="border-radius: 8px;background: #ffffff">
+            <div class="content" layout="column" layout-align="start center">
+                <div class="item-text" layout="row">
+                    <input flex="100" type="text" placeholder="请输入加票数" ng-model="vmd.num" ng-change="vmd.addEventNum()">
+                </div>
+            </div>
+            <div class="footBottom" layout="column">
+                <md-divider></md-divider>
+                <div class="btn" flex layout="row" layout-align="center center">
+                    <div flex style="text-align: center" ng-click="vmd.cancel()">取消</div>
+                    <div class="line"></div>
+                    <div flex style="text-align: center;color: #e53467" ng-click="vmd.save()">确认</div>
+                </div>
+            </div>
+        </md-content>
+    </md-dialog>
+</script>
+

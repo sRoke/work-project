@@ -1,0 +1,50 @@
+<div class="ks-common-list-applyCheck" style="width: 97%;">
+    <ul layout="column">
+        <li layout="row">
+            <label>渠道类型：</label>
+            <span>{{data.partnerType}}</span>
+        </li>
+        <li layout="row">
+            <label>联系人：</label>
+            <span>{{data.realName}}</span>
+        </li>
+        <li layout="row">
+            <label>联系方式：</label>
+            <span>{{data.phone}}</span>
+        </li>
+        <li layout="row">
+            <label>邀请手机号：</label>
+            <span>{{data.invitationCode}}</span>
+        </li>
+        <li layout="row">
+            <label>身份证号：</label>
+            <span>{{data.idNo}}</span>
+        </li>
+        <!--<li layout="row">-->
+            <!--<label>邀请号码：</label>-->
+            <!--<span>{{data.invitationCode}}</span>-->
+        <!--</li>-->
+
+        <!--<li layout="row">-->
+            <!--<label>店铺名称：</label>-->
+            <!--<span>{{}}</span>-->
+        <!--</li>-->
+
+        <li layout="row">
+            <label>申请地区：</label>
+            <span>{{data.shopAddr}}</span>
+        </li>
+        <li layout="row">
+            <label>上级渠道：</label>
+            <span>{{data.parentDesp}}</span>
+        </li>
+        <li layout="row">
+            <label>申请时间：</label>
+            <span>{{data.createDate | date:'yy-MM-dd HH:mm:ss'}}</span>
+        </li>
+        <li layout="row">
+            <label>状态：</label>
+            <span>{{data.partnerApplyStatus}}</span>
+        </li>
+    </ul>
+</div>

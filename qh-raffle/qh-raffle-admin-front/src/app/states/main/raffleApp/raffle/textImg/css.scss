@@ -1,0 +1,57 @@
+
+.ks-textImg {
+  .wangEditor-container {
+    height: 100%;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    position: fixed;
+    > #div4 {
+      height: 90% !important;
+      position: relative;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+  .txt-toolbar button, .wangEditor-drop-panel button {
+    padding: 5px !important;
+  }
+  .txt-toolbar button.right, .wangEditor-drop-panel button.right {
+    margin-left: 0px;
+  }
+
+  .wangEditor-menu-container .menu-item {
+    height: 38px;
+    width: 38px;
+  }
+  .wangEditor-menu-container .menu-item a {
+    font-size: 1.3em;
+  }
+
+  .wangEditor-menu-container .menu-tip {
+    display: block;
+    position: absolute;
+    z-index: 20;
+    width: 20px !important;
+    text-align: center;
+    background-color: #666;
+    color: #fff;
+    padding: 7px 6px !important;
+    font-size: 12px;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px !important;
+    border-radius: 2px;
+    box-shadow: 1px 1px 5px #999;
+    display: none !important;
+  }
+
+  .txt-toolbar, .wangEditor-drop-panel {
+    width: 200px !important;
+  }
+
+  .wangEditor-container .wangEditor-txt {
+    padding: 0 15px 130px 15px;
+  }
+
+}

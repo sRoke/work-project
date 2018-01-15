@@ -1,0 +1,12 @@
+rootProject.name = 'qh-vote'
+
+include 'qh-vote-server'
+include 'qh-vote-domain'
+include 'qh-vote-core'
+include 'qh-vote-service'
+include 'qh-vote-api'
+include 'qh-vote-msg-api'
+include 'qh-vote-msg-impl'
+include 'qh-vote-client'
+include 'qh-vote-admin-front'
+include 'qh-vote-wap-front'

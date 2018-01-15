@@ -1,0 +1,1043 @@
+.ks-refundDetail {
+  //height:800px;
+  height:100%;
+  width:100%;
+  background: #f5f5f5;
+  .ks-refundDetail-top {
+    //background: #fbfbfb;
+    height: 165px;
+    min-height: 165px;
+    width: 98%;
+    border: 1px solid #ddd;
+    margin: 20px;
+    //rmy 2017-08-07  进度条
+    .ks-rf-bar{
+      width:880px;
+      margin:20px auto;
+      .ks-rf-keywords{
+        margin-left: 6px;
+        li{
+          list-style: none;
+          height:30px;
+          line-height:30px;
+          margin-left: 50px;
+        }
+      }
+      .ks-bar{
+        margin-left: 110px;
+        li{
+          list-style: none;
+          height:30px;
+          width:30px;
+          border-radius: 50%;
+          background: #D5D5D5;
+          b{
+            text-align: center;
+            width: 20px;
+            height:20px;
+            line-height:20px;
+            margin:5px;
+            color:#fff;
+            border-radius: 50%;
+            font-weight:100;
+            //background: #e84e40;
+          }
+          .pass{
+            background: #e84e40;
+          }
+        }
+        .rf-abr{
+          width: 175px;
+          height:8px;
+          margin-top:11px;
+          background: #D5D5D5;
+          .rf-pass{
+            width: 175px;
+            height:4px;
+            margin-top:2px;
+            background: #e84e40;
+          }
+        }
+      }
+    }
+  }
+  .ks-refundDetail-top-main{
+    width: 98%;
+    margin:0px 20px 20px;
+    //border: 1px solid #ddd;
+    .ks-refundDetail-info{
+      // background: #fbfbfb;
+      width: 98%;
+      border: 1px solid #ddd;
+      border-bottom:none;
+      b{
+        font-weight:100;
+      }
+      .ks-refundDetail-info-top {
+        background: #f2f2f2;
+        border-bottom: 1px dashed #e0e0e0;
+        line-height:45px;
+        padding-left: 30px;
+      }
+      .rowInfo{
+        border-bottom: 1px solid #D5D5D5;
+        padding-left: 30px;
+        height:40px;
+      }
+      .box-label{
+        color: #666666;
+      }
+      .box-value{
+        .commodityParmer {
+          color: #999;
+          input {
+            background: #00ffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 10px;
+          }
+        }
+      }
+    }
+    .ks-refundDetail-handle{
+      //height:270px;
+      width: 98%;
+      border: 1px solid #D5D5D5;
+      border-left:none;
+      .ks-refundDetail-handle-top{
+        font-size:large;
+        padding: 40px 0 0 38px;
+        height: 100%;
+        width: 100%;
+        .ts{
+          font-size:30px;
+          margin:0px;
+          color: #ba9f6e;
+        }
+        .ks-rf-status{
+          margin:20px;
+          button{
+            background: #0ae;
+            border:none;
+            border-radius:4px;
+            color: #fff;
+            cursor: pointer;
+            height:30px;
+            padding:0 20px;
+            margin-left:20px;
+          }
+        }
+        .ks-refundDetail-handle-content{
+          margin-top: 30px;
+          .unAgreeBtn{
+            background: #fff;
+            border: 1px solid #e0e0e0;
+          }
+          .agreeBtn{
+            color: #fff;
+            background: #e84e40;
+          }
+        }
+      }
+    }
+  }
+  .ks-rf-bottom-goods{
+    .tableTit{
+      height:42px;
+      margin:0 20px;
+     // border-top:2px solid #ba9f6e;
+      line-height:40px;
+      text-align:center;
+      background: #e6e6e6;
+      .tableTd{
+        //font-weight: bold;
+        font-size:14px;
+        // color: #666;
+      }
+    }
+    .tableCon{
+      margin:0 20px;
+      .orderNumber{
+        width:100%;
+        margin-top:10px;
+      }
+      //.ordTitle{
+      //  height: 40px;
+      //  background: #fff9eb;
+      //  border-top: 1px solid #d5d5d5;
+      //  border-left: 1px solid #d5d5d5;
+      //  border-right: 1px solid #d5d5d5;
+      //  .tit{
+      //    color:#101010;
+      //    font-size:14px;
+      //    line-height:40px;
+      //    span{
+      //      margin: 0 40px 0 20px;
+      //      text-align: center;
+      //    }
+      //  }
+      //  .orderSta{
+      //    color: #24b0ef;
+      //    span{
+      //      margin:0px;
+      //      width:100%;
+      //      text-align: center;
+      //      display: block;
+      //    }
+      //  }
+      //}
+      .ordDetail{
+        background: #fff;
+        border: 1px solid #d5d5d5;
+        border-right:none;
+        .orderXq{
+          border-right:1px solid #d5d5d5;
+          .pic{
+            height:70px;
+            width:70px;
+            margin:20px 10px;
+            img {
+              height: 70px;
+              width: 70px;
+            }
+          }
+          span{
+            height:108px ;
+            line-height:108px;
+            width:100%;
+            text-align: center;
+          }
+          .refundMoney{
+            color: #ba9f6e !important;
+            height:108px ;
+            line-height:108px;
+          }
+          .goodsDetail{
+            margin-top:16px;
+            span{
+              margin: 0px;
+              height: 22px;
+              line-height:22px;
+              text-align: left;
+              padding: 0 8px;
+            }
+          }
+        }
+        .rfXq{
+          border-right:1px solid #d5d5d5;
+          span,a{
+            height:108px ;
+            line-height:108px;
+            width:100%;
+            font-size:14px;
+            text-align: center;
+          }
+          span{
+            color:#101010;
+          }
+          a{
+            color:#24b0ef;
+            text-decoration: none;
+            display:block;
+          }
+          .logistics{
+            height:50px ;
+            line-height:50px;
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+  //table的头
+  div.orderTitle {
+    height: 40px;
+    min-height: 40px;
+    line-height: 40px;
+    margin: 15px auto 0px auto;
+    border-bottom: 2px solid #ccb995;
+    width: 99%;
+    input[type="checkbox"] {
+      float: left;
+      margin: 0px 10px 0 -35px;
+    }
+  }
+  //table
+  .layoutTableWrap {
+    border: 1px solid #e0e0e0;
+    width: 99%;
+
+    margin: 10px auto 0 auto;
+    .TableTop {
+      background: #fff9eb;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      .orderCode {
+        margin: 0 30px 0 10px;
+      }
+      input[type="checkbox"] {
+        float: left;
+        margin: 10px 0 0 10px;
+      }
+
+      .gold {
+        color: #ba9f6e;
+      }
+      .gold.gray {
+        color: gray;
+      }
+    }
+    div.orderTitle > div {
+      height: 40px;
+    }
+    .layouyTable {
+      width: 100%;
+      .commodityImg {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+
+      }
+      .commodityTitle {
+        margin-top: 13px;
+        margin: 0;
+      }
+      div.lie.last {
+        border-right: none;
+      }
+      div.lie:nth-child(4) {
+        p {
+          margin: 0;
+        }
+      }
+      div.lie:last-child {
+        border-right: none;
+      }
+      .qr-btn {
+        height: 30px;
+        padding: 0 7px;
+        border: none;
+        border-radius: 5px;
+        background: #00aaee;
+        color: #ffffff;
+      }
+      .commodityParmer {
+        color: #999;
+        input {
+          background: #00ffff;
+          border: 1px solid #e0e0e0;
+          border-radius: 5px;
+          padding: 10px;
+        }
+      }
+    }
+  }
+
+
+  .orderTitle{
+    border-bottom: 3px solid #761c19;
+  }
+  .ks-refundDetail-list{
+    margin-top: 10px;
+    //border: 1px solid #e0e0e0;
+    .ks-refundDetail-listTitle{
+      width: 99%;
+      height: 30px;
+      margin: 0 0 0 10px;
+      background-color: #dca7a7;
+    }
+    .ks-refundDetail-listInfos{
+      width: 99%;
+      margin: 0 0 20px 10px;
+      .ks-refundDetail-listInfo{
+        border-right: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+.rentOrderDetailBody {
+  //ITEM订单是5个状态
+  .flow {
+    height: 85px;
+    width: 880px;
+    margin: 20px auto;
+    .rowLine {
+      width: 800px;
+      border: 1px solid #bbb;
+      background: #DDDDDD;
+      margin: 0px auto;
+      position: relative;
+      left: 10px;
+      z-index: 1;
+      bottom: -60px;
+      height: 13px;
+    }
+    .numberUl {
+      position: relative;
+      z-index: 3;
+      list-style: none;
+      li {
+        width: 200px;
+        float: left;
+        text-align: center;
+        div.circleNum {
+          width: 45px;
+          height: 45px;
+          line-height: 45px;
+          background: #DDDDDD;
+          border: 1px solid #bbb;
+          margin: 0 auto;
+          border-radius: 50%;
+          position: relative;
+          b {
+            font-size: 16px;
+            color: #fff;
+          }
+          .leftLine {
+            background: #e84e40 none repeat scroll 0 0;
+            height: 9px;
+            left: -166px;
+            position: absolute;
+            top: 18px;
+            width: 175px;
+            z-index: 5;
+            //display: none;
+          }
+
+          .iWrap {
+            width: 30px;
+            height: 30px;
+            margin: 7px auto;
+            background: #e84e40;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            //display: none;
+            margin: -15px;
+            i {
+              color: #fff;
+            }
+          }
+        }
+        p.dateTime {
+          font-size: 12px;
+          color: #999;
+          margin-top: 10px;
+        }
+        p.txt {
+          font-weight: bold;
+          color: #aaaaaa;
+        }
+        p:hover {
+          cursor: pointer;
+        }
+      }
+      li.cur .circleNum .leftLine, li.cur .circleNum .iWrap {
+        display: block;
+      }
+      .circleNum:hover {
+        cursor: pointer;
+      }
+      li.cur p.txt {
+        color: #e84e40;
+      }
+    }
+  }
+
+
+  .orderWrap {
+    width: 99%;
+    margin: 10px auto 0 auto;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    .orderInformation {
+      border-right: 1px solid #e0e0e0;
+      h4 {
+        font-size: 14px;
+        line-height: 44px;
+        min-height: 44px;
+        height: 44px;
+        margin: 0;
+        text-indent: 10px;
+        background: #f5f5f5;
+        color: #101010;
+      }
+      .orderInformationLeft {
+        padding: 10px;
+        border-top: 1px solid #e0e0e0;
+        span {
+          color: #999;
+          font-size: 14px;
+          display: inline-block;
+        }
+        p {
+          display: inline-block;
+          font-size: 14px;
+          padding-left: 10px;
+          color: #101010;
+          margin: 0;
+        }
+      }
+    }
+    .orderStatus {
+      width: 100%;
+      .orderStatusLeft {
+        width: 10%;
+        float: left;
+        margin-left: 20px;
+        text-align: end;
+        padding-top: 30px;
+        .glyphicon {
+          font-size: 34px;
+          color: #ba9f6e;
+        }
+      }
+      .orderStatusRight {
+        margin-left: 20px;
+        width: 100%;
+        padding-top: 30px;
+        .form {
+          .btn {
+            margin-left: 12px !important;
+            margin-right: 12px !important;
+            font-size: 14px;
+            outline: none;
+            border: 1px solid #dadada;
+            border-radius: 6px;
+            height: 30px;
+            padding: 0 10px;
+            color: #fff;
+            min-width: 90px;
+          }
+          .btn.ok {
+            background: #ba9f6e;
+            color: #fff;
+          }
+          .btn.reject {
+            background: #e85084;
+          }
+          .btn.cancle {
+            background: #00aaee;
+            color: #fff;
+          }
+        }
+        .qr-btn {
+
+        }
+        .qr-btn {
+          margin-left: 12px !important;
+          margin-right: 12px !important;
+          font-size: 14px;
+          outline: none;
+          border: 1px solid #dadada;
+          border-radius: 6px;
+          height: 30px;
+          padding: 0 10px;
+          color: #333333;
+          min-width: 90px;
+          background: #fff;
+        }
+
+        .orderStatusRightTop {
+          .messageSpan {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 30px;
+          }
+          p {
+            display: inline-block;
+            font-weight: bold;
+            font-size: 16px;
+            margin-left: 5px;
+          }
+          .msg {
+            font-size: 14px;
+            color: #101010;
+            margin-bottom: 20px;
+          }
+          .message {
+            /*margin-top: 32px;*/
+            font-size: 14px;
+            color: #101010;
+            margin-bottom: 10px;
+            .messageWrap {
+              margin-top: 20px;
+            }
+            .messageLeft {
+              margin: 0;
+              width: 85px;
+              font-style: normal;
+              font-weight: lighter;
+              display: inline-block;
+            }
+            .messageRight {
+              margin: 0 0 0 10px;
+              font-weight: lighter;
+              display: inline-block;
+              font-style: normal;
+              input[type=text], select {
+                width: 276px;
+                min-width: 276px;
+                height: 30px;
+                border: 1px solid #e0e0e0;
+                border-radius: 4px;
+                outline: none;
+                padding-left: 10px;
+                background: #fff;
+                font-size: 14px;
+                color: #666;
+              }
+            }
+          }
+          .refundImg {
+            margin-top: 20px;
+            i {
+              font-size: 14px;
+              color: #101010;
+              font-style: normal;
+              display: inline-block;
+              width: 85px;
+            }
+            .rightImg {
+              vertical-align: top;
+              width: 80px;
+              height: 80px;
+              margin-left: 10px;
+              border: 1px solid #e0e0e0;
+              border-radius: 5px;
+              img {
+                border-radius: 5px;
+                width: 80px;
+                height: 80px;
+              }
+            }
+          }
+          .btn {
+            background: #00aaee;
+            height: 30px;
+            padding: 0 10px;
+            color: #fff;
+            min-width: 90px;
+          }
+
+          .btn {
+            margin-left: 12px !important;
+            margin-right: 12px !important;
+            font-size: 14px;
+            outline: none;
+            border: 1px solid #dadada;
+            border-radius: 6px;
+            height: 30px;
+            padding: 0 10px;
+            color: #fff;
+            min-width: 90px;
+          }
+          .btn.ok {
+            background: #ba9f6e;
+            color: #fff;
+          }
+          .btn.reject {
+            background: #e85084;
+          }
+          .btn.cancle {
+            color: #fff;
+          }
+          .unpayBtn {
+            height: 30px;
+            padding: 0 10px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            background: #00aaee;
+            color: #fff;
+            outline: none;
+          }
+          .unpayBtn:last-child {
+            background: #fff;
+            color: #101010;
+          }
+          .commonBtn {
+            height: 30px;
+            padding: 0 10px;
+            border: 1px solid #e0e0e0;
+            background: #00aaee;
+            outline: none;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #fff;
+            margin-right: 10px;
+          }
+        }
+        .msg {
+          font-size: 14px;
+          color: #101010;
+          margin-bottom: 20px;
+        }
+        .commonBtn {
+          height: 30px;
+          padding: 0 10px;
+          border: 1px solid #e0e0e0;
+          background: #00aaee;
+          outline: none;
+          border-radius: 4px;
+          font-size: 14px;
+          color: #fff;
+          margin-right: 10px;
+        }
+        .md-button {
+          min-height: 30px;
+          height: 30px;
+          line-height: 30px;
+        }
+        .orderStatusRightBottom {
+          .current {
+            width: 100%;
+            padding: 10px 0;
+            .currentLeft {
+              span {
+                font-size: 14px;
+                color: #101010;
+              }
+
+            }
+            input[type=text], select {
+              margin-left: 20px;
+              padding-left: 10px;
+              width: 276px;
+              min-width: 276px;
+              height: 30px;
+              border: 1px solid #e0e0e0;
+              border-radius: 4px;
+              outline: none;
+              background: #fff;
+              font-size: 14px;
+              color: #666;
+            }
+            textarea {
+              margin-left: 20px;
+              padding-left: 10px;
+              width: 276px;
+              min-width: 276px;
+              border: 1px solid #e0e0e0;
+              border-radius: 4px;
+              outline: none;
+              background: #fff;
+              font-size: 14px;
+              color: #666;
+              resize: none;
+              height: 80px;
+            }
+            .currentRight {
+
+            }
+
+          }
+          .bottomButton {
+            text-align: center;
+            width: 100%;
+            margin-left: -353px;
+            input {
+              margin-right: 20px;
+            }
+            .commonBtn {
+              height: 30px;
+              padding: 0 10px;
+              border: 1px solid #e0e0e0;
+              background: #00aaee;
+              outline: none;
+              border-radius: 4px;
+              font-size: 14px;
+              color: #fff;
+              margin-right: 10px;
+            }
+
+            .commonBtn {
+              height: 30px;
+              padding: 0 10px;
+              border: 1px solid #e0e0e0;
+              background: #fff;
+              outline: none;
+              border-radius: 4px;
+              font-size: 14px;
+              color: #333333;
+              margin-right: 10px;
+            }
+            .commonBtn.ok {
+              background: #ba9f6e;
+              color: #fff;
+            }
+            .commonBtn.reject {
+              background: #e85084;
+            }
+            .commonBtn.change {
+              color: #fff;
+              background: #00aaee;
+            }
+            .commonBtn.cancle {
+              color: #fff;
+            }
+
+            .md-button {
+              min-height: 30px;
+              height: 30px;
+              line-height: 30px;
+            }
+          }
+        }
+      }
+    }
+    .layoutTableWrap {
+      border: 1px solid #e0e0e0;
+      width: 99%;
+
+      margin: 10px auto 0 auto;
+      .TableTop {
+        background: #fff9eb;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        .orderCode {
+          margin: 0 30px 0 10px;
+        }
+        input[type="checkbox"] {
+          float: left;
+          margin: 10px 0 0 10px;
+        }
+        .glyphicon-tags {
+          color: #ba9f6e;
+        }
+      }
+      div.orderTitle > div {
+        height: 40px;
+      }
+      .layouyTable {
+        width: 100%;
+        .commodityImg {
+          width: 70px;
+          height: 70px;
+          margin: 15px auto;
+
+        }
+        .column > div, div.lie {
+          border-top: 1px solid #e0e0e0;
+          border-right: 1px solid #e0e0e0;
+        }
+        div.lie.last {
+          border-right: none;
+        }
+        .qr-btn {
+          width: 80px;
+          height: 40px;
+          border: 1px solid #e0e0e0;
+          border-radius: 5px;
+          background: deepskyblue;
+          color: #ffffff;
+        }
+        .commodityParmer {
+          color: #ccc;
+        }
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+  .modal {
+    .modal-dialog {
+      width: 330px;
+      .modal-content {
+        border-radius: 6px;
+        box-shadow: 0 0 0 #fff;
+        .modal-header {
+          text-align: center;
+
+          background: #eeeeee;
+          padding: 10px;
+          font-size: 18px;
+          font-family: inherit;
+          height: 50px;
+        }
+        .modal-body {
+          text-align: center;
+
+          padding: 30px 0 30px 0;
+          font-size: 16px;
+          color: #323232;
+        }
+        .modal-footer {
+          text-align: center;
+          .btn {
+            margin-left: 12px !important;
+            margin-right: 12px !important;
+            font-size: 14px;
+            width: 66px;
+            height: 30px;
+            outline: none;
+            border: 1px solid #dadada;
+            border-radius: 6px;
+          }
+          .btn.ok {
+            background: #ba9f6e;
+            color: #fff;
+          }
+          .btn.reject {
+            background: #e85084;
+          }
+          .btn.cancle {
+            color: #101010;
+          }
+        }
+      }
+    }
+  }
+}
+
+//rmy 2017-07-20 弹窗
+.md-scroll-mask{
+  background: #cccccc;
+  opacity: 0.45;
+  z-index:111111111;
+  position: fixed;
+  left:0;
+  top:0;
+  right:0;
+  left:0;
+  margin:auto;
+}
+.ks-default{
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  margin: auto;
+  position: absolute;
+  z-index:11111111111;
+  .refundTk{
+    //遮照层3
+    height: 260px;
+    width: 380px;
+    //弹出框
+    .tck{
+      position: absolute;
+      background:#fff;
+      left:0px;
+      top:0px;
+      bottom: 0px;
+      right:0px;
+      height:290px;
+      width:380px;
+      h2{
+        background: #e0e0e0;
+        font-weight:600;
+        height: 40px;
+        width:100%;
+        line-height:40px;
+        font-size:16px;
+        text-align: center;
+        margin: 0;
+        border-bottom:1px solid #D5D5D5;
+      }
+      div{
+        height:50px;
+        //margin-top:30px;
+        label{
+          margin:5px;
+          height:40px;
+          line-height:40px;
+          font-weight:100;
+          font-size:14px;
+          padding:0 30px;
+        }
+        select,input{
+          height:30px;
+          margin-top:10px;
+          min-width:100px;
+        }
+        input{
+          min-width:150px;
+          border-radius:4px;
+          border:1px solid #D5D5D5;
+        }
+        button{
+          height:30px;
+          margin:20px 30px 0 65px;
+          padding:0 20px;
+          border-radius: 4px;
+          background: #fff;
+          border:1px solid #D5D5D5;
+        }
+      }
+      //拒绝接单
+      .defaultTck{
+        height:90px;
+        margin-top:30px;
+        label{
+          text-align: right;
+        }
+        textarea{
+          margin-left:10px;
+          height:80px;
+          width:255px;
+          line-height:26px;
+        }
+      }
+      .img-container{
+        height:165px;
+        margin-top:10px;
+        .upload-img{
+          height:165px;
+          li{
+            list-style: none;
+            width:125px;
+            height:165px;
+            margin:0px;
+            button{
+              width:125px;
+              height:30px;
+              margin:0px;
+              outline: none;
+            }
+            img{
+              height:125px;
+              width:125px;
+              margin:-1px;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

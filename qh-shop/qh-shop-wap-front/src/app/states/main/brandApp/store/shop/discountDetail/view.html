@@ -1,0 +1,34 @@
+<div class="ks-discountDetail"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>明细</h1>
+        <div class="right-button" flex="20">
+
+        </div>
+    </div>
+    <div class="topLine"></div>
+    <md-content flex style="overflow-x:hidden;background: #f5f5f5;">
+        <div class="main" layout="column">
+            <div layout="column" class="discount-con">
+                <!--ng-repeat-->
+                <div laout="column" class="detail-tab" ng-repeat="item in items.content">
+                    <div layout="column"  class="detail-con">
+                        <div layout="row" class="detail-top" layout-align="space-between center">
+                            <div class="detail-left" ng-if="item.type=='SELL'">顾客下单</div>
+                            <div class="detail-left" ng-if="item.type=='BARGAINSELL'">砍价活动</div>
+                            <div class="detail-left" ng-if="item.type=='WITHDRAW_ALIPAY'">支付宝提现</div>
+                            <div class="detail-left" ng-if="item.type=='WITHDRAW_WX'">微信提现</div>
+                            <div class="detail-left" ng-if="item.type=='SELL_REFUND'">顾客取消</div>
+                            <div class="detail-right"  ng-if="item.type=='SELL' || item.type=='BARGAINSELL' ">￥{{item.amount/100 | num:2}}</div>
+                            <div class="detail-right" ng-if="item.type!='SELL' && item.type!='BARGAINSELL'">-￥{{item.amount/100 | num:2}}</div>
+                        </div>
+                        <div class="detail-bottom">{{item.createDate |date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                    </div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </md-content>
+</div>

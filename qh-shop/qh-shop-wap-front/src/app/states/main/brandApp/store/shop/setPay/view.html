@@ -1,0 +1,60 @@
+<div class="ks-setPay"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>绑定支付宝</h1>
+        <div class="right-button" flex="20" >
+        </div>
+    </div>
+    <div class="topLine"></div>
+
+    <md-content flex style="overflow-x:hidden;background: #f5f5f5;">
+        <div class="main" layout="column">
+            <div class="set-con" layout="column">
+                <div layout="row" class="set-tab" layout-align="start center">
+                    <div class="set-left">帐号</div>
+                    <input type="text" placeholder="输入支付宝登录账号，入邮箱或手机号码" ng-model="phone" flex>
+                </div>
+                <div class="line"></div>
+                <div layout="row" class="set-tab" layout-align="start center">
+                    <div class="set-left">姓名</div>
+                    <input type="text" placeholder="输入支付宝对应的真实名称" ng-model="name" flex>
+                </div>
+            </div>
+            <div layout="row" class="btn">
+                <button ng-click="btn()">绑定</button>
+            </div>
+        </div>
+    </md-content>
+</div>
+<!--弹窗 验证码-->
+<script type="text/ng-template" id="messageCode.html">
+    <div class="md-dialog-container ">
+        <md-dialog aria-label="" class="messageCode" style="overflow: initial;">
+            <!--<md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o" ng-click="vmd.cance()"></md-icon>-->
+            <div class="dis">验证信息</div>
+            <div class="hor-line"></div>
+            <div class="address-dis">
+                <div class="dis-name" layout-align="center center" style="color: #999;">
+                    {{vmd.getCodeCon}}
+                </div>
+                <div class="dis-code" layout="row" flex>
+                    <input type="tel" placeholder="请输入验证码" flex ng-model="vmd.code" ng-click="vmd.getCodeShow();">
+                    <button ng-click="vmd.getVCcode()">{{vmd.gitCodeTime}}</button>
+                </div>
+                <div class="dis-code" layout="row" flex
+                     style="height: 16px;margin-top: 10px;font-size: 14px;color: #e84e40;"
+                     ng-if="vmd.codeShow">
+                    请输入正确的验证码！
+                </div>
+            </div>
+            <div class="hor-line"></div>
+            <div layout="row" layout-align="center center">
+                <div flex style="font-size: 18px;text-align: center"  ng-click="vmd.cance()">取消</div>
+                <div class="line"></div>
+                <div flex style="font-size: 18px;text-align: center;color: #E53467;" ng-click="vmd.confirm()">确认</div>
+            </div>
+        </md-dialog>
+    </div>
+</script>

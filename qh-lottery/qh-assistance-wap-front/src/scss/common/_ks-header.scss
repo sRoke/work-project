@@ -1,0 +1,55 @@
+/**
+ * 顶部菜单条
+ */
+.ks-header {
+  @include flex-shrink(0);
+  @include transform(none);
+  @include transition(none);
+  height: $ks-header-height;
+  min-height: $ks-header-height;
+  font-size: 16px;
+  .md-toolbar-tools {
+    height: $ks-header-height;
+    max-height: $ks-header-height;
+  }
+  //设置图标默认颜色
+  .lq-icon {
+    color: #fff;
+    font-size: 20px;
+  }
+  md-icon {
+    vertical-align: inherit;
+    color: #fff;
+  }
+  h1 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .right-word {
+    font-size: 14px;
+    color: #fff;
+    text-align: right;
+  }
+  .icon-placeholder-left {
+    box-sizing: border-box;
+    border: none;
+    width: 40px;
+    height: 40px;
+    margin: 0 6px 0 -8px;
+  }
+  .icon-placeholder-right {
+    box-sizing: border-box;
+    border: none;
+    width: 40px;
+    height: 40px;
+    margin: 0 -8px 0 6px;
+  }
+
+  // TODO 媒体查询：横向、纵向时特别处理，参考 angular-materials.scss $toolbar-height-mobile-landscape
+  min-height: 44px;
+}

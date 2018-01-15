@@ -1,0 +1,57 @@
+$bootstrap-sass-asset-helper: false !default;
+//
+// Variables
+// --------------------------------------------------
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+$gray-base: #000 !default;
+
+//== Layout
+$layout-breakpoint-xs: 600px !default;
+$layout-breakpoint-sm: 960px !default;
+$layout-breakpoint-md: 1280px !default;
+$layout-breakpoint-lg: 1920px !default;
+
+//header的设置
+$ks-header-height: 44px;
+$ks-main-min-width: 320px;
+$ks-leftnav-bg-color: rgba(0, 0, 0, 0.7);
+$ks-header-font: 16px;
+
+//一些常用文字颜色,word是默认 pop是弹窗文字 hint是提示
+$platform-word-dark: #101010;
+$platform-word-black: #333;
+$platform-word-white: #fff;
+$platform-word-gray: #999;
+$platform-word-red: #ED5F5B;
+$platform-word-green: #53D39A;
+
+//图标icon颜色 default默认 white白色图标 pop灰色图标 sup辅助类图标(很少用)
+$platform-icon-white: #fff;
+$platform-icon-light-gray: #C7CCCB;
+$platform-icon-green: #53D39A;
+$platform-icon-gray: #999;
+$platform-icon-dark: #101010;
+
+//主要用到的颜色,服务于高度统一的主色调使用,如果是有新增颜色,请找言一确认后再增加
+$platform-bg-white: #fff;
+$platform-bg-green: #53D39A;
+$platform-bg-red: #ED5F5B;
+$platform-bg-default: #f5f5f5;
+$platform-bg-disabled: #d5d5d5;
+
+//的边框颜色 default是默认(一般都是这个) pop是弹窗的边框色  white是备用的白色边框线
+$platform-border-default: #d5d5d5;
+$platform-border-white: #ffffff;
+$platform-border-green: #53D39A;
+
+
+//按钮btn
+$platform-btn-white: #ffffff;
+$platform-btn-red: red;
+$platform-btn-blue: #00aaee;
+//操作
+$platform-operation-btn-blue: #00aaee;

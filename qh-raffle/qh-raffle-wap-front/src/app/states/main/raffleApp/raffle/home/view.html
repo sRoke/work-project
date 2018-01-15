@@ -1,0 +1,146 @@
+<div flex  class="ks-home" flex="100" layout="column" ng-show="aaaa">
+    <md-content flex style="overflow-x:hidden;background: #fff;">
+        <div class="main" layout="column">
+            <div class="raffle-top" layout="row" layout-align="center center">
+                <div class="raffle-rule" ng-click="openRule()"></div>
+                <!--转盘-->
+                <!--<img ng-repeat="lotteryUrl in lottery" ng-src="{{lotteryUrl.picture}}" id="{{$index+1}}-img" style="display:none;"  />-->
+                <div class="banner" style="margin-top: 40px;">
+                    <div class="turnplate" style="">
+                        <!--<canvas class="item" id="wheelcanvas" width="280px" height="280px"></canvas>-->
+                        <img ng-src="{{items.dialImg}}" class="item" id="wheelcanvas">
+                        <img class="pointer" ng-click="pointer()" src="pointer.png"/>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="joinNum" layout="row">
+                <div class="joinNumTs">您还有&nbsp;<span>{{items.surplus}}</span>&nbsp;次抽奖机会</div>
+            </div>
+            <!--自砍一刀-->
+            <div class="btn-con" layout="row" layout-align="center center">
+                <button ng-if="items.canShare" ng-click="imgShow()">立即分享，获抽奖机会</button>
+                <button ng-if="!items.canShare" ng-click="imgShow()">立即分享，告诉小伙伴</button>
+            </div>
+            <div class="ts" layout="row" layout-align="center center" ng-click="openMedia()">查看我的奖品>></div>
+            <!--图文详情-->
+            <div class="activity-desp" ng-include="tplUrl1"></div>
+        </div>
+    </md-content>
+    <!--分享弹窗背景-->
+    <div class="dialog-backdrop" ng-show="backdrop"  stop-touch-event ng-click="closeDialog()"></div>
+
+    <!--分享弹窗背景2-->
+    <div class="dialog-backdrop2" ng-show="backdrop2" stop-touch-event ng-click="closeDialog()"></div>
+    <!--分享图片-->
+    <div class="dialog-img-wrap" ng-if="imgWrapShow" layout="column"
+         layout-align="center center">
+        <img class="imgShare" src="https://img.kingsilk.net/Fu5T9P71eZKSr_imO5N-ZsTHA85N" alt="" style="z-index: 50"
+             ng-click="closeDialog()">
+    </div>
+    <!--长按识别二维码参与活动-->
+    <div class="dialog-ewm-wrap"  layout="column"  ng-if="imgEwmShow"
+         >
+        <div class="dialog-ewm-wrap-con">
+            <div class="top-tit">关注公众号领取奖品</div>
+            <div class="ewmImg"><img ng-src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={{ewmUrl}}"/></div>
+        </div>
+        <div class="bottom-tit"><span>方式1：</span>长按二维码 关注公众号领奖吧</div>
+        <div class="close" style="position: absolute;bottom: -90px;left:50%;margin-left:-20px;z-index: 141;"
+             ng-click="closeDialog()">
+            <img src="close.png" width="40" height="40"
+                 style="max-width: 40px;max-height: 40px;min-height: 40px;min-width: 40px" alt="">
+        </div>
+    </div>
+    <!--活动规则弹窗-->
+    <div class="dialog-rule-wrap"  layout="column" ng-if="ruleShow">
+        <div class="bargain-con" layout="column">
+            <div class="top-con" layout="row" layout-align="center center" >
+                游戏规则
+                <md-icon class="ks-icon  ks-icon1" md-font-set="ks-icon" md-font-icon="ag-closed-o" ng-click="closeDialog()"></md-icon>
+            </div>
+            <div flex class="bargainer">
+                <div class="rank-list-content" ng-include="tplUrl">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--中奖弹窗-->
+    <div class="dialog-lottery-wrap" ng-if="lotteryShow" layout="column" >
+
+        <div class="bargain-con" layout="column">
+            <div class="lottery-name" laout="row" layout-align="center center">{{drawArray.name}}</div>
+            <div class="img-con">
+                <img ng-src="{{drawArray.picture}}">
+            </div>
+            <div class="ks-close" ng-click="closeDialog()"></div>
+        </div>
+        <div class="lottery" ng-if="drawArray.awardType=='MATERIAL'" ng-click="getLottery(drawArray.recordId)"></div>
+        <div class="reshare" ng-if="items.canShare"  ng-click="imgShow2()" ></div>
+    </div>
+    <!--查看奖品弹窗-->
+    <div class="dialog-media-wrap"  layout="column" ng-if="mediaShow">
+        <div class="bargain-con" layout="column">
+            <div class="top-con" layout="row" layout-align="center center" >
+                查看我的奖品
+                <!--<md-icon class="ks-icon  ks-icon1" md-font-set="ks-icon" md-font-icon="ag-closed-o" ng-click="closeDialog()"></md-icon>-->
+            </div>
+            <div flex class="raffle1" ng-if="lotteryShow1">
+                <div class="rank-list-content" layout="column">
+                    <div class="list-con" flex layout="column" ng-repeat="list in recordList">
+                        <div layout="row">
+                            <div class="list-left">
+                               <img ng-src="{{list.picture}}" class="list-left">
+                            </div>
+                            <div class="list-right"  layout="column">
+                                <div class="right-title">{{list.name}}</div>
+                                <div class="right-click" ng-if="list.awardType=='MATERIAL' && !list.accept" ng-click="getLottery(list.recordId)">去领取>></div>
+                                <div class="right-click" ng-if="list.awardType=='MATERIAL' && list.accept" ng-click="lotteryDetail(list.recordId)">查看详细>></div>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div flex class="raffle2" ng-if="!lotteryShow1">
+                <div class="center-con" layout="row" ng-if="awardBuy.drawType!='SINCE'">
+                    <div class="center-left" layout="row" layout-align="center center">收货地址</div>
+                    <div class="center-right1" layout="column">
+                        <div class="phone">{{awardBuy.address.receiver}} {{awardBuy.address.phone}}</div>
+                        <div class="address">{{awardBuy.address.province}}{{awardBuy.address.city}}{{awardBuy.address.area}}{{awardBuy.address.street}}</div>
+                    </div>
+                </div>
+                <div class="center-con" layout="row" ng-if="awardBuy.drawType=='SINCE'">
+                    <div class="center-left" layout="row" layout-align="center center">领取地址</div>
+                    <div class="center-right1" layout="column">
+                        <div class="phone">{{awardBuy.shopPhone}}</div>
+                        <div class="address">{{awardBuy.shopAddress}}</div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="center-con" layout="row" ng-if="awardBuy.drawType!='SINCE'">
+                    <div class="center-left" layout="row" layout-align="center center" style="line-height: 52px;">快递单号</div>
+                    <div class="center-right2">{{awardBuy.logisticsId}}</div>
+                </div>
+                <div class="line" ng-if="awardBuy.drawType!='SINCE'"></div>
+                <div class="center-con" layout="row" ng-if="awardBuy.drawType!='SINCE'">
+                    <div class="center-left" layout="row" layout-align="center center" style="line-height: 52px;">快递公司</div>
+                    <div class="center-right2">{{awardBuy.logisticsCompany}}</div>
+                </div>
+                <div class="line" ng-if="awardBuy.drawType!='SINCE'"></div>
+                <div class="center-con" layout="row">
+                    <div class="center-left" layout="row" layout-align="center center" style="line-height: 52px;">备注信息</div>
+                    <div class="center-right2">{{awardBuy.memo}}</div>
+                </div>
+                <div class="line"></div>
+            </div>
+            <!--按钮-->
+            <div class="btn" layout="row" layout-align="center center">
+                <div class="btn1" ng-if="lotteryShow1" ng-click="closeDialog()"></div>
+                <div class="btn2" ng-if="!lotteryShow1" ng-click="lotteryDetail()"></div>
+            </div>
+        </div>
+    </div>
+</div>

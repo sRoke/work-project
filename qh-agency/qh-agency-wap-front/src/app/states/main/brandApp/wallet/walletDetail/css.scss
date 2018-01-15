@@ -1,0 +1,152 @@
+@import "../../../../../scss/ksMain";
+@import "../../../../../scss/index";
+.ks-wallet-count {
+  .detailStatus{
+    width:100%;
+    position: absolute;
+    z-index:1112;
+    padding:15px 0;
+    top:44px;
+    background: #f5f5f5;
+    li{
+      list-style: none;
+      width: 100%;
+      height: 46px;
+      line-height: 46px;
+      color: $agency-word-gray;
+      font-size:16px;
+      text-align: center;
+    }
+    .selectLi{
+      color: $agency-word-black;
+    }
+  }
+  .detailHide{
+    display: none;
+  }
+  #zzc{
+    height:100%;
+    width:100%;
+    background:rgba(16,16,16,0.60);
+    z-index:111;
+  }
+  .main {
+    width:100%;
+    padding:0 15px;
+    background: #f5f5f5;
+    .main-detail{
+      width:100%;
+      .detail-date{
+        height:44px;
+        width:100%;
+        font-size:14px;
+        line-height:44px;
+        color: $agency-word-gray;
+        letter-spacing: -0.34px;
+      }
+      .detail-count{
+        margin-bottom: 10px;
+        .tab-choose{
+          height:80px;
+          background: $agency-bg-white;
+
+          .tab-left{
+            .tab-word{
+              height:40px;
+              width:40px;
+              border-radius: 20px;
+              margin: 20px 15px;
+              line-height: 40px;
+              text-align: center;
+              color:$agency-word-white;
+              font-size: 22px;
+            }
+            .tab-xiao{
+              background: #F8A867;
+            }
+            .tab-tui{
+              background: #cbabff;
+            }
+            .tab-ti{
+              background: #65CFFF;
+            }
+            .tab-cai{
+              background: #F48768;
+            }
+            .tab-shou{
+              background: #53D39A;
+            }
+            .tab-detail{
+              .tab-detail-name{
+                height:20px;
+                line-height: 20px;
+                font-size:16px;
+                padding:18px 0 6px;
+                color: $agency-word-black;
+                letter-spacing: -0.39px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 130px;
+                overflow: hidden;
+              }
+              .tab-detail-time{
+                height:18px;
+                line-height: 18px;
+                font-size:14px;
+                color: $agency-word-gray;
+                letter-spacing: -0.34px;
+                padding-bottom:18px;
+              }
+            }
+          }
+          .tab-right{
+            .Positive{
+              height:20px;
+              font-weight: 600;
+              line-height: 20px;
+              font-size:16px;
+              color: $agency-word-black;
+              letter-spacing: -0.39px;
+              padding:18px 15px 42px 0px;
+            }
+          }
+        }
+
+      }
+      .detail-count:last-child{
+        margin-bottom:0px;
+      }
+    }
+
+    .center-tab-boldLine{
+      width: 100%;
+      height: 10px;
+    }
+    .center-tab-line{
+      //width: 100%;
+      padding:0 15px;
+      background: $agency-bg-white;
+      .line{
+        width: 100%;
+        height: 1px;
+        -webkit-transform: scaleY(0.5);
+        -webkit-transform-origin: 0 0;
+        //overflow: hidden;
+        background: #CDD0CF;
+      }
+    }
+  }
+  //暂无明细
+  .empty-count{
+    .ks-icon-count{
+      font-size:40px;
+      color: #d5d5d5;
+      line-height: 40px;
+      margin-bottom: 20px;
+    }
+    .txt{
+      font-size: 14px;
+      color: #999;
+    }
+  }
+}

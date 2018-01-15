@@ -1,0 +1,164 @@
+@import "../../../../../scss/ksMain";
+@import "../../../../../scss/index";
+.ks-wallet-assets {
+
+  .ks-header._md {
+    min-height: 44px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    background: $agency-bg-white;
+
+    .ks-header-divWrap {
+      padding: 0 15px;
+      height: 100%;
+      color: $agency-word-dark;
+      .divTop {
+        text-align: center;
+        position: relative;
+        line-height: 44px;
+        .chevron_left {
+          color: $agency-word-dark;
+          position: absolute;
+          left: 0;
+          font-size: 21px;
+          line-height: 44px;
+        }
+        .regSpan{
+          font-size: 18px;
+          color: #030303;
+          letter-spacing: -0.43px;
+        }
+        .regSpan-right{
+          position: absolute;
+          right: 0;
+          font-size: 16px;
+          color: #333333;
+          letter-spacing: -0.39px;
+          line-height: 44px;
+        }
+      }
+    }
+  }
+  .ks-white-header{
+    background: -webkit-linear-gradient(-90deg, rgba(83, 211, 154, 0.90) 0%, rgba(106, 233, 176, 0.90) 100%); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(-90deg, rgba(83, 211, 154, 0.90) 0%, rgba(106, 233, 176, 0.90) 100%); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(-90deg, rgba(83, 211, 154, 0.90) 0%, rgba(106, 233, 176, 0.90) 100%); /* Firefox 3.6 - 15 */
+    background: linear-gradient(-90deg, rgba(83, 211, 154, 0.90) 0%, rgba(106, 233, 176, 0.90) 100%); /* 标准的语法 */
+  }
+  .main {
+    background: $agency-bg-default;
+    .tab-top{
+      width: 100%;
+      height: 196px;
+      background: -webkit-linear-gradient(-90deg, rgba(83, 211, 154, 0.90) 0%, rgba(106, 233, 176, 0.90) 100%); /* Safari 5.1 - 6.0 */
+      background: -o-linear-gradient(-90deg, rgba(83, 211, 154, 0.90) 0%, rgba(106, 233, 176, 0.90) 100%); /* Opera 11.1 - 12.0 */
+      background: -moz-linear-gradient(-90deg, rgba(83, 211, 154, 0.90) 0%, rgba(106, 233, 176, 0.90) 100%); /* Firefox 3.6 - 15 */
+      background: linear-gradient(-90deg, rgba(83, 211, 154, 0.90) 0%, rgba(106, 233, 176, 0.90) 100%); /* 标准的语法 */
+      .desc{
+        font-size: 14px;
+        color: $agency-word-white;
+        letter-spacing: -0.34px;
+        line-height: 16px;
+      }
+      .num{
+        font-size: 36px;
+        color: $agency-word-white;
+        letter-spacing: -0.48px;
+        line-height: 40px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+    }
+    .tab-center{
+      width:100%;
+      padding: 0 15px;
+      margin-top:-57px;
+      .tab-count{
+        height:130px;
+        background: $agency-bg-white;
+        .my-count{
+          padding: 20px 0 0 15px;
+          letter-spacing: -0.39px;
+          font-size: 16px;
+          line-height:16px;
+        }
+        .tx-content{
+          padding-top:30px;
+          .tx-count{
+            padding-left:40px;
+            .tx-word{
+              color: #999;
+              font-size:14px;
+              letter-spacing: -0.34px;
+              line-height:14px;
+            }
+            .tx-number{
+              color: #333;
+              padding-top:9px;
+              font-size:20px;
+              letter-spacing: -0.48px;
+              line-height:16px;
+            }
+          }
+          .line{
+            height:39px;
+            background: #d5d5d5;
+            width:1px;
+            -webkit-transform: scaleX(0.5);
+            -webkit-transform-origin: 0 0;
+          }
+        }
+      }
+      .tab-shadow{
+        box-shadow: 0 2px 8px 0 rgba(217,228,223,0.64);
+      }
+    }
+    .tab-choose{
+      width: 100%;
+      padding: 0 15px;
+      background: $agency-bg-white;
+      height: 60px;
+      label{
+        font-size: 16px;
+        color: #333333;
+        letter-spacing: -0.39px;
+        line-height: 16px;
+      }
+      md-icon{
+        color: #C7CCCB;
+        font-size: 14px;
+        height: 14px;
+        min-height: 14px;
+        min-width: 0;
+        line-height: 14px;
+      }
+      .choosePhone{
+        display: inline-block;
+        font-size: 14px;
+        color: #999999;
+        letter-spacing: -0.34px;
+        line-height: 14px;
+        //margin-right: 10px;
+      }
+    }
+    .center-tab-boldLine{
+      width: 100%;
+      height: 10px;
+    }
+    .center-tab-line{
+      width: 100%;
+      padding:0 15px;
+      background: $agency-bg-white;
+      .line{
+        width: 100%;
+        height: 1px;
+        -webkit-transform: scaleY(0.5);
+        -webkit-transform-origin: 0 0;
+        //overflow: hidden;
+        background: #CDD0CF;
+      }
+    }
+  }
+}

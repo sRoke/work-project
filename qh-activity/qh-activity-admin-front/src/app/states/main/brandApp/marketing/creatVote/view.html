@@ -1,0 +1,240 @@
+<div class="ks-creatVote">
+    <!--<h2>基本配置</h2>-->
+    <div class="main" flex>
+        <!--收银-->
+        <ul layout="row" class="title">
+            <li ng-class="{checked:activeNum == '1'}" ng-click="changeTab(1)">基础设置</li>
+            <li ng-class="{checked:activeNum == '2'}" ng-click="changeTab(2)">活动主图</li>
+            <li ng-class="{checked:activeNum == '3'}" ng-click="changeTab(3)">活动规则</li>
+            <!--<li ng-class="{checked:activeNum == '4'}" ng-click="changeTab(4)">活动图文</li>-->
+            <li ng-class="{checked:activeNum == '5'}" ng-click="changeTab(5)">分享设置</li>
+        </ul>
+        <!--基础设置-->
+        <div class="content" layout="column" ng-show="activeNum == '1'">
+            <div class="wrap" layout="row">
+                <div class="leftName">活动名称1:</div>
+                <div class="right-box">
+                    <input type="text" placeholder="请输入活动名称" style="min-width: 400px"
+                           ng-model="activeData.activityName">
+                </div>
+            </div>
+            <div class="wrap" layout="row">
+                <div class="leftName">报名时间:</div>
+                <div class="right-box" layout="row">
+                    <input type="text" class="layui-input" id="signUpStartTime" placeholder="yyyy-MM-dd HH:mm:ss"
+                           ng-model="activeData.signUpStartTime">
+                    <span style="line-height: 30px; margin: 0 10px">~</span>
+                    <input type="text" class="layui-input" id="signUpEndTime" placeholder="yyyy-MM-dd HH:mm:ss"
+                           ng-model="activeData.signUpEndTime">
+                </div>
+            </div>
+            <div class="wrap" layout="row">
+                <div class="leftName">投票时间:</div>
+                <div class="right-box" layout="row">
+                    <input type="text" class="layui-input" id="voteStartTime" placeholder="yyyy-MM-dd HH:mm:ss"
+                           ng-model="activeData.voteStartTime">
+                    <span style="line-height: 30px; margin: 0 10px">~</span>
+                    <input type="text" class="layui-input" id="voteEndTime" placeholder="yyyy-MM-dd HH:mm:ss"
+                           ng-model="activeData.voteEndTime">
+                </div>
+            </div>
+            <div class="wrap" layout="row">
+                <div class="leftName">每天投票次数:</div>
+                <div class="right-box" layout="row">
+                    <input flex type="text" ng-model="activeData.maxVotePerDay"
+                           onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                           onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                           placeholder="输入次数">
+                    <span class="dis"><i>*</i>投票人每天最大允许的投票次数</span>
+                </div>
+            </div>
+            <div class="wrap" layout="row">
+                <div class="leftName">每人总投票数:</div>
+                <div class="right-box" layout="row">
+                    <input flex type="text" ng-model="activeData.totalVoteCount"
+                           onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                           onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                           placeholder="输入次数"><span class="dis"><i>*</i>投票人累计总共最多投票次数</span>
+                </div>
+            </div>
+            <div class="wrap" layout="row">
+                <div class="leftName">参赛者每人每天被投票数:</div>
+                <div class="right-box" layout="row">
+                    <input flex type="text" ng-model="activeData.maxTicketPerDay"
+                           onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                           onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                           placeholder="输入次数"><span
+                        class="dis"><i>*</i>参赛者每天能从同一个投票人获取的最大票数</span>
+                </div>
+            </div>
+            <div class="wrap" layout="row">
+                <div class="leftName">能给多少人投票:</div>
+                <div class="right-box" layout="row">
+                    <!--ng-model="peopel.num"-->
+                    <!--  <label>
+                          <input flex type="radio" value="1" ng-model="activeData.votePeoplePerDay">一个人1</label>-->
+                    <label>
+                        <input flex type="radio" value="1" ng-model="activeData.votePeoplePerDay"
+                               ng-value="activeData.setNum">
+                        最多<input type="text" ng-model="activeData.setNum"
+
+                                 onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                                 onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                                 ng-change="setVoteNum()">人
+                    </label>
+                    <label>
+                        <input flex type="radio" ng-model="activeData.votePeoplePerDay" value="-1">不限
+                    </label>
+                </div>
+            </div>
+            <!--<div class="wrap" layout="row">
+                <div class="leftName">参赛感言:</div>
+                <div class="right-box" layout="row">
+                    <input flex type="text" ng-model="activeData.wordsOfThanks"
+                           placeholder="参赛感言"><span class="dis"><i>*</i>默认参赛感言</span>
+                </div>
+            </div>-->
+            <div class="wrap" layout="row">
+                <div class="leftName">是否强制输入手机号:</div>
+                <div class="right-box" layout="row">
+                    <!-- <label><input type="checkbox" ng-model="activeData.forcePhone"
+                                   ng-true-value="'是'" ng-false-value="'否'">{{activeData.forcePhone}}</label>-->
+                    <label><input type="checkbox" ng-model="activeData.forcePhone" value="false">是</label>
+                </div>
+            </div>
+            <div class="wrap" layout="row">
+                <div class="leftName">是否强制关注公众号:</div>
+                <div class="right-box" layout="row">
+                    <!--<label><input type="checkbox" ng-model="activeData.forceFollow"
+                                  ng-true-value="'是'" ng-false-value="'否'">{{activeData.forceFollow}}</label>-->
+                    <label><input type="checkbox" ng-model="activeData.forceFollow" value="false">是</label>
+                </div>
+            </div>
+            <div class="wrap" layout="row">
+                <div class="leftName">状态:</div>
+                <div class="right-box" layout="row">
+                    <!--<input flex type="text" ng-model="activeData.voteStatusEnum" placeholder="状态">-->
+                    <select ng-model="activeData.voteStatusEnum">
+                        <option value="">请选择</option>
+                        <option value="EDITING">编辑中</option>
+                        <option value="NORMAL">正常</option>
+                        <option value="END">已结束</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <!--活动主图-->
+        <div class="content" layout="column" ng-show="activeNum == '2'">
+            <div class="wrap" layout="row">
+                <div class="leftName">活动主图:</div>
+                <div class="right-box">
+                    <!--<input type="file" ng-model="activeData.primaryImgUrl">-->
+                    <div layout="row" layout-align="start start" class="mainImg">
+                        <div class="imgList" ng-repeat="img in activeData.imgs track by $index" id="img{{$index}}"
+                             ng-mouseenter="showOperate($index)" ng-mouseleave="hideOperate($index)">
+                            <p class="imgWrap">
+                                <img ng-src="{{img}}" width="150"
+                                     height="150"/>
+                            </p>
+                            <div class="file-panel" ng-if="!views.deleteImg" layout="column"
+                                 layout-align="start center">
+                                <span class="cancel" ng-click="cancelDel($index)">删除</span>
+                            </div>
+                        </div>
+
+                        <div class="imgList" layout="column" layout-align="center center"
+                             ngf-select="uploading($file)" ngf-pattern="'image/*'"
+                             ng-if="activeData.imgs && activeData.imgs.length<1">
+                            <md-icon md-font-set="ks-admin-font" md-font-icon="ks-add-o"></md-icon>
+                            <div>上传图片</div>
+                            <!--<div class="button" ngf-select="uploading($file)" ngf-pattern="'image/*'" ng-model="files" ngf-multiple="true">上传图片</div>-->
+                        </div>
+                    </div>
+                    <div class="erro"><span style="color:#F78B91">*</span>建议尺寸 :宽 750像素</div>
+                </div>
+
+            </div>
+
+            <div class="wrap" layout="row">
+                <div class="leftName">活动图文:</div>
+                <div class="right-box">
+                    <!--ng-model="activeData.desp"-->
+                    <div id="div5" flex style="height: 300px"></div>
+                </div>
+            </div>
+        </div>
+        <!--活动规则-->
+        <div class="content" layout="column" ng-show="activeNum == '3'">
+            <div class="wrap" layout="row">
+                <div class="leftName">活动规则:</div>
+                <div class="right-box">
+                    <!--ng-model="activeData.Rule"-->
+                    <div id="div4" flex style="height: 300px"></div>
+                </div>
+            </div>
+        </div>
+        <!--活动图文-->
+        <!--<div class="content" layout="column" ng-show="activeNum == '4'">
+            <div class="wrap" layout="row">
+                <div class="leftName">活动图文:</div>
+                <div class="right-box">
+                    &lt;!&ndash;ng-model="activeData.desp"&ndash;&gt;
+                    <div id="div5" flex>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!--分享设置-->
+        <div class="content" layout="column" ng-show="activeNum == '5'">
+            <div class="wrap" layout="row">
+                <div class="leftName">微信分享标题:</div>
+                <div class="right-box">
+                    <textarea name="" cols="30" rows="10" ng-model="activeData.shareTitle"></textarea>
+                </div>
+            </div>
+            <div class="wrap" layout="row">
+                <div class="leftName">微信分享内容:</div>
+                <div class="right-box">
+                    <textarea name="" cols="30" rows="10" ng-model="activeData.shareContent"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=" col-sm-9 btnList">
+        <button type="button" class="update" ng-click="save()">
+            保存
+        </button>
+
+        <button class="return"
+                ng-click="fallbackPage()"
+                role="button">返回
+        </button>
+    </div>
+</div>
+
+<!--
+<md-button ng-click="testSave()" style="background: red;color: blue">保存测试</md-button>
+
+<p>以下是测试,不用管</p>
+&lt;!&ndash;<p>日期：<input type="text" id="datepicker" size="30" ></p>&ndash;&gt;
+&lt;!&ndash;<input type="text" value="2012-05-15 21:05" id="datepicker" data-date-format="yyyy-mm-dd ">&ndash;&gt;
+
+AAAAAAAA
+&lt;!&ndash;<input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime">&ndash;&gt;
+<div class="input-append date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+    <input size="16" type="text" value="12-02-2012">
+    <span class="add-on"><i class="icon-th"></i></span>
+</div>
+<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe60c;</i>
+BBBBBBBBB
+<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe60c;</i>
+<input type="text" name="basic_example_1" id="basic_example_1" value="" class="hasDatepicker">
+<input type="radio" ng-model="color.name" value="red"> Red <br/>
+<input type="radio" ng-model="color.name" ng-value="specialValue"> Green <br/>
+<input type="radio" ng-model="color.name" value="blue"> Blue <br/>
+<tt>color = {{color.name | json}}</tt><br/>
+CCCCCCCCCC
+<input type="text" class="layui-input" id="test5" placeholder="yyyy-MM-dd HH:mm:ss" ng-model="myData" lay-key="6">
+&lt;!&ndash;<p><input type="text" id="example_1"/></p>&ndash;&gt;-->

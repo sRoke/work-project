@@ -1,0 +1,18 @@
+<!--<div flex  class="ks-home">-->
+    <!--<div id="clipArea"></div>-->
+    <!--<input type="file" id="file">-->
+    <!--<button id="clipBtn">截取</button>-->
+    <!--<div id="view"></div>-->
+<!--</div>-->
+
+<div flex  class="ks-home">
+
+    <div id="baiduMap" style="width: 100%;height: 300px;background: #fbfe9d" ></div>
+
+
+    <div>{{baiduMapAddress.address}}</div>
+    <div>{{baiduMapAddress.business}}</div>
+    <div> <input class="form-control" ng-model="keyWord"></div>
+
+    <div ng-click="search()">确定</div>
+</div>

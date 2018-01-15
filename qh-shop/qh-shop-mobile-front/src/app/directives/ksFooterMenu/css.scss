@@ -1,0 +1,80 @@
+/**
+ * 底部按钮通栏
+ */
+.ksFooterMenu {
+  //border-top: 1px solid #d5d5d5;
+  flex-shrink: 0;
+  md-toolbar {
+
+    min-height: 49px !important;
+    height: 49px !important;
+    background-color: #FFFFFF;
+
+    .menu-item {
+      position: relative;
+      font-size: 10px;
+      color: #d5d5d5;
+      letter-spacing: 0.12px;
+      line-height: 10px;
+      &.cur {
+        color: #E53467;
+        md-icon {
+          color: #E53467;
+          /*font-weight: 900;*/
+        }
+        .md-grid-text {
+          color: #E53467;
+        }
+      }
+      md-icon {
+        margin-top: 2px;
+        //margin: 3px 0;
+        font-size: 20px;
+        text-align: center;
+        color: #d5d5d5;
+      }
+
+      .md-grid-text {
+        margin-top: 4px;
+        font-size: 10px;
+        text-align: center;
+        min-height: 16px;
+        font-weight: bold;
+        color: #d5d5d5;
+      }
+      .md-grid-text:nth-of-type(2) {
+        margin-top: 1px;
+      }
+    }
+
+    // vip商城的图标因为视觉原因，有点小，在这里单独给放大字号。
+    //& > .menu-item:nth-child(2) {
+    //  md-icon {
+    //    font-size: 18px;
+    //    margin-top: 4px;
+    //  }
+    //}
+    //& > .menu-item:nth-child(3) {
+    //  md-icon {
+    //    font-size: 18px;
+    //    margin-top: 4px;
+    //  }
+    //}
+
+    //新增vip会员，这段代码注释掉
+    /*& > .menu-item:nth-child(1) {
+      margin-right: 13%;
+    }
+    & > .menu-item:nth-child(3) {
+      margin-left: 13%;
+    }*/
+  }
+  //设置其它未选中图标u颜色
+  md-toolbar:not(.md-menu-toolbar) md-icon {
+    color: #d5d5d5;
+    /*font-weight: 600;*/
+  }
+  md-toolbar:not(.md-menu-toolbar) {
+    color: #d5d5d5;
+  }
+}

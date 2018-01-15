@@ -1,0 +1,114 @@
+@import "../../../../../scss/index";
+
+.ks-setPassword{
+  //header开始
+  .ks-header._md {
+    min-height: 44px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    background: $agency-bg-white;
+
+    .ks-header-divWrap {
+      padding: 0 15px;
+      height: 100%;
+      color: $agency-word-dark;
+      .divTop {
+        text-align: center;
+        position: relative;
+        line-height: 44px;
+        .chevron_left {
+          color: $agency-word-dark;
+          position: absolute;
+          left: 0;
+          font-size: 21px;
+          line-height: 44px;
+        }
+        .regSpan{
+          font-size: 18px;
+          color: $agency-word-dark;
+          letter-spacing: -0.43px;
+        }
+        .regSpan-right{
+          position: absolute;
+          right: 0;
+          font-size: 14px;
+          color: #333333;
+          letter-spacing: -0.34px;
+          line-height: 44px;
+        }
+      }
+    }
+  }
+
+  //主体部分
+  #content {
+    .content-set{
+      padding: 0 15px;
+      .tab-choose{
+        width: 100%;
+        background: $agency-bg-white;
+        height: 56px;
+        margin-top: 10px;
+        label{
+          font-size: 16px;
+          color: $agency-word-gray;
+          letter-spacing: -0.39px;
+          line-height: 16px;
+        }
+        .editInput{
+          border: 0;
+          outline: none;
+          padding: 0;
+          margin: 0;
+          font-size: 16px;
+          color: #333;
+          //letter-spacing: -0.39px;
+          letter-spacing: 2px;
+          line-height: 16px;
+          text-align: left;
+          width: 100%;
+        }
+      }
+      .center-tab-boldLine{
+        width: 100%;
+        height: 10px;
+      }
+      .center-tab-line{
+        width: 100%;
+        background: $agency-bg-white;
+        .line{
+          width: 100%;
+          height: 1px;
+          -webkit-transform: scaleY(0.5);
+          -webkit-transform-origin: 0 0;
+          //overflow: hidden;
+          background: #CDD0CF;
+        }
+      }
+
+
+
+    }
+
+    .edit-btn{
+      margin-top: 40px;
+      margin-bottom: 20px;
+      padding: 0 15px;
+      height: 44px;
+      .btn{
+        width: 100%;
+        height: 44px;
+        background: $agency-bg-green;
+        border-radius: 8px;
+        font-size: 18px;
+        color: $agency-word-white;
+        letter-spacing: -0.43px;
+        line-height: 44px;
+        text-align: center;
+      }
+
+    }
+
+  }
+}

@@ -1,0 +1,24 @@
+
+# UNIT TEST
+
+net.kingsilk.qh.agency.ut:
+  oauth:
+    wap:
+      url :                 http://localhost:10040
+      accessTokenUri:       ${net.kingsilk.qh.oauth.ut.oauth.wap.url}/oauth/token
+      userAuthorizationUri: ${net.kingsilk.qh.oauth.ut.oauth.wap.url}/oauth/authorize
+      checkTokenUri:        ${net.kingsilk.qh.oauth.ut.oauth.wap.url}/oauth/check_token
+  agency:
+    wap:
+      url:                  http://localhost:10060
+      front:
+        url:                ${net.kingsilk.qh.net.kingsilk.qh.agency.ut.net.kingsilk.qh.agency.wap.url}/index.html
+        clientId:           CLIENT_ID_qh-net.kingsilk.qh.agency-wap-front
+    admin:
+      url:                  http://localhost:10070
+      front:
+        url:                ${net.kingsilk.qh.net.kingsilk.qh.agency.ut.net.kingsilk.qh.agency.net.kingsilk.qh.net.kingsilk.qh.agency.admin.url}/index.html
+        clientId:           CLIENT_ID_qh-net.kingsilk.qh.agency-net.kingsilk.qh.net.kingsilk.qh.agency.admin-front
+
+
+

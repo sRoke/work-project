@@ -1,0 +1,285 @@
+//
+@import "../../../../../../scss/_ksMain.scss";
+.ks-selectClassify{
+  background: #f5f5f5;
+  .center-line{
+    flex-shrink: 0;
+    height:10px;
+    width:100%;
+    background: #f5f5f5;
+  }
+  //
+  .main-noGoods{
+    background: #f5f5f5;
+    height: 100%;
+    .img-con{
+      margin-top:80px;
+      height: 48px;
+      width:100%;
+      .noGoods{
+        height: 48px;
+        width:48px;
+      }
+    }
+    .noGoods-word{
+      color: #999;
+      font-size: 14px;
+      line-height: 44px;
+    }
+
+  }
+  //  主体
+  .main{
+    background: #f5f5f5;
+    height: 100%;
+    .center-line{
+      flex-shrink: 0;
+      height:10px;
+      width:100%;
+      background: #f5f5f5;
+    }
+    //
+    .edit-ts{
+      line-height: 22px;
+      padding-left: 15px;
+      height:22px;
+      font-size:12px;
+      color: #D5D5D5;
+      background: #f5f5f5;
+    }
+    .center-con{
+      margin-bottom: 40px;
+      background: #fff;
+      flex-shrink: 0;
+      width:100%;
+      //0.5px
+      .line{
+        width: 100%;
+        height: 1px;
+        -webkit-transform: scaleY(0.5);
+        -webkit-transform-origin: 0 0;
+        //overflow: hidden;
+        background: #CDD0CF;
+      }
+      .center-tab{
+        flex-shrink: 0;
+        background: #fff;
+        //父级
+        .tab-parent{
+          padding:0 15px;
+          width:100%;
+          height:60px;
+          overflow: hidden;
+          line-height: 60px;
+          .tab-parent-left{
+            font-size: 16px;
+            color: #333;
+            .ks-icon{
+              color: #999;
+              font-size: 16px;
+            }
+          }
+          .tab-parent-right{
+            font-size: 14px;
+            //transform: translate(119px);
+            .right-btn-add{
+              color: #53d39a;
+              margin-right: 10px;
+            }
+            .right-btn-edit{
+              color: #10aeff;
+              margin-right: 10px;
+            }
+            .right-btn-del{
+              color: #ED5F5B;
+            }
+          }
+          //.touchLeft{
+          //  animation:btnLeft 1s forwards;
+          //}
+          //.touchRight{
+          //  animation:btnRight 1s forwards;
+          //}
+          //@keyframes btnLeft
+          //{
+          //  0%   {transform: translate(119px);}
+          //  100% {transform: translate(0px);}
+          //}
+          //@keyframes btnRight
+          //{
+          //  0% {transform: translate(0px);}
+          //  100%   {transform: translate(119px);}
+          //}
+
+        }
+        //子级
+        .tab-sublevel{
+          padding:0 15px;
+          width:100%;
+          .sublevel{
+            padding-left:15px;
+            width:100%;
+            height:46px;
+            line-height: 46px;
+            font-size: 16px;
+            //color: #666;
+            overflow: hidden;
+            .tab-sublevel-left{
+              font-size: 16px;
+              color: #666;
+              .ks-icon{
+                color: #999;
+                font-size: 16px;
+              }
+            }
+            .tab-sublevel-right{
+              font-size: 14px;
+             // transform: translate(119px);
+              .right-btn-add{
+                color: #53d39a;
+                margin-right: 10px;
+              }
+              .right-btn-edit{
+                color: #10aeff;
+                margin-right: 10px;
+              }
+              .right-btn-del{
+                color: #ED5F5B;
+              }
+            }
+            //.touchLeft{
+            //  animation:btnLeft 1s forwards;
+            //}
+            //.touchRight{
+            //  animation:btnRight 1s forwards;
+            //}
+            //@keyframes btnLeft
+            //{
+            //  0%   {transform: translate(119px);}
+            //  100% {transform: translate(0px);}
+            //}
+            //@keyframes btnRight
+            //{
+            //  0% {transform: translate(0px);}
+            //  100%   {transform: translate(119px);}
+            //}
+          }
+          .line{
+            width:100%;
+          }
+
+
+
+        }
+      }
+
+    }
+  }
+  .choose{
+    height: 49px;
+    border-radius: 4px;
+    background: #fff;
+    > span {
+      font-size: 14px;
+      color: #e53467;
+    }
+  }
+}
+
+
+
+
+//新增商品分类验证码
+.addGood {
+  width: 270px;
+  //height: 104px;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  .close-tck{
+    position: absolute;
+    color: #D5D5D5;
+    font-size:12px;
+    right:0;
+    width:20px;
+    height: 20px;
+    text-align: center;
+    top:-28px;
+  }
+  .dis {
+    height: 44px;
+    font-size: 18px;
+    color: #101010;
+    line-height: 44px;
+    text-align: center;
+  }
+  .rowLine{
+    width: 100%;
+    height: 1px;
+    -webkit-transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+    //overflow: hidden;
+    background: #d5d5d5;
+  }
+  .address-dis {
+    color: #999;
+    font-size: 14px;
+    padding:15px 20px 0px;
+    .dis-code{
+      position: relative;
+      width:100%;
+      input::-webkit-input-placeholder { /* WebKit browsers */
+        color: #999;
+        border: none;
+        font-size:14px;
+        font-weight: 300;
+      }
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: #999;
+        border: none;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: #999;
+        border: none;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      input:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: #999;
+        border: none;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      input{
+        -webkit-appearance: none;   //去苹果内阴影
+        height:40px;
+        padding-left: 10px;
+        background: #f5f5f5;
+        border: 1px solid #d5d5d5;
+        border-radius: 6px;
+        color: #333;
+        margin-bottom:15px;
+      }
+    }
+    button{
+      color: #53d39a;
+      width:98px;
+      height: 40px;
+      background: #fff;
+      border-top-right-radius:6px ;
+      border-bottom-right-radius: 6px;
+      border:1px solid #53d39a;
+      position: absolute;
+      right:0;
+    }
+  }
+  .line {
+    height: 44px;
+    -webkit-transform: scaleX(0.5);
+    -webkit-transform-origin: 0 0;
+    //overflow: hidden;
+    border-left: 1px solid #d5d5d5;
+  }
+}

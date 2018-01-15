@@ -1,0 +1,127 @@
+<div flex layout="column" class="ks-user-shops">
+    <!--<md-toolbar class="ks-header">-->
+        <!--<div layout="row" class="ks-header-divWrap">-->
+            <!--<div class="divTop" flex class>-->
+                <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+                         <!--ng-click="fallbackPage()"></md-icon>-->
+                <!--<span class="regSpan">商铺信息</span>-->
+                <!--<span class="regSpan-right" ng-click="edit()" ng-if="viewStatus">编辑</span>-->
+                <!--<span class="regSpan-right" ng-click="save()" ng-if="!viewStatus">保存</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-toolbar>-->
+
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>商铺信息</h1>
+        <div class="right-button" flex="20">
+            <span class="regSpan-right" ng-click="edit()" ng-if="viewStatus">编辑</span>
+            <span class="regSpan-right" ng-click="save()" ng-if="!viewStatus">保存</span>
+        </div>
+    </div>
+
+
+    <md-divider></md-divider>
+
+    <md-content flex  class="main">
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>编码</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone"  ng-if="viewStatus">{{info.seq}}</div>
+                <div class="choosePhone"  ng-if="!viewStatus" style="color: #d5d5d5">{{info.seq}}</div>
+            </div>
+        </div>
+
+        <!--<div class="center-tab-line"><div class="line"></div></div>-->
+        <md-divider></md-divider>
+
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>类别</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" ng-if="viewStatus">{{info.partnerType}}</div>
+                <div class="choosePhone" ng-if="!viewStatus"  style="color: #d5d5d5">{{info.partnerType}}</div>
+            </div>
+        </div>
+
+        <!--<div class="center-tab-line"><div class="line"></div></div>-->
+        <md-divider></md-divider>
+
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>商铺名称</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" ng-if="viewStatus">
+                    <span ng-if="info.shopName">{{info.shopName}}</span>
+                    <span ng-if="!info.shopName">未填写</span>
+                </div>
+                <input type="text" ng-model="edit.shopName" ng-if="!viewStatus && info.shopName == ''" class="editInput" placeholder="未填写" ng-if="info.shopName == ''">
+                <input type="text" ng-model="edit.shopName" ng-if="!viewStatus && info.shopName != ''" class="editInput" placeholder="{{info.shopName}}" ng-if="info.shopName != ''">
+            </div>
+        </div>
+
+        <!--<div class="center-tab-line"><div class="line"></div></div>-->
+        <md-divider></md-divider>
+
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>联系人</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" ng-if="viewStatus" >{{info.realName}}</div>
+                <input type="text" ng-model="edit.realName" ng-if="!viewStatus" class="editInput" placeholder="{{info.realName}}">
+            </div>
+        </div>
+
+        <!--<div class="center-tab-line"><div class="line"></div></div>-->
+        <md-divider></md-divider>
+
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>联系电话</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" ng-if="viewStatus">{{info.phone}}</div>
+                <input type="text" ng-model="edit.phone" ng-if="!viewStatus" class="editInput" placeholder="{{info.phone}}">
+            </div>
+        </div>
+
+
+        <!--<div class="center-tab-line"><div class="line"></div></div>-->
+        <md-divider></md-divider>
+
+
+        <!--<div class="tab-choose" layout="row" layout-align="space-between center">-->
+            <!--<label>等级</label>-->
+            <!--<div flex layout="row" layout-align="end center">-->
+                <!--<div class="choosePhone" ng-if="viewStatus"> {{info.leave}}</div>-->
+                <!--<div class="choosePhone" ng-if="!viewStatus" style="color: #d5d5d5">{{info.leave}}</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="center-tab-line"><div class="line"></div></div>-->
+
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>地址</label>
+            <div flex layout="row" layout-align="end center">
+                <div class="choosePhone" ng-if="viewStatus">{{info.shopAddr}}</div>
+                <div class="choosePhone" ng-if="!viewStatus" style="color: #d5d5d5">{{info.shopAddr}}</div>
+                <!--<div class="chooseAddress"  layout="row" layout-align="space-between center" ng-if="!viewStatus" ng-click="openAddress()">-->
+                    <!--<span  >{{info.address.province}} </span>-->
+                    <!--<span  >{{info.address.city}} </span>-->
+                    <!--<span  >{{info.address.area}}</span>-->
+                <!--</div>-->
+
+                <!--<input ng-model="info.address" ng-if="!viewStatus" class="editInput" placeholder="{{info.address}}">-->
+            </div>
+        </div>
+
+
+        <!--<div class="center-tab-line"><div class="line"></div></div>-->
+        <md-divider></md-divider>
+
+
+        <div class="edit-btn" ng-click="save()" ng-if="!viewStatus">
+            <div class="btn">确认修改</div>
+        </div>
+
+
+    </md-content>
+</div>
+

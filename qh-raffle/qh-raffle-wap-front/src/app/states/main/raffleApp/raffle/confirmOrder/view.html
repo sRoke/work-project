@@ -1,0 +1,88 @@
+<div class="ks-confirmOrder"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>抽奖单</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <div class="line"></div>
+    <md-content flex style="overflow-x:hidden;background: #f5f5f5;">
+        <div class="main" layout="column">
+            <div layout="column" class="center-con">
+                <!--配送收货地址-->
+                <div class="address" ng-if="items.drawType=='ONLINE'">
+                    <div layout="row" layout-align="space-between center" class="select-address" ng-click="selectAddress()">
+                        <div layout="row" layout-align="start center" class="" flex>
+                            <md-icon class="ks-icon1" md-font-set="ks-icon" md-font-icon="ag-address-1"></md-icon>
+                            <!--选择后-->
+                            <div layout="column" class="xq" ng-if="items.address.receiver">
+                                <div class="phone">{{items.address.receiver}} {{items.address.phone}}</div>
+                                <div class="address-xq">{{items.address.province}}{{items.address.city}}{{items.address.area}}{{items.address.street}}</div>
+                            </div>
+                            <!--选择前-->
+                            <div layout="column" class="xq" layout-align="start center" ng-if="!items.address.receiver">
+                                请填写您的收货地址
+                            </div>
+                        </div>
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"  ></md-icon>
+                    </div>
+                </div>
+                <div class="bg-line"></div>
+                <!--订单商品 ng-repeat-->
+                <div class="order-goods" ng-repeat="item in items.awardInfoList">
+                    <div layout="row">
+                        <div class="img-con">
+                            <img ng-src={{item.picture}}>
+                        </div>
+                        <div layout="column" class="img-right" flex>
+                            <div class="title">{{item.name}}</div>
+                        </div>
+                    </div>
+                    <div class="line" ng-if="!$last"></div>
+                </div>
+                <div class="bg-line"></div>
+                <div class="drawType" layout="row" >
+                    <div class="drawType-left">领取方式</div>
+                    <div class="drawType-right" ng-if="items.drawType=='ONLINE'">快递配送</div>
+                    <div class="drawType-right" ng-if="items.drawType=='SINCE'">到店领取</div>
+                </div>
+                <div class="line"></div>
+                <div class="drawType" layout="row" ng-if="items.drawType=='SINCE'">
+                    <div class="drawType-left">商家电话</div>
+                    <a href="tel:{{items.phone}}" class="drawType-right">{{items.phone}}</a>
+                </div>
+                <div class="line" ng-if="items.drawType=='SINCE'"></div>
+                <!--<div class="address1" ng-if="items.drawType=='SINCE'">-->
+                    <!--<div layout="row" layout-align="space-between center" class="select-address" >-->
+                        <!--<div layout="row" layout-align="start center" class="" flex>-->
+                            <!--<div style="font-size: 16px;">商家地址</div>-->
+                            <!--&lt;!&ndash;选择后&ndash;&gt;-->
+                            <!--<div layout="column" class="xq">-->
+                                <!--<div class="phone">{{items.phone}}</div>-->
+                                <!--<div class="address-xq">{{items.shopAddress}}</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="address1" layout="row"  layout-align="start center" ng-if="items.drawType=='SINCE'">
+                    <div class="address1-left">商家地址</div>
+                    <div class="xq">{{items.shopAddress}}</div>
+                </div>
+                <div class="line" ng-if="items.drawType=='SINCE'"></div>
+                <!--备注-->
+                <div class="remark-goods" layout="column" ng-if="items.drawType=='ONLINE'">
+                    <div layout="row" class="remark">
+                        <div class="remark-left">买家备注</div>
+                        <textarea class="remark-right" ng-model="buyerMemo" placeholder="点击给商家备注信息" flex></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </md-content>
+    <div class="line"  style="background: #e53467;" ng-if="items.drawType=='ONLINE'"></div>
+    <div layout="row" layout-align="center cneter" class="ks-bottom" ng-if="items.drawType=='ONLINE'">
+        <button ng-click="submitOrder()">提交</button>
+    </div>
+</div>

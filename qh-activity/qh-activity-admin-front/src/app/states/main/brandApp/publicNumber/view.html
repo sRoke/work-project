@@ -1,0 +1,32 @@
+<!--rmy 重新排版-->
+<div class="ks-public">
+    <!--未设置-->
+    <div class="main">
+        <div class="no-authorize" ng-if="!data.wxMpId">
+            <div class="no-authorize-word">绑定微信公众号，生意参谋和微信打通</div>
+            <div>
+                <button ng-click="setAuthorize()">去设置授权</button>
+            </div>
+        </div>
+        <div class="authorize" ng-if="data.wxMpId">
+            <div class="authorize-word" layout="row">
+                <div class="word-left">微信公众号：</div>
+                <div class="word-right">{{item.principalName}}</div>
+            </div>
+            <div class="authorize-word" layout="row">
+                <div class="word-left">公众号昵称：</div>
+                <div class="word-right">{{item.nickName}}</div>
+            </div>
+            <div class="authorize-word" layout="row">
+                <div class="word-left">微信帐号类型：</div>
+                <div class="word-right" ng-if="item.serviceTypeInfo=='0'">订阅号</div>
+                <div class="word-right" ng-if="item.serviceTypeInfo=='1'">升级后的订阅号</div>
+                <div class="word-right" ng-if="item.serviceTypeInfo=='2'">服务号</div>
+            </div>
+            <div layout="column" class="word-tck">
+                <div>你的微商城已获得该公众号的所有接口权限，可以正常对接微信</div>
+                <div style="margin-top: 5px;">如果使用中发现接口有异常，请点击<span ng-click="setAuthorize()">&nbsp;重新授权&nbsp;</span>试试，再<span>&nbsp;刷新</span></div>
+            </div>
+        </div>
+    </div>
+</div>

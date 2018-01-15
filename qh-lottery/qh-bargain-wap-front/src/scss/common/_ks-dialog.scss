@@ -1,0 +1,14 @@
+// $dialog#confim 等方法可以通过 .theme ("xxx") 来追加自定义class，从而定制
+
+.md-dialog-container {
+
+  .md-logout-confirm-theme {
+    md-dialog-actions {
+      border-top: 1px solid red;
+
+
+    }
+  }
+
+}
+

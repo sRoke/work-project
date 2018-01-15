@@ -1,0 +1,65 @@
+<!--
+<div flex="100" layout="column" class="ks-adress-wrap">
+    <div class="ks-black-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>收货地址</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden" ng-if="list.recList[0]">
+        <div class="box-wrap" ng-repeat="addr in list.recList track by $index">
+            <div class="parent-wrap">
+                <div class="parent-box" layout="column">
+                    <div class="top" layout="row" layout-align="space-between center"
+                         ng-click="chooseAddr(addr.id)">
+                        <div class="name">{{addr.receiver}}</div>
+                        <div class="tel">{{addr.phone}}</div>
+                    </div>
+                    <div class="address-box" ng-click="chooseAddr(addr.id)">
+                        <span ng-if="addr.province">{{addr.province}}/</span>
+                        <span ng-if="addr.city">{{addr.city}}/</span>
+                        <span ng-if="addr.area">{{addr.area}}/</span>
+                        <span>{{addr.street}}</span>
+                    </div>
+                    <md-divider></md-divider>
+                    <div class="bottom" layout="row" layout-align="space-between center">
+                        <div class="default">
+                            <md-icon md-font-set="ks-icon" style="color: #ba9f6e" md-font-icon="ag-r-selected"
+                                     ng-if="addr.isDefault"></md-icon>
+                            <md-icon md-font-set="ks-icon" md-font-icon="ag-r-unselected"
+                                     ng-click="setDefault(addr,$index)"
+                                     ng-if="!addr.isDefault"></md-icon>
+                            <span ng-if="addr.isDefault" style="color: #ba9f6e">默认地址</span>
+                            <span ng-if="!addr.isDefault" ng-click="setDefault(addr,$index)">设为默认</span>
+                        </div>
+                        <div class="set-btn" layout="row">
+                            <div class="btn-wrap" ui-sref="main.brandApp.addAddress({id:addr.id})">
+                                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-edit-o"></md-icon>
+                                <span>编辑</span>
+                            </div>
+                            <div class="btn-wrap" ng-click="delete(addr,$index)">
+                                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-trash-can-o"></md-icon>
+                                <span>删除</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="line-box"></div>
+        </div>
+
+    </md-content>
+    <md-content flex layout="column" class="empty" ng-if="!list.recList[0]" style="overflow-x: hidden">
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-location" class="icon"></md-icon>
+            <div class="txt">暂无地址～</div>
+        </div>
+    </md-content>
+    <div class="addAddress">
+        <button class="but" ui-sref="main.brandApp.addAddress({orderId:orderId})">+添加新地址</button>
+    </div>
+</div>
+-->

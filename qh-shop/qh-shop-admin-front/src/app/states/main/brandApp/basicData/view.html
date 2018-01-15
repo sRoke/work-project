@@ -1,0 +1,164 @@
+<!--rmy 重新排版-->
+<div class="ks-basicData" layout="column">
+    <!--门店-->
+    <div class="basicTop" layout="row">
+        <label>门店：</label>
+        <div layout="row" class="input-con">
+            <input class="top-select" type="text" ng-model="data.name" readonly>
+            <!--<md-icon class="selectDown" md-font-set="ks-admin-font" md-font-icon="ks-arrow-down" ng-if="isDown" ng-click="changeDown()"></md-icon>-->
+            <!--<md-icon class="selectDown" md-font-set="ks-admin-font" md-font-icon="ks-arrow-up" ng-if="!isDown" ng-click="changeDown()"></md-icon>-->
+        </div>
+        <div class="search-con" layout="column" ng-if="isDown">
+            <div layout="row" class="search-tab">
+                <label>门店名称：</label>
+                <input type="text" >
+                <label>负责人：</label>
+                <input type="text" >
+                <button class="btn">搜索</button>
+            </div>
+            <div class="search-list" layout="column">
+                <div class="list-tit" layout="row">
+                    <div flex="50" class="thead-show">门店名称</div>
+                    <div flex="30" class="thead-show center-show">负责人</div>
+                    <div flex="20" class="thead-show end-show">操作</div>
+                </div>
+                <div class="list-con" layout="column">
+                    <div layout="row" class="list-con-shop">
+                        <div flex="50" class="thead-show">钱皇下沙店</div>
+                        <div flex="30" class="thead-show center-show">15858137543</div>
+                        <div flex="20" class="thead-show end-show">选择</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主体-->
+    <div class="main" flex layout="row">
+        <ul  class="sideLeft" layout="column">
+            <li  ng-class="{checked:activeNum == '1'}" ng-click="changeTab(1)" layout-align="space-between center" layout="row">
+                <div class="center-tab-left"  >
+                    商品管理
+                </div>
+                <md-icon  md-font-set="ks-admin-font" md-font-icon="ks-arrow-right" layout-align="right"></md-icon>
+            </li>
+            <li class="checkHide" ng-class="{checked:activeNum == '2'}"  layout-align="space-between center" layout="row">
+                <div class="center-tab-left"  >
+                    库存管理
+                </div>
+                <md-icon  md-font-set="ks-admin-font" md-font-icon="ks-arrow-right"></md-icon>
+            </li>
+            <li class="checkHide" ng-class="{checked:activeNum == '3'}"  layout-align="space-between center" layout="row">
+                <div class="center-tab-left"  >
+                    供应商管理
+                </div>
+                <md-icon  md-font-set="ks-admin-font" md-font-icon="ks-arrow-right"></md-icon>
+            </li>
+            <li class="checkHide" ng-class="{checked:activeNum == '4'}" layout-align="space-between center" layout="row">
+                <div class="center-tab-left"  >
+                    会员管理
+                </div>
+                <md-icon  md-font-set="ks-admin-font" md-font-icon="ks-arrow-right"></md-icon>
+            </li>
+        </ul>
+        <div class="sideRight" flex>
+            <div class="sideRightCon"  ng-if="activeNum == '1'" layout="column">
+                <!--头部-->
+                <div class="right-top" layout="row">
+                    <label>商品名称：</label>
+                    <input type="text" ng-model="search.goodsName">
+                    <button class="btn1" ng-click="pageChanged('1')">搜索</button>
+                    <button class="btn2" ng-click="importText()">导入</button>
+                    <!--<input class="btn2" type="file" file-model="myFile" id="fileText">-->
+                    <!--<button ng-click="btn()">导入</button>-->
+                </div>
+                <!--内容区-->
+                <div class="right-con" layout="column">
+                    <!--表头-->
+                    <div class="common-list-detail-thead" layout="row">
+                        <div class="thead-show" flex="15" layout-align="center" style="padding-left: 30px;">
+                            <span>商品名称</span>
+                        </div>
+                        <div class="thead-show" flex="20" layout-align="center">
+                            <span>分类</span>
+                        </div>
+
+                        <div class="thead-show" flex="20" layout-align="center">
+                            <span>创建时间</span>
+                        </div>
+                        <div class="thead-show" flex layout-align="center">
+                            <span>状态</span>
+                        </div>
+                        <div class="thead-show end-show" flex="15" layout-align="end center">
+                            <span>操作</span>
+                        </div>
+                    </div>
+                    <!--表格详细内容-->
+                    <div class="common-list-detail-tbody" layout="column">
+                        <!--定义每列数据    父级用ng-repeat循环此行-->
+                        <div class="common-list-detail-row" layout="row" ng-repeat="item in items">
+                            <div class="thead-show" flex="15" layout-align="center" style="padding-left: 30px;">
+                                <span>
+                                   {{item.title}}
+                                </span>
+                            </div>
+                            <div class="thead-show" flex="20" layout-align="center">
+                                <span ng-repeat="sk in item.categoryNames">{{sk}}&nbsp;</span>
+                            </div>
+                            <div class="thead-show" flex="20" layout-align="center">
+                                <span>{{item.dateCreated}}</span>
+                            </div>
+                            <div class="thead-show" flex layout-align="center">
+                                <span>{{item.statusDesp}}</span>
+                            </div>
+                            <div class="thead-show end-show" flex="15" layout-align="end center" layout="row" >
+                                <span class="review" ui-sref="main.brandApp.gooSee({id:item.id,storeId:shopId})">查看</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--rmy 分页-->
+                <div style="width: 99%; margin: 10px auto 0">
+                    <div uib-pagination total-items="page.totalElements" ng-model="curPage" ng-change="pageChanged(curPage)"
+                         class="pagination-sm col-sm-9" boundary-links="true" max-size="8" rotate="rotate"
+                         items-per-page="page.size" previous-text="<" next-text=">" first-text="|<" last-text=">|" style="margin:10px;">
+                    </div>
+                    <div style="float: right"  class="pageSubnav">
+                        <span>共{{page.totalElements}}条</span>
+                        <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+                        到第<input type="text" ng-model="curPage">页
+                        <md-button ng-click="pageChanged(curPage)">确定</md-button>
+                    </div>
+                </div>
+            </div>
+            <div class="sideRightCon"  ng-if="activeNum == '2'">22</div>
+            <div class="sideRightCon"  ng-if="activeNum == '3'">333</div>
+            <div class="sideRightCon"  ng-if="activeNum == '4'">444</div>
+        </div>
+    </div>
+</div>
+
+
+<!--////导入tk-->
+<script type="text/ng-template" id="remark.html">
+    <div class="md-dialog-container" >
+        <md-dialog aria-label="商品批量导入" class="refundTk">
+            <!--商品批量导入    弹出框-->
+            <div layout="column" class="tck" style="position:absolute;">
+                <h2>商品批量导入</h2>
+                <div layout="column" class="defaultTck">
+                    <div class="import-text">
+                        <input class="btn2" type="file" file-model="myFile"  id="fileText">
+                    </div>
+                    <div class="import-word" layout="row" layout-align="center">
+                        <span>*批量导入商品，请严格按照模板格式，</span><a ng-href="{{vmd.url}}">下载模板</a>
+                    </div>
+                </div>
+                <div layout="row" class="bottom-btn">
+                    <button ng-click="vmd.cancel()"  flex class="btn-left">取消</button>
+                    <div class="line"></div>
+                    <button ng-click="vmd.btn();" flex class="btn-right">好的，确认导入</button>
+                </div>
+            </div>
+        </md-dialog>
+    </div>
+</script>

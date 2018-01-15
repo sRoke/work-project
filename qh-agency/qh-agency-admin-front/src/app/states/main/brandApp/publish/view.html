@@ -1,0 +1,49 @@
+<div class="ks-common-list-publish">
+    <ul layout="column">
+        <li layout="row">
+            <label>授权合作商：</label>
+            <select id="partner">
+                <option value="">请选择</option>
+            </select>
+        </li>
+        <li layout="row">
+            <label>授权人：</label>
+            <input type="text" >
+        </li>
+        <li layout="row">
+            <label for="service">地区：</label>
+            <select id="service">
+                <option value="">请选择</option>
+            </select>
+            <select>
+                <option value="">请选择</option>
+            </select>
+            <select>
+                <option value="">请选择</option>
+            </select>
+        </li>
+        <li layout="row">
+            <label>定金：</label>
+            <input type="text" >
+        </li>
+        <li layout="row">
+            <label for="time">授权期限：</label>
+            <div id="time">
+                <md-datepicker ng-model="search.startDate" md-placeholder="Enter date" md-open-on-focus
+                               md-date-locale="s"  md-date-locale="dateF"></md-datepicker>
+            </div>
+            <span id="zhi">一</span>
+            <div id="endTime">
+                <md-datepicker ng-model="search.endDate" md-placeholder="End date" md-open-on-focus
+                               md-date-locale="s"  md-date-locale="dateF"></md-datepicker>
+            </div>
+        </li>
+    </ul>
+    <div class="check-bottom">
+        <h3></h3>
+        <li>
+            <button >审核通过</button>
+            <button>拒绝申请</button>
+        </li>
+    </div>
+</div>

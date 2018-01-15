@@ -1,0 +1,32 @@
+<md-button class="my-button md-raised md-primary md-button-toggle"
+           ng-click="toggle(section);"
+           ng-class="{'my-button-color': $root.ssSideNav.currentSection === section }"
+           aria-controls="docs-menu-{{section.name}}"
+           aria-expanded="{{isOpen(section)}}">
+    <div class="button-wrap" flex layout="row">
+        <md-icon class="left-icon" ng-if="section.icon"
+                 md-font-set="{{section.icon.mdFontSet}}"
+                 md-font-icon="{{section.icon.mdFontIcon}}">{{section.icon.textName}}
+        </md-icon>
+        {{section.name}}
+        <b class="b-wrap" flex>
+            <b class="num" ng-if="section.number">{{section.number}}</b>
+        </b>
+        <span aria-hidden="true" class="md-toggle-icon"
+             >
+           <md-icon class="right-icon" md-font-set="ks-admin-font" md-font-icon="ks-add-o" ng-show="!isOpen(section)"
+                    ng-class="{'icon-button-color': $root.ssSideNav.currentSection === section }"></md-icon>
+            <md-icon class="right-icon" md-font-set="ks-admin-font" md-font-icon="ks-minus" ng-show="isOpen(section)"
+                     ng-class="{'icon-button-color': $root.ssSideNav.currentSection === section }"></md-icon>
+       </span>
+    </div>
+    <span class="md-visually-hidden" >
+       Toggle {{isOpen(section)? 'expanded' : 'collapsed'}}
+   </span>
+</md-button>
+
+<ul id="docs-menu-{{section.name}}" class="menu-toggle-list">
+    <li ng-repeat="page in section.pages" ng-if="page.show">
+        <menu-link section="page"></menu-link>
+    </li>
+</ul>

@@ -1,0 +1,24 @@
+<div class="ks-selectStore"  flex="100" layout="column" ng-if="shopList.length>0">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20">
+        </div>
+        <h1 flex>选择门店</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <div class="topLine"></div>
+
+    <md-content flex style="overflow-x:hidden;" layout="column" layout-align="center center">
+        <div style="overflow-y: scroll; width: 100%;">
+            <div class="store-box" ng-repeat="shop in shopList"
+                ui-sref="main.brandApp.store.home({storeId:shop.shopId})"
+            >{{shop.shopName}}</div>
+        </div>
+    </md-content>
+</div>
+<div  class="ks-selectStore"  flex="100" layout="column" ng-if="shopList.length==0">
+        <div class="error-icon" layout="row" layout-align="center center">
+            <img src="error.png">
+        </div>
+        <div class="ts">还未创建门店</div>
+</div>

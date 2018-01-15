@@ -1,0 +1,37 @@
+<div flex="100" layout="column" class="ks-receivables">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>收款</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f0f0f0" layout="column" layout-align="space-between stretch">
+        <div class="content" layout="column" layout-align="center center">
+            <div class="money">¥{{342342 | num:2}}</div>
+            <div class="desc">应收金额</div>
+        </div>
+        <div class="footer">
+            <div class="btn" layout="row" style="background: #53D39A;">
+                <div flex="30" layout="column" layout-align="center start"><md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon></div>
+                <div flex="70" layout="column" layout-align="center start">微信付款码</div>
+            </div>
+            <div class="btn" layout="row" style="background: #65CFFF;">
+                <div flex="30" layout="column" layout-align="center start"><md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon></div>
+                <div flex="70" layout="column" layout-align="center start">支付宝付款码</div>
+            </div>
+            <div class="btn" layout="row" style="background: #FFFFFF;color: #1FB922">
+                <div flex="30" layout="column" layout-align="center start"><md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon></div>
+                <div flex="70" layout="column" layout-align="center start" >微信支付</div>
+            </div>
+            <div class="btn" layout="row" style="background: #ffffff;color: #1B82D2;">
+                <div flex="30" layout="column" layout-align="center start"><md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon></div>
+                <div flex="70" layout="column" layout-align="center start">支付宝支付</div>
+            </div>
+        </div>
+    </md-content>
+
+</div>

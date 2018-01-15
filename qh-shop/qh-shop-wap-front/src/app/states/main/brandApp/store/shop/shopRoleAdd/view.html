@@ -1,0 +1,99 @@
+<div class="ks-shopRoleAdd" flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>{{pageTitle}}</h1>
+        <div class="right-button" flex="20" style="font-size: 14px;color: #E53467" ng-click="save()">
+            保存
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden">
+        <div class="tab" layout="row" layout-align="start center">
+            <div class="title">角色名称</div>
+            <div>
+                <input placeholder="请输入角色名称" type="text" ng-model="dataInfo.name">
+            </div>
+
+        </div>
+        <md-divider></md-divider>
+        <div class="tab" layout="row" layout-align="start center">
+            <div class="title">备注</div>
+            <div>
+                <input placeholder="请输入角色备注说明" type="text" ng-model="dataInfo.desp">
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <div class="tab" layout="row" layout-align="start center">
+            <div class="title">权限配置</div>
+            <div flex class="authority"><span style="color: #ff0000">*</span>请选择下方权限信息</div>
+        </div>
+
+        <div class="authorityList" layout="row">
+            <div flex="40" class="authorityList1">
+                <div class="authorityList1-tab" layout="row" layout-align="space-between center" ng-class="{'tabChecked':selectOne.key == key}"
+                    ng-repeat="(key,value) in AuthorList"  ng-click="clickThis(key,value)">
+                    <!--<div class="weui-cells_checkbox">-->
+                        <!--<label class="weui-cell"  style="padding: 0">-->
+                            <!--<div class="weui-cell__hd">-->
+                                <!--<input type="checkbox" class="weui-check" ng-checked="key == selectOne.key && selectOne.key" checked ='checked' ng-model="selectOne.key" ng-change="checkboxSelect(key,value,$even)" >-->
+                                <!--<i class="weui-icon-checked"></i>-->
+                            <!--</div>-->
+                            <!--<div class="weui-cell__bd">{{key}}</div>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <div class="left" layout="row" layout-align="center center">
+                        <!--<md-icon style="color: #999" class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle"></md-icon>-->
+                        <!--<md-icon style="color:#E53467;" class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-complete"></md-icon>-->
+                        {{key}}
+                    </div>
+                    <div class="right" layout="row" layout-align="center center">
+                        <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                    </div>
+                </div>
+
+            </div>
+            <div flex="60" class="authorityList2">
+
+                <div class="authorityList2-tab" layout="column" layout-align="center center" ng-class="{'tabChecked':aaa}"
+                        ng-repeat="(key,value) in selectOne.value">
+                        <div class="authorityList2-list" layout="row" layout-align="space-between center" >
+                            <div class="left" layout="row" layout-align="center center">
+                                <md-icon style="color: #999" class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" ng-if="!existsTotal(value,checkedList)" ng-click="toggleTotal(value,checkedList)"></md-icon>
+                                <md-icon style="color:#E53467;" class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-complete" ng-if="existsTotal(value,checkedList)" ng-click="toggleTotal(value,checkedList)"></md-icon>
+                                {{key}}
+                            </div>
+                            <div>
+                                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-down" ng-click="toggle(key,showTab2)" ng-if="exists(key,showTab2)"></md-icon>
+                                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-up" ng-click="toggle(key,showTab2)" ng-if="!exists(key,showTab2)"></md-icon>
+                            </div>
+                        </div>
+                        <div class="authorityList3-tab" layout="row" layout-align="space-between center"
+                             ng-repeat="(key2,value2) in value"  ng-show="exists(key,showTab2)" >
+                            <div class="left" layout="row" layout-align="center center">
+                                <md-icon style="color: #999" class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" ng-if="!exists(key2,checkedList)" ng-click="toggle(key2,checkedList)"></md-icon>
+                                <md-icon style="color:#E53467;" class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-complete" ng-if="exists(key2,checkedList)" ng-click="toggle(key2,checkedList)"></md-icon>
+                                {{value2}}
+                            </div>
+                            <div>
+                                <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                            </div>
+                        </div>
+
+                        <md-divider style="width: 100%"></md-divider>
+                    </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class="foot-btn" ng-if="id" ng-click="del()">
+            删除角色信息
+        </div>
+
+    </md-content>
+</div>

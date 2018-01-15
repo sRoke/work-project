@@ -1,0 +1,88 @@
+<div flex="100" layout="column" class="ks-memberList">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>我的会员</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="search" layout="row">
+        <div class="search-input" flex layout="row">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>
+            </div>
+            <div class="con" flex>
+                <input type="text" ng-model="keyWord" placeholder="输入手机号码" ng-focus="focus(true)"
+                       ng-blur="focus(false)">
+            </div>
+            <div class="right" ng-show="searchShow" ng-click="clearKeyWord();getMember('0')">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-closed-o"></md-icon>
+            </div>
+        </div>
+        <div class="search-btn" ng-show="searchShow" ng-click="getMember('0')">搜索</div>
+    </div>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5" ng-if="data.content[0]">
+
+        <!--<ul>
+            <li ng-repeat=" list in  showData">
+                <span>{{aa.name}}</span>||| <span>{{aa.age}}</span>
+            </li>
+        </ul>-->
+        <!--{{showData|json}}-->
+        <div class="list-wrap" layout="column">
+            <div class="sort-list" ng-repeat="list in content " layout="column">
+
+                <div class="sort-name-list">{{list.abcName}}</div>
+                <div class="sort-data-list-wrap" ng-repeat="listData in list.abcData" layout="column"
+                     ui-sref="main.brandApp.store.memberInfo({id:listData.id})">
+                    <div class="list-wrap" layout="row"
+                         layout-align="start center">
+                        <div class="img">
+                            <img src="{{listData.avatar}}" alt="" width="47" height="47">
+                        </div>
+                        <div class="phone">{{listData.phone}}</div>
+                        <div class="name">
+                            {{listData.nickName}}
+                        </div>
+                    </div>
+                    <md-divider ng-if="!$last"></md-divider>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--<md-button ng-click="sortData()">排序</md-button>-->
+        <!--分页-->
+        <!-- <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;">
+             <md-button flex
+                        style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;"
+                        ng-click="getList()"
+                        ng-if=" data[status].totalNum>10"
+                        ng-show="!data[status].pageEnd">
+                 点击加载更多...
+             </md-button>
+
+             <md-button flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;"
+                        ng-if="data[status].totalNum>10"
+                        ng-show="data[status].pageEnd">
+                 没有更多商品了
+             </md-button>
+         </div>-->
+
+    </md-content>
+
+    <md-content flex layout="column" class="empty"
+                ng-if="!data.content[0]"
+                style="overflow-x: hidden;    background: #f5f5f5;">
+        <!--<div class="top-line"></div>-->
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-order-manage" class="icon"></md-icon>
+            <div class="txt" style="margin-bottom: 100px">目前暂无会员,去新增～</div>
+        </div>
+    </md-content>
+
+</div>

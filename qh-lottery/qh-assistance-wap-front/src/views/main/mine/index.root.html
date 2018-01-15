@@ -1,0 +1,89 @@
+<div flex="" layout="column" class="ks-main  ks-newLogin">
+    <md-content flex>
+
+        <div class="img-box">
+            <img ng-src="//img.kingsilk.net/{{data.img}}" alt="{{data.name}}">
+        </div>
+        <div class="view-content">
+            <div class="blank"></div>
+            <div class="title">
+                <span ng-if="!isMine"
+                      style="max-width: 100px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{user.targetUserName}},喊你来助力</span>
+
+                <span ng-if="isMine">{{data.name}}</span>
+            </div>
+            <div class="lastTime">
+                还剩
+                {{data.activityCheck.day}}天{{data.activityCheck.hour}}时{{data.activityCheck.minute}}分{{data.activityCheck.second}}
+            </div>
+            <div class="times">
+                <span class="time-ico">活动时间：{{data.startTime | date:'yy.MM.dd'}} ~ {{data.endTime | date:'yy.MM.dd'}}</span>
+            </div>
+            <div class="status" ng-if="!isMine">
+                <span class="recordSize">TA的接力值: <i>{{user.recordSizeByTargetUser}}</i></span>
+                <span class="rankByTargetUser">TA的排名:
+                    <i class="cl-red">{{user.rankByTargetUser}}</i></span>
+            </div>
+            <div class="status" ng-if="isMine">
+                <span class="recordSize">我的接力值:<i>{{user.recordSizeByCurrentUser}}</i></span>
+                <span class="rankByTargetUser">我的排名:<i class="cl-red"> {{user.rankByCurrentUser}}</i></span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="top">TOP30</div>
+            <div class="cot">
+                参与活动人数:
+                <i class="cl-green">{{user.allSize}}</i>
+            </div>
+        </div>
+        <div class="container ">
+            <table class="table" border="0" width="100%">
+                <tr>
+                    <th>排名</th>
+                    <th>姓名</th>
+                    <th>手机号</th>
+                    <th>接力值</th>
+                </tr>
+                <tr ng-repeat="lists in user.data">
+                    <td>{{lists.rank}}</td>
+                    <td>{{lists.userName}}</td>
+                    <td>{{lists.phone}}</td>
+                    <td>{{lists.recordSize}}</td>
+                </tr>
+            </table>
+        </div>
+
+    </md-content>
+
+
+    <div layout="row" layout-align="center center" style="margin-bottom: 10px">
+        <div flex ng-if="targetUserId&&!user.haveHelp" class="fotter-btn" ng-click="helpUser()" layout="row"
+             layout-align="center center">
+            <span flex>助力好友</span>
+        </div>
+        <div flex ng-if="!user.recordSizeByCurrentUser" class="fotter-btn" ng-click="join()" layout="row"
+             layout-align="center center">
+            <span flex>我要参加</span>
+        </div>
+        <div flex ng-if="user.haveHelp" class="fotter-btn" ng-click="vm.maskShow()" layout="row"
+             layout-align="center center">
+            <span flex>找人助力</span>
+        </div>
+        <div flex ng-if="!isMine" class="fotter-btn" ng-click="goMine()" layout="row"
+             layout-align="center center">
+            <span flex>返回我的</span>
+        </div>
+    </div>
+
+    <!--遮罩-->
+    <div class="back" ng-if="vm.mask" ng-click="vm.maskHide()">
+        <div class="backScreen"></div>
+        <div class="img-wrap" layout="row" layout-align="end start">
+            <div class="androidBg"></div>
+        </div>
+    </div>
+
+</div>
+
+
+

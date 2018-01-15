@@ -1,0 +1,112 @@
+<div flex="100" layout="column" class="ks-item">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <div flex="" layout="row" layout-align="center center">
+            <div class="tab-wtap" layout="row" layout-align="center center">
+                <!--<div flex="" class="item-btn" ng-class="{tabActive:activeNum == '1'}" ng-click="tabBtnClick(1)">商品</div>
+                <div flex="" class="detail-btn" ng-class="{tabActive:activeNum == '2'}" ng-click="tabBtnClick(2)">详情
+                </div>-->
+                <a flex="" style="display: block"
+                   onclick="javascript:document.getElementById('item').scrollIntoView()">
+                    <div flex="" class="item-btn" ng-class="{tabActive:activeNum == '1'}" ng-click="tabBtnClick(1)">商品
+                    </div>
+                </a>
+                <a flex="" style="display: block"
+                   onclick="javascript:document.getElementById('detail').scrollIntoView()">
+                    <div class="detail-btn" ng-class="{tabActive:activeNum == '2'}" ng-click="tabBtnClick(2)">
+                        详情
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+    <md-content flex style="overflow-x: hidden;">
+
+        <div class="banner" id="item">
+            <ks-swiper-container direction="horizontal"
+                                 initial-slide="0"
+                                 effect="between"
+                                 swiper="swiper"
+                                 initial-slide="1"
+                                 loop="false"
+                                 show-nav-buttons="false"
+                                 pagination-is-active="true"
+                                 pagination-clickable="false"
+                                 slides-per-view="1"
+                                 space-between="5"
+                                 on-ready="getInfo(swiper)">
+                <ks-swiper-slide class="swiper-slide" ng-repeat="s in  data.imgs ">
+                    <img ng-src="{{s}}"/>
+                </ks-swiper-slide>
+            </ks-swiper-container>
+        </div>
+
+        <div class="item-dis" layout="column" layout-align="space-between start">
+            <div class="dis-title">{{data.title}}</div>
+            <div class="dis-price" layout="row" layout-align="start end">
+                <div class="price" layout="row" layout-align="start end">
+                    <span style="font-size: 16px;margin-right: 5px">￥</span>
+                    <span style="font-size: 24px;margin-left: -6px;line-height: 1em;">{{data.salePrice/100|num:2 }}</span>
+                </div>
+                <div class="old-price" ng-if="data.salePrice < data.labelPrice">
+                    原价￥{{data.labelPrice/100|num:2}}
+                </div>
+            </div>
+        </div>
+
+        <div class="icon-tips">
+        <span>
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-right"></md-icon>正品保证
+        </span>
+            <span>
+             <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-right"></md-icon>假一罚十
+        </span>
+            <span>
+             <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-right"></md-icon>急速退款
+        </span>
+        </div>
+        <div class="line-blank"></div>
+        <div class="choose" layout="row" layout-align="space-between center" ng-click="buyDialog(3)">
+            <!--<div>选择尺寸&nbsp;/&nbsp;款式&nbsp;/&nbsp;数量</div>-->
+            <div>已选:<span ng-repeat="spec in selectSku.specList">{{spec.itemPropValueName}}<span ng-if="!$last">/</span> </span>
+            </div>
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+        </div>
+        <div class="line-blank"></div>
+        <div id="detail" class="ks-item-desp" ng-if="detail" ng-include="tplUrl">
+
+        </div>
+    </md-content>
+
+    <!--<md-content flex ng-show="activeNum == '2'">-->
+
+    <!--</md-content>-->
+    <div class="fotter-btn" layout="row">
+        <div class="footer-chat" layout="column" flex="15" ui-sref="main.brandApp.store.home()">
+            <div layout="column" layout-align="center center">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-home"></md-icon>
+                <div style="font-size: 10px;color: #333">店铺</div>
+            </div>
+        </div>
+        <span class="line"></span>
+        <div class="footer-chat" layout="column" flex="15"
+             ui-sref="main.brandApp.store.cart({fromUrl:'item',itemId:id}) ">
+            <div layout="column" layout-align="center center">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-manage-buy"></md-icon>
+                <div style="font-size: 10px;color: #333">购物车</div>
+                <i ng-if="totalNum>0">{{totalNum}}</i>
+            </div>
+        </div>
+        <div flex="30" ng-click="buyDialog(1)">
+            加入购物车
+        </div>
+        <div flex="40" ng-click="buyDialog(2)">
+            立即购买
+        </div>
+    </div>
+</div>

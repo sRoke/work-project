@@ -1,0 +1,58 @@
+
+# ServerProperties
+server:
+  port: 10200
+  context-path: /
+  error.include-stacktrace: on_trace_param
+  session.timeout: 86400  # 24 小时
+
+# ResourceServerProperties
+security.oauth2.resource:
+  filterOrder: 90
+
+# SecurityProperties
+security:
+  basic.enabled: false
+
+# AOP
+spring.aop.proxy-target-class: true
+
+
+# LOGGING
+logging:
+  path: /data0/store/app/qh-oauth/qh-platform-admin/logs/
+  level:
+    root: INFO
+
+
+# SessionProperties
+spring.session:
+  store-type: MONGO
+
+
+# DevToolsProperties
+
+# AuthorizationServerProperties
+
+# JacksonProperties
+spring.jackson:
+  default-property-inclusion: non_absent
+
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server.tomcat:
+  remote-ip-header:       X-Forwarded-For
+  protocol-header:        X-Forwarded-Proto
+  #internal-proxies:       120\\.26\\.140\\.95|\\
+  # 10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 192\\.168\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 169\\.254\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 127\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 172\\.1[6-9]{1}\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 172\\.2[0-9]{1}\\.\\d{1,3}\\.\\d{1,3}|\\
+  # 172\\.3[0-1]{1}\\.\\d{1,3}\\.\\d{1,3}
+  uri-encoding:           UTF-8
+
+spring.jersey:
+  application-path: /api
+  type: servlet
+  servlet.load-on-startup: 0

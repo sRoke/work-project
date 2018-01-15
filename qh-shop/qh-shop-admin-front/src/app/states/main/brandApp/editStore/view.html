@@ -1,0 +1,99 @@
+<!--rmy 重新排版-->
+<div class="ks-editStore" layout="column">
+    <div class="content">
+        <div class="tabs" layout="row" layout-align="start center">
+            <div class="title">门店名称:</div>
+            <div class="right">
+                <input class="form-control" type="text" ng-model="store.name">
+            </div>
+        </div>
+
+        <div class="tabs" layout="row" layout-align="start center">
+            <div class="title">门店类型:</div>
+            <div class="right">
+                <select class="form-control" ng-model="store.type" style="background: #fff;outline: none;border:1px solid #ccc;">
+                    <option value="">请选择</option>
+                    <option value="DIRECTSALES">直营</option>
+                    <option value="COOPERATE">合作商</option>
+                    <option value="OTHER">其他</option>
+                </select>
+            </div>
+        </div>
+        <div class="tabs" layout="row" layout-align="start center">
+            <div class="title">联系方式:</div>
+            <div class="right">
+                <input class="form-control" type="text" ng-model="store.phone">
+            </div>
+        </div>
+        <div class="tabs" layout="row" layout-align="start center">
+            <div class="title">负责人平台帐号:</div>
+            <div class="right">
+                <input class="form-control" type="text" ng-model="store.platformAccount">
+            </div>
+        </div>
+        <div class="tabs" layout="row" layout-align="start center">
+            <div class="title">所属地区:</div>
+            <div class="right" layout="row">
+                <select class="select form-control" ng-change="vm.getAddress(vm.provinceNo,1)"
+                        data-ng-model="vm.provinceNo">
+                    <option value="">请选择</option>
+                    <option ng-repeat="province in vm.provinces.list" value="{{province.no}}">
+                        {{province.name}}
+                    </option>
+                </select>
+                <select class="select form-control" ng-change="vm.getAddress(vm.cityNo,2)"
+                        ng-model="vm.cityNo"  ng-if="vm.citys.list.length>0">
+                    <option value="">请选择</option>
+                    <option ng-repeat="city in vm.citys.list" value="{{city.no}}">{{city.name}}</option>
+                </select>
+                <select class="select form-control" ng-model="vm.countyNo"  ng-if="vm.countys.list.length>0">
+                    <option value="">请选择</option>
+                    <option ng-repeat="county in vm.countys.list" value="{{county.no}}">{{county.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="tabs" layout="row" layout-align="start center">
+            <div class="title">详细地址:</div>
+            <div class="right">
+                <input class="form-control" type="text" ng-model="store.address">
+            </div>
+        </div>
+        <div class="tabs" layout="row" layout-align="start center">
+            <div class="title">门店照片:</div>
+            <div class="right">
+                <div layout="row" layout-align="start start" class="mainImg">
+                    <div class="imgList" ng-repeat="img in imgs track by $index" id="img{{$index}}"
+                         ng-mouseenter="showOperate($index)" ng-mouseleave="hideOperate($index)">
+                        <p class="imgWrap">
+                            <img ng-src="{{img}}" width="100px"
+                                 height="100px"/>
+                        </p>
+                        <div class="file-panel" ng-if="!views.deleteImg" layout="column"
+                             layout-align="start center">
+                            <span class="cancel" ng-click="cancelDel($index)">删除</span>
+                            <!--<span class="rotateRight">向右旋转</span>
+                            <span class="rotateLeft">向左旋转</span>-->
+                        </div>
+                    </div>
+
+                    <div class="imgList" layout="column" layout-align="center center"
+                         ngf-select="uploading($file)" ngf-pattern="'image/*'"
+                         ng-if="imgs && imgs.length<1">
+                        <md-icon md-font-set="ks-admin-font" md-font-icon="ks-add-o"></md-icon>
+                        <div>上传图片</div>
+                        <!--<div class="button" ngf-select="uploading($file)" ngf-pattern="'image/*'" ng-model="files" ngf-multiple="true">上传图片</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabs" layout="row" layout-align="start center">
+            <div class="title"></div>
+            <div class="right" layout="row" layout-align="start center">
+                <div class="save" ng-click="save()">保存</div>
+
+                <div class="back" ng-click="fallBack()">返回</div>
+            </div>
+        </div>
+    </div>
+</div>

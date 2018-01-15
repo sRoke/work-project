@@ -1,0 +1,97 @@
+<md-bottom-sheet class="md-grid ks-select-spec" layout="column" ng-cloak stop-touch-event>
+    <div class="header" layout="row" style="background: #fff" stop-touch-event>
+        <div class="item-img">
+            <img ng-src="{{vmd.list.imgs[0]}}"/>
+        </div>
+        <div flex>
+            <div class="Htop">
+                ￥{{vmd.checkedSku.salePrice/100|num:2}}
+            </div>
+            <!--<div class="txtWarp" ng-if="vm.tempCheckSku&&vm.tempCheckSku.delete">当前商品缺货</div>-->
+            <div class="txtWrap" layout="row" layout-align="start center"
+                 style="margin: 10px auto 10px 20px;color:#999">
+                已选:<span ng-repeat="specName in vmd.checkedSku.specList">{{specName.itemPropValueName}}<span
+                    ng-if="!$last">/</span>    </span>
+            </div>
+            <div class="txtWrap" layout="row" layout-align="start center"
+                 style="margin: 5px auto 10px 20px;color:#999">
+                {{vmd.checkedSku.storage}}
+            </div>
+        </div>
+        <md-icon flex="5" class="chevron_left ks-icon" md-font-set="ks-icon" ng-click="vm.cancel()">close</md-icon>
+    </div>
+    <md-divider style=" -webkit-transform: scaleY(0.5);-webkit-transform-origin: 0 0;"></md-divider>
+    <md-content flex="" stop-touch-event>
+        <div class="contentTxt" layout="row" ng-repeat="spec in vmd.list.specs track by $index">
+            <div class="selectLeft">{{spec.itemProp.name}}</div>
+            <div flex>
+                <!--点中之后加active状态-->
+                <!--selectSpecs[spec.nameId] == btn.valueId-->
+
+                <div class="slectBtn" ng-class="{active:vmd.selectSpecs[spec.itemProp.id] ==specValue.id  }"
+                     ng-style="disabled"
+                     ng-click="vmd.clickedSpec(spec,specValue)" ng-repeat="specValue in spec.itemPropValueList">
+                    {{specValue.name}}
+                </div>
+
+
+                <!--  <div class="slectBtn" ng-style="disabled"
+                       ng-class="{active:spec.check}"
+                       ng-repeat="spec in vmd.list.skus" ng-click="vmd.chooseThis(spec)">
+                      {{spec.specs[0]}}
+                  </div>-->
+            </div>
+        </div>
+
+        <!--  <div ng-repeat="spec in data.specs track by $index" style="background: #ffffff;padding-top: 20px">
+              <div class="weight-wrap">
+                  <div class="weight-top">{{spec.name}}</div>
+                  <div class="weight-tag-wrap">
+                      &lt;!&ndash;| limitTo: '4'&ndash;&gt;
+                      <div class="wight-tag"
+                           ng-repeat="btn in spec.values"
+                           ng-click="clickedSpec(spec,btn)">
+                          <div class="tag" ng-class="{wightTagActive:selectSpecs[spec.nameId] == btn.valueId}">
+                              {{btn.value}}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              &lt;!&ndash;<div class="info-line"></div>&ndash;&gt;
+              &lt;!&ndash;<md-divider></md-divider>&ndash;&gt;
+          </div>-->
+
+
+        <div class="contentTxt" layout="row" style="padding-bottom: 14px" layout-align="space-between center">
+            <div class="selectLeft" style="margin-top: 0">数量:</div>
+            <!--<div class="selectLeft" ng-if="vm.skuProp.status==='RENT'">租期:</div>-->
+            <div layout="row">
+                <div layout="row" class="count">
+                    <div class="minus" ng-mobile-click="vmd.skuNumCount(0,vmd.skuNum,vmd.checkedSku)" layout=""
+                         layout-align="center center">
+                        <md-icon class="iconBtn" md-font-set="ks-icon" md-font-icon="ag-minus"></md-icon>
+                    </div>
+                    <input type="number" ng-model="vmd.skuNum" ng-blur="vmd.skuNumBlur(vmd.skuNum,vmd.checkedSku)"
+                           layout="" layout-align="center center"/>
+                    <div class="add" ng-mobile-click="vmd.skuNumCount(1,vmd.skuNum,vmd.checkedSku)" layout=""
+                         layout-align="center center">
+                        <md-icon class="iconBtn" md-font-set="ks-icon" md-font-icon="ag-plus"></md-icon>
+                    </div>
+                </div>
+                <div layout="row" style="margin-left: 10px;font-size: 13px;color: #999" layout-align="center center">
+                    件
+                </div>
+            </div>
+        </div>
+    </md-content>
+    <div class="footer" layout="row">
+        <div flex ng-if=" vmd.buyBtn "   layout="row">
+            <div class="btnRight" flex style="  background: #EA738F" ng-click="vmd.submit(1)">加入购物车</div>
+            <div class="btnRight" flex style="background: #E53467 " ng-click="vmd.submit(2)">立即购买</div>
+        </div>
+        <div flex ng-if=" !vmd.buyBtn ">
+            <div class="btnRight" flex style="background: #E53467 " ng-click="vmd.submit(vmd.status)">确认</div>
+        </div>
+    </div>
+    <div style="padding-bottom: 80px; background:#fff; flex-shrink: 0"></div>
+</md-bottom-sheet>

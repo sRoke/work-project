@@ -1,0 +1,73 @@
+<div class="ks-informationEdit" layout="column">
+    <div class="contentEdit" layout="column">
+        <div layout="row" layout-align="start end">
+            <div class="left">
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="title">应用名称:</div>
+                    <div layout="row" layout-align="start center">
+                        <input class="form-control" type="text" placeholder="请输入应用名称" style="width: 250px" ng-model="data.appName">
+                    </div>
+                </div>
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="title">试用周期:</div>
+                    <div layout="row" layout-align="start center">
+                        <input class="form-control" type="text" placeholder="请输入数字" style="width: 100px" ng-model="data.trialDuration">
+                        <div style="margin-left: 10px">月</div>
+                    </div>
+                </div>
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="title">生效周期:</div>
+                    <div layout="row" layout-align="start center">
+                        <input class="form-control" type="text" placeholder="请输入数字" style="width: 100px" ng-model="data.effectiveCycle">
+                        <div style="margin-left: 10px">月</div>
+                    </div>
+                </div>
+                <div class="tab" layout="row" layout-align="start center">
+                    <div class="title">服务价格:</div>
+                    <div layout="row" layout-align="start center">
+                        <input class="form-control" type="text" placeholder="￥0.00" style="width: 100px" ng-model="data.price">
+                        <div style="margin-left: 10px">月/年</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right" style="background: red" ng-if="data.logo">
+                <div class="imgList" id="img{{$index}}">
+                    <p class="imgWrap">
+                        <img ng-src="{{data.logo}}" width="120px"
+                             height="120px"/>
+                    </p>
+                    <div class="file-panel" layout="column" layout-align="start center">
+                        <span class="cancel" ng-click="cancelDelImg()">删除</span>
+                    </div>
+                </div>
+            </div>
+            <div class="right" style="background: red" ng-if="!data.logo">
+                <div class="imgList" layout="column" layout-align="center center"
+                     ngf-select="uploading($file)" ngf-pattern="'image/*'">
+                    <md-icon md-font-set="ks-admin-font" md-font-icon="ks-add-o"></md-icon>
+                    <div>上传Logo图片</div>
+                    <!--<div class="button" ngf-select="uploading($file)" ngf-pattern="'image/*'" ng-model="files" ngf-multiple="true">上传图片</div>-->
+                </div>
+            </div>
+        </div>
+        <div class="last">
+            <div class="tab" layout="row" layout-align="start start">
+                <div class="title" style="margin-top: 5px">应用地址:</div>
+                <div layout="row" layout-align="start center">
+                    <input class="form-control" type="url" placeholder="https://" style="width: 600px" ng-model="data.appUrl">
+                </div>
+            </div>
+            <div class="tab" layout="row" layout-align="start start">
+                <div class="title">应用简介:</div>
+                <div layout="row" layout-align="start center">
+                    <textarea class="form-control" placeholder="请简单描述应用内容" ng-model="data.desp"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="btn-save" layout="row" layout-align="start center">
+            <div class="save" ng-click="save()">保存</div>
+            <div class="return" ng-click="fallbackPage()">返回</div>
+        </div>
+    </div>
+</div>
+

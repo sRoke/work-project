@@ -1,0 +1,168 @@
+@import "../../../../../scss/ksMain";
+@import "../../../../../scss/index.scss";
+.ks-center-phone {
+  .ks-white-header{
+    h1{
+      color: #101010;
+      font-size: 18px;
+      letter-spacing: -0.43px;
+    }
+  }
+  .ks-header._md {
+    min-height: 44px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    background: $agency-bg-white;
+
+    .ks-header-divWrap {
+      padding: 0 15px;
+      height: 100%;
+      color: $agency-word-dark;
+      .divTop {
+        text-align: center;
+        position: relative;
+        line-height: 44px;
+        .chevron_left {
+          color: $agency-word-dark;
+          position: absolute;
+          left: 0;
+          font-size: 21px;
+          line-height: 44px;
+        }
+        .regSpan{
+          font-size: 18px;
+          color: #030303;
+          letter-spacing: -0.43px;
+        }
+      }
+    }
+  }
+  .main {
+    background: #fff;
+    //.line{
+    //  height:1px;
+    //  width: 100%;
+    //  padding:0 15px;
+    //  background: #CDD0CF;
+    //}
+    .center-tab-line{
+       width: 100%;
+       padding:0 15px;
+       background: $agency-bg-white;
+       .line-bottom{
+         width: 100%;
+         height: 1px;
+         -webkit-transform: scaleY(0.5);
+         -webkit-transform-origin: 0 0;
+         //overflow: hidden;
+         background: #CDD0CF;
+       }
+     }
+    .phone-list{
+      background: #fff;
+      width: 100%;
+      height: 66px;
+      padding: 0 15px;
+      font-size: 16px;
+      color: #333333;
+      letter-spacing: -0.39px;
+      input::-webkit-input-placeholder { /* WebKit browsers */
+        color: #c5c5c5;
+        border: none;
+        font-size: 16px;
+        font-weight: 300;
+      }
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: #c5c5c5;
+        border: none;
+        font-size: 16px;
+        font-weight: 300;
+      }
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: #c5c5c5;
+        border: none;
+        font-size: 16px;
+        font-weight: 300;
+      }
+      input:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: #c5c5c5;
+        border: none;
+        font-size: 16px;
+        font-weight: 300;
+      }
+      .phone-num{
+        margin:28px 0 18px;
+        outline: none;
+        border:none;
+        height:20px;
+        color: $agency-word-dark;
+        font-size:16px;
+        line-height:20px;
+        width:100%;
+      }
+      .phone-code{
+        margin:28px 0 18px;
+        outline: none;
+        border:none;
+        height:20px;
+        color: $agency-word-dark;
+        font-size:16px;
+        line-height:20px;
+      }
+
+      .phone-btn{
+        height: 24px;
+        line-height: 24px;
+        padding:0 7px 0 12px;
+        border:none;
+        font-size: 16px;
+        margin:27px 0 15px;
+        color: #53D39A ;
+        border-left:1px solid #d5d5d5;
+        background: none;
+
+      }
+    }
+    .btn-list{
+      width: 100%;
+      height: 44px;
+      padding: 0 15px;
+      letter-spacing: -0.39px;
+      .btn-next{
+        width:100%;
+        margin-top:40px;
+        background: #53D39A;
+        opacity: 0.5;
+        font-size:18px;
+        color: #fff;
+        height:44px;
+        line-height: 44px;
+        text-align: center;
+        border-radius: 8px;
+        border:none;
+      }
+      .btn-nextColor{
+        opacity: 1;
+      }
+    }
+    md-icon{
+      font-size: 13px;
+      min-width: 8px;
+      height: 13px;
+      min-height: 13px;
+      //width: 8px;
+      line-height: 13px;
+      margin: 0;
+    }
+    .exit{
+      background: #ff0;
+      opacity: 0;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}

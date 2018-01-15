@@ -1,0 +1,218 @@
+<div flex="" layout="column" class="ks-joinUs-bindPhone">
+
+    <!--<md-divider></md-divider>-->
+    <md-content flex="" id="content" ng-show="active == 1 || active == 2 || active == 3">
+
+
+        <div class="ks-header" layout="column" layout-align="start center">
+            <div layout="row" class="ks-header-divWrap">
+                加入流程
+            </div>
+            <div class="ks-header-status" layout="row" layout-align="center center">
+                <div layout="column" layout-align="center center" class="ks-header-tab" >
+                    <div class="ks-header-tabNum1" layout="column" layout-align="center center"
+                         ng-if="active == 2 || active == 3">
+                        <div layout="column" layout-align="center center">1</div>
+                    </div>
+                    <div class="ks-header-tabNum" layout="column" layout-align="center center" ng-if="active == 1 ">
+                        <div layout="column" layout-align="center center">1</div>
+                    </div>
+                    <!--<div class="ks-header-tabNum2" layout="column" layout-align="center center" ng-if="active == 2">-->
+                    <!--<div layout="column" layout-align="center center">3</div>-->
+                    <!--</div>-->
+                    <div class="ks-header-tabDesc" ng-class="{'ks-header-tabDesc-active':active == 1}">手机验证</div>
+                    <div class="ks-header-bottom" ng-if="active == 1" layout="row" layout-align="center center">
+                        <div class="ks-header-btn" ng-if="active == 1"></div>
+                    </div>
+
+                </div>
+
+                <div flex layout="column" layout-align="center center" class="ks-header-tab">
+                    <div class="ks-header-line"></div>
+                    <div class="ks-header-tabDesc"></div>
+                </div>
+
+                <div layout="column" layout-align="center center" class="ks-header-tab" >
+                    <div class="ks-header-tabNum1" layout="column" layout-align="center center" ng-if="active == 3">
+                        <div layout="column" layout-align="center center">2</div>
+                    </div>
+                    <div class="ks-header-tabNum" layout="column" layout-align="center center" ng-if="active == 2">
+                        <div layout="column" layout-align="center center">2</div>
+                    </div>
+                    <div class="ks-header-tabNum2" layout="column" layout-align="center center" ng-if="active == 1">
+                        <div layout="column" layout-align="center center">2</div>
+                    </div>
+                    <div class="ks-header-tabDesc" ng-class="{'ks-header-tabDesc-active':active == 2}">申请资料</div>
+                    <div class="ks-header-bottom" ng-if="active == 2" layout="row" layout-align="center center">
+                        <div class="ks-header-btn" ng-if="active == 2"></div>
+                    </div>
+                </div>
+
+                <div flex layout="column" layout-align="center center" class="ks-header-tab">
+                    <div class="ks-header-line"></div>
+                    <div class="ks-header-tabDesc"></div>
+                </div>
+
+                <div layout="column" layout-align="center center" class="ks-header-tab" >
+                    <!--<div class="ks-header-tabNum1" layout="column" layout-align="center center" ng-if="active == 3">-->
+                    <!--<div layout="column" layout-align="center center">1</div>-->
+                    <!--</div>-->
+                    <div class="ks-header-tabNum" layout="column" layout-align="center center" ng-if="active == 3 ">
+                        <div layout="column" layout-align="center center">3</div>
+                    </div>
+                    <div class="ks-header-tabNum2" layout="column" layout-align="center center"
+                         ng-if="active == 1 || active == 2">
+                        <div layout="column" layout-align="center center">3</div>
+                    </div>
+                    <div class="ks-header-tabDesc" ng-class="{'ks-header-tabDesc-active':active == 3}">获取授权</div>
+                    <div class="ks-header-bottom" ng-if="active == 3" layout="row" layout-align="center center">
+                        <div class="ks-header-btn" ng-if="active == 3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content" ng-if="active == 1">
+            <div class="inputPhone">
+                <input type="tel" placeholder="手机号码" ng-model="firstStep.phone"
+                       ng-blur="formatPhone(firstStep.phone)"
+                       style="width: 100%">
+            </div>
+            <div class="content-line"></div>
+            <div class="inputyzm" layout="row" layout-align="space-between center">
+                <input flex placeholder="验证码" ng-model="firstStep.vcCode" type="tel">
+                <div class="inputyzm-line"></div>
+                <div class="inputyzm-btn" layout="row" layout-align="center center" ng-click="getVCcode()">
+                    {{gitCodeTime}}
+                </div>
+            </div>
+            <div class="content-line"></div>
+
+            <div class="next-btn" layout="column" layout-align="center center" ng-click="next()">下一步</div>
+        </div>
+
+
+        <div class="content" ng-if="active == 2">
+            <div ng-if="applications == '提交申请'">
+                <div class="conten2" style="margin-top: 7px" layout="row" layout-align="space-between center"
+                     ng-click="chooseChannel()">
+                    <span layout="row" layout-align="space-between center">渠道类型</span>
+                    <div>
+                        <div>
+                            {{apply.Channel}}<span ng-if="!apply.Channel" style="color: #999">请选择</span><md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="content-line"></div>
+                <div class="conten2" layout="row" layout-align="space-between center">
+                    <span layout="row" layout-align="space-between center">姓名</span>
+                    <input flex placeholder="与申请人身份证一致" type="text" ng-model="apply.name">
+                </div>
+                <div class="content-line"></div>
+                <div class="conten2" layout="row" layout-align="space-between center">
+                    <span layout="row" layout-align="space-between center">联系方式</span>
+                    <input flex placeholder="电话号码" type="tel" ng-model="apply.phone"
+                           ng-blur="formatPhone(apply.phone)">
+                </div>
+                <div class="content-line"></div>
+                <div class="conten2" layout="row" layout-align="space-between center" ng-click="openAddress()">
+                    <span style="min-width: 50px" layout="row" layout-align="space-between center">地址</span>
+                    <!--<span>渠道类型</span>-->
+                    <!--<div class="chooseAddress"  layout="row" layout-align="space-between center">-->
+                    <!--<select flex class="select" ng-change="queryAddress(apply.provinceId,1)" data-ng-model="apply.provinceId" >-->
+                    <!--<option value="">请选择</option>-->
+                    <!--<option ng-repeat="province in provinces " value="{{province.ProId}}">-->
+                    <!--{{province.name}}-->
+                    <!--</option>-->
+                    <!--</select>-->
+                    <!--<select class="select" flex ng-show="citys[0]"-->
+                    <!--ng-change="queryAddress(apply.cityId,2)"-->
+                    <!--data-ng-model="apply.cityId">-->
+                    <!--<option value="">请选择</option>-->
+                    <!--<option ng-repeat="city in citys" value="{{city.CityID}}">{{city.name}}</option>-->
+                    <!--</select>-->
+                    <!--<select class="select" flex ng-show="areas[0].no"-->
+                    <!--data-ng-model="apply.areaId">-->
+                    <!--<option value="">请选择</option>-->
+                    <!--<option ng-repeat="area in areas" value="{{area.no}}">{{area.name}}</option>-->
+                    <!--</select>-->
+                    <!--&lt;!&ndash;请选择<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>&ndash;&gt;-->
+                    <!--</div>-->
+                    <div layout="row" layout-align="end center" flex>
+                        <div ng-if="address.adcNo" class="addressList">
+                            <!--<span ng-show="address.province">{{address.province}} </span><span ng-show="address.city">{{address.city}}</span><span ng-show="address.area"> {{address.area}}</span>-->
+                            <span>{{address.total}}</span>
+                        </div>
+                        <div ng-if="!address.adcNo">请选择</div>
+                        <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                    </div>
+                </div>
+                <div class="content-line"></div>
+                <div class="conten2" layout="row" layout-align="space-between center">
+                    <span>身份证号</span>
+                    <input flex placeholder="选填" type="text" ng-model="apply.ID">
+                </div>
+                <div class="content-line"></div>
+                <div class="conten2" layout="row" layout-align="space-between center">
+                    <span>邀请手机号码</span>
+                    <input flex placeholder="手机号码" type="tel" ng-model="apply.invite"  ng-blur="linkmanPhone(apply.invite)">
+                </div>
+                <div class="content-line"></div>
+                <div class="next-btn" layout="column" layout-align="center center" ng-click="submitApp()">{{applications}}</div>
+            </div>
+            <div ng-if="applications == '审核中'" layout="column" layout-align="center center">
+                <div layout="column" layout-align="start center" class="content2-two">
+                    <img src="./1.png" width="40" height="40">
+                    <div class="ts-1">申请已提交!</div>
+                    <div class="ts-2">请耐心等待工作人员处理</div>
+                </div>
+            </div>
+
+            <div ng-if="applications == '重新申请'" layout="column" layout-align="center center">
+                <div layout="column" layout-align="start center" class="content2-two">
+                    <img src="./2.png" width="40" height="40">
+                    <div class="ts-1">审核不通过!</div>
+                    <div class="ts-2">请联系客服,或重新申请</div>
+                    <div class="ts-3" layout="column" layout-align="center center" ng-click="reapply()">重新申请</div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="content" ng-if="active == 3">
+            <div class="content3" layout="column" layout-align="start center">
+                <div class="ts-1">恭喜您成功通过了审核!</div>
+                <!--<div class="ts-2">累计采购至一定金额</div>-->
+                <!--<div class="ts-2">即可获得我们的授权书</div>-->
+                <div class="ts-2">采购即可获得授权书</div>
+                <div class="ts-img">
+                    <img src="prompt.png" width="290">
+                </div>
+                <div class="ts-btn" ng-click="goPurchase()">立即采购</div>
+            </div>
+        </div>
+
+
+    </md-content>
+
+
+    <div class="chooseChannel" ng-if="chooseChannelFlog" layout="column" layout-align="center center">
+        <div flex class="mask" ng-click="chooseChannel()"></div>
+        <div class="choose">
+            <div class="partnerType" layout="column" ng-repeat="(key,val) in partnerTypes">
+                <div layout-align="center center" ng-click="chooseChannel(val)">{{val}}</div>
+                <div class="line"></div>
+            </div>
+
+            <!--<div layout-align="center center" ng-click="chooseChannel('市代理')">市代理</div>-->
+            <!--<div class="line"></div>-->
+            <!--<div layout-align="center center" ng-click="chooseChannel('加盟商')">加盟商</div>-->
+            <div class="boldLine"></div>
+            <div ng-click="chooseChannel()" class="cancel" layout-align="center center">取消</div>
+        </div>
+    </div>
+
+</div>

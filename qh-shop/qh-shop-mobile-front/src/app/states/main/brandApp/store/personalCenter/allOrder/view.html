@@ -1,0 +1,246 @@
+<div class="ks-allOrder"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex  ng-click="checkTab()">
+            <md-icon style="opacity: 0" class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-down"
+                     ></md-icon>
+            {{orderTitle}}
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-down"
+                      ng-show="!checkTabsShow"></md-icon>
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-up"
+                     ng-show="checkTabsShow"></md-icon>
+        </h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="tabList" layout="column" ng-show="checkTabsShow">
+        <div style="width: 100%;background: #f5f5f5">
+            <md-divider style=""></md-divider>
+            <div class="list" ng-click="checkTabs('')" ng-class= "{'activeList': orderTitle == '全部订单'}">全部订单</div>
+            <div class="list" ng-click="checkTabs('UNPAYED')" ng-class="{'activeList': orderTitle == '待付款'}">待付款</div>
+            <div class="list" ng-click="checkTabs('UNSHIPPED')" ng-class="{'activeList': orderTitle == '待发货'}">待发货</div>
+            <div class="list" ng-click="checkTabs('UNRECEIVED')" ng-class="{'activeList': orderTitle == '待收货'}">待收货</div>
+            <div class="list" ng-click="checkTabs('FINISHED')" ng-class="{'activeList': orderTitle == '已完成'}">已完成</div>
+        </div>
+        <div flex style="width: 100%" ng-click="checkTab()"></div>
+    </div>
+    <!--搜索-->
+    <div class="search" layout="row" layout-align="space-between center">
+        <input type="text" placeholder="搜索订单号" ng-model="searchId" flex>
+        <span ng-click="getInfo('0')">搜索</span>
+    </div>
+    <div class="line"></div>
+    <md-content flex style="overflow-x:hidden;background: #f5f5f5;">
+        <div class="main" layout="column">
+            <div layout="column" flex layout-align="top center" class="noOrder" ng-if="noOrder">
+                <div class="img-con" layout="row" layout-align="center center">
+                    <img src="noGoods.png" class="noGoods">
+                </div>
+                <div class="noGoods-word">您还没有订单哦，快去购买吧！</div>
+            </div>
+            <div layout="column" class="center-con" ng-if="!noOrder">
+                <!--ng-repeat一个订单-->
+                <div class="center-tab" layout="column" ng-repeat="item in items">
+                    <div class="center-tab-top">
+                        <div class="tab-top" layout="row" layout-align="space-between center">
+                            <div class="order-num">订单号：{{item.seq}}</div>
+                            <div class="order-status">{{item.statusDesp}}</div>
+                        </div>
+                        <div class="line"></div>
+                       <!--ng-repeat   一个订单的n个商品-->
+                        <div class="order-gooods" layout="column" ng-repeat="order in item.orderItems">
+                            <div layout="row" ui-sref="main.brandApp.store.personalCenter.orderDetail({orderId:item.id})">
+                                <div class="img-con">
+                                    <img ng-src="{{order.skuImg}}">
+                                </div>
+                                <div layout="column" class="img-right" flex >
+                                    <div layout="row" class="goods-top" layout-align="space-between center">
+                                        <div class="title" flex>{{order.skuTitle}}</div>
+                                        <div layout="column" class="price-right">
+                                            <div class="price">￥{{order.realPayPrice/100 | num:2}}</div>
+                                            <div class="del-price" ng-if="order.realPayPrice<order.labelPrice">￥{{order.labelPrice/100  | num:2}}</div>
+                                            <div class="num">x&nbsp;{{order.num}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="goods-bottom" layout="row" layout-align="start center">
+                                        <div class="goods-type">
+                                            <span ng-repeat="sku in order.specInfos">{{sku.propValue}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                        </div>
+                        <!--共几件商品-->
+                        <div layout="row" layout-align="end center" class="all">
+                            <div class="all-num">共计{{item.total}}件商品</div>
+                            <div class="all-price">合计：￥{{item.paymentPrice/100  | num:2}}</div>
+                        </div>
+                        <div class="line"></div>
+                        <!--待付款按钮-->
+                        <div class="btn" layout-align="end center" layout="row" ng-if="item.status=='UNPAYED'">
+                            <button class="cancel" ng-click="canclOrder(item.id)">取消</button>
+                            <button class="pay" ng-click="pay(item.id)">去付款</button>
+                        </div>
+                        <!--待接单-->
+                        <div class="btn" layout-align="end center" layout="row" ng-if="item.status=='UNCONFIRMED'">
+                            <button class="pay" ng-click="canclOrder(item.id)">取消</button>
+                        </div>
+                        <!--待收货-->
+                        <div class="btn" layout-align="end center" layout="row" ng-if="item.status=='UNRECEIVED'">
+                            <button class="pay" ng-click="confirmReceive(item.id)">确认收货</button>
+                        </div>
+                        <!--待自提-->
+                        <div class="btn" layout-align="end center" layout="row" ng-if="item.status=='SINCEING'">
+                            <button class="pay" ng-click="confirmSince(item.id)" >自提</button>
+                        </div>
+                        <!--退款中-->
+                        <!--<div class="btn" layout-align="end center" layout="row" ng-if="item.status=='UNRECEIVED'">-->
+                            <!--<button class="refund">填写快递单号</button>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="bg-line"></div>
+                </div>
+                <!--点击加载更多-->
+                <div layout="row" layout-align="center center" style="height: 30px;" ng-if="page<dataNum.totalPages" ng-click="getInfo(page)">
+                   点击加载更多
+                </div>
+                <div style="margin-bottom: 30px;" layout="row" layout-align="center center" style="height: 30px;" ng-if="page>=dataNum.totalPages && page!='1'">
+                   暂无更多
+                </div>
+                <!--待发货-->
+                <!--<div class="center-tab" layout="column">-->
+                    <!--<div class="center-tab-top">-->
+                        <!--<div class="tab-top" layout="row" layout-align="space-between center">-->
+                            <!--<div class="order-num">订单号：2017091438523</div>-->
+                            <!--<div class="order-status">待发货</div>-->
+                        <!--</div>-->
+                        <!--<div class="line"></div>-->
+                        <!--&lt;!&ndash;ng-repeat   一个订单的n个商品&ndash;&gt;-->
+                        <!--<div class="order-gooods" layout="column">-->
+                            <!--<div layout="row">-->
+                                <!--<div class="img-con">-->
+                                    <!--<img ng-src="">-->
+                                <!--</div>-->
+                                <!--<div layout="column" class="img-right" flex >-->
+                                    <!--<div layout="row" class="goods-top" layout-align="space-between center">-->
+                                        <!--<div class="title" flex>Friso/美素金装儿童奶粉4段120asdcd</div>-->
+                                        <!--<div layout="column" class="price-right">-->
+                                            <!--<div class="price">￥110</div>-->
+                                            <!--<div class="del-price">￥220</div>-->
+                                            <!--<div class="num">x&nbsp;1</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="goods-bottom" layout="row" layout-align="start center">-->
+                                        <!--<div class="goods-type">xl</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="line"></div>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;共几件商品&ndash;&gt;-->
+                        <!--<div layout="row" layout-align="end center" class="all">-->
+                            <!--<div class="all-num">共计2件商品</div>-->
+                            <!--<div class="all-price">合计：￥598.00</div>-->
+                        <!--</div>-->
+                        <!--<div class="line"></div>-->
+                        <!--&lt;!&ndash;按钮&ndash;&gt;-->
+                        <!--<div class="btn" layout-align="end center" layout="row">-->
+                            <!--<button class="cancel">取消</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="bg-line"></div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;待收货&ndash;&gt;-->
+                <!--<div class="center-tab" layout="column">-->
+                    <!--<div class="center-tab-top">-->
+                        <!--<div class="tab-top" layout="row" layout-align="space-between center">-->
+                            <!--<div class="order-num">订单号：2017091438523</div>-->
+                            <!--<div class="order-status">待收货</div>-->
+                        <!--</div>-->
+                        <!--<div class="line"></div>-->
+                        <!--&lt;!&ndash;ng-repeat   一个订单的n个商品&ndash;&gt;-->
+                        <!--<div class="order-gooods" layout="column">-->
+                            <!--<div layout="row">-->
+                                <!--<div class="img-con">-->
+                                    <!--<img ng-src="">-->
+                                <!--</div>-->
+                                <!--<div layout="column" class="img-right" flex >-->
+                                    <!--<div layout="row" class="goods-top" layout-align="space-between center">-->
+                                        <!--<div class="title" flex>Friso/美素金装儿童奶粉4段120asdcd</div>-->
+                                        <!--<div layout="column" class="price-right">-->
+                                            <!--<div class="price">￥110</div>-->
+                                            <!--<div class="del-price">￥220</div>-->
+                                            <!--<div class="num">x&nbsp;1</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="goods-bottom" layout="row" layout-align="start center">-->
+                                        <!--<div class="goods-type">xl</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="line"></div>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;共几件商品&ndash;&gt;-->
+                        <!--<div layout="row" layout-align="end center" class="all">-->
+                            <!--<div class="all-num">共计2件商品</div>-->
+                            <!--<div class="all-price">合计：￥598.00</div>-->
+                        <!--</div>-->
+                        <!--<div class="line"></div>-->
+                        <!--&lt;!&ndash;按钮&ndash;&gt;-->
+                        <!--<div class="btn" layout-align="end center" layout="row">-->
+                            <!--<button class="pay">确认收货</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="bg-line"></div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;退款中&ndash;&gt;-->
+                <!--<div class="center-tab" layout="column">-->
+                    <!--<div class="center-tab-top">-->
+                        <!--<div class="tab-top" layout="row" layout-align="space-between center">-->
+                            <!--<div class="order-num">订单号：2017091438523</div>-->
+                            <!--<div class="order-status">退款中</div>-->
+                        <!--</div>-->
+                        <!--<div class="line"></div>-->
+                        <!--&lt;!&ndash;ng-repeat   一个订单的n个商品&ndash;&gt;-->
+                        <!--<div class="order-gooods" layout="column">-->
+                            <!--<div layout="row">-->
+                                <!--<div class="img-con">-->
+                                    <!--<img ng-src="">-->
+                                <!--</div>-->
+                                <!--<div layout="column" class="img-right" flex >-->
+                                    <!--<div layout="row" class="goods-top" layout-align="space-between center">-->
+                                        <!--<div class="title" flex>Friso/美素金装儿童奶粉4段120asdcd</div>-->
+                                        <!--<div layout="column" class="price-right">-->
+                                            <!--<div class="price">￥110</div>-->
+                                            <!--<div class="del-price">￥220</div>-->
+                                            <!--<div class="num">x&nbsp;1</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="goods-bottom" layout="row" layout-align="start center">-->
+                                        <!--<div class="goods-type">xl</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="line"></div>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;共几件商品&ndash;&gt;-->
+                        <!--<div layout="row" layout-align="end center" class="all">-->
+                            <!--<div class="all-num">共计2件商品</div>-->
+                            <!--<div class="all-price">合计：￥598.00</div>-->
+                        <!--</div>-->
+                        <!--<div class="line"></div>-->
+                        <!--&lt;!&ndash;按钮&ndash;&gt;-->
+                        <!--<div class="btn" layout-align="end center" layout="row">-->
+                            <!--<button class="refund">填写快递单号</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="bg-line"></div>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </md-content>
+</div>

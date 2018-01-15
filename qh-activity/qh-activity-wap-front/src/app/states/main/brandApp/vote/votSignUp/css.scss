@@ -1,0 +1,179 @@
+@import "../../../../../scss/index.scss";
+
+.ks-votSignUp {
+  background: $activity-bg-white;
+  .content-bg{
+    //background: #fe77e7;
+    background: #ffefa5 url("bg-signUp.png") left bottom no-repeat;
+    background-size: 100%;
+    //min-height: 100%;
+    min-height: 540px;
+    height: 100%;
+    .con-top{
+      width: 100%;
+      margin-top: 25px;
+      margin-bottom: 30px;
+      .con-top-box{
+        position: relative;
+        img{
+          width: 208px;
+          display: block;
+        }
+        //.con-top-font{
+        //  position: absolute;
+        //  top: 32px;
+        //  right: 30px;
+        //  font-size: 17px;
+        //  font-weight: bold;
+        //  color: #ffffff;
+        //}
+      }
+
+    }
+    .con-form{
+
+      .form-tab{
+        margin-bottom: 15px;
+      }
+
+      .form-title{
+        width: 65px;
+        text-align: right;
+        margin-right: 10px;
+        font-size: 14px;
+        color: #222222;
+      }
+      .form-input{
+        width: 203px;
+        .form-control{
+          height: 28px;
+          -webkit-appearance  :none ;
+          -webkit-box-shadow:none;
+        }
+
+        .form-upload{
+          width: 89px;
+          height: 89px;
+          border: 1px solid #999999;
+          border-radius: 4px;
+          outline: none;
+          overflow: hidden;
+          position: relative;
+
+          #file{
+            width: 89px;
+            height: 89px;
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer
+          }
+
+
+          .del-img{
+            position: absolute;
+            background: #ffffff url("edit-font.png") center no-repeat;
+            background-size: 60%;
+            width: 25px;
+            height: 25px;
+            //opacity: .5;
+            right: 0;
+            text-align: center;
+            opacity: .7;
+            //background: #ffffff;
+            #file2{
+              width: 25px;
+              height: 25px;
+              position: absolute;
+              font-size: 100px;
+              right: 0;
+              top: 0;
+              opacity: 0;
+              filter: alpha(opacity=0);
+              cursor: pointer
+            }
+          }
+          img{
+            display: block;
+          }
+          .upload-btn{
+            font-size: 48px;
+            color: #999999;
+            line-height: 48px;
+          }
+          .upload-font{
+            font-size: 12px;
+            color: #999999;
+            //margin-bottom: 15px;
+          }
+        }
+
+        .form-input-btn{
+          .save-btn{
+            background: url("save-btn.png") no-repeat;
+            background-size: 185px;
+            height: 55px;
+            outline: none;
+          }
+          .return-btn{
+            margin-left: 46px;
+            font-size: 13px;
+            color: #666666;
+          }
+        }
+      }
+    }
+  }
+  .jqPhote{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    //background: rgba(0,0,0,.5);
+    #clipArea {
+      width: 100%;
+      height: 300px;
+    }
+    .choosePhote-top{
+      width: 100%;
+      background: rgba(0,0,0,.7);
+    }
+    .choosePhote-btn{
+      background: rgba(0,0,0,.7);
+      width: 100%;
+      #clipBtn {
+        width: 80px;
+        height: 32px;
+        background: #5BD6FF;
+        margin: 0 20px;
+        border-radius: 4px;
+        text-align: center;
+        line-height: 32px;
+        font-size: 17px;
+        color: #ffffff;
+      }
+      #cancel{
+        width: 80px;
+        height: 32px;
+        background: #fff;
+        margin: 0 20px;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 17px;
+        line-height: 32px;
+      }
+    }
+
+
+    #view {
+      margin: 0 auto;
+      width: 200px;
+      height: 200px;
+      background-color: #666;
+    }
+  }
+}

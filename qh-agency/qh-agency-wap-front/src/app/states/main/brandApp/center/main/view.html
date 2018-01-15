@@ -1,0 +1,84 @@
+<div flex layout="column" class="ks-center-main">
+    <!--<md-toolbar class="ks-header">-->
+    <!--<div layout="row" class="ks-header-divWrap">-->
+    <!--<div class="divTop" flex class>-->
+    <!--&lt;!&ndash;<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"&ndash;&gt;-->
+    <!--&lt;!&ndash;ng-click="vm.fallbackPage()"></md-icon>&ndash;&gt;-->
+    <!--<span class="regSpan">个人中心</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</md-toolbar>-->
+    <!--<md-divider></md-divider>-->
+
+    <md-content flex layout="column" layout-align="start center" class="main">
+        <div class="center-tab" layout="row" layout-align="space-between center"
+             ui-sref="main.brandApp.center.userInfo">
+            <div class="center-tab-left" layout="row" layout-align="start center">
+                <div class="tab-img" layout="row" layout-align="center center">
+                    <md-icon md-font-set="ks-icon" md-font-icon="ag-profile"></md-icon>
+                </div>
+                <div class="tab-desc">个人信息</div>
+            </div>
+            <!--<div class="center-tab-right">-->
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            <!--</div>-->
+        </div>
+        <div class="center-tab-line" style="padding: 0 15px;">
+            <div class="line"></div>
+        </div>
+        <div class="center-tab center-tab-active" layout="row" layout-align="space-between center">
+            <div class="center-tab-left" layout="row" layout-align="start center">
+                <div class="tab-img" layout="row" layout-align="center center">
+                    <md-icon md-font-set="ks-icon" md-font-icon="ag-profile-round"></md-icon>
+                </div>
+                <div class="tab-desc">渠道管理</div>
+            </div>
+            <!--<div class="center-tab-right">-->
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            <!--</div>-->
+        </div>
+        <div class="center-tab-boldLine"></div>
+        <div class="center-tab " layout="row" layout-align="space-between center"
+             ui-sref="main.brandApp.wallet.assets">
+            <div class="center-tab-left" layout="row" layout-align="start center">
+                <div class="tab-img" layout="row" layout-align="center center">
+                    <md-icon md-font-set="ks-icon" md-font-icon="ag-wallet-o"></md-icon>
+                </div>
+                <div class="tab-desc">我的账户</div>
+            </div>
+            <!--<div class="center-tab-right">-->
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            <!--</div>-->
+        </div>
+        <!--<div class="center-tab-line" style="padding: 0 15px;">-->
+            <!--<div class="line"></div>-->
+        <!--</div>-->
+        <!--<div class="center-tab " layout="row" layout-align="space-between center"-->
+             <!--ui-sref="main.brandApp.authorization">-->
+            <!--<div class="center-tab-left" layout="row" layout-align="start center">-->
+                <!--<div class="tab-img" layout="row" layout-align="center center">-->
+                    <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-authorize-o"></md-icon>-->
+                <!--</div>-->
+                <!--<div class="tab-desc">授权书</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;<div class="center-tab-right">&ndash;&gt;-->
+            <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
+        <div class="center-tab-boldLine"></div>
+        <div class="center-tab" layout="row" layout-align="space-between center"
+             ui-sref="main.brandApp.center.setting">
+            <div class="center-tab-left" layout="row" layout-align="start center">
+                <div class="tab-img" layout="row" layout-align="center center">
+                    <md-icon md-font-set="ks-icon" md-font-icon="ag-settings"></md-icon>
+                </div>
+                <div class="tab-desc">设置</div>
+            </div>
+            <!--<div class="center-tab-right">-->
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            <!--</div>-->
+        </div>
+    </md-content>
+    <div ks-footer-menu cur="'center'"></div>
+</div>
+

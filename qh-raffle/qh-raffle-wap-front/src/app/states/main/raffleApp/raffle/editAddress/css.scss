@@ -1,0 +1,89 @@
+//
+@import "../../../../../scss/_ksMain.scss";
+.ks-editAddress{
+  background: #f5f5f5;
+  .center-line{
+    flex-shrink: 0;
+    height:10px;
+    width:100%;
+    background: #f5f5f5;
+  }
+  //  主体
+  .main{
+    .center-con{
+      flex-shrink: 0;
+      background: #fff;
+      padding:0 15px;
+      .center-tab{
+        height:60px;
+        line-height:60px;
+        .tab-left{
+          color: #333;
+          font-size:16px;
+          width: 98px;
+          padding-left: 10px;
+        }
+        .tab-left-default{
+          padding-left: 10px;
+          color: #333;
+          font-size:16px;
+        }
+        .tab-right-default{
+          .ks-icon{
+            margin:0;
+            font-size: 18px;
+          }
+        }
+        .tab-right{
+          input::-webkit-input-placeholder { /* WebKit browsers */
+            font-size: 16px;
+            color: #999;
+          }
+
+          input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            font-size: 16px;
+            color: #999;
+          }
+
+          input::-moz-placeholder { /* Mozilla Firefox 19+ */
+            font-size: 16px;
+            color: #999;
+          }
+          input{
+            border:none;
+            background: none;
+            height:60px;
+            color: #666;
+            width:100%;
+          }
+          .addr-con{
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+      }
+      .line{
+        width: 100%;
+        height: 1px;
+        -webkit-transform: scaleY(0.5);
+        -webkit-transform-origin: 0 0;
+        //overflow: hidden;
+        background: #CDD0CF;
+      }
+    }
+    .btn-delte{
+      height:60px;
+      line-height: 60px;
+      flex-shrink: 0;
+      margin-top: 10px;
+      padding-left:25px;
+      width:100%;
+      color: #E53467;
+      font-size:16px;
+      background: #fff;
+    }
+  }
+
+}

@@ -1,0 +1,43 @@
+<div flex="100" layout="column" class="ks-qrCodePay">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>微信收款码</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+        <div class="content">
+            <div class="top" layout="column" layout-align="center center">
+                <div class="money">¥{{342342 | num:2}}</div>
+                <div class="desc" ng-if="false">应收金额</div>
+                <div class="desc" ng-if="true">收款金额</div>
+            </div>
+            <div class="con" layout="column" layout-align="center center">
+                <div layout="column" layout-align="center center" ng-if="false">
+                    <div class="qrcode"></div>
+                    <div class="desc">请顾客扫一扫收款码,向我付钱</div>
+                </div>
+                <div layout="column" layout-align="center center" ng-if="true">
+                        <div class="con-icon">
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-check-circle"></md-icon>
+                        </div>
+                        <div class="con-true">完成收款</div>
+                        <div class="con-odd">收银单号:sy41434232342</div>
+                </div>
+            </div>
+            <div class="semi-circle-left"></div>
+            <div class="semi-circle-right"></div>
+        </div>
+    </md-content>
+    <md-divider></md-divider>
+    <div class="footer" layout="column" layout-align="center center" ng-if="false">
+        返回
+    </div>
+    <div class="footer" layout="column" layout-align="center center" ng-if="true">
+        继续收银
+    </div>
+</div>

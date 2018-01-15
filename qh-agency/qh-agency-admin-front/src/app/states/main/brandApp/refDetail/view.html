@@ -1,0 +1,323 @@
+
+<div class="ks-refundDetail">
+    <div layout="column"  class="">
+        <div class="ks-refundDetail-top">
+            <!--rmy     2017-08-07    进度条-->
+            <!--非关闭状态-->
+            <div class="ks-rf-bar" layout="column">
+                <ul class="ks-rf-keywords" layout="row">
+                    <li>买家申请退款,待卖家确认</li>
+                    <li>卖家同意申请,待买家退货</li>
+                    <li>卖家确认收获，待退款</li>
+                    <li>确认收货,退款完成</li>
+                </ul>
+                <!--1-->
+                <ul class="ks-bar" layout="row" ng-if="data.status==='UNCHECKED' || data.status==='CLOSED'">
+                    <li layout="row"><b class="pass">1</b></li>
+                    <div class="rf-abr" layout="row"><span></span></div>
+                    <li layout="row"><b>2</b></li>
+                    <div class="rf-abr" layout="row"><span></span></div>
+                    <li layout="row"><b>3</b></li>
+                    <div class="rf-abr" layout="row"><span></span></div>
+                    <li layout="row"><b>4</b></li>
+                </ul>
+                <!--2-->
+                <ul class="ks-bar" layout="row" ng-if="data.status==='WAIT_SENDING'">
+                    <li layout="row"><b class="pass">1</b></li>
+                    <div class="rf-abr" layout="row"><span class="rf-pass"></span></div>
+                    <li layout="row"><b class="pass">2</b></li>
+                    <div class="rf-abr" layout="row"><span></span></div>
+                    <li layout="row"><b>3</b></li>
+                    <div class="rf-abr" layout="row"><span></span></div>
+                    <li layout="row"><b>4</b></li>
+                </ul>
+                <!--3  待卖家收获  待退款-->
+                <ul class="ks-bar" layout="row" ng-if="data.status==='WAIT_RECEIVED' || data.status==='UNPAYED'">
+                    <li layout="row"><b class="pass">1</b></li>
+                    <div class="rf-abr" layout="row"><span class="rf-pass"></span></div>
+                    <li layout="row"><b class="pass">2</b></li>
+                    <div class="rf-abr" layout="row"><span class="rf-pass"></span></div>
+                    <li layout="row"><b class="pass">3</b></li>
+                    <div class="rf-abr" layout="row"><span></span></div>
+                    <li layout="row"><b>4</b></li>
+                </ul>
+                <ul class="ks-bar" layout="row" ng-if="data.status==='FINISHED'">
+                    <li layout="row"><b class="pass">1</b></li>
+                    <div class="rf-abr" layout="row"><span class="rf-pass"></span></div>
+                    <li layout="row"><b class="pass">2</b></li>
+                    <div class="rf-abr" layout="row"><span class="rf-pass"></span></div>
+                    <li layout="row"><b class="pass">3</b></li>
+                    <div class="rf-abr" layout="row"><span class="rf-pass"></span></div>
+                    <li layout="row"><b class="pass">4</b></li>
+                </ul>
+            </div>
+            <!--关闭状态下-->
+            <div class="ks-rf-bar" layout="column" ng-if="closed">
+                <ul class="ks-rf-keywords" layout="row">
+                    <li>买家申请退款,待卖家确认</li>
+                    <li>卖家同意申请,待买家退货</li>
+                    <li>卖家确认收获，待退款</li>
+                    <li>确认收货,退款完成</li>
+                </ul>
+                <ul class="ks-bar" layout="row">
+                    <li layout="row"><b>1</b></li>
+                    <div class="rf-abr" layout="row"><span class="rf-pass"></span></div>
+                    <li layout="row"><b>2</b></li>
+                    <div class="rf-abr" layout="row"><span></span></div>
+                    <li layout="row"><b>3</b></li>
+                    <div class="rf-abr" layout="row"><span></span></div>
+                    <li layout="row"><b>4</b></li>
+                </ul>
+            </div>
+        </div>
+<!--左下测-->
+        <div layout="row"  class="ks-refundDetail-top-main">
+            <!--左下测-->
+            <div class="ks-refundDetail-info" flex="30" layout="column">
+                <div class="ks-refundDetail-info-top" layout="row">
+                    <span flex><b>退款申请</b></span>
+                    <span flex style="text-align: right;"><b style="padding-right: 5%">{{data.statusDesp}}</b></span>
+                </div>
+                <div class="ks-itemOrderList-timeBox-row"  layout="column">
+                    <div layout="row" class="rowInfo"  layout-align="start center">
+                        <div flex="30" class="box-label"><b>退款类型:</b></div>
+                        <div flex="70" class="box-value"><span>{{data.typeDesp}}</span></div>
+                    </div>
+                    <div layout="row" class="rowInfo"  layout-align="start center">
+                        <div flex="30" class="box-label"><b>退款金额:</b></div>
+                        <div flex="70" class="box-value"><span>￥{{data.refundAmount/100 | num:2}}</span></div>
+                    </div>
+                    <div layout="row" class="rowInfo"  layout-align="start center">
+                        <div flex="30" class="box-label"><b>退款备注:</b></div>
+                        <div flex="70" class="box-value"><span>{{data.memo}}</span></div>
+                    </div>
+                    <!--<div layout="row" class="rowInfo" flex layout-align="start center">-->
+                        <!--<div flex="30" class="box-label"><b>退款原因:</b></div>-->
+                        <!--<div flex="70" class="box-value"><span>{{refund.reason}}</span></div>-->
+                    <!--</div>-->
+                    <div layout="row" class="rowInfo"  layout-align="start center">
+                        <div flex="30" class="box-label"><b>退款编号:</b></div>
+                        <div flex="70" class="box-value"><span>{{data.refundSeq}}</span></div>
+                    </div>
+                    <div layout="row" class="rowInfo"  layout-align="start center">
+                        <div flex="30" class="box-label"><b>申请时间:</b></div>
+                        <div flex="70" class="box-value"><span>{{data.dateCreated | date:"yyyy-MM-dd HH:mm:ss"}}</span></div>
+                    </div>
+
+                    <!--<div layout="row" class="rowInfo" style="height: 70px;" flex="15" layout-align="start center">-->
+                        <!--<div flex="30" class="box-label">-->
+                            <!--<img style="width: 70px;height: 70px;" src="{{refund.skuImg}}" class="commodityImg" alt="商品图片">-->
+                        <!--</div>-->
+                        <!--<div flex="70" class="box-value">-->
+                            <!--<span>{{refund.itemTitle}}</span>-->
+                            <!--<div style="display: inline" flex layout layout-align="center end" ng-repeat="specs in refund.specInfos">-->
+                                <!--<span style="display: inline" class="commodityParmer">{{specs.propName}}  {{specs.propValue}} </span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div layout="row" class="rowInfo"  layout-align="start center" flex>
+                        <div flex="30" class="box-label"><b>买家:</b></div>
+                        <div flex="70" class="box-value"><span>{{refund.realName}}</span></div>
+                    </div>
+                    <!--<div layout="row" class="rowInfo" flex layout-align="start center">-->
+                        <!--<div flex="30" class="box-label"><b>订单编号:</b></div>-->
+                        <!--<div flex="70" class="box-value"><span>{{refund.orderId}}</span></div>-->
+                    <!--</div>-->
+                    <!--<div layout="row" class="rowInfo" flex layout-align="start center" style="border-bottom: none">-->
+                        <!--<div flex="30" class="box-label"><b>成交时间:</b></div>-->
+                        <!--<div flex="70" class="box-value"><span>{{refund.orderDate | date:"yyyy-MM-dd HH:mm:ss"}}</span></div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+
+            <!--右下测-->
+            <div class="ks-refundDetail-handle" flex="70" >
+                <div class="ks-refundDetail-handle-top" layout="column">
+                    <div style="margin-right: 20px" layout="row">
+                        <md-icon class="wrapIcon ts" md-font-set="ks-admin-font" md-font-icon="ks-tishi"></md-icon>
+                        <span style="margin-left: 20px;font-size: 18px;">退货状态：{{data.statusDesp}}</span>
+                    </div>
+                    <!--rmy 2017-08-04 重构    按钮-->
+                    <!--状态一   待卖家确认  UNCHECKED-->
+                    <div class="ks-rf-status" layout="row" ng-if="data.status==='UNCHECKED'">
+                        <button type="button" class="btn default agreeBtn" ng-click="showRefundDialog()" ng-if="REFUND_C">同意退货申请</button>
+                        <button type="button" class="btn default unAgreeBtn" ng-click="defaultRefund()" ng-if="REFUND_C">拒绝退货申请</button>
+                    </div>
+                    <!--状态二   待买家退货-->
+                    <div class="ks-rf-status" layout="row" ng-if="data.status==='WAIT_SENDING'">
+                        <button type="button" class="btn default agreeBtn" ng-click="fallbackPage()">返回</button>
+                    </div>
+                    <!--状态三   待卖家收获-->
+                    <div class="ks-rf-status" layout="row" ng-if="data.status==='WAIT_RECEIVED'">
+                        <button type="button" class="btn default agreeBtn" ng-click="showReceivedDialog()" ng-if="REFUND_C">待卖家确认收货</button>
+                        <button type="button" class="btn default unAgreeBtn" ng-click="defaultRefund()" ng-if="REFUND_C">拒绝退款</button>
+                    </div>
+                    <!--状态4   待退款-->
+                    <div class="ks-rf-status" layout="row" ng-if="data.status==='UNPAYED'">
+                        <button type="button" class="btn default agreeBtn" ng-click="fallbackPage()">返回</button>
+                    </div>
+                    <!--状态5   已关闭-->
+                    <div class="ks-rf-status" layout="row" ng-if="data.status==='CLOSED'">
+                        <div>
+                            <label style="font-weight: 100;">拒绝原因：</label>
+                            <span>{{data.rejectReason}}</span>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <!--<div style="width: 100%">-->
+                       <!--<span ng-if="refund.status == 'FINISHED'&&refund.type == 'MONEY_ONLY'"><b>退款状态 : 已完成退款</b></span>-->
+                       <!--<span ng-if="refund.status == 'CLOSED'&&refund.type == 'MONEY_ONLY'"><b>退款状态 : 已拒绝退款申请</b></span>-->
+
+                       <!--<span ng-if="refund.status == 'FINISHED'&&refund.type == 'ITEM'"><b>已完成</b></span>-->
+                       <!--<span ng-if="refund.status == 'CLOSED'&&refund.type == 'ITEM'"><b>已拒绝</b></span>-->
+
+                       <!--<span ng-if="refund.status != 'CLOSED' && refund.status != 'FINISHED'">-->
+                        <!--<b>请处理{{refund.type == 'MONEY_ONLY' ? "退款申请" : "退货申请" }}</b>-->
+                        <!--</span>-->
+                       <!--<div class="ks-refundDetail-handle-content" >-->
+                           <!--<div ng-if="refund.status == 'UNCHECKED'">-->
+                               <!--<div ng-if="refund.type == 'MONEY_ONLY'">-->
+                                   <!--<button type="button" class="btn default agreeBtn" ng-click="showRefundDialog(refund.id,refund.refundAmount)">同意退款申请</button>-->
+                                   <!--<button type="button" class="btn default unAgreeBtn" ng-click="hideRefundDialog(refund.id,'false')">拒绝退款申请</button>-->
+                               <!--</div>-->
+                               <!--<div ng-if="refund.type == 'ITEM'">-->
+                                   <!--<button type="button" class="btn default agreeBtn" ng-click="trueRefundDialog(refund.id,'true')">同意退货申请</button>-->
+                                   <!--<button type="button" class="btn default unAgreeBtn" ng-click="trueRefundDialog(refund.id,'false')">拒绝退货申请</button>-->
+                               <!--</div>-->
+                           <!--</div>-->
+                           <!--<div ng-if="refund.status == 'WAIT_SENDING'">-->
+                               <!--<div layout="column" style="margin-bottom: 40px">-->
+                                   <!--<div flex  style="margin-top: 3px" layout="row">-->
+                                       <!--<div flex="10" style="text-align: left;line-height: 30px">-->
+                                           <!--<span>快递公司:</span>-->
+                                       <!--</div>-->
+                                       <!--<div flex="90">-->
+                                           <!--<select class="select-control" ng-model="refund.brandApp" style="height: 30px;text-align: center">-->
+                                               <!--<option ng-repeat="(code,desp) in refund.logisticsMap" value="{{code}}">-->
+                                                   <!--{{desp}}-->
+                                               <!--</option>-->
+                                           <!--</select>-->
+                                       <!--</div>-->
+                                   <!--</div>-->
+                                   <!--<div flex style="margin-top: 10px" layout="row">-->
+                                       <!--<div flex="10" style="text-align: left;line-height: 30px">-->
+                                           <!--<span>快递单号:</span>-->
+                                       <!--</div>-->
+                                       <!--<div flex="90">-->
+                                           <!--<input type="text" class="form-control input-sm" ng-model="refund.expressNo""-->
+                                           <!--style="width:200px;">-->
+                                       <!--</div>-->
+                                       <!--&lt;!&ndash;<textarea rows="3" cols="15" ng-model="refund.expressNo"></textarea>&ndash;&gt;-->
+                                   <!--</div>-->
+                               <!--</div>-->
+                               <!--<div ng-if="order.status != 'UNSHIPPED'">-->
+                                   <!--<button type="button" class="btn default" ng-click="handle(refund.id,'true')"-->
+                                           <!--style="color: #fff;  background: #e84e40;">提交物流信息</button>-->
+                                   <!--&lt;!&ndash;<button type="button" class="btn default" ng-click="fallbackPage()">返回</button>&ndash;&gt;-->
+                               <!--</div>-->
+                           <!--</div>-->
+                           <!--<div ng-if="refund.status == 'WAIT_RECEIVED'">-->
+                               <!--<button type="button" class="btn default" ng-click="showRefundDialog(refund.id,refund.refundAmount)">货已收到，同意退款</button>-->
+                           <!--</div>-->
+                       <!--</div>-->
+                   <!--</div>-->
+                </div>
+                <!--</div>-->
+            </div>
+        </div>
+ <!--退货商品的展示-->
+        <div layout="column" class="ks-rf-bottom-goods">
+            <!--退货商品标题-->
+            <div class="tableTit" layout="row">
+                <div class="tableTd" flex="30">
+                    <span>商品</span>
+                </div>
+                <div class="tableTd" flex="10">
+                    <span>数量</span>
+                </div>
+                <div class="tableTd" flex="10">
+                    <span>采购价</span>
+                </div>
+                <div class="tableTd" flex="10">
+                    <span>退货物流</span>
+                </div>
+                <div class="tableTd" flex="40">
+                </div>
+            </div>
+            <!--退货商品-->
+            <div class="tableCon">
+                <!--一个订单编号-->
+                <div class="orderNumber">
+                    <!--订单信息-->
+                    <div class="ordDetail" layout="row">
+                        <div flex="50"  layout="column" >
+                            <!--n-->
+                            <div layout="row" class="orderXq" ng-repeat="item in items">
+                                <div layout="row" flex="60">
+                                    <div class="pic">
+                                        <img ng-src="{{item.skuImg}}">
+                                    </div>
+                                    <div layout="column" class="goodsDetail">
+                                        <span>{{item.itemTitle}}</span>
+                                        <span ng-repeat="sk in item.specInfos">{{sk.propName}}:{{sk.propValue}}</span>
+                                    </div>
+                                </div>
+                                <div flex="20" class="price" layout="row">
+                                    <span>{{item.num}}</span>
+                                </div>
+                                <div flex="20" class="refundPrice" layout="row">
+                                    <span class="refundMoney">￥{{item.skuPrice/100 | num:2}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div flex="10" class="rfXq" layout="column">
+                            <span class="logistics">物流公司：{{data.logisticsInfo.company}}</span>
+                            <span class="logistics">快递单号：{{data.logisticsInfo.expressNo}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//拒绝退货申请-->
+<script type="text/ng-template" id="defaultRefund.html">
+    <div class="md-dialog-container ks-default" >
+        <md-dialog aria-label="退款确认" class="refundTk" style="height: 260px;">
+            <div layout="column" class="tck" style="position:absolute;height: 260px;">
+                <h2 style="text-align: left;padding-left: 20px;">拒绝接单确认</h2>
+                <div layout="row" class="defaultTck">
+                    <label style="margin: 0 5px 0 25px;padding:0px;">拒绝理由：</label>
+                    <textarea ng-model="vmd.reason"></textarea>
+                </div>
+                <!--<div layout="row" class="img-container">-->
+                    <!--<label style="margin: 0 5px 0 25px;padding:0px;">凭证：</label>-->
+                    <!--<div class="upload-img">-->
+                        <!--<ul>-->
+                            <!--<li>-->
+                                <!--<button type="file" ngf-select="vmd.uploadImg($file)" >选择图片</button>-->
+                                <!--<div style="height: 123px;width: 123px;overflow: hidden;margin-top:10px;">-->
+                                    <!--<img ng-src="{{vmd.imgs}}" ng-model="vmd.imgs"  style="width: 125px;height: 125px;display: block;">-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<br style="clear: both">-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div layout="row">
+                    <button ng-click="vmd.reject();" style="margin:20px 30px 0 84px;color: #fff;background: #ba9f6e;">确定</button>
+                    <button ng-click="vmd.cancel()" style="margin: 20px 0 0 0 ;">取消</button>
+                </div>
+            </div>
+        </md-dialog>
+    </div>
+</script>
+
+

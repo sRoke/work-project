@@ -1,0 +1,59 @@
+<md-dialog aria-label="员工信息" style="width:1000px;">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>员工信息</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
+                    <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div class="form-group">
+                    <label for="realName" class="col-sm-2 control-label">姓名</label>
+                    <div class="col-sm-9">
+                        <span id="realName">{{vm.realName}}</span>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="phone" class="col-sm-2 control-label">手机号</label>
+                    <div class="col-sm-9">
+                        <span id="phone">{{vm.phone}}</span>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="staffGroup" class="col-sm-2 control-label">角色</label>
+                    <div class="col-sm-9">
+                        <span id="staffGroup" ng-repeat="staffGroup in vm.staffGroupList">{{staffGroup.name}}&nbsp;&nbsp;</span>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="disabled" class="col-sm-2 control-label">状态</label>
+                    <div class="col-sm-9">
+                        <span id="disabled">
+                             <span ng-if="!vm.disabled">正常</span>
+                            <span ng-if="vm.disabled">已禁用</span>
+                        </span>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="dateCreated" class="col-sm-2 control-label">创建时间</label>
+                    <div class="col-sm-9">
+                        <span id="dateCreated">{{vm.dateCreated | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="createBy" class="col-sm-2 control-label">创建人</label>
+                    <div class="col-sm-9">
+                        <span id="createBy">{{vm.createdBy}}</span>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+</md-dialog>

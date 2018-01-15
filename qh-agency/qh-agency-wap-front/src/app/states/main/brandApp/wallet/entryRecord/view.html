@@ -1,0 +1,64 @@
+<div flex layout="column" class="ks-wallet-detail">
+    <!--<md-toolbar class="ks-header">-->
+        <!--<div layout="row" class="ks-header-divWrap">-->
+            <!--<div class="divTop" flex class>-->
+                <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+                         <!--ng-click="fallbackPage()"></md-icon>-->
+                <!--<span class="regSpan">余额明细</span>-->
+                <!--&lt;!&ndash;<span class="regSpan-right" ui-sref="main.brandApp.wallet.detail">明细</span>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-toolbar>-->
+
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>入账记录</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+
+    <md-divider></md-divider>
+
+    <md-content flex layout="column" layout-align="start center" class="main">
+       <div ng-repeat="list in data" style="width: 100%">
+           <div style="width: 100%" ng-if="list.status == 'return'">
+               <div class="tab-choose" layout="row" layout-align="space-between center">
+                   <div class="tab-left" layout="column" layout-align="center start">
+
+                       <label class="note-wd">退款</label>
+                       <label class="note-data">{{list.time | date:'yyyy-MM-dd HH:mm:ss'}}</label>
+                   </div>
+
+                   <div layout="column" layout-align="center end" class="tab-right">
+
+                       <div class="Positive">+{{list.num | num : 2}}</div>
+                       <div class="desc">已到账</div>
+                   </div>
+               </div>
+               <div class="center-tab-line"><div class="line"></div></div>
+           </div>
+
+           <div  style="width: 100%" ng-if="list.status == 'Purchase'">
+               <div class="tab-choose" layout="row" layout-align="space-between center">
+                   <div class="tab-left" layout="column" layout-align="center start">
+                       <label class="note-wd">采购</label>
+                       <label class="note-data">{{list.time | date:'yyyy-MM-dd HH:mm:ss'}}</label>
+                   </div>
+                   <div layout="column" layout-align="center end" class="tab-right">
+                       <!--<div class="negative">-{{list.num | number : 2}}</div>-->
+                       <div class="Positive">+{{list.num | num : 2}}</div>
+                       <div class="desc">已到账</div>
+                   </div>
+               </div>
+               <div class="center-tab-line"><div class="line"></div></div>
+           </div>
+
+
+       </div>
+
+    </md-content>
+</div>
+

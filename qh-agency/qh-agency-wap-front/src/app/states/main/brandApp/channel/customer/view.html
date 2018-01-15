@@ -1,0 +1,97 @@
+<div flex layout="column" class="ks-customer">
+    <md-toolbar class="ks-header">
+        <div layout="row" class="ks-header-divWrap">
+            <div class="divTop" flex layout="column" layout-align="center center">
+                <md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"
+                         ng-click="fallbackPage()"></md-icon>
+                <span class="regSpan">客户管理</span>
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <div class="top-sraech">
+            <div class="search-div" layout="row" layout-align="space-between center">
+                <input flex type="tel" placeholder="名称 编码" ng-model="search" ng-change="page(search)">
+                <md-icon md-font-set="ks-icon" md-font-icon="ag-search-left" ng-click="page(search)"></md-icon>
+            </div>
+        </div>
+    </md-toolbar>
+    <md-divider></md-divider>
+    <md-content flex class="main">
+        <!--<div class="top-sraech">-->
+            <!--<div class="search-div" layout="row" layout-align="space-between center">-->
+                <!--<input flex type="tel" placeholder="名称 编码">-->
+                <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-search"></md-icon>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="line"></div>-->
+        <div ng-repeat="list in data">
+            <div class="customerList" layout="column" layout-align="space-between center" ui-sref="main.brandApp.channel.detail({id:list.id})">
+                <div flex layout="row" layout-align="space-between center" class="customerList-content">
+                    <div flex layout="column" layout-align="start start" class="customerList-left">
+                        <div class="title">名称:  <span>{{list.number}}</span> {{list.name}}</div>
+                        <div class="desc">联系人: {{list.contacts}}</div>
+                        <div class="desc">联系电话: {{list.phone}}</div>
+                        <div >客户类别: {{list.type}}</div>
+                    </div>
+                    <div layout="row" layout-align="center center" class="customerList-right">
+                        <md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow-right-s"></md-icon>
+                    </div>
+
+                </div>
+                    <div class="line"></div>
+            </div>
+        </div>
+
+
+
+        <!--<div class="customerList" layout="column" layout-align="space-between center">-->
+            <!--<div flex layout="row" layout-align="space-between center" class="customerList-content">-->
+                <!--<div flex layout="column" layout-align="start start" class="customerList-left">-->
+                    <!--<div class="title">名称:  <span>1111</span> xxxxxxxx</div>-->
+                    <!--<div class="desc">联系人: xxxxxxxxxxxxx</div>-->
+                    <!--<div class="desc">联系电话: xxxxxxxxxxx</div>-->
+                    <!--<div >客户类别: xxxxxxxxxx</div>-->
+                <!--</div>-->
+                <!--<div layout="row" layout-align="center center" class="customerList-right">-->
+                    <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow-right-s"-->
+                             <!--ui-sref="main.brandApp.channel.detail({id:'1'})"></md-icon>-->
+                <!--</div>-->
+
+            <!--</div>-->
+            <!--<div class="line"></div>-->
+        <!--</div>-->
+        <!--<div class="customerList" layout="column" layout-align="space-between center">-->
+            <!--<div flex layout="row" layout-align="space-between center" class="customerList-content">-->
+                <!--<div flex layout="column" layout-align="start start" class="customerList-left">-->
+                    <!--<div class="title">名称:  <span>1111</span> xxxxxxxx</div>-->
+                    <!--<div class="desc">联系人: xxxxxxxxxxxxx</div>-->
+                    <!--<div class="desc">联系电话: xxxxxxxxxxx</div>-->
+                    <!--<div >客户类别: xxxxxxxxxx</div>-->
+                <!--</div>-->
+                <!--<div layout="row" layout-align="center center" class="customerList-right">-->
+                    <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow-right-s"-->
+                             <!--ui-sref="main.brandApp.channel.detail({id:'2'})"></md-icon>-->
+                <!--</div>-->
+
+            <!--</div>-->
+            <!--<div class="line"></div>-->
+        <!--</div>-->
+        <!--<div class="customerList" layout="column" layout-align="space-between center">-->
+            <!--<div flex layout="row" layout-align="space-between center" class="customerList-content">-->
+                <!--<div flex layout="column" layout-align="start start" class="customerList-left">-->
+                    <!--<div class="title">名称:  <span>1111</span> xxxxxxxx</div>-->
+                    <!--<div class="desc">联系人: xxxxxxxxxxxxx</div>-->
+                    <!--<div class="desc">联系电话: xxxxxxxxxxx</div>-->
+                    <!--<div >客户类别: xxxxxxxxxx</div>-->
+                <!--</div>-->
+                <!--<div layout="row" layout-align="center center" class="customerList-right">-->
+                    <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow-right-s"-->
+                             <!--ui-sref="main.brandApp.channel.detail({id:'3'})"></md-icon>-->
+                <!--</div>-->
+
+            <!--</div>-->
+            <!--<div class="line"></div>-->
+        <!--</div>-->
+    </md-content>
+</div>
+

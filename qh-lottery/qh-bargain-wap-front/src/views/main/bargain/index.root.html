@@ -1,0 +1,125 @@
+<div flex="" layout="column" class="ks-main ks-bargain">
+
+    <md-content flex style="overflow-x:hidden">
+
+        <div class="fixed-top" style="z-index: 111;max-width: 600px" ng-if="infoData.topImg">
+            <a href="{{infoData.topLink}}" ng-if="infoData.topLink">
+                <img src="{{imgUrl}}{{infoData.topImg}}" alt="" width="100%">
+            </a>
+            <img src="{{imgUrl}}{{infoData.topImg}}" alt="" width="100%" ng-if="!infoData.topLink">
+        </div>
+        <div class="fixed-top-blank" ng-if="infoData.topImg" style="visibility: hidden">>
+            <a href="{{infoData.topLink}}" ng-if="infoData.topLink">
+                <img src="{{imgUrl}}{{infoData.topImg}}" alt="" width="100%">
+            </a>
+            <img src="{{imgUrl}}{{infoData.topImg}}" alt="" width="100%" ng-if="!infoData.topLink">
+        </div>
+
+
+        <div class="img-top">
+            <!--<img src="https://img.kingsilk.net/FoN7rHn601MRBlGjkc5Tfuya9rmj" alt="">-->
+            <img ng-src="{{imgUrl}}{{infoData.titleImg}}" alt="">
+        </div>
+        <div class="item-wrap" layout="column" layout-align="center center">
+            <!--<div class="item-img">
+                <img src="https://img.kingsilk.net/FmJ-ylzTNuf-Ohu2NkAKZpIndwZO" alt="">
+            </div>-->
+
+            <!--今日必抢轮播图-->
+            <div class="swiper-mustBuy">
+                <div class="swiper-container3">
+                    <div class="my-wrapper3">
+                        <div class="my-slide3" ng-repeat="ll in item track by $index">
+                            <div class="img-swiper" layout="column">
+                                <div class="img-wrap">
+                                    <img ng-src="{{imgUrl}}{{ll.itemImg}}"/>
+                                    <!--<img src="https://img.kingsilk.net/FmJ-ylzTNuf-Ohu2NkAKZpIndwZO" alt="">-->
+                                </div>
+                                <div class="dis" layout="row" layout-align="center center" style="margin-top: 6px">
+                                    <div layout="column" layout-align="center center">
+                                        <div class="txt">{{ll.name}}</div>
+                                        <div class="txt">砍价低至:{{ll.minTargetPrice}},原价{{ll.price}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--<div class="swiper-button-prev swiper-button-white" style="left: -30px;height: 24px"></div>
+                    <div class="swiper-button-next swiper-button-white" style="right: -30px;height: 24px"></div>-->
+                </div>
+            </div>
+            <div class="bargain-num" style="margin-bottom: 22px">已有<span>{{infoData.participantNum}}</span>人参与砍价<span>商城砍价</span>
+            </div>
+
+            <!--活动已开始 + 未结束 + 奖品数量>0 + 未参加过活动-->
+            <div class="item-btn" layout="column" layout-align="center center" ng-click="goBargain()"
+                 ng-if="!infoData.overdue && num >0 && !infoData.isEarlier && !isJoined">
+                <span>自砍一刀</span>
+            </div>
+
+            <!--活动已开始 + 未结束 + 参加过活动-->
+            <div class="item-btn" layout="column" layout-align="center center" ng-click="goBargain()"
+                 ng-if="!infoData.overdue && !infoData.isEarlier && isJoined">
+                <span>查看我的战绩</span>
+            </div>
+
+            <!--活动已结束-->
+            <div class="item-btn" ng-class="{overdue:infoData.overdue}" layout="column" layout-align="center center"
+                 ng-if="infoData.overdue" style="background: #d5d5d5">
+                <span>活动已结束</span>
+            </div>
+
+            <!--活动未开始-->
+            <div class="item-btn" ng-class="{overdue:infoData.overdue}" layout="column" layout-align="center center"
+                 ng-if="infoData.isEarlier" style="background: #d5d5d5">
+                <span>活动未开始</span>
+            </div>
+
+            <!--活动已开始 + 未结束 + 奖品数量<=0 +未参加过活动-->
+            <div class="item-btn" ng-class="{overdue:infoData.overdue}" layout="column" layout-align="center center"
+                 ng-if="!infoData.overdue && !infoData.isEarlier && num <=0 && !isJoined" style="background: #999;">
+                <span style="color: #fff">已抢光</span>
+            </div>
+
+            <div class="item-dis" style="margin-top: 20px">先自砍一刀,再召集小伙伴</div>
+        </div>
+        <div class="item-rule" style="margin-top: 35px">
+            <div class="rule-time" layout="column" layout-align="center start" style="margin-bottom: 25px">
+                <!--<img src="https://img.kingsilk.net/FroGOyukhS5ZUzAHIStUxNOzgIY6" alt="" width="176" height="50"-->
+                <!--style="margin-bottom: 22px">-->
+                <div class="title">活动时间:</div>
+                <div class="txt" style="font-size: 14px;color: #1c1c1c">
+                    {{infoData.beginTime|date: 'yyyy-MM-dd HH:mm'}}~{{infoData.endTime|date:'yyyy-MM-dd HH:mm'}}
+                </div>
+
+            </div>
+            <div class="rule-rule" layout="column" layout-align="center start">
+                <!-- <img src="https://img.kingsilk.net/1409bf0953f268ae78c52befd4e4b942" alt="" width="176" height="50"
+                      style="margin-bottom: 20px">-->
+                <div class="title">活动规则:</div>
+                <div class="rule-detail"></div>
+            </div>
+            <div class="rule-time" layout="column" layout-align="center start" style="margin-top: 15px">
+                <!-- <img src="https://img.kingsilk.net/FiQh96VkTwbYdDMeRj8Li-XEI3X4" alt="" width="176" height="50"
+                      style="margin-bottom: 20px">-->
+                <!--  <div class="title">兑换规则:</div>
+                  <div class="txt">1.在活动结束后的七天内.联系钱皇商城客服,立即领取奖品</div>-->
+            </div>
+        </div>
+        <div class="item-detail">
+            <div class="detail" layout="row" layout-align="center center" style="margin-bottom: 20px;">
+                <!--<img src="https://img.kingsilk.net/6d44168831b1b60d59571d7090c9e5dc" alt="" width="176" height="50">-->
+                <!--<div>固定标题</div>-->
+            </div>
+            <div class="detail-bottom"></div>
+        </div>
+    </md-content>
+</div>
+
+<style>
+    img {
+        vertical-align: bottom;
+    }
+</style>
+

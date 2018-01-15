@@ -1,0 +1,216 @@
+<div flex="100" layout="column" class="ks-itemChoice">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>选择管理</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="search" layout="row" layout-align="center end">
+        <div class="input-wrap" flex layout="row">
+            <input type="text" ng-model="keyWord" placeholder="搜索商品名称" flex>
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"
+                     ng-click="getList('0')"></md-icon>
+        </div>
+        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon>-->
+    </div>
+    <!--<div class="tab" layout="row">-->
+    <!--<div class="tab-btn" ng-click="clickThis(1)">-->
+    <!--<span class="btn" ng-class="{active:isClick == '1'}">全部</span>-->
+    <!--</div>-->
+    <!--<div class="tab-btn" ng-click="clickThis(2)">-->
+    <!--<span class="btn" ng-class="{active:isClick == '2'}">已上架</span>-->
+    <!--</div>-->
+    <!--<div class="tab-btn" ng-click="clickThis(3)">-->
+    <!--<span class="btn" ng-class="{active:isClick == '3'}">待上架</span>-->
+    <!--</div>-->
+    <!--<div class="tab-btn" ng-click="clickThis(4)">-->
+    <!--<span class="btn" ng-class="{active:isClick == '4'}">已下架</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<md-divider></md-divider>-->
+
+
+    <div id="swiper-container2" layout="row">
+        <div class="my-wrapper2" ng-class="{active:show}" layout="row">
+            <!--<div class="my-slide2" -->
+            <!--ng-repeat="activity in activityList track by $index"-->
+            <!--ng-class="{active:active == $index}" ng-click="clickThis($index)" layout="column"-->
+            <!--layout-align="space-between center">-->
+            <!--<div flex class="my-slide2-content" layout="row" layout-align="start center"-->
+            <!--ng-class="{active:active == $index}">-->
+            <!--<div flex layout="column" layout-align="start center">-->
+            <!--11111-->
+            <!--<div ng-if="dateIndex != $index && dateIndex != $index+1 && dateIndex != $index-1">-->
+            <!--{{activity.activityTime | date:'dd'}}日{{activity.activityTime | date:'HH:mm'}}-->
+            <!--</div>-->
+            <!--<div ng-if="dateIndex == $index-1">明日{{activity.activityTime | date:'HH:mm'}}</div>-->
+            <!--<div ng-if="dateIndex == $index">今日{{activity.activityTime | date:'HH:mm'}}</div>-->
+            <!--<div ng-if="dateIndex == $index+1">昨日{{activity.activityTime | date:'HH:mm'}}</div>-->
+            <!--<div>{{activity.activityStatus}}</div>-->
+            <!--</div>-->
+            <!--<div class="line"></div>-->
+            <!--</div>-->
+            <!--<div style="width: 100%;background: #fff;height: 6px" layout="column" layout-align="start center">-->
+            <!--<div class="arrow" ng-if="active == $index"></div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="my-slide2"
+                 ng-class="{active:active == $index}" ng-click="clickThis(0)" layout="column"
+                 layout-align="space-between center">
+                <div class="tab-btn" ng-click="clickThis(0)">
+                    <span class="btn" ng-class="{active:isClick == '0'}">全部</span>
+                </div>
+            </div>
+
+            <div class="my-slide2"
+                 ng-class="{active:active == $index}" ng-click="clickThis(1)" layout="column"
+                 layout-align="space-between center">
+                <div class="tab-btn" ng-click="clickThis(1)">
+                    <span class="btn" ng-class="{active:isClick == '1'}">全部1</span>
+                </div>
+            </div>
+
+            <div class="my-slide2"
+                 ng-class="{active:active == $index}" ng-click="clickThis(2)" layout="column"
+                 layout-align="space-between center">
+                <div class="tab-btn" ng-click="clickThis(2)">
+                    <span class="btn" ng-class="{active:isClick == '2'}">全部2</span>
+                </div>
+            </div>
+
+            <div class="my-slide2"
+                 ng-class="{active:active == $index}" ng-click="clickThis(3)" layout="column"
+                 layout-align="space-between center">
+                <div class="tab-btn" ng-click="clickThis(3)">
+                    <span class="btn" ng-class="{active:isClick == '3'}">全部3</span>
+                </div>
+            </div>
+
+            <div class="my-slide2"
+                 ng-class="{active:active == $index}" ng-click="clickThis(4)" layout="column"
+                 layout-align="space-between center">
+                <div class="tab-btn" ng-click="clickThis(4)">
+                    <span class="btn" ng-class="{active:isClick == '4'}">全部4</span>
+                </div>
+            </div>
+
+            <div class="my-slide2"
+                 ng-class="{active:active == $index}" ng-click="clickThis(5)" layout="column"
+                 layout-align="space-between center">
+                <div class="tab-btn" ng-click="clickThis(5)">
+                    <span class="btn" ng-class="{active:isClick == '5'}">全部5</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <md-divider></md-divider>
+
+
+    <md-content flex style="overflow-x: hidden">
+
+        <div class="list-wrap">
+            <div class="list" ng-repeat="co in com track by $index">
+                <div class="list-det" layout="row" ng-click="showCart(co)">
+                    <div class="img">
+                        <img src="https://img.kingsilk.net/59b9f257c9e77c00086692bd" alt="">
+                    </div>
+                    <div class="list-right" flex layout="column" layout-align="space-between ">
+                        <div class="list-name">
+                            想入菲菲
+                        </div>
+                        <div class="list-price">
+                            <!--<span>￥</span>30000.00-->
+                        </div>
+                        <div class="list-bot" layout="row" layout-align="space-between center">
+                            <div class="bot-dis" layout="row" layout-align="space-between center">
+                                <div>库存:1000</div>
+                                <!--<div>销量:1000</div>-->
+                            </div>
+                            <!--<md-icon class="list-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>-->
+                        </div>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </div>
+        </div>
+
+    </md-content>
+
+
+    <div class="footBottom" layout="column">
+        <div class="hight-line"></div>
+        <div flex layout="row" layout-align="center center">
+            <div flex class="left">合计{{123|num:2}}元</div>
+            <!--<div class="line"></div>-->
+            <div flex class="right">选好了</div>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/ng-template" id="itemAdd.html">
+
+    <md-bottom-sheet class="md-grid ks-mdBottomSheet-spec"
+                     style=" padding-left: 0;padding-right: 0;padding-bottom: 80px;max-width: 600px;margin: 0 auto;"
+                     layout="column" ng-cloak>
+        <div class="header" layout="row" layout-align="space-between center">
+            <div class="header-dis">取消</div>
+            <div class="icon-btn" layout="row">
+                <span style="color: #E53467;" ng-click="vmd.changeEdit();">确认</span>
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <md-content class="content-box" flex="" stop-touch-event>
+
+            <div class="item-name">真丝内衣</div>
+            <div class="item-th" layout="row">
+                <div flex="35">规格</div>
+                <div flex="25">库存</div>
+                <div flex="40"></div>
+            </div>
+
+            <!--<div class="item-box" ng-repeat="item in  vmd.comments track by $index" layout="column">-->
+            <div class="item-box" layout="column">
+                <div class="item" layout="row" layout-align="center center">
+                    <div flex="35" class="item-spec" layout="row">
+                       红色 M
+                    </div>
+
+                    <div flex="25" class="item-kc" layout="row">
+                        1223
+                    </div>
+
+
+                    <div flex="40" layout="row" class="count" layout-align="end center">
+                        <div ng-class="{true: 'minusActive', false: 'minus'}[item.num == 0]"
+                             ng-mobile-click="vmd.skuNumCount(-1,item)" layout=""
+                             layout-align="center center">
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-minus"></md-icon>
+                        </div>
+                        <!--<div ng-if="vmd.skuNum == 0" class="minus" layout="" layout-align="center center" style="background: ">-->
+                        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-minus"></md-icon>-->
+                        <!--</div>-->
+                        <div ng-class="{true: 'inputActive', false: 'input'}[0< item.num && item.num < item.sku.storage]">
+                            <!--<div style="position: absolute;width: 100%;height: 100%"></div>-->
+                            <input type="tel" ng-model="item.num" ng-blur="vmd.numBlur(item)"
+                                   layout="" layout-align="center center"/>
+                        </div>
+                        <div ng-class="{true: 'addActive', false: 'add'}[item.num >= item.sku.storage]"
+                             ng-mobile-click="vmd.skuNumCount(1,item)" layout=""
+                             layout-align="center center">
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-plus"></md-icon>
+                        </div>
+                    </div>
+                </div>
+                <md-divider ng-if="$index != vmd.comments.length"></md-divider>
+            </div>
+        </md-content>
+    </md-bottom-sheet>
+</script>
+
+

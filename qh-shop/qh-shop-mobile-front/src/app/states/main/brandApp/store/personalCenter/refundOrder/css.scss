@@ -1,0 +1,168 @@
+//
+@import "../../../../../../scss/_ksMain.scss";
+.ks-refundOrder{
+  background: #f5f5f5;
+  .line{
+    width: 100%;
+    height: 1px;
+    -webkit-transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+    //overflow: hidden;
+    background: #CDD0CF;
+  }
+  .bg-line{
+    height: 10px;
+    background: #f5f5f5;
+  }
+  //  主体
+  .main{
+    //空白页
+    .noOrder{
+      .img-con{
+        margin-top:80px;
+        height: 48px;
+        width:100%;
+        .noGoods{
+          height: 48px;
+          width:48px;
+        }
+      }
+      .noGoods-word{
+        color: #999;
+        font-size: 14px;
+        line-height: 44px;
+      }
+    }
+    //
+    .center-con{
+      flex-shrink: 0;
+      //一个订单
+      .center-tab{
+        //单个订单容器
+        .center-tab-top{
+          background: #fff;
+          flex-shrink: 0;
+          padding:0 15px;
+          .line{
+            width: 100%;
+            height: 1px;
+            -webkit-transform: scaleY(0.5);
+            -webkit-transform-origin: 0 0;
+            //overflow: hidden;
+            background: #CDD0CF;
+          }
+          .tab-top{
+            height:44px;
+            margin-top:5px;
+            line-height: 44px;
+            .order-num{
+              font-size: 14px;
+              color: #333;
+            }
+            .order-status{
+              font-size: 14px;
+              color: #ED5F5B;
+            }
+          }
+          //一个订单的商品信息
+          .order-gooods{
+            .img-con{
+              margin:15px 0;
+              height:82px;
+              width:82px;
+              background: #f5f5f5;
+              img{
+                height:82px;
+                width:82px;
+              }
+            }
+            .img-right{
+              margin:15px 0 0 11px;
+              .goods-top{
+                height:54px;
+                .title{
+                  height:40px;
+                  line-height: 20px;
+                  font-size: 16px;
+                  margin-top:-10px;
+                }
+                .price-right{
+                  text-align: right;
+                  .price{
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #333;
+                  }
+                  .del-price{
+                    font-size: 12px;
+                    color: #C3C3C3 ;
+                    line-height: 16px;
+                    text-decoration: line-through;
+                  }
+                  .num{
+                    line-height: 18px;
+                    font-size: 14px;
+                    color: #999;
+                  }
+                }
+              }
+              .goods-bottom{
+                height: 28px;
+                .goods-type{
+                  font-size: 14px;
+                  color: #999;
+                  height: 28px;
+                  line-height: 28px;
+                }
+                button{
+                  height: 28px;
+                  background: none;
+                  font-size: 14px;
+                  border:1px solid #E53467;
+                  color: #E53467;
+                }
+                .btn-refund{
+                  width:80px;
+                  border-radius: 14px;
+                }
+              }
+            }
+          }
+          //一个订单的总价钱
+          .all{
+            height: 44px;
+            .all-num{
+              color: #ED5F5B;
+              font-size: 14px;
+            }
+            .all-price{
+              margin-left: 15px;
+              color: #333;
+              font-size: 14px;
+            }
+          }
+          //按钮
+          .btn{
+            height:64px;
+            .refund{
+              width:99px;
+              height:28px;
+              border-radius: 15px;
+              background: none;
+              margin-left:15px;
+              color: #E53467;
+              border:1px solid #E53467;
+              font-size: 14px;
+            }
+          }
+        }
+        //10px背景颜色
+        .bg-line{
+          height: 10px;
+          background: #f5f5f5;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,61 @@
+<div flex="100" layout="column" class="ks-manageList">
+    <!--<div class="ks-black-header" layout="row" style="background: #53D39A">
+        <div class="back-button" flex="20">
+        </div>
+        <h1 flex style="font-size: 18px;color: #FFFFFF;letter-spacing: -0.43px;">库存管理</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>-->
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5;">
+        <div class="list-wrap" layout="row" layout-align="space-between stretch">
+            <md-icon class="left-icon" md-font-set="ks-icon" md-font-icon="ag-cart-line"
+                     style="background: #99BAFD"
+            ></md-icon>
+            <div flex class="list" layout="column" ui-sref="main.brandApp.unionOrder">
+                <div class="list-dis" layout="row" layout-align="space-between center">
+                    <div class="list-txt">我的采购</div>
+                    <md-icon class="right-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+                <md-divider></md-divider>
+            </div>
+        </div>
+        <div class="list-wrap 　" layout="row" layout-align="space-between stretch">
+            <md-icon class="left-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-r"
+                     style="background: #98EA8E"
+            ></md-icon>
+            <div flex class="list" layout="column" ui-sref="main.brandApp.returnGoods">
+                <div class="list-dis" layout="row" layout-align="space-between center">
+                    <div class="list-txt">我的退货</div>
+                    <md-icon class="right-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+            </div>
+        </div>
+        <div class="info-line"></div>
+        <div class="list-wrap 　" layout="row" layout-align="space-between stretch">
+            <md-icon class="left-icon" md-font-set="ks-icon" md-font-icon="ag-chart_fill"
+                     style="background: #F8A867"
+            ></md-icon>
+            <div flex class="list" layout="column">
+                <div class="list-dis" layout="row" layout-align="space-between center">
+                    <div class="list-txt">采购报表汇总</div>
+                    <md-icon class="right-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+                <md-divider></md-divider>
+            </div>
+        </div>
+        <div class="list-wrap 　" layout="row" layout-align="space-between stretch">
+            <md-icon class="left-icon" md-font-set="ks-icon" md-font-icon="ag-notebook"
+                     style="background: #FEE472"
+
+            ></md-icon>
+            <div flex class="list" layout="column">
+                <div class="list-dis" layout="row" layout-align="space-between center">
+                    <div class="list-txt">采购明细汇总</div>
+                    <md-icon class="right-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+                <md-divider></md-divider>
+            </div>
+        </div>
+    </md-content>
+    <div ks-footer-menu cur="'manageList'"></div>
+</div>

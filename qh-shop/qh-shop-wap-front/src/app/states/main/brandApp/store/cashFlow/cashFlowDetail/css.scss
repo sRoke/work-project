@@ -1,0 +1,74 @@
+@import "../../../../../../scss/ksMain";
+@import "../../../../../../scss/index.scss";
+
+.ks-cashFlowDetail {
+  .top {
+    margin: 15px 15px 10px;
+    background: #FFFFFF;
+    height: 107px;
+    .money {
+      font-size: 22px;
+      color: #333333;
+      letter-spacing: -0.53px;
+      line-height: 22px;
+    }
+    .desc {
+      font-size: 16px;
+      color: #999999;
+      letter-spacing: -0.39px;
+      line-height: 16px;
+      margin-top: 15px;
+    }
+  }
+  .content {
+    margin: 0 15px 34px;
+    background: #FFFFFF;
+    .content-top {
+      //height: 364px;
+      padding: 20px 15px 0;
+      .list{
+        font-size: 16px;
+        color: #333333;
+        letter-spacing: -0.39px;
+        line-height: 16px;
+        margin-bottom: 20px;
+      }
+    }
+    .content-item {
+      padding: 0 15px;
+
+
+
+        .item-title{
+          font-size: 14px;
+          color: #999999;
+          letter-spacing: -0.34px;
+          height: 50px;
+        }
+        .item-box{
+          height: 82px;
+          border-top: 1px dashed #D5D5D5;
+          font-size: 14px;
+          color: #333333;
+          letter-spacing: -0.34px;
+          .box1{
+            .title{
+              overflow: hidden;
+              text-overflow:ellipsis;
+              white-space: nowrap;
+            }
+            .spec{
+              span{
+                font-size: 14px;
+                color: #999999;
+                letter-spacing: -0.34px;
+                margin-right: 10px;
+              }
+            }
+          }
+
+
+        }
+    }
+  }
+}

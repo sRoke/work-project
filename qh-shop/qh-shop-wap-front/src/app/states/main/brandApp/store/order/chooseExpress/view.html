@@ -1,0 +1,45 @@
+<div flex="100" layout="column" class="ks-chooseExpress">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>
+            填写快递单号
+        </h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+        <div class="tab" layout="row" layout-align="start center">
+            <div class="left">快递公司</div>
+            <div class="con-input" flex ng-click="openExpress()">
+                <div class="ts" ng-if="!express">请选择快递公司</div>
+                <div class="express" ng-if="express">{{express.label}}</div>
+            </div>
+            <div class="right">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <div class="tab" layout="row" layout-align="start center">
+            <div class="left">快递单号</div>
+            <div class="con-input" flex>
+                <input type="tel" placeholder="请输入或扫描快递单号" ng-model="scanCode">
+            </div>
+            <div class="right" ng-click="wxSys()">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-focus-horizontal"></md-icon>
+            </div>
+        </div>
+
+        <div class="foot-btn">
+            <div class="btn" ng-click="save()">  保存</div>
+        </div>
+    </md-content>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,330 @@
+.ks-refunds {
+  margin-top:-10px;
+  height:100%;
+  width:100%;
+  background: #f5f5f5;
+  .ks-refunds-search {
+    //height: 200px;
+    min-height: 50px;
+    width: 99%;
+    background: #f5f5f5;
+    //border: 1px solid #ddd;
+    margin: 10px auto 20px auto;
+    .ks-refunds-search-top {
+      height: 59px;
+      line-height: 50px;
+      width: 100%;
+      //margin-bottom: 10px;
+      padding-left: 10px;
+      //border-bottom: 1px dashed #e0e0e0;
+      .ks-refund-search{
+        min-width:252px;
+        select {
+          padding-left: 10px;
+          height: 30px;
+          line-height: 30px;
+          border: 1px solid #D5D5D5;
+          background: #fff;
+          outline:none;
+          border-radius: 4px;
+          min-width:160px;
+        }
+      }
+    }
+    .fast{
+      height:32px;
+      line-height:32px;
+      margin-left:10px;
+      span{
+        margin-right:20px;
+      }
+      .fast1{
+        min-width:70px;
+      }
+      .fast2{
+        min-width:106px;
+      }
+      .fast3{
+        min-width:112px;
+      }
+      .all{
+        margin:10px 12px 0 13px;
+        min-width:13px;
+        height:13px;
+      }
+    }
+  }
+  .common-list-detail{
+    width:100%;
+    margin-bottom:30px;
+    .md-nav-bt{
+      .md-nav-bar{
+        border-bottom: 2px solid #ba9f6e;
+      }
+    }
+    //发货单状态
+    .tableStatus{
+      margin:0 20px;
+      padding:0px;
+      height:44px;
+      border-top:4px solid #f5f5f5;
+      background: #fff;
+      li{
+        height:40px;
+        line-height: 40px;
+        font-size:16px;
+        color: #999;
+        list-style: none;
+        padding:0 16px;
+        border-top:4px solid #f5f5f5;
+        outline: none;
+      }
+      .select{
+        outline: none;
+        border-top:4px solid #ba9f6e;
+        background: #ba9f6e;
+        color: #fff;
+      }
+    }
+    //发货单表头
+    .tableTit{
+      height:42px;
+      margin:0 20px;
+      border-top:2px solid #ba9f6e;
+      line-height:40px;
+      text-align:center;
+      background: #e6e6e6;
+      .tableTd{
+        //font-weight: bold;
+        font-size:14px;
+       // color: #666;
+      }
+    }
+    .tableCon{
+      margin:0 20px;
+      .orderNumber{
+        height: 150px;
+        width:100%;
+        margin-top:10px;
+      }
+      .ordTitle{
+        height: 40px;
+        background: #fff9eb;
+        border-top: 1px solid #d5d5d5;
+        border-left: 1px solid #d5d5d5;
+        border-right: 1px solid #d5d5d5;
+        .tit{
+          color:#101010;
+          font-size:14px;
+          line-height:40px;
+          span{
+            margin: 0 40px 0 20px;
+            text-align: center;
+          }
+        }
+        .orderSta{
+          color: #24b0ef;
+          span{
+            margin:0px;
+            width:100%;
+            text-align: center;
+            display: block;
+          }
+        }
+      }
+      .ordDetail{
+        height: 110px;
+        background: #fff;
+        border: 1px solid #d5d5d5;
+        border-right:none;
+        .orderXq{
+          border-right:1px solid #d5d5d5;
+          .pic{
+            height:70px;
+            width:70px;
+            margin:20px 10px;
+            img {
+              height: 70px;
+              width: 70px;
+            }
+          }
+          span,a{
+            height:108px ;
+            line-height:108px;
+            width:100%;
+            font-size:14px;
+            text-align: center;
+          }
+          span{
+            color:#101010;
+          }
+          a{
+            color:#24b0ef;
+            text-decoration: none;
+            display:block;
+          }
+          .refundMoney{
+            color: #ba9f6e !important;
+          }
+          .goodsDetail{
+            margin-top:16px;
+            span{
+              margin: 0px;
+              height: 22px;
+              line-height:22px;
+              text-align: left;
+              padding: 0 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+  //table的头
+  //div.orderTitle {
+  //  //background: #f5f5f5;
+  //  height: 40px;
+  //  min-height: 40px;
+  //  line-height: 40px;
+  //  margin:0 auto ;
+  //  border-bottom: #f90000 solid 3px;
+  //  width: 99%;
+  //  input[type="checkbox"] {
+  //    float: left;
+  //    margin: 0px 10px 0 -35px;
+  //  }
+  //}
+  ////导航按钮
+  .ks-itemOrderList-tabsWrap {
+    position: relative;
+    margin: -1px auto;
+    border-top: none;
+    height: 45px;
+    width: 99%;
+    .md-nav-bar {
+      height: 36px;
+      min-height: 36px;
+      border: none;
+
+      nav {
+        overflow: hidden;
+        ul {
+          margin-top: 1px;
+        }
+      }
+
+    }
+    .md-nav-item:first-of-type {
+      margin-left: -4px;
+    }
+
+    .md-accent {
+      color: #ba9f6e;
+      border-bottom: none;
+      z-index: 10;
+      border-bottom: none !important;
+    }
+    .nav-line {
+      width: 100%;
+      height: 1px;
+      background: #e0e0e0;
+    }
+  }
+  ////table
+  //.layoutTableWrap {
+  //  border: 1px solid #e0e0e0;
+  //  width: 99%;
+  //
+  //  margin: 10px auto 0 auto;
+  //  .TableTop {
+  //    background: #f2dede;
+  //    width: 100%;
+  //    height: 40px;
+  //    line-height: 40px;
+  //    .orderCode {
+  //      margin: 0 30px 0 10px;
+  //    }
+  //    input[type="checkbox"] {
+  //      float: left;
+  //      margin: 10px 0 0 10px;
+  //    }
+  //
+  //    .gold {
+  //      color: #ba9f6e;
+  //    }
+  //    .gold.gray {
+  //      color: gray;
+  //    }
+  //  }
+  //  div.orderTitle > div {
+  //    height: 40px;
+  //  }
+  //  .layouyTable {
+  //    width: 100%;
+  //    .commodityImg {
+  //      width: 70px;
+  //      height: 70px;
+  //      margin: 10px;
+  //
+  //    }
+  //    .commodityTitle {
+  //      margin-top: 13px;
+  //      margin: 0;
+  //    }
+  //    div.lie.last {
+  //      border-right: none;
+  //    }
+  //    div.lie:nth-child(4) {
+  //      p {
+  //        margin: 0;
+  //      }
+  //    }
+  //    div.lie:last-child {
+  //      border-right: none;
+  //    }
+  //    .qr-btn {
+  //      height: 30px;
+  //      padding: 0 7px;
+  //      border: none;
+  //      border-radius: 5px;
+  //      background: #00aaee;
+  //      color: #ffffff;
+  //    }
+  //    .commodityParmer {
+  //      color: #999;
+  //      input {
+  //        background: #00ffff;
+  //        border: 1px solid #e0e0e0;
+  //        border-radius: 5px;
+  //        padding: 10px;
+  //      }
+  //    }
+  //  }
+  //}
+
+
+
+
+}
+
+
+//分页
+.pageSubnav {
+  margin: 10px 0;
+  input {
+    width: 50px;
+    text-align: center;
+    background-color: #f5f5f5;
+    border: 1px solid #d5d5d5;
+    margin: 0 10px;
+    line-height: 26px;
+  }
+  .md-button {
+    border: 1px solid #d5d5d5;
+    line-height: 26px;
+    padding: 0;
+    margin: 0 10px;
+    min-height: 30px;
+    min-width: 60px;
+  }
+}

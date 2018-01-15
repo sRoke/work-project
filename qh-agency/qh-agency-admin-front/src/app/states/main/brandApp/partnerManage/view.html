@@ -1,0 +1,180 @@
+<div class="ks-common-manage">
+    <div class="common-list-center">
+        <ul layout="column">
+            <li layout="row">
+                <label for="bhnum">请输入：</label>
+                <input id="bhnum" type="text" class="choose " placeholder="编号、用户名" ng-model="keyWords">
+                <label style="margin-left: 20px;">申请时间：</label>
+                <div>
+                    <input type="text" class="layui-input choose" id="test1" ng-model="startDate" placeholder="开始时间">
+                    <!--<md-datepicker md-placeholder="Enter date" md-open-on-focus-->
+                    <!--md-date-locale="s" md-date-locale="dateF" ng-model="startDate"></md-datepicker>-->
+                </div>
+                <span>一</span>
+                <div>
+                    <input type="text" class="layui-input choose" id="test2" ng-model="endDate" placeholder="结束时间">
+                    <!--<md-datepicker md-placeholder="End date" md-open-on-focus-->
+                    <!--md-date-locale="s" md-date-locale="dateF" ng-model="endDate"></md-datepicker>-->
+                </div>
+                <!--<label for="applyStatus">状态：</label>-->
+                <!--<select id="applyStatus" ng-model="applyStatus" ng-change="pageChanged(0)" >-->
+                <!--<option value="">全部</option>-->
+                <!--<option value="NORMAL">审核通过</option>-->
+                <!--</select>-->
+                <label for="applyType" style="margin-left:10px;">申请类型：</label>
+                <select id="applyType" ng-model="appType">
+                    <option value="">全部</option>
+                    <option value="{{key}}" ng-repeat="(key,val) in partnerTypes">{{val}}</option>
+                    <!--<option value="REGIONAL_AGENCY">市代理</option>-->
+                    <!--<option value="GENERAL_AGENCY">总代理</option>-->
+                </select>
+                <!--<span>-->
+                <!--<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-search"-->
+                <!--style="color: #999;font-size:20px;text-align: center;cursor: pointer;outline: none;"-->
+                <!--ng-click="pageChanged('0')"></md-icon>-->
+                <!--</span>-->
+                <button class="inquire" ng-click="pageChanged('0')">
+                    查询
+                </button>
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+    <!--div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <!--表头-->
+        <div class="common-list-detail-thead" layout="row">
+            <!--<div class="thead-show" flex="15"  layout-align="center">-->
+            <!--<span >编号</span>-->
+            <!--</div>-->
+            <div class="thead-show" flex="10" layout-align="center" style="padding-left: 30px;">
+                <span>联系人</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>联系方式</span>
+            </div>
+            <div class="thead-show" flex="10" layout-align="center">
+                <span>申请类型</span>
+            </div>
+            <div class="thead-show" flex="15" layout-align="center">
+                <span>详细地址</span>
+            </div>
+            <div class="thead-show" flex="20" layout-align="center">
+                <span>上级渠道</span>
+            </div>
+            <div class="thead-show" flex="15" layout-align="center">
+                <span>申请时间</span>
+            </div>
+            <div class="thead-show" flex="5" layout-align="center">
+                <span>状态</span>
+            </div>
+            <!--<div class="thead-show" flex="5" layout-align="center">-->
+            <!--<span>是否授权</span>-->
+            <!--</div>-->
+            <div class="thead-show end-show" flex="15" layout-align="center">
+                <span>操作</span>
+            </div>
+        </div>
+        <!--表格详细内容-->
+        <div class="common-list-detail-tbody" layout="column">
+            <!--定义每列数据    父级用ng-repeat循环此行-->
+            <div class="common-list-detail-row" layout="row" ng-repeat="item in items">
+                <!--<div class="thead-show" flex="15" layout-align="center">-->
+                <!--<span>{{item.seq}}</span>-->
+                <!--</div>-->
+                <div class="thead-show" flex="10" layout-align="center" style="padding-left: 30px;">
+                    <span>{{item.realName}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center">
+                    <span>{{item.phone}}</span>
+                </div>
+                <div class="thead-show" flex="10" layout-align="center">
+                    <span>{{item.partnerType}}</span>
+                </div>
+                <div class="thead-show" flex="15" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{item.shopAddr}}</span>
+                </div>
+                <div class="thead-show" flex="20" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{item.parentDesp}}</span>
+                </div>
+                <div class="thead-show" flex="15" layout-align="center"
+                     style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{item.createDate | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="thead-show" flex="5" layout-align="center"
+                     ui-sref="main.brandApp.managePublish({infoId:'123'})">
+                    <span ng-if="item.disabled==false">正常</span>
+                    <span ng-if="item.disabled==true">已禁用</span>
+                </div>
+
+                <!--<div class="thead-show" flex="5" layout-align="center">-->
+                <!--<span>{{item.certificateStatus}}</span>-->
+                <!--</div>-->
+                <div class="thead-show" flex="15" layout="row" layout-align="end center" style="padding-right: 20px;">
+
+                    <!--<div  class="operateFont" layout="column" ng-if="item.certificateStatus == '已授权'">-->
+                    <!--<span style="min-width: 42px;"-->
+                    <!--ui-sref="main.brandApp.lookAuthorization({id:item.id})">授权书</span>-->
+                    <!--</div>-->
+                    <!--<div  class="operateFont" layout="column"-->
+                    <!--ng-if="item.certificateStatus == '未授权' || item.certificateStatus == '已过期' && PARTNERLICENSE_U">-->
+                    <!--<span style="min-width: 28px;"-->
+                    <!--ui-sref="main.brandApp.authorization({id:item.id})"-->
+                    <!--&gt;授权</span>-->
+                    <!--</div>-->
+                    <div class="operateFont" layout="column" ng-if="item.shopId" ng-show="shopData.length>0">
+                        <span style="min-width: 28px;" ng-click="linkShop(item.userId,$event,item);" >查看门店</span>
+                    </div>
+
+                    <div class="operateFont" layout="column" ng-if="!item.shopId" ng-show="shopData.length>0">
+                        <span style="min-width: 28px;" ng-click="linkShop(item.userId,$event,item);">关联门店</span>
+                    </div>
+
+                    <div class="operateFont" layout="column" ng-if="PARTNERLICENSE_R">
+                        <!--ng-click="openDialog($event)"-->
+                        <!--<a  class="glyIcon" title="查看" href="javascript:void(0)"-->
+                        <!--ui-sref="main.brandApp.manageLook({id:item.id})" style="height: 58px;-->
+                        <!--line-height: 58px;font-size: 18px;">-->
+                        <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-eye"&ndash;&gt;-->
+                        <!--&lt;!&ndash;&gt;</md-icon>&ndash;&gt;-->
+                        <!--</a>-->
+                        <span style="min-width: 28px;" ui-sref="main.brandApp.manageLook({id:item.id})">查看</span>
+                    </div>
+                    <div class="operateFont" layout="column" ng-if="item.disabled==false && PARTNERLICENSE_D">
+                        <!--<a  class="glyIcon" title="禁用" href="javascript:void(0)" style="height: 58px;-->
+                        <!--line-height: 58px;font-size: 18px;" >-->
+                        <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-minus-circle"&ndash;&gt;-->
+                        <!--&lt;!&ndash;&gt;</md-icon>&ndash;&gt;-->
+                        <!--</a>-->
+                        <span style="min-width: 28px;" ng-click="changeStatus(item.id,true,'禁用');">禁用</span>
+                    </div>
+                    <div class="operateFont" layout="column" ng-if="item.disabled==true">
+                        <!--<a  class="glyIcon" title="禁用" href="javascript:void(0)" style="height: 58px;-->
+                        <!--line-height: 58px;font-size: 18px;" >-->
+                        <!--&lt;!&ndash;<md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-qiyong"&ndash;&gt;-->
+                        <!--&lt;!&ndash;&gt;</md-icon>&ndash;&gt;-->
+                        <!--</a>-->
+                        <span style="min-width: 28px;" ng-click="changeStatus(item.id,false,'启用');">启用</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分页-->
+    <div style="width: 100%; padding:0px 20px;">
+        <div style="width: 500px;min-width: 500px" uib-pagination total-items="page.totalElements"
+             ng-model="curPage"
+             ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"
+             items-per-page="page.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+        <div style="float: right" class="pageSubnav">
+            <span>共{{page.totalElements}} 条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button>确定</md-button>
+        </div>
+    </div>
+</div>

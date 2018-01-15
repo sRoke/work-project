@@ -1,0 +1,80 @@
+<div class="ks-member"  flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>会员</h1>
+        <div class="right-button" flex="20" ui-sref="main.brandApp.shop.addMember">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-plus" style="color: #333;font-size: 14px;"></md-icon>
+        </div>
+    </div>
+    <div class="topLine"></div>
+
+    <md-content flex style="overflow-x:hidden;">
+        <div class="main" layout="column">
+            <!--停用启用导航-->
+            <div class="sales-nav" layout="row">
+                <div flex class="sales-status status-left" ng-class="{checkedSale:salesStatus == '1'}" layout-align="center" ng-click="changeTab(1)">已开通 （2）</div>
+                <div class="nav-line"></div>
+                <div flex class="sales-status status-right" ng-class="{checkedSales:salesStatus == '2'}" layout-align="center" ng-click="changeTab(2)">已停用 （1）</div>
+            </div>
+            <!--停用启用对应部分-->
+            <div class="sales-check" ng-if="salesStatus == '1'">
+                <!--单个员工-->
+                <div class="sales-xq" layout="column" ui-sref="main.brandApp.shop.editMember">
+                    <div layout-align="space-between center" layout="row" class="sales-detail">
+                        <div class="detail-left">钱皇品牌</div>
+                        <div class="detail-right">已开通</div>
+                    </div>
+                    <div class="sales-other">
+                        联系人：萝卜 15858137543
+                    </div>
+                    <div class="sales-other">
+                        创建时间：2017-10-25 15:10
+                    </div>
+                </div>
+                <div class="salesLine"></div>
+                <div class="sales-xq" layout="column">
+                    <div layout-align="space-between center" layout="row" class="sales-detail">
+                        <div class="detail-left">钱皇品牌</div>
+                        <div class="detail-right">已开通</div>
+                    </div>
+                    <div class="sales-other">
+                        联系人：萝卜 15858137543
+                    </div>
+                    <div class="sales-other">
+                        创建时间：2017-10-25 15:10
+                    </div>
+                </div>
+            </div>
+            <!--停用-->
+            <div class="sales-check" ng-if="salesStatus == '2'">
+                <div class="sales-xq" layout="column">
+                    <div layout-align="space-between center" layout="row" class="sales-detail">
+                        <div class="detail-left">钱皇品牌</div>
+                        <div class="detail-right">已停用</div>
+                    </div>
+                    <div class="sales-other">
+                        联系人：萝卜 15858137543
+                    </div>
+                    <div class="sales-other">
+                        创建时间：2017-10-25 15:10
+                    </div>
+                </div>
+                <div class="salesLine"></div>
+                <div class="sales-xq" layout="column">
+                    <div layout-align="space-between center" layout="row" class="sales-detail">
+                        <div class="detail-left">钱皇品牌</div>
+                        <div class="detail-right">已停用</div>
+                    </div>
+                    <div class="sales-other">
+                        联系人：萝卜 15858137543
+                    </div>
+                    <div class="sales-other">
+                        创建时间：2017-10-25 15:10
+                    </div>
+                </div>
+            </div>
+        </div>
+    </md-content>
+</div>

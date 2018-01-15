@@ -1,0 +1,68 @@
+@import "../../../../../scss/index.scss";
+.ks-busAppAdd{
+    //margin: 32px 20px 0;
+
+    margin: 20px;
+    background: #fff;
+    padding: 30px 150px 150px;
+    .content{
+        .tab{
+            margin-bottom: 15px;
+            .title{
+                width: 100px;
+                text-align: right;
+                margin-right: 20px;
+                color: #333333;
+            }
+            .ts{
+                margin-left: 30px;
+                font-size: 12px;
+                color: #e84e40;
+            }
+            .btn-type{
+                width: 75px;
+                height: 30px;
+                border:1px solid #D5D5D5;
+                margin-right: 25px;
+                text-align: center;
+                line-height: 30px;
+                color: #333333;
+                background: #FFFFFF;
+                cursor: pointer;
+            }
+            .demo-select-all-checkboxes{
+                margin-right: 20px;
+                md-checkbox{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .btn-save{
+        margin-top: 18px;
+        height: 45px;
+        .save{
+            height: 30px;
+            border-radius: 4px;
+            background: $platform-btn-blue;
+            width: 80px;
+            margin-left: 120px;
+            text-align: center;
+            line-height: 30px;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+        .return{
+            height: 30px;
+            border-radius: 4px;
+            background: $platform-btn-white;
+            width: 80px;
+            margin-left: 20px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #d5d5d5;
+            color: #333333;
+            cursor: pointer;
+        }
+    }
+}

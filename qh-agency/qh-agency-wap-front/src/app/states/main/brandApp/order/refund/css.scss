@@ -1,0 +1,106 @@
+.ks-refund {
+  .refund-wrap {
+    margin: 10px 10px;
+    .con {
+      background: #f5f5f5;
+      height: 40px;
+      margin-bottom: 10px;
+      .txt {
+        margin-right: 10px;
+        text-align: left;
+        font-size: 14px;
+        color: #999;
+        line-height: 40px;
+        padding-left: 10px;
+      }
+
+      .sel {
+        overflow: hidden;
+        margin: 9px 0;
+        background: #f5f5f5;
+        height: 20px;
+        select {
+          outline: none;
+          -webkit-appearance: none;
+          appearance: none;
+          width: 105%;
+          border: none;
+          background: none;
+        }
+      }
+      textarea {
+        padding-left: 0;
+        resize: none;
+        margin-top: 7px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        font-size: 14px;
+        color: #101010;
+        background: none;
+        border: none;
+        width: 63px;
+        height: 26px;
+        line-height: normal;
+      }
+      textarea::-webkit-input-placeholder { /* WebKit browsers */
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+        font-size: 14px;
+        color: #ccc;
+      }
+      input {
+        border: none;
+        background: none;
+
+      }
+      input::-webkit-input-placeholder { /* WebKit browsers */
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      .icon-wrap {
+        position: relative;
+        right: 10px;
+        margin-right: -6px;
+        .ks-icon {
+          font-size: 12px;
+          color: #999;
+        }
+      }
+    }
+  }
+  .submit-btn {
+    flex-shrink: 0;
+    height: 48px;
+    background-color: transparent;
+    .md-button {
+      max-width: 100%;
+      border-radius: 0;
+      height: 48px;
+      color: #fff;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

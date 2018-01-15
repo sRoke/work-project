@@ -1,0 +1,167 @@
+@import "../../../../../scss/index.scss";
+
+.ks-businessAdd{
+    //margin: 32px 20px 0;
+    margin: 20px;
+    background: #fff;
+    padding: 30px 150px 150px;
+    .contentAdd{
+        .content-1{
+           width: 800px;
+            .left{
+                .tab{
+                    margin-bottom: 15px;
+                    .title{
+                        width: 100px;
+                        text-align: right;
+                        margin-right: 20px;
+                        color: #333333;
+                    }
+                    .ts{
+                        margin-top: 5px;
+                        font-size: 12px;
+                        color: #e84e40;
+                    }
+                }
+            }
+            .right{
+                .ts{
+                    margin-left: 10px;
+                    font-size: 12px;
+                    color: #e84e40;
+                }
+
+
+                .imgList{
+                    width: 120px;
+                    height: 120px;
+                    position: relative;
+                    background: #E6E6E6;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        vertical-align: bottom;
+                    }
+                    md-icon{
+                        font-size: 35px;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    div{
+                        font-size: 12px;
+                        color: #000000;
+                    }
+                    .imgWrap{
+                        margin: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    .file-panel{
+                        height: 25px;
+                        position: absolute;
+                        background: #d5d5d5;
+                        top: 0;
+                        right: 0;
+                        padding: 5px;
+                        opacity: 0.8;
+                        .cancel{
+                            overflow: hidden;
+                        }
+                    }
+                }
+
+            }
+        }
+        .content-2{
+            .tab{
+                margin-bottom: 15px;
+                .title{
+                    width: 100px;
+                    text-align: right;
+                    margin-right: 20px;
+                    color: #333333;
+                }
+                .ts{
+                    margin-left: 30px;
+                    font-size: 12px;
+                    color: #e84e40;
+                }
+                .btn-type{
+                    width: 75px;
+                    height: 30px;
+                    border:1px solid #D5D5D5;
+                    margin-right: 25px;
+                    text-align: center;
+                    line-height: 30px;
+                    color: #333333;
+                    background: #FFFFFF;
+                    cursor: pointer;
+                }
+                .demo-select-all-checkboxes{
+                    margin-right: 20px;
+                    md-checkbox{
+                        margin-bottom: 0;
+                    }
+                }
+
+
+            }
+        }
+        .btn-save{
+            margin-top: 18px;
+            height: 45px;
+            .save{
+                height: 30px;
+                border-radius: 4px;
+                background: $platform-btn-blue;
+                width: 80px;
+                margin-left: 120px;
+                text-align: center;
+                line-height: 30px;
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+            .return{
+                height: 30px;
+                border-radius: 4px;
+                background: $platform-btn-white;
+                width: 80px;
+                margin-left: 20px;
+                text-align: center;
+                line-height: 30px;
+                border: 1px solid #d5d5d5;
+                color: #333333;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.md-scroll-mask {
+    background: #ccc;
+    opacity: .45;
+    z-index: 111111111;
+}
+.md-dialog-container {
+    z-index: 11111111111;
+    .businessAdd-dialog{
+        width: 500px;
+        height: 230px;
+        .tck{
+            width: 100%;
+            height: 100%;
+            .defaultTck{
+                margin:60px 35px;
+            }
+            .dialog-btn{
+                height: 30px;
+                border-radius: 4px;
+                width: 80px;
+                text-align: center;
+                line-height: 30px;
+
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+@import "../../../../scss/index.scss";
+
+.ks-home {
+  #clipArea {
+    width: 100%;
+    height: 300px;
+  }
+  #file,
+  #clipBtn {
+    margin: 20px;
+  }
+  #view {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    background-color: #666;
+  }
+}

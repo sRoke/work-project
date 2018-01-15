@@ -1,0 +1,22 @@
+
+net.kingsilk.qh.agency.ut:
+  oauth:
+    wap:
+      url : http://localhost:10040
+      accessTokenUri:       ${net.kingsilk.qh.agency.ut.wap.oauth.url}/oauth/token
+      userAuthorizationUri: ${net.kingsilk.qh.agency.ut.wap.oauth.url}/oauth/authorize
+      checkTokenUri:        ${net.kingsilk.qh.agency.ut.wap.oauth.url}/oauth/check_token
+  agency:
+    wap:
+      url:                  http://localhost:10060
+      front:
+        url:                ${net.kingsilk.qh.net.kingsilk.qh.agency.ut.net.kingsilk.qh.agency.wap.url}/index.html
+        clientId:           CLIENT_ID_qh-agency-wap-front
+
+
+spring.data.mongodb:
+  host: '192.168.0.12'
+  port: 27017
+  database: 'agency'
+  username: 'agency'
+  password: 'agency'

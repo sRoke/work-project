@@ -1,0 +1,27 @@
+apply plugin: 'groovy'
+
+
+dependencies {
+    compile project(":qh-oauth-service")
+
+    compile('org.codehaus.groovy:groovy')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile('com.fasterxml.jackson.dataformat:jackson-dataformat-xml')
+    compile('org.apache.httpcomponents:httpclient')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+    compile('com.querydsl:querydsl-mongodb')
+    compile('com.querydsl:querydsl-apt')
+    compile('com.querydsl:querydsl-core')
+    compile('joda-time:joda-time')
+    //compile('org.mongodb.morphia:morphia')
+    //querydslapt('com.querydsl:querydsl-apt')
+}
+
+test {
+    testLogging.showStandardStreams = false
+}

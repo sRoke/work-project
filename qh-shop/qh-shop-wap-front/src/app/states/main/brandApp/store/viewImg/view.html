@@ -1,0 +1,36 @@
+<div flex="100" layout="column" class="ks-textImg">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>商品图文</h1>
+        <div class="right-button" flex="20" style="color: #E53467;">
+        </div>
+    </div>
+    <md-divider></md-divider>
+
+    <md-content flex>
+
+        <div id="div4" ng-include="tplUrl"></div>
+
+    </md-content>
+
+   <!-- <md-divider ng-if="choose" style="border-color:#E53467"></md-divider>
+    <div ng-click="finish()" ng-if="choose" class="choose" layout="row" layout-align="center center">
+        <span>确定</span>
+    </div>-->
+</div>
+
+<style>
+    .choose {
+        height: 49px;
+        border-radius: 4px;
+        background: #fff;
+
+    }
+
+    .choose > span {
+        font-size: 14px;
+        color: #e53467;
+    }
+</style>

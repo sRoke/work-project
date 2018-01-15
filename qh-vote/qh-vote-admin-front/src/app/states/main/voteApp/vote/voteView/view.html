@@ -1,0 +1,330 @@
+<div flex layout="column" class="ks-voteView" >
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>人气投票赛</h1>
+        <!--ui-sref="main.voteApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20" ui-sref="main.voteApp.vote.voteEdit({id:voteDataview.id,form:'VIEW'})">编辑</div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="background: #f5f5f5">
+        <div class="content" style="padding-top: 20px">
+            <div class="content-tab-img2" layout="column" layout-align="center center">
+                <!--<input type="file" id="file2">-->
+                <img ng-src="{{voteDataview.primaryImgUrl}}">
+            </div>
+            <md-divider></md-divider>
+            <!--<div class="content-tab" layout="row" layout-align="satrt center">-->
+            <!--<div class="left">-->
+            <!--<span style="color: #ff0000">*</span>-->
+            <!--店铺名称-->
+            <!--</div>-->
+            <!--<div class="right" flex>-->
+            <!--<input type="text" placeholder="请输入店铺名称" ng-model="rootVoteData.shopName">-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<md-divider></md-divider>-->
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    活动名称
+                </div>
+                <div class="right" flex>
+                    {{voteDataview.voteName}}
+                    <!--<input type="text" placeholder="请输入活动名称" ng-model="rootVoteData.voteName">-->
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center" ng-click="chooseTime('signUp')">
+                <div class="left">
+                    报名时间
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div style="font-size: 13px;color: #666">
+
+                            <span ng-if="!timeHide">
+                                {{voteDataview.signUpStartTime | date:'yyyy-MM-dd HH:mm' }}~{{voteDataview.signUpEndTime | date:'yyyy-MM-dd HH:mm' }}
+                            </span>
+
+                            <span ng-if="timeHide">
+                                {{voteDataview.signUpStartTime | date:'MM-dd HH:mm'}}~{{voteDataview.signUpEndTime | date:'MM-dd HH:mm'}}
+                            </span>
+                            <!--<span ng-if="rootVoteData.signUpStartTime && rootVoteData.signUpEndTime && !timeHide" style="color: #666;font-size: 13px">-->
+                               <!--{{rootVoteData.signUpStartTime | date:'yyyy' }}.{{rootVoteData.signUpStartTime | date:'MM' }}.{{rootVoteData.signUpStartTime | date:'dd'}}&nbsp;{{rootVoteData.signUpStartTime | date:'HH'}}:00 ~-->
+                               <!--{{rootVoteData.signUpEndTime | date:'yyyy' }}.{{rootVoteData.signUpEndTime | date:'MM' }}.{{rootVoteData.signUpEndTime | date:'dd'}}&nbsp;{{rootVoteData.signUpEndTime | date:'HH'}}:00-->
+                            <!--</span>-->
+                            <!--<span ng-if="rootVoteData.signUpStartTime && rootVoteData.signUpEndTime && timeHide" style="color: #666;font-size: 13px">-->
+                               <!--{{rootVoteData.signUpStartTime | date:'MM' }}.{{rootVoteData.signUpStartTime | date:'dd'}}&nbsp;{{rootVoteData.signUpStartTime | date:'HH'}}:00 ~-->
+                               <!--{{rootVoteData.signUpEndTime | date:'MM' }}.{{rootVoteData.signUpEndTime | date:'dd'}}&nbsp;{{rootVoteData.signUpEndTime | date:'HH'}}:00-->
+                            <!--</span>-->
+                            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center" ng-click="chooseTime('voting')">
+                <div class="left">
+
+                    投票时间
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div style="font-size: 13px;color: #666">
+                            <span ng-if="!timeHide">
+                                {{voteDataview.voteStartTime | date:'yyyy-MM-dd HH:mm' }}~{{voteDataview.voteEndTime | date:'yyyy-MM-dd HH:mm' }}
+                            </span>
+                            <span ng-if="timeHide">
+                                {{voteDataview.voteStartTime | date:'MM-dd HH:mm'}}~{{voteDataview.voteEndTime | date:'MM-dd HH:mm'}}
+                            </span>
+                            <!--<span ng-if="!rootVoteData.voteStartTime || !rootVoteData.voteEndTime">请选择过期时间</span>-->
+                            <!--<span ng-if="rootVoteData.voteStartTime && rootVoteData.voteEndTime && !timeHide" style="color: #666;font-size: 13px">-->
+                                <!--{{rootVoteData.voteStartTime | date:'yyyy' }}.{{rootVoteData.voteStartTime | date:'MM' }}.{{rootVoteData.voteStartTime | date:'dd'}}&nbsp;{{rootVoteData.voteStartTime | date:'HH'}}:00 ~-->
+                                <!--{{rootVoteData.voteEndTime | date:'yyyy' }}.{{rootVoteData.voteEndTime | date:'MM' }}.{{rootVoteData.voteEndTime | date:'dd'}}&nbsp;{{rootVoteData.voteEndTime | date:'HH'}}:00-->
+                            <!--</span>-->
+                            <!--<span ng-if="rootVoteData.voteStartTime && rootVoteData.voteEndTime && timeHide" style="color: #666;font-size: 13px">-->
+                                <!--{{rootVoteData.voteStartTime | date:'MM' }}.{{rootVoteData.voteStartTime | date:'dd'}}&nbsp;{{rootVoteData.voteStartTime | date:'HH'}}:00 ~-->
+                                <!--{{rootVoteData.voteEndTime | date:'MM' }}.{{rootVoteData.voteEndTime | date:'dd'}}&nbsp;{{rootVoteData.voteEndTime | date:'HH'}}:00-->
+                            <!--</span>-->
+                            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+
+                    规则说明
+                </div>
+                <div class="right" flex ng-click="goEdit('rule')">
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <span>详情</span>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    活动图文
+                </div>
+                <div class="right" flex ng-click="goEdit('desp')">
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            <span>详情</span>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 10px;background: #f5f5f5" ></div>
+
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+
+                    每天投票次数
+                </div>
+                <div class="right" flex>
+                    {{voteDataview.maxVotePerDay}}
+                    <!--<input type="tel" placeholder="请输入次数" ng-model="rootVoteData.maxVotePerDay" ng-change="AddEventInput('maxVotePerDay')">-->
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+
+                    每人总投票数
+                </div>
+                <div class="right" flex>
+                    {{voteDataview.totalVoteCount}}
+                    <!--<input type="tel" placeholder="请输入次数" ng-model="rootVoteData.totalVoteCount" ng-change="AddEventInput('totalVoteCount')">-->
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+
+                    每人被投票数
+                </div>
+                <div class="right" flex>
+                    {{voteDataview.maxTicketPerDay}}
+                    <!--<input type="tel" placeholder="请输入次数"  ng-model="rootVoteData.maxTicketPerDay" ng-change="AddEventInput('maxTicketPerDay')">-->
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+
+                    能给多少人投票
+                </div>
+                <div class="right" flex>
+                    <span ng-if="!voteDataview.votePeoplePerDay">不限</span>
+
+                    <span ng-if="voteDataview.votePeoplePerDay">{{voteDataview.votePeoplePerDay}}</span>
+                    <!--<input type="tel" placeholder="请输入多少人,默认不限" ng-model="rootVoteData.votePeoplePerDay" ng-change="AddEventInput('votePeoplePerDay')">-->
+                </div>
+            </div>
+            <md-divider></md-divider>
+        </div>
+        <div style="height: 10px;background: #f5f5f5" ></div>
+
+        <div class="content">
+            <!--<div class="content-tab" layout="row" layout-align="start center">-->
+            <!--<div class="left">-->
+            <!--&lt;!&ndash;<span style="color: #ff0000">*</span>&ndash;&gt;-->
+            <!--&nbsp;&nbsp;是否强制输入手机号-->
+            <!--</div>-->
+            <!--<div class="right" flex>-->
+            <!--<div class="right-R" layout="row" layout-align="end center" ng-click="changeFollow(true)" ng-show="!rootVoteData.isFollow">-->
+            <!--<div>-->
+            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" style="color: #999"></md-icon>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="right-R" layout="row" layout-align="end center" ng-click="changeFollow(false)" ng-show="rootVoteData.isFollow">-->
+            <!--<div>-->
+            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-check-circle" style="color: #e53467"></md-icon>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--</div>-->
+            <!--</div>-->
+
+
+
+
+
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <!--<span style="color: #ff0000">*</span>-->
+                    是否需要审核
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center" ng-show="!voteDataview.mustCheck">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" style="color: #999"></md-icon>
+                        </div>
+                    </div>
+
+                    <div class="right-R" layout="row" layout-align="end center" ng-show="voteDataview.mustCheck">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-check-circle" style="color: #e53467"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    <!--<span style="color: #ff0000">*</span>-->
+                    是否强制关注公众号
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center" ng-show="!voteDataview.forceFollow">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-circle" style="color: #999"></md-icon>
+                        </div>
+                    </div>
+
+                    <div class="right-R" layout="row" layout-align="end center" ng-show="voteDataview.forceFollow">
+                        <div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-check-circle" style="color: #e53467"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 10px;background: #f5f5f5" ></div>
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+
+                    微信分享标题
+                </div>
+                <div class="right" flex>
+                    {{voteDataview.shareTitle}}
+                    <!--<input type="text" placeholder="请输入分享标题" ng-model="rootVoteData.shareTitle">-->
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="start center">
+                <div class="left">
+                    微信分享描述
+                </div>
+                <div class="right" flex>
+                    {{voteDataview.shareContent}}
+                    <!--<input type="text" placeholder="请输入分享描述" ng-model="rootVoteData.shareContent">-->
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 10px;background: #f5f5f5" ></div>
+    </md-content>
+
+
+
+
+    <div class="footBottom" layout="column">
+        <md-divider style="border-color:#E53467"></md-divider>
+        <div class="btn" flex layout="row" layout-align="center center">
+            <div flex class="tab" style="text-align: center" ng-click="goView(voteDataview.id)">预览</div>
+            <div class="line"></div>
+            <div flex class="tab" style="text-align: center" ng-click="share(voteDataview.id)">分享</div>
+            <div class="line"></div>
+            <div flex class="tab" style="text-align: center" ng-click="changeStatus(voteDataview)" ng-if="voteDataview.voteStatusEnum == 'END'">启用</div>
+            <div flex class="tab" style="text-align: center" ng-click="changeStatus(voteDataview)" ng-if="voteDataview.voteStatusEnum == 'NORMAL'">禁用</div>
+            <div class="line"></div>
+            <div flex class="tab" style="text-align: center" ui-sref="main.voteApp.vote.sampleReels({id:voteDataview.id,form:'view'})">作品集</div>
+        </div>
+    </div>
+
+
+
+    <!--遮罩-->
+    <div class="mask" ng-if="mask" style="position: absolute"   ng-click="maskHide()">
+        <div class="maskButton1">
+            <!--<div class="shareKnow" md-font-icon="ks-arrow_left"></div>-->
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="jqPhote" ng-show="choosePhote" layout="column" layout-align="center center">
+        <div flex class="choosePhote-top"></div>
+        <div id="clipArea"></div>
+        <!--<input type="file" id="file">-->
+        <div flex class="choosePhote-btn" layout="row" layout-align="center start">
+            <div layout="row" layout-align="space-between start" style="width: 260px">
+                <div id = 'cancel' ng-click="cancelChoosePhote()">取消</div>
+                <div id="clipBtn" ng-click="cancelChoosePhote()">保存</div>
+            </div>
+
+        </div>
+
+        <!--<div id="view"></div>-->
+    </div>
+
+
+
+
+
+</div>
+
+
+

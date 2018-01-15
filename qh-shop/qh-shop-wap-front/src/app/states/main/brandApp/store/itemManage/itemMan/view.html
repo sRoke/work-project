@@ -1,0 +1,138 @@
+<div flex="100" layout="column" class="ks-itemMan">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>商品管理</h1>
+        <div class="right-button" flex="20" layout="row" layout-align="end center">
+            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-screen-0"></md-icon>-->
+            <!--<div class="right-rank">-->
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-add-0"
+                     ui-sref="main.brandApp.store.itemManage.itemAdd({status:'add'})"></md-icon>
+            <!-- <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-screen-0"
+                      style="margin:0 0 0 10px" ng-click="openRank()"></md-icon>
+             <div class="pos-wrap" layout="column" ng-show="rankShow">
+                 <div class="pos-id" ng-class="{posActive:rank == 1}" ng-click="rankChoose(1)">最新发布</div>
+                 <md-divider></md-divider>
+                 <div class="pos-id" ng-class="{posActive:rank == 2}" ng-click="rankChoose(2)">销量最高</div>
+             </div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <!-- <div class="search" layout="row" layout-align="center end">
+         <div class="input-wrap" flex layout="row">
+             <input type="text" ng-model="keyWord" placeholder="输入商品名称" flex>
+             <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"
+                      ng-click="tabs('ALL','1','search')"></md-icon>
+         </div>
+         &lt;!&ndash;<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon>&ndash;&gt;
+     </div>-->
+
+
+    <div class="search" layout="row">
+        <div class="search-input" flex layout="row">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>
+            </div>
+            <div class="con" flex>
+                <input type="text" ng-model="keyWord" placeholder="输入名称" ng-focus="focus(true)" ng-blur="focus(false)">
+            </div>
+            <div class="right" ng-show="searchShow" ng-click="clearKeyWord()">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-closed-o"></md-icon>
+            </div>
+        </div>
+        <div class="search-btn" ng-show="searchShow" ng-click="tabs('ALL','1','search')">搜索</div>
+    </div>
+
+    <div class="tab" layout="row" layout-align="center center ">
+        <div class="tab-btn" ng-click="tabs('ALL','1')" flex layout="row" layout-align="center center "
+             style="    padding-left: 0;">
+            <span class="btn" ng-class="{active:isClick == '1'}">全部</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('NORMAL','2')" flex layout="row" layout-align="center center ">
+            <span class="btn" ng-class="{active:isClick == '2'}">已上架</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('EDITING','3')" flex layout="row" layout-align="center center ">
+            <span class="btn" ng-class="{active:isClick == '3'}">待上架</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('SALE_OFF','4')" flex layout="row" layout-align="center center "
+             style="padding-right: 5px">
+            <span class="btn" ng-class="{active:isClick == '4'}">已下架</span>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5" ng-if="data[status].data[0]">
+        <div class="list-wrap">
+            <div class="list" ng-repeat="list in data[status].data track by $index">
+                <div class="list-det" layout="row"
+                     ui-sref="main.brandApp.store.itemManage.itemEdit({id:list.id,status:'view'})">
+                    <div class="img">
+                        <img src="{{list.imgs[0]}}" alt="">
+
+                        <div class="imgStatus" ng-if="list.statusCode != 'NORMAL'">
+                            <span ng-if="list.statusCode == 'EDITING' ">待上架</span>
+                            <span ng-if="list.statusCode != 'EDITING' ">{{list.statusDesp}}</span>
+                        </div>
+
+                    </div>
+                    <div class="list-right" flex layout="column" layout-align="space-between ">
+                        <div class="list-name">
+                            {{list.title}}
+                        </div>
+                        <div class="list-price">
+                            <span>￥</span>{{list.salePrice/100|num:2}}
+                        </div>
+                        <div class="list-bot" layout="row" layout-align="space-between center">
+                            <div class="bot-dis" layout="row" layout-align="space-between center">
+                                <div>库存:{{list.store}}</div>
+                                <div style="margin-left:10px">销量:{{list.salesVolume}}</div>
+                            </div>
+                            <md-icon class="list-icon" md-font-set="ks-icon" md-font-icon="ag-more"></md-icon>
+                        </div>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </div>
+        </div>
+
+        <!--分页-->
+        <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;">
+            <md-button flex
+                       style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;"
+                       ng-click="getList()"
+                       ng-if=" data[status].totalNum>10"
+                       ng-show="!data[status].pageEnd">
+                点击加载更多...
+            </md-button>
+
+            <md-button flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;"
+                       ng-if="data[status].totalNum>10"
+                       ng-show="data[status].pageEnd">
+                没有更多商品了
+            </md-button>
+        </div>
+
+    </md-content>
+
+    <md-content flex layout="column" class="empty"
+                ng-if="!data[status].data[0]"
+                style="overflow-x: hidden;    background: #f5f5f5;">
+        <!--<div class="top-line"></div>-->
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-order-manage" class="icon"></md-icon>
+            <div class="txt" style="margin-bottom: 100px">暂无商品～</div>
+        </div>
+    </md-content>
+
+
+    <!--<md-content flex layout="column" class="empty"
+                ng-if="!data[status].data[0]"
+                style="overflow-x: hidden;    background: #f5f5f5;">
+        &lt;!&ndash;<div class="top-line"></div>&ndash;&gt;
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-order-manage" class="icon"></md-icon>
+            <div class="txt">暂无商品～</div>
+        </div>
+    </md-content>-->
+</div>

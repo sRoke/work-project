@@ -1,0 +1,86 @@
+<div flex layout="column" class="ks-votHome" ng-show="pageShow">
+    <md-content flex style="background: #ffefa5">
+        <div class="content-top-img">
+            <!--<img src="http://f.hiphotos.baidu.com/image/pic/item/0824ab18972bd40798becce071899e510fb309b5.jpg" width="100%">-->
+            <img ng-src="{{data.primaryImgUrl}}" width="100%">
+        </div>                
+        <div class="content-time" layout="column" layout-align="start center">
+            <!--<div class="content-time-1" ng-if="activityStatus === -1">活动时间</div>-->
+            <!--<div class="content-time-1" ng-if="activityStatus === 0">投票时间</div>-->
+            <!--<div class="content-time-1" ng-if="activityStatus === 1">活动已结束</div>-->
+            <!--<div class="content-time-2" ng-if="activityStatus === -1 || activityStatus === 1">{{data.signUpStartTime}} ~ {{data.voteEndTime}}</div>-->
+            <!--<div class="content-time-2" ng-if="activityStatus === 0">还剩{{lastDays}}天{{lastHours}}小时{{lastMinutes}}分{{lastSeconds}}秒</div>-->
+
+
+            <!--<div class="content-time-1">活动时间</div>-->
+            <div class="content-time-1">报名时间:{{signUpStartTime}} ~ {{signUpEndTime}}</div>
+            <div class="content-time-2">投票时间:{{voteStartTime}} ~ {{voteEndTime}}</div>
+        </div>
+        <div class="content-tab" layout="column" layout-align="center center">
+            <div class="content-tab-search" layout="row" layout-align="center center">
+                <input type="text" placeholder="请输入编号或者姓名" ng-model="keyWord">
+                <div class="line"></div>
+                <div class="search" layout="row" layout-align="center center" ng-click="getList(1,['dateCreated,desc'])">搜索</div>
+            </div>
+            <div class="tab-check" layout="row" layout-align="center center">
+                <div flex class="tabs tab1" ng-click="checkTabs(1)" ng-class="{true: 'active', false: 'inactive'}[tabs == 1]">最新参赛</div>
+                <div class="line"  ng-class="{true: 'activeLine', false: 'inactiveLine'}[tabs == 3]"></div>
+                <div flex class="tabs tab2" ng-click="checkTabs(2)" ng-class="{true: 'active', false: 'inactive'}[tabs == 2]">全部参赛</div>
+                <div class="line"  ng-class="{true: 'activeLine', false: 'inactiveLine'}[tabs == 1]"></div>
+                <div flex class="tabs tab3" ng-click="checkTabs(3)" ng-class="{true: 'active', false: 'inactive'}[tabs == 3]">活动规则</div>
+            </div>
+            <div class="tab-list" ng-if="tabs == 1 || tabs == 2">
+                <div class="tab-box" layout="row" ng-repeat="item in list.content">
+                    <div class="tab-box-con" layout="column" ui-sref="main.brandApp.vote.myVote({id:item.id})">
+                        <div class="tab-box-img">
+                            <div class="tab-box-img-con">
+                                <img ng-src="{{item.worksImgUrl}}">
+                                <!--<img src="http://f.hiphotos.baidu.com/image/pic/item/0824ab18972bd40798becce071899e510fb309b5.jpg">-->
+                            </div>
+                        </div>
+                        <div class="tab-box-title" layout="row" layout-align="space-between center">
+                            <div>{{item.name}}</div>
+                            <div>{{item.totalVotes}}票</div>
+                        </div>
+                        <div class="tab-box-btn" layout="row" layout-align="center center" >
+                            <!--<div class="tab-box-btn-font">给我投票</div>-->
+                        </div>
+                        <div class="tab-box-index" layout="row" layout-align="center center">
+                            <div style="margin-right: 5px;">{{item.seq}}号</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="clear: both"></div>
+            </div>
+
+            <div class="tab-list" ng-if="tabs == 3" style="padding-left: 15px;padding-right: 15px">
+                <div ng-include="tplUrlRule" ng-if="tplUrlRule" class="tab-list-tpl"></div>
+            </div>
+
+
+
+            <div class="page-pagination" layout="row" layout-align="end center" ng-if="tabs !== 3">
+                <div style="margin-right: 15px">
+                    <div uib-pagination total-items="list.totalElements" ng-model="currPage" ng-change="getList(currPage)"
+                         boundary-links="true" max-size="6" rotate="true"
+                         items-per-page="list.size" previous-text="<" next-text=">" first-text="<<" last-text=">>">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-tpl">
+            <div ng-include="tplUrlDesp" ng-if="tplUrlDesp"></div>
+        </div>
+    </md-content>
+
+    <!--<div class="bottom-btn" layout="row" layout-align="center center" ng-click="singUp()" ng-if="!myVoteId && activityStatus !==1"></div>-->
+    <!--<div class="bottom-btn2" layout="row" layout-align="center center" ui-sref="main.brandApp.vote.myVote({id:myVoteId})" ng-if="myVoteId && activityStatus !==1"></div>-->
+
+    <div class="bottom-btn" layout="row" layout-align="center center" ng-click="singUp()" ng-if="!myVoteId && !signUpisEnd && activityStatus !==1"></div>
+    <div class="bottom-btn2" layout="row" layout-align="center center" ui-sref="main.brandApp.vote.myVote({id:myVoteId})" ng-if="myVoteId && activityStatus !==1"></div>
+
+</div>
+
+
+

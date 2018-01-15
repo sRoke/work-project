@@ -1,0 +1,69 @@
+apply plugin: 'java'
+apply plugin: 'java-library'
+apply plugin: 'org.springframework.boot'
+apply plugin: "com.gorylenko.gradle-git-properties"
+
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    //archives javadocJar
+}
+
+dependencies {
+    compile project(":qh-shop-core")
+    compile project(":qh-shop-api")
+
+    //compile("io.swagger:swagger-jersey2-jaxrs")
+    //compile("org.springframework.data:spring-data-commons")
+    //compile("org.springframework.security:spring-security-core")
+    compile("org.springframework.amqp:spring-rabbit")
+
+    testCompile('org.apache.httpcomponents:httpclient')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+bootRepackage {
+    enabled = false
+}
+
+
+artifacts {
+    archives sourcesJar
+    //archives javadocJar
+}
+
+test {
+    testLogging.showStandardStreams = false
+}
+
+
+bootRun {
+    addResources = true
+    systemProperties = System.properties
+}
+
+springBoot {
+    //mainClass = System.properties['mainClass']
+    buildInfo {
+        additionalProperties = [
+                'foo': 'bar'
+        ]
+    }
+}
+
+jar {
+    manifest {
+        attributes "Implementation-Version": project.version
+    }
+}
+

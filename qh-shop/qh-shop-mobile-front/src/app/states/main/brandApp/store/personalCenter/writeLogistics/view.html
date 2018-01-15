@@ -1,0 +1,49 @@
+<div class="ks-writeLogistics" flex="100" layout="column">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>填写快递单号</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <div class="line"></div>
+    <md-content flex style="overflow-x:hidden;background: #fff;">
+        <div class="main" layout="column">
+            <div layout="column" class="center-con">
+                <!--退款类型-->
+                <div class="refund" layout="column">
+                    <div layout="row" layout-align="space-between center" class="refund-tab">
+                        <div class="refund-left" layout="row">
+                            快递公司
+                        </div>
+                        <div class="refund-right" layout="row" flex ng-click="openExpress()">
+                            <!--<input type="text" placeholder="请选择快递公司"   ng-if="!selectCompanys" readonly flex>-->
+                            <div class="express" ng-if="!selectCompanys" flex style="color: #666">选择快递公司</div>
+                            <div class="express" ng-if="selectCompanys" ng-model="express.value" flex>
+                                {{express.label}}
+                            </div>
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div layout="row" layout-align="space-between center" class="refund-tab">
+                        <div class="refund-left" layout="row">
+                            快递单号
+                        </div>
+                        <div class="refund-right" layout="row" flex>
+                            <input type="text" placeholder="请输入或扫描快递单号" ng-model="logistics.expressNo" flex>
+                            <div class="right" ng-click="wxSys()" layout-align="center center"
+                                 style="margin-top: 17px;">
+                                <md-icon class="ks-icon" md-font-set="ks-icon"
+                                         md-font-icon="ag-focus-horizontal"></md-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <button class="btn-save" flex ng-click="save()">保存</button>
+                </div>
+            </div>
+        </div>
+    </md-content>
+</div>

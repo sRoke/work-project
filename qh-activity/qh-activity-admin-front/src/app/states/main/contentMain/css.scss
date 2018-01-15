@@ -1,0 +1,106 @@
+.contentMain{
+  width: 100%;
+  min-width: 1167px;
+  height: 100%;
+  min-height: 700px;
+  background: #f5f5f5;
+  .contentMain-top{
+    width: 1167px;
+    //background: #FFFFFF;
+    height: 158px;
+    .left{
+      .left-img{
+        width: 105px;
+        height: 105px;
+        border-radius: 105px;
+        overflow: hidden;
+        img{
+          width: 100%;
+          height: 100%;
+          vertical-align: bottom;
+        }
+      }
+      .left-user{
+        margin-left: 30px;
+        font-size: 18px;
+        color: #999999;
+        .name{
+          //height: 22px;
+          //line-height: 22px;
+        }
+        .phone-set{
+          .phone{
+            margin-right: 30px;
+          }
+        }
+      }
+    }
+    .right{
+      color: #05A3FC;
+      font-size: 20px;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+  .line{
+    width: 100%;
+    height: 1px;
+    background: #d5d5d5;
+  }
+  .contentMain-con{
+    width: 1167px;
+    //background: #ffffff;
+    //height: 300px;
+    .app{
+      width: 300px;
+      height: 167px;
+      border: 1px solid #D5D5D5;
+      border-radius: 4px;
+      margin: 60px 0 0 60px;
+      position: relative;
+      float: left;
+      .tab{
+        margin-left: 25px;
+        font-size: 18px;
+        color: #999999;
+        margin-top: 25px;
+      }
+      .name{
+        color: #101010;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .Mask{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        background: rgba(0,0,0,.4);
+        .Mask-btn{
+          width: 100px;
+          height: 35px;
+          border-radius: 4px;
+          color: #FFFFFF;
+          background: #05A3FC;
+          text-align: center;
+          line-height: 35px;
+          font-size: 18px;
+          font-weight: 600;
+          outline: none;
+          cursor: pointer;
+        }
+      }
+    }
+    .noApp{
+      margin-top: 200px;
+      .ts{
+        margin-top: 10px;
+      }
+      .phone{
+        margin: 5px 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+<div flex layout="column" class="ks-raffleHome">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>抽奖活动</h1>
+        <!--ui-sref="main.raffleApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20" ng-click="addLottery()" >新增</div>
+    </div>
+
+    <div class="search" layout="row">
+        <div class="search-input" flex layout="row">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>
+            </div>
+            <div class="con" flex>
+                <input type="text" ng-model="keyWord" placeholder="搜索" ng-focus="focus(true)" ng-blur="focus(false)">
+            </div>
+            <div class="right" ng-show="searchShow" ng-click="clearKeyWord()">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-closed-o"></md-icon>
+            </div>
+        </div>
+        <div class="search-btn" ng-show="searchShow" ng-click="search()">搜索</div>
+    </div>
+
+
+
+    <div class="tab" layout="row" layout-align="center center ">
+        <div class="tab-btn" ng-click="tabs('all','1')" flex layout="row" layout-align="center center "
+             style="    padding-left: 0;">
+            <span class="btn" ng-class="{active:isClick == '1'}">全部</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('notStarted','2')" flex layout="row" layout-align="center center ">
+            <span class="btn" ng-class="{active:isClick == '2'}">未开始</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('starting','3')" flex layout="row" layout-align="center center ">
+            <span class="btn" ng-class="{active:isClick == '3'}">进行中</span>
+        </div>
+        <div class="tab-btn" ng-click="tabs('end','4')" flex layout="row" layout-align="center center "
+             style="padding-right: 5px">
+            <span class="btn" ng-class="{active:isClick == '4'}">已结束</span>
+        </div>
+    </div>
+
+
+    <md-content flex style="background: #f5f5f5">
+        <div  layout="column" layout-align="center center" ng-repeat="raffle in raffleList.content"
+              ng-class="{true: 'raffleList2', false: 'raffleList'}[raffle.status == '未开始' || raffle.status == '已结束']">
+            <div class="title" layout="row" ui-sref="main.raffleApp.raffle.raffleView({id:raffle.id})">
+                <div class="left" flex>{{raffle.raffleName}}</div>
+                <div class="right" ng-if="raffle.statusDesp != '未开始' && raffle.statusDesp != '已结束'">{{raffle.joins}}人已参加</div>
+                <div class="right" ng-if="raffle.statusDesp == '未开始' || raffle.statusDesp == '已结束'" >{{raffle.statusDesp}}</div>
+            </div>
+            <div class="time" layout="row">
+                <div class="left" flex ui-sref="main.raffleApp.raffle.raffleView({id:raffle.id})">{{raffle.beginTime | date:'yyyy-MM-dd' }} ~ {{raffle.endTime | date:'yyyy-MM-dd' }}</div>
+                <div class="right" ng-click="listDialogShow(raffle)">...</div>
+            </div>
+            <div class="listDialog"  ng-show="raffle.listDialog">
+
+                <div class="triangle-up"></div>
+                <div layout="row" class="dialog-btn">
+                    <span ng-click="goView(raffle.id)">预览</span>
+                    <span ng-click="share(raffle)">分享</span>
+                    <span ng-click="changeStatus(raffle)"  ng-if="raffle.status =='CLOSED'">启用</span>
+
+                    <span ng-click="changeStatus(raffle)" ng-if="raffle.status == 'ENABLE'">禁用</span>
+                    <span ui-sref="main.raffleApp.raffle.joinNum({id:raffle.id})">参与人</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!--分页-->
+        <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;" ng-show="raffleList.totalPages>1">
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-click="pageChange(currpage+1)" ng-show="raffleList.number<raffleList.totalPages-1">
+                点击加载更多...
+            </md-button>
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;"
+                        ng-show="raffleList.number>=raffleList.totalPages-1">
+                没有更多活动了
+            </md-button>
+        </div>
+        <div class="empty" ng-if="raffleList.content.length<=0" style="width: 100%;height: 100%" layout="column" layout-align="center center">
+            <div class="empty"><img src="empty.png" width="60px"></div>
+            <div class="ts" style="margin-bottom: 80px">暂无活动</div>
+        </div>
+
+    </md-content>
+
+
+    <!--遮罩-->
+    <div class="mask" ng-if="mask" style="position: absolute"   ng-click="maskHide()">
+        <div class="maskButton1">
+            <!--<div class="shareKnow" md-font-icon="ks-arrow_left"></div>-->
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,160 @@
+.ks-common-manage{
+  a {
+    text-decoration: none;
+    color: #00aaee;
+  }
+  height:100%;
+  width:100%;
+  background: #f5f5f5;
+  .common-list-center{
+    ul{
+      height:70px;
+      margin-bottom: 0px;
+      width: 100%;
+      padding:0 20px;
+      li{
+        float: left;
+        height:70px;
+        list-style: none;
+        label{
+          padding-right:5px;
+          line-height:30px;
+          height:30px;
+          //padding:0 10px;
+          font-size:14px;
+          font-weight:500;
+          margin:20px 0px 0px 0px;
+        }
+        .choose{
+          width:160px;
+          height: 30px;
+          padding-left:5px;
+          margin-top: 20px;
+          border-radius: 4px;
+          border:1px solid #e0e0e0;
+        }
+        span{
+          text-align: center;
+          height:30px;
+          line-height: 30px;
+          margin-top:20px;
+          font-size:14px;
+          font-weight:100;
+          padding:0 10px;
+        }
+        .inquire{
+          color:#fff;
+          cursor: pointer;
+          height:30px;
+          margin: 20px 0 0 10px;
+          background:#00aaee;
+          padding:0 20px;
+          border-radius: 4px;
+          border:none;
+          outline: none;
+        }
+        #applyStatus,#applyType{
+          height:30px;
+          width:160px;
+          margin: 20px 10px 0px 0px;
+          background:#fff;
+          border-radius: 4px;
+          border:1px solid #e0e0e0;
+        }
+        .publish{
+          height:30px;
+          margin-top: 20px;
+          border:1px solid #ccc;
+          background: #fff;
+          outline: none;
+          margin-left:290px;
+        }
+      }
+    }
+  }
+  //合作商
+  .common-list-detail {
+    width: 100%;
+    padding:0px 20px 20px;
+    //申请表头
+    .common-list-detail-thead {
+      height: 40px;
+      line-height: 40px;
+     // text-align: center;
+     // border-top: 4px solid #ba9f6e;
+      background: #e6e6e6;
+      .thead-show {
+        text-align: left;
+        padding-left: 20px;
+        span {
+          font-size: 14px;
+          //font-weight: bold;
+          //color: #666;
+        }
+        .operateFont{
+          .glyIcon{
+            font-size:16px;
+            margin-top:4px;
+          }
+          span{
+            height:58px;
+            font-size:14px;
+            text-align: center;
+            line-height:58px;
+          }
+        }
+      }
+      .end-show{
+        text-align: right;
+        padding-right: 30px;
+      }
+    }
+    //表格详细内容
+    .common-list-detail-tbody {
+      .common-list-detail-row {
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        .thead-show {
+          text-align: left;
+          padding-left: 20px;
+          span {
+            font-size: 14px;
+            color: #666;
+          }
+          .operateFont{
+
+            span{
+              height: 58px;
+              line-height: 58px;
+              cursor: pointer;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+              color:#00aaee;
+              text-align: right;
+              padding-right:10px;
+              outline: none;
+            }
+          }
+        }
+      }
+      .common-list-detail-row:nth-child(odd) {
+        background: #fff;
+        border: 1px solid #fff;
+      }
+      .common-list-detail-row:nth-child(even) {
+        background: #fbf9f6;
+        border: 1px solid #fbf9f6;
+      }
+      .common-list-detail-row:hover {
+        z-index:2;
+        border: 1px solid #ba9f6e;
+        -webkit-box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+        -moz-box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+        box-shadow: 0px 4px 8px rgba(186,159,110,0.45);
+      }
+    }
+  }
+
+}

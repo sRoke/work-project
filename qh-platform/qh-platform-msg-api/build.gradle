@@ -1,0 +1,70 @@
+apply plugin: 'java'
+apply plugin: 'java-library'
+apply plugin: 'org.springframework.boot'
+apply plugin: "com.gorylenko.gradle-git-properties"
+
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+
+artifacts {
+    archives sourcesJar
+    //archives javadocJar
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(":qh-platform-core")
+    compile project(":qh-platform-api")
+
+    compile("org.springframework.amqp:spring-rabbit")
+
+    testCompile('org.apache.httpcomponents:httpclient')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+bootRepackage {
+    enabled = false
+}
+
+bootRun {
+    addResources = true
+    systemProperties = System.properties
+}
+
+springBoot {
+    //mainClass = System.properties['mainClass']
+    buildInfo {
+        additionalProperties = [
+                'foo': 'bar'
+        ]
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar {
+                classifier "sources"
+            }
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes "Implementation-Version": project.version
+    }
+}

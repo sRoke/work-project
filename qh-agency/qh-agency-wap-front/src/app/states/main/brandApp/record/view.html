@@ -1,0 +1,85 @@
+<div flex layout="column" class="ks-record">
+    <md-content flex id="record">
+        <div id="record-top" layout="column">
+            <div class="con-logo">
+                <img src="logoRecord.png">
+            </div>
+            <div class="con-top" layout="row" layout-align="center center">
+                <span>你是第</span>
+                <span style="margin: 0 10px;font-size: 60px;">{{item.placeNum}}</span>
+                <span>位</span>
+                <span>{{item.partnerTypeEnum}}</span>
+            </div>
+            <!--排名-->
+            <div class="con-center" layout-align="center center" layout="row">
+                <span ng-if="item.rankMonth!=0">{{date.day}}销售排名第{{item.rankMonth}}名&nbsp;击败了{{item.rankMonthPercent}}%的商铺</span>
+                <span ng-if="item.rankMonth==0">{{date.day}}销售排名暂未上榜</span>
+            </div>
+            <div class="record-table" layout="row" layout-align="center center">
+                <div id="recordBar" class="recordBar" ng-class="{noRecord:allRecord}">
+                </div>
+            </div>
+        </div>
+        <!--波浪线-->
+        <div class="bg-line">
+            <img src="bg.png" />
+        </div>
+        <!--中间线-->
+        <div class="line"></div>
+        <!--数据分析-->
+        <div class="record-analysis" layout="row">
+            <div class="line line1" flex></div>
+            <div class="analysis">
+                <div class="analysis-word">数据分析</div>
+            </div>
+            <div class="line line2" flex></div>
+        </div>
+        <div layout="column" class="analysis-bottom">
+            <div layout="row" layout-align="center center" class="bottom-row">
+                <button>实时访客</button>
+                <button>商品销量</button>
+                <button style="margin: 0">类目销量</button>
+            </div>
+            <div layout="row" layout-align="center center" class="bottom-row">
+                <button>满意度排名</button>
+                <button>用户转化率</button>
+                <button style="margin: 0">用户画像</button>
+            </div>
+            <div layout="row" layout-align="center center" class="bottom-row">
+                <button>渠道分布</button>
+                <button style="background: none;border: none;"></button>
+                <button  style="margin: 0;background: none;border: none;"></button>
+            </div>
+        </div>
+        <!--中间线-->
+        <div class="line"></div>
+        <!--指导销售-->
+        <div class="record-analysis-sale" layout="row">
+            <div class="line line1" flex></div>
+            <div class="analysis">
+                <div class="analysis-word">指导销售</div>
+            </div>
+            <div class="line line2" flex></div>
+        </div>
+        <div layout="column" class="analysis-bottom-sale">
+            <div layout="row" layout-align="center center" class="bottom-row">
+                <button>业绩提升</button>
+                <button>商品决策</button>
+                <button style="margin: 0">活动指导</button>
+            </div>
+            <div layout="row" layout-align="center center" class="bottom-row">
+                <button>吸粉指导</button>
+                <button>促销指导</button>
+                <button style="margin: 0">销售预测</button>
+            </div>
+        </div>
+        <!--底部背景图片-->
+        <div class="bg-bottom" layout-align="center top" layout="row">
+            <!--<div>-钱皇网络科技出品-</div>-->
+        </div>
+    </md-content>
+    <div ks-footer-menu cur="'record'"></div>
+</div>
+
+<!--{{brandAppId}}-->
+

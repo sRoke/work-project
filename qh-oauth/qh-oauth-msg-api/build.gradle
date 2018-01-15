@@ -1,0 +1,75 @@
+apply plugin: 'java'
+apply plugin: 'java-library'
+apply plugin: 'org.springframework.boot'
+apply plugin: "com.gorylenko.gradle-git-properties"
+
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    //archives javadocJar
+}
+
+dependencies {
+    compile project(":qh-oauth-core")
+
+    //compile("io.swagger:swagger-jersey2-jaxrs")
+    //compile("org.springframework.data:spring-data-commons")
+    //compile("org.springframework.security:spring-security-core")
+    compile("org.springframework.amqp:spring-rabbit")
+
+    testCompile('org.apache.httpcomponents:httpclient')
+    testCompile('org.springframework.boot:spring-boot-starter')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.boot:spring-boot-configuration-processor')
+}
+
+test {
+    testLogging.showStandardStreams = false
+}
+
+
+bootRun {
+    addResources = true
+    systemProperties = System.properties
+}
+
+bootRepackage {
+    enabled = false
+}
+
+springBoot {
+    buildInfo {
+        additionalProperties = [
+                'foo': 'bar'
+        ]
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            artifact sourcesJar {
+                classifier "sources"
+            }
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes "Implementation-Version": project.version
+    }
+}
+

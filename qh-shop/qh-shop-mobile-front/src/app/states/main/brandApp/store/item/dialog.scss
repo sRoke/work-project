@@ -1,0 +1,324 @@
+.ks-select-spec .header {
+  padding: 0 10px;
+  position: relative;
+  flex-shrink: 0;
+  min-height: 98px;
+  // 商品图片
+  .item-img {
+    width: 98px;
+    position: relative;
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+
+    img {
+      position: absolute;
+      top: -15px;
+      padding: 0;
+      width: 100%;
+    }
+  }
+  .Htop {
+    margin: 10px auto 10px 20px;
+    color: #dd191d;
+    font-size: 20px;
+    font-weight: bold;
+    span {
+      font-size: 14px;
+      color: #101010;
+      font-weight: normal;
+      margin: 0 0 0 5px;
+    }
+  }
+  .txtWarp {
+    font-size: 12px;
+    color: #101010;
+    margin-left: 20px;
+    margin-bottom: 7px;
+    margin-top: -4px;
+  }
+
+  .ks-icon {
+    font-size: 14px;
+    color: #999;
+    margin-top: 15px;
+    text-align: center;
+    line-height: 24px;
+  }
+}
+
+.ks-select-spec .contentTxt {
+  overflow: hidden;
+  padding: 10px 10px 0 10px;
+  .selectLeft {
+    width: 72px;
+    margin-top: 15px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #101010;
+    text-align: left;
+  }
+
+  .slectBtn {
+    background: #f5f5f5;
+    height: 24px;
+    padding: 0 17px;
+    line-height: 26px;
+    float: left;
+    font-size: 12px;
+    color: #101010;
+    margin: 18px 10px 0px 0;
+    border-radius: 30px;
+  }
+  .slectBtn.active {
+    background: #E53467;
+    color: #fff;
+  }
+  .count {
+    padding: 0;
+    text-align: center;
+    margin: 18px 0px 16px 0;
+
+    input {
+      flex-shrink: 0;
+      height: 24px;
+      text-align: center;
+      display: inline-block;
+      background-color: #fff;
+      //border: none;
+      padding: 0;
+      border: 1px solid #E53467;
+      border-radius: 0;
+      width: 45px;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      -moz-appearance: textfield;
+    }
+    .minus, .add {
+      width: 30px;
+      height: 24px;
+      background-color: #E53467;
+      font-size: 16px;
+      color: #fff;
+      .iconBtn {
+        font-size: 10px;
+        color: #fff;
+      }
+    }
+    .add {
+      border-radius: 0 30px 30px 0;
+    }
+    .minus {
+      border-radius: 30px 0 0 30px;
+      background-color: #fff;
+
+      border: 1px solid #E53467;
+      border-right: none;
+      .iconBtn {
+        font-size: 10px;
+        color: #E53467;
+      }
+    }
+  }
+}
+
+.ks-select-spec .footer {
+  bottom: 80px;
+  width: 100%;
+  /*   position: fixed;*/
+  height: 48px;
+  flex-shrink: 0;
+  min-height: 48px;
+  .btnLeft {
+    font-size: 15px;
+    color: #fff;
+    background: #333;
+    line-height: 48px;
+    text-align: center;
+
+  }
+  .btnRight {
+    text-align: center;
+    line-height: 48px;
+    font-size: 15px;
+    color: #fff;
+    background: #666;
+  }
+}
+
+//商品参数开始
+//parameter
+.ks-select-spec {
+  position: fixed;
+  max-height: 80%;
+  min-height: 60%;
+  padding: 0 !important;
+
+}
+
+.ks-select-spec .parameterHeader {
+  position: relative;
+  flex-shrink: 0;
+  padding: 0 10px;
+  height: 44px;
+  min-height: 44px;
+  .parameterWord {
+    font-size: 16px;
+    color: #101010;
+    line-height: 44px;
+  }
+  .ks-icon {
+    font-size: 14px;
+    color: #999;
+    margin-top: 15px;
+  }
+}
+
+.ks-select-spec .parameterContent {
+  flex-shrink: 0;
+  padding: 0 10px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  .content-wrap {
+    width: 95px;
+    font-size: 14px;
+    line-height: 2.5em;
+    color: #808080;
+  }
+
+  .content-wrap-bottom {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 10px;
+    .content-wrap-two {
+      padding: 3px;
+      color: #333333;
+      line-height: 35px;
+    }
+  }
+}
+
+////弹窗提示
+//.successCont {
+//  box-sizing: border-box;
+//  background: #333;
+//  min-width: 180px;
+//  max-width: 210px;
+//  padding: 15px 0;
+//  .sus {
+//    text-align: center;
+//    border-radius: 6px;
+//    background: #333;
+//    color: #fff;
+//    .ks-icon {
+//      margin-top: -2px;
+//      font-size: 34px;
+//      color: #fff;
+//    }
+//    p {
+//      font-size: 15px;
+//      color: #fff;
+//      margin-top: 10px;
+//      margin-bottom: -2px;
+//      padding: 0 5px;
+//    }
+//  }
+//
+//}
+
+.md-padding {
+  //padding: 20px 10px 20px 10px;
+  padding: 0;
+}
+
+md-tabs.md-default-theme .md-tab.md-active, md-tabs .md-tab.md-active, md-tabs.md-default-theme .md-tab.md-active md-icon, md-tabs .md-tab.md-active md-icon, md-tabs.md-default-theme .md-tab.md-focused, md-tabs .md-tab.md-focused, md-tabs.md-default-theme .md-tab.md-focused md-icon, md-tabs .md-tab.md-focused md-icon
+.tabsdemoDynamicHeight md-content {
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+  color: #333;
+  background: #333;
+  margin: 0 9%;
+}
+
+.tabsdemoDynamicHeight md-content md-tabs {
+  background: #f6f6f6;
+}
+
+.tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+  background: #f5f5f5;
+  border: none;
+}
+
+.tabsdemoDynamicHeight md-content h1:first-child {
+  margin-top: 10px;
+}
+
+md-content.md-default-theme, md-content {
+  background: #fff;
+}
+
+md-bottom-sheet.ng-enter-active {
+  -webkit-transform: translate3d(0, 110%, 0) !important;
+  transform: translate3d(0, 110%, 0) !important;
+}
+
+md-tabs.md-default-theme .md-tab, md-tabs .md-tab {
+  color: #999;
+  font-size: 14px;
+}
+
+md-bottom-sheet {
+  bottom: 0;
+  left: 0;
+  padding: 8px 16px 88px;
+  position: absolute;
+  right: 0;
+  transform: translate3d(0px, 80px, 0px);
+  transition: transform 0.1s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  z-index: 70;
+  //border-top: 1px solid #999;
+}
+
+/*以下是测试用代码，待删除*/
+
+$bottom-sheet-hidden-bottom-padding: 80px !default;
+
+md-bottom-sheet {
+  transform: translate3d(0, $bottom-sheet-hidden-bottom-padding, 0);
+}
+
+md-bottom-sheet.ng-enter-active {
+  transform: translate3d(0, $bottom-sheet-hidden-bottom-padding, 0) !important;
+}
+
+/*
+md-backdrop {
+bottom: 0;
+left: 0;
+position: absolute;
+right: 0;
+top: 0;
+transition: opacity 0.5s ease 1s;
+-webkit-transition: opacity 0.5s ease 1s;
+z-index: 50;
+}
+*/
+
+.md-tab {
+  font-weight: normal;
+}
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+*/

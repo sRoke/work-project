@@ -1,0 +1,74 @@
+<div flex="100" layout="column" class="ks-cashFlowMain">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>收银流水</h1>
+        <!--ui-sref="main.brandApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="search" layout="row" layout-align="center center">
+        <div class="input-wrap" flex layout="row">
+            <input type="text" ng-model="keyWord" placeholder="请输入手机号或单号" flex>
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left" ng-click="pageList()"></md-icon>
+        </div>
+        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon>-->
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+        <div  style="width: 100%;height: 100%" class="main-detail">
+
+            <!--明细-->
+            <div  class="detail-count" ng-repeat="list in lists track by $index">
+                <!--日期-->
+                <div class="detail-date" layout="row" layout-align="space-between center" ng-if="list.orderCreateDate != lists[$index-1].orderCreateDate">
+                    <div ng-if="list.orderCreateDate != today && list.orderCreateDate != yesterday">{{list.orderCreateDate}}</div>
+                    <div ng-if="list.orderCreateDate == today">今天</div>
+                    <div ng-if="list.orderCreateDate == yesterday">昨天</div>
+                    <!--<div>收入￥{{44323.41 | num:2}}</div>-->
+                </div>
+                <div class="tab-choose" layout="row" layout-align="space-between center" ui-sref="main.brandApp.cashFlow.cashFlowDetail({id:list.id})">
+                    <div class="tab-left" layout="row" layout-align="center start">
+                        <div class="tab-word tab-alipay" ng-if="list.status == 'FINISHED' && list.payType == 'ALI'">
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-alipay"></md-icon>
+                        </div>
+                        <div class="tab-word tab-UNPAYED" ng-if="list.status == 'UNPAYED'">
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-clock-circle" ></md-icon>
+                        </div>
+                        <div class="tab-word tab-wechat" ng-if="list.status == 'FINISHED' && list.payType == 'WX'">
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-weixin" ></md-icon>
+                        </div>
+                        <div class="tab-detail" layout="column">
+                            <div class="tab-detail-name" ng-if="list.status == 'UNPAYED'">未支付订单</div>
+                            <div class="tab-detail-name" ng-if="list.status !== 'UNPAYED'&& list.status !== 'FINISHED'">其他状态</div>
+                            <div class="tab-detail-name" ng-if="list.status == 'FINISHED'">
+                                <span ng-if="list.payType == 'WX'">微信收款</span>
+                                <span ng-if="list.payType == 'ALI'">支付宝收款</span>
+                            </div>
+
+
+
+                            <div class="tab-detail-time" >{{list.orderCreateTime}}</div>
+                        </div>
+                    </div>
+                    <div  class="tab-right" layout="column" layout-align="start end">
+                        <div class="Positive" ng-if="list.status == 'UNPAYED'" style="color: #ED5F5B;">￥{{list.paymentPrice/100|num:2}}</div>
+                        <div class="Positive" ng-if="list.status == 'FINISHED'" style="">￥{{list.paymentPrice/100|num:2}}</div>
+                        <div class="unpay" ng-if="list.status == 'UNPAYED'">等待支付</div>
+                    </div>
+                </div>
+            </div>
+            <div class="noItem" ng-if="lists.length == 0" layout="column" layout-align="center center">
+                <div>
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-script"></md-icon>
+                </div>
+                <div style="margin-top: 16px;margin-bottom: 40px"> &nbsp;暂无流水 ~</div>
+            </div>
+            <div class="more" ng-if="data.totalPages > curpage+1 " ng-click="pageList(curpage+1)">-点击加载更多-</div>
+
+
+        </div>
+    </md-content>
+</div>

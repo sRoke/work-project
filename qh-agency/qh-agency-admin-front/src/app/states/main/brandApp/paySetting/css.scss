@@ -1,0 +1,104 @@
+//
+.ks-paySetting {
+  height:100%;
+  .main{
+    height:100%;
+    background: #fff;
+    margin:10px 20px;
+    .title{
+      border-bottom: 1px solid #d5d5d5;
+      height: 50px;
+      line-height: 50px;
+      li{
+        margin:0 30px;
+        padding:0 4px;
+        list-style: none;
+        border:none;
+        outline: none;
+      }
+      .checked{
+        outline: none;
+        border-bottom: 2px solid #ba9f6e;
+      }
+    }
+    //收银
+    .wxPay{
+      padding:0px;
+      margin-bottom:40px;
+      .content{
+        li{
+          width:180px;
+          text-align: right;
+          margin:20px 10px 0 0;
+          height:30px;
+          line-height:30px;
+          color: #333;
+          font-size:14px;
+        }
+        .update{
+          margin-top:20px;
+          input{
+            outline: none;
+            padding-left:10px;
+            background: #fff;
+            height:30px;
+            min-width:400px;
+            border:1px solid #d5d5d5;
+            -webkit-border-radius:4px;
+            -moz-border-radius:4px;
+            border-radius:4px;
+          }
+          button{
+            outline: none;
+            height:30px;
+            line-height: 30px;
+            margin-right:10px;
+            padding:0 20px;
+            border:1px solid #d5d5d5;
+            background: #fff;
+            -webkit-border-radius:4px;
+            -moz-border-radius:4px;
+            border-radius:4px;
+          }
+          .btn1{
+            background: #00aaee;
+            border:1px solid #00aaee;
+            color: #fff;
+            margin-top:40px;
+          }
+          span{
+            margin:5px 0;
+            a{
+              text-decoration: none;
+              color: #0ae;
+            }
+          }
+        //  上传文件按钮样式美化
+          .fileBox{
+            position: relative;
+            input{
+              position: absolute;
+              top:0;
+              left:0;
+              opacity: 0;
+            }
+            .file1{
+              background: #eee;
+              border:1px solid #eee;
+              padding:5px;
+            }
+            .file2{
+              margin-left:10px;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+
+
+}
+
+

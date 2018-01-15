@@ -1,0 +1,15 @@
+rootProject.name = 'qh-shop'
+
+include 'qh-shop-domain'
+include 'qh-shop-core'
+include 'qh-shop-api'
+include 'qh-shop-service'
+include 'qh-shop-server'
+
+include 'qh-shop-msg-api'
+include 'qh-shop-msg-impl'
+include 'qh-shop-client'
+
+include 'qh-shop-wap-front'
+include 'qh-shop-admin-front'
+include 'qh-shop-mobile-front'

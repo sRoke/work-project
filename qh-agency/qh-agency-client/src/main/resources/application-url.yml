@@ -1,0 +1,7 @@
+devPort: 16000
+
+a: aab
+
+agencyUt:
+    basePath : https://kingsilk.net/agency/rs/local/${devPort}/api
+

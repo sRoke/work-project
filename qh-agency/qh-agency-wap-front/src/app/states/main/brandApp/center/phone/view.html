@@ -1,0 +1,40 @@
+<div flex layout="column" class="ks-center-phone">
+    <!--<md-toolbar class="ks-header">-->
+        <!--<div layout="row" class="ks-header-divWrap">-->
+            <!--<div class="divTop" flex class>-->
+                <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+                <!--ng-click="fallbackPage()"></md-icon>-->
+                <!--<span class="regSpan">设置</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-toolbar>-->
+
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>验证手机号</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+    <md-divider></md-divider>
+
+    <md-content flex layout="column" layout-align="start center" class="main">
+        <div layout="row" layout-align="space-between center" class="phone-list">
+            <input type="tel" placeholder="手机号码" class="phone-num" ng-model="checkPhone" ng-blur="formatPhone(checkPhone)" readonly>
+        </div>
+        <div class="center-tab-line"><div class="line-bottom"></div></div>
+        <!--<md-divider class="line"></md-divider>-->
+        <div layout="row" layout-align="space-between center" class="phone-list">
+            <input type="tel" placeholder="验证码" class=" phone-code" flex ng-model="vcCode" ng-change="checkCode(vcCode)">
+            <button class="phone-btn" ng-click="getVCcode()">{{gitCodeTime}}</button>
+        </div>
+        <div class="center-tab-line"><div class="line-bottom"></div></div>
+        <!--<md-divider class="line"></md-divider>-->
+        <div layout="row" class="btn-list">
+            <button class="btn-next" ng-click="next();" ng-class="{'btn-nextColor':!second}" ng-disabled="second">下一步</button>
+        </div>
+    </md-content>
+</div>
+

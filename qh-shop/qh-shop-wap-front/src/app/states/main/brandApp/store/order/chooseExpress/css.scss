@@ -1,0 +1,59 @@
+@import "../../../../../../scss/ksMain";
+@import "../../../../../../scss/index";
+.ks-chooseExpress {
+  background: #ffffff;
+  md-content {
+    width: 100%;
+    .tab{
+      padding: 0 15px;
+      height: 59px;
+      background: #ffffff;
+      .left{
+        font-size: 16px;
+        color: #333333;
+        margin-right: 27px;
+        min-width: 65px;
+      }
+      .con-input{
+        .ts{
+          font-size: 16px;
+          color: #999999;
+        }
+        .express{
+          font-size: 16px;
+          color: #333333;
+        }
+        input{
+          font-size: 16px;
+          width: 100%;
+          height: 100%;
+          border: none;
+
+        }
+        input::-moz-placeholder{
+          color: #999999;
+        }
+        input:-ms-input-placeholder{
+          color: #999999;
+        }
+        input::-webkit-input-placeholder{
+          color: #999999;
+        }
+      }
+    }
+    .foot-btn{
+      margin-top: 83px;
+      padding: 0 15px;
+      .btn{
+        width: 100%;
+        height: 44px;
+        background: #e53467;
+        border-radius: 5px;
+        color: #FFffff;
+        font-size: 18px;
+        text-align: center;
+        line-height: 44px;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+// angular material
+//@import "angular-material/angular-material";
+// Core variables and mixins
+@import "variables";
+@import "mixins";
+// Reset and dependencies
+@import "bootstrap/normalize";
+@import "bootstrap/print";
+@import "angular-iscroll/iscroll";
+@import "common/ks-main";
+@import "common/ks-header";
+@import "common/ks-theme";
+@import "common/ks_footer_menu";
+@import "common/ks-dialog";
+@import "common/ks-common-dialog";
+//biz site
+@import "biz/ks-index";
+@import "biz/ks-lottery";

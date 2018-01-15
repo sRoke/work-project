@@ -1,0 +1,93 @@
+//弹窗提示
+.successCont {
+  box-sizing: border-box;
+  background: #333;
+  padding: 15px 0;
+  .sus {
+    text-align: center;
+    background: #333;
+    color: #fff;
+    .ks-icon {
+      margin-top: -2px;
+      font-size: 34px;
+      color: #fff;
+    }
+    p {
+      font-size: 15px;
+      color: #fff;
+      margin-top: 10px;
+      margin-bottom: -2px;
+      padding: 0 5px;
+    }
+  }
+
+}
+
+.chooseDialog {
+
+  md-dialog-container {
+    background: red;
+  }
+
+  .modal-content {
+    position: relative;
+    top: 200px;
+  }
+
+  .modal-content {
+    box-shadow: 0 0 0 #fff !important;
+  }
+
+  .md-card .md-actions, md-card md-card-actions {
+    margin: 14px;
+  }
+
+  .md-headline {
+    font-size: 16px;
+    font-family: inherit;
+    color: #101010;
+  }
+
+  md-card md-card-title {
+    padding: 15px 16px 10px 16px;
+  }
+
+  md-dialog.myDialog._md-transition-in {
+    min-width: 280px;
+    max-width: 310px;
+    box-sizing: border-box;
+    margin: 0 15px;
+    overflow: hidden;
+  }
+
+  .modal-dialog md-card-content {
+    padding: 0 20px 0px 20px !important;
+  }
+
+  .md-card .md-actions, md-card md-card-actions {
+    margin: 0px !important;
+  }
+
+  md-backdrop {
+    height: 100% !important;
+  }
+
+  .modal-dialog {
+    border-radius: 6px;
+    box-shadow: 0 0 0 #fff;
+    md-card-actions {
+      .btn {
+        font-size: 15px;
+        padding: 10px 12px;
+        border-radius: 4px;
+        outline: none;
+        color: #101010;
+        text-align: center;
+      }
+    }
+
+    md-card-content {
+      padding: 0;
+    }
+  }
+}

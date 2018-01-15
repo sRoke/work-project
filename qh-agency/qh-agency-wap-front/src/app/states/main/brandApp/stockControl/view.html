@@ -1,0 +1,152 @@
+<div flex="100" layout="column" class="ks-stockControl">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>库存</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="search" layout="row" layout-align="center end">
+        <div class="input-wrap" flex layout="row">
+            <input type="text" ng-model="keyWord" placeholder="请输入商品名称或编号" flex>
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left" ng-click="getItemList('search')"></md-icon>
+        </div>
+        <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-qrcode"></md-icon>-->
+    </div>
+    <!--<md-divider></md-divider>-->
+    <div class="tab" layout="row" layout-align="center center">
+       <div class="tabDiv" layout="row" layout-align="center center">
+           <div flex layout="row" layout-align="center center" class="tabs" ng-click="changeTab(1)">
+               <div class="tabNav" ng-class="{'active' : tab =='1'}" layout="row" layout-align="center center">仓库中</div>
+           </div>
+           <div flex layout="row" layout-align="center center" class="tabs" ng-click="changeTab(2)">
+               <div class="tabNav" ng-class="{'active' : tab =='2'}" layout="row" layout-align="center center">已售罄</div>
+           </div>
+           <div flex layout="row" layout-align="center center" class="tabs" ng-click="changeTab(3)">
+               <div class="tabNav" ng-class="{'active' : tab =='3'}" layout="row" layout-align="center center">紧缺的</div>
+           </div>
+           <div flex="30" layout="row" layout-align="space-between center" class="tabs" ng-click="changeTab(4)">
+               <div class="line"></div>
+               <div class="tabNav" ng-class="{'active' : tab =='4'}" layout="row" layout-align="center center">{{categoryName}}</div>
+               <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-menu-list"></md-icon>
+           </div>
+       </div>
+    </div>
+    <md-divider></md-divider>
+
+
+<!--
+    <div class="content-wrap" flex layout="column" style="overflow: hidden">
+
+    </div>
+    <md-divider style="z-index: -1;"></md-divider>-->
+
+    <md-content flex class="content-wrap" style="overflow-x: hidden;" layout="column">
+        <div flex class="itemWrap" layout="column" ng-show="!labelListShow && itemList.length>0"  layout-align="start stretch">
+            <!--<div style="height: 10px;background: #f5f5f5"></div>-->
+            <div class="item" ng-repeat="item in itemList"
+                 ui-sref="main.brandApp.stockItem({itemId:item.skuStoreId})">
+                <div layout="row" class="item-box" layout-align="start center">
+                    <div class="img-wrap">
+                        <img ng-src="{{item.skuInfo.imgs[0]}}" alt="">
+                    </div>
+                    <div class="item-detail" layout="column" flex>
+                        <div class="item-title" layout="row" layout-align="space-between center">
+                            <div flex class="title">{{item.skuInfo.title}}</div>
+                            <div class="num">¥{{ item.skuInfo.price/100|num:2}}</div>
+                        </div>
+                        <div class="item-desc">
+                            <div>
+                                <span class="num" ng-repeat="spec in item.skuInfo.specs" style="margin-right: 10px">{{spec.value}}</span>
+                            </div>
+                        </div>
+                        <div class="item-spec" layout="row">
+                            <div>库存： {{item.num}}</div>
+                            <!--<div style="margin-left: 20px;">销量： {{item.salesNum}}</div>-->
+                            <!--<div >零售价 <span class="num">{{ 200.12 | number : 2}}</span></div>-->
+                        </div>
+                    </div>
+                    <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                </div>
+                <div style="height: 5px;background: #f5f5f5"></div>
+            </div>
+
+            <div class="itemMore" ng-if="currentPage<pageData.totalPages" ng-click="getItemList('more')">加载更多</div>
+        </div>
+
+        <div flex class="noItem" ng-show="!labelListShow && itemList.length<=0" layout="column" layout-align="center center">
+            <div layout="column" layout-align="center center">
+                <div class="noItem-icon">
+                    <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-bag-o"></md-icon>
+                </div>
+                <div class="noItem-name">暂无商品 ~</div>
+            </div>
+
+        </div>
+
+        <!--<div flex class="noItem" ng-show="labelListShow && categorys.length<=0" style="z-index: 100;"-->
+             <!--layout="column" layout-align="center center">-->
+            <!--<div layout="column" layout-align="center center">-->
+                <!--<div class="noItem-icon"></div>-->
+                <!--<div class="noItem-name" style="z-index: 100">暂无类别 ~</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+        <div flex class="labelWrap" ng-class="{true: 'active', false: 'inactive'}[labelListShow]">
+
+            <div flex class="noItem" ng-show="categorys.length<=0" style="z-index: 100;"
+                 layout="column" layout-align="center center">
+                <div layout="column" layout-align="center center">
+                    <div class="noItem-icon"></div>
+                    <div class="noItem-name" style="z-index: 100">暂无类别 ~</div>
+                </div>
+            </div>
+
+
+
+            <div class="label-page" ng-show="categorys.length>0">
+                <div class="labels" layout="row" layout-align="center center" ng-repeat="category in categorys"
+                     ng-click="changeCategoryName(category)">{{category.name}}</div>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+
+
+
+    </md-content>
+
+    <!--<div style="height: 50px" ng-show="!labelListShow"></div>-->
+
+    <div class="footer" ng-show="!labelListShow" ui-sref="main.brandApp.purchase">
+        <md-divider class="bg-line"></md-divider>
+        <div layout="row" layout-align="center center" class ="footer-btn" >
+            立即采购
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

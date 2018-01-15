@@ -1,0 +1,127 @@
+<div class="ks-itemProp" >
+    <div class="panel" style="height: 90vh">
+        <div class="panel-heading"><h4>{{title}}</h4></div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="propForm" ng-submit="itemPropSubmit()" novalidate>
+                <input type="hidden" id="id" name="id" ng-model="id">
+                <!--//属性名称-->
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">属性名称
+                        <span style="color:red">*</span>
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="name" class="form-control input-sm" id="name" ng-model="attrData.name"
+                                ng-minlength="1" ng-change="attrData.showName=attrData.name" required
+                               ng-if="!flog">
+                        <label  class="control-label" ng-if="flog">{{attrData.name}}
+                        </label>
+                    </div>
+                </div>
+
+                <!--//显示名称-->
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">显示名称<span style="color:red">*</span></label>
+                    <div class="col-sm-9">
+                        <input type="text" name="showName" class="form-control input-sm" id="showName"
+                               ng-model="attrData.showName" ng-if="!flog"
+                               ng-minlength="1" required>
+                        <label  class="control-label" ng-if="flog">{{attrData.showName}}
+                        </label>
+                    </div>
+                </div>
+
+                <!--//属性值-->
+                <div class="form-group" ng-if="!flog">
+                <!--<div class="form-group" ng-show="attrData.type=='LIST'">-->
+                    <label for="values" class="col-sm-2 control-label">属性值 </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="values" class="form-control input-sm" ng-model="vm.valueGroup" ng-disabled="flog">
+                    </div>
+                    <a href="javascript:void(0)" title="添加" class="btn-default" ng-show = "!flog">
+                        <div style="margin-top: 9px">
+                            <md-icon class="wrapIcon" md-font-set="ks-admin-font" md-font-icon="ks-plus"
+                                     ng-click="addValueGroup()" title="新增"></md-icon>
+                        </div>
+
+                        <!--<span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addValueGroup()"></span>-->
+                    </a>
+                </div>
+
+                    <div class="form-group" ng-show="attrData.valueGroups.length>0">
+                        <label for="values" class="col-sm-2 control-label" ng-if="flog">属性值列表</label>
+                        <div class="col-sm-offset-2 col-sm-9">
+                            <div ng-repeat="valueGroup in attrData.valueGroups track by $index"
+                                 style="width: auto;display: inline-block;padding-right: 1em">
+                                <h4><label class='label label-default'>{{valueGroup.name}}
+                                    <span class='glyphicon glyphicon-remove' ng-click="delValueGroup($index)" ng-show = "!flog"></span>
+                                    <span class='glyphicon ' ng-show = "flog"></span>
+                                </label>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <label for="desp" class="col-sm-2 control-label">说明</label>
+
+                    <div class="col-sm-9">
+                    <textarea class="form-control" rows="3" ng-model="attrData.desp" id="desp" name="desp"
+                              ng-maxlength="100" ng-if="!flog"></textarea>
+                        <label  class="control-label" ng-if="flog">{{attrData.desp}}
+                        </label>
+                    </div>
+                </div>
+                <!-- %{--提交数据：{{attrData}}--}% -->
+                <md-divider></md-divider>
+
+
+
+
+                <div class="form-group">
+                    <label for="desp" class="col-sm-2 control-label"></label>
+                    <div class="bottom-btn col-sm-9" ng-if="source == null" style="margin-top:20px;">
+                        <button  type="button" ng-click="save()">
+                            新增</button>
+                        <a
+                           ng-click="fallbackPage()"
+                           role="button">返回</a>
+                    </div>
+                    <div class="bottom-btn col-sm-9" ng-if="source == 'editor'" style="margin-top:20px;">
+                        <button  type="button"  ng-click="save()">
+                            更新</button>
+                        <a
+                           ng-click="fallbackPage()"
+                           role="button">返回</a>
+                    </div>
+                    <div class="bottom-btn col-sm-9" ng-if="source == 'view'" style="margin-top:20px;">
+                        <a
+                           ng-click="fallbackPage()"
+                           role="button">返回</a>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--<div class="form-group">-->
+                    <!--<div class="col-sm-offset-2 col-sm-9" style="text-align: center; margin-left: 10%">-->
+                        <!--<button type="submit" class="btn ok" ng-disabled="!propForm.$valid||flog"  ng-click="save()">保存</button>-->
+                        <!--&nbsp;-->
+                        <!--<a class="btn cancle" ng-click="fallbackPage()" role="button">返回</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </form>
+        </div>
+    </div>
+</div>
+

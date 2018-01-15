@@ -1,0 +1,66 @@
+<div  ng-class="{'pay-main': lottery.number == 0 || data.isValid == false,'pay-main2':lottery.number != 0 && data.isValid != false } "
+style="position: absolute">
+    <!--抽奖主界面-->
+    <div flex="" layout="column" class="ks-lotteryMain " style="position: relative" ng-show="!WXfollow.flog && login">
+        <!--<div flex="" layout="column" class="ks-lotteryMain " style="position: relative" ng-show="!WXfollow.flog && login">-->
+        <div class="ks-lotteryMainBg">
+            <div class="bgTop">
+                <img src="assets/img/lottery/bg-top.png" width="100%">
+            </div>
+
+            <div class="bgTop">
+                <img src="assets/img/lottery/bg-top2.png" width="100%">
+            </div>
+
+            <div class="bgBottom">
+                <img src="assets/img/lottery/bg-bottom.png" width="100%">
+            </div>
+        </div>
+        <div style="height: 24%"></div>
+        <div class="number">
+            {{lottery.number}}
+        </div>
+        <div class="bgContent">
+            <img src="assets/img/lottery/bg-content.png" width="100%">
+            <div class="box1" id="box">
+                <div style="position: relative">
+                    <img src="assets/img/lottery/img1.1.png" class="img00" alt="" ng-show="flog">
+                    <img src="assets/img/lottery/img1.2.png" class="img00" alt="" ng-show="!flog">
+                    <!--<img src="assets/img/lottery/img2.0.png" class="img01" alt="" id="img01">-->
+                    <img ng-src="{{data.img}}" class="img01" alt="" id="img01">
+                    <img src="assets/img/lottery/img3.0.png" class="drawBtn2">
+                    <div class="turn" id="turnBtn" ng-click="turn($event)"
+                         ng-if="clickBtn"></div>
+                </div>
+            </div>
+        </div>
+        <div class="goWXfollow" ng-click="checkSubmit()" ng-if="receivePrizes && data.isValid == 'true'">
+            领取奖品
+        </div>
+        <div class="warning" ng-if="isUsed">该二维码已被使用!</div>
+
+
+        <div class="gameRules" ng-click="showGameRules(data)"></div>
+        <!--<md-button ng-click="dialogShow($event)">弹窗</md-button>-->
+    </div>
+    <!--微信扫二维码登录界面-->
+    <div flex="" layout="column" class="ks-lotteryWXfollow" style="position: relative"
+         ng-if="WXfollow.flog && login">
+        <img src="assets/img/lottery/QRcode-top.png" style="width: 100%" class="QRcode-top">
+        <img src="assets/img/lottery/QRcode3.png" style="width: 100%" class="QRcode">
+        <img src="assets/img/lottery/QRcode-bottom2.png" style="width: 100%" class="QRcode-bottom">
+        <!--<img src="assets/img/lottery/WXfollow.png" class="img01">-->
+    </div>
+    <!--error界面-->
+    <div flex="" layout="row" layout-align="center center" class="ks-lotteryError" style="position: relative"
+         ng-if="error">
+        <img src="assets/img/lottery/error.png" style="width: 100%" class="error-view" flex>
+    </div>
+    <!--遮罩-->
+    <div class="mask" ng-if="mask" style="position: absolute"   ng-click="maskHide()">
+        <div class="maskButton1">
+            <div class="shareKnow" md-font-icon="ks-arrow_left"></div>
+        </div>
+    </div>
+
+</div>

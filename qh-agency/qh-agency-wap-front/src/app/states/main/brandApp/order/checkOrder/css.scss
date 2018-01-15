@@ -1,0 +1,380 @@
+.ks-checkOrder {
+  .info-line {
+    width: 100%;
+    height: 10px;
+    min-height: 10px;
+    background: #F5F5F5;
+  }
+  .center-box {
+    padding: 0 15px;
+    background: #fff;
+    flex-shrink: 0;
+    .center-top {
+
+      height: 60px;
+      .center-left {
+        font-size: 16px;
+        color: #999999;
+        letter-spacing: -0.39px;
+        line-height: 16px;
+      }
+      .center-right {
+        font-size: 16px;
+        color: #333333;
+        letter-spacing: -0.39px;
+        line-height: 16px;
+      }
+
+    }
+    .textarea-wrap {
+      textarea {
+        margin-top: -5px;
+        border: none;
+        resize: none;
+      }
+      textarea::-webkit-input-placeholder { /* WebKit browsers */
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+        font-size: 14px;
+        color: #ccc;
+      }
+    }
+    .center-bottom {
+      background: #fff;
+      padding-top: 20px;
+      padding-bottom: 15px;
+      .center-left {
+        font-size: 16px;
+        color: #999999;
+        letter-spacing: -0.39px;
+        line-height: 16px;
+      }
+      .center-right {
+        font-size: 16px;
+        color: #333333;
+        letter-spacing: -0.39px;
+        line-height: 16px;
+      }
+      .center-address {
+        margin-left: 20px;
+        .commit {
+          font-size: 16px;
+          color: #333333;
+          letter-spacing: -0.39px;
+          line-height: 16px;
+        }
+      }
+      .ks-icon {
+        color: #C7CCCB;
+        font-size: 15px;
+        min-width: 15px;
+        min-height: 15px;
+        line-height: 15px;
+        margin: 0;
+      }
+    }
+    .center-item {
+      padding-top: 20px;
+      .item-title {
+        font-size: 16px;
+        color: #333333;
+        letter-spacing: -0.39px;
+        line-height: 16px;
+      }
+      .item-dis {
+        font-size: 14px;
+        color: #999999;
+        letter-spacing: -0.34px;
+        line-height: 16px;
+        margin: 20px 0;
+      }
+    }
+  }
+  .center-box-all{
+    height:60px;
+    flex-shrink: 0;
+    line-height:16px;
+    background:#fff;
+    padding:0 15px;
+  }
+  //备注信息
+  .center-box{
+    flex-shrink: 0;
+    .center-top {
+      height: 60px;
+      line-height: 60px;
+      color: #333333;
+      letter-spacing: -0.39px;
+      .center-left{
+        min-width: 70px;
+        height:60px;
+        line-height:60px;
+        font-size:16px;
+      }
+      .center-right{
+        height:60px;
+        line-height:16px;
+        padding:22px 0 22px 20px;
+        font-size:16px;
+       // padding-left:20px;
+        border:none;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+      }
+      input::-webkit-input-placeholder { /* WebKit browsers */
+        color: #c5c5c5;
+        border: none;
+        font-size: 16px;
+        font-weight: 300;
+      }
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: #c5c5c5;
+        border: none;
+        font-size: 16px;
+        font-weight: 300;
+      }
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: #c5c5c5;
+        border: none;
+        font-size: 16px;
+        font-weight: 300;
+      }
+      input:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: #c5c5c5;
+        border: none;
+        font-size: 16px;
+        font-weight: 300;
+      }
+    }
+  }
+  //余额支付
+  .center-balances{
+    padding:0 15px;
+    background: #fff;
+    .center-top {
+      height:82px;
+      .center-left {
+        height:82px;
+        .center-left-top{
+          font-size: 16px;
+          color: #333;
+          letter-spacing: -0.39px;
+          line-height:26px;
+          margin-top:16px;
+        }
+        .center-left-bottom{
+          font-size: 14px;
+          color: #999;
+          letter-spacing: -0.39px;
+          line-height:24px;
+        }
+      }
+      .center-right {
+        md-switch {
+          height: 100%;
+          line-height: 44px;
+          .md-bar{
+            background-color: #D5D5D5;
+          }
+        }
+        md-switch.md-checked .md-thumb {
+          background-color: #fff;
+        }
+        md-switch.md-checked .md-bar {
+          background-color: #44DB5E;
+        }
+      }
+
+    }
+  }
+  .footBtn {
+    height: 49px;
+    min-height: 49px;
+    background: #fff;
+    .left-wrap {
+      margin-left: 15px;
+      .pay-price {
+        line-height: 49px;
+        margin-right: 14px;
+        font-size: 14px;
+        color: #999999;
+        letter-spacing: -0.34px;
+      }
+    }
+    .goPay {
+      width: 125px;
+      height: 49px;
+      min-width: 125px;
+      line-height: 49px;
+      text-align: center;
+      background: #53D39A;
+      span {
+        font-size: 18px;
+        color: #FFFFFF;
+        letter-spacing: -0.43px;
+        line-height: 18px;
+      }
+    }
+  }
+}
+
+.noAddress {
+  width: 270px;
+  height: 104px;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  .dis {
+    height: 62px;
+    line-height: 62px;
+    font-size: 18px;
+    color: #101010;
+    text-align: center;
+  }
+  .line {
+    height: 44px;
+    -webkit-transform: scaleX(0.5);
+    -webkit-transform-origin: 0 0;
+    overflow: hidden;
+    border-left: 1px solid #d5d5d5;
+  }
+}
+
+.checkAddress {
+  width: 270px;
+  //height: 104px;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  .close-tck{
+    position: absolute;
+    color: #D5D5D5;
+    font-size:12px;
+    right:0;
+    width:20px;
+    height: 20px;
+    text-align: center;
+    top:-28px;
+  }
+  .dis {
+    height: 44px;
+    font-size: 18px;
+    color: #101010;
+    line-height: 44px;
+    text-align: center;
+  }
+  .address-dis {
+    color: #999;
+    font-size: 14px;
+    //padding-left: 15px;
+    padding: 18px 20px;
+  }
+  .line {
+    height: 44px;
+    -webkit-transform: scaleX(0.5);
+    -webkit-transform-origin: 0 0;
+    overflow: hidden;
+    border-left: 1px solid #d5d5d5;
+  }
+}
+.messageCode {
+  width: 286px;
+  //height: 104px;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  .close-tck{
+    position: absolute;
+    color: #D5D5D5;
+    font-size:12px;
+    right:0;
+    width:20px;
+    height: 20px;
+    text-align: center;
+    top:-28px;
+  }
+  .dis {
+    height: 44px;
+    font-size: 18px;
+    color: #101010;
+    line-height: 44px;
+    text-align: center;
+  }
+  .address-dis {
+    color: #999;
+    font-size: 14px;
+    //padding-left: 15px;
+    padding:18px 20px 20px;
+    .dis-name{
+      margin-bottom:18px;
+      line-height: 20px;
+      font-size: 16px;
+    }
+    .dis-code{
+      position: relative;
+      height:40px;
+      width:100%;
+      input::-webkit-input-placeholder { /* WebKit browsers */
+        color: #999;
+        border: none;
+        font-size:14px;
+        font-weight: 300;
+      }
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: #999;
+        border: none;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: #999;
+        border: none;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      input:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: #999;
+        border: none;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      input{
+        -webkit-appearance: none;   //去苹果内阴影
+        height:40px;
+        padding-left: 10px;
+        background: #f5f5f5;
+        border: 1px solid #d5d5d5;
+        border-radius: 6px;
+        color: #333;
+      }
+      button{
+        color: #53d39a;
+        width:98px;
+        height: 40px;
+        background: #fff;
+        border-top-right-radius:6px ;
+        border-bottom-right-radius: 6px;
+        border:1px solid #53d39a;
+        position: absolute;
+        right:0;
+      }
+    }
+  }
+  .line {
+    height: 44px;
+    -webkit-transform: scaleX(0.5);
+    -webkit-transform-origin: 0 0;
+    //overflow: hidden;
+    border-left: 1px solid #d5d5d5;
+  }
+}

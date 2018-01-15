@@ -1,0 +1,168 @@
+buildscript {
+    ext {
+    }
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE")
+        classpath("gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.17")
+        classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5")
+    }
+}
+
+
+allprojects {
+
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: 'project-report'
+
+
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url "http://mvn.kingsilk.xyz/content/repositories/snapshots/" }
+        mavenCentral()
+    }
+
+    idea {
+        module {
+            downloadJavadoc = false
+            downloadSources = true
+        }
+    }
+    eclipse {
+        classpath {
+            downloadSources = true
+        }
+    }
+    dependencyManagement {
+        resolutionStrategy {
+            cacheChangingModulesFor 0, 'seconds'
+        }
+        imports {
+
+//            //mavenBom("net.kingsilk:qh-clients-bom:${qhCientsBomVersion}")
+            mavenBom("net.kingsilk:qh-deps-bom:${qhDepsBomVersion}")
+//            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+            mavenBom("org.springframework.boot:spring-boot-starter-parent:${springBootVersion}")
+        }
+        dependencies {
+            dependency('log4j:log4j:1.2.17')
+            dependency('joda-time:joda-time:2.9.7')
+
+            dependency('com.querydsl:querydsl-apt:4.1.4')
+            dependency('com.querydsl:querydsl-collections:4.1.4')
+            dependency('com.querydsl:querydsl-core:4.1.4')
+            dependency('com.querydsl:querydsl-jpa:4.1.4')
+            dependency('com.querydsl:querydsl-mongodb:4.1.4')
+
+            dependency('com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.7')
+            dependency('com.fasterxml.jackson.module:jackson-module-parameter-names:2.8.7')
+            dependency('com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.8.7')
+            dependency('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.7')
+            dependency('org.apache.poi:poi:3.15')
+            dependency('org.apache.poi:poi-ooxml:3.15')
+
+
+            dependency('org.apache.curator:curator-framework:2.10.0')
+
+            //dependency('org.apache.httpcomponents:httpclient:4.5.3')
+
+
+            dependency('io.swagger:swagger-core:1.5.16')  // 1.5.12
+            dependency('io.swagger:swagger-jaxrs:1.5.16')  // 1.5.12
+            dependency('io.swagger:swagger-jersey2-jaxrs:1.5.16')  // 1.5.12
+            dependency('io.swagger:swagger-annotations:1.5.16')
+            dependency('org.webjars:swagger-ui:3.0.19')
+
+            dependency('io.reactivex.rxjava2:rxjava:2.0.7')
+
+
+            dependency('org.springframework.security.activity:spring-security-oauth2:2.0.13.RELEASE')
+            dependency('org.springframework.security:spring-security-jwt:1.0.7.RELEASE')
+
+            dependency('org.apache.curator:curator-recipes:2.9.1') {
+                exclude "log4j:log4j"
+            }
+            dependency("org.apache.commons:commons-lang3:3.5")
+
+
+            dependency('net.kingsilk:qh-oauth-client:1.2.1-SNAPSHOT')
+            dependency('net.kingsilk:qh-oauth-api:1.2.1-SNAPSHOT')
+
+            dependency('net.kingsilk:qh-platform-api:1.1.0-SNAPSHOT')
+            dependency('net.kingsilk:qh-platform-client:1.1.0-SNAPSHOT')
+
+            dependency('net.kingsilk:qh-platform-msg-impl:1.1.0-SNAPSHOT')
+            dependency('net.kingsilk:qh-platform-msg-api:1.1.0-SNAPSHOT')
+
+            dependency('net.kingsilk:wx4j-broker-client:0.2.1-SNAPSHOT')
+            dependency('net.kingsilk:wx4j-broker-api:0.2.1-SNAPSHOT')
+
+            dependency('net.kingsilk:wx4j-api:0.2.1-SNAPSHOT')
+            dependency('net.kingsilk:wx4j-client:0.2.1-SNAPSHOT')
+
+            dependency('net.kingsilk:wx4j-broker-msg-api:0.2.1-SNAPSHOT')
+
+        }
+    }
+
+}
+
+
+subprojects {
+
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+    apply plugin: "org.sonarqube"
+
+    sonarqube {
+
+        properties {
+            property "sonar.exclusions", "**/querydsl/java/**/Q*.java"
+        }
+    }
+
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+//                from components.java
+
+                pom.withXml {
+
+                    ((groovy.util.Node) asNode()).children().first() + {
+                        setResolveStrategy(Closure.DELEGATE_FIRST)
+                        parent {
+                            groupId 'org.springframework.boot'
+                            artifactId 'spring-boot-starter-parent'
+                            version "${springBootVersion}"
+                        }
+                        description 'A demonstration of maven POM customization'
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                credentials {
+                    username "admin"
+                    password "admin123"
+                }
+                if (project.version.endsWith('-SNAPSHOT')) {
+                    url "http://mvn.kingsilk.xyz/content/repositories/snapshots/"
+                } else {
+                    url "http://mvn.kingsilk.xyz/content/repositories/releases/"
+                }
+            }
+        }
+    }
+
+    dependencies {
+
+    }
+}

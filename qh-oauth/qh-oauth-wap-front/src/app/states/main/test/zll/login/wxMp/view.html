@@ -1,0 +1,25 @@
+wxMp
+
+<div flex="" layout="column">
+
+    <div layout="row">
+        <span style="width: 100px"> URL :</span>
+        <input type="text" ng-model="url">
+    </div>
+    <div>
+        <span style="width: 100px"> URL :</span>
+        <span flex>{{url}} </span>
+    </div>
+    <div>
+        <div><button ng-click="checkLogin()">检查是否已经登录</button></div>
+        <div><button ng-click="getUrl()">获取微信登录URL</button></div>
+        <div><button ng-click="goWx()">去微信授权</button></div>
+        <div><button ng-click="login()">登录</button></div>
+    </div>
+
+    <div>
+        以下测试手机号绑定
+        <div><button ng-click="phoneLogin()">手机号登录</button></div>
+        <div><button ng-click="bindSessionWxMp()">绑定SESSION中最后一次授权的微信号</button></div>
+    </div>
+</div>

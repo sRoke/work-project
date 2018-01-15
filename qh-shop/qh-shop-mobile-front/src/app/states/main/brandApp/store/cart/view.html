@@ -1,0 +1,129 @@
+<div flex="100" layout="column" class="ks-cart">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left" ng-show="fromUrl"></md-icon>
+        </div>
+        <h1 flex>购物车</h1>
+        <div class="right-button" flex="20">
+            <span ng-show="com[0]">
+                <span ng-click="goEdit()" ng-if="!edit">编辑</span>
+                <span ng-click="goSave()" ng-if="edit">完成</span>
+            </span>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="expireDate" ng-if="showTip">
+        <div class="expire" layout="row" layout-align="center center">
+            <div class="back-button" flex="20">
+            </div>
+            <div class="ts" flex layout="row" layout-align="center center">有未支付订单，&nbsp;<span
+                    ui-sref="main.brandApp.store.personalCenter.allOrder({status:'UNPAYED'})">去查看</span></div>
+            <div class="right" flex="20">
+                <md-icon class="ks-icon" ng-click="closeTs()" md-font-set="ks-icon" md-font-icon="ag-closed-o"
+                         style="font-size: 12px;text-align: center"></md-icon>
+            </div>
+        </div>
+    </div>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5" ng-show="com[0]">
+
+        <div class="cart-wrap" layout="column">
+            <div class="cart-item" ng-repeat="list in com">
+                <div class="item-wrap" layout="row">
+                    <div class="check-wrap">
+                        <md-icon class="ks-icon" style="color: #E53467;font-size: 18px;" md-font-set="ks-icon"
+                                 md-font-icon="ag-circle" ng-if="!list.check"
+                                 ng-click="changeCheck(list)"></md-icon>
+                        <md-icon class="ks-icon" style="color: #E53467;font-size: 18px;" md-font-set="ks-icon"
+                                 md-font-icon="ag-complete" ng-if="list.check" ng-click="changeCheck(list)"></md-icon>
+                    </div>
+                    <div class="img-wrap">
+                        <img ng-src="{{list.sku.imgs[0]}}" alt="">
+                    </div>
+                    <div flex class="item-dis" layout="column" layout-align="space-between start">
+                        <div style="width: 100%">
+                            <div class="dis-title">
+                                {{list.sku.title}}
+                            </div>
+                            <div class="dis-sku">
+                                <span ng-repeat="spec in list.sku.specs"> {{spec}}</span>
+                            </div>
+                        </div>
+                        <div class="dis-num" layout="row" layout-align="space-between center">
+                            <div class="price">
+                                ￥{{list.sku.price/100|num:2}}
+                            </div>
+                            <!--<div layout="row" class="count" ng-show="edit">
+                                <div class="minus-cart" ng-mobile-click="skuNumCount(-1,list)" layout=""
+                                     layout-align="center center">
+                                    <md-icon class="iconBtn icon-left" md-font-set="ks-icon"
+                                             md-font-icon="ag-minus"></md-icon>
+                                </div>
+                                <input class="cart-num" type="tel" ng-model="list.num" layout=""
+                                       layout-align="center center"/>
+                                <div class="add-cart" ng-mobile-click=" skuNumCount(1,list)" layout=""
+                                     layout-align="center center"
+                                >
+                                    <md-icon class="iconBtn icon-right" md-font-set="ks-icon"
+                                             md-font-icon="ag-plus"></md-icon>
+                                </div>
+                            </div>-->
+
+                            <div layout="row" class="count"  ng-show="edit">
+                                <div class="minus" ng-mobile-click="skuNumCount(-1,list)" layout=""
+                                     layout-align="center center">
+                                    <md-icon class="iconBtn" md-font-set="ks-icon" md-font-icon="ag-minus"></md-icon>
+                                </div>
+                                <input type="number" ng-model="list.num" ng-blur="vmd.skuNumBlur(vmd.skuNum,vmd.checkedSku)"
+                                       layout="" layout-align="center center"/>
+                                <div class="add" ng-mobile-click=" skuNumCount(1,list)" layout=""
+                                     layout-align="center center">
+                                    <md-icon class="iconBtn" md-font-set="ks-icon" md-font-icon="ag-plus"></md-icon>
+                                </div>
+                            </div>
+
+                            <div ng-show="!edit">
+                                <span>{{list.num}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <md-divider ng-if="!$last"></md-divider>
+            </div>
+        </div>
+    </md-content>
+
+
+    <md-content flex layout="column" class="empty"
+                ng-if="!com[0]"
+                style="overflow-x: hidden;    background: #f5f5f5;">
+        <!--<div class="top-line"></div>-->
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-manage-buy" class="icon"></md-icon>
+            <div class="txt">暂无商品～</div>
+        </div>
+    </md-content>
+
+    <md-divider style="border-color: #E53467" ng-show="com[0]"></md-divider>
+    <div class="fotter-btn" layout="row" layout-align="space-between center" ng-show="com[0]">
+        <div class="leftBtn" flex layout="row" layout-align="space-between center">
+            <div class="check-wrap" layout="row">
+                <md-icon class="ks-icon" style="color: #E53467;font-size: 18px;" md-font-set="ks-icon"
+                         md-font-icon="ag-circle" ng-if="!allCheck"
+                         ng-click="changeAllCheck()"></md-icon>
+                <md-icon class="ks-icon" style="color: #E53467;font-size: 18px;" md-font-set="ks-icon"
+                         md-font-icon="ag-complete" ng-if="allCheck" ng-click="changeAllCheck()"></md-icon>
+                <div>全选</div>
+            </div>
+            <div class="total-price">
+                合计:{{totalPrice/100|num:2}}
+            </div>
+        </div>
+        <div class="btn" ng-show="!edit" ng-click="submit()">结算</div>
+        <div class="btn" ng-show="edit" ng-click="deleteItem()">删除</div>
+
+    </div>
+
+
+    <div ks-footer-menu ng-show="!fromUrl" cur="'manage-buy'"></div>
+
+</div>

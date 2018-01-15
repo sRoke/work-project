@@ -1,0 +1,133 @@
+<div flex="100" layout="column" class="ks-orderCenter">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex ng-click="checkTabs()">
+            <div>{{pageTitle}}
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-down" ng-show="!checkTabsShow"></md-icon>
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-up" ng-show="checkTabsShow"></md-icon>
+            </div>
+        </h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="tabList" layout="column" ng-show="checkTabsShow">
+        <div style="width: 100%;background: #f5f5f5">
+            <md-divider style=""></md-divider>
+            <div class="list" ng-click="checkTabs('全部')" ng-class= "{'activeList': pageTitle == '全部'}">全部</div>
+            <!--<md-divider style="border-color: #d5d5d5"></md-divider>-->
+            <div class="list" ng-click="checkTabs('待付款')" ng-class="{'activeList': pageTitle == '待付款'}">待付款</div>
+            <div class="list" ng-click="checkTabs('待发货')" ng-class="{'activeList': pageTitle == '待发货'}">待发货</div>
+            <div class="list" ng-click="checkTabs('待收货')" ng-class="{'activeList': pageTitle == '待收货'}">待收货</div>
+            <div class="list" ng-click="checkTabs('已完成')" ng-class="{'activeList': pageTitle == '已完成'}">已完成</div>
+        </div>
+        <div flex style="width: 100%" ng-click="checkTabs()"></div>
+    </div>
+
+
+    <div class="search" layout="row">
+        <div class="search-input" flex layout="row">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-search-left"></md-icon>
+            </div>
+            <div class="con" flex>
+                <input type="text" ng-model="keyWord" placeholder="搜索订单号" ng-focus="focus(true)" ng-blur="focus(false)">
+            </div>
+            <div class="right" ng-show="searchShow" ng-click="clearKeyWord()">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-closed-o"></md-icon>
+            </div>
+        </div>
+        <div class="search-btn" ng-show="searchShow" ng-click="search()">搜索</div>
+    </div>
+    <md-divider></md-divider>
+
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5" ng-if="orderList.content.length>0">
+        <div class="orderTab" ng-repeat="order in orderList.content">
+            <div class="order-title" layout="row" layout-align="space-between center"
+                 ui-sref="main.brandApp.store.order.orderDetail({id:order.id})" >
+                <div class="left">订单号:{{order.seq}}</div>
+                <div class="right">{{order.statusDesp}}</div>
+            </div>
+            <md-divider></md-divider>
+            <div class="itemList" ng-repeat="item in order.orderItems" ui-sref="main.brandApp.store.order.orderDetail({id:order.id})">
+                <div class="item" layout="row">
+                    <div class="item-img">
+                        <img ng-src="{{item.skuImg[0]}}">
+                    </div>
+                    <div flex class="item-desc" layout="column" layout-align="space-between start">
+                        <div class="item-name">{{item.itemTitle}}</div>
+                        <div class="item-desp">
+                            <span ng-repeat="spec in item.specInfos">{{spec.propValue}}&nbsp;</span>
+                            <!--{{item.specInfos[0].propValue}}-->
+                        </div>
+                    </div>
+                    <div class="item-price" layout="column">
+                        <div class="nowPrice">{{item.realPayPrice/100 | num:2}}</div>
+                        <div class="oldPrice" ng-if="item.realPayPrice<item.labelPrice">{{item.labelPrice/100 | num:2}}</div>
+                        <div class="num">X {{item.num}}</div>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="item-total" ui-sref="main.brandApp.store.order.orderDetail({id:order.id})">
+                共计{{order.total}}件商品&nbsp;&nbsp;&nbsp;&nbsp;合计: ￥{{order.paymentPrice/100 | num:2}}
+            </div>
+
+            <div ng-if="order.status == 'UNCONFIRMED'">
+                <md-divider></md-divider>
+                <div class="itemBtn" layout="row" layout-align="end center">
+                    <div class="btn btn-style1" ng-click="confirmOrder(order.id,false)">拒绝</div>
+                    <div class="btn btn-style2" ng-click="confirmOrder(order.id,true)">确认</div>
+                </div>
+            </div>
+
+
+            <div ng-if="order.status == 'UNPAYED'" ui-sref="main.brandApp.store.order.orderDetail({id:order.id})">
+                <md-divider></md-divider>
+                <div class="itemBtn" layout="row" layout-align="end center">
+                    <div class="btn btn-style2">去改价</div>
+                </div>
+            </div>
+
+            <div ng-if="order.status == 'UNSHIPPED'" ui-sref="main.brandApp.store.order.orderDetail({id:order.id})">
+                <md-divider></md-divider>
+                <div class="itemBtn" layout="row" layout-align="end center">
+                    <div class="btn btn-style2">去发货</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--分页-->
+        <div layout="row" layout-align="center center" style="padding: 10px;min-height: 44px;background: #f5f5f5;" ng-show="orderList.totalPages>1">
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;" ng-click="pageChange(currpage+1)" ng-show="orderList.number<orderList.totalPages-1">
+                点击加载更多...
+            </md-button>
+            <md-button  flex style="color: #999;box-shadow: 0 0 0 0 #fff;background: #f5f5f5;"
+                        ng-show="orderList.number>=orderList.totalPages-1">
+                没有更多订单了
+            </md-button>
+        </div>
+
+    </md-content>
+
+
+    <md-content flex layout="column" class="empty"
+                ng-if="orderList.content.length<=0"
+                style="overflow-x: hidden;    background: #f5f5f5;">
+        <!--<div class="top-line"></div>-->
+        <div flex layout="column" layout-align="center center">
+            <md-icon md-font-set="ks-icon" md-font-icon="ag-order-manage" class="icon"></md-icon>
+            <div class="txt" style="margin-bottom: 100px">暂无订单～</div>
+        </div>
+    </md-content>
+
+
+</div>
+
+
+
+
+

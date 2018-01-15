@@ -1,0 +1,206 @@
+<div flex layout="column" class="ks-myVote" id="ks-myVote" ng-show="pageViewShow">
+    <md-content flex>
+        <div class="content-top-img">
+            <!--<img src="http://f.hiphotos.baidu.com/image/pic/item/0824ab18972bd40798becce071899e510fb309b5.jpg"-->
+                 <!--width="100%">-->
+            <img ng-src="{{votdata.primaryImgUrl}}" width="100%">
+        </div>
+        <div class="content-time" layout="column" layout-align="start center">
+            <!--<div class="content-time-1">投票时间</div>-->
+            <!--<div class="content-time-2">还剩2天22小时7分34秒</div>-->
+
+
+
+            <div class="content-time-1" ng-if="voteStatus === -1">活动时间</div>
+            <div class="content-time-1" ng-if="voteStatus === 0">投票时间</div>
+            <div class="content-time-1" ng-if="voteStatus === 1">活动已结束</div>
+            <div class="content-time-2" ng-if="voteStatus === -1 || voteStatus === 1">{{votdata.signUpStartTime | date:'yyyy-MM-dd HH:mm' }} ~ {{votdata.voteEndTime | date:'yyyy-MM-dd HH:mm' }}</div>
+            <div class="content-time-2" ng-if="voteStatus === 0">还剩{{lastDays}}天{{lastHours}}小时{{lastMinutes}}分{{lastSeconds}}秒</div>
+
+
+
+
+
+
+        </div>
+        <div class="content-tab" layout="column" layout-align="center center">
+            <div class="info-name"><span style="margin-right: 10px">{{data.seq}}号</span>{{data.name}}</div>
+            <div class="info-num" layout="row">
+                <div layout="row" layout-align="space-between center" class="con-num">
+                    <div>{{data.totalVotes}}票,第{{data.ranking}}名</div>
+                    <div ng-if="data.lessVoteNum || data.lessVoteNum === 0">与上一名差:{{data.lessVoteNum === 0?1:data.lessVoteNum}}票</div>
+                </div>
+            </div>
+            <div class="info-desc" layout="row">
+                <div class="desc-con">
+                    <div class="info-desc-box">{{data.slogan}}</div>
+                    <div class="info-desc-jiao"></div>
+                </div>
+
+            </div>
+            <div class="info-img">
+                <!--<img src="http://f.hiphotos.baidu.com/image/pic/item/0824ab18972bd40798becce071899e510fb309b5.jpg"-->
+                     <!--width="100%">-->
+
+                <img ng-src="{{data.worksImgUrl}}" width="100%">
+            </div>
+            <div class="info-votNum">
+                <span style="color: #FF6F6F">*</span>活动期间：每人每日有{{votdata.maxVotePerDay}}票，每日可为每人投{{votdata.maxTicketPerDay}}票
+            </div>
+            <div class="info-share">
+                <div class="info-share-btn" ng-click="voting()" ng-show="data.status == 'NORMAL' && voteStatus !==1">
+                   {{btnFont}}
+                </div>
+
+                <div class="info-share-btn2" ng-show="data.status !== 'NORMAL' && voteStatus !==1">
+                    {{btnFont}}
+                </div>
+                <div class="info-share-btn2" ng-show="voteStatus ==1">
+                    活动已结束
+                </div>
+            </div>
+            <div class="info-goto" layout="row" layout-align="center center">
+                <div layout="row" layout-align="center center">
+                    <div class="info-goto-btn" ng-click="fallBack('main.voteApp.vote.votHome')">返回活动首页</div>
+                    <div class="line"></div>
+                    <div class="info-goto-btn" ng-click="friendsList()">查看亲友团</div>
+                    <div class="line"></div>
+                    <div class="info-goto-btn" ng-click="popularityList()">查看人气榜</div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="content-tpl">
+            <div ng-include="tplUrlDesp" ng-if="tplUrlDesp"></div>
+        </div>
+    </md-content>
+
+
+
+
+    <!--遮罩-->
+    <div class="mask" ng-if="mask" style="position: absolute"   ng-click="maskHide()">
+        <div class="maskButton1">
+            <!--<div class="shareKnow" md-font-icon="ks-arrow_left"></div>-->
+        </div>
+    </div>
+</div>
+
+<!--        亲友团弹窗                -->
+<script type="text/ng-template" id="frends.html">
+    <md-dialog aria-label="" class="frends-list-dialog" style="overflow: hidden;">
+        <md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o"
+                 ng-click="vmd.cancel()"></md-icon>
+        <div class="dis">亲友团</div>
+        <md-content style="border-radius: 8px">
+            <div class="address-dis" layout="column" ng-if="vmd.friendList.content && vmd.friendList.content.length > 0">
+                <div class="dis-list" layout="row" layout-align="start center" ng-repeat="list in vmd.friendList.content">
+                    <div flex layout="row" layout-align="start center" class="list-left">
+                        <img ng-src="{{list.wxHeaderImg}}" ng-if="list.wxHeaderImg">
+                        <img src="111.png" ng-if="!list.wxHeaderImg">
+                        <span>{{list.name}}</span>
+                    </div>
+                    <div class="list-right"><span style="color:#FF6F6F ">{{list.voteNum}}</span>票</div>
+                </div>
+                <div class="more" layout="row" layout-align="center center" ng-click="vmd.getMore()" ng-if="vmd.friendList.number+1 < vmd.friendList.totalPages">
+                    加载更多...
+                </div>
+            </div>
+            <div ng-if="vmd.friendList.content.length == 0" class="noList" layout="row" layout-align="center start">
+                <div class="noList-con" layout="column" layout-align="start center">
+                    <div class="noList-con-icon">
+                        <img src="noItem.png">
+                    </div>
+                    <div class="noList-con-font">
+                        空空如也,快去拉票吧!
+                    </div>
+                </div>
+            </div>
+
+        </md-content>
+
+    </md-dialog>
+</script>
+<!--        人气榜弹窗                -->
+<script type="text/ng-template" id="popularity.html">
+    <md-dialog aria-label="" class="Popularity-list-dialog" style="overflow: hidden;">
+        <md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o"
+                 ng-click="vmd.cancel()"></md-icon>
+        <div class="dis">人气榜TOP50</div>
+
+        <div class="dis-title" layout="row">
+            <div flex="20">排名</div>
+            <div flex="25">编号</div>
+            <div flex="35">姓名</div>
+            <div flex="20">票数</div>
+        </div>
+
+        <md-content>
+            <div class="address-dis" layout="column" ng-if="vmd.topList.content && vmd.topList.content.length > 0">
+                <div class="dis-list" layout="row" layout-align="start center" ng-repeat="list in vmd.topList.content track by $index">
+                    <div flex="20">{{$index + 1}}</div>
+                    <div flex="25">{{list.seq}}</div>
+                    <div flex="35">{{list.name}}</div>
+                    <div flex="20">{{list.totalVotes}}</div>
+                </div>
+                <!--<div class="dis-list" layout="row" layout-align="center center">-->
+                    <!--加载更多...-->
+                <!--</div>-->
+            </div>
+
+            <div ng-if="vmd.topList.content.length == 0" class="noList" layout="row" layout-align="center start">
+                <div class="noList-con" layout="column" layout-align="start center">
+                    <div class="noList-con-icon">
+                        <img src="noItem.png">
+                    </div>
+                    <div class="noList-con-font">
+                        暂无数据!
+                    </div>
+                </div>
+            </div>
+
+        </md-content>
+
+    </md-dialog>
+</script>
+<!--        感谢弹窗                -->
+<script type="text/ng-template" id="thank.html">
+    <md-dialog aria-label="" class="thank-dialog" style="overflow: hidden;">
+        <md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o"
+                 ng-click="vmd.cancel()"></md-icon>
+        <div class="dialog-top" layout="row" layout-align="start center">
+            <!--<img src="http://f.hiphotos.baidu.com/image/pic/item/0824ab18972bd40798becce071899e510fb309b5.jpg">-->
+            <img ng-src="{{vmd.dataInfo.workerHeaderImgUrl}}" ng-if="vmd.dataInfo.workerHeaderImgUrl">
+            <img src="111.png" ng-if="!vmd.dataInfo.workerHeaderImgUrl">
+            <div class="top-name">{{vmd.dataInfo.nickName}}</div>
+        </div>
+        <div class="dialog-desc">{{vmd.dataInfo.voteNickName}}!&nbsp;感谢你宝贵的一票,可以拉上好友来支持我,么么哒!</div>
+
+        <div class="foot-btn" layout="row" layout-align="center center" style="padding: 0 10px">
+            <div flex="50"  class="dialog-btn" ng-click="vmd.dialoghide()"></div>
+            <div flex="50"  class="dialog-btn-2" ui-sref="main.voteApp.vote.votHome" ng-click="vmd.cancel()"></div>
+        </div>
+
+
+
+
+
+        <!--<div class="dialog-btn" ng-click="vmd.dialoghide()"></div>-->
+        <!--<div class="dialog-signUp" ui-sref="main.voteApp.vote.votHome" ng-click="vmd.cancel()">我也要参加</div>-->
+    </md-dialog>
+</script>
+<!--        二维码弹窗                -->
+<script type="text/ng-template" id="qrCode.html">
+    <md-dialog aria-label="" class="qrCode-dialog" style="overflow: initial;">
+        <md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o"
+                 ng-click="vmd.cancel()"></md-icon>
+        <div class="qrCode-dialog-con" layout="column" layout-align="center center">
+            <img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={{vmd.qrCode}}"
+                 width="150px" height="150px" alt="">
+            <div>长按二维码,关注公众号</div>
+            <div>为他投票!</div>
+        </div>
+
+    </md-dialog>
+</script>

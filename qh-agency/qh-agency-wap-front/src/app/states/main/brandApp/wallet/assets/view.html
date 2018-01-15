@@ -1,0 +1,119 @@
+<div flex layout="column" class="ks-wallet-assets">
+    <!--<md-toolbar class="ks-header">-->
+        <!--<div layout="row" class="ks-header-divWrap">-->
+            <!--<div class="divTop" flex class>-->
+                <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+                         <!--ng-click="fallbackPage()"></md-icon>-->
+                <!--<span class="regSpan">我的钱包</span>-->
+                <!--<span class="regSpan-right" ui-sref="main.brandApp.wallet.detail">明细</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-toolbar>-->
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()" >
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left" style="color: #fff;"></md-icon>
+        </div>
+        <h1 flex style="font-size: 18px;color: #fff;">我的资产</h1>
+        <div class="right-button" flex="20" style="color: #fff;">
+            <span class="regSpan-right" ui-sref="main.brandApp.wallet.walletDetail" style="font-size: 14px;">明细</span>
+        </div>
+    </div>
+    <md-content flex layout="column" layout-align="start center" class="main">
+        <div class="tab-top" layout="column" >
+            <div layout="column" layout-align="center center" style="margin-top: 37px;">
+                <div class="num">{{ count.totalBalance/100 | num : 2}}</div>
+                <div class="desc">资产总额(元)</div>
+            </div>
+        </div>
+        <div class="tab-center">
+            <div class="tab-count tab-shadow" layout="column">
+                <div layout="row" class="my-count">
+                    帐户金额(元)
+                </div>
+                <div layout="row" class="tx-content">
+                    <div class="tx-count" flex layout="column" >
+                        <div class="tx-word">可提现</div>
+                        <div class="tx-number">{{ count.balance/100 | num : 2}}</div>
+                    </div>
+                    <div class="line" layout="row"></div>
+                    <div class="tx-count" flex layout="column">
+                        <div class="tx-word">提现中</div>
+                        <div class="tx-number">{{ count.freezeBalance/100 | num : 2}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-count" layout="column" style="margin-top: 10px;">
+                <div layout="row" class="my-count">
+                    货款金额(元)
+                </div>
+                <div layout="row" class="tx-content">
+                    <div class="tx-count" flex layout="column">
+                        <div class="tx-word">可用货款</div>
+                        <div class="tx-number">{{ count.noCashBalance/100 | num : 2}}</div>
+                    </div>
+                    <div class="line" layout="row"></div>
+                    <div class="tx-count" flex layout="column">
+                        <div class="tx-word">已欠货款</div>
+                        <div class="tx-number">{{ count.owedBalance/100 | num : 2}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!--<div class="tab-choose" layout="row" layout-align="space-between center">-->
+            <!--<label>采购</label>-->
+            <!--<div ui-sref="main.brandApp.wallet.detail({status:'采购'})" layout="row" layout-align="center center" >-->
+                <!--<div class="choosePhone">{{ data.Purchase | number : 2}}</div>-->
+                <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="center-tab-line"><div class="line"></div></div>-->
+        <!--<div class="tab-choose" layout="row" layout-align="space-between center">-->
+            <!--<label>退货</label>-->
+            <!--<div layout="row" layout-align="center center" ui-sref="main.brandApp.wallet.detail({status:'退货'})">-->
+                <!--<div class="choosePhone">{{ data.return | number : 2}}</div>-->
+                <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="center-tab-boldLine"></div>-->
+        <!--<div class="tab-choose" layout="row" layout-align="space-between center">-->
+            <!--<label>收银</label>-->
+            <!--<div layout="row" layout-align="center center">-->
+                <!--<div class="choosePhone">{{ 0 | number : 2}}</div>-->
+                <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="center-tab-line"><div class="line"></div></div>-->
+        <div layout="row" style="width: 100%;padding:0 15px;margin-top: 10px;">
+            <div class="tab-choose" layout="row" layout-align="space-between center" ui-sref="main.brandApp.wallet.withdraw">
+                <label>提现</label>
+                <div layout="row" layout-align="center center">
+                    <!--<div class="choosePhone">{{ 0 | number : 2}}</div>-->
+                    <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                </div>
+            </div>
+        </div>
+        <!--<div layout="row" style="width: 100%;padding:0 15px;margin-top: 10px;">-->
+            <!--<div class="tab-choose" layout="row" layout-align="space-between center" ui-sref="main.brandApp.wallet.entryRecord">-->
+                <!--<label>入账记录</label>-->
+                <!--<div layout="row" layout-align="center center">-->
+                    <!--&lt;!&ndash;<div class="choosePhone">{{ 0 | number : 2}}</div>&ndash;&gt;-->
+                    <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="center-tab-line"><div class="line"></div></div>-->
+        <!--<div class="tab-choose" layout="row" layout-align="space-between center">-->
+            <!--<label>收银退款</label>-->
+            <!--<div layout="row" layout-align="center center">-->
+                <!--<div class="choosePhone">{{ 0 | number : 2}}</div>-->
+                <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            <!--</div>-->
+        <!--</div>-->
+    </md-content>
+</div>
+

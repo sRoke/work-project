@@ -1,0 +1,30 @@
+<!--<md-bottom-sheet class="md-grid ks-select-spec" layout="column" ng-cloak>-->
+<md-bottom-sheet class="ks-btSheet1" layout="column" ng-cloak>
+    <md-content  layout="column" layout-align="start center" stop-touch-event style="background: #FFffff">
+        <div style="width: 100%;padding: 10px 14%" layout="row" layout-align="space-around center">
+            <div flex layout="column" layout-align="center center" ng-click="vm.shareFiend()">
+                <md-icon md-font-set="ks-icon"
+                         style="width: 48px;height: 48px;border-radius: 100px;border: 1px solid #86c373;color:#86c373; font-size: 24px;text-align: center;line-height: 48px"
+                         md-font-icon="ag-wechat-o"></md-icon>
+                <div style="font-size: 14px;color: #555;">分享至微信</div>
+            </div>
+            <div flex layout="column" layout-align="center center" ng-click="vm.imgShow()">
+                <md-icon md-font-set="ks-icon"
+                         style="width: 48px;height: 48px;border-radius: 100px;border: 1px solid #e7a14c;color:#e7a14c;font-size: 20px;text-align: center;line-height: 48px"
+                         md-font-icon="ag-qr-code"></md-icon>
+                <div style="font-size: 14px;color: #555;">分享图片</div>
+            </div>
+        </div>
+    </md-content>
+    <div class="footer" style="background: #ffffff ;height: 49px" layout="row" layout-align="center center">
+        <!--<div class="btnLeft" flex ng-click="vm.cancel()" layout="column" layout-align="start center "-->
+             <!--style="background: #fff;">-->
+            <div style="width: 28px;height:28px;border: 1px solid #d5d5d5;border-radius: 14px;line-height: 24px;"
+                 ng-click="vm.cancel()"  >
+                <md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-closed-o"
+                         style="color: #d5d5d5;font-size: 12px;width: 26px;text-align: center"></md-icon>
+            </div>
+
+        <!--</div>-->
+    </div>
+</md-bottom-sheet>

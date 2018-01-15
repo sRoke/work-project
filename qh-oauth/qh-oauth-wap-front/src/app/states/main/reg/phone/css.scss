@@ -1,0 +1,174 @@
+.regPhone {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  .pwd-content {
+    //min-width: 300px;
+    //height: 300px;
+    margin: 0 30px;
+    border: 1px solid #00aaee;
+    border-radius: 4px;
+    overflow: hidden;
+    .content-top {
+      width: 100%;
+      height: 88px;
+      color: #00aaee;
+      font-weight: 600;
+      text-align: center;
+      line-height: 88px;
+      font-size: 30px;
+    }
+    .content-main {
+      width: 100%;
+      background: #f0f0f0;
+      .form {
+        margin: 30px 25px;
+        border: 1px solid #d5d5d5;
+        border-radius: 4px;
+        background: #FFFFFF;
+        overflow: hidden;
+        .line {
+          height: 1px;
+          background: #d5d5d5;
+        }
+        .phoneCode{
+          //margin: 0 10px;
+          height: 50px;
+          .left{
+            margin-left: 10px;
+            input{
+              width: 100%;
+              border: none;
+              box-shadow: none;
+              font-size: 16px;
+              outline: none;
+            }
+          }
+          .getPwd{
+            text-align: center;
+            color: #00abee;
+            outline: none;
+          }
+        }
+        .form-control-btn {
+          //width: 100%;
+          margin: 0 10px;
+          height: 50px;
+          border: none;
+          box-shadow: none;
+          font-size: 16px;
+          outline: none;
+        }
+        input:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0 1000px white inset;
+        }
+      }
+      .login-btn{
+        margin: 0 25px 30px;
+        height: 44px;
+        background: #00aaee;
+        border-radius: 4px;
+        color: #ffffff;
+        line-height: 44px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .sign-in{
+        color: #00aaee;
+        text-align: center;
+        margin: 10px 25px 20px;
+        font-size: 14px;
+      }
+    }
+  }
+
+
+  .regPhone-con{
+    width: 100%;
+    .con-ts{
+      width: 100%;
+      padding: 15px;
+      color: #999999;
+      font-size: 12px;
+      line-height: 12px;
+    }
+    .form {
+      margin: 0 15px 30px;
+      //border: 1px solid #d5d5d5;
+      //border-radius: 4px;
+      background: #FFFFFF;
+      overflow: hidden;
+      .line {
+        height: 1px;
+        background: #d5d5d5;
+        -webkit-transform: scaleY(0.5);
+        -webkit-transform-origin: 0 0;
+        overflow: hidden;
+      }
+      .phoneCode{
+        //margin: 0 10px;
+
+        .sLine{
+          width: 1px;
+          background: #d5d5d5;
+          height: 20px;
+          -webkit-transform: scaleX(0.5);
+          -webkit-transform-origin: 0 0;
+          overflow: hidden;
+        }
+
+        height: 50px;
+        .left{
+          margin-left: 10px;
+          height: 50px;
+          input{
+            width: 100%;
+            border: none;
+            box-shadow: none;
+            font-size: 16px;
+            height: 50px;
+            outline: none;
+            line-height: 50px;
+            -webkit-appearance  :none ;
+            -webkit-box-shadow:none;
+          }
+        }
+        .getPwd{
+          text-align: center;
+          color: #04BE02;
+          outline: none;
+        }
+      }
+      .form-control-btn {
+        //width: 100%;
+        margin: 0 10px;
+        height: 50px;
+        border: none;
+        box-shadow: none;
+        font-size: 16px;
+        outline: none;
+        -webkit-appearance  :none ;
+        -webkit-box-shadow:none;
+      }
+      input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px white inset;
+      }
+    }
+    .login-btn{
+      margin: 0 15px 30px;
+      height: 44px;
+      background: #04BE02;
+      border-radius: 8px;
+      color: #ffffff;
+      line-height: 44px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .sign-in{
+      color: #00aaee;
+      text-align: center;
+      margin: 10px 25px 20px;
+      font-size: 14px;
+    }
+  }
+}

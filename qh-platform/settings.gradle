@@ -1,0 +1,15 @@
+rootProject.name = 'qh-platform'
+
+include 'qh-platform-domain'
+include 'qh-platform-api'
+include 'qh-platform-client'
+include 'qh-platform-core'
+include 'qh-platform-service'
+include 'qh-platform-server'
+include 'qh-platform-server-mock'
+include 'qh-platform-admin-front'
+
+//includeBuild '../qh-common/qh-common-admin-stub'
+include 'qh-platform-msg-api'
+include 'qh-platform-msg-impl'
+

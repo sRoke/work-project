@@ -1,0 +1,103 @@
+<div class="ks-applicationList" layout="column">
+    <!--<div class="list-th" layout="row">-->
+        <!--<div flex="15" class="list-th-td">应用Logo</div>-->
+        <!--<div flex="15" class="list-th-td">应用名称</div>-->
+        <!--<div flex="15" class="list-th-td">应用简介</div>-->
+        <!--<div flex="15" class="list-th-td">试用周期</div>-->
+        <!--<div flex="10" class="list-th-td">服务价格</div>-->
+        <!--<div flex="15" class="list-th-td">生效周期</div>-->
+        <!--<div flex="15" class="list-th-td">操作</div>-->
+    <!--</div>-->
+    <!--<div class="list-tr" layout="row">-->
+        <!--<div flex="15" class="list-tr-td"></div>-->
+        <!--<div flex="15" class="list-tr-td"></div>-->
+        <!--<div flex="15" class="list-tr-td"></div>-->
+        <!--<div flex="15" class="list-tr-td"></div>-->
+        <!--<div flex="10" class="list-tr-td"></div>-->
+        <!--<div flex="15" class="list-tr-td"></div>-->
+        <!--<div flex="15" class="list-tr-td" layout="row" layout-align="center center">-->
+            <!--<div  class="btn-blue" layout="column">-->
+                <!--<span ui-sref="#">角色</span>-->
+            <!--</div>-->
+            <!--<div  class="btn-blue" layout="column">-->
+                <!--<span ui-sref="main.brandApp.application.informationEdit({id:153925})">编辑</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <!--div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <!--表头-->
+        <div class="common-list-detail-thead" layout="row">
+            <!--<div class="thead-show" flex="15" layout-align="center">-->
+            <!--<span>编号</span>-->
+            <!--</div>-->
+            <div class="thead-show" flex="15" layout-align="center">
+                <span>应用Logo</span>
+            </div>
+            <div class="thead-show" flex="15" layout-align="center">
+                <span>应用名称</span>
+            </div>
+            <!--<div class="thead-show" flex="15" layout-align="center">-->
+                <!--<span>应用简介</span>-->
+            <!--</div>-->
+            <div class="thead-show" flex="15" layout-align="center" style="overflow: hidden;">
+                <span>试用周期</span>
+            </div>
+            <div class="thead-show" flex="20" layout-align="center" style="overflow: hidden;">
+                <span>服务价格</span>
+            </div>
+            <div class="thead-show" flex="15" layout-align="center">
+                <span>生效周期</span>
+            </div>
+            <div class="thead-show" flex="20" layout-align="center">
+                <span>操作</span>
+            </div>
+        </div>
+        <!--表格详细内容-->
+        <div class="common-list-detail-tbody" layout="column">
+            <!--定义每列数据    父级用ng-repeat循环此行-->
+            <div class="common-list-detail-row" layout="row" ng-repeat="list in data.content">
+                <div class="thead-show" flex="15" layout-align="center">
+                    <img ng-src="{{list.logo}}" width="50px" height="50px">
+                </div>
+                <div class="thead-show" flex="15" layout-align="center">
+                    <span>{{list.appName}}</span>
+                </div>
+                <!--<div class="thead-show" flex="15" layout-align="center">-->
+                    <!--<span>{{list.desp}}</span>-->
+                <!--</div>-->
+                <div class="thead-show" flex="15" layout-align="center" style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{list.trialDuration}}</span>
+                </div>
+                <div class="thead-show" flex="20" layout-align="center" style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{list.price/100 | num:2}}</span>
+                </div>
+                <div class="thead-show" flex="15" layout-align="center" style="white-space: nowrap;overflow: hidden; text-overflow:ellipsis">
+                    <span>{{list.effectiveCycle}}</span>
+                </div>
+                <div class="thead-show" flex="20" layout-align="center">
+                    <span ui-sref="main.brandApp.application.appUserList({type:list.systemTypeEnum})" ng-if="list.systemTypeEnum !== 'QH_MALL' && STAFF_GROUP_R">角色</span>
+                    <span ui-sref="main.brandApp.application.informationEdit({id:list.id})" ng-if="APPLICATION_U">编辑</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分页-->
+    <div style="width: 100%; padding:0px 20px;">
+        <div style="width: 500px;min-width: 500px" uib-pagination total-items="data.totalElements"
+             ng-model="curPage"
+             ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="5" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+        <div style="float: right" class="pageSubnav">
+            <span>共{{data.totalElements}} 条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button>确定</md-button>
+        </div>
+    </div>
+</div>
+

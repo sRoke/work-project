@@ -1,0 +1,32 @@
+<md-dialog class="ks-lotteryList" style="min-width: 260px" layout="column">
+    <md-toolbar>
+        <div class="ks-lotteryRules-title">
+            <label ng-if="!vmd.flog"></label>
+            <label ng-if="vmd.flog" style="font-size: 16px;font-weight: bold;"></label>
+
+            <div class="ks-lotteryRules-cancel" ng-click="vmd.cancel()">
+                <!--+-->
+            </div>
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="ks-lotteryRules-main" style="min-height: 240px">
+        <div class="ks-lotteryRules-list" ng-if="!vmd.flog">
+            <p style="font-size: 14px;color: #e84e40;text-align: center;margin: 0; text-indent: 5px;">
+                所有信息不会公开,仅用于活动兑奖</p>
+            <div style="height: 30px"></div>
+            <input type="tel" placeholder="输入手机号" ng-change="vmd.checkPhone()" ng-model="vmd.user.phone"
+                   style="text-align:center;width: 100%;border: none;margin: 0;padding: 0;border-radius: 30px;font-size: 16px;color: #757575"/>
+            <md-button ng-click="bindPhone()"
+                       style="font-weight: bold;border-radius:30px;font-size: 16px;color: #541a82">提交
+            </md-button>
+        </div>
+        <div class="ks-lotteryRules-list" ng-if="vmd.flog" layout="column" layout-align="center center"
+             style="margin-top: -5px !important;">
+            <div style="height: 25px"></div>
+            <!--                 style="border: 1px solid #e8e8e8"-->
+            <img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={{vmd.qrCode}}"
+                 width="150px" height="150px" alt="">
+            <p style="font-size: 14px;color: #999;    margin-top: 5px;">长按识别二维码参与活动</p>
+        </div>
+    </md-dialog-content>
+</md-dialog>

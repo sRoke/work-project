@@ -1,0 +1,151 @@
+//
+@import "../../../../../scss/_ksMain.scss";
+.ks-address{
+  background: #f5f5f5;
+  .center-line{
+    flex-shrink: 0;
+    height:10px;
+    width:100%;
+    background: #f5f5f5;
+  }
+  .line{
+    width: 100%;
+    height: 1px;
+    -webkit-transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+    //overflow: hidden;
+    background: #CDD0CF;
+  }
+  //无收获地址列表时
+  .noAddress{
+    .img-con{
+      width:91px;
+      height: 68px;
+      margin-top: 72px;
+      img{
+        width:91px;
+        height: 68px;
+      }
+    }
+    .word-con{
+      line-height: 46px;
+      font-size: 16px;
+      color: #ccc;
+    }
+  }
+  //  主体
+  .main{
+    .center-line{
+      flex-shrink: 0;
+      height:10px;
+      width:100%;
+      background: #f5f5f5;
+    }
+    .center-con{
+      background: #fff;
+      flex-shrink: 0;
+      width:100%;
+      .center-tab{
+        flex-shrink: 0;
+        background: #fff;
+        .center-tab-top{
+          padding:0 15px;
+          .tab-top{
+            margin-top:8px;
+            line-height: 40px;
+            height:40px;
+            font-size: 16px;
+            color: #333;
+          }
+          .tab-address{
+            line-height: 28px;
+            word-break:break-all;
+            font-size: 14px;
+            color: #333;
+            margin-bottom:8px;
+          }
+          .tab-default{
+            height:50px;
+            .ks-icon{
+              font-size: 16px;
+              color: #666;
+            }
+            .ks-icon-check{
+              color: #E53467;
+            }
+            span{
+              font-size: 16px;
+              line-height: 24px;
+            }
+          }
+          .line{
+            width: 100%;
+            height: 1px;
+            -webkit-transform: scaleY(0.5);
+            -webkit-transform-origin: 0 0;
+            //overflow: hidden;
+            background: #CDD0CF;
+          }
+        }
+        .bg-line{
+          height:10px;
+          background: #f5f5f5;
+        }
+
+      }
+    }
+  }
+
+
+
+  //
+  .jqPhote{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    //background: rgba(0,0,0,.5);
+    #clipArea {
+      width: 100%;
+      height: 300px;
+    }
+    .choosePhote-top{
+      width: 100%;
+      background: rgba(0,0,0,.7);
+    }
+    .choosePhote-btn{
+      background: rgba(0,0,0,.7);
+      width: 100%;
+      #clipBtn {
+        width: 80px;
+        height: 32px;
+        background: #5BD6FF;
+        margin: 0 20px;
+        border-radius: 4px;
+        text-align: center;
+        line-height: 32px;
+        font-size: 17px;
+        color: #ffffff;
+      }
+      #cancel{
+        width: 80px;
+        height: 32px;
+        background: #fff;
+        margin: 0 20px;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 17px;
+        line-height: 32px;
+      }
+    }
+
+
+    #view {
+      margin: 0 auto;
+      width: 200px;
+      height: 200px;
+      background-color: #666;
+    }
+  }
+}

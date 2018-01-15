@@ -1,0 +1,85 @@
+<div flex layout="column" class="ks-center-userInfo">
+    <!--<md-toolbar class="ks-header">-->
+    <!--<div layout="row" class="ks-header-divWrap">-->
+    <!--<div class="divTop" flex class>-->
+    <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+    <!--ng-click="fallbackPage()"></md-icon>-->
+    <!--<span class="regSpan">个人信息</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</md-toolbar>-->
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>个人信息</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+
+    <md-divider></md-divider>
+
+
+    <md-content flex layout="column" layout-align="start center" class="main">
+        <div class="tab-desc">
+            <div class="desc">店铺信息</div>
+        </div>
+        <div class="tab-choose" layout="row" layout-align="space-between center"
+             ui-sref="main.brandApp.user.shops({patnerId:patnerId})">
+            <label ng-if="user.shopName" style="color: #333">{{user.shopName}}</label>
+            <label ng-if="!user.shopName" style="color: #999">{{Prompt}}</label>
+            <div>
+                <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+
+        </div>
+        <div class="tab-desc">
+            <div class="desc">个人信息</div>
+        </div>
+        <div class="tab-choose" layout="row" layout-align="space-between center">
+            <label>手机号</label>
+            <div layout="row" layout-align="center center">
+                <div class="choosePhone">{{user.phone}}</div>
+                <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            </div>
+        </div>
+        <div class="center-tab-line">
+            <div class="line"></div>
+        </div>
+        <div class="tab-choose" layout="row" layout-align="space-between center" ui-sref="main.brandApp.personalAddress">
+            <label>收货地址</label>
+            <div layout="row" layout-align="center center">
+                <div class="choosePhone">{{user.address}}</div>
+                <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+        <div class="center-tab-line">
+            <div class="line"></div>
+        </div>
+        <div class="tab-choose" layout="row" layout-align="space-between center" ng-click="refundAddress()">
+            <label>退货地址</label>
+            <div layout="row" layout-align="center center">
+                <div class="choosePhone">{{statusDetail}}</div>
+                <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+        <!--<div class="tab-desc">-->
+        <!--<div class="desc">安全</div>-->
+        <!--</div>-->
+        <!--<div class="tab-choose" layout="row" layout-align="space-between center">-->
+        <!--<label>钱包支付密码</label>-->
+        <!--<div layout="row" layout-align="center center" ui-sref="main.brandApp.user.setPassword({status:'set'})"-->
+        <!--ng-if="!user.payStatus">-->
+        <!--<div class="choosePhone">未设置</div>-->
+        <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+        <!--</div>-->
+        <!--<div layout="row" layout-align="center center" ui-sref="main.brandApp.user.setPassword({status:'modify'})"-->
+        <!--ng-if="user.payStatus">-->
+        <!--<div class="choosePhone">去设置</div>-->
+        <!--<md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+        <!--</div>-->
+        <!--</div>-->
+    </md-content>
+</div>
+

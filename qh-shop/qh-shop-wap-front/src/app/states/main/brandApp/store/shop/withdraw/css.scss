@@ -1,0 +1,182 @@
+@import "../../../../../../scss/_ksMain.scss";
+.ks-wallet-withdraw {
+  .ks-header._md {
+    min-height: 44px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    background: #fff;
+
+    .ks-header-divWrap {
+      padding: 0 15px;
+      height: 100%;
+      color: #f00;
+      .divTop {
+        text-align: center;
+        position: relative;
+        line-height: 44px;
+        .chevron_left {
+          color: #f00;
+          position: absolute;
+          left: 0;
+          font-size: 21px;
+          line-height: 44px;
+        }
+        .regSpan {
+          font-size: 18px;
+          color: #030303;
+          letter-spacing: -0.43px;
+        }
+        .regSpan-right {
+          position: absolute;
+          right: 0;
+          font-size: 16px;
+          color: #000;
+          letter-spacing: -0.39px;
+          line-height: 44px;
+        }
+      }
+    }
+  }
+
+  .main {
+    background: #f5f5f5;
+    .line-width {
+      height: 15px;
+      width: 100%;
+    }
+    .wx {
+      width: 100%;
+      padding: 0 15px;
+      .wx-withdraw {
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        width: 100%;
+        background: #fff;
+        height: 60px;
+        padding: 0 15px;
+        .center-tab-left {
+          .tab-img {
+            height:30px;
+            width:30px;
+            background: #42ad3b;
+            border-radius: 5px;
+            margin: 15px 15px 15px 0;
+          }
+          .tab-desc {
+            font-size: 16px;
+            color: #030303;
+            line-height: 30px;
+          }
+        }
+      }
+    }
+    .withdraw-center {
+      width: 100%;
+      padding: 0 15px;
+      .con-withdraw {
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        width: 100%;
+        background: #fff;
+        height: 140px;
+        padding: 0 15px;
+        .con-top {
+          height: 46px;
+          line-height: 46px;
+          .top-left {
+            font-size: 16px;
+            color: #333;
+          }
+          .top-right {
+            font-size: 13px;
+            color: #999;
+            span {
+              color: #ed5f5b;
+            }
+          }
+        }
+        .center-money {
+          height: 42px;
+          .tx-type {
+            font-size: 18px;
+            color: #333;
+            line-height: 22px;
+            margin-top: 7px;
+          }
+          .tx-money {
+            margin-left: 14px;
+            .tx-money-input {
+              width: 100%;
+              line-height: 22px;
+              margin-top: 7px;
+              font-size: 18px;
+              color: #ed5f5b;
+              border: none;
+            }
+          }
+        }
+        .line1 {
+          height: 1px;
+          width: 100%;
+          background: #d5d5d5;
+        }
+        .all-withdraw {
+          .wd-left {
+            font-size: 14px;
+            line-height: 18px;
+            margin-top: 18px;
+            color: #666;
+          }
+          .wd-right {
+            font-size: 16px;
+            line-height: 20px;
+            margin-top: 16px;
+            color: #E53467;
+          }
+        }
+      }
+    }
+    .withdraw-bz{
+      margin-top:10px;
+      width:100%;
+      padding:0 15px;
+      .ts{
+        width:100%;
+        padding:0 15px;
+        font-size:12px;
+        color: #999;
+        line-height: 20px;
+      }
+    }
+    //  确认体现
+    .btn-withdraw {
+      width: 100%;
+      height: 44px;
+      padding: 0 15px;
+      letter-spacing: -0.39px;
+      margin-top: 20px;
+      .btn-next {
+        width: 100%;
+        background: #E53467;
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+        font-size: 18px;
+        color: #fff;
+        height: 44px;
+        line-height: 44px;
+        text-align: center;
+        border-radius:8px;
+        border: none;
+      }
+      .successd {
+        background: #E53467;
+        filter: alpha(opacity=100);
+        opacity: 1;
+      }
+    }
+  }
+
+}

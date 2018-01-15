@@ -1,0 +1,13 @@
+# ServerProperties
+server:
+  context-path: /oauth2/rs
+
+# MongoProperties
+spring.data.mongodb:
+  host: 'prod14.kingsilk.net'
+  port: 27017
+  database: 'qhOauth'
+  username: 'qhOauth'
+  password: '{qhOauth2017]'
+
+

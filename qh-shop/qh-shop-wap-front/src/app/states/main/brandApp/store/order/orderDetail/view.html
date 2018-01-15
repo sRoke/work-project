@@ -1,0 +1,215 @@
+<div flex="100" layout="column" class="ks-orderDetail">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>
+            订单详情
+        </h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="overflow-x: hidden;background: #f5f5f5">
+        <div class="order-type">{{orderDetail.statusDesp}}</div>
+        <div class="order-express" layout="row" layout-align="start center"
+             ng-if="orderDetail.status == 'UNSHIPPED' && orderDetail.orderType !== 'SINCE'"
+             ui-sref="main.brandApp.store.order.chooseExpress({id:orderDetail.id})">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-truck-o"></md-icon>
+            </div>
+            <div flex class="con" layout="column" ng-if="orderDetail.logisticses.length<=0">
+                <!--<div class="noExpress">请选择快递公司</div>-->
+                <div class="userInfo">请选择快递公司</div>
+            </div>
+            <div flex class="con" layout="column" ng-if="orderDetail.logisticses.length>0">
+                <div class="userInfo">快递公司: {{orderDetail.logisticses[0].company}}</div>
+                <div class="userAddress">快递单号: {{orderDetail.logisticses[0].expressNo}}</div>
+            </div>
+            <div class="right">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+            </div>
+        </div>
+
+
+        <div class="order-since" layout="column" ng-if="orderDetail.orderType == 'SINCE'" layout-align="center start">
+            <div layout="row" ng-if="orderDetail.orderType == 'SINCE'" class="tab">
+                <div class="left">配送方式</div>
+                <div class="right">到店自提</div>
+            </div>
+
+            <div layout="row" ng-if="orderDetail.orderType == 'SINCE'" class="tab">
+                <div class="left">到店时间</div>
+                <div class="right">{{sinceTimeYear}}年{{sinceTimeMonth+1}}月{{sinceTimeDate}}日</div>
+            </div>
+
+        </div>
+
+
+        <div class="order-adress" layout="row" layout-align="start center" ng-if="orderDetail.orderType !== 'SINCE'">
+            <div class="left">
+                <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-address-1"></md-icon>
+            </div>
+            <div flex class="con" layout="column">
+                <div class="userInfo">{{orderDetail.address.receiver}} {{orderDetail.address.phone}}</div>
+                <div class="userAddress">
+                    {{orderDetail.address.province}}{{orderDetail.address.city}}{{orderDetail.address.area}}{{orderDetail.address.street}}
+                </div>
+            </div>
+            <div class="right">
+                <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+            </div>
+        </div>
+        <div class="order-item" layout="column">
+            <div class="itemList" ng-repeat="item in orderDetail.orderItems">
+                <div class="item" layout="row">
+                    <div class="item-img">
+                        <img ng-src="{{item.skuImg[0]}}">
+
+                        <div class="changePrice-icon" ng-if="item.adjustPrice">
+                            <img src="changePrice.png">
+                        </div>
+
+                    </div>
+                    <div flex class="item-desc" layout="column" layout-align="space-between start">
+                        <div class="item-name">{{item.itemTitle}}</div>
+                        <div class="item-desp">
+                            <span ng-repeat="spec in item.specInfos">{{spec.propValue}}&nbsp;</span>
+
+                            <!--{{item.specInfos[0].propValue}}-->
+                        </div>
+                    </div>
+                    <div class="item-price" layout="column">
+                        <div class="nowPrice">{{item.realPayPrice/100 | num:2}}</div>
+                        <div class="oldPrice" ng-if="item.realPayPrice<item.labelPrice">{{item.labelPrice/100 |
+                            num:2}}
+                        </div>
+                        <div class="num">X {{item.num}}</div>
+                        <div class="oldPrice" ng-if="item.realPayPrice>=item.labelPrice"></div>
+                        <div class="btn" ng-click="changePrice(item)" ng-if="orderDetail.status=='UNPAYED'">改价</div>
+                        <div class="refundBtn" ng-if="item.refundStatus">{{item.refundStatus}}</div>
+                    </div>
+                </div>
+                <md-divider style="border-top-style:dashed;"></md-divider>
+            </div>
+
+
+            <!--<div class="itemList">-->
+            <!--<div class="item" layout="row">-->
+            <!--<div class="item-img">-->
+            <!--<img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1945343878,3655021699&fm=58">-->
+            <!--</div>-->
+            <!--<div flex class="item-desc" layout="column" layout-align="space-between start">-->
+            <!--<div class="item-name">是发生发生发生风格打爱迪生打算是发生发生发生风格打爱迪生打算是发生发生发生风格打爱迪生打算</div>-->
+            <!--<div class="item-desp">4段1200克第三大</div>-->
+            <!--</div>-->
+            <!--<div class="item-price" layout="column">-->
+            <!--<div class="nowPrice">{{1321.523 | num:2}}</div>-->
+            <!--<div class="oldPrice">{{1321.523 | num:2}}</div>-->
+            <!--<div class="num">X 1</div>-->
+            <!--<div class="btn">改价</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<md-divider style="border-top-style:dashed;"></md-divider>-->
+            <!--</div>-->
+        </div>
+        <div class="remarks" layout="row">
+            <div class="remarks-title">买家备注</div>
+            <div flex class="remarks-con">
+                {{orderDetail.buyerMemo}}
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <div class="order-total" layout="column">
+            <div class="tab" layout="row" layout-align="space-between center">
+                <div class="left">商品合计</div>
+                <div class="right">¥{{orderDetail.orderPrice/100 | num :2}}</div>
+            </div>
+            <div class="tab" layout="row" layout-align="space-between center" ng-if="orderDetail.orderType != 'SINCE'">
+                <div class="left">运费</div>
+                <div class="right">¥{{orderDetail.freight/100 | num :2}}</div>
+            </div>
+            <div class="tab" layout="row" layout-align="space-between center">
+                <div class="left">改价优惠</div>
+                <div class="right" ng-if="orderDetail.adjustPrice >=0">-¥{{orderDetail.adjustPrice/100 | num :2}}</div>
+                <div class="right" ng-if="orderDetail.adjustPrice < 0">+¥{{-orderDetail.adjustPrice/100 | num :2}}</div>
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <div class="order-price" layout="row" layout-align="space-between center">
+            <div class="left">应付金额</div>
+            <div class="right">¥{{orderDetail.paymentPrice/100 | num :2}}</div>
+        </div>
+        <div class="order-info" layout="column">
+            <div class="info-tab">下单人: {{orderDetail.realName}},{{orderDetail.phone}}</div>
+            <div class="info-tab">订单编号: {{orderDetail.seq}}</div>
+            <div class="info-tab">订单时间: {{orderDetail.dateCreated}}</div>
+            <div class="info-tab" ng-if="orderDetail.status !== 'UNPAYED'">付款时间: {{orderDetail.payTime}}</div>
+            <div class="info-tab" ng-if="orderDetail.status !== 'UNPAYED'">支付类型: {{orderDetail.payType}}</div>
+        </div>
+
+
+        <!--<div class="foot-btn" style="height: 50px"></div>-->
+    </md-content>
+
+
+    <div class="footBottom" layout="column" ng-if="orderDetail.status == 'UNCONFIRMED'">
+        <div class="hight-line"></div>
+        <div flex layout="row" layout-align="center center">
+            <div flex class="left" ng-click="confirmOrder(false)">拒绝接单</div>
+            <div class="line"></div>
+            <div flex class="right" ng-click="confirmOrder(true)">确认接单</div>
+        </div>
+    </div>
+
+
+    <div class="footBottom" layout="column" ng-if="orderDetail.status == 'UNSHIPPED'">
+        <div class="hight-line"></div>
+        <div flex layout="row" layout-align="center center">
+            <div flex class="right" ng-click="deliver()">确认发货</div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="changePrice.html">
+    <md-dialog aria-label="" class="changePrice-dialog" style="overflow: hidden;">
+        <!--<md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o" ng-click="vmd.cancel()"></md-icon>-->
+        <div class="dialog-title">改价</div>
+        <md-divider></md-divider>
+        <div layout="column" layout-align="center center" class="con">
+            <div class="name">{{vmd.item.itemTitle}}</div>
+            <div class="spec">{{vmd.item.specInfos[0].propValue}}</div>
+            <div class="price">{{vmd.item.num}}*{{vmd.item.skuPrice/100 | num:2}}
+                <span ng-if="vmd.price && vmd.price > 0">-{{(vmd.item.skuPrice*vmd.item.num - vmd.price*100)/100 | num:2}}</span>
+                <span ng-if="!vmd.price">-{{(vmd.item.skuPrice*vmd.item.num - vmd.item.num * vmd.item.realPayPrice)/100 | num:2}}</span>
+                <!--<span ng-if="vmd.price && vmd.item.adjustPrice < 0">+{{-vmd.item.adjustPrice/100 | num:2}}</span>-->
+                =￥<span ng-if="vmd.price">{{vmd.price | num :2}}</span>
+                <span ng-if="!vmd.price">{{vmd.item.num * vmd.item.realPayPrice/100 |num:2}}</span>
+
+
+            </div>
+            <div class="inputPrice" layout="row">
+
+                <!--ng-pattern="/(^[1-9]{1}[0-9]*$)|(^[0-9]*\.[0-9]{0,2}$)|(^[0]$)/"-->
+                <input flex type="number" placeholder="输入优惠后的价格"
+                       ng-model="vmd.price" ng-change="vmd.AddEventInput()">
+            </div>
+        </div>
+        <div class="foot-btn" layout="column" layout-align="center center">
+            <div class="line"></div>
+            <div flex class="btn" layout="row" layout-align="center center">
+                <div flex class="cancel" ng-click="vmd.cancel()">取消</div>
+                <div class="height-line"></div>
+                <div flex class="sure" ng-click="vmd.changePrice()">确认</div>
+            </div>
+        </div>
+
+    </md-dialog>
+</script>
+
+
+
+
+
+

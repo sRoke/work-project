@@ -1,0 +1,138 @@
+<div flex="100" layout="column" class="ks-sellersItem">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <div flex="" layout="row" layout-align="center center">
+            <div class="tab-wtap" layout="row" layout-align="center center">
+
+                <a flex="" style="display: block"
+                   onclick="javascript:document.getElementById('item').scrollIntoView()">
+                    <div flex="" class="item-btn" ng-class="{tabActive:activeNum == '1'}" ng-click="tabBtnClick(1)">商品
+                    </div>
+                </a>
+                <a flex="" style="display: block"
+                   onclick="javascript:document.getElementById('detail').scrollIntoView()">
+                    <div class="detail-btn" ng-class="{tabActive:activeNum == '2'}" ng-click="tabBtnClick(2)">
+                        详情
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+    <md-content flex style="overflow-x: hidden;">
+
+        <div class="banner" id="item">
+            <ks-swiper-container direction="horizontal"
+                                 initial-slide="0"
+                                 effect="between"
+                                 swiper="swiper"
+                                 initial-slide="1"
+                                 loop="false"
+                                 show-nav-buttons="false"
+                                 pagination-is-active="true"
+                                 pagination-clickable="false"
+                                 slides-per-view="1"
+                                 space-between="0">
+                <ks-swiper-slide class="swiper-slide" ng-repeat="imgSrc in  itemImgs track by $index">
+                    <img ng-src="{{imgSrc}}"/>
+                </ks-swiper-slide>
+            </ks-swiper-container>
+        </div>
+
+        <div class="item-dis" layout="column" layout-align="space-between start">
+            <div class="dis-title">{{itemData.title}}</div>
+            <div class="dis-price" layout="row" layout-align="space-between end">
+                <div class="price" layout="row" layout-align="start end">
+                    <span style="font-size: 16px;line-height: 1em">￥</span>
+                    <span style="font-size: 24px;line-height: 1em;">{{chooseSku.salePrice/100 |num:2}}</span>
+                    <span class="old-price" ng-if="chooseSku.salePrice-chooseSku.buyPrice >0"><span style="font-size: 24px">/</span>赚{{(chooseSku.salePrice-chooseSku.buyPrice)/100 |num:2}}</span>
+                </div>
+                <div ng-click="shareDialog(chooseSku)">
+                    <md-icon style="font-size: 15px" class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-share-o"></md-icon>
+                </div>
+            </div>
+        </div>
+
+        <div class="icon-tips">
+        <span>
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-right"></md-icon>正品保证
+        </span>
+            <span>
+             <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-right"></md-icon>假一罚十
+        </span>
+            <span>
+             <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-right"></md-icon>急速退款
+        </span>
+        </div>
+        <div class="line-blank"></div>
+        <div class="choose" layout="row" layout-align="space-between center" ng-click="buyDialog()">
+            <!--<div>选择尺寸&nbsp;/&nbsp;款式</div>-->
+            <div>
+                <span ng-repeat="spec in chooseSku.specList">{{spec.itemPropValueName}}&nbsp;</span>
+            </div>
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+        </div>
+        <div class="line-blank"></div>
+        <!--ng-include="tplUrl"-->
+        <div id="detail" class="ks-item-desp" ng-include="tplUrl"></div>
+    </md-content>
+
+    <!--ng-hide="cancassuccess"-->
+
+    <div class="canvasSimple" id="canvasSimple"  style="position: fixed;top:0"  layout="column" layout-align="start center">
+        <!--style="position: fixed;height: 440px;bottom: -440px">-->
+        <div class="title">{{userInfo.shopName}}</div>
+        <div class="img">
+            <img ng-src="{{chooseSku.imgs}}" alt="" width="100" height="440" crossorigin="anonymous" imageonload="doThis()">
+            <!--<img src="{{testImg}}" alt="" width="100" height="100">-->
+        </div>
+        <div class="foot" layout="row" layout-align="start center" style="width: 100%">
+            <div class="foot-desc" flex layout="column">
+                <div class="name" flex>
+                    {{itemData.title}}
+                </div>
+                <div class="newPrice">¥{{chooseSku.salePrice/100 | num:2}}</div>
+                <div class="oldPrice" ng-if="chooseSku.salePrice < chooseSku.buyPrice">原价¥{{chooseSku.buyPrice/100 | num:2}}</div>
+            </div>
+            <div class="vsCode" layout="column" layout-align="start center">
+                <div class="img">
+                    <qrcode data="{{qrCodeUrl}}" size="77" version="5"></qrcode>
+                    <!--<qr text="1231" type-number="0" correction-level="" size="100%" input-mode="qrCodeUrl" image="true"></qr>-->
+                </div>
+                <div class="ts">扫描或长按二维码</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mask" ng-if="mask" style="position: absolute"   ng-click="maskHide()">
+        <div class="maskButton1">
+            <!--<div class="shareKnow" md-font-icon="ks-arrow_left"></div>-->
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+<script type="text/ng-template" id="shareItem.html">
+    <md-dialog aria-label="" class="shareItem-dialog" >
+        <div class="closed" layout="row" layout-align="center center" >
+            <md-icon class="ks-icon close-tck" md-font-set="ks-icon" md-font-icon="ag-closed-o" ng-click="vmd.cancel()"></md-icon>
+        </div>
+        <div layout="column" layout-align="center center" ng-show="vmd.imgUrl">
+            <img src="{{vmd.imgUrl}}" style="border-radius: 8px;width: 100%">
+        </div>
+    </md-dialog>
+</script>
+
+

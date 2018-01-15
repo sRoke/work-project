@@ -1,0 +1,250 @@
+<div flex="" layout="column" class="ks-main ks-bargain" style="overflow: hidden">
+    <md-content flex style="overflow-x: hidden">
+       <!-- <div class="fixed-top" style="z-index: 11;max-width: 600px">
+            <a href="https://kingsilk.net/url/58c8e8760d29f26fa3de1675">
+                <img src="https://img.kingsilk.net/a9f77e60deb8f1fa3afd70a1b8eab472" alt="" width="100%">
+            </a>
+        </div>
+        <div class="fixed-top-blank">
+            <a href="https://kingsilk.net/url/58c8e8760d29f26fa3de1675">
+                <img src="https://img.kingsilk.net/a9f77e60deb8f1fa3afd70a1b8eab472" alt="" width="100%"
+                     style="opacity: 0">
+            </a>
+        </div>-->
+
+        <div class="fixed-top" style="z-index: 111;max-width: 600px" ng-if="infoData.topImg">
+            <a href="{{infoData.topLink}}" ng-if="infoData.topLink">
+                <img src="{{imgUrl}}{{infoData.topImg}}" alt="" width="100%">
+            </a>
+            <img src="{{imgUrl}}{{infoData.topImg}}" alt="" width="100%" ng-if="!infoData.topLink">
+        </div>
+        <div class="fixed-top-blank" ng-if="infoData.topImg" style="visibility: hidden">>
+            <a href="{{infoData.topLink}}" ng-if="infoData.topLink">
+                <img src="{{imgUrl}}{{infoData.topImg}}" alt="" width="100%">
+            </a>
+            <img src="{{imgUrl}}{{infoData.topImg}}" alt="" width="100%" ng-if="!infoData.topLink">
+        </div>
+        <div class="img-top">
+            <!--<img src="https://img.kingsilk.net/FoN7rHn601MRBlGjkc5Tfuya9rmj" alt="">-->
+            <img ng-src="{{imgUrl}}{{titleImg}}" alt="">
+        </div>
+        <div class="item-wrap" layout="column" layout-align="center center">
+            <div class="item-img">
+                <!--<img src="https://img.kingsilk.net/FmJ-ylzTNuf-Ohu2NkAKZpIndwZO" alt="">-->
+                <img ng-src="{{imgUrl}}{{infoData.itemImg}}"/>
+            </div>
+
+            <div class="item-txt" layout="column" layout-align="center center" style="margin-top: 6px">
+                <div class="txt" style="font-size: 14px">{{infoData.name}}
+                    <!--<span ng-repeat="spec in infoData.specs">
+                            {{spec.name}}:{{spec.value}}
+                    </span>-->
+                </div>
+                <!--<div class="txt">砍价低至{{infoData.minTargetPrice}},原价{{infoData.price}}</div>-->
+            </div>
+            <div class="last-time">活动倒计时</div>
+            <div class="tiem-time" layout="row" layout-align="center center">
+                <span>{{infoData.activityCheck.day}}</span>天<span>{{infoData.activityCheck.hour}}</span>时<span>{{infoData.activityCheck.minute}}</span>分<span>{{infoData.activityCheck.second}}</span>秒
+            </div>
+        </div>
+
+        <div class="bargain-wrap" layout="column">
+            <div class="bargain-progress" layout="row">
+                <div class="progress-bg">
+                    <div class="progress-speed"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bargain-detail-wrap" layout="row">
+            <div class="bargain-detail" layout="column" flex>
+                <div class="bargain-detail-price" layout="column">
+                    <div class="price-top" layout="row">
+                        <div class="old-price">原价:￥{{infoData.price}}</div>
+                        <div class="now-price">底价:￥{{infoData.minTargetPrice}}</div>
+                    </div>
+                    <div class="bargain-price" style="font-weight: bold">
+                        已砍至:￥{{infoData.finalPrice |num:2}}
+                    </div>
+                </div>
+                <div class="bargain-bottom" layout="column">
+                    <!--   <div class="bottom-price">已有<span>{{infoData.helpSize}}</span>位好友帮砍 <span>{{infoData.price - infoData.finalPrice|num:2}}</span>元
+                       </div>-->
+
+                    <div class="bottom-price">已砍 <span>{{infoData.price - infoData.finalPrice|num:2}}</span>元
+                    </div>
+                    <div class="bottom-num" style="margin-top: 8px">仅剩<span>{{infoData.num}}</span>件</div>
+                </div>
+                <div class="img-wrap">
+                    <img src="https://img.kingsilk.net/FsB_TVW0aAnJfXJDBKUkwFZKuSk8" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!--ng-click="shareFiend()"-->
+        <div class="look-rank" layout="row" layout-align="center center">
+            <div class="rank-line" flex style="margin-right: -10px;"></div>
+            <img src="https://img.kingsilk.net/7c8eac67df61836e46113a17273b9af5" alt="" width="35">
+            <div class="look">看看小伙伴们砍了多少</div>
+            <img src="https://img.kingsilk.net/7c8eac67df61836e46113a17273b9af5" alt="" width="35" style="z-index: 1">
+            <div class="rank-line" flex style="margin-left: -10px;"></div>
+        </div>
+        <div class="item-rank">
+            <div class="rank-btn" layout="row" layout-align="center center">
+                <div class="rank-btn-left" ng-class="{active:btnNum == '1'}" flex layout="row"
+                     layout-align="center center" ng-click="btnClick(1)">
+                    <span>帮砍榜</span>
+                </div>
+                <div class="line"></div>
+                <div class="rank-btn-right" ng-class="{active:btnNum == '2'}" flex layout="row"
+                     layout-align="center center" ng-click="btnClick(2)">
+                    <span>斩获榜</span>
+                </div>
+            </div>
+            <div class="rank-list">
+                <div class="rank-list-top" layout="row" layout-align="center stretch"
+                     style="margin: 0 !important;width: 100%;">
+                    <div class="list-btn" flex layout="row" layout-align="center center" ng-click="btnClick('1')">
+                        <div flex class="btn-name">昵称</div>
+                        <div class="block" ng-show="btnNum == '1'"></div>
+                    </div>
+                    <div class="list-btn" flex layout="row" layout-align="center center" ng-click="btnClick('2')">
+                        <div flex class="btn-name" ng-show="btnNum == '1'">帮砍价格</div>
+                        <div flex class="btn-name" ng-show="btnNum == '2'">砍后价格</div>
+                        <div class="block" ng-show="btnNum == '2'"></div>
+                    </div>
+                </div>
+                <div class="rank-list-bottom" layout="column" layout-align="stretch center" ng-if="btnNum == '1'">
+                    <div class="rank-list-content" layout="row" layout-align="center center"
+                         ng-repeat="list in helpList | orderBy:'helpTime'">
+                        <div flex class="content-left" layout="row" layout-align="start center">
+                            <!--<img src="https://img.kingsilk.net/FmJ-ylzTNuf-Ohu2NkAKZpIndwZO" style="border-radius: 50%"-->
+                            <!--width="32" height="32"-->
+                            <!--alt="">--><!--{{imgUrl}}-->
+                            <img ng-src="{{list.avatar}}"
+                                 style="border-radius: 50%;margin-left: 20%;max-height: 32px;max-width: 32px;min-height: 32px;min-width: 32px"
+                                 width="32"
+                                 height="32"/>
+
+                            <div flex class="content-left-dis" layout="column" style="margin-left: 15px">
+                                <div class="name">{{list.nickName}}</div>
+                                <div class="time">{{list.helpTime|date: 'MM/dd HH:mm'}}</div>
+                            </div>
+                        </div>
+                        <div flex class="content-right" layout="row" layout-align="center center">
+                            <div class="price">
+                                {{list.helpPrice}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rank-list-bottom" layout="column" layout-align="stretch center" ng-if="btnNum == '2'">
+                    <div class="rank-list-content" layout="row" layout-align="center center"
+                         ng-repeat="bestList in bestHelperList track by $index">
+                        <div flex class="content-left" layout="row" layout-align="start center">
+                            <!--<img src="https://img.kingsilk.net/FmJ-ylzTNuf-Ohu2NkAKZpIndwZO" style="border-radius: 50%"-->
+                            <!--width="32" height="32"-->
+                            <!--alt="">--><!--{{imgUrl}}-->
+                            <img ng-src="{{bestList.avatar}}"
+                                 style="border-radius: 50%;margin-left: 20%;max-height: 32px;max-width: 32px;min-height: 32px;min-width: 32px"
+                                 width="32"
+                                 height="32"/>
+
+                            <div class="content-left-dis" layout="column" style="margin-left: 15px">
+                                <div class="name">{{bestList.nickName}}</div>
+                                <div class="time">{{bestList.helpTime|date: 'MM/dd HH:mm'}}</div>
+                            </div>
+                        </div>
+                        <div flex class="content-right" layout="row" layout-align="center center">
+                            <div class="price">
+                                {{bestList.bargainPrice|num:2}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </md-content>
+    <div ng-if="showBtn" style="min-height:49px ">
+        <div ng-if="infoData.num != '0'">
+            <div class="fotter-btn" layout="row" layout-align="center stretch" ng-if="sameUser">
+                <div class="btn-left" flex layout="row" ng-if="canBargain && awardNum>0" layout-align="center center"
+                     ng-click="imgShow()">
+                    <span>找人砍价</span>
+                </div>
+                <div class="btn-left" flex layout="row"
+                     ng-if="!canBargain&&canReceived&&receiveType == 'LINEBUY'&& awardNum>0"
+                     layout-align="center center">
+                    <span>砍价完成,联系客服购买</span>
+                </div>
+                <div class="btn-right" flex layout="row" ng-if="canReceived&&receiveType == 'ONLINEBUY'&& awardNum>0 "
+                     layout-align="center center"
+                     ng-click="checkBargainOrder()">
+                    <span>立即抢购</span>
+                </div>
+                <div class="btn-right" flex layout="row"
+                     ng-if="!canBargain&&canReceived&&receiveType == 'COMPLETEBUY'&& awardNum>0 "
+                     layout-align="center center"
+                     ng-click="checkBargainOrder()">
+                    <span>砍价完成,立即抢购</span>
+                </div>
+                <div class="btn-right" flex layout="row" ng-if="!canReceived" layout-align="center center"
+                     style="background: #999;">
+                    <span style="color: #fff">已购买</span>
+                </div>
+                <div class="btn-right" flex layout="row" ng-if="canReceived && awardNum<=0" layout-align="center center"
+                     style="background: #999;">
+                    <span style="color: #fff">已抢光</span>
+                </div>
+            </div>
+            <div class="fotter-btn" layout="row" layout-align="center stretch" ng-if="!sameUser">
+                <div class="btn-left" flex layout="row" layout-align="center center" ng-click="goBargain()"
+                     ng-if="!isSuccess&&canBargain">
+                    <span>帮他砍价</span>
+                </div>
+                <div class="btn-left" flex layout="row" layout-align="center center"
+                     ui-sref="main.bargain({id: $stateParams.id,awardId: $rootScope.skuId,userId: resp.data.userId})"
+                     ng-if="isSuccess||!canBargain">
+                    <span>我要参加</span>
+                </div>
+            </div>
+        </div>
+        <div ng-if="infoData.num == '0'">
+            <div class="fotter-btn" layout="row" layout-align="center stretch">
+                <div class="btn-right" flex layout="row" layout-align="center center"
+                     style="background: #999;">
+                    <span style="color: #fff">已抢光</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分享弹窗背景-->
+    <div class="dialog-backdrop" ng-show="backdrop" stop-touch-event ng-click="closeDialog()"></div>
+
+    <!--分享图片-->
+    <div class="dialog-img-wrap" ng-if="imgWrapShow" layout="column"
+         layout-align="center center">
+        <img class="imgShare" src="https://img.kingsilk.net/Fu5T9P71eZKSr_imO5N-ZsTHA85N" alt="" style="z-index: 50"
+             ng-click="closeDialog()">
+    </div>
+
+    <!--砍价弹窗-->
+    <div class="dialog-imgShare-wrap" ng-if="imgShareShow" layout="column"
+         layout-align="center center">
+        <img src="https://img.kingsilk.net/FiutxYVYquvwe4Z7478WB_0Vb_2h" alt="" width="375" height="375"
+             style="z-index: 50">
+        <div class="bargain-dis">恭喜您,成功砍掉<span>{{helpPrice}}</span>元</div>
+        <div class="btn" ng-click="imgShow()">找人砍价</div>
+        <div class="close" style="position: absolute;bottom: -50px;left:50%;margin-left:-20px;z-index: 111;"
+             ng-click="closeDialog()">
+            <img src="https://img.kingsilk.net/FqWdNAjJEnx1mHRfpBWZu_Dg-P7U" width="40" height="40"
+                 style="max-width: 40px;max-height: 40px;min-height: 40px;min-width: 40px" alt="">
+        </div>
+    </div>
+</div>
+
+<style>
+    img {
+        vertical-align: bottom;
+    }
+</style>
+

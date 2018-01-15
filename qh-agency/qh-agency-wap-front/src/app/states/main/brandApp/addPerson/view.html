@@ -1,0 +1,104 @@
+<div flex layout="column" class="ks-addAddress">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>{{addrTitle}}</h1>
+        <div class="right-button" flex="20">
+        </div>
+    </div>
+
+
+    <!--<md-toolbar class="ks-header">-->
+        <!--<div layout="row" class="ks-header-divWrap">-->
+            <!--<div class="divTop" flex class>-->
+                <!--<md-icon md-font-set="ks-icon" class="chevron_left" md-font-icon="ag-arrow_left"-->
+                         <!--ng-click="fallbackPage()"></md-icon>-->
+                <!--<span class="regSpan">{{addrTitle}}</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</md-toolbar>-->
+    <md-divider></md-divider>
+
+
+    <div class="add-box">
+        <div class="add-wrap" layout="row" layout-align="space-between center">
+            <input class="input" type="text" ng-model="receiver"
+                   ng-blur="addressContact()"
+                   placeholder="姓名"/>
+        </div>
+        <md-divider></md-divider>
+        <div class="add-wrap" layout="row" layout-align="space-between center">
+            <input class="input" type="text" ng-model="phone"
+                   ng-blur="addressPhone()"
+                   placeholder="联系电话"/>
+        </div>
+        <md-divider></md-divider>
+        <div class="add-wrap" data-tap-disabled="true" ng-click="openAdcDialog()" layout="row"
+             layout-align="center center">
+
+            <!--<div flex class="addr-province">{{vm.province}}</div>-->
+            <!--<div flex class="addr-city">{{vm.city}}</div>-->
+            <!--<div flex class="addr-area">{{vm.area}}</div>-->
+
+            <div flex="100" layout="row" layout-align="space-between center">
+                <div ng-if="vm.adcNo" flex class="address-show">
+                    <span ng-show="vm.province">{{vm.province}} </span><span ng-show="vm.city">{{vm.city}}</span><span ng-show="vm.area"> {{vm.area}}</span>
+                </div>
+                <div ng-if="!vm.adcNo" flex style="color: #c5c5c5" class="address-show">所在地区</div>
+                <div  class="address-show" style="color: #c5c5c5" layout="row" layout-align="center center">
+                        <span ng-show="!vm.adcNo">请选择</span>
+                    <md-icon md-font-set="ks-icon" md-font-icon="ag-arrow-right-s" class="addrIcon"></md-icon>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <!--<select class="select" ng-change="queryAddress(provinceId,1)" data-ng-model="provinceId" >-->
+            <!--<option value="">请选择</option>-->
+            <!--<option ng-repeat="province in provinces " value="{{province.no}}">-->
+            <!--{{province.name}}-->
+            <!--</option>-->
+            <!--</select>-->
+            <!--<select class="select"-->
+            <!--ng-show="citys[0].no" ng-change="queryAddress(cityId,2)"-->
+            <!--data-ng-model="cityId">-->
+            <!--<option value="">请选择</option>-->
+            <!--<option ng-repeat="city in citys" value="{{city.no}}">{{city.name}}</option>-->
+            <!--</select>-->
+            <!--<select class="select"-->
+            <!--ng-show="areas[0].no" data-ng-model="areaId">-->
+            <!--<option value="">请选择</option>-->
+            <!--<option ng-repeat="area in areas" value="{{area.no}}">{{area.name}}</option>-->
+            <!--</select>-->
+        </div>
+        <md-divider></md-divider>
+        <div flex class="add-wrap" layout="row" layout-align="space-between center">
+            <input class="input" ng-model="street" type="text"
+                   ng-blur="addressStreet()"
+                   placeholder="小区、街道、门牌等详细信息">
+        </div>
+        <md-divider ng-if="!editId"></md-divider>
+        <div flex class="add-wrap" layout="row" ng-if="!editId">
+            <div flex layout="row" layout-align="center center" class="set-default-row">
+                <div flex>设置为默认地址</div>
+                <md-switch ng-model="default.defaultAddr"></md-switch>
+            </div>
+        </div>
+        <md-divider></md-divider>
+
+        <div class="address" ng-click="save()">
+            <div class="but">确定</div>
+        </div>
+    </div>
+
+</div>

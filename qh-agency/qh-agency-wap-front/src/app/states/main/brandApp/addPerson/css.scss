@@ -1,0 +1,213 @@
+@import "../../../../scss/index";
+
+.ks-addAddress {
+  background: $agency-bg-white;
+
+
+  //.ks-header._md {
+  //  min-height: 44px;
+  //  height: 30px;
+  //  margin: 0 auto;
+  //  position: relative;
+  //  background: $agency-bg-white;
+  //
+  //  .ks-header-divWrap {
+  //    padding: 0 15px;
+  //    height: 100%;
+  //    color: $agency-word-dark;
+  //    .divTop {
+  //      text-align: center;
+  //      position: relative;
+  //      line-height: 44px;
+  //      .chevron_left {
+  //        color: $agency-word-dark;
+  //        position: absolute;
+  //        left: 0;
+  //        font-size: 21px;
+  //        line-height: 44px;
+  //      }
+  //      .regSpan{
+  //        font-size: 18px;
+  //        color: #030303;
+  //        letter-spacing: -0.43px;
+  //      }
+  //      .regSpan-right{
+  //        position: absolute;
+  //        right: 0;
+  //        font-size: 14px;
+  //        color: $agency-word-black;
+  //        letter-spacing: -0.34px;
+  //        line-height: 44px;
+  //      }
+  //    }
+  //  }
+  //}
+
+  .add-box {
+    margin: 0 15px;
+
+
+    input::-webkit-input-placeholder { /* WebKit browsers */
+      color: #c5c5c5;
+      border: none;
+      font-size: 16px;
+      font-weight: 300;
+    }
+    input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: #c5c5c5;
+      border: none;
+      font-size: 16px;
+      font-weight: 300;
+    }
+    input::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: #c5c5c5;
+      border: none;
+      font-size: 16px;
+      font-weight: 300;
+    }
+    input:-ms-input-placeholder { /* Internet Explorer 10+ */
+      color: #c5c5c5;
+      border: none;
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    md-divider {
+      height: 1px;
+      -webkit-transform: scaleY(0.5);
+      -webkit-transform-origin: 0 0;
+      overflow: hidden;
+    }
+    .add-wrap {
+      height: 60px;
+      line-height: 60px;
+      .addr-dis{
+        height: 100%;
+      }
+
+      .addrIcon {
+        color: #C7CCCB;
+        font-size: 13px;
+        height: 13px;
+        min-height: 13px;
+        min-width: 0;
+        line-height: 13px;
+      }
+
+
+      .address-show{
+        //height: 24px;
+        line-height: 24px;
+        border-radius: 0;
+        border: none;
+        font-size: 16px;
+        color: #101010;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+      }
+
+      .edit-div {
+        width: 100%;
+        height: 24px;
+        line-height: 24px;
+        border-radius: 0;
+        border: none;
+        font-size: 16px;
+        color: $agency-word-dark;
+      }
+      /*为空时显示 element attribute content*/
+      .edit-div:empty:before {
+        content: attr(placeholder); /* element attribute*/
+        color: #666;
+      }
+      /*焦点时内容为空*/
+      .edit-div:focus:before {
+        content: none;
+      }
+      input {
+        width: 100%;
+        height: 24px;
+        line-height: 24px;
+        border-radius: 0;
+        border: none;
+        font-size: 16px;
+        color: $agency-word-dark;
+      }
+      span.txtSpan {
+        line-height: 40px;
+        font-size: 14px;
+      }
+      .arrow_right {
+        float: right;
+        line-height: 24px;
+        font-size: 16px;
+      }
+      .controllers {
+        float: right;
+      }
+      md-switch {
+        height: 100%;
+        line-height: 44px;
+        .md-bar{
+          background-color: #D5D5D5;
+        }
+      }
+
+
+
+      md-switch.md-checked .md-thumb {
+        background-color: #fff;
+      }
+      md-switch.md-checked .md-bar {
+        background-color: $agency-bg-green;
+      }
+      //收获地址select框
+      .select {
+        width: 30%;
+        background: transparent;
+        border: none;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .set-default-row {
+        > div {
+          font-size: 16px;
+          color: $agency-word-black;
+        }
+      }
+    }
+  }
+
+  //添加新地址按钮
+  .address {
+    margin: 20px 0;
+    .but {
+      width: 100%;
+      height: 44px;
+      background: $agency-bg-green;
+      border-radius: 8px;
+      font-size: 18px;
+      color: $agency-word-white;
+      letter-spacing: -0.43px;
+      border: none;
+      text-align: center;
+      line-height: 44px;
+      font-weight: bold;
+    }
+  }
+}
